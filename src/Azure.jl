@@ -1,5 +1,5 @@
 module Azure
-
-# package code goes here
-
-end # module
+include("DataLakeStore/DataLakeStoreAccountManagementClient/DataLakeStoreAccountManagementClient.jl")
+include("DataLakeStore/DataLakeStoreFileSystemManagementClient/DataLakeStoreFileSystemManagementClient.jl")
+include("StorageManagement/StorageManagementClient/StorageManagementClient.jl")
+end # module Azure
