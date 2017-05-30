@@ -16,6 +16,7 @@ function gen(swgroot)
 
     open(joinpath(SRCDIR, "Azure.jl"), "w") do azf
         println(azf, "module Azure")
+        println(azf, "using Swagger")
         for spec in SPECS
             pkg, grp, swg = spec
             open(TEMPCFGFILE, "w") do f
