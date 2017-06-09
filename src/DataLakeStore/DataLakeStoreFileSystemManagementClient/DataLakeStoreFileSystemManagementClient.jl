@@ -14,30 +14,30 @@ include("modelincludes.jl")
 include("api_FileSystemApi.jl")
 
 # export models
-export AclStatus
-export AclStatusResult
-export AdlsAccessControlException
-export AdlsBadOffsetException
-export AdlsError
-export AdlsFileAlreadyExistsException
-export AdlsFileNotFoundException
-export AdlsIOException
-export AdlsIllegalArgumentException
-export AdlsRemoteException
-export AdlsRuntimeException
-export AdlsSecurityException
-export AdlsThrottledException
-export AdlsUnsupportedOperationException
-export ContentSummary
-export ContentSummaryResult
-export FileOperationResult
-export FileStatusProperties
-export FileStatusResult
-export FileStatuses
-export FileStatusesResult
+export convert, AclStatus
+export convert, AclStatusResult
+export convert, AdlsAccessControlException
+export convert, AdlsBadOffsetException
+export convert, AdlsError
+export convert, AdlsFileAlreadyExistsException
+export convert, AdlsFileNotFoundException
+export convert, AdlsIOException
+export convert, AdlsIllegalArgumentException
+export convert, AdlsRemoteException
+export convert, AdlsRuntimeException
+export convert, AdlsSecurityException
+export convert, AdlsThrottledException
+export convert, AdlsUnsupportedOperationException
+export convert, ContentSummary
+export convert, ContentSummaryResult
+export convert, FileOperationResult
+export convert, FileStatusProperties
+export convert, FileStatusResult
+export convert, FileStatuses
+export convert, FileStatusesResult
 
 # export operations
-export FileSystemApi
+export convert, FileSystemApi
 
 export check_required, set_field!, get_field, isset_field, convert
 

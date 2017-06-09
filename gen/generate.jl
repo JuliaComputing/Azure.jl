@@ -6,10 +6,37 @@ const SWAGGERDIR = Pkg.dir("Swagger")
 const SWAGGERGEN = joinpath(SWAGGERDIR, "plugin", "generate.sh")
 
 const SPECS = [
-    ("DataLakeStoreAccountManagementClient", "DataLakeStore", "2016-11-01", "arm-datalake-store/account/{VER}/swagger/account.json"),
-    ("DataLakeStoreFileSystemManagementClient", "DataLakeStore", "2016-11-01", "arm-datalake-store/filesystem/{VER}/swagger/filesystem.json"),
-    ("StorageManagementClient", "StorageManagement", "2017-06-01", "arm-storage/{VER}/swagger/storage.json")
+    ("DataLakeStoreAccountManagementClient",    "DataLakeStore",    "2016-11-01", "arm-datalake-store/account/{VER}/swagger/account.json"),
+    ("DataLakeStoreFileSystemManagementClient", "DataLakeStore",    "2016-11-01", "arm-datalake-store/filesystem/{VER}/swagger/filesystem.json"),
+    ("StorageManagementClient",                 "Storage",          "2017-06-01", "arm-storage/{VER}/swagger/storage.json"),
+    ("ComputeManagementClient",                 "Compute",          "2017-03-30", "arm-compute/{VER}/swagger/compute.json"),
+    ("DiskResourceProviderClient",              "Compute",          "2017-03-30", "arm-compute/{VER}/swagger/disk.json"),
+    ("RunCommandsClient",                       "Compute",          "2017-03-30", "arm-compute/{VER}/swagger/runCommands.json"),
+    ("ContainerServiceClient",                  "Compute",          "2017-01-31", "arm-compute/{VER}/swagger/containerService.json"),
+    ("ApplicationGatewayClient",                "Network",          "2017-03-01", "arm-network/{VER}/swagger/applicationGateway.json"),
+    ("CheckDnsAvailabilityClient",              "Network",          "2017-03-01", "arm-network/{VER}/swagger/checkDnsAvailability.json"),
+    ("ExpressRouteCircuitClient",               "Network",          "2017-03-01", "arm-network/{VER}/swagger/expressRouteCircuit.json"),
+    ("LoadBalancerClient",                      "Network",          "2017-03-01", "arm-network/{VER}/swagger/loadBalancer.json"),
+    ("NetworkManagementClient",                 "Network",          "2017-03-01", "arm-network/{VER}/swagger/network.json"),
+    ("NetworkInterfaceClient",                  "Network",          "2017-03-01", "arm-network/{VER}/swagger/networkInterface.json"),
+    ("NetworkSecurityGroupClient",              "Network",          "2017-03-01", "arm-network/{VER}/swagger/networkSecurityGroup.json"),
+    ("NetworkWatcherClient",                    "Network",          "2017-03-01", "arm-network/{VER}/swagger/networkWatcher.json"),
+    ("PublicIpAddressClient",                   "Network",          "2017-03-01", "arm-network/{VER}/swagger/publicIpAddress.json"),
+    ("RouteFilterClient",                       "Network",          "2017-03-01", "arm-network/{VER}/swagger/routeFilter.json"),
+    ("RouteTableClient",                        "Network",          "2017-03-01", "arm-network/{VER}/swagger/routeTable.json"),
+    ("ServiceCommunityClient",                  "Network",          "2017-03-01", "arm-network/{VER}/swagger/serviceCommunity.json"),
+    ("UsageClient",                             "Network",          "2017-03-01", "arm-network/{VER}/swagger/usage.json"),
+    ("VirtualNetworkClient",                    "Network",          "2017-03-01", "arm-network/{VER}/swagger/virtualNetwork.json"),
+    ("VirtualNetworkGatewayClient",             "Network",          "2017-03-01", "arm-network/{VER}/swagger/virtualNetworkGateway.json"),
+    ("VmssNetworkInterfaceClient",              "Network",          "2017-03-01", "arm-network/{VER}/swagger/vmssNetworkInterface.json"),
+    ("ResourceManagementClient",                "Resource",         "2017-05-10", "arm-resources/resources/{VER}/swagger/resources.json"),
+    ("SubscriptionClient",                      "Resource",         "2016-06-01", "arm-resources/subscriptions/{VER}/swagger/subscriptions.json"),
+    ("PolicyClient",                            "Resource",         "2016-12-01", "arm-resources/policy/{VER}/swagger/policy.json")
 ]
+
+const PATCHES = Dict(
+    ("ComputeManagementClient", "Compute") => ["model" => ("Caching", "CreateOption", "StorageAccountType")]
+)
 
 const MODULE_HEAD = """module Azure
 
@@ -35,12 +62,23 @@ function genunit(pkg, grp, swg)
         println(f, """{ "packageName": "$pkg" } """)
     end
     outpath = joinpath(SRCDIR, grp)
+    pkgpath = joinpath(outpath, pkg)
     mkpath(outpath)
     run(`$SWAGGERGEN -i $swg -o $outpath -c $TEMPCFGFILE`)
-    mv(joinpath(outpath, "src"), joinpath(outpath, pkg); remove_destination=true)
+    mv(joinpath(outpath, "src"), pkgpath; remove_destination=true)
     rm(joinpath(outpath, "REQUIRE"))
     rm(joinpath(outpath, ".swagger-codegen-ignore"))
     rm(TEMPCFGFILE)
+
+    # apply patches if any
+    patches = get(PATCHES, (pkg,grp), [])
+    for patch in patches
+        patch_type, names = patch
+        for name in names
+            patchfile = patch_type * "_" * name * ".jl"
+            cp(joinpath(DIR, patchfile), joinpath(pkgpath, patchfile); remove_destination=true)
+        end
+    end
 
     # return the module file to include
     module_file = joinpath(grp, pkg, pkg * ".jl")
@@ -76,9 +114,13 @@ function gen(swgroot)
     end
 end
 
+const USAGE = """Usage: julia generate.jl <azure specs repo root>
+Specifications:
+    git clone https://github.com/tanmaykm/azure-rest-api-specs.git
+    cd azure-rest-api-specs && git checkout juliarun"""
 
 if isempty(ARGS)
-    println("Usage: julia generate.jl <azure specs repo root>")
+    println(USAGE)
 else
     gen(ARGS[1])
 end

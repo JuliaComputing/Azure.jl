@@ -1,0 +1,5 @@
+include("model_ErrorDetails.jl")
+include("model_Error.jl")
+include("model_AzureAsyncOperationResult.jl")
+include("model_SubResource.jl")
+include("model_Resource.jl")

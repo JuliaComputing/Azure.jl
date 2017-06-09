@@ -16,32 +16,32 @@ include("api_FirewallRulesApi.jl")
 include("api_TrustedIdProvidersApi.jl")
 
 # export models
-export DataLakeStoreAccount
-export DataLakeStoreAccountListResult
-export DataLakeStoreAccountProperties
-export DataLakeStoreAccountUpdateParameters
-export DataLakeStoreFirewallRuleListResult
-export DataLakeStoreTrustedIdProviderListResult
-export EncryptionConfig
-export EncryptionIdentity
-export ErrorDetails
-export FirewallRule
-export FirewallRuleProperties
-export KeyVaultMetaInfo
-export Resource
-export SubResource
-export TrustedIdProvider
-export TrustedIdProviderProperties
-export UpdateDataLakeStoreAccountProperties
-export UpdateEncryptionConfig
-export UpdateFirewallRuleParameters
-export UpdateFirewallRuleProperties
-export UpdateKeyVaultMetaInfo
-export UpdateTrustedIdProviderParameters
-export UpdateTrustedIdProviderProperties
+export convert, DataLakeStoreAccount
+export convert, DataLakeStoreAccountListResult
+export convert, DataLakeStoreAccountProperties
+export convert, DataLakeStoreAccountUpdateParameters
+export convert, DataLakeStoreFirewallRuleListResult
+export convert, DataLakeStoreTrustedIdProviderListResult
+export convert, EncryptionConfig
+export convert, EncryptionIdentity
+export convert, ErrorDetails
+export convert, FirewallRule
+export convert, FirewallRuleProperties
+export convert, KeyVaultMetaInfo
+export convert, Resource
+export convert, SubResource
+export convert, TrustedIdProvider
+export convert, TrustedIdProviderProperties
+export convert, UpdateDataLakeStoreAccountProperties
+export convert, UpdateEncryptionConfig
+export convert, UpdateFirewallRuleParameters
+export convert, UpdateFirewallRuleProperties
+export convert, UpdateKeyVaultMetaInfo
+export convert, UpdateTrustedIdProviderParameters
+export convert, UpdateTrustedIdProviderProperties
 
 # export operations
-export AccountApi, FirewallRulesApi, TrustedIdProvidersApi
+export convert, AccountApi, FirewallRulesApi, TrustedIdProvidersApi
 
 export check_required, set_field!, get_field, isset_field, convert
 

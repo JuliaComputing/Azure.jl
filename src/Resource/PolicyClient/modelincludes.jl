@@ -1,0 +1,6 @@
+include("model_PolicyAssignmentProperties.jl")
+include("model_PolicyDefinitionProperties.jl")
+include("model_PolicyDefinition.jl")
+include("model_PolicyDefinitionListResult.jl")
+include("model_PolicyAssignment.jl")
+include("model_PolicyAssignmentListResult.jl")

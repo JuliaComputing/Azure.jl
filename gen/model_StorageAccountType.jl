@@ -1,0 +1,1 @@
+const StorageAccountType = String

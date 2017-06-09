@@ -106,12 +106,12 @@ function accountList(_api::AccountApi, api_version::String, subscriptionId::Stri
 
     _ctx = Swagger.Ctx(_api.client, "GET", DataLakeStoreAccountListResult, "/subscriptions/{subscriptionId}/providers/Microsoft.DataLakeStore/accounts", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
-    Swagger.set_param(_ctx.query, "$filter", filter)  # type String
-    Swagger.set_param(_ctx.query, "$top", top)  # type Int32
-    Swagger.set_param(_ctx.query, "$skip", skip)  # type Int32
-    Swagger.set_param(_ctx.query, "$select", select)  # type String
-    Swagger.set_param(_ctx.query, "$orderby", orderby)  # type String
-    Swagger.set_param(_ctx.query, "$count", count)  # type Bool
+    Swagger.set_param(_ctx.query, "\$filter", filter)  # type String
+    Swagger.set_param(_ctx.query, "\$top", top)  # type Int32
+    Swagger.set_param(_ctx.query, "\$skip", skip)  # type Int32
+    Swagger.set_param(_ctx.query, "\$select", select)  # type String
+    Swagger.set_param(_ctx.query, "\$orderby", orderby)  # type String
+    Swagger.set_param(_ctx.query, "\$count", count)  # type Bool
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
@@ -140,12 +140,12 @@ function accountListByResourceGroup(_api::AccountApi, resourceGroupName::String,
     _ctx = Swagger.Ctx(_api.client, "GET", DataLakeStoreAccountListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
-    Swagger.set_param(_ctx.query, "$filter", filter)  # type String
-    Swagger.set_param(_ctx.query, "$top", top)  # type Int32
-    Swagger.set_param(_ctx.query, "$skip", skip)  # type Int32
-    Swagger.set_param(_ctx.query, "$select", select)  # type String
-    Swagger.set_param(_ctx.query, "$orderby", orderby)  # type String
-    Swagger.set_param(_ctx.query, "$count", count)  # type Bool
+    Swagger.set_param(_ctx.query, "\$filter", filter)  # type String
+    Swagger.set_param(_ctx.query, "\$top", top)  # type Int32
+    Swagger.set_param(_ctx.query, "\$skip", skip)  # type Int32
+    Swagger.set_param(_ctx.query, "\$select", select)  # type String
+    Swagger.set_param(_ctx.query, "\$orderby", orderby)  # type String
+    Swagger.set_param(_ctx.query, "\$count", count)  # type Bool
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])

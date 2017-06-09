@@ -1,0 +1,7 @@
+include("model_PublicIPAddressDnsSettings.jl")
+include("model_IPConfiguration.jl")
+include("model_PublicIPAddress.jl")
+include("model_PublicIPAddressListResult.jl")
+include("model_PublicIPAddressPropertiesFormat.jl")
+include("model_SubResource.jl")
+include("model_Resource.jl")
