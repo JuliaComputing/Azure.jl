@@ -5,7 +5,7 @@ const DEFAULT_TOKEN_EXPIRE = 5*60
 """
 Auth provider provides a way to retrieve credentials for authentication / re-authentication after token expiry.
 """
-abstract AzureAuthProvider
+@compat abstract type AzureAuthProvider end
 
 """
 A simple auth provider that stores secrets in memory.
