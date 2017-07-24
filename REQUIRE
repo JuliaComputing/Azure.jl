@@ -4,4 +4,4 @@ Swagger
 Requests 
 HttpCommon 
 JSON
-Compat
+Compat 0.17.0
