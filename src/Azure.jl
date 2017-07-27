@@ -155,6 +155,9 @@ _module_versions[PolicyClient] = "2016-12-01"
 _api_versions[PolicyClient.PolicyAssignmentsApi] = "2016-12-01"
 _api_versions[PolicyClient.PolicyDefinitionsApi] = "2016-12-01"
 
+# Storage services
+include("Storage/StorageServices/StorageServices.jl")
+
 # helper methods to assist in authentication, logging and such
 include("helper.jl")
 

@@ -10,6 +10,7 @@
 using Azure
 using Swagger
 using Azure.StorageManagementClient
+using Azure.StorageServices
 using Azure.ComputeManagementClient
 
 # create AzureCredentials with a service principal (tenant_id, appid, password)
@@ -33,4 +34,16 @@ osdiskname = get_field(vm_osdisk, "name")
 
 nics = get_field(vm, "properties", "networkProfile", "networkInterfaces")
 nicids = [rsplit(nicid, '/'; limit=2)[2] for nicid in map(nicref->get_field(nicref, "id"), nics)]
+
+# file share operations
+const resource_group_name = "testresgroup"
+const fileshare = "https://mystorage.file.core.windows.net/myshare?restype=share"
+success, resp = createShare(ctx, subscription_id, resource_group_name, fileshare, "100", Dict("testmetaname"=>"testmetaval"))
+success = setShareProperties(ctx, subscription_id, resource_group_name, fileshare, "150")
+success, properties = getShareProperties(ctx, subscription_id, resource_group_name, fileshare)
+deleteShare(ctx, subscription_id, resource_group_name, fileshare)
+
+# file blob operations
+const blob = "https://mystorage.blob.core.windows.net/testblob/myblob.dat"
+deleteBlob(ctx, subscription_id, resource_group_name, blob)
 ```
