@@ -1,4 +1,4 @@
-const DEFAULT_URI = "https://management.azure.com/"
+const DEFAULT_URI = "https://management.azure.com"
 const AUTH_URI = "https://login.microsoftonline.com"
 const DEFAULT_TOKEN_EXPIRE = 5*60
 
@@ -45,7 +45,7 @@ function authenticate(ctx::AzureContext)
     data = Dict{String,String}(
         "client_id" => client_id(ctx.auth_provider),
         "client_secret" => client_secret(ctx.auth_provider),
-        "resource" => DEFAULT_URI,
+        "resource" => DEFAULT_URI*"/",  # must end with /
         "grant_type" => "client_credentials"
     )
 
