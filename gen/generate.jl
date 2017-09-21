@@ -35,7 +35,8 @@ const SPECS = [
 ]
 
 const PATCHES = Dict(
-    ("ComputeManagementClient", "Compute") => ["model" => ("Caching", "CreateOption", "StorageAccountType")]
+    ("ComputeManagementClient", "Compute") => ["model" => ("Caching", "CreateOption", "StorageAccountType")],
+    ("ResourceManagementClient", "Resource") => ["model" => ("DeploymentPropertiesExtended")]
 )
 
 const MODULE_HEAD = """module Azure

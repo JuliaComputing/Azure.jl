@@ -38,7 +38,7 @@ nicids = [rsplit(nicid, '/'; limit=2)[2] for nicid in map(nicref->get_field(nicr
 # file share operations
 const resource_group_name = "testresgroup"
 const fileshare = "https://mystorage.file.core.windows.net/myshare?restype=share"
-success, resp = createShare(ctx, subscription_id, resource_group_name, fileshare, "100", Dict("testmetaname"=>"testmetaval"))
+success = createShare(ctx, subscription_id, resource_group_name, fileshare, "100", Dict("testmetaname"=>"testmetaval"))
 success = setShareProperties(ctx, subscription_id, resource_group_name, fileshare, "150")
 success, properties = getShareProperties(ctx, subscription_id, resource_group_name, fileshare)
 deleteShare(ctx, subscription_id, resource_group_name, fileshare)
