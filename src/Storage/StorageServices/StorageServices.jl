@@ -2,11 +2,8 @@ module StorageServices
 
 using ..Azure
 using Azure.StorageManagementClient
-using Requests
-using MbedTLS
-using HttpCommon
+using Azure.REST
 
-include("protocol.jl")
 include("common.jl")
 include("blob.jl")
 include("file.jl")

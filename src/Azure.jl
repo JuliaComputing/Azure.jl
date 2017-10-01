@@ -12,6 +12,9 @@ using Compat
 const _module_versions = Dict{Module,String}()
 const _api_versions = Dict{DataType,String}()
 
+# include Azure REST protocol (not Swagger)
+include("rest_api_protocol.jl")
+
 # inlcude sub modules for individual API groups
 include("DataLakeStore/DataLakeStoreAccountManagementClient/DataLakeStoreAccountManagementClient.jl")
 _module_versions[DataLakeStoreAccountManagementClient] = "2016-11-01"
