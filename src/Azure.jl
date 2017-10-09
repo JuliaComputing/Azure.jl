@@ -160,6 +160,11 @@ _module_versions[PolicyClient] = "2016-12-01"
 _api_versions[PolicyClient.PolicyAssignmentsApi] = "2016-12-01"
 _api_versions[PolicyClient.PolicyDefinitionsApi] = "2016-12-01"
 
+include("Commerce/UsageManagementClient/UsageManagementClient.jl")
+_module_versions[UsageManagementClient] = "2015-06-01-preview"
+_api_versions[UsageManagementClient.RateCardApi] = "2015-06-01-preview"
+_api_versions[UsageManagementClient.UsageAggregatesApi] = "2015-06-01-preview"
+
 # Storage services
 include("Storage/StorageServices/StorageServices.jl")
 

@@ -12,6 +12,7 @@ using Swagger
 using Azure.StorageManagementClient
 using Azure.StorageServices
 using Azure.ComputeManagementClient
+using Azure.UsageManagementClient
 
 # create AzureCredentials with a service principal (tenant_id, appid, password)
 creds = AzureCredentials("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
@@ -46,4 +47,8 @@ deleteShare(ctx, subscription_id, resource_group_name, fileshare)
 # file blob operations
 const blob = "https://mystorage.blob.core.windows.net/testblob/myblob.dat"
 deleteBlob(ctx, subscription_id, resource_group_name, blob)
+
+# rate card
+ratefilter = "OfferDurableId eq 'MS-AZR-0003p' and Currency eq 'USD' and Locale eq 'en-US' and RegionInfo eq 'US'"
+rates = rateCardGet(api(ctx, RateCardApi), ratefilter, apiver(RateCardApi), subscription_id)
 ```
