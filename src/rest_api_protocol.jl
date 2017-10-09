@@ -1,3 +1,10 @@
+module REST
+
+using Requests
+using HttpCommon
+using Compat
+using MbedTLS
+
 const API_VER = "2016-05-31"
 
 type StandardHeaders
@@ -81,7 +88,7 @@ function sign_sharedkey(req::ServiceRequest, key::String)
     nothing
 end
 
-function canonicalize_resource(storage_account::String, uri::String)
+function canonicalize_resource(resource_account::String, uri::String)
     container = join(split(uri, "/")[4:end], "/")
     query = ""
 
@@ -92,7 +99,7 @@ function canonicalize_resource(storage_account::String, uri::String)
     end
 
     iob = IOBuffer()
-    print(iob, "/", storage_account, "/", container)
+    print(iob, "/", resource_account, "/", container)
     if !isempty(query)
         qparts = sort(map(sign_hdr, collect(HttpCommon.parsequerystring(query))))
         for q in qparts
@@ -119,15 +126,6 @@ function execute(req::ServiceRequest, key::String; retry_count::Int=0, retry_int
     resp
 end
 
-function extract_account_and_key(ctx, subscription_id::String, resource_group_name::String, diskuri::String)
-    # find the storage account
-    storage_account = String(split(split(diskuri, "/")[3], '.'; limit=2)[1])
-    
-    # get keys for it
-    allkeys = storageAccountsListKeys(Azure.api(ctx, StorageAccountsApi), resource_group_name, storage_account, apiver(StorageAccountsApi), subscription_id)
-    key = get_field(get_field(allkeys, "keys")[1], "value")
-
-    storage_account, key
-end
-
 issuccess(resp::Response) = (200 <= statuscode(resp) <= 206)
+
+end # module REST

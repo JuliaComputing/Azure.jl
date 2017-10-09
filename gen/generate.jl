@@ -31,28 +31,38 @@ const SPECS = [
     ("VmssNetworkInterfaceClient",              "Network",          "2017-03-01", "arm-network/{VER}/swagger/vmssNetworkInterface.json"),
     ("ResourceManagementClient",                "Resource",         "2017-05-10", "arm-resources/resources/{VER}/swagger/resources.json"),
     ("SubscriptionClient",                      "Resource",         "2016-06-01", "arm-resources/subscriptions/{VER}/swagger/subscriptions.json"),
-    ("PolicyClient",                            "Resource",         "2016-12-01", "arm-resources/policy/{VER}/swagger/policy.json")
+    ("PolicyClient",                            "Resource",         "2016-12-01", "arm-resources/policy/{VER}/swagger/policy.json"),
+    ("UsageManagementClient",                   "Commerce",         "2015-06-01-preview", "arm-commerce/{VER}/swagger/commerce.json")
 ]
 
 const PATCHES = Dict(
     ("ComputeManagementClient", "Compute") => ["model" => ("Caching", "CreateOption", "StorageAccountType")],
-    ("ResourceManagementClient", "Resource") => ["model" => ("DeploymentPropertiesExtended")]
+    ("ResourceManagementClient", "Resource") => ["model" => ("DeploymentPropertiesExtended",)]
 )
 
-const MODULE_HEAD = """module Azure
+const MODULE_HEAD = """__precompile__(true)
+
+module Azure
 
 using Swagger
 using Requests
 using HttpCommon
 using JSON
+using Compat
 
 # API versions
 const _module_versions = Dict{Module,String}()
 const _api_versions = Dict{DataType,String}()
 
+# include Azure REST protocol (not Swagger)
+include("rest_api_protocol.jl")
+
 # inlcude sub modules for individual API groups"""
 
 const MODULE_TAIL = """
+# Storage services
+include("Storage/StorageServices/StorageServices.jl")
+
 # helper methods to assist in authentication, logging and such
 include("helper.jl")
 
