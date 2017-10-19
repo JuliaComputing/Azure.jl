@@ -7,6 +7,25 @@ end
 
 """
 
+Checks whether the specified account name is available or taken.
+Param: location::String (required)
+Param: parameters::CheckNameAvailabilityParameters (required)
+Param: api_version::String (required)
+Param: subscriptionId::String (required)
+Return: NameAvailabilityInformation
+"""
+function accountCheckNameAvailability(_api::AccountApi, location::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "POST", NameAvailabilityInformation, "/subscriptions/{subscriptionId}/providers/Microsoft.DataLakeStore/locations/{location}/checkNameAvailability", ["azure_auth"], parameters)
+    Swagger.set_param(_ctx.path, "location", location)  # type String
+    Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
+    Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
 Creates the specified Data Lake Store account.
 Param: resourceGroupName::String (required)
 Param: name::String (required)
@@ -100,9 +119,9 @@ Param: count::Bool
 Return: DataLakeStoreAccountListResult
 """
 function accountList(_api::AccountApi, api_version::String, subscriptionId::String; filter=nothing, top=nothing, skip=nothing, select=nothing, orderby=nothing, count=nothing, _mediaType=nothing)
-    Swagger.validate_param("top", "accountList", :minimum, top, 1, false)
+    Swagger.validate_param("top", "accountList", :minimum, top, 1.0, false)
 
-    Swagger.validate_param("skip", "accountList", :minimum, skip, 1, false)
+    Swagger.validate_param("skip", "accountList", :minimum, skip, 1.0, false)
 
     _ctx = Swagger.Ctx(_api.client, "GET", DataLakeStoreAccountListResult, "/subscriptions/{subscriptionId}/providers/Microsoft.DataLakeStore/accounts", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
@@ -133,9 +152,9 @@ Param: count::Bool
 Return: DataLakeStoreAccountListResult
 """
 function accountListByResourceGroup(_api::AccountApi, resourceGroupName::String, api_version::String, subscriptionId::String; filter=nothing, top=nothing, skip=nothing, select=nothing, orderby=nothing, count=nothing, _mediaType=nothing)
-    Swagger.validate_param("top", "accountListByResourceGroup", :minimum, top, 1, false)
+    Swagger.validate_param("top", "accountListByResourceGroup", :minimum, top, 1.0, false)
 
-    Swagger.validate_param("skip", "accountListByResourceGroup", :minimum, skip, 1, false)
+    Swagger.validate_param("skip", "accountListByResourceGroup", :minimum, skip, 1.0, false)
 
     _ctx = Swagger.Ctx(_api.client, "GET", DataLakeStoreAccountListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
@@ -173,4 +192,4 @@ function accountUpdate(_api::AccountApi, resourceGroupName::String, name::String
     Swagger.exec(_ctx)
 end
 
-export accountCreate, accountDelete, accountEnableKeyVault, accountGet, accountList, accountListByResourceGroup, accountUpdate
+export accountCheckNameAvailability, accountCreate, accountDelete, accountEnableKeyVault, accountGet, accountList, accountListByResourceGroup, accountUpdate

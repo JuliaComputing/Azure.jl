@@ -12,6 +12,7 @@ import Base: convert
 include("modelincludes.jl")
 
 include("api_OperationsApi.jl")
+include("api_SkusApi.jl")
 include("api_StorageAccountsApi.jl")
 include("api_UsageApi.jl")
 
@@ -24,16 +25,20 @@ export convert, Encryption
 export convert, EncryptionService
 export convert, EncryptionServices
 export convert, Endpoints
+export convert, IPRule
 export convert, Identity
 export convert, KeyVaultProperties
 export convert, ListAccountSasResponse
 export convert, ListServiceSasResponse
 export convert, MetricSpecification
+export convert, NetworkRuleSet
 export convert, Operation
 export convert, OperationDisplay
 export convert, OperationListResult
-export convert, OperationPerperties
+export convert, OperationProperties
 export convert, Resource
+export convert, Restriction
+export convert, SKUCapability
 export convert, ServiceSasParameters
 export convert, ServiceSpecification
 export convert, Sku
@@ -48,12 +53,14 @@ export convert, StorageAccountPropertiesCreateParameters
 export convert, StorageAccountPropertiesUpdateParameters
 export convert, StorageAccountRegenerateKeyParameters
 export convert, StorageAccountUpdateParameters
+export convert, StorageSkuListResult
 export convert, Usage
 export convert, UsageListResult
 export convert, UsageName
+export convert, VirtualNetworkRule
 
 # export operations
-export convert, OperationsApi, StorageAccountsApi, UsageApi
+export convert, OperationsApi, SkusApi, StorageAccountsApi, UsageApi
 
 export check_required, set_field!, get_field, isset_field, convert
 

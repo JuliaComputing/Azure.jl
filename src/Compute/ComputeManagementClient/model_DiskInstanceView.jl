@@ -3,18 +3,20 @@
 
 type DiskInstanceView <: SwaggerModel
     name::Nullable{ String } # name
+    encryptionSettings::Nullable{ Vector{DiskEncryptionSettings} } # encryptionSettings
     statuses::Nullable{ Vector{InstanceViewStatus} } # statuses
 
-    function DiskInstanceView(;name=nothing, statuses=nothing)
+    function DiskInstanceView(;name=nothing, encryptionSettings=nothing, statuses=nothing)
         o = new()
         set_field!(o, :name, name)
+        set_field!(o, :encryptionSettings, encryptionSettings)
         set_field!(o, :statuses, statuses)
         o
     end
 end # type DiskInstanceView
 
-const _name_map_DiskInstanceView = Dict{String,Symbol}(["name"=>:name, "statuses"=>:statuses])
-const _field_map_DiskInstanceView = Dict{Symbol,String}([:name=>"name", :statuses=>"statuses"])
+const _name_map_DiskInstanceView = Dict{String,Symbol}(["name"=>:name, "encryptionSettings"=>:encryptionSettings, "statuses"=>:statuses])
+const _field_map_DiskInstanceView = Dict{Symbol,String}([:name=>"name", :encryptionSettings=>"encryptionSettings", :statuses=>"statuses"])
 Swagger.name_map(::Type{ DiskInstanceView }) = _name_map_DiskInstanceView
 Swagger.field_map(::Type{ DiskInstanceView }) = _field_map_DiskInstanceView
 

@@ -2,17 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type NetworkInterfaceIPConfiguration <: SwaggerModel
-    id::Nullable{ String } # id
 
-    function NetworkInterfaceIPConfiguration(;id=nothing)
+    function NetworkInterfaceIPConfiguration(;)
         o = new()
-        set_field!(o, :id, id)
         o
     end
 end # type NetworkInterfaceIPConfiguration
 
-const _name_map_NetworkInterfaceIPConfiguration = Dict{String,Symbol}(["id"=>:id])
-const _field_map_NetworkInterfaceIPConfiguration = Dict{Symbol,String}([:id=>"id"])
+const _name_map_NetworkInterfaceIPConfiguration = Dict{String,Symbol}([])
+const _field_map_NetworkInterfaceIPConfiguration = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ NetworkInterfaceIPConfiguration }) = _name_map_NetworkInterfaceIPConfiguration
 Swagger.field_map(::Type{ NetworkInterfaceIPConfiguration }) = _field_map_NetworkInterfaceIPConfiguration
 

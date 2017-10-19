@@ -3,17 +3,15 @@
 
 type VirtualMachineScaleSetProperties <: SwaggerModel
     upgradePolicy::Nullable{ UpgradePolicy } # upgradePolicy
-    recoveryPolicy::Nullable{ RecoveryPolicy } # recoveryPolicy
     virtualMachineProfile::Nullable{ VirtualMachineScaleSetVMProfile } # virtualMachineProfile
     provisioningState::Nullable{ String } # provisioningState
     overprovision::Nullable{ Bool } # overprovision
     uniqueId::Nullable{ String } # uniqueId
     singlePlacementGroup::Nullable{ Bool } # singlePlacementGroup
 
-    function VirtualMachineScaleSetProperties(;upgradePolicy=nothing, recoveryPolicy=nothing, virtualMachineProfile=nothing, provisioningState=nothing, overprovision=nothing, uniqueId=nothing, singlePlacementGroup=nothing)
+    function VirtualMachineScaleSetProperties(;upgradePolicy=nothing, virtualMachineProfile=nothing, provisioningState=nothing, overprovision=nothing, uniqueId=nothing, singlePlacementGroup=nothing)
         o = new()
         set_field!(o, :upgradePolicy, upgradePolicy)
-        set_field!(o, :recoveryPolicy, recoveryPolicy)
         set_field!(o, :virtualMachineProfile, virtualMachineProfile)
         set_field!(o, :provisioningState, provisioningState)
         set_field!(o, :overprovision, overprovision)
@@ -23,8 +21,8 @@ type VirtualMachineScaleSetProperties <: SwaggerModel
     end
 end # type VirtualMachineScaleSetProperties
 
-const _name_map_VirtualMachineScaleSetProperties = Dict{String,Symbol}(["upgradePolicy"=>:upgradePolicy, "recoveryPolicy"=>:recoveryPolicy, "virtualMachineProfile"=>:virtualMachineProfile, "provisioningState"=>:provisioningState, "overprovision"=>:overprovision, "uniqueId"=>:uniqueId, "singlePlacementGroup"=>:singlePlacementGroup])
-const _field_map_VirtualMachineScaleSetProperties = Dict{Symbol,String}([:upgradePolicy=>"upgradePolicy", :recoveryPolicy=>"recoveryPolicy", :virtualMachineProfile=>"virtualMachineProfile", :provisioningState=>"provisioningState", :overprovision=>"overprovision", :uniqueId=>"uniqueId", :singlePlacementGroup=>"singlePlacementGroup"])
+const _name_map_VirtualMachineScaleSetProperties = Dict{String,Symbol}(["upgradePolicy"=>:upgradePolicy, "virtualMachineProfile"=>:virtualMachineProfile, "provisioningState"=>:provisioningState, "overprovision"=>:overprovision, "uniqueId"=>:uniqueId, "singlePlacementGroup"=>:singlePlacementGroup])
+const _field_map_VirtualMachineScaleSetProperties = Dict{Symbol,String}([:upgradePolicy=>"upgradePolicy", :virtualMachineProfile=>"virtualMachineProfile", :provisioningState=>"provisioningState", :overprovision=>"overprovision", :uniqueId=>"uniqueId", :singlePlacementGroup=>"singlePlacementGroup"])
 Swagger.name_map(::Type{ VirtualMachineScaleSetProperties }) = _name_map_VirtualMachineScaleSetProperties
 Swagger.field_map(::Type{ VirtualMachineScaleSetProperties }) = _field_map_VirtualMachineScaleSetProperties
 

@@ -44,6 +44,7 @@ export convert, ExpressRouteServiceProvider
 export convert, ExpressRouteServiceProviderBandwidthsOffered
 export convert, ExpressRouteServiceProviderListResult
 export convert, ExpressRouteServiceProviderPropertiesFormat
+export convert, Ipv6ExpressRouteCircuitPeeringConfig
 export convert, Resource
 export convert, RouteFilter
 export convert, SubResource

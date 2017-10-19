@@ -23,7 +23,7 @@ end
 
 function validate_field(o::ConnectionResetSharedKey, name::Symbol, val)
     if name === :keyLength
-        Swagger.validate_param(name, "ConnectionResetSharedKey", :maximum, val, 128, false)
-        Swagger.validate_param(name, "ConnectionResetSharedKey", :minimum, val, 1, false)
+        Swagger.validate_param(name, "ConnectionResetSharedKey", :maximum, val, 128.0, false)
+        Swagger.validate_param(name, "ConnectionResetSharedKey", :minimum, val, 1.0, false)
     end
 end

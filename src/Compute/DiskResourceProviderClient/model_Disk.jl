@@ -9,9 +9,10 @@ type Disk <: SwaggerModel
     tags::Nullable{ Dict{String, String} } # tags
     managedBy::Nullable{ String } # managedBy
     sku::Nullable{ DiskSku } # sku
+    zones::Nullable{ Vector{String} } # zones
     properties::Nullable{ DiskProperties } # properties
 
-    function Disk(;id=nothing, name=nothing, _type=nothing, location=nothing, tags=nothing, managedBy=nothing, sku=nothing, properties=nothing)
+    function Disk(;id=nothing, name=nothing, _type=nothing, location=nothing, tags=nothing, managedBy=nothing, sku=nothing, zones=nothing, properties=nothing)
         o = new()
         set_field!(o, :id, id)
         set_field!(o, :name, name)
@@ -20,13 +21,14 @@ type Disk <: SwaggerModel
         set_field!(o, :tags, tags)
         set_field!(o, :managedBy, managedBy)
         set_field!(o, :sku, sku)
+        set_field!(o, :zones, zones)
         set_field!(o, :properties, properties)
         o
     end
 end # type Disk
 
-const _name_map_Disk = Dict{String,Symbol}(["id"=>:id, "name"=>:name, "type"=>:_type, "location"=>:location, "tags"=>:tags, "managedBy"=>:managedBy, "sku"=>:sku, "properties"=>:properties])
-const _field_map_Disk = Dict{Symbol,String}([:id=>"id", :name=>"name", :_type=>"type", :location=>"location", :tags=>"tags", :managedBy=>"managedBy", :sku=>"sku", :properties=>"properties"])
+const _name_map_Disk = Dict{String,Symbol}(["id"=>:id, "name"=>:name, "type"=>:_type, "location"=>:location, "tags"=>:tags, "managedBy"=>:managedBy, "sku"=>:sku, "zones"=>:zones, "properties"=>:properties])
+const _field_map_Disk = Dict{Symbol,String}([:id=>"id", :name=>"name", :_type=>"type", :location=>"location", :tags=>"tags", :managedBy=>"managedBy", :sku=>"sku", :zones=>"zones", :properties=>"properties"])
 Swagger.name_map(::Type{ Disk }) = _name_map_Disk
 Swagger.field_map(::Type{ Disk }) = _field_map_Disk
 

@@ -2,25 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type RouteTable <: SwaggerModel
-    id::Nullable{ String } # id
-    name::Nullable{ String } # name
-    _type::Nullable{ String } # type
-    location::Nullable{ String } # location
-    tags::Nullable{ Dict{String, String} } # tags
 
-    function RouteTable(;id=nothing, name=nothing, _type=nothing, location=nothing, tags=nothing)
+    function RouteTable(;)
         o = new()
-        set_field!(o, :id, id)
-        set_field!(o, :name, name)
-        set_field!(o, :_type, _type)
-        set_field!(o, :location, location)
-        set_field!(o, :tags, tags)
         o
     end
 end # type RouteTable
 
-const _name_map_RouteTable = Dict{String,Symbol}(["id"=>:id, "name"=>:name, "type"=>:_type, "location"=>:location, "tags"=>:tags])
-const _field_map_RouteTable = Dict{Symbol,String}([:id=>"id", :name=>"name", :_type=>"type", :location=>"location", :tags=>"tags"])
+const _name_map_RouteTable = Dict{String,Symbol}([])
+const _field_map_RouteTable = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ RouteTable }) = _name_map_RouteTable
 Swagger.field_map(::Type{ RouteTable }) = _field_map_RouteTable
 

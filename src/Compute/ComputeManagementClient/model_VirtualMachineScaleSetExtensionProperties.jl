@@ -2,6 +2,7 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type VirtualMachineScaleSetExtensionProperties <: SwaggerModel
+    forceUpdateTag::Nullable{ String } # forceUpdateTag
     publisher::Nullable{ String } # publisher
     _type::Nullable{ String } # type
     typeHandlerVersion::Nullable{ String } # typeHandlerVersion
@@ -10,8 +11,9 @@ type VirtualMachineScaleSetExtensionProperties <: SwaggerModel
     protectedSettings::Nullable{ Any } # protectedSettings
     provisioningState::Nullable{ String } # provisioningState
 
-    function VirtualMachineScaleSetExtensionProperties(;publisher=nothing, _type=nothing, typeHandlerVersion=nothing, autoUpgradeMinorVersion=nothing, settings=nothing, protectedSettings=nothing, provisioningState=nothing)
+    function VirtualMachineScaleSetExtensionProperties(;forceUpdateTag=nothing, publisher=nothing, _type=nothing, typeHandlerVersion=nothing, autoUpgradeMinorVersion=nothing, settings=nothing, protectedSettings=nothing, provisioningState=nothing)
         o = new()
+        set_field!(o, :forceUpdateTag, forceUpdateTag)
         set_field!(o, :publisher, publisher)
         set_field!(o, :_type, _type)
         set_field!(o, :typeHandlerVersion, typeHandlerVersion)
@@ -23,8 +25,8 @@ type VirtualMachineScaleSetExtensionProperties <: SwaggerModel
     end
 end # type VirtualMachineScaleSetExtensionProperties
 
-const _name_map_VirtualMachineScaleSetExtensionProperties = Dict{String,Symbol}(["publisher"=>:publisher, "type"=>:_type, "typeHandlerVersion"=>:typeHandlerVersion, "autoUpgradeMinorVersion"=>:autoUpgradeMinorVersion, "settings"=>:settings, "protectedSettings"=>:protectedSettings, "provisioningState"=>:provisioningState])
-const _field_map_VirtualMachineScaleSetExtensionProperties = Dict{Symbol,String}([:publisher=>"publisher", :_type=>"type", :typeHandlerVersion=>"typeHandlerVersion", :autoUpgradeMinorVersion=>"autoUpgradeMinorVersion", :settings=>"settings", :protectedSettings=>"protectedSettings", :provisioningState=>"provisioningState"])
+const _name_map_VirtualMachineScaleSetExtensionProperties = Dict{String,Symbol}(["forceUpdateTag"=>:forceUpdateTag, "publisher"=>:publisher, "type"=>:_type, "typeHandlerVersion"=>:typeHandlerVersion, "autoUpgradeMinorVersion"=>:autoUpgradeMinorVersion, "settings"=>:settings, "protectedSettings"=>:protectedSettings, "provisioningState"=>:provisioningState])
+const _field_map_VirtualMachineScaleSetExtensionProperties = Dict{Symbol,String}([:forceUpdateTag=>"forceUpdateTag", :publisher=>"publisher", :_type=>"type", :typeHandlerVersion=>"typeHandlerVersion", :autoUpgradeMinorVersion=>"autoUpgradeMinorVersion", :settings=>"settings", :protectedSettings=>"protectedSettings", :provisioningState=>"provisioningState"])
 Swagger.name_map(::Type{ VirtualMachineScaleSetExtensionProperties }) = _name_map_VirtualMachineScaleSetExtensionProperties
 Swagger.field_map(::Type{ VirtualMachineScaleSetExtensionProperties }) = _field_map_VirtualMachineScaleSetExtensionProperties
 

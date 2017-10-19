@@ -3,13 +3,15 @@
 
 type VirtualMachineScaleSetNetworkConfigurationProperties <: SwaggerModel
     primary::Nullable{ Bool } # primary
+    enableAcceleratedNetworking::Nullable{ Bool } # enableAcceleratedNetworking
     networkSecurityGroup::Nullable{ SubResource } # networkSecurityGroup
     dnsSettings::Nullable{ VirtualMachineScaleSetNetworkConfigurationDnsSettings } # dnsSettings
     ipConfigurations::Nullable{ Vector{VirtualMachineScaleSetIPConfiguration} } # ipConfigurations
 
-    function VirtualMachineScaleSetNetworkConfigurationProperties(;primary=nothing, networkSecurityGroup=nothing, dnsSettings=nothing, ipConfigurations=nothing)
+    function VirtualMachineScaleSetNetworkConfigurationProperties(;primary=nothing, enableAcceleratedNetworking=nothing, networkSecurityGroup=nothing, dnsSettings=nothing, ipConfigurations=nothing)
         o = new()
         set_field!(o, :primary, primary)
+        set_field!(o, :enableAcceleratedNetworking, enableAcceleratedNetworking)
         set_field!(o, :networkSecurityGroup, networkSecurityGroup)
         set_field!(o, :dnsSettings, dnsSettings)
         set_field!(o, :ipConfigurations, ipConfigurations)
@@ -17,8 +19,8 @@ type VirtualMachineScaleSetNetworkConfigurationProperties <: SwaggerModel
     end
 end # type VirtualMachineScaleSetNetworkConfigurationProperties
 
-const _name_map_VirtualMachineScaleSetNetworkConfigurationProperties = Dict{String,Symbol}(["primary"=>:primary, "networkSecurityGroup"=>:networkSecurityGroup, "dnsSettings"=>:dnsSettings, "ipConfigurations"=>:ipConfigurations])
-const _field_map_VirtualMachineScaleSetNetworkConfigurationProperties = Dict{Symbol,String}([:primary=>"primary", :networkSecurityGroup=>"networkSecurityGroup", :dnsSettings=>"dnsSettings", :ipConfigurations=>"ipConfigurations"])
+const _name_map_VirtualMachineScaleSetNetworkConfigurationProperties = Dict{String,Symbol}(["primary"=>:primary, "enableAcceleratedNetworking"=>:enableAcceleratedNetworking, "networkSecurityGroup"=>:networkSecurityGroup, "dnsSettings"=>:dnsSettings, "ipConfigurations"=>:ipConfigurations])
+const _field_map_VirtualMachineScaleSetNetworkConfigurationProperties = Dict{Symbol,String}([:primary=>"primary", :enableAcceleratedNetworking=>"enableAcceleratedNetworking", :networkSecurityGroup=>"networkSecurityGroup", :dnsSettings=>"dnsSettings", :ipConfigurations=>"ipConfigurations"])
 Swagger.name_map(::Type{ VirtualMachineScaleSetNetworkConfigurationProperties }) = _name_map_VirtualMachineScaleSetNetworkConfigurationProperties
 Swagger.field_map(::Type{ VirtualMachineScaleSetNetworkConfigurationProperties }) = _field_map_VirtualMachineScaleSetNetworkConfigurationProperties
 

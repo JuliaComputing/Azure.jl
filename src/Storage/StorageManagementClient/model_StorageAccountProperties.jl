@@ -15,8 +15,9 @@ type StorageAccountProperties <: SwaggerModel
     encryption::Nullable{ Encryption } # encryption
     accessTier::Nullable{ String } # accessTier
     supportsHttpsTrafficOnly::Nullable{ Bool } # supportsHttpsTrafficOnly
+    networkAcls::Nullable{ NetworkRuleSet } # networkAcls
 
-    function StorageAccountProperties(;provisioningState=nothing, primaryEndpoints=nothing, primaryLocation=nothing, statusOfPrimary=nothing, lastGeoFailoverTime=nothing, secondaryLocation=nothing, statusOfSecondary=nothing, creationTime=nothing, customDomain=nothing, secondaryEndpoints=nothing, encryption=nothing, accessTier=nothing, supportsHttpsTrafficOnly=false)
+    function StorageAccountProperties(;provisioningState=nothing, primaryEndpoints=nothing, primaryLocation=nothing, statusOfPrimary=nothing, lastGeoFailoverTime=nothing, secondaryLocation=nothing, statusOfSecondary=nothing, creationTime=nothing, customDomain=nothing, secondaryEndpoints=nothing, encryption=nothing, accessTier=nothing, supportsHttpsTrafficOnly=false, networkAcls=nothing)
         o = new()
         set_field!(o, :provisioningState, provisioningState)
         set_field!(o, :primaryEndpoints, primaryEndpoints)
@@ -31,12 +32,13 @@ type StorageAccountProperties <: SwaggerModel
         set_field!(o, :encryption, encryption)
         set_field!(o, :accessTier, accessTier)
         set_field!(o, :supportsHttpsTrafficOnly, supportsHttpsTrafficOnly)
+        set_field!(o, :networkAcls, networkAcls)
         o
     end
 end # type StorageAccountProperties
 
-const _name_map_StorageAccountProperties = Dict{String,Symbol}(["provisioningState"=>:provisioningState, "primaryEndpoints"=>:primaryEndpoints, "primaryLocation"=>:primaryLocation, "statusOfPrimary"=>:statusOfPrimary, "lastGeoFailoverTime"=>:lastGeoFailoverTime, "secondaryLocation"=>:secondaryLocation, "statusOfSecondary"=>:statusOfSecondary, "creationTime"=>:creationTime, "customDomain"=>:customDomain, "secondaryEndpoints"=>:secondaryEndpoints, "encryption"=>:encryption, "accessTier"=>:accessTier, "supportsHttpsTrafficOnly"=>:supportsHttpsTrafficOnly])
-const _field_map_StorageAccountProperties = Dict{Symbol,String}([:provisioningState=>"provisioningState", :primaryEndpoints=>"primaryEndpoints", :primaryLocation=>"primaryLocation", :statusOfPrimary=>"statusOfPrimary", :lastGeoFailoverTime=>"lastGeoFailoverTime", :secondaryLocation=>"secondaryLocation", :statusOfSecondary=>"statusOfSecondary", :creationTime=>"creationTime", :customDomain=>"customDomain", :secondaryEndpoints=>"secondaryEndpoints", :encryption=>"encryption", :accessTier=>"accessTier", :supportsHttpsTrafficOnly=>"supportsHttpsTrafficOnly"])
+const _name_map_StorageAccountProperties = Dict{String,Symbol}(["provisioningState"=>:provisioningState, "primaryEndpoints"=>:primaryEndpoints, "primaryLocation"=>:primaryLocation, "statusOfPrimary"=>:statusOfPrimary, "lastGeoFailoverTime"=>:lastGeoFailoverTime, "secondaryLocation"=>:secondaryLocation, "statusOfSecondary"=>:statusOfSecondary, "creationTime"=>:creationTime, "customDomain"=>:customDomain, "secondaryEndpoints"=>:secondaryEndpoints, "encryption"=>:encryption, "accessTier"=>:accessTier, "supportsHttpsTrafficOnly"=>:supportsHttpsTrafficOnly, "networkAcls"=>:networkAcls])
+const _field_map_StorageAccountProperties = Dict{Symbol,String}([:provisioningState=>"provisioningState", :primaryEndpoints=>"primaryEndpoints", :primaryLocation=>"primaryLocation", :statusOfPrimary=>"statusOfPrimary", :lastGeoFailoverTime=>"lastGeoFailoverTime", :secondaryLocation=>"secondaryLocation", :statusOfSecondary=>"statusOfSecondary", :creationTime=>"creationTime", :customDomain=>"customDomain", :secondaryEndpoints=>"secondaryEndpoints", :encryption=>"encryption", :accessTier=>"accessTier", :supportsHttpsTrafficOnly=>"supportsHttpsTrafficOnly", :networkAcls=>"networkAcls"])
 Swagger.name_map(::Type{ StorageAccountProperties }) = _name_map_StorageAccountProperties
 Swagger.field_map(::Type{ StorageAccountProperties }) = _field_map_StorageAccountProperties
 

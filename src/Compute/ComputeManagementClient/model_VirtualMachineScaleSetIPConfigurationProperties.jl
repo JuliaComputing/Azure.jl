@@ -3,15 +3,17 @@
 
 type VirtualMachineScaleSetIPConfigurationProperties <: SwaggerModel
     subnet::Nullable{ ApiEntityReference } # subnet
+    primary::Nullable{ Bool } # primary
     publicIPAddressConfiguration::Nullable{ VirtualMachineScaleSetPublicIPAddressConfiguration } # publicIPAddressConfiguration
     privateIPAddressVersion::Nullable{ String } # privateIPAddressVersion
     applicationGatewayBackendAddressPools::Nullable{ Vector{SubResource} } # applicationGatewayBackendAddressPools
     loadBalancerBackendAddressPools::Nullable{ Vector{SubResource} } # loadBalancerBackendAddressPools
     loadBalancerInboundNatPools::Nullable{ Vector{SubResource} } # loadBalancerInboundNatPools
 
-    function VirtualMachineScaleSetIPConfigurationProperties(;subnet=nothing, publicIPAddressConfiguration=nothing, privateIPAddressVersion=nothing, applicationGatewayBackendAddressPools=nothing, loadBalancerBackendAddressPools=nothing, loadBalancerInboundNatPools=nothing)
+    function VirtualMachineScaleSetIPConfigurationProperties(;subnet=nothing, primary=nothing, publicIPAddressConfiguration=nothing, privateIPAddressVersion=nothing, applicationGatewayBackendAddressPools=nothing, loadBalancerBackendAddressPools=nothing, loadBalancerInboundNatPools=nothing)
         o = new()
         set_field!(o, :subnet, subnet)
+        set_field!(o, :primary, primary)
         set_field!(o, :publicIPAddressConfiguration, publicIPAddressConfiguration)
         set_field!(o, :privateIPAddressVersion, privateIPAddressVersion)
         set_field!(o, :applicationGatewayBackendAddressPools, applicationGatewayBackendAddressPools)
@@ -21,8 +23,8 @@ type VirtualMachineScaleSetIPConfigurationProperties <: SwaggerModel
     end
 end # type VirtualMachineScaleSetIPConfigurationProperties
 
-const _name_map_VirtualMachineScaleSetIPConfigurationProperties = Dict{String,Symbol}(["subnet"=>:subnet, "publicIPAddressConfiguration"=>:publicIPAddressConfiguration, "privateIPAddressVersion"=>:privateIPAddressVersion, "applicationGatewayBackendAddressPools"=>:applicationGatewayBackendAddressPools, "loadBalancerBackendAddressPools"=>:loadBalancerBackendAddressPools, "loadBalancerInboundNatPools"=>:loadBalancerInboundNatPools])
-const _field_map_VirtualMachineScaleSetIPConfigurationProperties = Dict{Symbol,String}([:subnet=>"subnet", :publicIPAddressConfiguration=>"publicIPAddressConfiguration", :privateIPAddressVersion=>"privateIPAddressVersion", :applicationGatewayBackendAddressPools=>"applicationGatewayBackendAddressPools", :loadBalancerBackendAddressPools=>"loadBalancerBackendAddressPools", :loadBalancerInboundNatPools=>"loadBalancerInboundNatPools"])
+const _name_map_VirtualMachineScaleSetIPConfigurationProperties = Dict{String,Symbol}(["subnet"=>:subnet, "primary"=>:primary, "publicIPAddressConfiguration"=>:publicIPAddressConfiguration, "privateIPAddressVersion"=>:privateIPAddressVersion, "applicationGatewayBackendAddressPools"=>:applicationGatewayBackendAddressPools, "loadBalancerBackendAddressPools"=>:loadBalancerBackendAddressPools, "loadBalancerInboundNatPools"=>:loadBalancerInboundNatPools])
+const _field_map_VirtualMachineScaleSetIPConfigurationProperties = Dict{Symbol,String}([:subnet=>"subnet", :primary=>"primary", :publicIPAddressConfiguration=>"publicIPAddressConfiguration", :privateIPAddressVersion=>"privateIPAddressVersion", :applicationGatewayBackendAddressPools=>"applicationGatewayBackendAddressPools", :loadBalancerBackendAddressPools=>"loadBalancerBackendAddressPools", :loadBalancerInboundNatPools=>"loadBalancerInboundNatPools"])
 Swagger.name_map(::Type{ VirtualMachineScaleSetIPConfigurationProperties }) = _name_map_VirtualMachineScaleSetIPConfigurationProperties
 Swagger.field_map(::Type{ VirtualMachineScaleSetIPConfigurationProperties }) = _field_map_VirtualMachineScaleSetIPConfigurationProperties
 

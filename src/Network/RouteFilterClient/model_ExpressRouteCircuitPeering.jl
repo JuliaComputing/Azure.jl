@@ -2,17 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type ExpressRouteCircuitPeering <: SwaggerModel
-    id::Nullable{ String } # id
 
-    function ExpressRouteCircuitPeering(;id=nothing)
+    function ExpressRouteCircuitPeering(;)
         o = new()
-        set_field!(o, :id, id)
         o
     end
 end # type ExpressRouteCircuitPeering
 
-const _name_map_ExpressRouteCircuitPeering = Dict{String,Symbol}(["id"=>:id])
-const _field_map_ExpressRouteCircuitPeering = Dict{Symbol,String}([:id=>"id"])
+const _name_map_ExpressRouteCircuitPeering = Dict{String,Symbol}([])
+const _field_map_ExpressRouteCircuitPeering = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ ExpressRouteCircuitPeering }) = _name_map_ExpressRouteCircuitPeering
 Swagger.field_map(::Type{ ExpressRouteCircuitPeering }) = _field_map_ExpressRouteCircuitPeering
 

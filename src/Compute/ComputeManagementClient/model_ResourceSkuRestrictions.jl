@@ -20,7 +20,7 @@ const _field_map_ResourceSkuRestrictions = Dict{Symbol,String}([:_type=>"type", 
 Swagger.name_map(::Type{ ResourceSkuRestrictions }) = _name_map_ResourceSkuRestrictions
 Swagger.field_map(::Type{ ResourceSkuRestrictions }) = _field_map_ResourceSkuRestrictions
 
-const _allowed_ResourceSkuRestrictions__type = ["location"]
+const _allowed_ResourceSkuRestrictions__type = ["Location"]
 
 const _allowed_ResourceSkuRestrictions_reasonCode = ["QuotaId", "NotAvailableForSubscription"]
 

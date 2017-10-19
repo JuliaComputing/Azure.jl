@@ -2,17 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type BackendAddressPool <: SwaggerModel
-    id::Nullable{ String } # id
 
-    function BackendAddressPool(;id=nothing)
+    function BackendAddressPool(;)
         o = new()
-        set_field!(o, :id, id)
         o
     end
 end # type BackendAddressPool
 
-const _name_map_BackendAddressPool = Dict{String,Symbol}(["id"=>:id])
-const _field_map_BackendAddressPool = Dict{Symbol,String}([:id=>"id"])
+const _name_map_BackendAddressPool = Dict{String,Symbol}([])
+const _field_map_BackendAddressPool = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ BackendAddressPool }) = _name_map_BackendAddressPool
 Swagger.field_map(::Type{ BackendAddressPool }) = _field_map_BackendAddressPool
 

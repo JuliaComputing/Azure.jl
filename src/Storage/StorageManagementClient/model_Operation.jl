@@ -5,7 +5,7 @@ type Operation <: SwaggerModel
     name::Nullable{ String } # name
     display::Nullable{ OperationDisplay } # display
     origin::Nullable{ String } # origin
-    properties::Nullable{ OperationPerperties } # properties
+    properties::Nullable{ OperationProperties } # properties
 
     function Operation(;name=nothing, display=nothing, origin=nothing, properties=nothing)
         o = new()

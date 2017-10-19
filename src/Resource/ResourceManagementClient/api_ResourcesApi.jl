@@ -231,4 +231,26 @@ function resourcesMoveResources(_api::ResourcesApi, sourceResourceGroupName::Str
     Swagger.exec(_ctx)
 end
 
-export resourcesCheckExistence, resourcesCheckExistenceById, resourcesCreateOrUpdate, resourcesCreateOrUpdateById, resourcesDelete, resourcesDeleteById, resourcesGet, resourcesGetById, resourcesList, resourcesMoveResources
+"""
+Validates whether resources can be moved from one resource group to another resource group.
+This operation checks whether the specified resources can be moved to the target. The resources to move must be in the same source resource group. The target resource group may be in a different subscription. If validation succeeds, it returns HTTP response code 204 (no content). If validation fails, it returns HTTP response code 409 (Conflict) with an error message. Retrieve the URL in the Location header value to check the result of the long-running operation.
+Param: sourceResourceGroupName::String (required)
+Param: parameters::ResourcesMoveInfo (required)
+Param: api_version::String (required)
+Param: subscriptionId::String (required)
+Return: Void
+"""
+function resourcesValidateMoveResources(_api::ResourcesApi, sourceResourceGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    Swagger.validate_param("sourceResourceGroupName", "resourcesValidateMoveResources", :maxLength, sourceResourceGroupName, 90)
+    Swagger.validate_param("sourceResourceGroupName", "resourcesValidateMoveResources", :minLength, sourceResourceGroupName, 1)
+
+    _ctx = Swagger.Ctx(_api.client, "POST", Void, "/subscriptions/{subscriptionId}/resourceGroups/{sourceResourceGroupName}/validateMoveResources", ["azure_auth"], parameters)
+    Swagger.set_param(_ctx.path, "sourceResourceGroupName", sourceResourceGroupName)  # type String
+    Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
+    Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+export resourcesCheckExistence, resourcesCheckExistenceById, resourcesCreateOrUpdate, resourcesCreateOrUpdateById, resourcesDelete, resourcesDeleteById, resourcesGet, resourcesGetById, resourcesList, resourcesMoveResources, resourcesValidateMoveResources

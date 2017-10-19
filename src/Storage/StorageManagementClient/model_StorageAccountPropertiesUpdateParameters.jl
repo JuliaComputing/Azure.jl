@@ -6,19 +6,21 @@ type StorageAccountPropertiesUpdateParameters <: SwaggerModel
     encryption::Nullable{ Encryption } # encryption
     accessTier::Nullable{ String } # accessTier
     supportsHttpsTrafficOnly::Nullable{ Bool } # supportsHttpsTrafficOnly
+    networkAcls::Nullable{ NetworkRuleSet } # networkAcls
 
-    function StorageAccountPropertiesUpdateParameters(;customDomain=nothing, encryption=nothing, accessTier=nothing, supportsHttpsTrafficOnly=false)
+    function StorageAccountPropertiesUpdateParameters(;customDomain=nothing, encryption=nothing, accessTier=nothing, supportsHttpsTrafficOnly=false, networkAcls=nothing)
         o = new()
         set_field!(o, :customDomain, customDomain)
         set_field!(o, :encryption, encryption)
         set_field!(o, :accessTier, accessTier)
         set_field!(o, :supportsHttpsTrafficOnly, supportsHttpsTrafficOnly)
+        set_field!(o, :networkAcls, networkAcls)
         o
     end
 end # type StorageAccountPropertiesUpdateParameters
 
-const _name_map_StorageAccountPropertiesUpdateParameters = Dict{String,Symbol}(["customDomain"=>:customDomain, "encryption"=>:encryption, "accessTier"=>:accessTier, "supportsHttpsTrafficOnly"=>:supportsHttpsTrafficOnly])
-const _field_map_StorageAccountPropertiesUpdateParameters = Dict{Symbol,String}([:customDomain=>"customDomain", :encryption=>"encryption", :accessTier=>"accessTier", :supportsHttpsTrafficOnly=>"supportsHttpsTrafficOnly"])
+const _name_map_StorageAccountPropertiesUpdateParameters = Dict{String,Symbol}(["customDomain"=>:customDomain, "encryption"=>:encryption, "accessTier"=>:accessTier, "supportsHttpsTrafficOnly"=>:supportsHttpsTrafficOnly, "networkAcls"=>:networkAcls])
+const _field_map_StorageAccountPropertiesUpdateParameters = Dict{Symbol,String}([:customDomain=>"customDomain", :encryption=>"encryption", :accessTier=>"accessTier", :supportsHttpsTrafficOnly=>"supportsHttpsTrafficOnly", :networkAcls=>"networkAcls"])
 Swagger.name_map(::Type{ StorageAccountPropertiesUpdateParameters }) = _name_map_StorageAccountPropertiesUpdateParameters
 Swagger.field_map(::Type{ StorageAccountPropertiesUpdateParameters }) = _field_map_StorageAccountPropertiesUpdateParameters
 
