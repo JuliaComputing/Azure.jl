@@ -210,10 +210,11 @@ Param: resourceGroupName::String (required)
 Param: vmScaleSetName::String (required)
 Param: api_version::String (required)
 Param: subscriptionId::String (required)
+Param: vmInstanceIDs::VirtualMachineScaleSetVMInstanceIDs
 Return: OperationStatusResponse
 """
-function virtualMachineScaleSetsReimage(_api::VirtualMachineScaleSetsApi, resourceGroupName::String, vmScaleSetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "POST", OperationStatusResponse, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimage", ["azure_auth"])
+function virtualMachineScaleSetsReimage(_api::VirtualMachineScaleSetsApi, resourceGroupName::String, vmScaleSetName::String, api_version::String, subscriptionId::String; vmInstanceIDs=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "POST", OperationStatusResponse, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimage", ["azure_auth"], vmInstanceIDs)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "vmScaleSetName", vmScaleSetName)  # type String
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
@@ -230,10 +231,11 @@ Param: resourceGroupName::String (required)
 Param: vmScaleSetName::String (required)
 Param: api_version::String (required)
 Param: subscriptionId::String (required)
+Param: vmInstanceIDs::VirtualMachineScaleSetVMInstanceIDs
 Return: OperationStatusResponse
 """
-function virtualMachineScaleSetsReimageAll(_api::VirtualMachineScaleSetsApi, resourceGroupName::String, vmScaleSetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
-    _ctx = Swagger.Ctx(_api.client, "POST", OperationStatusResponse, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimageall", ["azure_auth"])
+function virtualMachineScaleSetsReimageAll(_api::VirtualMachineScaleSetsApi, resourceGroupName::String, vmScaleSetName::String, api_version::String, subscriptionId::String; vmInstanceIDs=nothing, _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "POST", OperationStatusResponse, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimageall", ["azure_auth"], vmInstanceIDs)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "vmScaleSetName", vmScaleSetName)  # type String
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
@@ -287,6 +289,27 @@ end
 
 """
 
+Update a VM scale set.
+Param: resourceGroupName::String (required)
+Param: vmScaleSetName::String (required)
+Param: parameters::VirtualMachineScaleSetUpdate (required)
+Param: api_version::String (required)
+Param: subscriptionId::String (required)
+Return: VirtualMachineScaleSet
+"""
+function virtualMachineScaleSetsUpdate(_api::VirtualMachineScaleSetsApi, resourceGroupName::String, vmScaleSetName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "PATCH", VirtualMachineScaleSet, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}", ["azure_auth"], parameters)
+    Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
+    Swagger.set_param(_ctx.path, "vmScaleSetName", vmScaleSetName)  # type String
+    Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
+    Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
 Upgrades one or more virtual machines to the latest SKU set in the VM scale set model.
 Param: resourceGroupName::String (required)
 Param: vmScaleSetName::String (required)
@@ -306,4 +329,4 @@ function virtualMachineScaleSetsUpdateInstances(_api::VirtualMachineScaleSetsApi
     Swagger.exec(_ctx)
 end
 
-export virtualMachineScaleSetsCreateOrUpdate, virtualMachineScaleSetsDeallocate, virtualMachineScaleSetsDelete, virtualMachineScaleSetsDeleteInstances, virtualMachineScaleSetsGet, virtualMachineScaleSetsGetInstanceView, virtualMachineScaleSetsList, virtualMachineScaleSetsListAll, virtualMachineScaleSetsListSkus, virtualMachineScaleSetsPowerOff, virtualMachineScaleSetsReimage, virtualMachineScaleSetsReimageAll, virtualMachineScaleSetsRestart, virtualMachineScaleSetsStart, virtualMachineScaleSetsUpdateInstances
+export virtualMachineScaleSetsCreateOrUpdate, virtualMachineScaleSetsDeallocate, virtualMachineScaleSetsDelete, virtualMachineScaleSetsDeleteInstances, virtualMachineScaleSetsGet, virtualMachineScaleSetsGetInstanceView, virtualMachineScaleSetsList, virtualMachineScaleSetsListAll, virtualMachineScaleSetsListSkus, virtualMachineScaleSetsPowerOff, virtualMachineScaleSetsReimage, virtualMachineScaleSetsReimageAll, virtualMachineScaleSetsRestart, virtualMachineScaleSetsStart, virtualMachineScaleSetsUpdate, virtualMachineScaleSetsUpdateInstances

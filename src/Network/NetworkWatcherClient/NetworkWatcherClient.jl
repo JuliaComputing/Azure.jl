@@ -48,7 +48,6 @@ export convert, SecurityGroupViewParameters
 export convert, SecurityGroupViewResult
 export convert, SecurityRule
 export convert, SecurityRuleAssociations
-export convert, SubResource
 export convert, SubnetAssociation
 export convert, Topology
 export convert, TopologyAssociation

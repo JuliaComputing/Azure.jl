@@ -2,17 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type VirtualMachineScaleSetNetworkProfile <: SwaggerModel
+    healthProbe::Nullable{ ApiEntityReference } # healthProbe
     networkInterfaceConfigurations::Nullable{ Vector{VirtualMachineScaleSetNetworkConfiguration} } # networkInterfaceConfigurations
 
-    function VirtualMachineScaleSetNetworkProfile(;networkInterfaceConfigurations=nothing)
+    function VirtualMachineScaleSetNetworkProfile(;healthProbe=nothing, networkInterfaceConfigurations=nothing)
         o = new()
+        set_field!(o, :healthProbe, healthProbe)
         set_field!(o, :networkInterfaceConfigurations, networkInterfaceConfigurations)
         o
     end
 end # type VirtualMachineScaleSetNetworkProfile
 
-const _name_map_VirtualMachineScaleSetNetworkProfile = Dict{String,Symbol}(["networkInterfaceConfigurations"=>:networkInterfaceConfigurations])
-const _field_map_VirtualMachineScaleSetNetworkProfile = Dict{Symbol,String}([:networkInterfaceConfigurations=>"networkInterfaceConfigurations"])
+const _name_map_VirtualMachineScaleSetNetworkProfile = Dict{String,Symbol}(["healthProbe"=>:healthProbe, "networkInterfaceConfigurations"=>:networkInterfaceConfigurations])
+const _field_map_VirtualMachineScaleSetNetworkProfile = Dict{Symbol,String}([:healthProbe=>"healthProbe", :networkInterfaceConfigurations=>"networkInterfaceConfigurations"])
 Swagger.name_map(::Type{ VirtualMachineScaleSetNetworkProfile }) = _name_map_VirtualMachineScaleSetNetworkProfile
 Swagger.field_map(::Type{ VirtualMachineScaleSetNetworkProfile }) = _field_map_VirtualMachineScaleSetNetworkProfile
 

@@ -2,7 +2,7 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type DataLakeStoreAccountListResult <: SwaggerModel
-    value::Nullable{ Vector{DataLakeStoreAccount} } # value
+    value::Nullable{ Vector{DataLakeStoreAccountBasic} } # value
     nextLink::Nullable{ String } # nextLink
 
     function DataLakeStoreAccountListResult(;value=nothing, nextLink=nothing)

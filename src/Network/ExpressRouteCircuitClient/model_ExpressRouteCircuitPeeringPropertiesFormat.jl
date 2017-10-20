@@ -18,8 +18,9 @@ type ExpressRouteCircuitPeeringPropertiesFormat <: SwaggerModel
     gatewayManagerEtag::Nullable{ String } # gatewayManagerEtag
     lastModifiedBy::Nullable{ String } # lastModifiedBy
     routeFilter::Nullable{ RouteFilter } # routeFilter
+    ipv6PeeringConfig::Nullable{ Ipv6ExpressRouteCircuitPeeringConfig } # ipv6PeeringConfig
 
-    function ExpressRouteCircuitPeeringPropertiesFormat(;peeringType=nothing, state=nothing, azureASN=nothing, peerASN=nothing, primaryPeerAddressPrefix=nothing, secondaryPeerAddressPrefix=nothing, primaryAzurePort=nothing, secondaryAzurePort=nothing, sharedKey=nothing, vlanId=nothing, microsoftPeeringConfig=nothing, stats=nothing, provisioningState=nothing, gatewayManagerEtag=nothing, lastModifiedBy=nothing, routeFilter=nothing)
+    function ExpressRouteCircuitPeeringPropertiesFormat(;peeringType=nothing, state=nothing, azureASN=nothing, peerASN=nothing, primaryPeerAddressPrefix=nothing, secondaryPeerAddressPrefix=nothing, primaryAzurePort=nothing, secondaryAzurePort=nothing, sharedKey=nothing, vlanId=nothing, microsoftPeeringConfig=nothing, stats=nothing, provisioningState=nothing, gatewayManagerEtag=nothing, lastModifiedBy=nothing, routeFilter=nothing, ipv6PeeringConfig=nothing)
         o = new()
         set_field!(o, :peeringType, peeringType)
         set_field!(o, :state, state)
@@ -37,12 +38,13 @@ type ExpressRouteCircuitPeeringPropertiesFormat <: SwaggerModel
         set_field!(o, :gatewayManagerEtag, gatewayManagerEtag)
         set_field!(o, :lastModifiedBy, lastModifiedBy)
         set_field!(o, :routeFilter, routeFilter)
+        set_field!(o, :ipv6PeeringConfig, ipv6PeeringConfig)
         o
     end
 end # type ExpressRouteCircuitPeeringPropertiesFormat
 
-const _name_map_ExpressRouteCircuitPeeringPropertiesFormat = Dict{String,Symbol}(["peeringType"=>:peeringType, "state"=>:state, "azureASN"=>:azureASN, "peerASN"=>:peerASN, "primaryPeerAddressPrefix"=>:primaryPeerAddressPrefix, "secondaryPeerAddressPrefix"=>:secondaryPeerAddressPrefix, "primaryAzurePort"=>:primaryAzurePort, "secondaryAzurePort"=>:secondaryAzurePort, "sharedKey"=>:sharedKey, "vlanId"=>:vlanId, "microsoftPeeringConfig"=>:microsoftPeeringConfig, "stats"=>:stats, "provisioningState"=>:provisioningState, "gatewayManagerEtag"=>:gatewayManagerEtag, "lastModifiedBy"=>:lastModifiedBy, "routeFilter"=>:routeFilter])
-const _field_map_ExpressRouteCircuitPeeringPropertiesFormat = Dict{Symbol,String}([:peeringType=>"peeringType", :state=>"state", :azureASN=>"azureASN", :peerASN=>"peerASN", :primaryPeerAddressPrefix=>"primaryPeerAddressPrefix", :secondaryPeerAddressPrefix=>"secondaryPeerAddressPrefix", :primaryAzurePort=>"primaryAzurePort", :secondaryAzurePort=>"secondaryAzurePort", :sharedKey=>"sharedKey", :vlanId=>"vlanId", :microsoftPeeringConfig=>"microsoftPeeringConfig", :stats=>"stats", :provisioningState=>"provisioningState", :gatewayManagerEtag=>"gatewayManagerEtag", :lastModifiedBy=>"lastModifiedBy", :routeFilter=>"routeFilter"])
+const _name_map_ExpressRouteCircuitPeeringPropertiesFormat = Dict{String,Symbol}(["peeringType"=>:peeringType, "state"=>:state, "azureASN"=>:azureASN, "peerASN"=>:peerASN, "primaryPeerAddressPrefix"=>:primaryPeerAddressPrefix, "secondaryPeerAddressPrefix"=>:secondaryPeerAddressPrefix, "primaryAzurePort"=>:primaryAzurePort, "secondaryAzurePort"=>:secondaryAzurePort, "sharedKey"=>:sharedKey, "vlanId"=>:vlanId, "microsoftPeeringConfig"=>:microsoftPeeringConfig, "stats"=>:stats, "provisioningState"=>:provisioningState, "gatewayManagerEtag"=>:gatewayManagerEtag, "lastModifiedBy"=>:lastModifiedBy, "routeFilter"=>:routeFilter, "ipv6PeeringConfig"=>:ipv6PeeringConfig])
+const _field_map_ExpressRouteCircuitPeeringPropertiesFormat = Dict{Symbol,String}([:peeringType=>"peeringType", :state=>"state", :azureASN=>"azureASN", :peerASN=>"peerASN", :primaryPeerAddressPrefix=>"primaryPeerAddressPrefix", :secondaryPeerAddressPrefix=>"secondaryPeerAddressPrefix", :primaryAzurePort=>"primaryAzurePort", :secondaryAzurePort=>"secondaryAzurePort", :sharedKey=>"sharedKey", :vlanId=>"vlanId", :microsoftPeeringConfig=>"microsoftPeeringConfig", :stats=>"stats", :provisioningState=>"provisioningState", :gatewayManagerEtag=>"gatewayManagerEtag", :lastModifiedBy=>"lastModifiedBy", :routeFilter=>"routeFilter", :ipv6PeeringConfig=>"ipv6PeeringConfig"])
 Swagger.name_map(::Type{ ExpressRouteCircuitPeeringPropertiesFormat }) = _name_map_ExpressRouteCircuitPeeringPropertiesFormat
 Swagger.field_map(::Type{ ExpressRouteCircuitPeeringPropertiesFormat }) = _field_map_ExpressRouteCircuitPeeringPropertiesFormat
 

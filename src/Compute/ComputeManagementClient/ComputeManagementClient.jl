@@ -19,6 +19,7 @@ include("api_VirtualMachineExtensionImagesApi.jl")
 include("api_VirtualMachineExtensionsApi.jl")
 include("api_VirtualMachineImagesApi.jl")
 include("api_VirtualMachineScaleSetExtensionsApi.jl")
+include("api_VirtualMachineScaleSetRollingUpgradesApi.jl")
 include("api_VirtualMachineScaleSetVMsApi.jl")
 include("api_VirtualMachineScaleSetsApi.jl")
 include("api_VirtualMachineSizesApi.jl")
@@ -67,7 +68,6 @@ export convert, OSProfile
 export convert, OperationStatusResponse
 export convert, Plan
 export convert, PurchasePlan
-export convert, RecoveryPolicy
 export convert, Resource
 export convert, ResourceSku
 export convert, ResourceSkuCapabilities
@@ -75,6 +75,11 @@ export convert, ResourceSkuCapacity
 export convert, ResourceSkuCosts
 export convert, ResourceSkuRestrictions
 export convert, ResourceSkusResult
+export convert, RollingUpgradePolicy
+export convert, RollingUpgradeProgressInfo
+export convert, RollingUpgradeRunningStatus
+export convert, RollingUpgradeStatusInfo
+export convert, RollingUpgradeStatusInfoProperties
 export convert, Sku
 export convert, SshConfiguration
 export convert, SshPublicKey
@@ -82,6 +87,7 @@ export convert, StorageAccountType
 export convert, StorageProfile
 export convert, SubResource
 export convert, SubResourceReadOnly
+export convert, UpdateResource
 export convert, UpgradePolicy
 export convert, Usage
 export convert, UsageName
@@ -99,6 +105,7 @@ export convert, VirtualMachineExtensionImage
 export convert, VirtualMachineExtensionImageProperties
 export convert, VirtualMachineExtensionInstanceView
 export convert, VirtualMachineExtensionProperties
+export convert, VirtualMachineHealthStatus
 export convert, VirtualMachineIdentity
 export convert, VirtualMachineImage
 export convert, VirtualMachineImageProperties
@@ -134,6 +141,19 @@ export convert, VirtualMachineScaleSetPublicIPAddressConfigurationProperties
 export convert, VirtualMachineScaleSetSku
 export convert, VirtualMachineScaleSetSkuCapacity
 export convert, VirtualMachineScaleSetStorageProfile
+export convert, VirtualMachineScaleSetUpdate
+export convert, VirtualMachineScaleSetUpdateIPConfiguration
+export convert, VirtualMachineScaleSetUpdateIPConfigurationProperties
+export convert, VirtualMachineScaleSetUpdateNetworkConfiguration
+export convert, VirtualMachineScaleSetUpdateNetworkConfigurationProperties
+export convert, VirtualMachineScaleSetUpdateNetworkProfile
+export convert, VirtualMachineScaleSetUpdateOSDisk
+export convert, VirtualMachineScaleSetUpdateOSProfile
+export convert, VirtualMachineScaleSetUpdateProperties
+export convert, VirtualMachineScaleSetUpdatePublicIPAddressConfiguration
+export convert, VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties
+export convert, VirtualMachineScaleSetUpdateStorageProfile
+export convert, VirtualMachineScaleSetUpdateVMProfile
 export convert, VirtualMachineScaleSetVM
 export convert, VirtualMachineScaleSetVMExtensionsSummary
 export convert, VirtualMachineScaleSetVMInstanceIDs
@@ -150,7 +170,7 @@ export convert, WinRMListener
 export convert, WindowsConfiguration
 
 # export operations
-export convert, AvailabilitySetsApi, ImagesApi, SkusApi, UsageApi, VirtualMachineExtensionImagesApi, VirtualMachineExtensionsApi, VirtualMachineImagesApi, VirtualMachineScaleSetExtensionsApi, VirtualMachineScaleSetVMsApi, VirtualMachineScaleSetsApi, VirtualMachineSizesApi, VirtualMachinesApi
+export convert, AvailabilitySetsApi, ImagesApi, SkusApi, UsageApi, VirtualMachineExtensionImagesApi, VirtualMachineExtensionsApi, VirtualMachineImagesApi, VirtualMachineScaleSetExtensionsApi, VirtualMachineScaleSetRollingUpgradesApi, VirtualMachineScaleSetVMsApi, VirtualMachineScaleSetsApi, VirtualMachineSizesApi, VirtualMachinesApi
 
 export check_required, set_field!, get_field, isset_field, convert
 

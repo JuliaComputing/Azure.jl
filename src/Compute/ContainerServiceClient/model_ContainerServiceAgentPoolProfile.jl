@@ -35,8 +35,8 @@ end
 
 function validate_field(o::ContainerServiceAgentPoolProfile, name::Symbol, val)
     if name === :count
-        Swagger.validate_param(name, "ContainerServiceAgentPoolProfile", :maximum, val, 100, false)
-        Swagger.validate_param(name, "ContainerServiceAgentPoolProfile", :minimum, val, 1, false)
+        Swagger.validate_param(name, "ContainerServiceAgentPoolProfile", :maximum, val, 100.0, false)
+        Swagger.validate_param(name, "ContainerServiceAgentPoolProfile", :minimum, val, 1.0, false)
     end
     if name === :vmSize
         Swagger.validate_param(name, "ContainerServiceAgentPoolProfile", :enum, val, _allowed_ContainerServiceAgentPoolProfile_vmSize)

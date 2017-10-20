@@ -5,22 +5,18 @@ type PolicyAssignmentProperties <: SwaggerModel
     displayName::Nullable{ String } # displayName
     policyDefinitionId::Nullable{ String } # policyDefinitionId
     scope::Nullable{ String } # scope
-    parameters::Nullable{ Any } # parameters
-    description::Nullable{ String } # description
 
-    function PolicyAssignmentProperties(;displayName=nothing, policyDefinitionId=nothing, scope=nothing, parameters=nothing, description=nothing)
+    function PolicyAssignmentProperties(;displayName=nothing, policyDefinitionId=nothing, scope=nothing)
         o = new()
         set_field!(o, :displayName, displayName)
         set_field!(o, :policyDefinitionId, policyDefinitionId)
         set_field!(o, :scope, scope)
-        set_field!(o, :parameters, parameters)
-        set_field!(o, :description, description)
         o
     end
 end # type PolicyAssignmentProperties
 
-const _name_map_PolicyAssignmentProperties = Dict{String,Symbol}(["displayName"=>:displayName, "policyDefinitionId"=>:policyDefinitionId, "scope"=>:scope, "parameters"=>:parameters, "description"=>:description])
-const _field_map_PolicyAssignmentProperties = Dict{Symbol,String}([:displayName=>"displayName", :policyDefinitionId=>"policyDefinitionId", :scope=>"scope", :parameters=>"parameters", :description=>"description"])
+const _name_map_PolicyAssignmentProperties = Dict{String,Symbol}(["displayName"=>:displayName, "policyDefinitionId"=>:policyDefinitionId, "scope"=>:scope])
+const _field_map_PolicyAssignmentProperties = Dict{Symbol,String}([:displayName=>"displayName", :policyDefinitionId=>"policyDefinitionId", :scope=>"scope"])
 Swagger.name_map(::Type{ PolicyAssignmentProperties }) = _name_map_PolicyAssignmentProperties
 Swagger.field_map(::Type{ PolicyAssignmentProperties }) = _field_map_PolicyAssignmentProperties
 

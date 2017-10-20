@@ -8,11 +8,12 @@ type VirtualMachineScaleSetVMInstanceView <: SwaggerModel
     vmAgent::Nullable{ VirtualMachineAgentInstanceView } # vmAgent
     disks::Nullable{ Vector{DiskInstanceView} } # disks
     extensions::Nullable{ Vector{VirtualMachineExtensionInstanceView} } # extensions
+    vmHealth::Nullable{ VirtualMachineHealthStatus } # vmHealth
     bootDiagnostics::Nullable{ BootDiagnosticsInstanceView } # bootDiagnostics
     statuses::Nullable{ Vector{InstanceViewStatus} } # statuses
     placementGroupId::Nullable{ String } # placementGroupId
 
-    function VirtualMachineScaleSetVMInstanceView(;platformUpdateDomain=nothing, platformFaultDomain=nothing, rdpThumbPrint=nothing, vmAgent=nothing, disks=nothing, extensions=nothing, bootDiagnostics=nothing, statuses=nothing, placementGroupId=nothing)
+    function VirtualMachineScaleSetVMInstanceView(;platformUpdateDomain=nothing, platformFaultDomain=nothing, rdpThumbPrint=nothing, vmAgent=nothing, disks=nothing, extensions=nothing, vmHealth=nothing, bootDiagnostics=nothing, statuses=nothing, placementGroupId=nothing)
         o = new()
         set_field!(o, :platformUpdateDomain, platformUpdateDomain)
         set_field!(o, :platformFaultDomain, platformFaultDomain)
@@ -20,6 +21,7 @@ type VirtualMachineScaleSetVMInstanceView <: SwaggerModel
         set_field!(o, :vmAgent, vmAgent)
         set_field!(o, :disks, disks)
         set_field!(o, :extensions, extensions)
+        set_field!(o, :vmHealth, vmHealth)
         set_field!(o, :bootDiagnostics, bootDiagnostics)
         set_field!(o, :statuses, statuses)
         set_field!(o, :placementGroupId, placementGroupId)
@@ -27,8 +29,8 @@ type VirtualMachineScaleSetVMInstanceView <: SwaggerModel
     end
 end # type VirtualMachineScaleSetVMInstanceView
 
-const _name_map_VirtualMachineScaleSetVMInstanceView = Dict{String,Symbol}(["platformUpdateDomain"=>:platformUpdateDomain, "platformFaultDomain"=>:platformFaultDomain, "rdpThumbPrint"=>:rdpThumbPrint, "vmAgent"=>:vmAgent, "disks"=>:disks, "extensions"=>:extensions, "bootDiagnostics"=>:bootDiagnostics, "statuses"=>:statuses, "placementGroupId"=>:placementGroupId])
-const _field_map_VirtualMachineScaleSetVMInstanceView = Dict{Symbol,String}([:platformUpdateDomain=>"platformUpdateDomain", :platformFaultDomain=>"platformFaultDomain", :rdpThumbPrint=>"rdpThumbPrint", :vmAgent=>"vmAgent", :disks=>"disks", :extensions=>"extensions", :bootDiagnostics=>"bootDiagnostics", :statuses=>"statuses", :placementGroupId=>"placementGroupId"])
+const _name_map_VirtualMachineScaleSetVMInstanceView = Dict{String,Symbol}(["platformUpdateDomain"=>:platformUpdateDomain, "platformFaultDomain"=>:platformFaultDomain, "rdpThumbPrint"=>:rdpThumbPrint, "vmAgent"=>:vmAgent, "disks"=>:disks, "extensions"=>:extensions, "vmHealth"=>:vmHealth, "bootDiagnostics"=>:bootDiagnostics, "statuses"=>:statuses, "placementGroupId"=>:placementGroupId])
+const _field_map_VirtualMachineScaleSetVMInstanceView = Dict{Symbol,String}([:platformUpdateDomain=>"platformUpdateDomain", :platformFaultDomain=>"platformFaultDomain", :rdpThumbPrint=>"rdpThumbPrint", :vmAgent=>"vmAgent", :disks=>"disks", :extensions=>"extensions", :vmHealth=>"vmHealth", :bootDiagnostics=>"bootDiagnostics", :statuses=>"statuses", :placementGroupId=>"placementGroupId"])
 Swagger.name_map(::Type{ VirtualMachineScaleSetVMInstanceView }) = _name_map_VirtualMachineScaleSetVMInstanceView
 Swagger.field_map(::Type{ VirtualMachineScaleSetVMInstanceView }) = _field_map_VirtualMachineScaleSetVMInstanceView
 

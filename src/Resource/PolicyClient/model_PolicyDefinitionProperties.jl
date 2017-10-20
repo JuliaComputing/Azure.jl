@@ -6,21 +6,19 @@ type PolicyDefinitionProperties <: SwaggerModel
     displayName::Nullable{ String } # displayName
     description::Nullable{ String } # description
     policyRule::Nullable{ Any } # policyRule
-    parameters::Nullable{ Any } # parameters
 
-    function PolicyDefinitionProperties(;policyType=nothing, displayName=nothing, description=nothing, policyRule=nothing, parameters=nothing)
+    function PolicyDefinitionProperties(;policyType=nothing, displayName=nothing, description=nothing, policyRule=nothing)
         o = new()
         set_field!(o, :policyType, policyType)
         set_field!(o, :displayName, displayName)
         set_field!(o, :description, description)
         set_field!(o, :policyRule, policyRule)
-        set_field!(o, :parameters, parameters)
         o
     end
 end # type PolicyDefinitionProperties
 
-const _name_map_PolicyDefinitionProperties = Dict{String,Symbol}(["policyType"=>:policyType, "displayName"=>:displayName, "description"=>:description, "policyRule"=>:policyRule, "parameters"=>:parameters])
-const _field_map_PolicyDefinitionProperties = Dict{Symbol,String}([:policyType=>"policyType", :displayName=>"displayName", :description=>"description", :policyRule=>"policyRule", :parameters=>"parameters"])
+const _name_map_PolicyDefinitionProperties = Dict{String,Symbol}(["policyType"=>:policyType, "displayName"=>:displayName, "description"=>:description, "policyRule"=>:policyRule])
+const _field_map_PolicyDefinitionProperties = Dict{Symbol,String}([:policyType=>"policyType", :displayName=>"displayName", :description=>"description", :policyRule=>"policyRule"])
 Swagger.name_map(::Type{ PolicyDefinitionProperties }) = _name_map_PolicyDefinitionProperties
 Swagger.field_map(::Type{ PolicyDefinitionProperties }) = _field_map_PolicyDefinitionProperties
 

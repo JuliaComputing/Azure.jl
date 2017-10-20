@@ -20,7 +20,6 @@ export convert, PublicIPAddressDnsSettings
 export convert, PublicIPAddressListResult
 export convert, PublicIPAddressPropertiesFormat
 export convert, Resource
-export convert, SubResource
 
 # export operations
 export convert, PublicIPAddressesApi

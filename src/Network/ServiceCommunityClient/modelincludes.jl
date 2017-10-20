@@ -1,5 +1,5 @@
-include("model_BgpServiceCommunity.jl")
 include("model_BGPCommunity.jl")
-include("model_BgpServiceCommunityListResult.jl")
 include("model_BgpServiceCommunityPropertiesFormat.jl")
+include("model_BgpServiceCommunity.jl")
 include("model_Resource.jl")
+include("model_BgpServiceCommunityListResult.jl")

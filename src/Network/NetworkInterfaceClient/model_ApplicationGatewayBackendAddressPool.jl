@@ -2,17 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type ApplicationGatewayBackendAddressPool <: SwaggerModel
-    id::Nullable{ String } # id
 
-    function ApplicationGatewayBackendAddressPool(;id=nothing)
+    function ApplicationGatewayBackendAddressPool(;)
         o = new()
-        set_field!(o, :id, id)
         o
     end
 end # type ApplicationGatewayBackendAddressPool
 
-const _name_map_ApplicationGatewayBackendAddressPool = Dict{String,Symbol}(["id"=>:id])
-const _field_map_ApplicationGatewayBackendAddressPool = Dict{Symbol,String}([:id=>"id"])
+const _name_map_ApplicationGatewayBackendAddressPool = Dict{String,Symbol}([])
+const _field_map_ApplicationGatewayBackendAddressPool = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ ApplicationGatewayBackendAddressPool }) = _name_map_ApplicationGatewayBackendAddressPool
 Swagger.field_map(::Type{ ApplicationGatewayBackendAddressPool }) = _field_map_ApplicationGatewayBackendAddressPool
 

@@ -3,18 +3,20 @@
 
 type RunCommandInput <: SwaggerModel
     commandId::Nullable{ String } # commandId
+    script::Nullable{ Vector{String} } # script
     parameters::Nullable{ Vector{RunCommandInputParameter} } # parameters
 
-    function RunCommandInput(;commandId=nothing, parameters=nothing)
+    function RunCommandInput(;commandId=nothing, script=nothing, parameters=nothing)
         o = new()
         set_field!(o, :commandId, commandId)
+        set_field!(o, :script, script)
         set_field!(o, :parameters, parameters)
         o
     end
 end # type RunCommandInput
 
-const _name_map_RunCommandInput = Dict{String,Symbol}(["commandId"=>:commandId, "parameters"=>:parameters])
-const _field_map_RunCommandInput = Dict{Symbol,String}([:commandId=>"commandId", :parameters=>"parameters"])
+const _name_map_RunCommandInput = Dict{String,Symbol}(["commandId"=>:commandId, "script"=>:script, "parameters"=>:parameters])
+const _field_map_RunCommandInput = Dict{Symbol,String}([:commandId=>"commandId", :script=>"script", :parameters=>"parameters"])
 Swagger.name_map(::Type{ RunCommandInput }) = _name_map_RunCommandInput
 Swagger.field_map(::Type{ RunCommandInput }) = _field_map_RunCommandInput
 

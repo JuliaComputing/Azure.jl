@@ -3,20 +3,24 @@
 
 type UpgradePolicy <: SwaggerModel
     mode::Nullable{ String } # mode
+    rollingUpgradePolicy::Nullable{ RollingUpgradePolicy } # rollingUpgradePolicy
+    automaticOSUpgrade::Nullable{ Bool } # automaticOSUpgrade
 
-    function UpgradePolicy(;mode=nothing)
+    function UpgradePolicy(;mode=nothing, rollingUpgradePolicy=nothing, automaticOSUpgrade=nothing)
         o = new()
         set_field!(o, :mode, mode)
+        set_field!(o, :rollingUpgradePolicy, rollingUpgradePolicy)
+        set_field!(o, :automaticOSUpgrade, automaticOSUpgrade)
         o
     end
 end # type UpgradePolicy
 
-const _name_map_UpgradePolicy = Dict{String,Symbol}(["mode"=>:mode])
-const _field_map_UpgradePolicy = Dict{Symbol,String}([:mode=>"mode"])
+const _name_map_UpgradePolicy = Dict{String,Symbol}(["mode"=>:mode, "rollingUpgradePolicy"=>:rollingUpgradePolicy, "automaticOSUpgrade"=>:automaticOSUpgrade])
+const _field_map_UpgradePolicy = Dict{Symbol,String}([:mode=>"mode", :rollingUpgradePolicy=>"rollingUpgradePolicy", :automaticOSUpgrade=>"automaticOSUpgrade"])
 Swagger.name_map(::Type{ UpgradePolicy }) = _name_map_UpgradePolicy
 Swagger.field_map(::Type{ UpgradePolicy }) = _field_map_UpgradePolicy
 
-const _allowed_UpgradePolicy_mode = ["Automatic", "Manual"]
+const _allowed_UpgradePolicy_mode = ["Automatic", "Manual", "Rolling"]
 
 function check_required(o::UpgradePolicy)
     true

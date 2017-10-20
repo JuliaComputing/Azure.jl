@@ -11,8 +11,9 @@ type VirtualMachine <: SwaggerModel
     properties::Nullable{ VirtualMachineProperties } # properties
     resources::Nullable{ Vector{VirtualMachineExtension} } # resources
     identity::Nullable{ VirtualMachineIdentity } # identity
+    zones::Nullable{ Vector{String} } # zones
 
-    function VirtualMachine(;id=nothing, name=nothing, _type=nothing, location=nothing, tags=nothing, plan=nothing, properties=nothing, resources=nothing, identity=nothing)
+    function VirtualMachine(;id=nothing, name=nothing, _type=nothing, location=nothing, tags=nothing, plan=nothing, properties=nothing, resources=nothing, identity=nothing, zones=nothing)
         o = new()
         set_field!(o, :id, id)
         set_field!(o, :name, name)
@@ -23,12 +24,13 @@ type VirtualMachine <: SwaggerModel
         set_field!(o, :properties, properties)
         set_field!(o, :resources, resources)
         set_field!(o, :identity, identity)
+        set_field!(o, :zones, zones)
         o
     end
 end # type VirtualMachine
 
-const _name_map_VirtualMachine = Dict{String,Symbol}(["id"=>:id, "name"=>:name, "type"=>:_type, "location"=>:location, "tags"=>:tags, "plan"=>:plan, "properties"=>:properties, "resources"=>:resources, "identity"=>:identity])
-const _field_map_VirtualMachine = Dict{Symbol,String}([:id=>"id", :name=>"name", :_type=>"type", :location=>"location", :tags=>"tags", :plan=>"plan", :properties=>"properties", :resources=>"resources", :identity=>"identity"])
+const _name_map_VirtualMachine = Dict{String,Symbol}(["id"=>:id, "name"=>:name, "type"=>:_type, "location"=>:location, "tags"=>:tags, "plan"=>:plan, "properties"=>:properties, "resources"=>:resources, "identity"=>:identity, "zones"=>:zones])
+const _field_map_VirtualMachine = Dict{Symbol,String}([:id=>"id", :name=>"name", :_type=>"type", :location=>"location", :tags=>"tags", :plan=>"plan", :properties=>"properties", :resources=>"resources", :identity=>"identity", :zones=>"zones"])
 Swagger.name_map(::Type{ VirtualMachine }) = _name_map_VirtualMachine
 Swagger.field_map(::Type{ VirtualMachine }) = _field_map_VirtualMachine
 

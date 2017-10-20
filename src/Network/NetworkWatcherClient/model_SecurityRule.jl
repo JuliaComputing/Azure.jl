@@ -2,17 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type SecurityRule <: SwaggerModel
-    id::Nullable{ String } # id
 
-    function SecurityRule(;id=nothing)
+    function SecurityRule(;)
         o = new()
-        set_field!(o, :id, id)
         o
     end
 end # type SecurityRule
 
-const _name_map_SecurityRule = Dict{String,Symbol}(["id"=>:id])
-const _field_map_SecurityRule = Dict{Symbol,String}([:id=>"id"])
+const _name_map_SecurityRule = Dict{String,Symbol}([])
+const _field_map_SecurityRule = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ SecurityRule }) = _name_map_SecurityRule
 Swagger.field_map(::Type{ SecurityRule }) = _field_map_SecurityRule
 

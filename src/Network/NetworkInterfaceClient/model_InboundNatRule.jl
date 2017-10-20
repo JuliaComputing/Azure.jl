@@ -2,17 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type InboundNatRule <: SwaggerModel
-    id::Nullable{ String } # id
 
-    function InboundNatRule(;id=nothing)
+    function InboundNatRule(;)
         o = new()
-        set_field!(o, :id, id)
         o
     end
 end # type InboundNatRule
 
-const _name_map_InboundNatRule = Dict{String,Symbol}(["id"=>:id])
-const _field_map_InboundNatRule = Dict{Symbol,String}([:id=>"id"])
+const _name_map_InboundNatRule = Dict{String,Symbol}([])
+const _field_map_InboundNatRule = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ InboundNatRule }) = _name_map_InboundNatRule
 Swagger.field_map(::Type{ InboundNatRule }) = _field_map_InboundNatRule
 

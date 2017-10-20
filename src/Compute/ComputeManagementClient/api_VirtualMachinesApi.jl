@@ -151,6 +151,26 @@ end
 
 """
 
+Retrieves information about the run-time state of a virtual machine.
+Param: resourceGroupName::String (required)
+Param: vmName::String (required)
+Param: api_version::String (required)
+Param: subscriptionId::String (required)
+Return: VirtualMachineInstanceView
+"""
+function virtualMachinesInstanceView(_api::VirtualMachinesApi, resourceGroupName::String, vmName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = Swagger.Ctx(_api.client, "GET", VirtualMachineInstanceView, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/instanceView", ["azure_auth"])
+    Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
+    Swagger.set_param(_ctx.path, "vmName", vmName)  # type String
+    Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
+    Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
+    Swagger.set_header_accept(_ctx, ["application/json"])
+    Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    Swagger.exec(_ctx)
+end
+
+"""
+
 Lists all of the virtual machines in the specified resource group. Use the nextLink property in the response to get the next page of virtual machines.
 Param: resourceGroupName::String (required)
 Param: api_version::String (required)
@@ -303,4 +323,4 @@ function virtualMachinesStart(_api::VirtualMachinesApi, resourceGroupName::Strin
     Swagger.exec(_ctx)
 end
 
-export virtualMachinesCapture, virtualMachinesConvertToManagedDisks, virtualMachinesCreateOrUpdate, virtualMachinesDeallocate, virtualMachinesDelete, virtualMachinesGeneralize, virtualMachinesGet, virtualMachinesList, virtualMachinesListAll, virtualMachinesListAvailableSizes, virtualMachinesPerformMaintenance, virtualMachinesPowerOff, virtualMachinesRedeploy, virtualMachinesRestart, virtualMachinesStart
+export virtualMachinesCapture, virtualMachinesConvertToManagedDisks, virtualMachinesCreateOrUpdate, virtualMachinesDeallocate, virtualMachinesDelete, virtualMachinesGeneralize, virtualMachinesGet, virtualMachinesInstanceView, virtualMachinesList, virtualMachinesListAll, virtualMachinesListAvailableSizes, virtualMachinesPerformMaintenance, virtualMachinesPowerOff, virtualMachinesRedeploy, virtualMachinesRestart, virtualMachinesStart

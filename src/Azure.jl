@@ -20,6 +20,8 @@ include("DataLakeStore/DataLakeStoreAccountManagementClient/DataLakeStoreAccount
 _module_versions[DataLakeStoreAccountManagementClient] = "2016-11-01"
 _api_versions[DataLakeStoreAccountManagementClient.AccountApi] = "2016-11-01"
 _api_versions[DataLakeStoreAccountManagementClient.FirewallRulesApi] = "2016-11-01"
+_api_versions[DataLakeStoreAccountManagementClient.LocationsApi] = "2016-11-01"
+_api_versions[DataLakeStoreAccountManagementClient.OperationsApi] = "2016-11-01"
 _api_versions[DataLakeStoreAccountManagementClient.TrustedIdProvidersApi] = "2016-11-01"
 
 include("DataLakeStore/DataLakeStoreFileSystemManagementClient/DataLakeStoreFileSystemManagementClient.jl")
@@ -29,6 +31,7 @@ _api_versions[DataLakeStoreFileSystemManagementClient.FileSystemApi] = "2016-11-
 include("Storage/StorageManagementClient/StorageManagementClient.jl")
 _module_versions[StorageManagementClient] = "2017-06-01"
 _api_versions[StorageManagementClient.OperationsApi] = "2017-06-01"
+_api_versions[StorageManagementClient.SkusApi] = "2017-06-01"
 _api_versions[StorageManagementClient.StorageAccountsApi] = "2017-06-01"
 _api_versions[StorageManagementClient.UsageApi] = "2017-06-01"
 
@@ -43,6 +46,7 @@ _api_versions[ComputeManagementClient.VirtualMachineExtensionsApi] = "2017-03-30
 _api_versions[ComputeManagementClient.VirtualMachineImagesApi] = "2017-03-30"
 _api_versions[ComputeManagementClient.VirtualMachinesApi] = "2017-03-30"
 _api_versions[ComputeManagementClient.VirtualMachineScaleSetExtensionsApi] = "2017-03-30"
+_api_versions[ComputeManagementClient.VirtualMachineScaleSetRollingUpgradesApi] = "2017-03-30"
 _api_versions[ComputeManagementClient.VirtualMachineScaleSetsApi] = "2017-03-30"
 _api_versions[ComputeManagementClient.VirtualMachineScaleSetVMsApi] = "2017-03-30"
 _api_versions[ComputeManagementClient.VirtualMachineSizesApi] = "2017-03-30"
@@ -156,9 +160,9 @@ _api_versions[SubscriptionClient.SubscriptionsApi] = "2016-06-01"
 _api_versions[SubscriptionClient.TenantsApi] = "2016-06-01"
 
 include("Resource/PolicyClient/PolicyClient.jl")
-_module_versions[PolicyClient] = "2016-12-01"
-_api_versions[PolicyClient.PolicyAssignmentsApi] = "2016-12-01"
-_api_versions[PolicyClient.PolicyDefinitionsApi] = "2016-12-01"
+_module_versions[PolicyClient] = "2016-04-01"
+_api_versions[PolicyClient.PolicyAssignmentsApi] = "2016-04-01"
+_api_versions[PolicyClient.PolicyDefinitionsApi] = "2016-04-01"
 
 include("Commerce/UsageManagementClient/UsageManagementClient.jl")
 _module_versions[UsageManagementClient] = "2015-06-01-preview"

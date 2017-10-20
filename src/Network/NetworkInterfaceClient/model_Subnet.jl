@@ -2,17 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 type Subnet <: SwaggerModel
-    id::Nullable{ String } # id
 
-    function Subnet(;id=nothing)
+    function Subnet(;)
         o = new()
-        set_field!(o, :id, id)
         o
     end
 end # type Subnet
 
-const _name_map_Subnet = Dict{String,Symbol}(["id"=>:id])
-const _field_map_Subnet = Dict{Symbol,String}([:id=>"id"])
+const _name_map_Subnet = Dict{String,Symbol}([])
+const _field_map_Subnet = Dict{Symbol,String}([])
 Swagger.name_map(::Type{ Subnet }) = _name_map_Subnet
 Swagger.field_map(::Type{ Subnet }) = _field_map_Subnet
 

@@ -26,7 +26,7 @@ end
 
 function validate_field(o::ApplicationGatewayConnectionDraining, name::Symbol, val)
     if name === :drainTimeoutInSec
-        Swagger.validate_param(name, "ApplicationGatewayConnectionDraining", :maximum, val, 3600, false)
-        Swagger.validate_param(name, "ApplicationGatewayConnectionDraining", :minimum, val, 1, false)
+        Swagger.validate_param(name, "ApplicationGatewayConnectionDraining", :maximum, val, 3600.0, false)
+        Swagger.validate_param(name, "ApplicationGatewayConnectionDraining", :minimum, val, 1.0, false)
     end
 end

@@ -22,7 +22,7 @@ const _field_map_AdditionalUnattendContent = Dict{Symbol,String}([:passName=>"pa
 Swagger.name_map(::Type{ AdditionalUnattendContent }) = _name_map_AdditionalUnattendContent
 Swagger.field_map(::Type{ AdditionalUnattendContent }) = _field_map_AdditionalUnattendContent
 
-const _allowed_AdditionalUnattendContent_passName = ["oobeSystem"]
+const _allowed_AdditionalUnattendContent_passName = ["OobeSystem"]
 
 const _allowed_AdditionalUnattendContent_componentName = ["Microsoft-Windows-Shell-Setup"]
 

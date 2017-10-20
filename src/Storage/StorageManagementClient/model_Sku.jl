@@ -4,23 +4,35 @@
 type Sku <: SwaggerModel
     name::Nullable{ String } # name
     tier::Nullable{ String } # tier
+    resourceType::Nullable{ String } # resourceType
+    kind::Nullable{ String } # kind
+    locations::Nullable{ Vector{String} } # locations
+    capabilities::Nullable{ Vector{SKUCapability} } # capabilities
+    restrictions::Nullable{ Vector{Restriction} } # restrictions
 
-    function Sku(;name=nothing, tier=nothing)
+    function Sku(;name=nothing, tier=nothing, resourceType=nothing, kind=nothing, locations=nothing, capabilities=nothing, restrictions=nothing)
         o = new()
         set_field!(o, :name, name)
         set_field!(o, :tier, tier)
+        set_field!(o, :resourceType, resourceType)
+        set_field!(o, :kind, kind)
+        set_field!(o, :locations, locations)
+        set_field!(o, :capabilities, capabilities)
+        set_field!(o, :restrictions, restrictions)
         o
     end
 end # type Sku
 
-const _name_map_Sku = Dict{String,Symbol}(["name"=>:name, "tier"=>:tier])
-const _field_map_Sku = Dict{Symbol,String}([:name=>"name", :tier=>"tier"])
+const _name_map_Sku = Dict{String,Symbol}(["name"=>:name, "tier"=>:tier, "resourceType"=>:resourceType, "kind"=>:kind, "locations"=>:locations, "capabilities"=>:capabilities, "restrictions"=>:restrictions])
+const _field_map_Sku = Dict{Symbol,String}([:name=>"name", :tier=>"tier", :resourceType=>"resourceType", :kind=>"kind", :locations=>"locations", :capabilities=>"capabilities", :restrictions=>"restrictions"])
 Swagger.name_map(::Type{ Sku }) = _name_map_Sku
 Swagger.field_map(::Type{ Sku }) = _field_map_Sku
 
 const _allowed_Sku_name = ["Standard_LRS", "Standard_GRS", "Standard_RAGRS", "Standard_ZRS", "Premium_LRS"]
 
 const _allowed_Sku_tier = ["Standard", "Premium"]
+
+const _allowed_Sku_kind = ["Storage", "BlobStorage"]
 
 function check_required(o::Sku)
     true
@@ -32,5 +44,8 @@ function validate_field(o::Sku, name::Symbol, val)
     end
     if name === :tier
         Swagger.validate_param(name, "Sku", :enum, val, _allowed_Sku_tier)
+    end
+    if name === :kind
+        Swagger.validate_param(name, "Sku", :enum, val, _allowed_Sku_kind)
     end
 end

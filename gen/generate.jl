@@ -6,33 +6,33 @@ const SWAGGERDIR = Pkg.dir("Swagger")
 const SWAGGERGEN = joinpath(SWAGGERDIR, "plugin", "generate.sh")
 
 const SPECS = [
-    ("DataLakeStoreAccountManagementClient",    "DataLakeStore",    "2016-11-01", "arm-datalake-store/account/{VER}/swagger/account.json"),
-    ("DataLakeStoreFileSystemManagementClient", "DataLakeStore",    "2016-11-01", "arm-datalake-store/filesystem/{VER}/swagger/filesystem.json"),
-    ("StorageManagementClient",                 "Storage",          "2017-06-01", "arm-storage/{VER}/swagger/storage.json"),
-    ("ComputeManagementClient",                 "Compute",          "2017-03-30", "arm-compute/{VER}/swagger/compute.json"),
-    ("DiskResourceProviderClient",              "Compute",          "2017-03-30", "arm-compute/{VER}/swagger/disk.json"),
-    ("RunCommandsClient",                       "Compute",          "2017-03-30", "arm-compute/{VER}/swagger/runCommands.json"),
-    ("ContainerServiceClient",                  "Compute",          "2017-01-31", "arm-compute/{VER}/swagger/containerService.json"),
-    ("ApplicationGatewayClient",                "Network",          "2017-03-01", "arm-network/{VER}/swagger/applicationGateway.json"),
-    ("CheckDnsAvailabilityClient",              "Network",          "2017-03-01", "arm-network/{VER}/swagger/checkDnsAvailability.json"),
-    ("ExpressRouteCircuitClient",               "Network",          "2017-03-01", "arm-network/{VER}/swagger/expressRouteCircuit.json"),
-    ("LoadBalancerClient",                      "Network",          "2017-03-01", "arm-network/{VER}/swagger/loadBalancer.json"),
-    ("NetworkManagementClient",                 "Network",          "2017-03-01", "arm-network/{VER}/swagger/network.json"),
-    ("NetworkInterfaceClient",                  "Network",          "2017-03-01", "arm-network/{VER}/swagger/networkInterface.json"),
-    ("NetworkSecurityGroupClient",              "Network",          "2017-03-01", "arm-network/{VER}/swagger/networkSecurityGroup.json"),
-    ("NetworkWatcherClient",                    "Network",          "2017-03-01", "arm-network/{VER}/swagger/networkWatcher.json"),
-    ("PublicIpAddressClient",                   "Network",          "2017-03-01", "arm-network/{VER}/swagger/publicIpAddress.json"),
-    ("RouteFilterClient",                       "Network",          "2017-03-01", "arm-network/{VER}/swagger/routeFilter.json"),
-    ("RouteTableClient",                        "Network",          "2017-03-01", "arm-network/{VER}/swagger/routeTable.json"),
-    ("ServiceCommunityClient",                  "Network",          "2017-03-01", "arm-network/{VER}/swagger/serviceCommunity.json"),
-    ("UsageClient",                             "Network",          "2017-03-01", "arm-network/{VER}/swagger/usage.json"),
-    ("VirtualNetworkClient",                    "Network",          "2017-03-01", "arm-network/{VER}/swagger/virtualNetwork.json"),
-    ("VirtualNetworkGatewayClient",             "Network",          "2017-03-01", "arm-network/{VER}/swagger/virtualNetworkGateway.json"),
-    ("VmssNetworkInterfaceClient",              "Network",          "2017-03-01", "arm-network/{VER}/swagger/vmssNetworkInterface.json"),
-    ("ResourceManagementClient",                "Resource",         "2017-05-10", "arm-resources/resources/{VER}/swagger/resources.json"),
-    ("SubscriptionClient",                      "Resource",         "2016-06-01", "arm-resources/subscriptions/{VER}/swagger/subscriptions.json"),
-    ("PolicyClient",                            "Resource",         "2016-12-01", "arm-resources/policy/{VER}/swagger/policy.json"),
-    ("UsageManagementClient",                   "Commerce",         "2015-06-01-preview", "arm-commerce/{VER}/swagger/commerce.json")
+    ("DataLakeStoreAccountManagementClient",    "DataLakeStore",    "2016-11-01",           "specification/datalake-store/resource-manager/Microsoft.DataLakeStore/{VER}/account.json"),
+    ("DataLakeStoreFileSystemManagementClient", "DataLakeStore",    "2016-11-01",           "specification/datalake-store/data-plane/Microsoft.DataLakeStore/{VER}/filesystem.json"),
+    ("StorageManagementClient",                 "Storage",          "2017-06-01",           "specification/storage/resource-manager/Microsoft.Storage/{VER}/storage.json"),
+    ("ComputeManagementClient",                 "Compute",          "2017-03-30",           "specification/compute/resource-manager/Microsoft.Compute/{VER}/compute.json"),
+    ("DiskResourceProviderClient",              "Compute",          "2017-03-30",           "specification/compute/resource-manager/Microsoft.Compute/{VER}/disk.json"),
+    ("RunCommandsClient",                       "Compute",          "2017-03-30",           "specification/compute/resource-manager/Microsoft.Compute/{VER}/runCommands.json"),
+    ("ContainerServiceClient",                  "Compute",          "2017-01-31",           "specification/compute/resource-manager/Microsoft.ContainerService/{VER}/containerService.json"),
+    ("ApplicationGatewayClient",                "Network",          "2017-03-01",           "specification/network/resource-manager/Microsoft.Network/{VER}/applicationGateway.json"),
+    ("CheckDnsAvailabilityClient",              "Network",          "2017-03-01",           "specification/network/resource-manager/Microsoft.Network/{VER}/checkDnsAvailability.json"),
+    ("ExpressRouteCircuitClient",               "Network",          "2017-03-01",           "specification/network/resource-manager/Microsoft.Network/{VER}/expressRouteCircuit.json"),
+    ("LoadBalancerClient",                      "Network",          "2017-03-01",           "specification/network/resource-manager/Microsoft.Network/{VER}/loadBalancer.json"),
+    ("NetworkManagementClient",                 "Network",          "2017-03-01",           "specification/network/resource-manager/Microsoft.Network/{VER}/network.json"),
+    ("NetworkInterfaceClient",                  "Network",          "2017-03-01",           "specification/network/resource-manager/Microsoft.Network/{VER}/networkInterface.json"),
+    ("NetworkSecurityGroupClient",              "Network",          "2017-03-01",           "specification/network/resource-manager/Microsoft.Network/{VER}/networkSecurityGroup.json"),
+    ("NetworkWatcherClient",                    "Network",          "2017-03-01",           "specification/network/resource-manager/Microsoft.Network/{VER}/networkWatcher.json"),
+    ("PublicIpAddressClient",                   "Network",          "2017-03-01",           "specification/network/resource-manager/Microsoft.Network/{VER}/publicIpAddress.json"),
+    ("RouteFilterClient",                       "Network",          "2017-03-01",           "specification/network/resource-manager/Microsoft.Network/{VER}/routeFilter.json"),
+    ("RouteTableClient",                        "Network",          "2017-03-01",           "specification/network/resource-manager/Microsoft.Network/{VER}/routeTable.json"),
+    ("ServiceCommunityClient",                  "Network",          "2017-03-01",           "specification/network/resource-manager/Microsoft.Network/{VER}/serviceCommunity.json"),
+    ("UsageClient",                             "Network",          "2017-03-01",           "specification/network/resource-manager/Microsoft.Network/{VER}/usage.json"),
+    ("VirtualNetworkClient",                    "Network",          "2017-03-01",           "specification/network/resource-manager/Microsoft.Network/{VER}/virtualNetwork.json"),
+    ("VirtualNetworkGatewayClient",             "Network",          "2017-03-01",           "specification/network/resource-manager/Microsoft.Network/{VER}/virtualNetworkGateway.json"),
+    ("VmssNetworkInterfaceClient",              "Network",          "2017-03-01",           "specification/network/resource-manager/Microsoft.Network/{VER}/vmssNetworkInterface.json"),
+    ("ResourceManagementClient",                "Resource",         "2017-05-10",           "specification/resources/resource-manager/Microsoft.Resources/{VER}/resources.json"),
+    ("SubscriptionClient",                      "Resource",         "2016-06-01",           "specification/resources/resource-manager/Microsoft.Resources/{VER}/subscriptions.json"),
+    ("PolicyClient",                            "Resource",         "2016-04-01",           "specification/resources/resource-manager/Microsoft.Authorization/{VER}/policy.json"),
+    ("UsageManagementClient",                   "Commerce",         "2015-06-01-preview",   "specification/commerce/resource-manager/Microsoft.Commerce/{VER}/commerce.json")
 ]
 
 const PATCHES = Dict(
@@ -78,6 +78,7 @@ function genunit(pkg, grp, swg)
     run(`$SWAGGERGEN -i $swg -o $outpath -c $TEMPCFGFILE`)
     mv(joinpath(outpath, "src"), pkgpath; remove_destination=true)
     rm(joinpath(outpath, "REQUIRE"))
+    rm(joinpath(outpath, "LICENSE"))
     rm(joinpath(outpath, ".swagger-codegen-ignore"))
     rm(TEMPCFGFILE)
 

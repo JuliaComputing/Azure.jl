@@ -4,21 +4,23 @@
 type StorageAccountPropertiesCreateParameters <: SwaggerModel
     customDomain::Nullable{ CustomDomain } # customDomain
     encryption::Nullable{ Encryption } # encryption
+    networkAcls::Nullable{ NetworkRuleSet } # networkAcls
     accessTier::Nullable{ String } # accessTier
     supportsHttpsTrafficOnly::Nullable{ Bool } # supportsHttpsTrafficOnly
 
-    function StorageAccountPropertiesCreateParameters(;customDomain=nothing, encryption=nothing, accessTier=nothing, supportsHttpsTrafficOnly=false)
+    function StorageAccountPropertiesCreateParameters(;customDomain=nothing, encryption=nothing, networkAcls=nothing, accessTier=nothing, supportsHttpsTrafficOnly=false)
         o = new()
         set_field!(o, :customDomain, customDomain)
         set_field!(o, :encryption, encryption)
+        set_field!(o, :networkAcls, networkAcls)
         set_field!(o, :accessTier, accessTier)
         set_field!(o, :supportsHttpsTrafficOnly, supportsHttpsTrafficOnly)
         o
     end
 end # type StorageAccountPropertiesCreateParameters
 
-const _name_map_StorageAccountPropertiesCreateParameters = Dict{String,Symbol}(["customDomain"=>:customDomain, "encryption"=>:encryption, "accessTier"=>:accessTier, "supportsHttpsTrafficOnly"=>:supportsHttpsTrafficOnly])
-const _field_map_StorageAccountPropertiesCreateParameters = Dict{Symbol,String}([:customDomain=>"customDomain", :encryption=>"encryption", :accessTier=>"accessTier", :supportsHttpsTrafficOnly=>"supportsHttpsTrafficOnly"])
+const _name_map_StorageAccountPropertiesCreateParameters = Dict{String,Symbol}(["customDomain"=>:customDomain, "encryption"=>:encryption, "networkAcls"=>:networkAcls, "accessTier"=>:accessTier, "supportsHttpsTrafficOnly"=>:supportsHttpsTrafficOnly])
+const _field_map_StorageAccountPropertiesCreateParameters = Dict{Symbol,String}([:customDomain=>"customDomain", :encryption=>"encryption", :networkAcls=>"networkAcls", :accessTier=>"accessTier", :supportsHttpsTrafficOnly=>"supportsHttpsTrafficOnly"])
 Swagger.name_map(::Type{ StorageAccountPropertiesCreateParameters }) = _name_map_StorageAccountPropertiesCreateParameters
 Swagger.field_map(::Type{ StorageAccountPropertiesCreateParameters }) = _field_map_StorageAccountPropertiesCreateParameters
 
