@@ -14,8 +14,22 @@ using Azure.StorageServices
 using Azure.ComputeManagementClient
 using Azure.UsageManagementClient
 
+# An Azure service principal is used as credentials.
+# It can be created from Azure portal UI, or from `az` command line. e.g.:
+#
+# command:
+#    az ad sp create-for-rbac --role="Owner" --scopes="/subscriptions/subscrip-tion-idxx-xxxx-xxxxxxxxxxxx"
+# result:
+#    {
+#      "appId": "appidxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+#      "displayName": "azure-cli-2017-04-26-10-16-19",
+#      "name": "http://azure-cli-2017-04-26-10-16-19",
+#      "password": "password-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+#      "tenant": "tenantid-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+#    }
+
 # create AzureCredentials with a service principal (tenant_id, appid, password)
-creds = AzureCredentials("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+creds = AzureCredentials("tenantid-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "appidxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "password-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
 ctx = AzureContext(creds)
 
 # call APIs
@@ -24,7 +38,7 @@ ctx = AzureContext(creds)
 operationsList(api(ctx, OperationsApi), apiver(OperationsApi))
 
 # get a VM and list out some of its attributes
-const subscription_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+const subscription_id = "subscrip-tion-idxx-xxxx-xxxxxxxxxxxx"
 vm = virtualMachinesGet(api(ctx, VirtualMachinesApi), "test-resource-grp", "my-vm-name", apiver(VirtualMachinesApi), subscription_id)
 
 vm_props = get_field(vm, "properties")
