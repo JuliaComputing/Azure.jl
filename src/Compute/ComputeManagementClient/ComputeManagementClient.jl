@@ -3,8 +3,9 @@
 
 module ComputeManagementClient
 
-using Base.Random.UUID
-using Requests
+using Random
+using Dates
+using HTTP
 using Swagger
 import Swagger: set_field!, get_field, isset_field, validate_field, SwaggerApi, SwaggerModel
 import Base: convert
@@ -30,7 +31,6 @@ export convert, AdditionalUnattendContent
 export convert, ApiEntityReference
 export convert, ApiError
 export convert, ApiErrorBase
-export convert, AvailabilitySet
 export convert, AvailabilitySetListResult
 export convert, AvailabilitySetProperties
 export convert, BootDiagnostics
@@ -44,12 +44,10 @@ export convert, DiagnosticsProfile
 export convert, DiskEncryptionSettings
 export convert, DiskInstanceView
 export convert, HardwareProfile
-export convert, Image
 export convert, ImageDataDisk
 export convert, ImageListResult
 export convert, ImageOSDisk
 export convert, ImageProperties
-export convert, ImageReference
 export convert, ImageStorageProfile
 export convert, InnerError
 export convert, InstanceViewStatus
@@ -58,8 +56,6 @@ export convert, KeyVaultSecretReference
 export convert, LinuxConfiguration
 export convert, ListUsagesResult
 export convert, MaintenanceRedeployStatus
-export convert, ManagedDiskParameters
-export convert, NetworkInterfaceReference
 export convert, NetworkInterfaceReferenceProperties
 export convert, NetworkProfile
 export convert, OSDisk
@@ -78,7 +74,6 @@ export convert, ResourceSkusResult
 export convert, RollingUpgradePolicy
 export convert, RollingUpgradeProgressInfo
 export convert, RollingUpgradeRunningStatus
-export convert, RollingUpgradeStatusInfo
 export convert, RollingUpgradeStatusInfoProperties
 export convert, Sku
 export convert, SshConfiguration
@@ -94,32 +89,23 @@ export convert, UsageName
 export convert, VaultCertificate
 export convert, VaultSecretGroup
 export convert, VirtualHardDisk
-export convert, VirtualMachine
 export convert, VirtualMachineAgentInstanceView
 export convert, VirtualMachineCaptureParameters
-export convert, VirtualMachineCaptureResult
 export convert, VirtualMachineCaptureResultProperties
-export convert, VirtualMachineExtension
 export convert, VirtualMachineExtensionHandlerInstanceView
-export convert, VirtualMachineExtensionImage
 export convert, VirtualMachineExtensionImageProperties
 export convert, VirtualMachineExtensionInstanceView
 export convert, VirtualMachineExtensionProperties
 export convert, VirtualMachineHealthStatus
 export convert, VirtualMachineIdentity
-export convert, VirtualMachineImage
 export convert, VirtualMachineImageProperties
-export convert, VirtualMachineImageResource
 export convert, VirtualMachineInstanceView
 export convert, VirtualMachineListResult
 export convert, VirtualMachineProperties
-export convert, VirtualMachineScaleSet
 export convert, VirtualMachineScaleSetDataDisk
-export convert, VirtualMachineScaleSetExtension
 export convert, VirtualMachineScaleSetExtensionListResult
 export convert, VirtualMachineScaleSetExtensionProfile
 export convert, VirtualMachineScaleSetExtensionProperties
-export convert, VirtualMachineScaleSetIPConfiguration
 export convert, VirtualMachineScaleSetIPConfigurationProperties
 export convert, VirtualMachineScaleSetIdentity
 export convert, VirtualMachineScaleSetInstanceView
@@ -128,7 +114,6 @@ export convert, VirtualMachineScaleSetListResult
 export convert, VirtualMachineScaleSetListSkusResult
 export convert, VirtualMachineScaleSetListWithLinkResult
 export convert, VirtualMachineScaleSetManagedDiskParameters
-export convert, VirtualMachineScaleSetNetworkConfiguration
 export convert, VirtualMachineScaleSetNetworkConfigurationDnsSettings
 export convert, VirtualMachineScaleSetNetworkConfigurationProperties
 export convert, VirtualMachineScaleSetNetworkProfile
@@ -141,10 +126,7 @@ export convert, VirtualMachineScaleSetPublicIPAddressConfigurationProperties
 export convert, VirtualMachineScaleSetSku
 export convert, VirtualMachineScaleSetSkuCapacity
 export convert, VirtualMachineScaleSetStorageProfile
-export convert, VirtualMachineScaleSetUpdate
-export convert, VirtualMachineScaleSetUpdateIPConfiguration
 export convert, VirtualMachineScaleSetUpdateIPConfigurationProperties
-export convert, VirtualMachineScaleSetUpdateNetworkConfiguration
 export convert, VirtualMachineScaleSetUpdateNetworkConfigurationProperties
 export convert, VirtualMachineScaleSetUpdateNetworkProfile
 export convert, VirtualMachineScaleSetUpdateOSDisk
@@ -154,7 +136,6 @@ export convert, VirtualMachineScaleSetUpdatePublicIPAddressConfiguration
 export convert, VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties
 export convert, VirtualMachineScaleSetUpdateStorageProfile
 export convert, VirtualMachineScaleSetUpdateVMProfile
-export convert, VirtualMachineScaleSetVM
 export convert, VirtualMachineScaleSetVMExtensionsSummary
 export convert, VirtualMachineScaleSetVMInstanceIDs
 export convert, VirtualMachineScaleSetVMInstanceRequiredIDs
@@ -168,6 +149,26 @@ export convert, VirtualMachineStatusCodeCount
 export convert, WinRMConfiguration
 export convert, WinRMListener
 export convert, WindowsConfiguration
+export convert, AvailabilitySet
+export convert, Image
+export convert, ImageReference
+export convert, ManagedDiskParameters
+export convert, NetworkInterfaceReference
+export convert, RollingUpgradeStatusInfo
+export convert, VirtualMachine
+export convert, VirtualMachineCaptureResult
+export convert, VirtualMachineExtension
+export convert, VirtualMachineExtensionImage
+export convert, VirtualMachineImageResource
+export convert, VirtualMachineScaleSet
+export convert, VirtualMachineScaleSetExtension
+export convert, VirtualMachineScaleSetIPConfiguration
+export convert, VirtualMachineScaleSetNetworkConfiguration
+export convert, VirtualMachineScaleSetUpdate
+export convert, VirtualMachineScaleSetUpdateIPConfiguration
+export convert, VirtualMachineScaleSetUpdateNetworkConfiguration
+export convert, VirtualMachineScaleSetVM
+export convert, VirtualMachineImage
 
 # export operations
 export convert, AvailabilitySetsApi, ImagesApi, SkusApi, UsageApi, VirtualMachineExtensionImagesApi, VirtualMachineExtensionsApi, VirtualMachineImagesApi, VirtualMachineScaleSetExtensionsApi, VirtualMachineScaleSetRollingUpgradesApi, VirtualMachineScaleSetVMsApi, VirtualMachineScaleSetsApi, VirtualMachineSizesApi, VirtualMachinesApi

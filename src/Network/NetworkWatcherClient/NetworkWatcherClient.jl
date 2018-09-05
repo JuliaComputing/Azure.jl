@@ -3,8 +3,9 @@
 
 module NetworkWatcherClient
 
-using Base.Random.UUID
-using Requests
+using Random
+using Dates
+using HTTP
 using Swagger
 import Swagger: set_field!, get_field, isset_field, validate_field, SwaggerApi, SwaggerModel
 import Base: convert
@@ -27,7 +28,6 @@ export convert, FlowLogProperties
 export convert, FlowLogStatusParameters
 export convert, IssueContext
 export convert, NetworkInterfaceAssociation
-export convert, NetworkWatcher
 export convert, NetworkWatcherListResult
 export convert, NetworkWatcherPropertiesFormat
 export convert, NextHopParameters
@@ -38,7 +38,6 @@ export convert, PacketCaptureListResult
 export convert, PacketCaptureParameters
 export convert, PacketCaptureQueryStatusResult
 export convert, PacketCaptureResult
-export convert, PacketCaptureResultProperties
 export convert, PacketCaptureStorageLocation
 export convert, QueryTroubleshootingParameters
 export convert, Resource
@@ -46,8 +45,8 @@ export convert, RetentionPolicyParameters
 export convert, SecurityGroupNetworkInterface
 export convert, SecurityGroupViewParameters
 export convert, SecurityGroupViewResult
-export convert, SecurityRule
 export convert, SecurityRuleAssociations
+export convert, SubResource
 export convert, SubnetAssociation
 export convert, Topology
 export convert, TopologyAssociation
@@ -60,6 +59,9 @@ export convert, TroubleshootingRecommendedActions
 export convert, TroubleshootingResult
 export convert, VerificationIPFlowParameters
 export convert, VerificationIPFlowResult
+export convert, NetworkWatcher
+export convert, PacketCaptureResultProperties
+export convert, SecurityRule
 
 # export operations
 export convert, NetworkWatchersApi, PacketCapturesApi

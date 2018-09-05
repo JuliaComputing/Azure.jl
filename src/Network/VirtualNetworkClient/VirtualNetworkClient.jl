@@ -3,8 +3,9 @@
 
 module VirtualNetworkClient
 
-using Base.Random.UUID
-using Requests
+using Random
+using Dates
+using HTTP
 using Swagger
 import Swagger: set_field!, get_field, isset_field, validate_field, SwaggerApi, SwaggerModel
 import Base: convert
@@ -20,25 +21,25 @@ include("api_VirtualNetworksApi.jl")
 export convert, AddressSpace
 export convert, DhcpOptions
 export convert, IPAddressAvailabilityResult
-export convert, IPConfiguration
-export convert, NetworkSecurityGroup
 export convert, Resource
-export convert, ResourceNavigationLink
 export convert, ResourceNavigationLinkFormat
-export convert, RouteTable
 export convert, SubResource
-export convert, Subnet
 export convert, SubnetListResult
 export convert, SubnetPropertiesFormat
-export convert, VirtualNetwork
 export convert, VirtualNetworkListResult
 export convert, VirtualNetworkListUsageResult
-export convert, VirtualNetworkPeering
 export convert, VirtualNetworkPeeringListResult
 export convert, VirtualNetworkPeeringPropertiesFormat
 export convert, VirtualNetworkPropertiesFormat
 export convert, VirtualNetworkUsage
 export convert, VirtualNetworkUsageName
+export convert, IPConfiguration
+export convert, NetworkSecurityGroup
+export convert, ResourceNavigationLink
+export convert, RouteTable
+export convert, Subnet
+export convert, VirtualNetwork
+export convert, VirtualNetworkPeering
 
 # export operations
 export convert, DefaultApi, SubnetsApi, VirtualNetworkPeeringsApi, VirtualNetworksApi

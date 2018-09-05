@@ -3,8 +3,9 @@
 
 module LoadBalancerClient
 
-using Base.Random.UUID
-using Requests
+using Random
+using Dates
+using HTTP
 using Swagger
 import Swagger: set_field!, get_field, isset_field, validate_field, SwaggerApi, SwaggerModel
 import Base: convert
@@ -14,27 +15,27 @@ include("modelincludes.jl")
 include("api_LoadBalancersApi.jl")
 
 # export models
-export convert, BackendAddressPool
 export convert, BackendAddressPoolPropertiesFormat
-export convert, FrontendIPConfiguration
 export convert, FrontendIPConfigurationPropertiesFormat
-export convert, InboundNatPool
 export convert, InboundNatPoolPropertiesFormat
-export convert, InboundNatRule
 export convert, InboundNatRulePropertiesFormat
-export convert, LoadBalancer
 export convert, LoadBalancerListResult
 export convert, LoadBalancerPropertiesFormat
-export convert, LoadBalancingRule
 export convert, LoadBalancingRulePropertiesFormat
-export convert, NetworkInterfaceIPConfiguration
-export convert, OutboundNatRule
 export convert, OutboundNatRulePropertiesFormat
-export convert, Probe
 export convert, ProbePropertiesFormat
-export convert, PublicIPAddress
 export convert, Resource
 export convert, SubResource
+export convert, BackendAddressPool
+export convert, FrontendIPConfiguration
+export convert, InboundNatPool
+export convert, InboundNatRule
+export convert, LoadBalancer
+export convert, LoadBalancingRule
+export convert, NetworkInterfaceIPConfiguration
+export convert, OutboundNatRule
+export convert, Probe
+export convert, PublicIPAddress
 export convert, Subnet
 
 # export operations

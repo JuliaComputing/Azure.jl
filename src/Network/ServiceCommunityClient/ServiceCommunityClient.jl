@@ -3,8 +3,9 @@
 
 module ServiceCommunityClient
 
-using Base.Random.UUID
-using Requests
+using Random
+using Dates
+using HTTP
 using Swagger
 import Swagger: set_field!, get_field, isset_field, validate_field, SwaggerApi, SwaggerModel
 import Base: convert
@@ -15,10 +16,10 @@ include("api_BgpServiceCommunitiesApi.jl")
 
 # export models
 export convert, BGPCommunity
-export convert, BgpServiceCommunity
 export convert, BgpServiceCommunityListResult
 export convert, BgpServiceCommunityPropertiesFormat
 export convert, Resource
+export convert, BgpServiceCommunity
 
 # export operations
 export convert, BgpServiceCommunitiesApi

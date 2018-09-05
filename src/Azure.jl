@@ -1,12 +1,8 @@
-__precompile__(true)
-
 module Azure
 
 using Swagger
-using Requests
-using HttpCommon
+using HTTP
 using JSON
-using Compat
 
 # API versions
 const _module_versions = Dict{Module,String}()
@@ -44,12 +40,12 @@ _api_versions[ComputeManagementClient.UsageApi] = "2017-03-30"
 _api_versions[ComputeManagementClient.VirtualMachineExtensionImagesApi] = "2017-03-30"
 _api_versions[ComputeManagementClient.VirtualMachineExtensionsApi] = "2017-03-30"
 _api_versions[ComputeManagementClient.VirtualMachineImagesApi] = "2017-03-30"
-_api_versions[ComputeManagementClient.VirtualMachinesApi] = "2017-03-30"
 _api_versions[ComputeManagementClient.VirtualMachineScaleSetExtensionsApi] = "2017-03-30"
 _api_versions[ComputeManagementClient.VirtualMachineScaleSetRollingUpgradesApi] = "2017-03-30"
-_api_versions[ComputeManagementClient.VirtualMachineScaleSetsApi] = "2017-03-30"
 _api_versions[ComputeManagementClient.VirtualMachineScaleSetVMsApi] = "2017-03-30"
+_api_versions[ComputeManagementClient.VirtualMachineScaleSetsApi] = "2017-03-30"
 _api_versions[ComputeManagementClient.VirtualMachineSizesApi] = "2017-03-30"
+_api_versions[ComputeManagementClient.VirtualMachinesApi] = "2017-03-30"
 
 include("Compute/DiskResourceProviderClient/DiskResourceProviderClient.jl")
 _module_versions[DiskResourceProviderClient] = "2017-03-30"
@@ -81,8 +77,8 @@ _api_versions[ExpressRouteCircuitClient.ExpressRouteCircuitAuthorizationsApi] = 
 _api_versions[ExpressRouteCircuitClient.ExpressRouteCircuitPeeringsApi] = "2017-03-01"
 _api_versions[ExpressRouteCircuitClient.ExpressRouteCircuitRoutesTableApi] = "2017-03-01"
 _api_versions[ExpressRouteCircuitClient.ExpressRouteCircuitRoutesTableSummaryApi] = "2017-03-01"
-_api_versions[ExpressRouteCircuitClient.ExpressRouteCircuitsApi] = "2017-03-01"
 _api_versions[ExpressRouteCircuitClient.ExpressRouteCircuitStatsApi] = "2017-03-01"
+_api_versions[ExpressRouteCircuitClient.ExpressRouteCircuitsApi] = "2017-03-01"
 _api_versions[ExpressRouteCircuitClient.ExpressRouteServiceProvidersApi] = "2017-03-01"
 
 include("Network/LoadBalancerClient/LoadBalancerClient.jl")
@@ -117,8 +113,8 @@ _api_versions[RouteFilterClient.RouteFiltersApi] = "2017-03-01"
 
 include("Network/RouteTableClient/RouteTableClient.jl")
 _module_versions[RouteTableClient] = "2017-03-01"
-_api_versions[RouteTableClient.RoutesApi] = "2017-03-01"
 _api_versions[RouteTableClient.RouteTablesApi] = "2017-03-01"
+_api_versions[RouteTableClient.RoutesApi] = "2017-03-01"
 
 include("Network/ServiceCommunityClient/ServiceCommunityClient.jl")
 _module_versions[ServiceCommunityClient] = "2017-03-01"

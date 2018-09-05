@@ -3,8 +3,9 @@
 
 module RouteFilterClient
 
-using Base.Random.UUID
-using Requests
+using Random
+using Dates
+using HTTP
 using Swagger
 import Swagger: set_field!, get_field, isset_field, validate_field, SwaggerApi, SwaggerModel
 import Base: convert
@@ -15,17 +16,17 @@ include("api_RouteFilterRulesApi.jl")
 include("api_RouteFiltersApi.jl")
 
 # export models
-export convert, ExpressRouteCircuitPeering
-export convert, PatchRouteFilter
-export convert, PatchRouteFilterRule
 export convert, Resource
-export convert, RouteFilter
 export convert, RouteFilterListResult
 export convert, RouteFilterPropertiesFormat
-export convert, RouteFilterRule
 export convert, RouteFilterRuleListResult
 export convert, RouteFilterRulePropertiesFormat
 export convert, SubResource
+export convert, ExpressRouteCircuitPeering
+export convert, PatchRouteFilter
+export convert, PatchRouteFilterRule
+export convert, RouteFilter
+export convert, RouteFilterRule
 
 # export operations
 export convert, RouteFilterRulesApi, RouteFiltersApi

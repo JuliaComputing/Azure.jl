@@ -3,8 +3,9 @@
 
 module ApplicationGatewayClient
 
-using Base.Random.UUID
-using Requests
+using Random
+using Dates
+using HTTP
 using Swagger
 import Swagger: set_field!, get_field, isset_field, validate_field, SwaggerApi, SwaggerModel
 import Base: convert
@@ -14,51 +15,51 @@ include("modelincludes.jl")
 include("api_ApplicationGatewaysApi.jl")
 
 # export models
-export convert, ApplicationGateway
-export convert, ApplicationGatewayAuthenticationCertificate
 export convert, ApplicationGatewayAuthenticationCertificatePropertiesFormat
 export convert, ApplicationGatewayAvailableWafRuleSetsResult
 export convert, ApplicationGatewayBackendAddress
-export convert, ApplicationGatewayBackendAddressPool
 export convert, ApplicationGatewayBackendAddressPoolPropertiesFormat
 export convert, ApplicationGatewayBackendHealth
 export convert, ApplicationGatewayBackendHealthHttpSettings
 export convert, ApplicationGatewayBackendHealthPool
 export convert, ApplicationGatewayBackendHealthServer
-export convert, ApplicationGatewayBackendHttpSettings
 export convert, ApplicationGatewayBackendHttpSettingsPropertiesFormat
 export convert, ApplicationGatewayConnectionDraining
 export convert, ApplicationGatewayFirewallDisabledRuleGroup
 export convert, ApplicationGatewayFirewallRule
 export convert, ApplicationGatewayFirewallRuleGroup
-export convert, ApplicationGatewayFirewallRuleSet
 export convert, ApplicationGatewayFirewallRuleSetPropertiesFormat
-export convert, ApplicationGatewayFrontendIPConfiguration
 export convert, ApplicationGatewayFrontendIPConfigurationPropertiesFormat
-export convert, ApplicationGatewayFrontendPort
 export convert, ApplicationGatewayFrontendPortPropertiesFormat
-export convert, ApplicationGatewayHttpListener
 export convert, ApplicationGatewayHttpListenerPropertiesFormat
-export convert, ApplicationGatewayIPConfiguration
 export convert, ApplicationGatewayIPConfigurationPropertiesFormat
 export convert, ApplicationGatewayListResult
-export convert, ApplicationGatewayPathRule
 export convert, ApplicationGatewayPathRulePropertiesFormat
-export convert, ApplicationGatewayProbe
 export convert, ApplicationGatewayProbePropertiesFormat
 export convert, ApplicationGatewayPropertiesFormat
-export convert, ApplicationGatewayRequestRoutingRule
 export convert, ApplicationGatewayRequestRoutingRulePropertiesFormat
 export convert, ApplicationGatewaySku
-export convert, ApplicationGatewaySslCertificate
 export convert, ApplicationGatewaySslCertificatePropertiesFormat
 export convert, ApplicationGatewaySslPolicy
-export convert, ApplicationGatewayUrlPathMap
 export convert, ApplicationGatewayUrlPathMapPropertiesFormat
 export convert, ApplicationGatewayWebApplicationFirewallConfiguration
-export convert, NetworkInterfaceIPConfiguration
 export convert, Resource
 export convert, SubResource
+export convert, ApplicationGateway
+export convert, ApplicationGatewayAuthenticationCertificate
+export convert, ApplicationGatewayBackendAddressPool
+export convert, ApplicationGatewayBackendHttpSettings
+export convert, ApplicationGatewayFirewallRuleSet
+export convert, ApplicationGatewayFrontendIPConfiguration
+export convert, ApplicationGatewayFrontendPort
+export convert, ApplicationGatewayHttpListener
+export convert, ApplicationGatewayIPConfiguration
+export convert, ApplicationGatewayPathRule
+export convert, ApplicationGatewayProbe
+export convert, ApplicationGatewayRequestRoutingRule
+export convert, ApplicationGatewaySslCertificate
+export convert, ApplicationGatewayUrlPathMap
+export convert, NetworkInterfaceIPConfiguration
 
 # export operations
 export convert, ApplicationGatewaysApi

@@ -3,8 +3,9 @@
 
 module ExpressRouteCircuitClient
 
-using Base.Random.UUID
-using Requests
+using Random
+using Dates
+using HTTP
 using Swagger
 import Swagger: set_field!, get_field, isset_field, validate_field, SwaggerApi, SwaggerModel
 import Base: convert
@@ -23,11 +24,8 @@ include("api_ExpressRouteServiceProvidersApi.jl")
 # export models
 export convert, AuthorizationListResult
 export convert, AuthorizationPropertiesFormat
-export convert, ExpressRouteCircuit
 export convert, ExpressRouteCircuitArpTable
-export convert, ExpressRouteCircuitAuthorization
 export convert, ExpressRouteCircuitListResult
-export convert, ExpressRouteCircuitPeering
 export convert, ExpressRouteCircuitPeeringConfig
 export convert, ExpressRouteCircuitPeeringListResult
 export convert, ExpressRouteCircuitPeeringPropertiesFormat
@@ -40,14 +38,17 @@ export convert, ExpressRouteCircuitStats
 export convert, ExpressRouteCircuitsArpTableListResult
 export convert, ExpressRouteCircuitsRoutesTableListResult
 export convert, ExpressRouteCircuitsRoutesTableSummaryListResult
-export convert, ExpressRouteServiceProvider
 export convert, ExpressRouteServiceProviderBandwidthsOffered
 export convert, ExpressRouteServiceProviderListResult
 export convert, ExpressRouteServiceProviderPropertiesFormat
 export convert, Ipv6ExpressRouteCircuitPeeringConfig
 export convert, Resource
-export convert, RouteFilter
 export convert, SubResource
+export convert, ExpressRouteCircuit
+export convert, ExpressRouteCircuitAuthorization
+export convert, ExpressRouteCircuitPeering
+export convert, ExpressRouteServiceProvider
+export convert, RouteFilter
 
 # export operations
 export convert, ExpressRouteCircuitArpTableApi, ExpressRouteCircuitAuthorizationsApi, ExpressRouteCircuitPeeringsApi, ExpressRouteCircuitRoutesTableApi, ExpressRouteCircuitRoutesTableSummaryApi, ExpressRouteCircuitStatsApi, ExpressRouteCircuitsApi, ExpressRouteServiceProvidersApi

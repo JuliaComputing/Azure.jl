@@ -3,8 +3,9 @@
 
 module NetworkSecurityGroupClient
 
-using Base.Random.UUID
-using Requests
+using Random
+using Dates
+using HTTP
 using Swagger
 import Swagger: set_field!, get_field, isset_field, validate_field, SwaggerApi, SwaggerModel
 import Base: convert
@@ -15,15 +16,15 @@ include("api_NetworkSecurityGroupsApi.jl")
 include("api_SecurityRulesApi.jl")
 
 # export models
-export convert, NetworkInterface
-export convert, NetworkSecurityGroup
 export convert, NetworkSecurityGroupListResult
 export convert, NetworkSecurityGroupPropertiesFormat
 export convert, Resource
-export convert, SecurityRule
 export convert, SecurityRuleListResult
 export convert, SecurityRulePropertiesFormat
 export convert, SubResource
+export convert, NetworkInterface
+export convert, NetworkSecurityGroup
+export convert, SecurityRule
 export convert, Subnet
 
 # export operations

@@ -3,8 +3,9 @@
 
 module VirtualNetworkGatewayClient
 
-using Base.Random.UUID
-using Requests
+using Random
+using Dates
+using HTTP
 using Swagger
 import Swagger: set_field!, get_field, isset_field, validate_field, SwaggerApi, SwaggerModel
 import Base: convert
@@ -25,27 +26,27 @@ export convert, ConnectionSharedKey
 export convert, GatewayRoute
 export convert, GatewayRouteListResult
 export convert, IpsecPolicy
-export convert, LocalNetworkGateway
 export convert, LocalNetworkGatewayListResult
 export convert, LocalNetworkGatewayPropertiesFormat
 export convert, Resource
 export convert, SubResource
 export convert, TunnelConnectionHealth
-export convert, VirtualNetworkGateway
-export convert, VirtualNetworkGatewayConnection
 export convert, VirtualNetworkGatewayConnectionListResult
 export convert, VirtualNetworkGatewayConnectionPropertiesFormat
-export convert, VirtualNetworkGatewayIPConfiguration
 export convert, VirtualNetworkGatewayIPConfigurationPropertiesFormat
 export convert, VirtualNetworkGatewayListResult
 export convert, VirtualNetworkGatewayPropertiesFormat
 export convert, VirtualNetworkGatewaySku
 export convert, VpnClientConfiguration
 export convert, VpnClientParameters
-export convert, VpnClientRevokedCertificate
 export convert, VpnClientRevokedCertificatePropertiesFormat
-export convert, VpnClientRootCertificate
 export convert, VpnClientRootCertificatePropertiesFormat
+export convert, LocalNetworkGateway
+export convert, VirtualNetworkGateway
+export convert, VirtualNetworkGatewayConnection
+export convert, VirtualNetworkGatewayIPConfiguration
+export convert, VpnClientRevokedCertificate
+export convert, VpnClientRootCertificate
 
 # export operations
 export convert, LocalNetworkGatewaysApi, VirtualNetworkGatewayConnectionsApi, VirtualNetworkGatewaysApi
