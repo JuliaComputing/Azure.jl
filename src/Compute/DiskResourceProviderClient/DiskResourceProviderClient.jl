@@ -3,8 +3,9 @@
 
 module DiskResourceProviderClient
 
-using Base.Random.UUID
-using Requests
+using Random
+using Dates
+using HTTP
 using Swagger
 import Swagger: set_field!, get_field, isset_field, validate_field, SwaggerApi, SwaggerModel
 import Base: convert
@@ -21,11 +22,9 @@ export convert, AccessUriRaw
 export convert, ApiError
 export convert, ApiErrorBase
 export convert, CreationData
-export convert, Disk
 export convert, DiskList
 export convert, DiskProperties
 export convert, DiskSku
-export convert, DiskUpdate
 export convert, DiskUpdateProperties
 export convert, EncryptionSettings
 export convert, GrantAccessData
@@ -36,10 +35,12 @@ export convert, KeyVaultAndSecretReference
 export convert, OperationStatusResponse
 export convert, Resource
 export convert, ResourceUpdate
-export convert, Snapshot
 export convert, SnapshotList
-export convert, SnapshotUpdate
 export convert, SourceVault
+export convert, Disk
+export convert, DiskUpdate
+export convert, Snapshot
+export convert, SnapshotUpdate
 
 # export operations
 export convert, DisksApi, SnapshotsApi

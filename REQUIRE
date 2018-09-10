@@ -1,7 +1,5 @@
-julia 0.5
-
+julia 0.7
 Swagger
-Requests 
-HttpCommon 
 JSON
-Compat 0.17.0
+HTTP
+MbedTLS

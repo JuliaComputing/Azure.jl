@@ -4,7 +4,8 @@ os:
   - linux
   - osx
 julia:
-  - release
+  - 0.7
+  - 1.0
   - nightly
 notifications:
   email: false
@@ -14,6 +15,6 @@ notifications:
 #  - julia -e 'Pkg.clone(pwd()); Pkg.build("Azure"); Pkg.test("Azure"; coverage=true)'
 after_success:
   # push coverage results to Coveralls
-  - julia -e 'cd(Pkg.dir("Azure")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(Coveralls.process_folder())'
+  #- julia -e 'cd(Pkg.dir("Azure")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(Coveralls.process_folder())'
   # push coverage results to Codecov
-  - julia -e 'cd(Pkg.dir("Azure")); Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())'
+  #- julia -e 'cd(Pkg.dir("Azure")); Pkg.add("Coverage"); using Coverage; Codecov.submit(Codecov.process_folder())'

@@ -3,8 +3,9 @@
 
 module UsageManagementClient
 
-using Base.Random.UUID
-using Requests
+using Random
+using Dates
+using HTTP
 using Swagger
 import Swagger: set_field!, get_field, isset_field, validate_field, SwaggerApi, SwaggerModel
 import Base: convert
@@ -18,15 +19,15 @@ include("api_UsageAggregatesApi.jl")
 export convert, ErrorResponse
 export convert, InfoField
 export convert, MeterInfo
-export convert, MonetaryCommitment
-export convert, MonetaryCredit
 export convert, OfferTermInfo
 export convert, RateCardQueryParameters
-export convert, RecurringCharge
 export convert, ResourceRateCardInfo
 export convert, UsageAggregation
 export convert, UsageAggregationListResult
 export convert, UsageSample
+export convert, MonetaryCommitment
+export convert, MonetaryCredit
+export convert, RecurringCharge
 
 # export operations
 export convert, RateCardApi, UsageAggregatesApi

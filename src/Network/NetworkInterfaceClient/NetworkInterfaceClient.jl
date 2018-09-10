@@ -3,8 +3,9 @@
 
 module NetworkInterfaceClient
 
-using Base.Random.UUID
-using Requests
+using Random
+using Dates
+using HTTP
 using Swagger
 import Swagger: set_field!, get_field, isset_field, validate_field, SwaggerApi, SwaggerModel
 import Base: convert
@@ -14,27 +15,27 @@ include("modelincludes.jl")
 include("api_NetworkInterfacesApi.jl")
 
 # export models
-export convert, ApplicationGatewayBackendAddressPool
-export convert, BackendAddressPool
 export convert, EffectiveNetworkSecurityGroup
 export convert, EffectiveNetworkSecurityGroupAssociation
 export convert, EffectiveNetworkSecurityGroupListResult
 export convert, EffectiveNetworkSecurityRule
 export convert, EffectiveRoute
 export convert, EffectiveRouteListResult
-export convert, IPConfiguration
 export convert, IPConfigurationPropertiesFormat
-export convert, InboundNatRule
-export convert, NetworkInterface
 export convert, NetworkInterfaceDnsSettings
-export convert, NetworkInterfaceIPConfiguration
 export convert, NetworkInterfaceIPConfigurationPropertiesFormat
 export convert, NetworkInterfaceListResult
 export convert, NetworkInterfacePropertiesFormat
-export convert, NetworkSecurityGroup
-export convert, PublicIPAddress
 export convert, Resource
 export convert, SubResource
+export convert, ApplicationGatewayBackendAddressPool
+export convert, BackendAddressPool
+export convert, IPConfiguration
+export convert, InboundNatRule
+export convert, NetworkInterface
+export convert, NetworkInterfaceIPConfiguration
+export convert, NetworkSecurityGroup
+export convert, PublicIPAddress
 export convert, Subnet
 
 # export operations

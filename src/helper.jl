@@ -5,12 +5,12 @@ const DEFAULT_TOKEN_EXPIRE = 5*60
 """
 Auth provider provides a way to retrieve credentials for authentication / re-authentication after token expiry.
 """
-@compat abstract type AzureAuthProvider end
+abstract type AzureAuthProvider end
 
 """
 A simple auth provider that stores secrets in memory.
 """
-type AzureCredentials <: AzureAuthProvider
+mutable struct AzureCredentials <: AzureAuthProvider
     tenant_id::String
     client_id::String
     client_secret::String
@@ -23,7 +23,7 @@ client_secret(creds::AzureCredentials) = creds.client_secret
 """
 Holds a swagger client to make API calls with, an auth provider to authenticate to Azure with, and an authenticated token.
 """
-type AzureContext
+mutable struct AzureContext
     client::Swagger.Client
     auth_provider::AzureAuthProvider
     token::Dict{String,Any}
@@ -41,7 +41,7 @@ Re-authenticates if token has expired.
 function authenticate(ctx::AzureContext)
     (time() < ctx.expires) && return
 
-    info("authenticating...")
+    @info("authenticating...")
     data = Dict{String,String}(
         "client_id" => client_id(ctx.auth_provider),
         "client_secret" => client_secret(ctx.auth_provider),
@@ -51,15 +51,16 @@ function authenticate(ctx::AzureContext)
 
     headers = Dict{String,String}(
         "Cookie" => "flight-uxoptin=true; stsservicecookie=ests; x-ms-gateway-slice=productionb; stsservicecookie=ests",
-        "Content-Type" => "application/x-www-form-urlencoded"
+        "Content-Type" => "application/x-www-form-urlencoded",
+        "Connection" => "close"
     )
 
     tenant = tenant_id(ctx.auth_provider)
     auth_url = AUTH_URI * "/" * tenant * "/oauth2/token"
-    resp = post(auth_url; data=data, headers=headers)
-    (200 <= statuscode(resp) <= 206) || throw(Swagger.ApiException(resp))
+    resp = HTTP.request("POST", auth_url; body=HTTP.URIs.escapeuri(data), headers=headers)
+    (200 <= resp.status <= 206) || throw(Swagger.ApiException(resp))
 
-    ctx.token = JSON.parse(String(resp.data))
+    ctx.token = JSON.parse(String(resp.body))
     if "expires_in" in keys(ctx.token)
         ctx.expires = time() + parse(Int, ctx.token["expires_in"])
     elseif "expires_on" in keys(ctx.token)
@@ -73,7 +74,7 @@ function authenticate(ctx::AzureContext)
     token_type = get(ctx.token, "token_type", "Bearer")
     ctx.client.headers["Authorization"] = token_type * " " * ctx.token["access_token"]
 
-    info("authenticated")
+    @info("authenticated")
     nothing
 end
 

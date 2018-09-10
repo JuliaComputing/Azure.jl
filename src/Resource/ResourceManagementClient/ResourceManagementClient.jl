@@ -3,8 +3,9 @@
 
 module ResourceManagementClient
 
-using Base.Random.UUID
-using Requests
+using Random
+using Dates
+using HTTP
 using Swagger
 import Swagger: set_field!, get_field, isset_field, validate_field, SwaggerApi, SwaggerModel
 import Base: convert
@@ -36,7 +37,6 @@ export convert, DeploymentProperties
 export convert, DeploymentPropertiesExtended
 export convert, DeploymentValidateResult
 export convert, ExportTemplateRequest
-export convert, GenericResource
 export convert, GenericResourceFilter
 export convert, HttpMessage
 export convert, Identity
@@ -64,6 +64,7 @@ export convert, TagValue
 export convert, TagsListResult
 export convert, TargetResource
 export convert, TemplateLink
+export convert, GenericResource
 
 # export operations
 export convert, DeploymentOperationsApi, DeploymentsApi, ProvidersApi, ResourceGroupsApi, ResourcesApi, TagsApi

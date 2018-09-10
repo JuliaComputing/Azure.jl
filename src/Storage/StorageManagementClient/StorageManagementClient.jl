@@ -3,8 +3,9 @@
 
 module StorageManagementClient
 
-using Base.Random.UUID
-using Requests
+using Random
+using Dates
+using HTTP
 using Swagger
 import Swagger: set_field!, get_field, isset_field, validate_field, SwaggerApi, SwaggerModel
 import Base: convert
@@ -42,7 +43,6 @@ export convert, SKUCapability
 export convert, ServiceSasParameters
 export convert, ServiceSpecification
 export convert, Sku
-export convert, StorageAccount
 export convert, StorageAccountCheckNameAvailabilityParameters
 export convert, StorageAccountCreateParameters
 export convert, StorageAccountKey
@@ -58,6 +58,7 @@ export convert, Usage
 export convert, UsageListResult
 export convert, UsageName
 export convert, VirtualNetworkRule
+export convert, StorageAccount
 
 # export operations
 export convert, OperationsApi, SkusApi, StorageAccountsApi, UsageApi

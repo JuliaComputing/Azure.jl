@@ -3,8 +3,9 @@
 
 module PublicIpAddressClient
 
-using Base.Random.UUID
-using Requests
+using Random
+using Dates
+using HTTP
 using Swagger
 import Swagger: set_field!, get_field, isset_field, validate_field, SwaggerApi, SwaggerModel
 import Base: convert
@@ -14,12 +15,13 @@ include("modelincludes.jl")
 include("api_PublicIPAddressesApi.jl")
 
 # export models
-export convert, IPConfiguration
-export convert, PublicIPAddress
 export convert, PublicIPAddressDnsSettings
 export convert, PublicIPAddressListResult
 export convert, PublicIPAddressPropertiesFormat
 export convert, Resource
+export convert, SubResource
+export convert, IPConfiguration
+export convert, PublicIPAddress
 
 # export operations
 export convert, PublicIPAddressesApi

@@ -1,24 +1,26 @@
 module REST
 
-using Requests
-using HttpCommon
-using Compat
+using HTTP
 using MbedTLS
+using Dates
+using Base64
 
 const API_VER = "2016-05-31"
 
-type StandardHeaders
-    content_encoding::Union{String,Void}
-    content_language::Union{String,Void}
-    content_length::Union{String,Void}
-    content_md5::Union{String,Void}
-    content_type::Union{String,Void}
-    date::Union{String,Void}
-    if_modified_since::Union{String,Void}
-    if_match::Union{String,Void}
-    if_none_match::Union{String,Void}
-    if_unmodified_since::Union{String,Void}
-    range::Union{String,Void}
+const DEFAULT_CLIENT = HTTP.Client(; retries=0, readtimeout=300, status_exception=false)
+
+mutable struct StandardHeaders
+    content_encoding::Union{String,Nothing}
+    content_language::Union{String,Nothing}
+    content_length::Union{String,Nothing}
+    content_md5::Union{String,Nothing}
+    content_type::Union{String,Nothing}
+    date::Union{String,Nothing}
+    if_modified_since::Union{String,Nothing}
+    if_match::Union{String,Nothing}
+    if_none_match::Union{String,Nothing}
+    if_unmodified_since::Union{String,Nothing}
+    range::Union{String,Nothing}
 end
 
 function StandardHeaders(; kwargs...)
@@ -29,7 +31,7 @@ function StandardHeaders(; kwargs...)
     obj
 end
 
-immutable ServiceRequest
+struct ServiceRequest
     account::String
     verb::String
     resource::String
@@ -59,9 +61,9 @@ end
 
 to_http_header_name(n::Symbol) = join(map(ucfirst, split(string(n), '_')), '-')
 
-sign_strip(str::String) = replace(strip(str), "\n", " ")
+sign_strip(str::String) = replace(strip(str), "\n"=>" ")
 sign_hdr(nv::Pair{String,String}) = lowercase(sign_strip(nv[1])) * ":" * sign_strip(nv[2])
-sign_hdr(nv::Pair{AbstractString,AbstractString}) = sign_hdr(String(nv[1])=>String(nv[2]))
+sign_hdr(nv::Pair{T1,T2}) where {T1<:AbstractString, T2<:AbstractString} = sign_hdr(String(nv[1])=>String(nv[2]))
 
 function sign_sharedkey(req::ServiceRequest, key::String)
     iob = IOBuffer()
@@ -75,7 +77,7 @@ function sign_sharedkey(req::ServiceRequest, key::String)
         println(iob, v === nothing ? "" : v)
     end
 
-    x_ms_headers = sort(map(sign_hdr, collect(filter((n,v)->startswith(lowercase(strip(n)), "x-ms-"), req.headers))))
+    x_ms_headers = sort(map(sign_hdr, collect(filter((p)->startswith(lowercase(strip(p[1])), "x-ms-"), req.headers))))
     for v in x_ms_headers
         println(iob, v)
     end
@@ -89,19 +91,14 @@ function sign_sharedkey(req::ServiceRequest, key::String)
 end
 
 function canonicalize_resource(resource_account::String, uri::String)
-    container = join(split(uri, "/")[4:end], "/")
-    query = ""
-
-    if contains(container, "?")
-        cparts = split(container, "?"; limit=2)
-        container = String(cparts[1])
-        query = String(cparts[2])
-    end
+    url = HTTP.URIs.URI(uri)
+    container = url.path
+    query = url.query
 
     iob = IOBuffer()
-    print(iob, "/", resource_account, "/", container)
+    print(iob, "/", resource_account, container)
     if !isempty(query)
-        qparts = sort(map(sign_hdr, collect(HttpCommon.parsequerystring(query))))
+        qparts = sort(map(sign_hdr, collect(HTTP.URIs.queryparams(url))))
         for q in qparts
             print(iob, "\n", q)
         end
@@ -111,21 +108,20 @@ end
 
 function execute(req::ServiceRequest, key::String; retry_count::Int=0, retry_interval::Int=60)
     success = false
-    resp = Response()
+    resp = HTTP.Response()
     count = 0
-    method = eval(Requests, Symbol(lowercase(req.verb)))
     sign_sharedkey(req, key)
     while !success && count <= retry_count
         count += 1
         (count == 1) || sleep(retry_interval)
-        resp = method(req.resource; headers = req.headers)
-        success = (200 <= statuscode(resp) <= 206)
+        resp = HTTP.request(DEFAULT_CLIENT, uppercase(req.verb), HTTP.URIs.URI(req.resource); headers=req.headers)
+        success = (200 <= resp.status <= 206)
         success && (return resp)
-        warn("Storage service request failed. ", resp)
+        @warn("Storage service request failed. ", resp)
     end
     resp
 end
 
-issuccess(resp::Response) = (200 <= statuscode(resp) <= 206)
+issuccess(resp::HTTP.Response) = (200 <= resp.status <= 206)
 
 end # module REST

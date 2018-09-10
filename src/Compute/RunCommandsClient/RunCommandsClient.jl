@@ -3,8 +3,9 @@
 
 module RunCommandsClient
 
-using Base.Random.UUID
-using Requests
+using Random
+using Dates
+using HTTP
 using Swagger
 import Swagger: set_field!, get_field, isset_field, validate_field, SwaggerApi, SwaggerModel
 import Base: convert
@@ -19,14 +20,14 @@ export convert, ApiError
 export convert, ApiErrorBase
 export convert, InnerError
 export convert, OperationStatusResponse
-export convert, RunCommandDocument
 export convert, RunCommandDocumentBase
 export convert, RunCommandInput
 export convert, RunCommandInputParameter
 export convert, RunCommandListResult
 export convert, RunCommandParameterDefinition
-export convert, RunCommandResult
 export convert, RunCommandResultProperties
+export convert, RunCommandDocument
+export convert, RunCommandResult
 
 # export operations
 export convert, VirtualMachineRunCommandsApi, VirtualMachinesApi

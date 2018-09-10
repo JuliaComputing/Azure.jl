@@ -3,8 +3,9 @@
 
 module RouteTableClient
 
-using Base.Random.UUID
-using Requests
+using Random
+using Dates
+using HTTP
 using Swagger
 import Swagger: set_field!, get_field, isset_field, validate_field, SwaggerApi, SwaggerModel
 import Base: convert
@@ -16,13 +17,13 @@ include("api_RoutesApi.jl")
 
 # export models
 export convert, Resource
-export convert, Route
 export convert, RouteListResult
 export convert, RoutePropertiesFormat
-export convert, RouteTable
 export convert, RouteTableListResult
 export convert, RouteTablePropertiesFormat
 export convert, SubResource
+export convert, Route
+export convert, RouteTable
 export convert, Subnet
 
 # export operations

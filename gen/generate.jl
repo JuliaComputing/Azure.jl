@@ -2,7 +2,7 @@ const DIR = dirname(@__FILE__)
 const GENDIR = joinpath(DIR, "..")
 const TEMPCFGFILE = joinpath(GENDIR, "config.json")
 const SRCDIR = joinpath(GENDIR, "src")
-const SWAGGERDIR = Pkg.dir("Swagger")
+const SWAGGERDIR=read(`$(ENV["JULIA"]) -e 'import Swagger; print(normpath(joinpath(dirname(pathof(Swagger)), "..")))'`, String)
 const SWAGGERGEN = joinpath(SWAGGERDIR, "plugin", "generate.sh")
 
 const SPECS = [
@@ -40,9 +40,7 @@ const PATCHES = Dict(
     ("ResourceManagementClient", "Resource") => ["model" => ("DeploymentPropertiesExtended",)]
 )
 
-const MODULE_HEAD = """__precompile__(true)
-
-module Azure
+const MODULE_HEAD = """module Azure
 
 using Swagger
 using Requests
@@ -76,11 +74,12 @@ function genunit(pkg, grp, swg)
     pkgpath = joinpath(outpath, pkg)
     mkpath(outpath)
     run(`$SWAGGERGEN -i $swg -o $outpath -c $TEMPCFGFILE`)
-    mv(joinpath(outpath, "src"), pkgpath; remove_destination=true)
-    rm(joinpath(outpath, "REQUIRE"))
-    rm(joinpath(outpath, "LICENSE"))
-    rm(joinpath(outpath, ".swagger-codegen-ignore"))
-    rm(TEMPCFGFILE)
+    mv(joinpath(outpath, "src"), pkgpath; force=true)
+    rm(joinpath(outpath, "REQUIRE"); force=true)
+    rm(joinpath(outpath, "LICENSE"); force=true)
+    rm(joinpath(outpath, ".swagger-codegen-ignore"); force=true)
+    rm(joinpath(outpath, ".swagger-codegen"); force=true, recursive=true)
+    rm(TEMPCFGFILE; force=true)
 
     # apply patches if any
     patches = get(PATCHES, (pkg,grp), [])
@@ -88,7 +87,7 @@ function genunit(pkg, grp, swg)
         patch_type, names = patch
         for name in names
             patchfile = patch_type * "_" * name * ".jl"
-            cp(joinpath(DIR, patchfile), joinpath(pkgpath, patchfile); remove_destination=true)
+            cp(joinpath(DIR, patchfile), joinpath(pkgpath, patchfile); force=true)
         end
     end
 
@@ -112,7 +111,7 @@ function gen(swgroot)
 
         for spec in SPECS
             pkg, grp, ver, swg = spec
-            swg = replace(swg, "{VER}", ver)
+            swg = replace(swg, "{VER}"=>ver)
             mod, apinames = genunit(pkg, grp, joinpath(swgroot, swg))
             println(azf, "include(\"", mod, "\")")
             println(azf, "_module_versions[$pkg] = \"$ver\"")
