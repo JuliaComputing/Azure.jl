@@ -56,8 +56,11 @@ success = setShareProperties(ctx, subscription_id, resource_group_name, fileshar
 success, properties = getShareProperties(ctx, subscription_id, resource_group_name, fileshare)
 deleteShare(ctx, subscription_id, resource_group_name, fileshare)
 
-# file blob operations
+# SAS operations
 const blob = "https://mystorage.blob.core.windows.net/testblob/myblob.dat"
+appendSAS(ctx, subscription_id, resource_group_name, blob)
+
+# file blob operations
 deleteBlob(ctx, subscription_id, resource_group_name, blob)
 
 # rate card
