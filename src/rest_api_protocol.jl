@@ -7,7 +7,7 @@ using Base64
 
 const API_VER = "2016-05-31"
 
-const DEFAULT_CLIENT = HTTP.Client(; retries=0, readtimeout=300, status_exception=false)
+const DEFAULT_KWARGS = Dict(:retries=>0, :readtimeout=>300, :status_exception=>false)
 
 mutable struct StandardHeaders
     content_encoding::Union{String,Nothing}
@@ -114,7 +114,7 @@ function execute(req::ServiceRequest, key::String; retry_count::Int=0, retry_int
     while !success && count <= retry_count
         count += 1
         (count == 1) || sleep(retry_interval)
-        resp = HTTP.request(DEFAULT_CLIENT, uppercase(req.verb), HTTP.URIs.URI(req.resource); headers=req.headers)
+        resp = HTTP.request(uppercase(req.verb), HTTP.URIs.URI(req.resource), req.headers; DEFAULT_KWARGS...)
         success = (200 <= resp.status <= 206)
         success && (return resp)
         @warn("Storage service request failed. ", resp)
