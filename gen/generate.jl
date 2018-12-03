@@ -46,7 +46,6 @@ using Swagger
 using Requests
 using HttpCommon
 using JSON
-using Compat
 
 # API versions
 const _module_versions = Dict{Module,String}()
