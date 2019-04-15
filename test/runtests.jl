@@ -1,5 +1,4 @@
 using Azure
 using Test
 
-# write your own tests here
-@test 1 == 2
+# on public CI, just testing whether package loads at the moment
