@@ -12,7 +12,7 @@ function extract_account_and_key(ctx, subscription_id::String, resource_group_na
 
     # get keys for it
     allkeys = storageAccountsListKeys(Azure.api(ctx, StorageAccountsApi), resource_group_name, storage_account, apiver(StorageAccountsApi), subscription_id)
-    key = get_field(get_field(allkeys, "keys")[1], "value")
+    key = (allkeys.keys[1]).value
 
     storage_account, key
 end

@@ -39,14 +39,14 @@ operationsList(api(ctx, OperationsApi), apiver(OperationsApi))
 const subscription_id = "subscrip-tion-idxx-xxxx-xxxxxxxxxxxx"
 vm = virtualMachinesGet(api(ctx, VirtualMachinesApi), "test-resource-grp", "my-vm-name", apiver(VirtualMachinesApi), subscription_id)
 
-vm_props = get_field(vm, "properties")
-vm_osdisk = get_field(vm_props, "storageProfile", "osDisk") 
+vm_props = vm.properties
+vm_osdisk = vm_props.storageProfile.osDisk
 
-vmtype = get_field(vm_osdisk, "osType")
-osdiskname = get_field(vm_osdisk, "name")
+vmtype = vm_osdisk.osType
+osdiskname = vm_osdisk.name
 
-nics = get_field(vm, "properties", "networkProfile", "networkInterfaces")
-nicids = [rsplit(nicid, '/'; limit=2)[2] for nicid in map(nicref->get_field(nicref, "id"), nics)]
+nics = vm.properties.networkProfile.networkInterfaces
+nicids = [rsplit(nicid, '/'; limit=2)[2] for nicid in map(nicref->nicref.id, nics)]
 
 # file share operations
 const resource_group_name = "testresgroup"
