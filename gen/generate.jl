@@ -43,8 +43,7 @@ const PATCHES = Dict(
 const MODULE_HEAD = """module Azure
 
 using Swagger
-using Requests
-using HttpCommon
+using HTTP
 using JSON
 
 # API versions

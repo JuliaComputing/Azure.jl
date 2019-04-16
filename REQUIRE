@@ -1,5 +1,5 @@
 julia 1.0
-Swagger
+Swagger 0.2.1
 JSON
-HTTP
+HTTP 0.8.0
 MbedTLS
