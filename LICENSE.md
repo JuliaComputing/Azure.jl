@@ -1,8 +1,3 @@
-The Azure.jl package is proprietary and confidential. Use is permitted only with
-explicit permission from Julia Computing Inc.
-
-> Copyright (c) 2018: Julia Computing Inc. All rights reserved.
-
 The Azure.jl package is licensed under the MIT "Expat" License:
 
 > Copyright (c) 2017-2019: Julia Computing Inc.
