@@ -34,7 +34,9 @@ using Azure.UsageManagementClient
 
 ## Create AzureCredentials with a service principal (tenant_id, appid, password)
 ```
-creds = AzureCredentials("tenantid-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "appidxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", "password-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+creds = AzureCredentials("tenantid-xxxx-xxxx-xxxx-xxxxxxxxxxxx", 
+                         "appidxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", 
+                         "password-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
 ctx = AzureContext(creds)
 ```
 # Call APIs
@@ -47,7 +49,10 @@ operationsList(api(ctx, OperationsApi), apiver(OperationsApi))
 ## Get a VM and list out some of its attributes
 ```
 const subscription_id = "subscrip-tion-idxx-xxxx-xxxxxxxxxxxx"
-vm = virtualMachinesGet(api(ctx, VirtualMachinesApi), "test-resource-grp", "my-vm-name", apiver(VirtualMachinesApi), subscription_id)
+vm = virtualMachinesGet(api(ctx, VirtualMachinesApi), 
+                        "test-resource-grp", "my-vm-name", 
+                        apiver(VirtualMachinesApi), 
+                        subscription_id)
 
 vm_props = vm.properties
 vm_osdisk = vm_props.storageProfile.osDisk
@@ -62,7 +67,7 @@ nicids = [rsplit(nicid, '/'; limit=2)[2] for nicid in map(nicref->nicref.id, nic
 ```
 const resource_group_name = "testresgroup"
 const fileshare = "https://mystorage.file.core.windows.net/myshare?restype=share"
-success = createShare(ctx, subscription_id, resource_group_name, fileshare, "100", Dict("testmetaname"=>"testmetaval"))
+success = createShare(ctx, subscription_id, resource_group_name, fileshare, "100", Dict("taname"=>"taval"))
 success = setShareProperties(ctx, subscription_id, resource_group_name, fileshare, "150")
 success, properties = getShareProperties(ctx, subscription_id, resource_group_name, fileshare)
 deleteShare(ctx, subscription_id, resource_group_name, fileshare)
@@ -76,7 +81,7 @@ appendSAS(ctx, subscription_id, resource_group_name, blob)
 ```
 deleteBlob(ctx, subscription_id, resource_group_name, blob)
 ```
-## Fate card
+## Rate card
 ```
 ratefilter = "OfferDurableId eq 'MS-AZR-0003p' and Currency eq 'USD' and Locale eq 'en-US' and RegionInfo eq 'US'"
 rates = rateCardGet(api(ctx, RateCardApi), ratefilter, apiver(RateCardApi), subscription_id)
