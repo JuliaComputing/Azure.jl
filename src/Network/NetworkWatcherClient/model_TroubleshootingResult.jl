@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct TroubleshootingResult <: SwaggerModel
     startTime::Any # spec type: Union{ Nothing, DateTime } # spec name: startTime
     endTime::Any # spec type: Union{ Nothing, DateTime } # spec name: endTime
@@ -26,7 +25,7 @@ end # type TroubleshootingResult
 const _property_map_TroubleshootingResult = Dict{Symbol,Symbol}(Symbol("startTime")=>Symbol("startTime"), Symbol("endTime")=>Symbol("endTime"), Symbol("code")=>Symbol("code"), Symbol("results")=>Symbol("results"))
 const _property_types_TroubleshootingResult = Dict{Symbol,String}(Symbol("startTime")=>"DateTime", Symbol("endTime")=>"DateTime", Symbol("code")=>"String", Symbol("results")=>"Vector{TroubleshootingDetails}")
 Base.propertynames(::Type{ TroubleshootingResult }) = collect(keys(_property_map_TroubleshootingResult))
-Swagger.property_type(::Type{ TroubleshootingResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_TroubleshootingResult[name]))}
+Swagger.property_type(::Type{ TroubleshootingResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TroubleshootingResult[name]))}
 Swagger.field_name(::Type{ TroubleshootingResult }, property_name::Symbol) =  _property_map_TroubleshootingResult[property_name]
 
 function check_required(o::TroubleshootingResult)

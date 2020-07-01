@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct OSDiskImage <: SwaggerModel
     operatingSystem::Any # spec type: Union{ Nothing, String } # spec name: operatingSystem
 
@@ -17,7 +16,7 @@ end # type OSDiskImage
 const _property_map_OSDiskImage = Dict{Symbol,Symbol}(Symbol("operatingSystem")=>Symbol("operatingSystem"))
 const _property_types_OSDiskImage = Dict{Symbol,String}(Symbol("operatingSystem")=>"String")
 Base.propertynames(::Type{ OSDiskImage }) = collect(keys(_property_map_OSDiskImage))
-Swagger.property_type(::Type{ OSDiskImage }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_OSDiskImage[name]))}
+Swagger.property_type(::Type{ OSDiskImage }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_OSDiskImage[name]))}
 Swagger.field_name(::Type{ OSDiskImage }, property_name::Symbol) =  _property_map_OSDiskImage[property_name]
 
 const _allowed_OSDiskImage_operatingSystem = ["Windows", "Linux"]

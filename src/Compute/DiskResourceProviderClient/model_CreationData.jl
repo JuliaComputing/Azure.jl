@@ -2,15 +2,17 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct CreationData <: SwaggerModel
     createOption::Any # spec type: Union{ Nothing, String } # spec name: createOption
     storageAccountId::Any # spec type: Union{ Nothing, String } # spec name: storageAccountId
     imageReference::Any # spec type: Union{ Nothing, ImageDiskReference } # spec name: imageReference
+    galleryImageReference::Any # spec type: Union{ Nothing, ImageDiskReference } # spec name: galleryImageReference
     sourceUri::Any # spec type: Union{ Nothing, String } # spec name: sourceUri
     sourceResourceId::Any # spec type: Union{ Nothing, String } # spec name: sourceResourceId
+    sourceUniqueId::Any # spec type: Union{ Nothing, String } # spec name: sourceUniqueId
+    uploadSizeBytes::Any # spec type: Union{ Nothing, Int64 } # spec name: uploadSizeBytes
 
-    function CreationData(;createOption=nothing, storageAccountId=nothing, imageReference=nothing, sourceUri=nothing, sourceResourceId=nothing)
+    function CreationData(;createOption=nothing, storageAccountId=nothing, imageReference=nothing, galleryImageReference=nothing, sourceUri=nothing, sourceResourceId=nothing, sourceUniqueId=nothing, uploadSizeBytes=nothing)
         o = new()
         validate_property(CreationData, Symbol("createOption"), createOption)
         setfield!(o, Symbol("createOption"), createOption)
@@ -18,21 +20,27 @@ mutable struct CreationData <: SwaggerModel
         setfield!(o, Symbol("storageAccountId"), storageAccountId)
         validate_property(CreationData, Symbol("imageReference"), imageReference)
         setfield!(o, Symbol("imageReference"), imageReference)
+        validate_property(CreationData, Symbol("galleryImageReference"), galleryImageReference)
+        setfield!(o, Symbol("galleryImageReference"), galleryImageReference)
         validate_property(CreationData, Symbol("sourceUri"), sourceUri)
         setfield!(o, Symbol("sourceUri"), sourceUri)
         validate_property(CreationData, Symbol("sourceResourceId"), sourceResourceId)
         setfield!(o, Symbol("sourceResourceId"), sourceResourceId)
+        validate_property(CreationData, Symbol("sourceUniqueId"), sourceUniqueId)
+        setfield!(o, Symbol("sourceUniqueId"), sourceUniqueId)
+        validate_property(CreationData, Symbol("uploadSizeBytes"), uploadSizeBytes)
+        setfield!(o, Symbol("uploadSizeBytes"), uploadSizeBytes)
         o
     end
 end # type CreationData
 
-const _property_map_CreationData = Dict{Symbol,Symbol}(Symbol("createOption")=>Symbol("createOption"), Symbol("storageAccountId")=>Symbol("storageAccountId"), Symbol("imageReference")=>Symbol("imageReference"), Symbol("sourceUri")=>Symbol("sourceUri"), Symbol("sourceResourceId")=>Symbol("sourceResourceId"))
-const _property_types_CreationData = Dict{Symbol,String}(Symbol("createOption")=>"String", Symbol("storageAccountId")=>"String", Symbol("imageReference")=>"ImageDiskReference", Symbol("sourceUri")=>"String", Symbol("sourceResourceId")=>"String")
+const _property_map_CreationData = Dict{Symbol,Symbol}(Symbol("createOption")=>Symbol("createOption"), Symbol("storageAccountId")=>Symbol("storageAccountId"), Symbol("imageReference")=>Symbol("imageReference"), Symbol("galleryImageReference")=>Symbol("galleryImageReference"), Symbol("sourceUri")=>Symbol("sourceUri"), Symbol("sourceResourceId")=>Symbol("sourceResourceId"), Symbol("sourceUniqueId")=>Symbol("sourceUniqueId"), Symbol("uploadSizeBytes")=>Symbol("uploadSizeBytes"))
+const _property_types_CreationData = Dict{Symbol,String}(Symbol("createOption")=>"String", Symbol("storageAccountId")=>"String", Symbol("imageReference")=>"ImageDiskReference", Symbol("galleryImageReference")=>"ImageDiskReference", Symbol("sourceUri")=>"String", Symbol("sourceResourceId")=>"String", Symbol("sourceUniqueId")=>"String", Symbol("uploadSizeBytes")=>"Int64")
 Base.propertynames(::Type{ CreationData }) = collect(keys(_property_map_CreationData))
-Swagger.property_type(::Type{ CreationData }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_CreationData[name]))}
+Swagger.property_type(::Type{ CreationData }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_CreationData[name]))}
 Swagger.field_name(::Type{ CreationData }, property_name::Symbol) =  _property_map_CreationData[property_name]
 
-const _allowed_CreationData_createOption = ["Empty", "Attach", "FromImage", "Import", "Copy"]
+const _allowed_CreationData_createOption = ["Empty", "Attach", "FromImage", "Import", "Copy", "Restore", "Upload"]
 
 function check_required(o::CreationData)
     true

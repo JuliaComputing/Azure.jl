@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct SecurityGroupViewResult <: SwaggerModel
     networkInterfaces::Any # spec type: Union{ Nothing, Vector{SecurityGroupNetworkInterface} } # spec name: networkInterfaces
 
@@ -17,7 +16,7 @@ end # type SecurityGroupViewResult
 const _property_map_SecurityGroupViewResult = Dict{Symbol,Symbol}(Symbol("networkInterfaces")=>Symbol("networkInterfaces"))
 const _property_types_SecurityGroupViewResult = Dict{Symbol,String}(Symbol("networkInterfaces")=>"Vector{SecurityGroupNetworkInterface}")
 Base.propertynames(::Type{ SecurityGroupViewResult }) = collect(keys(_property_map_SecurityGroupViewResult))
-Swagger.property_type(::Type{ SecurityGroupViewResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_SecurityGroupViewResult[name]))}
+Swagger.property_type(::Type{ SecurityGroupViewResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SecurityGroupViewResult[name]))}
 Swagger.field_name(::Type{ SecurityGroupViewResult }, property_name::Symbol) =  _property_map_SecurityGroupViewResult[property_name]
 
 function check_required(o::SecurityGroupViewResult)

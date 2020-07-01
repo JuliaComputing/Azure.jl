@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct RunCommandDocument <: SwaggerModel
     schema::Any # spec type: Union{ Nothing, String } # spec name: \$schema
     id::Any # spec type: Union{ Nothing, String } # spec name: id
@@ -35,7 +34,7 @@ end # type RunCommandDocument
 const _property_map_RunCommandDocument = Dict{Symbol,Symbol}(Symbol("\$schema")=>Symbol("schema"), Symbol("id")=>Symbol("id"), Symbol("osType")=>Symbol("osType"), Symbol("label")=>Symbol("label"), Symbol("description")=>Symbol("description"), Symbol("script")=>Symbol("script"), Symbol("parameters")=>Symbol("parameters"))
 const _property_types_RunCommandDocument = Dict{Symbol,String}(Symbol("\$schema")=>"String", Symbol("id")=>"String", Symbol("osType")=>"String", Symbol("label")=>"String", Symbol("description")=>"String", Symbol("script")=>"Vector{String}", Symbol("parameters")=>"Vector{RunCommandParameterDefinition}")
 Base.propertynames(::Type{ RunCommandDocument }) = collect(keys(_property_map_RunCommandDocument))
-Swagger.property_type(::Type{ RunCommandDocument }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_RunCommandDocument[name]))}
+Swagger.property_type(::Type{ RunCommandDocument }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RunCommandDocument[name]))}
 Swagger.field_name(::Type{ RunCommandDocument }, property_name::Symbol) =  _property_map_RunCommandDocument[property_name]
 
 const _allowed_RunCommandDocument_osType = ["Windows", "Linux"]

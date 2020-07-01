@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct MeterInfo <: SwaggerModel
     MeterId::Any # spec type: Union{ Nothing, String } # spec name: MeterId
     MeterName::Any # spec type: Union{ Nothing, String } # spec name: MeterName
@@ -44,7 +43,7 @@ end # type MeterInfo
 const _property_map_MeterInfo = Dict{Symbol,Symbol}(Symbol("MeterId")=>Symbol("MeterId"), Symbol("MeterName")=>Symbol("MeterName"), Symbol("MeterCategory")=>Symbol("MeterCategory"), Symbol("MeterSubCategory")=>Symbol("MeterSubCategory"), Symbol("Unit")=>Symbol("Unit"), Symbol("MeterTags")=>Symbol("MeterTags"), Symbol("MeterRegion")=>Symbol("MeterRegion"), Symbol("MeterRates")=>Symbol("MeterRates"), Symbol("EffectiveDate")=>Symbol("EffectiveDate"), Symbol("IncludedQuantity")=>Symbol("IncludedQuantity"))
 const _property_types_MeterInfo = Dict{Symbol,String}(Symbol("MeterId")=>"String", Symbol("MeterName")=>"String", Symbol("MeterCategory")=>"String", Symbol("MeterSubCategory")=>"String", Symbol("Unit")=>"String", Symbol("MeterTags")=>"Vector{String}", Symbol("MeterRegion")=>"String", Symbol("MeterRates")=>"Dict{String, Float32}", Symbol("EffectiveDate")=>"DateTime", Symbol("IncludedQuantity")=>"Float32")
 Base.propertynames(::Type{ MeterInfo }) = collect(keys(_property_map_MeterInfo))
-Swagger.property_type(::Type{ MeterInfo }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_MeterInfo[name]))}
+Swagger.property_type(::Type{ MeterInfo }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_MeterInfo[name]))}
 Swagger.field_name(::Type{ MeterInfo }, property_name::Symbol) =  _property_map_MeterInfo[property_name]
 
 function check_required(o::MeterInfo)

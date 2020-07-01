@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ListAccountSasResponse <: SwaggerModel
     accountSasToken::Any # spec type: Union{ Nothing, String } # spec name: accountSasToken
 
@@ -17,7 +16,7 @@ end # type ListAccountSasResponse
 const _property_map_ListAccountSasResponse = Dict{Symbol,Symbol}(Symbol("accountSasToken")=>Symbol("accountSasToken"))
 const _property_types_ListAccountSasResponse = Dict{Symbol,String}(Symbol("accountSasToken")=>"String")
 Base.propertynames(::Type{ ListAccountSasResponse }) = collect(keys(_property_map_ListAccountSasResponse))
-Swagger.property_type(::Type{ ListAccountSasResponse }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ListAccountSasResponse[name]))}
+Swagger.property_type(::Type{ ListAccountSasResponse }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ListAccountSasResponse[name]))}
 Swagger.field_name(::Type{ ListAccountSasResponse }, property_name::Symbol) =  _property_map_ListAccountSasResponse[property_name]
 
 function check_required(o::ListAccountSasResponse)

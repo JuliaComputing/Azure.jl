@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct DeploymentOperation <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
     operationId::Any # spec type: Union{ Nothing, String } # spec name: operationId
@@ -23,7 +22,7 @@ end # type DeploymentOperation
 const _property_map_DeploymentOperation = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("operationId")=>Symbol("operationId"), Symbol("properties")=>Symbol("properties"))
 const _property_types_DeploymentOperation = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("operationId")=>"String", Symbol("properties")=>"DeploymentOperationProperties")
 Base.propertynames(::Type{ DeploymentOperation }) = collect(keys(_property_map_DeploymentOperation))
-Swagger.property_type(::Type{ DeploymentOperation }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_DeploymentOperation[name]))}
+Swagger.property_type(::Type{ DeploymentOperation }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DeploymentOperation[name]))}
 Swagger.field_name(::Type{ DeploymentOperation }, property_name::Symbol) =  _property_map_DeploymentOperation[property_name]
 
 function check_required(o::DeploymentOperation)

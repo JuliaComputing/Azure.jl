@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct TroubleshootingDetails <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
     reasonType::Any # spec type: Union{ Nothing, String } # spec name: reasonType
@@ -29,7 +28,7 @@ end # type TroubleshootingDetails
 const _property_map_TroubleshootingDetails = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("reasonType")=>Symbol("reasonType"), Symbol("summary")=>Symbol("summary"), Symbol("detail")=>Symbol("detail"), Symbol("recommendedActions")=>Symbol("recommendedActions"))
 const _property_types_TroubleshootingDetails = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("reasonType")=>"String", Symbol("summary")=>"String", Symbol("detail")=>"String", Symbol("recommendedActions")=>"Vector{TroubleshootingRecommendedActions}")
 Base.propertynames(::Type{ TroubleshootingDetails }) = collect(keys(_property_map_TroubleshootingDetails))
-Swagger.property_type(::Type{ TroubleshootingDetails }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_TroubleshootingDetails[name]))}
+Swagger.property_type(::Type{ TroubleshootingDetails }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TroubleshootingDetails[name]))}
 Swagger.field_name(::Type{ TroubleshootingDetails }, property_name::Symbol) =  _property_map_TroubleshootingDetails[property_name]
 
 function check_required(o::TroubleshootingDetails)

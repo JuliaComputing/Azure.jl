@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualMachine <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
     name::Any # spec type: Union{ Nothing, String } # spec name: name
@@ -44,7 +43,7 @@ end # type VirtualMachine
 const _property_map_VirtualMachine = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("name")=>Symbol("name"), Symbol("type")=>Symbol("type"), Symbol("location")=>Symbol("location"), Symbol("tags")=>Symbol("tags"), Symbol("plan")=>Symbol("plan"), Symbol("properties")=>Symbol("properties"), Symbol("resources")=>Symbol("resources"), Symbol("identity")=>Symbol("identity"), Symbol("zones")=>Symbol("zones"))
 const _property_types_VirtualMachine = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", Symbol("plan")=>"Plan", Symbol("properties")=>"VirtualMachineProperties", Symbol("resources")=>"Vector{VirtualMachineExtension}", Symbol("identity")=>"VirtualMachineIdentity", Symbol("zones")=>"Vector{String}")
 Base.propertynames(::Type{ VirtualMachine }) = collect(keys(_property_map_VirtualMachine))
-Swagger.property_type(::Type{ VirtualMachine }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualMachine[name]))}
+Swagger.property_type(::Type{ VirtualMachine }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachine[name]))}
 Swagger.field_name(::Type{ VirtualMachine }, property_name::Symbol) =  _property_map_VirtualMachine[property_name]
 
 function check_required(o::VirtualMachine)

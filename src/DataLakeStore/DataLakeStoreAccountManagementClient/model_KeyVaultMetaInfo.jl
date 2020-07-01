@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct KeyVaultMetaInfo <: SwaggerModel
     keyVaultResourceId::Any # spec type: Union{ Nothing, String } # spec name: keyVaultResourceId
     encryptionKeyName::Any # spec type: Union{ Nothing, String } # spec name: encryptionKeyName
@@ -23,7 +22,7 @@ end # type KeyVaultMetaInfo
 const _property_map_KeyVaultMetaInfo = Dict{Symbol,Symbol}(Symbol("keyVaultResourceId")=>Symbol("keyVaultResourceId"), Symbol("encryptionKeyName")=>Symbol("encryptionKeyName"), Symbol("encryptionKeyVersion")=>Symbol("encryptionKeyVersion"))
 const _property_types_KeyVaultMetaInfo = Dict{Symbol,String}(Symbol("keyVaultResourceId")=>"String", Symbol("encryptionKeyName")=>"String", Symbol("encryptionKeyVersion")=>"String")
 Base.propertynames(::Type{ KeyVaultMetaInfo }) = collect(keys(_property_map_KeyVaultMetaInfo))
-Swagger.property_type(::Type{ KeyVaultMetaInfo }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_KeyVaultMetaInfo[name]))}
+Swagger.property_type(::Type{ KeyVaultMetaInfo }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_KeyVaultMetaInfo[name]))}
 Swagger.field_name(::Type{ KeyVaultMetaInfo }, property_name::Symbol) =  _property_map_KeyVaultMetaInfo[property_name]
 
 function check_required(o::KeyVaultMetaInfo)

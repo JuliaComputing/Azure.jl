@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct LocalNetworkGatewayListResult <: SwaggerModel
     value::Any # spec type: Union{ Nothing, Vector{LocalNetworkGateway} } # spec name: value
     nextLink::Any # spec type: Union{ Nothing, String } # spec name: nextLink
@@ -20,7 +19,7 @@ end # type LocalNetworkGatewayListResult
 const _property_map_LocalNetworkGatewayListResult = Dict{Symbol,Symbol}(Symbol("value")=>Symbol("value"), Symbol("nextLink")=>Symbol("nextLink"))
 const _property_types_LocalNetworkGatewayListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{LocalNetworkGateway}", Symbol("nextLink")=>"String")
 Base.propertynames(::Type{ LocalNetworkGatewayListResult }) = collect(keys(_property_map_LocalNetworkGatewayListResult))
-Swagger.property_type(::Type{ LocalNetworkGatewayListResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_LocalNetworkGatewayListResult[name]))}
+Swagger.property_type(::Type{ LocalNetworkGatewayListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_LocalNetworkGatewayListResult[name]))}
 Swagger.field_name(::Type{ LocalNetworkGatewayListResult }, property_name::Symbol) =  _property_map_LocalNetworkGatewayListResult[property_name]
 
 function check_required(o::LocalNetworkGatewayListResult)

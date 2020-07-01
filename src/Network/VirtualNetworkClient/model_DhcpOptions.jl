@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct DhcpOptions <: SwaggerModel
     dnsServers::Any # spec type: Union{ Nothing, Vector{String} } # spec name: dnsServers
 
@@ -17,7 +16,7 @@ end # type DhcpOptions
 const _property_map_DhcpOptions = Dict{Symbol,Symbol}(Symbol("dnsServers")=>Symbol("dnsServers"))
 const _property_types_DhcpOptions = Dict{Symbol,String}(Symbol("dnsServers")=>"Vector{String}")
 Base.propertynames(::Type{ DhcpOptions }) = collect(keys(_property_map_DhcpOptions))
-Swagger.property_type(::Type{ DhcpOptions }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_DhcpOptions[name]))}
+Swagger.property_type(::Type{ DhcpOptions }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DhcpOptions[name]))}
 Swagger.field_name(::Type{ DhcpOptions }, property_name::Symbol) =  _property_map_DhcpOptions[property_name]
 
 function check_required(o::DhcpOptions)

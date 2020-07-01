@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct AdlsSecurityException <: SwaggerModel
     exception::Any # spec type: Union{ Nothing, String } # spec name: exception
     javaClassName::Any # spec type: Union{ Nothing, String } # spec name: javaClassName
@@ -23,7 +22,7 @@ end # type AdlsSecurityException
 const _property_map_AdlsSecurityException = Dict{Symbol,Symbol}(Symbol("exception")=>Symbol("exception"), Symbol("javaClassName")=>Symbol("javaClassName"), Symbol("message")=>Symbol("message"))
 const _property_types_AdlsSecurityException = Dict{Symbol,String}(Symbol("exception")=>"String", Symbol("javaClassName")=>"String", Symbol("message")=>"String")
 Base.propertynames(::Type{ AdlsSecurityException }) = collect(keys(_property_map_AdlsSecurityException))
-Swagger.property_type(::Type{ AdlsSecurityException }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_AdlsSecurityException[name]))}
+Swagger.property_type(::Type{ AdlsSecurityException }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AdlsSecurityException[name]))}
 Swagger.field_name(::Type{ AdlsSecurityException }, property_name::Symbol) =  _property_map_AdlsSecurityException[property_name]
 
 function check_required(o::AdlsSecurityException)

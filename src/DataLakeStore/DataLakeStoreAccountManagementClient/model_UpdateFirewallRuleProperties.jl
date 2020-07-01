@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct UpdateFirewallRuleProperties <: SwaggerModel
     startIpAddress::Any # spec type: Union{ Nothing, String } # spec name: startIpAddress
     endIpAddress::Any # spec type: Union{ Nothing, String } # spec name: endIpAddress
@@ -20,7 +19,7 @@ end # type UpdateFirewallRuleProperties
 const _property_map_UpdateFirewallRuleProperties = Dict{Symbol,Symbol}(Symbol("startIpAddress")=>Symbol("startIpAddress"), Symbol("endIpAddress")=>Symbol("endIpAddress"))
 const _property_types_UpdateFirewallRuleProperties = Dict{Symbol,String}(Symbol("startIpAddress")=>"String", Symbol("endIpAddress")=>"String")
 Base.propertynames(::Type{ UpdateFirewallRuleProperties }) = collect(keys(_property_map_UpdateFirewallRuleProperties))
-Swagger.property_type(::Type{ UpdateFirewallRuleProperties }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_UpdateFirewallRuleProperties[name]))}
+Swagger.property_type(::Type{ UpdateFirewallRuleProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_UpdateFirewallRuleProperties[name]))}
 Swagger.field_name(::Type{ UpdateFirewallRuleProperties }, property_name::Symbol) =  _property_map_UpdateFirewallRuleProperties[property_name]
 
 function check_required(o::UpdateFirewallRuleProperties)

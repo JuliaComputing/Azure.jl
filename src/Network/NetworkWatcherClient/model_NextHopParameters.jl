@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct NextHopParameters <: SwaggerModel
     targetResourceId::Any # spec type: Union{ Nothing, String } # spec name: targetResourceId
     sourceIPAddress::Any # spec type: Union{ Nothing, String } # spec name: sourceIPAddress
@@ -26,7 +25,7 @@ end # type NextHopParameters
 const _property_map_NextHopParameters = Dict{Symbol,Symbol}(Symbol("targetResourceId")=>Symbol("targetResourceId"), Symbol("sourceIPAddress")=>Symbol("sourceIPAddress"), Symbol("destinationIPAddress")=>Symbol("destinationIPAddress"), Symbol("targetNicResourceId")=>Symbol("targetNicResourceId"))
 const _property_types_NextHopParameters = Dict{Symbol,String}(Symbol("targetResourceId")=>"String", Symbol("sourceIPAddress")=>"String", Symbol("destinationIPAddress")=>"String", Symbol("targetNicResourceId")=>"String")
 Base.propertynames(::Type{ NextHopParameters }) = collect(keys(_property_map_NextHopParameters))
-Swagger.property_type(::Type{ NextHopParameters }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_NextHopParameters[name]))}
+Swagger.property_type(::Type{ NextHopParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NextHopParameters[name]))}
 Swagger.field_name(::Type{ NextHopParameters }, property_name::Symbol) =  _property_map_NextHopParameters[property_name]
 
 function check_required(o::NextHopParameters)

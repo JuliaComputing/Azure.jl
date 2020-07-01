@@ -2,20 +2,17 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ImageDataDisk <: SwaggerModel
-    lun::Any # spec type: Union{ Nothing, Int32 } # spec name: lun
     snapshot::Any # spec type: Union{ Nothing, SubResource } # spec name: snapshot
     managedDisk::Any # spec type: Union{ Nothing, SubResource } # spec name: managedDisk
     blobUri::Any # spec type: Union{ Nothing, String } # spec name: blobUri
     caching::Any # spec type: Union{ Nothing, String } # spec name: caching
     diskSizeGB::Any # spec type: Union{ Nothing, Int32 } # spec name: diskSizeGB
     storageAccountType::Any # spec type: Union{ Nothing, StorageAccountType } # spec name: storageAccountType
+    diskEncryptionSet::Any # spec type: Union{ Nothing, DiskEncryptionSetParameters } # spec name: diskEncryptionSet
 
-    function ImageDataDisk(;lun=nothing, snapshot=nothing, managedDisk=nothing, blobUri=nothing, caching=nothing, diskSizeGB=nothing, storageAccountType=nothing)
+    function ImageDataDisk(;snapshot=nothing, managedDisk=nothing, blobUri=nothing, caching=nothing, diskSizeGB=nothing, storageAccountType=nothing, diskEncryptionSet=nothing)
         o = new()
-        validate_property(ImageDataDisk, Symbol("lun"), lun)
-        setfield!(o, Symbol("lun"), lun)
         validate_property(ImageDataDisk, Symbol("snapshot"), snapshot)
         setfield!(o, Symbol("snapshot"), snapshot)
         validate_property(ImageDataDisk, Symbol("managedDisk"), managedDisk)
@@ -28,20 +25,21 @@ mutable struct ImageDataDisk <: SwaggerModel
         setfield!(o, Symbol("diskSizeGB"), diskSizeGB)
         validate_property(ImageDataDisk, Symbol("storageAccountType"), storageAccountType)
         setfield!(o, Symbol("storageAccountType"), storageAccountType)
+        validate_property(ImageDataDisk, Symbol("diskEncryptionSet"), diskEncryptionSet)
+        setfield!(o, Symbol("diskEncryptionSet"), diskEncryptionSet)
         o
     end
 end # type ImageDataDisk
 
-const _property_map_ImageDataDisk = Dict{Symbol,Symbol}(Symbol("lun")=>Symbol("lun"), Symbol("snapshot")=>Symbol("snapshot"), Symbol("managedDisk")=>Symbol("managedDisk"), Symbol("blobUri")=>Symbol("blobUri"), Symbol("caching")=>Symbol("caching"), Symbol("diskSizeGB")=>Symbol("diskSizeGB"), Symbol("storageAccountType")=>Symbol("storageAccountType"))
-const _property_types_ImageDataDisk = Dict{Symbol,String}(Symbol("lun")=>"Int32", Symbol("snapshot")=>"SubResource", Symbol("managedDisk")=>"SubResource", Symbol("blobUri")=>"String", Symbol("caching")=>"String", Symbol("diskSizeGB")=>"Int32", Symbol("storageAccountType")=>"StorageAccountType")
+const _property_map_ImageDataDisk = Dict{Symbol,Symbol}(Symbol("snapshot")=>Symbol("snapshot"), Symbol("managedDisk")=>Symbol("managedDisk"), Symbol("blobUri")=>Symbol("blobUri"), Symbol("caching")=>Symbol("caching"), Symbol("diskSizeGB")=>Symbol("diskSizeGB"), Symbol("storageAccountType")=>Symbol("storageAccountType"), Symbol("diskEncryptionSet")=>Symbol("diskEncryptionSet"))
+const _property_types_ImageDataDisk = Dict{Symbol,String}(Symbol("snapshot")=>"SubResource", Symbol("managedDisk")=>"SubResource", Symbol("blobUri")=>"String", Symbol("caching")=>"String", Symbol("diskSizeGB")=>"Int32", Symbol("storageAccountType")=>"StorageAccountType", Symbol("diskEncryptionSet")=>"DiskEncryptionSetParameters")
 Base.propertynames(::Type{ ImageDataDisk }) = collect(keys(_property_map_ImageDataDisk))
-Swagger.property_type(::Type{ ImageDataDisk }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ImageDataDisk[name]))}
+Swagger.property_type(::Type{ ImageDataDisk }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ImageDataDisk[name]))}
 Swagger.field_name(::Type{ ImageDataDisk }, property_name::Symbol) =  _property_map_ImageDataDisk[property_name]
 
 const _allowed_ImageDataDisk_caching = ["None", "ReadOnly", "ReadWrite"]
 
 function check_required(o::ImageDataDisk)
-    (getproperty(o, Symbol("lun")) === nothing) && (return false)
     true
 end
 

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ExpressRouteCircuitArpTable <: SwaggerModel
     age::Any # spec type: Union{ Nothing, Int32 } # spec name: age
     interface::Any # spec type: Union{ Nothing, String } # spec name: interface
@@ -26,7 +25,7 @@ end # type ExpressRouteCircuitArpTable
 const _property_map_ExpressRouteCircuitArpTable = Dict{Symbol,Symbol}(Symbol("age")=>Symbol("age"), Symbol("interface")=>Symbol("interface"), Symbol("ipAddress")=>Symbol("ipAddress"), Symbol("macAddress")=>Symbol("macAddress"))
 const _property_types_ExpressRouteCircuitArpTable = Dict{Symbol,String}(Symbol("age")=>"Int32", Symbol("interface")=>"String", Symbol("ipAddress")=>"String", Symbol("macAddress")=>"String")
 Base.propertynames(::Type{ ExpressRouteCircuitArpTable }) = collect(keys(_property_map_ExpressRouteCircuitArpTable))
-Swagger.property_type(::Type{ ExpressRouteCircuitArpTable }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ExpressRouteCircuitArpTable[name]))}
+Swagger.property_type(::Type{ ExpressRouteCircuitArpTable }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExpressRouteCircuitArpTable[name]))}
 Swagger.field_name(::Type{ ExpressRouteCircuitArpTable }, property_name::Symbol) =  _property_map_ExpressRouteCircuitArpTable[property_name]
 
 function check_required(o::ExpressRouteCircuitArpTable)

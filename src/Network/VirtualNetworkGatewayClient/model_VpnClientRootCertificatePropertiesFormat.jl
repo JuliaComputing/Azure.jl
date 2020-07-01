@@ -2,10 +2,9 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VpnClientRootCertificatePropertiesFormat <: SwaggerModel
     publicCertData::Any # spec type: Union{ Nothing, String } # spec name: publicCertData
-    provisioningState::Any # spec type: Union{ Nothing, String } # spec name: provisioningState
+    provisioningState::Any # spec type: Union{ Nothing, ProvisioningState } # spec name: provisioningState
 
     function VpnClientRootCertificatePropertiesFormat(;publicCertData=nothing, provisioningState=nothing)
         o = new()
@@ -18,9 +17,9 @@ mutable struct VpnClientRootCertificatePropertiesFormat <: SwaggerModel
 end # type VpnClientRootCertificatePropertiesFormat
 
 const _property_map_VpnClientRootCertificatePropertiesFormat = Dict{Symbol,Symbol}(Symbol("publicCertData")=>Symbol("publicCertData"), Symbol("provisioningState")=>Symbol("provisioningState"))
-const _property_types_VpnClientRootCertificatePropertiesFormat = Dict{Symbol,String}(Symbol("publicCertData")=>"String", Symbol("provisioningState")=>"String")
+const _property_types_VpnClientRootCertificatePropertiesFormat = Dict{Symbol,String}(Symbol("publicCertData")=>"String", Symbol("provisioningState")=>"ProvisioningState")
 Base.propertynames(::Type{ VpnClientRootCertificatePropertiesFormat }) = collect(keys(_property_map_VpnClientRootCertificatePropertiesFormat))
-Swagger.property_type(::Type{ VpnClientRootCertificatePropertiesFormat }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VpnClientRootCertificatePropertiesFormat[name]))}
+Swagger.property_type(::Type{ VpnClientRootCertificatePropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VpnClientRootCertificatePropertiesFormat[name]))}
 Swagger.field_name(::Type{ VpnClientRootCertificatePropertiesFormat }, property_name::Symbol) =  _property_map_VpnClientRootCertificatePropertiesFormat[property_name]
 
 function check_required(o::VpnClientRootCertificatePropertiesFormat)

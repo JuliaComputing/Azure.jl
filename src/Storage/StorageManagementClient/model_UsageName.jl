@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct UsageName <: SwaggerModel
     value::Any # spec type: Union{ Nothing, String } # spec name: value
     localizedValue::Any # spec type: Union{ Nothing, String } # spec name: localizedValue
@@ -20,7 +19,7 @@ end # type UsageName
 const _property_map_UsageName = Dict{Symbol,Symbol}(Symbol("value")=>Symbol("value"), Symbol("localizedValue")=>Symbol("localizedValue"))
 const _property_types_UsageName = Dict{Symbol,String}(Symbol("value")=>"String", Symbol("localizedValue")=>"String")
 Base.propertynames(::Type{ UsageName }) = collect(keys(_property_map_UsageName))
-Swagger.property_type(::Type{ UsageName }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_UsageName[name]))}
+Swagger.property_type(::Type{ UsageName }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_UsageName[name]))}
 Swagger.field_name(::Type{ UsageName }, property_name::Symbol) =  _property_map_UsageName[property_name]
 
 function check_required(o::UsageName)

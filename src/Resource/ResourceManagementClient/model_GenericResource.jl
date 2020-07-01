@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct GenericResource <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
     name::Any # spec type: Union{ Nothing, String } # spec name: name
@@ -29,7 +28,7 @@ end # type GenericResource
 const _property_map_GenericResource = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("name")=>Symbol("name"), Symbol("type")=>Symbol("type"), Symbol("location")=>Symbol("location"), Symbol("tags")=>Symbol("tags"))
 const _property_types_GenericResource = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}")
 Base.propertynames(::Type{ GenericResource }) = collect(keys(_property_map_GenericResource))
-Swagger.property_type(::Type{ GenericResource }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_GenericResource[name]))}
+Swagger.property_type(::Type{ GenericResource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_GenericResource[name]))}
 Swagger.field_name(::Type{ GenericResource }, property_name::Symbol) =  _property_map_GenericResource[property_name]
 
 function check_required(o::GenericResource)

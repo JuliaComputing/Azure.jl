@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ProbePropertiesFormat <: SwaggerModel
     loadBalancingRules::Any # spec type: Union{ Nothing, Vector{SubResource} } # spec name: loadBalancingRules
     protocol::Any # spec type: Union{ Nothing, String } # spec name: protocol
@@ -10,7 +9,7 @@ mutable struct ProbePropertiesFormat <: SwaggerModel
     intervalInSeconds::Any # spec type: Union{ Nothing, Int32 } # spec name: intervalInSeconds
     numberOfProbes::Any # spec type: Union{ Nothing, Int32 } # spec name: numberOfProbes
     requestPath::Any # spec type: Union{ Nothing, String } # spec name: requestPath
-    provisioningState::Any # spec type: Union{ Nothing, String } # spec name: provisioningState
+    provisioningState::Any # spec type: Union{ Nothing, ProvisioningState } # spec name: provisioningState
 
     function ProbePropertiesFormat(;loadBalancingRules=nothing, protocol=nothing, port=nothing, intervalInSeconds=nothing, numberOfProbes=nothing, requestPath=nothing, provisioningState=nothing)
         o = new()
@@ -33,12 +32,12 @@ mutable struct ProbePropertiesFormat <: SwaggerModel
 end # type ProbePropertiesFormat
 
 const _property_map_ProbePropertiesFormat = Dict{Symbol,Symbol}(Symbol("loadBalancingRules")=>Symbol("loadBalancingRules"), Symbol("protocol")=>Symbol("protocol"), Symbol("port")=>Symbol("port"), Symbol("intervalInSeconds")=>Symbol("intervalInSeconds"), Symbol("numberOfProbes")=>Symbol("numberOfProbes"), Symbol("requestPath")=>Symbol("requestPath"), Symbol("provisioningState")=>Symbol("provisioningState"))
-const _property_types_ProbePropertiesFormat = Dict{Symbol,String}(Symbol("loadBalancingRules")=>"Vector{SubResource}", Symbol("protocol")=>"String", Symbol("port")=>"Int32", Symbol("intervalInSeconds")=>"Int32", Symbol("numberOfProbes")=>"Int32", Symbol("requestPath")=>"String", Symbol("provisioningState")=>"String")
+const _property_types_ProbePropertiesFormat = Dict{Symbol,String}(Symbol("loadBalancingRules")=>"Vector{SubResource}", Symbol("protocol")=>"String", Symbol("port")=>"Int32", Symbol("intervalInSeconds")=>"Int32", Symbol("numberOfProbes")=>"Int32", Symbol("requestPath")=>"String", Symbol("provisioningState")=>"ProvisioningState")
 Base.propertynames(::Type{ ProbePropertiesFormat }) = collect(keys(_property_map_ProbePropertiesFormat))
-Swagger.property_type(::Type{ ProbePropertiesFormat }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ProbePropertiesFormat[name]))}
+Swagger.property_type(::Type{ ProbePropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ProbePropertiesFormat[name]))}
 Swagger.field_name(::Type{ ProbePropertiesFormat }, property_name::Symbol) =  _property_map_ProbePropertiesFormat[property_name]
 
-const _allowed_ProbePropertiesFormat_protocol = ["Http", "Tcp"]
+const _allowed_ProbePropertiesFormat_protocol = ["Http", "Tcp", "Https"]
 
 function check_required(o::ProbePropertiesFormat)
     (getproperty(o, Symbol("port")) === nothing) && (return false)

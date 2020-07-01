@@ -2,22 +2,21 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct AccessUri <: SwaggerModel
-    properties::Any # spec type: Union{ Nothing, AccessUriOutput } # spec name: properties
+    accessSAS::Any # spec type: Union{ Nothing, String } # spec name: accessSAS
 
-    function AccessUri(;properties=nothing)
+    function AccessUri(;accessSAS=nothing)
         o = new()
-        validate_property(AccessUri, Symbol("properties"), properties)
-        setfield!(o, Symbol("properties"), properties)
+        validate_property(AccessUri, Symbol("accessSAS"), accessSAS)
+        setfield!(o, Symbol("accessSAS"), accessSAS)
         o
     end
 end # type AccessUri
 
-const _property_map_AccessUri = Dict{Symbol,Symbol}(Symbol("properties")=>Symbol("properties"))
-const _property_types_AccessUri = Dict{Symbol,String}(Symbol("properties")=>"AccessUriOutput")
+const _property_map_AccessUri = Dict{Symbol,Symbol}(Symbol("accessSAS")=>Symbol("accessSAS"))
+const _property_types_AccessUri = Dict{Symbol,String}(Symbol("accessSAS")=>"String")
 Base.propertynames(::Type{ AccessUri }) = collect(keys(_property_map_AccessUri))
-Swagger.property_type(::Type{ AccessUri }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_AccessUri[name]))}
+Swagger.property_type(::Type{ AccessUri }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AccessUri[name]))}
 Swagger.field_name(::Type{ AccessUri }, property_name::Symbol) =  _property_map_AccessUri[property_name]
 
 function check_required(o::AccessUri)

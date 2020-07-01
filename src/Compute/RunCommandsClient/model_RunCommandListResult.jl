@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct RunCommandListResult <: SwaggerModel
     value::Any # spec type: Union{ Nothing, Vector{RunCommandDocumentBase} } # spec name: value
     nextLink::Any # spec type: Union{ Nothing, String } # spec name: nextLink
@@ -20,7 +19,7 @@ end # type RunCommandListResult
 const _property_map_RunCommandListResult = Dict{Symbol,Symbol}(Symbol("value")=>Symbol("value"), Symbol("nextLink")=>Symbol("nextLink"))
 const _property_types_RunCommandListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{RunCommandDocumentBase}", Symbol("nextLink")=>"String")
 Base.propertynames(::Type{ RunCommandListResult }) = collect(keys(_property_map_RunCommandListResult))
-Swagger.property_type(::Type{ RunCommandListResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_RunCommandListResult[name]))}
+Swagger.property_type(::Type{ RunCommandListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RunCommandListResult[name]))}
 Swagger.field_name(::Type{ RunCommandListResult }, property_name::Symbol) =  _property_map_RunCommandListResult[property_name]
 
 function check_required(o::RunCommandListResult)

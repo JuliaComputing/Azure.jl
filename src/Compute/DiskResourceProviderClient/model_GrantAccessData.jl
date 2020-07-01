@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct GrantAccessData <: SwaggerModel
     access::Any # spec type: Union{ Nothing, String } # spec name: access
     durationInSeconds::Any # spec type: Union{ Nothing, Int32 } # spec name: durationInSeconds
@@ -20,10 +19,10 @@ end # type GrantAccessData
 const _property_map_GrantAccessData = Dict{Symbol,Symbol}(Symbol("access")=>Symbol("access"), Symbol("durationInSeconds")=>Symbol("durationInSeconds"))
 const _property_types_GrantAccessData = Dict{Symbol,String}(Symbol("access")=>"String", Symbol("durationInSeconds")=>"Int32")
 Base.propertynames(::Type{ GrantAccessData }) = collect(keys(_property_map_GrantAccessData))
-Swagger.property_type(::Type{ GrantAccessData }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_GrantAccessData[name]))}
+Swagger.property_type(::Type{ GrantAccessData }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_GrantAccessData[name]))}
 Swagger.field_name(::Type{ GrantAccessData }, property_name::Symbol) =  _property_map_GrantAccessData[property_name]
 
-const _allowed_GrantAccessData_access = ["None", "Read"]
+const _allowed_GrantAccessData_access = ["None", "Read", "Write"]
 
 function check_required(o::GrantAccessData)
     (getproperty(o, Symbol("durationInSeconds")) === nothing) && (return false)

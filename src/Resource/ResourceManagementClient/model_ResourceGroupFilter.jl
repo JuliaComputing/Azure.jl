@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ResourceGroupFilter <: SwaggerModel
     tagName::Any # spec type: Union{ Nothing, String } # spec name: tagName
     tagValue::Any # spec type: Union{ Nothing, String } # spec name: tagValue
@@ -20,7 +19,7 @@ end # type ResourceGroupFilter
 const _property_map_ResourceGroupFilter = Dict{Symbol,Symbol}(Symbol("tagName")=>Symbol("tagName"), Symbol("tagValue")=>Symbol("tagValue"))
 const _property_types_ResourceGroupFilter = Dict{Symbol,String}(Symbol("tagName")=>"String", Symbol("tagValue")=>"String")
 Base.propertynames(::Type{ ResourceGroupFilter }) = collect(keys(_property_map_ResourceGroupFilter))
-Swagger.property_type(::Type{ ResourceGroupFilter }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ResourceGroupFilter[name]))}
+Swagger.property_type(::Type{ ResourceGroupFilter }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ResourceGroupFilter[name]))}
 Swagger.field_name(::Type{ ResourceGroupFilter }, property_name::Symbol) =  _property_map_ResourceGroupFilter[property_name]
 
 function check_required(o::ResourceGroupFilter)

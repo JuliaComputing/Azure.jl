@@ -2,11 +2,10 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct AuthorizationPropertiesFormat <: SwaggerModel
     authorizationKey::Any # spec type: Union{ Nothing, String } # spec name: authorizationKey
     authorizationUseStatus::Any # spec type: Union{ Nothing, String } # spec name: authorizationUseStatus
-    provisioningState::Any # spec type: Union{ Nothing, String } # spec name: provisioningState
+    provisioningState::Any # spec type: Union{ Nothing, ProvisioningState } # spec name: provisioningState
 
     function AuthorizationPropertiesFormat(;authorizationKey=nothing, authorizationUseStatus=nothing, provisioningState=nothing)
         o = new()
@@ -21,9 +20,9 @@ mutable struct AuthorizationPropertiesFormat <: SwaggerModel
 end # type AuthorizationPropertiesFormat
 
 const _property_map_AuthorizationPropertiesFormat = Dict{Symbol,Symbol}(Symbol("authorizationKey")=>Symbol("authorizationKey"), Symbol("authorizationUseStatus")=>Symbol("authorizationUseStatus"), Symbol("provisioningState")=>Symbol("provisioningState"))
-const _property_types_AuthorizationPropertiesFormat = Dict{Symbol,String}(Symbol("authorizationKey")=>"String", Symbol("authorizationUseStatus")=>"String", Symbol("provisioningState")=>"String")
+const _property_types_AuthorizationPropertiesFormat = Dict{Symbol,String}(Symbol("authorizationKey")=>"String", Symbol("authorizationUseStatus")=>"String", Symbol("provisioningState")=>"ProvisioningState")
 Base.propertynames(::Type{ AuthorizationPropertiesFormat }) = collect(keys(_property_map_AuthorizationPropertiesFormat))
-Swagger.property_type(::Type{ AuthorizationPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_AuthorizationPropertiesFormat[name]))}
+Swagger.property_type(::Type{ AuthorizationPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AuthorizationPropertiesFormat[name]))}
 Swagger.field_name(::Type{ AuthorizationPropertiesFormat }, property_name::Symbol) =  _property_map_AuthorizationPropertiesFormat[property_name]
 
 const _allowed_AuthorizationPropertiesFormat_authorizationUseStatus = ["Available", "InUse"]

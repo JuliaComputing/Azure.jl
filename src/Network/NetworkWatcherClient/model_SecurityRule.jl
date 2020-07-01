@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct SecurityRule <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
 
@@ -17,7 +16,7 @@ end # type SecurityRule
 const _property_map_SecurityRule = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"))
 const _property_types_SecurityRule = Dict{Symbol,String}(Symbol("id")=>"String")
 Base.propertynames(::Type{ SecurityRule }) = collect(keys(_property_map_SecurityRule))
-Swagger.property_type(::Type{ SecurityRule }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_SecurityRule[name]))}
+Swagger.property_type(::Type{ SecurityRule }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SecurityRule[name]))}
 Swagger.field_name(::Type{ SecurityRule }, property_name::Symbol) =  _property_map_SecurityRule[property_name]
 
 function check_required(o::SecurityRule)

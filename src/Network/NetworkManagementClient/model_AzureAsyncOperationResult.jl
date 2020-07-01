@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct AzureAsyncOperationResult <: SwaggerModel
     status::Any # spec type: Union{ Nothing, String } # spec name: status
     error::Any # spec type: Union{ Nothing, Error } # spec name: error
@@ -20,7 +19,7 @@ end # type AzureAsyncOperationResult
 const _property_map_AzureAsyncOperationResult = Dict{Symbol,Symbol}(Symbol("status")=>Symbol("status"), Symbol("error")=>Symbol("error"))
 const _property_types_AzureAsyncOperationResult = Dict{Symbol,String}(Symbol("status")=>"String", Symbol("error")=>"Error")
 Base.propertynames(::Type{ AzureAsyncOperationResult }) = collect(keys(_property_map_AzureAsyncOperationResult))
-Swagger.property_type(::Type{ AzureAsyncOperationResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_AzureAsyncOperationResult[name]))}
+Swagger.property_type(::Type{ AzureAsyncOperationResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AzureAsyncOperationResult[name]))}
 Swagger.field_name(::Type{ AzureAsyncOperationResult }, property_name::Symbol) =  _property_map_AzureAsyncOperationResult[property_name]
 
 const _allowed_AzureAsyncOperationResult_status = ["InProgress", "Succeeded", "Failed"]

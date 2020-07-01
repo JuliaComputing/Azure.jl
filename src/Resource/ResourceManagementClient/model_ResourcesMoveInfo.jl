@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ResourcesMoveInfo <: SwaggerModel
     resources::Any # spec type: Union{ Nothing, Vector{String} } # spec name: resources
     targetResourceGroup::Any # spec type: Union{ Nothing, String } # spec name: targetResourceGroup
@@ -20,7 +19,7 @@ end # type ResourcesMoveInfo
 const _property_map_ResourcesMoveInfo = Dict{Symbol,Symbol}(Symbol("resources")=>Symbol("resources"), Symbol("targetResourceGroup")=>Symbol("targetResourceGroup"))
 const _property_types_ResourcesMoveInfo = Dict{Symbol,String}(Symbol("resources")=>"Vector{String}", Symbol("targetResourceGroup")=>"String")
 Base.propertynames(::Type{ ResourcesMoveInfo }) = collect(keys(_property_map_ResourcesMoveInfo))
-Swagger.property_type(::Type{ ResourcesMoveInfo }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ResourcesMoveInfo[name]))}
+Swagger.property_type(::Type{ ResourcesMoveInfo }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ResourcesMoveInfo[name]))}
 Swagger.field_name(::Type{ ResourcesMoveInfo }, property_name::Symbol) =  _property_map_ResourcesMoveInfo[property_name]
 
 function check_required(o::ResourcesMoveInfo)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct WinRMListener <: SwaggerModel
     protocol::Any # spec type: Union{ Nothing, String } # spec name: protocol
     certificateUrl::Any # spec type: Union{ Nothing, String } # spec name: certificateUrl
@@ -20,7 +19,7 @@ end # type WinRMListener
 const _property_map_WinRMListener = Dict{Symbol,Symbol}(Symbol("protocol")=>Symbol("protocol"), Symbol("certificateUrl")=>Symbol("certificateUrl"))
 const _property_types_WinRMListener = Dict{Symbol,String}(Symbol("protocol")=>"String", Symbol("certificateUrl")=>"String")
 Base.propertynames(::Type{ WinRMListener }) = collect(keys(_property_map_WinRMListener))
-Swagger.property_type(::Type{ WinRMListener }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_WinRMListener[name]))}
+Swagger.property_type(::Type{ WinRMListener }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_WinRMListener[name]))}
 Swagger.field_name(::Type{ WinRMListener }, property_name::Symbol) =  _property_map_WinRMListener[property_name]
 
 const _allowed_WinRMListener_protocol = ["Http", "Https"]

@@ -2,19 +2,21 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct EffectiveRoute <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
+    disableBgpRoutePropagation::Any # spec type: Union{ Nothing, Bool } # spec name: disableBgpRoutePropagation
     source::Any # spec type: Union{ Nothing, String } # spec name: source
     state::Any # spec type: Union{ Nothing, String } # spec name: state
     addressPrefix::Any # spec type: Union{ Nothing, Vector{String} } # spec name: addressPrefix
     nextHopIpAddress::Any # spec type: Union{ Nothing, Vector{String} } # spec name: nextHopIpAddress
-    nextHopType::Any # spec type: Union{ Nothing, String } # spec name: nextHopType
+    nextHopType::Any # spec type: Union{ Nothing, RouteNextHopType } # spec name: nextHopType
 
-    function EffectiveRoute(;name=nothing, source=nothing, state=nothing, addressPrefix=nothing, nextHopIpAddress=nothing, nextHopType=nothing)
+    function EffectiveRoute(;name=nothing, disableBgpRoutePropagation=nothing, source=nothing, state=nothing, addressPrefix=nothing, nextHopIpAddress=nothing, nextHopType=nothing)
         o = new()
         validate_property(EffectiveRoute, Symbol("name"), name)
         setfield!(o, Symbol("name"), name)
+        validate_property(EffectiveRoute, Symbol("disableBgpRoutePropagation"), disableBgpRoutePropagation)
+        setfield!(o, Symbol("disableBgpRoutePropagation"), disableBgpRoutePropagation)
         validate_property(EffectiveRoute, Symbol("source"), source)
         setfield!(o, Symbol("source"), source)
         validate_property(EffectiveRoute, Symbol("state"), state)
@@ -29,17 +31,15 @@ mutable struct EffectiveRoute <: SwaggerModel
     end
 end # type EffectiveRoute
 
-const _property_map_EffectiveRoute = Dict{Symbol,Symbol}(Symbol("name")=>Symbol("name"), Symbol("source")=>Symbol("source"), Symbol("state")=>Symbol("state"), Symbol("addressPrefix")=>Symbol("addressPrefix"), Symbol("nextHopIpAddress")=>Symbol("nextHopIpAddress"), Symbol("nextHopType")=>Symbol("nextHopType"))
-const _property_types_EffectiveRoute = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("source")=>"String", Symbol("state")=>"String", Symbol("addressPrefix")=>"Vector{String}", Symbol("nextHopIpAddress")=>"Vector{String}", Symbol("nextHopType")=>"String")
+const _property_map_EffectiveRoute = Dict{Symbol,Symbol}(Symbol("name")=>Symbol("name"), Symbol("disableBgpRoutePropagation")=>Symbol("disableBgpRoutePropagation"), Symbol("source")=>Symbol("source"), Symbol("state")=>Symbol("state"), Symbol("addressPrefix")=>Symbol("addressPrefix"), Symbol("nextHopIpAddress")=>Symbol("nextHopIpAddress"), Symbol("nextHopType")=>Symbol("nextHopType"))
+const _property_types_EffectiveRoute = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("disableBgpRoutePropagation")=>"Bool", Symbol("source")=>"String", Symbol("state")=>"String", Symbol("addressPrefix")=>"Vector{String}", Symbol("nextHopIpAddress")=>"Vector{String}", Symbol("nextHopType")=>"RouteNextHopType")
 Base.propertynames(::Type{ EffectiveRoute }) = collect(keys(_property_map_EffectiveRoute))
-Swagger.property_type(::Type{ EffectiveRoute }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_EffectiveRoute[name]))}
+Swagger.property_type(::Type{ EffectiveRoute }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_EffectiveRoute[name]))}
 Swagger.field_name(::Type{ EffectiveRoute }, property_name::Symbol) =  _property_map_EffectiveRoute[property_name]
 
 const _allowed_EffectiveRoute_source = ["Unknown", "User", "VirtualNetworkGateway", "Default"]
 
 const _allowed_EffectiveRoute_state = ["Active", "Invalid"]
-
-const _allowed_EffectiveRoute_nextHopType = ["VirtualNetworkGateway", "VnetLocal", "Internet", "VirtualAppliance", "None"]
 
 function check_required(o::EffectiveRoute)
     true
@@ -51,8 +51,5 @@ function validate_property(::Type{ EffectiveRoute }, name::Symbol, val)
     end
     if name === Symbol("state")
         Swagger.validate_param(name, "EffectiveRoute", :enum, val, _allowed_EffectiveRoute_state)
-    end
-    if name === Symbol("nextHopType")
-        Swagger.validate_param(name, "EffectiveRoute", :enum, val, _allowed_EffectiveRoute_nextHopType)
     end
 end

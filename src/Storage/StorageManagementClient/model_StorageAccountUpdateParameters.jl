@@ -2,14 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct StorageAccountUpdateParameters <: SwaggerModel
     sku::Any # spec type: Union{ Nothing, Sku } # spec name: sku
     tags::Any # spec type: Union{ Nothing, Dict{String, String} } # spec name: tags
     identity::Any # spec type: Union{ Nothing, Identity } # spec name: identity
     properties::Any # spec type: Union{ Nothing, StorageAccountPropertiesUpdateParameters } # spec name: properties
+    kind::Any # spec type: Union{ Nothing, String } # spec name: kind
 
-    function StorageAccountUpdateParameters(;sku=nothing, tags=nothing, identity=nothing, properties=nothing)
+    function StorageAccountUpdateParameters(;sku=nothing, tags=nothing, identity=nothing, properties=nothing, kind=nothing)
         o = new()
         validate_property(StorageAccountUpdateParameters, Symbol("sku"), sku)
         setfield!(o, Symbol("sku"), sku)
@@ -19,19 +19,26 @@ mutable struct StorageAccountUpdateParameters <: SwaggerModel
         setfield!(o, Symbol("identity"), identity)
         validate_property(StorageAccountUpdateParameters, Symbol("properties"), properties)
         setfield!(o, Symbol("properties"), properties)
+        validate_property(StorageAccountUpdateParameters, Symbol("kind"), kind)
+        setfield!(o, Symbol("kind"), kind)
         o
     end
 end # type StorageAccountUpdateParameters
 
-const _property_map_StorageAccountUpdateParameters = Dict{Symbol,Symbol}(Symbol("sku")=>Symbol("sku"), Symbol("tags")=>Symbol("tags"), Symbol("identity")=>Symbol("identity"), Symbol("properties")=>Symbol("properties"))
-const _property_types_StorageAccountUpdateParameters = Dict{Symbol,String}(Symbol("sku")=>"Sku", Symbol("tags")=>"Dict{String, String}", Symbol("identity")=>"Identity", Symbol("properties")=>"StorageAccountPropertiesUpdateParameters")
+const _property_map_StorageAccountUpdateParameters = Dict{Symbol,Symbol}(Symbol("sku")=>Symbol("sku"), Symbol("tags")=>Symbol("tags"), Symbol("identity")=>Symbol("identity"), Symbol("properties")=>Symbol("properties"), Symbol("kind")=>Symbol("kind"))
+const _property_types_StorageAccountUpdateParameters = Dict{Symbol,String}(Symbol("sku")=>"Sku", Symbol("tags")=>"Dict{String, String}", Symbol("identity")=>"Identity", Symbol("properties")=>"StorageAccountPropertiesUpdateParameters", Symbol("kind")=>"String")
 Base.propertynames(::Type{ StorageAccountUpdateParameters }) = collect(keys(_property_map_StorageAccountUpdateParameters))
-Swagger.property_type(::Type{ StorageAccountUpdateParameters }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_StorageAccountUpdateParameters[name]))}
+Swagger.property_type(::Type{ StorageAccountUpdateParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_StorageAccountUpdateParameters[name]))}
 Swagger.field_name(::Type{ StorageAccountUpdateParameters }, property_name::Symbol) =  _property_map_StorageAccountUpdateParameters[property_name]
+
+const _allowed_StorageAccountUpdateParameters_kind = ["Storage", "StorageV2", "BlobStorage", "FileStorage", "BlockBlobStorage"]
 
 function check_required(o::StorageAccountUpdateParameters)
     true
 end
 
 function validate_property(::Type{ StorageAccountUpdateParameters }, name::Symbol, val)
+    if name === Symbol("kind")
+        Swagger.validate_param(name, "StorageAccountUpdateParameters", :enum, val, _allowed_StorageAccountUpdateParameters_kind)
+    end
 end

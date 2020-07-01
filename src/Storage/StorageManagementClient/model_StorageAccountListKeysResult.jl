@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct StorageAccountListKeysResult <: SwaggerModel
     keys::Any # spec type: Union{ Nothing, Vector{StorageAccountKey} } # spec name: keys
 
@@ -17,7 +16,7 @@ end # type StorageAccountListKeysResult
 const _property_map_StorageAccountListKeysResult = Dict{Symbol,Symbol}(Symbol("keys")=>Symbol("keys"))
 const _property_types_StorageAccountListKeysResult = Dict{Symbol,String}(Symbol("keys")=>"Vector{StorageAccountKey}")
 Base.propertynames(::Type{ StorageAccountListKeysResult }) = collect(keys(_property_map_StorageAccountListKeysResult))
-Swagger.property_type(::Type{ StorageAccountListKeysResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_StorageAccountListKeysResult[name]))}
+Swagger.property_type(::Type{ StorageAccountListKeysResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_StorageAccountListKeysResult[name]))}
 Swagger.field_name(::Type{ StorageAccountListKeysResult }, property_name::Symbol) =  _property_map_StorageAccountListKeysResult[property_name]
 
 function check_required(o::StorageAccountListKeysResult)

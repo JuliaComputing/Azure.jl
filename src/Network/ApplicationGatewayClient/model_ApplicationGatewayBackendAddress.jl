@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ApplicationGatewayBackendAddress <: SwaggerModel
     fqdn::Any # spec type: Union{ Nothing, String } # spec name: fqdn
     ipAddress::Any # spec type: Union{ Nothing, String } # spec name: ipAddress
@@ -20,7 +19,7 @@ end # type ApplicationGatewayBackendAddress
 const _property_map_ApplicationGatewayBackendAddress = Dict{Symbol,Symbol}(Symbol("fqdn")=>Symbol("fqdn"), Symbol("ipAddress")=>Symbol("ipAddress"))
 const _property_types_ApplicationGatewayBackendAddress = Dict{Symbol,String}(Symbol("fqdn")=>"String", Symbol("ipAddress")=>"String")
 Base.propertynames(::Type{ ApplicationGatewayBackendAddress }) = collect(keys(_property_map_ApplicationGatewayBackendAddress))
-Swagger.property_type(::Type{ ApplicationGatewayBackendAddress }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ApplicationGatewayBackendAddress[name]))}
+Swagger.property_type(::Type{ ApplicationGatewayBackendAddress }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayBackendAddress[name]))}
 Swagger.field_name(::Type{ ApplicationGatewayBackendAddress }, property_name::Symbol) =  _property_map_ApplicationGatewayBackendAddress[property_name]
 
 function check_required(o::ApplicationGatewayBackendAddress)

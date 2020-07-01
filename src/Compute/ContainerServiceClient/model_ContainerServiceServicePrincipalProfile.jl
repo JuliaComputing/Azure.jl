@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ContainerServiceServicePrincipalProfile <: SwaggerModel
     clientId::Any # spec type: Union{ Nothing, String } # spec name: clientId
     secret::Any # spec type: Union{ Nothing, String } # spec name: secret
@@ -20,7 +19,7 @@ end # type ContainerServiceServicePrincipalProfile
 const _property_map_ContainerServiceServicePrincipalProfile = Dict{Symbol,Symbol}(Symbol("clientId")=>Symbol("clientId"), Symbol("secret")=>Symbol("secret"))
 const _property_types_ContainerServiceServicePrincipalProfile = Dict{Symbol,String}(Symbol("clientId")=>"String", Symbol("secret")=>"String")
 Base.propertynames(::Type{ ContainerServiceServicePrincipalProfile }) = collect(keys(_property_map_ContainerServiceServicePrincipalProfile))
-Swagger.property_type(::Type{ ContainerServiceServicePrincipalProfile }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ContainerServiceServicePrincipalProfile[name]))}
+Swagger.property_type(::Type{ ContainerServiceServicePrincipalProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ContainerServiceServicePrincipalProfile[name]))}
 Swagger.field_name(::Type{ ContainerServiceServicePrincipalProfile }, property_name::Symbol) =  _property_map_ContainerServiceServicePrincipalProfile[property_name]
 
 function check_required(o::ContainerServiceServicePrincipalProfile)

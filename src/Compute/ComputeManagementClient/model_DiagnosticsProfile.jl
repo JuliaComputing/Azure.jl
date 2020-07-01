@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct DiagnosticsProfile <: SwaggerModel
     bootDiagnostics::Any # spec type: Union{ Nothing, BootDiagnostics } # spec name: bootDiagnostics
 
@@ -17,7 +16,7 @@ end # type DiagnosticsProfile
 const _property_map_DiagnosticsProfile = Dict{Symbol,Symbol}(Symbol("bootDiagnostics")=>Symbol("bootDiagnostics"))
 const _property_types_DiagnosticsProfile = Dict{Symbol,String}(Symbol("bootDiagnostics")=>"BootDiagnostics")
 Base.propertynames(::Type{ DiagnosticsProfile }) = collect(keys(_property_map_DiagnosticsProfile))
-Swagger.property_type(::Type{ DiagnosticsProfile }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_DiagnosticsProfile[name]))}
+Swagger.property_type(::Type{ DiagnosticsProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DiagnosticsProfile[name]))}
 Swagger.field_name(::Type{ DiagnosticsProfile }, property_name::Symbol) =  _property_map_DiagnosticsProfile[property_name]
 
 function check_required(o::DiagnosticsProfile)

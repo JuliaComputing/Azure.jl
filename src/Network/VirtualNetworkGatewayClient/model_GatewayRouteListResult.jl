@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct GatewayRouteListResult <: SwaggerModel
     value::Any # spec type: Union{ Nothing, Vector{GatewayRoute} } # spec name: value
 
@@ -17,7 +16,7 @@ end # type GatewayRouteListResult
 const _property_map_GatewayRouteListResult = Dict{Symbol,Symbol}(Symbol("value")=>Symbol("value"))
 const _property_types_GatewayRouteListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{GatewayRoute}")
 Base.propertynames(::Type{ GatewayRouteListResult }) = collect(keys(_property_map_GatewayRouteListResult))
-Swagger.property_type(::Type{ GatewayRouteListResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_GatewayRouteListResult[name]))}
+Swagger.property_type(::Type{ GatewayRouteListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_GatewayRouteListResult[name]))}
 Swagger.field_name(::Type{ GatewayRouteListResult }, property_name::Symbol) =  _property_map_GatewayRouteListResult[property_name]
 
 function check_required(o::GatewayRouteListResult)

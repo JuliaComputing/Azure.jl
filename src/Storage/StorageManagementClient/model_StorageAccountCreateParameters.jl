@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct StorageAccountCreateParameters <: SwaggerModel
     sku::Any # spec type: Union{ Nothing, Sku } # spec name: sku
     kind::Any # spec type: Union{ Nothing, String } # spec name: kind
@@ -32,10 +31,10 @@ end # type StorageAccountCreateParameters
 const _property_map_StorageAccountCreateParameters = Dict{Symbol,Symbol}(Symbol("sku")=>Symbol("sku"), Symbol("kind")=>Symbol("kind"), Symbol("location")=>Symbol("location"), Symbol("tags")=>Symbol("tags"), Symbol("identity")=>Symbol("identity"), Symbol("properties")=>Symbol("properties"))
 const _property_types_StorageAccountCreateParameters = Dict{Symbol,String}(Symbol("sku")=>"Sku", Symbol("kind")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", Symbol("identity")=>"Identity", Symbol("properties")=>"StorageAccountPropertiesCreateParameters")
 Base.propertynames(::Type{ StorageAccountCreateParameters }) = collect(keys(_property_map_StorageAccountCreateParameters))
-Swagger.property_type(::Type{ StorageAccountCreateParameters }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_StorageAccountCreateParameters[name]))}
+Swagger.property_type(::Type{ StorageAccountCreateParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_StorageAccountCreateParameters[name]))}
 Swagger.field_name(::Type{ StorageAccountCreateParameters }, property_name::Symbol) =  _property_map_StorageAccountCreateParameters[property_name]
 
-const _allowed_StorageAccountCreateParameters_kind = ["Storage", "BlobStorage"]
+const _allowed_StorageAccountCreateParameters_kind = ["Storage", "StorageV2", "BlobStorage", "FileStorage", "BlockBlobStorage"]
 
 function check_required(o::StorageAccountCreateParameters)
     (getproperty(o, Symbol("sku")) === nothing) && (return false)

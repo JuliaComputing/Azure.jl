@@ -2,23 +2,17 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ImageOSDisk <: SwaggerModel
-    osType::Any # spec type: Union{ Nothing, String } # spec name: osType
-    osState::Any # spec type: Union{ Nothing, String } # spec name: osState
     snapshot::Any # spec type: Union{ Nothing, SubResource } # spec name: snapshot
     managedDisk::Any # spec type: Union{ Nothing, SubResource } # spec name: managedDisk
     blobUri::Any # spec type: Union{ Nothing, String } # spec name: blobUri
     caching::Any # spec type: Union{ Nothing, String } # spec name: caching
     diskSizeGB::Any # spec type: Union{ Nothing, Int32 } # spec name: diskSizeGB
     storageAccountType::Any # spec type: Union{ Nothing, StorageAccountType } # spec name: storageAccountType
+    diskEncryptionSet::Any # spec type: Union{ Nothing, DiskEncryptionSetParameters } # spec name: diskEncryptionSet
 
-    function ImageOSDisk(;osType=nothing, osState=nothing, snapshot=nothing, managedDisk=nothing, blobUri=nothing, caching=nothing, diskSizeGB=nothing, storageAccountType=nothing)
+    function ImageOSDisk(;snapshot=nothing, managedDisk=nothing, blobUri=nothing, caching=nothing, diskSizeGB=nothing, storageAccountType=nothing, diskEncryptionSet=nothing)
         o = new()
-        validate_property(ImageOSDisk, Symbol("osType"), osType)
-        setfield!(o, Symbol("osType"), osType)
-        validate_property(ImageOSDisk, Symbol("osState"), osState)
-        setfield!(o, Symbol("osState"), osState)
         validate_property(ImageOSDisk, Symbol("snapshot"), snapshot)
         setfield!(o, Symbol("snapshot"), snapshot)
         validate_property(ImageOSDisk, Symbol("managedDisk"), managedDisk)
@@ -31,19 +25,17 @@ mutable struct ImageOSDisk <: SwaggerModel
         setfield!(o, Symbol("diskSizeGB"), diskSizeGB)
         validate_property(ImageOSDisk, Symbol("storageAccountType"), storageAccountType)
         setfield!(o, Symbol("storageAccountType"), storageAccountType)
+        validate_property(ImageOSDisk, Symbol("diskEncryptionSet"), diskEncryptionSet)
+        setfield!(o, Symbol("diskEncryptionSet"), diskEncryptionSet)
         o
     end
 end # type ImageOSDisk
 
-const _property_map_ImageOSDisk = Dict{Symbol,Symbol}(Symbol("osType")=>Symbol("osType"), Symbol("osState")=>Symbol("osState"), Symbol("snapshot")=>Symbol("snapshot"), Symbol("managedDisk")=>Symbol("managedDisk"), Symbol("blobUri")=>Symbol("blobUri"), Symbol("caching")=>Symbol("caching"), Symbol("diskSizeGB")=>Symbol("diskSizeGB"), Symbol("storageAccountType")=>Symbol("storageAccountType"))
-const _property_types_ImageOSDisk = Dict{Symbol,String}(Symbol("osType")=>"String", Symbol("osState")=>"String", Symbol("snapshot")=>"SubResource", Symbol("managedDisk")=>"SubResource", Symbol("blobUri")=>"String", Symbol("caching")=>"String", Symbol("diskSizeGB")=>"Int32", Symbol("storageAccountType")=>"StorageAccountType")
+const _property_map_ImageOSDisk = Dict{Symbol,Symbol}(Symbol("snapshot")=>Symbol("snapshot"), Symbol("managedDisk")=>Symbol("managedDisk"), Symbol("blobUri")=>Symbol("blobUri"), Symbol("caching")=>Symbol("caching"), Symbol("diskSizeGB")=>Symbol("diskSizeGB"), Symbol("storageAccountType")=>Symbol("storageAccountType"), Symbol("diskEncryptionSet")=>Symbol("diskEncryptionSet"))
+const _property_types_ImageOSDisk = Dict{Symbol,String}(Symbol("snapshot")=>"SubResource", Symbol("managedDisk")=>"SubResource", Symbol("blobUri")=>"String", Symbol("caching")=>"String", Symbol("diskSizeGB")=>"Int32", Symbol("storageAccountType")=>"StorageAccountType", Symbol("diskEncryptionSet")=>"DiskEncryptionSetParameters")
 Base.propertynames(::Type{ ImageOSDisk }) = collect(keys(_property_map_ImageOSDisk))
-Swagger.property_type(::Type{ ImageOSDisk }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ImageOSDisk[name]))}
+Swagger.property_type(::Type{ ImageOSDisk }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ImageOSDisk[name]))}
 Swagger.field_name(::Type{ ImageOSDisk }, property_name::Symbol) =  _property_map_ImageOSDisk[property_name]
-
-const _allowed_ImageOSDisk_osType = ["Windows", "Linux"]
-
-const _allowed_ImageOSDisk_osState = ["Generalized", "Specialized"]
 
 const _allowed_ImageOSDisk_caching = ["None", "ReadOnly", "ReadWrite"]
 
@@ -52,12 +44,6 @@ function check_required(o::ImageOSDisk)
 end
 
 function validate_property(::Type{ ImageOSDisk }, name::Symbol, val)
-    if name === Symbol("osType")
-        Swagger.validate_param(name, "ImageOSDisk", :enum, val, _allowed_ImageOSDisk_osType)
-    end
-    if name === Symbol("osState")
-        Swagger.validate_param(name, "ImageOSDisk", :enum, val, _allowed_ImageOSDisk_osState)
-    end
     if name === Symbol("caching")
         Swagger.validate_param(name, "ImageOSDisk", :enum, val, _allowed_ImageOSDisk_caching)
     end

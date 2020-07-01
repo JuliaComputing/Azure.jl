@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct BgpPeerStatusListResult <: SwaggerModel
     value::Any # spec type: Union{ Nothing, Vector{BgpPeerStatus} } # spec name: value
 
@@ -17,7 +16,7 @@ end # type BgpPeerStatusListResult
 const _property_map_BgpPeerStatusListResult = Dict{Symbol,Symbol}(Symbol("value")=>Symbol("value"))
 const _property_types_BgpPeerStatusListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{BgpPeerStatus}")
 Base.propertynames(::Type{ BgpPeerStatusListResult }) = collect(keys(_property_map_BgpPeerStatusListResult))
-Swagger.property_type(::Type{ BgpPeerStatusListResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_BgpPeerStatusListResult[name]))}
+Swagger.property_type(::Type{ BgpPeerStatusListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_BgpPeerStatusListResult[name]))}
 Swagger.field_name(::Type{ BgpPeerStatusListResult }, property_name::Symbol) =  _property_map_BgpPeerStatusListResult[property_name]
 
 function check_required(o::BgpPeerStatusListResult)

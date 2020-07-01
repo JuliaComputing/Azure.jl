@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct SecurityRuleAssociations <: SwaggerModel
     networkInterfaceAssociation::Any # spec type: Union{ Nothing, NetworkInterfaceAssociation } # spec name: networkInterfaceAssociation
     subnetAssociation::Any # spec type: Union{ Nothing, SubnetAssociation } # spec name: subnetAssociation
@@ -26,7 +25,7 @@ end # type SecurityRuleAssociations
 const _property_map_SecurityRuleAssociations = Dict{Symbol,Symbol}(Symbol("networkInterfaceAssociation")=>Symbol("networkInterfaceAssociation"), Symbol("subnetAssociation")=>Symbol("subnetAssociation"), Symbol("defaultSecurityRules")=>Symbol("defaultSecurityRules"), Symbol("effectiveSecurityRules")=>Symbol("effectiveSecurityRules"))
 const _property_types_SecurityRuleAssociations = Dict{Symbol,String}(Symbol("networkInterfaceAssociation")=>"NetworkInterfaceAssociation", Symbol("subnetAssociation")=>"SubnetAssociation", Symbol("defaultSecurityRules")=>"Vector{SecurityRule}", Symbol("effectiveSecurityRules")=>"Vector{EffectiveNetworkSecurityRule}")
 Base.propertynames(::Type{ SecurityRuleAssociations }) = collect(keys(_property_map_SecurityRuleAssociations))
-Swagger.property_type(::Type{ SecurityRuleAssociations }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_SecurityRuleAssociations[name]))}
+Swagger.property_type(::Type{ SecurityRuleAssociations }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SecurityRuleAssociations[name]))}
 Swagger.field_name(::Type{ SecurityRuleAssociations }, property_name::Symbol) =  _property_map_SecurityRuleAssociations[property_name]
 
 function check_required(o::SecurityRuleAssociations)

@@ -2,9 +2,8 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ApplicationGatewayFirewallRuleSetPropertiesFormat <: SwaggerModel
-    provisioningState::Any # spec type: Union{ Nothing, String } # spec name: provisioningState
+    provisioningState::Any # spec type: Union{ Nothing, ProvisioningState } # spec name: provisioningState
     ruleSetType::Any # spec type: Union{ Nothing, String } # spec name: ruleSetType
     ruleSetVersion::Any # spec type: Union{ Nothing, String } # spec name: ruleSetVersion
     ruleGroups::Any # spec type: Union{ Nothing, Vector{ApplicationGatewayFirewallRuleGroup} } # spec name: ruleGroups
@@ -24,9 +23,9 @@ mutable struct ApplicationGatewayFirewallRuleSetPropertiesFormat <: SwaggerModel
 end # type ApplicationGatewayFirewallRuleSetPropertiesFormat
 
 const _property_map_ApplicationGatewayFirewallRuleSetPropertiesFormat = Dict{Symbol,Symbol}(Symbol("provisioningState")=>Symbol("provisioningState"), Symbol("ruleSetType")=>Symbol("ruleSetType"), Symbol("ruleSetVersion")=>Symbol("ruleSetVersion"), Symbol("ruleGroups")=>Symbol("ruleGroups"))
-const _property_types_ApplicationGatewayFirewallRuleSetPropertiesFormat = Dict{Symbol,String}(Symbol("provisioningState")=>"String", Symbol("ruleSetType")=>"String", Symbol("ruleSetVersion")=>"String", Symbol("ruleGroups")=>"Vector{ApplicationGatewayFirewallRuleGroup}")
+const _property_types_ApplicationGatewayFirewallRuleSetPropertiesFormat = Dict{Symbol,String}(Symbol("provisioningState")=>"ProvisioningState", Symbol("ruleSetType")=>"String", Symbol("ruleSetVersion")=>"String", Symbol("ruleGroups")=>"Vector{ApplicationGatewayFirewallRuleGroup}")
 Base.propertynames(::Type{ ApplicationGatewayFirewallRuleSetPropertiesFormat }) = collect(keys(_property_map_ApplicationGatewayFirewallRuleSetPropertiesFormat))
-Swagger.property_type(::Type{ ApplicationGatewayFirewallRuleSetPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ApplicationGatewayFirewallRuleSetPropertiesFormat[name]))}
+Swagger.property_type(::Type{ ApplicationGatewayFirewallRuleSetPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayFirewallRuleSetPropertiesFormat[name]))}
 Swagger.field_name(::Type{ ApplicationGatewayFirewallRuleSetPropertiesFormat }, property_name::Symbol) =  _property_map_ApplicationGatewayFirewallRuleSetPropertiesFormat[property_name]
 
 function check_required(o::ApplicationGatewayFirewallRuleSetPropertiesFormat)

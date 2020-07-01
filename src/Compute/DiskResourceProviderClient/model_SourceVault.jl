@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct SourceVault <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
 
@@ -17,7 +16,7 @@ end # type SourceVault
 const _property_map_SourceVault = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"))
 const _property_types_SourceVault = Dict{Symbol,String}(Symbol("id")=>"String")
 Base.propertynames(::Type{ SourceVault }) = collect(keys(_property_map_SourceVault))
-Swagger.property_type(::Type{ SourceVault }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_SourceVault[name]))}
+Swagger.property_type(::Type{ SourceVault }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SourceVault[name]))}
 Swagger.field_name(::Type{ SourceVault }, property_name::Symbol) =  _property_map_SourceVault[property_name]
 
 function check_required(o::SourceVault)

@@ -2,22 +2,24 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualMachineScaleSetUpdateNetworkProfile <: SwaggerModel
+    healthProbe::Any # spec type: Union{ Nothing, ApiEntityReference } # spec name: healthProbe
     networkInterfaceConfigurations::Any # spec type: Union{ Nothing, Vector{VirtualMachineScaleSetUpdateNetworkConfiguration} } # spec name: networkInterfaceConfigurations
 
-    function VirtualMachineScaleSetUpdateNetworkProfile(;networkInterfaceConfigurations=nothing)
+    function VirtualMachineScaleSetUpdateNetworkProfile(;healthProbe=nothing, networkInterfaceConfigurations=nothing)
         o = new()
+        validate_property(VirtualMachineScaleSetUpdateNetworkProfile, Symbol("healthProbe"), healthProbe)
+        setfield!(o, Symbol("healthProbe"), healthProbe)
         validate_property(VirtualMachineScaleSetUpdateNetworkProfile, Symbol("networkInterfaceConfigurations"), networkInterfaceConfigurations)
         setfield!(o, Symbol("networkInterfaceConfigurations"), networkInterfaceConfigurations)
         o
     end
 end # type VirtualMachineScaleSetUpdateNetworkProfile
 
-const _property_map_VirtualMachineScaleSetUpdateNetworkProfile = Dict{Symbol,Symbol}(Symbol("networkInterfaceConfigurations")=>Symbol("networkInterfaceConfigurations"))
-const _property_types_VirtualMachineScaleSetUpdateNetworkProfile = Dict{Symbol,String}(Symbol("networkInterfaceConfigurations")=>"Vector{VirtualMachineScaleSetUpdateNetworkConfiguration}")
+const _property_map_VirtualMachineScaleSetUpdateNetworkProfile = Dict{Symbol,Symbol}(Symbol("healthProbe")=>Symbol("healthProbe"), Symbol("networkInterfaceConfigurations")=>Symbol("networkInterfaceConfigurations"))
+const _property_types_VirtualMachineScaleSetUpdateNetworkProfile = Dict{Symbol,String}(Symbol("healthProbe")=>"ApiEntityReference", Symbol("networkInterfaceConfigurations")=>"Vector{VirtualMachineScaleSetUpdateNetworkConfiguration}")
 Base.propertynames(::Type{ VirtualMachineScaleSetUpdateNetworkProfile }) = collect(keys(_property_map_VirtualMachineScaleSetUpdateNetworkProfile))
-Swagger.property_type(::Type{ VirtualMachineScaleSetUpdateNetworkProfile }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualMachineScaleSetUpdateNetworkProfile[name]))}
+Swagger.property_type(::Type{ VirtualMachineScaleSetUpdateNetworkProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetUpdateNetworkProfile[name]))}
 Swagger.field_name(::Type{ VirtualMachineScaleSetUpdateNetworkProfile }, property_name::Symbol) =  _property_map_VirtualMachineScaleSetUpdateNetworkProfile[property_name]
 
 function check_required(o::VirtualMachineScaleSetUpdateNetworkProfile)

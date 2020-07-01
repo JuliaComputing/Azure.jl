@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ContainerServiceCustomProfile <: SwaggerModel
     orchestrator::Any # spec type: Union{ Nothing, String } # spec name: orchestrator
 
@@ -17,7 +16,7 @@ end # type ContainerServiceCustomProfile
 const _property_map_ContainerServiceCustomProfile = Dict{Symbol,Symbol}(Symbol("orchestrator")=>Symbol("orchestrator"))
 const _property_types_ContainerServiceCustomProfile = Dict{Symbol,String}(Symbol("orchestrator")=>"String")
 Base.propertynames(::Type{ ContainerServiceCustomProfile }) = collect(keys(_property_map_ContainerServiceCustomProfile))
-Swagger.property_type(::Type{ ContainerServiceCustomProfile }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ContainerServiceCustomProfile[name]))}
+Swagger.property_type(::Type{ ContainerServiceCustomProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ContainerServiceCustomProfile[name]))}
 Swagger.field_name(::Type{ ContainerServiceCustomProfile }, property_name::Symbol) =  _property_map_ContainerServiceCustomProfile[property_name]
 
 function check_required(o::ContainerServiceCustomProfile)

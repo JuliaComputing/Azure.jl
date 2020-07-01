@@ -2,11 +2,10 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ResourceNavigationLinkFormat <: SwaggerModel
     linkedResourceType::Any # spec type: Union{ Nothing, String } # spec name: linkedResourceType
     link::Any # spec type: Union{ Nothing, String } # spec name: link
-    provisioningState::Any # spec type: Union{ Nothing, String } # spec name: provisioningState
+    provisioningState::Any # spec type: Union{ Nothing, ProvisioningState } # spec name: provisioningState
 
     function ResourceNavigationLinkFormat(;linkedResourceType=nothing, link=nothing, provisioningState=nothing)
         o = new()
@@ -21,9 +20,9 @@ mutable struct ResourceNavigationLinkFormat <: SwaggerModel
 end # type ResourceNavigationLinkFormat
 
 const _property_map_ResourceNavigationLinkFormat = Dict{Symbol,Symbol}(Symbol("linkedResourceType")=>Symbol("linkedResourceType"), Symbol("link")=>Symbol("link"), Symbol("provisioningState")=>Symbol("provisioningState"))
-const _property_types_ResourceNavigationLinkFormat = Dict{Symbol,String}(Symbol("linkedResourceType")=>"String", Symbol("link")=>"String", Symbol("provisioningState")=>"String")
+const _property_types_ResourceNavigationLinkFormat = Dict{Symbol,String}(Symbol("linkedResourceType")=>"String", Symbol("link")=>"String", Symbol("provisioningState")=>"ProvisioningState")
 Base.propertynames(::Type{ ResourceNavigationLinkFormat }) = collect(keys(_property_map_ResourceNavigationLinkFormat))
-Swagger.property_type(::Type{ ResourceNavigationLinkFormat }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ResourceNavigationLinkFormat[name]))}
+Swagger.property_type(::Type{ ResourceNavigationLinkFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ResourceNavigationLinkFormat[name]))}
 Swagger.field_name(::Type{ ResourceNavigationLinkFormat }, property_name::Symbol) =  _property_map_ResourceNavigationLinkFormat[property_name]
 
 function check_required(o::ResourceNavigationLinkFormat)

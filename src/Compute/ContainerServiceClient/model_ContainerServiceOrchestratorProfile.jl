@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ContainerServiceOrchestratorProfile <: SwaggerModel
     orchestratorType::Any # spec type: Union{ Nothing, String } # spec name: orchestratorType
 
@@ -17,7 +16,7 @@ end # type ContainerServiceOrchestratorProfile
 const _property_map_ContainerServiceOrchestratorProfile = Dict{Symbol,Symbol}(Symbol("orchestratorType")=>Symbol("orchestratorType"))
 const _property_types_ContainerServiceOrchestratorProfile = Dict{Symbol,String}(Symbol("orchestratorType")=>"String")
 Base.propertynames(::Type{ ContainerServiceOrchestratorProfile }) = collect(keys(_property_map_ContainerServiceOrchestratorProfile))
-Swagger.property_type(::Type{ ContainerServiceOrchestratorProfile }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ContainerServiceOrchestratorProfile[name]))}
+Swagger.property_type(::Type{ ContainerServiceOrchestratorProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ContainerServiceOrchestratorProfile[name]))}
 Swagger.field_name(::Type{ ContainerServiceOrchestratorProfile }, property_name::Symbol) =  _property_map_ContainerServiceOrchestratorProfile[property_name]
 
 const _allowed_ContainerServiceOrchestratorProfile_orchestratorType = ["Swarm", "DCOS", "Custom", "Kubernetes"]

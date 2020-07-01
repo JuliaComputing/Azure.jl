@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct Disk <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
     name::Any # spec type: Union{ Nothing, String } # spec name: name
@@ -10,11 +9,12 @@ mutable struct Disk <: SwaggerModel
     location::Any # spec type: Union{ Nothing, String } # spec name: location
     tags::Any # spec type: Union{ Nothing, Dict{String, String} } # spec name: tags
     managedBy::Any # spec type: Union{ Nothing, String } # spec name: managedBy
+    managedByExtended::Any # spec type: Union{ Nothing, Vector{String} } # spec name: managedByExtended
     sku::Any # spec type: Union{ Nothing, DiskSku } # spec name: sku
     zones::Any # spec type: Union{ Nothing, Vector{String} } # spec name: zones
     properties::Any # spec type: Union{ Nothing, DiskProperties } # spec name: properties
 
-    function Disk(;id=nothing, name=nothing, type=nothing, location=nothing, tags=nothing, managedBy=nothing, sku=nothing, zones=nothing, properties=nothing)
+    function Disk(;id=nothing, name=nothing, type=nothing, location=nothing, tags=nothing, managedBy=nothing, managedByExtended=nothing, sku=nothing, zones=nothing, properties=nothing)
         o = new()
         validate_property(Disk, Symbol("id"), id)
         setfield!(o, Symbol("id"), id)
@@ -28,6 +28,8 @@ mutable struct Disk <: SwaggerModel
         setfield!(o, Symbol("tags"), tags)
         validate_property(Disk, Symbol("managedBy"), managedBy)
         setfield!(o, Symbol("managedBy"), managedBy)
+        validate_property(Disk, Symbol("managedByExtended"), managedByExtended)
+        setfield!(o, Symbol("managedByExtended"), managedByExtended)
         validate_property(Disk, Symbol("sku"), sku)
         setfield!(o, Symbol("sku"), sku)
         validate_property(Disk, Symbol("zones"), zones)
@@ -38,10 +40,10 @@ mutable struct Disk <: SwaggerModel
     end
 end # type Disk
 
-const _property_map_Disk = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("name")=>Symbol("name"), Symbol("type")=>Symbol("type"), Symbol("location")=>Symbol("location"), Symbol("tags")=>Symbol("tags"), Symbol("managedBy")=>Symbol("managedBy"), Symbol("sku")=>Symbol("sku"), Symbol("zones")=>Symbol("zones"), Symbol("properties")=>Symbol("properties"))
-const _property_types_Disk = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", Symbol("managedBy")=>"String", Symbol("sku")=>"DiskSku", Symbol("zones")=>"Vector{String}", Symbol("properties")=>"DiskProperties")
+const _property_map_Disk = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("name")=>Symbol("name"), Symbol("type")=>Symbol("type"), Symbol("location")=>Symbol("location"), Symbol("tags")=>Symbol("tags"), Symbol("managedBy")=>Symbol("managedBy"), Symbol("managedByExtended")=>Symbol("managedByExtended"), Symbol("sku")=>Symbol("sku"), Symbol("zones")=>Symbol("zones"), Symbol("properties")=>Symbol("properties"))
+const _property_types_Disk = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", Symbol("managedBy")=>"String", Symbol("managedByExtended")=>"Vector{String}", Symbol("sku")=>"DiskSku", Symbol("zones")=>"Vector{String}", Symbol("properties")=>"DiskProperties")
 Base.propertynames(::Type{ Disk }) = collect(keys(_property_map_Disk))
-Swagger.property_type(::Type{ Disk }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_Disk[name]))}
+Swagger.property_type(::Type{ Disk }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Disk[name]))}
 Swagger.field_name(::Type{ Disk }, property_name::Symbol) =  _property_map_Disk[property_name]
 
 function check_required(o::Disk)

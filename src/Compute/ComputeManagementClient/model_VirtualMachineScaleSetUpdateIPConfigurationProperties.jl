@@ -2,17 +2,17 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualMachineScaleSetUpdateIPConfigurationProperties <: SwaggerModel
     subnet::Any # spec type: Union{ Nothing, ApiEntityReference } # spec name: subnet
     primary::Any # spec type: Union{ Nothing, Bool } # spec name: primary
     publicIPAddressConfiguration::Any # spec type: Union{ Nothing, VirtualMachineScaleSetUpdatePublicIPAddressConfiguration } # spec name: publicIPAddressConfiguration
     privateIPAddressVersion::Any # spec type: Union{ Nothing, String } # spec name: privateIPAddressVersion
     applicationGatewayBackendAddressPools::Any # spec type: Union{ Nothing, Vector{SubResource} } # spec name: applicationGatewayBackendAddressPools
+    applicationSecurityGroups::Any # spec type: Union{ Nothing, Vector{SubResource} } # spec name: applicationSecurityGroups
     loadBalancerBackendAddressPools::Any # spec type: Union{ Nothing, Vector{SubResource} } # spec name: loadBalancerBackendAddressPools
     loadBalancerInboundNatPools::Any # spec type: Union{ Nothing, Vector{SubResource} } # spec name: loadBalancerInboundNatPools
 
-    function VirtualMachineScaleSetUpdateIPConfigurationProperties(;subnet=nothing, primary=nothing, publicIPAddressConfiguration=nothing, privateIPAddressVersion=nothing, applicationGatewayBackendAddressPools=nothing, loadBalancerBackendAddressPools=nothing, loadBalancerInboundNatPools=nothing)
+    function VirtualMachineScaleSetUpdateIPConfigurationProperties(;subnet=nothing, primary=nothing, publicIPAddressConfiguration=nothing, privateIPAddressVersion=nothing, applicationGatewayBackendAddressPools=nothing, applicationSecurityGroups=nothing, loadBalancerBackendAddressPools=nothing, loadBalancerInboundNatPools=nothing)
         o = new()
         validate_property(VirtualMachineScaleSetUpdateIPConfigurationProperties, Symbol("subnet"), subnet)
         setfield!(o, Symbol("subnet"), subnet)
@@ -24,6 +24,8 @@ mutable struct VirtualMachineScaleSetUpdateIPConfigurationProperties <: SwaggerM
         setfield!(o, Symbol("privateIPAddressVersion"), privateIPAddressVersion)
         validate_property(VirtualMachineScaleSetUpdateIPConfigurationProperties, Symbol("applicationGatewayBackendAddressPools"), applicationGatewayBackendAddressPools)
         setfield!(o, Symbol("applicationGatewayBackendAddressPools"), applicationGatewayBackendAddressPools)
+        validate_property(VirtualMachineScaleSetUpdateIPConfigurationProperties, Symbol("applicationSecurityGroups"), applicationSecurityGroups)
+        setfield!(o, Symbol("applicationSecurityGroups"), applicationSecurityGroups)
         validate_property(VirtualMachineScaleSetUpdateIPConfigurationProperties, Symbol("loadBalancerBackendAddressPools"), loadBalancerBackendAddressPools)
         setfield!(o, Symbol("loadBalancerBackendAddressPools"), loadBalancerBackendAddressPools)
         validate_property(VirtualMachineScaleSetUpdateIPConfigurationProperties, Symbol("loadBalancerInboundNatPools"), loadBalancerInboundNatPools)
@@ -32,10 +34,10 @@ mutable struct VirtualMachineScaleSetUpdateIPConfigurationProperties <: SwaggerM
     end
 end # type VirtualMachineScaleSetUpdateIPConfigurationProperties
 
-const _property_map_VirtualMachineScaleSetUpdateIPConfigurationProperties = Dict{Symbol,Symbol}(Symbol("subnet")=>Symbol("subnet"), Symbol("primary")=>Symbol("primary"), Symbol("publicIPAddressConfiguration")=>Symbol("publicIPAddressConfiguration"), Symbol("privateIPAddressVersion")=>Symbol("privateIPAddressVersion"), Symbol("applicationGatewayBackendAddressPools")=>Symbol("applicationGatewayBackendAddressPools"), Symbol("loadBalancerBackendAddressPools")=>Symbol("loadBalancerBackendAddressPools"), Symbol("loadBalancerInboundNatPools")=>Symbol("loadBalancerInboundNatPools"))
-const _property_types_VirtualMachineScaleSetUpdateIPConfigurationProperties = Dict{Symbol,String}(Symbol("subnet")=>"ApiEntityReference", Symbol("primary")=>"Bool", Symbol("publicIPAddressConfiguration")=>"VirtualMachineScaleSetUpdatePublicIPAddressConfiguration", Symbol("privateIPAddressVersion")=>"String", Symbol("applicationGatewayBackendAddressPools")=>"Vector{SubResource}", Symbol("loadBalancerBackendAddressPools")=>"Vector{SubResource}", Symbol("loadBalancerInboundNatPools")=>"Vector{SubResource}")
+const _property_map_VirtualMachineScaleSetUpdateIPConfigurationProperties = Dict{Symbol,Symbol}(Symbol("subnet")=>Symbol("subnet"), Symbol("primary")=>Symbol("primary"), Symbol("publicIPAddressConfiguration")=>Symbol("publicIPAddressConfiguration"), Symbol("privateIPAddressVersion")=>Symbol("privateIPAddressVersion"), Symbol("applicationGatewayBackendAddressPools")=>Symbol("applicationGatewayBackendAddressPools"), Symbol("applicationSecurityGroups")=>Symbol("applicationSecurityGroups"), Symbol("loadBalancerBackendAddressPools")=>Symbol("loadBalancerBackendAddressPools"), Symbol("loadBalancerInboundNatPools")=>Symbol("loadBalancerInboundNatPools"))
+const _property_types_VirtualMachineScaleSetUpdateIPConfigurationProperties = Dict{Symbol,String}(Symbol("subnet")=>"ApiEntityReference", Symbol("primary")=>"Bool", Symbol("publicIPAddressConfiguration")=>"VirtualMachineScaleSetUpdatePublicIPAddressConfiguration", Symbol("privateIPAddressVersion")=>"String", Symbol("applicationGatewayBackendAddressPools")=>"Vector{SubResource}", Symbol("applicationSecurityGroups")=>"Vector{SubResource}", Symbol("loadBalancerBackendAddressPools")=>"Vector{SubResource}", Symbol("loadBalancerInboundNatPools")=>"Vector{SubResource}")
 Base.propertynames(::Type{ VirtualMachineScaleSetUpdateIPConfigurationProperties }) = collect(keys(_property_map_VirtualMachineScaleSetUpdateIPConfigurationProperties))
-Swagger.property_type(::Type{ VirtualMachineScaleSetUpdateIPConfigurationProperties }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualMachineScaleSetUpdateIPConfigurationProperties[name]))}
+Swagger.property_type(::Type{ VirtualMachineScaleSetUpdateIPConfigurationProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetUpdateIPConfigurationProperties[name]))}
 Swagger.field_name(::Type{ VirtualMachineScaleSetUpdateIPConfigurationProperties }, property_name::Symbol) =  _property_map_VirtualMachineScaleSetUpdateIPConfigurationProperties[property_name]
 
 const _allowed_VirtualMachineScaleSetUpdateIPConfigurationProperties_privateIPAddressVersion = ["IPv4", "IPv6"]

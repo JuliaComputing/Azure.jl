@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualMachineExtensionProperties <: SwaggerModel
     forceUpdateTag::Any # spec type: Union{ Nothing, String } # spec name: forceUpdateTag
     publisher::Any # spec type: Union{ Nothing, String } # spec name: publisher
@@ -41,7 +40,7 @@ end # type VirtualMachineExtensionProperties
 const _property_map_VirtualMachineExtensionProperties = Dict{Symbol,Symbol}(Symbol("forceUpdateTag")=>Symbol("forceUpdateTag"), Symbol("publisher")=>Symbol("publisher"), Symbol("type")=>Symbol("type"), Symbol("typeHandlerVersion")=>Symbol("typeHandlerVersion"), Symbol("autoUpgradeMinorVersion")=>Symbol("autoUpgradeMinorVersion"), Symbol("settings")=>Symbol("settings"), Symbol("protectedSettings")=>Symbol("protectedSettings"), Symbol("provisioningState")=>Symbol("provisioningState"), Symbol("instanceView")=>Symbol("instanceView"))
 const _property_types_VirtualMachineExtensionProperties = Dict{Symbol,String}(Symbol("forceUpdateTag")=>"String", Symbol("publisher")=>"String", Symbol("type")=>"String", Symbol("typeHandlerVersion")=>"String", Symbol("autoUpgradeMinorVersion")=>"Bool", Symbol("settings")=>"Any", Symbol("protectedSettings")=>"Any", Symbol("provisioningState")=>"String", Symbol("instanceView")=>"VirtualMachineExtensionInstanceView")
 Base.propertynames(::Type{ VirtualMachineExtensionProperties }) = collect(keys(_property_map_VirtualMachineExtensionProperties))
-Swagger.property_type(::Type{ VirtualMachineExtensionProperties }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualMachineExtensionProperties[name]))}
+Swagger.property_type(::Type{ VirtualMachineExtensionProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineExtensionProperties[name]))}
 Swagger.field_name(::Type{ VirtualMachineExtensionProperties }, property_name::Symbol) =  _property_map_VirtualMachineExtensionProperties[property_name]
 
 function check_required(o::VirtualMachineExtensionProperties)

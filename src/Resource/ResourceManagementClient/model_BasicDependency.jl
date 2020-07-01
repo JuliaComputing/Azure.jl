@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct BasicDependency <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
     resourceType::Any # spec type: Union{ Nothing, String } # spec name: resourceType
@@ -23,7 +22,7 @@ end # type BasicDependency
 const _property_map_BasicDependency = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("resourceType")=>Symbol("resourceType"), Symbol("resourceName")=>Symbol("resourceName"))
 const _property_types_BasicDependency = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("resourceType")=>"String", Symbol("resourceName")=>"String")
 Base.propertynames(::Type{ BasicDependency }) = collect(keys(_property_map_BasicDependency))
-Swagger.property_type(::Type{ BasicDependency }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_BasicDependency[name]))}
+Swagger.property_type(::Type{ BasicDependency }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_BasicDependency[name]))}
 Swagger.field_name(::Type{ BasicDependency }, property_name::Symbol) =  _property_map_BasicDependency[property_name]
 
 function check_required(o::BasicDependency)

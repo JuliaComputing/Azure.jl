@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct DiskEncryptionSettings <: SwaggerModel
     diskEncryptionKey::Any # spec type: Union{ Nothing, KeyVaultSecretReference } # spec name: diskEncryptionKey
     keyEncryptionKey::Any # spec type: Union{ Nothing, KeyVaultKeyReference } # spec name: keyEncryptionKey
@@ -23,7 +22,7 @@ end # type DiskEncryptionSettings
 const _property_map_DiskEncryptionSettings = Dict{Symbol,Symbol}(Symbol("diskEncryptionKey")=>Symbol("diskEncryptionKey"), Symbol("keyEncryptionKey")=>Symbol("keyEncryptionKey"), Symbol("enabled")=>Symbol("enabled"))
 const _property_types_DiskEncryptionSettings = Dict{Symbol,String}(Symbol("diskEncryptionKey")=>"KeyVaultSecretReference", Symbol("keyEncryptionKey")=>"KeyVaultKeyReference", Symbol("enabled")=>"Bool")
 Base.propertynames(::Type{ DiskEncryptionSettings }) = collect(keys(_property_map_DiskEncryptionSettings))
-Swagger.property_type(::Type{ DiskEncryptionSettings }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_DiskEncryptionSettings[name]))}
+Swagger.property_type(::Type{ DiskEncryptionSettings }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DiskEncryptionSettings[name]))}
 Swagger.field_name(::Type{ DiskEncryptionSettings }, property_name::Symbol) =  _property_map_DiskEncryptionSettings[property_name]
 
 function check_required(o::DiskEncryptionSettings)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ApplicationGatewaySku <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     tier::Any # spec type: Union{ Nothing, String } # spec name: tier
@@ -23,12 +22,12 @@ end # type ApplicationGatewaySku
 const _property_map_ApplicationGatewaySku = Dict{Symbol,Symbol}(Symbol("name")=>Symbol("name"), Symbol("tier")=>Symbol("tier"), Symbol("capacity")=>Symbol("capacity"))
 const _property_types_ApplicationGatewaySku = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("tier")=>"String", Symbol("capacity")=>"Int32")
 Base.propertynames(::Type{ ApplicationGatewaySku }) = collect(keys(_property_map_ApplicationGatewaySku))
-Swagger.property_type(::Type{ ApplicationGatewaySku }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ApplicationGatewaySku[name]))}
+Swagger.property_type(::Type{ ApplicationGatewaySku }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewaySku[name]))}
 Swagger.field_name(::Type{ ApplicationGatewaySku }, property_name::Symbol) =  _property_map_ApplicationGatewaySku[property_name]
 
-const _allowed_ApplicationGatewaySku_name = ["Standard_Small", "Standard_Medium", "Standard_Large", "WAF_Medium", "WAF_Large"]
+const _allowed_ApplicationGatewaySku_name = ["Standard_Small", "Standard_Medium", "Standard_Large", "WAF_Medium", "WAF_Large", "Standard_v2", "WAF_v2"]
 
-const _allowed_ApplicationGatewaySku_tier = ["Standard", "WAF"]
+const _allowed_ApplicationGatewaySku_tier = ["Standard", "WAF", "Standard_v2", "WAF_v2"]
 
 function check_required(o::ApplicationGatewaySku)
     true

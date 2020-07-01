@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualHardDisk <: SwaggerModel
     uri::Any # spec type: Union{ Nothing, String } # spec name: uri
 
@@ -17,7 +16,7 @@ end # type VirtualHardDisk
 const _property_map_VirtualHardDisk = Dict{Symbol,Symbol}(Symbol("uri")=>Symbol("uri"))
 const _property_types_VirtualHardDisk = Dict{Symbol,String}(Symbol("uri")=>"String")
 Base.propertynames(::Type{ VirtualHardDisk }) = collect(keys(_property_map_VirtualHardDisk))
-Swagger.property_type(::Type{ VirtualHardDisk }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualHardDisk[name]))}
+Swagger.property_type(::Type{ VirtualHardDisk }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualHardDisk[name]))}
 Swagger.field_name(::Type{ VirtualHardDisk }, property_name::Symbol) =  _property_map_VirtualHardDisk[property_name]
 
 function check_required(o::VirtualHardDisk)

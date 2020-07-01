@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct Snapshot <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
     name::Any # spec type: Union{ Nothing, String } # spec name: name
@@ -10,8 +9,8 @@ mutable struct Snapshot <: SwaggerModel
     location::Any # spec type: Union{ Nothing, String } # spec name: location
     tags::Any # spec type: Union{ Nothing, Dict{String, String} } # spec name: tags
     managedBy::Any # spec type: Union{ Nothing, String } # spec name: managedBy
-    sku::Any # spec type: Union{ Nothing, DiskSku } # spec name: sku
-    properties::Any # spec type: Union{ Nothing, DiskProperties } # spec name: properties
+    sku::Any # spec type: Union{ Nothing, SnapshotSku } # spec name: sku
+    properties::Any # spec type: Union{ Nothing, SnapshotProperties } # spec name: properties
 
     function Snapshot(;id=nothing, name=nothing, type=nothing, location=nothing, tags=nothing, managedBy=nothing, sku=nothing, properties=nothing)
         o = new()
@@ -36,9 +35,9 @@ mutable struct Snapshot <: SwaggerModel
 end # type Snapshot
 
 const _property_map_Snapshot = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("name")=>Symbol("name"), Symbol("type")=>Symbol("type"), Symbol("location")=>Symbol("location"), Symbol("tags")=>Symbol("tags"), Symbol("managedBy")=>Symbol("managedBy"), Symbol("sku")=>Symbol("sku"), Symbol("properties")=>Symbol("properties"))
-const _property_types_Snapshot = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", Symbol("managedBy")=>"String", Symbol("sku")=>"DiskSku", Symbol("properties")=>"DiskProperties")
+const _property_types_Snapshot = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", Symbol("managedBy")=>"String", Symbol("sku")=>"SnapshotSku", Symbol("properties")=>"SnapshotProperties")
 Base.propertynames(::Type{ Snapshot }) = collect(keys(_property_map_Snapshot))
-Swagger.property_type(::Type{ Snapshot }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_Snapshot[name]))}
+Swagger.property_type(::Type{ Snapshot }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Snapshot[name]))}
 Swagger.field_name(::Type{ Snapshot }, property_name::Symbol) =  _property_map_Snapshot[property_name]
 
 function check_required(o::Snapshot)

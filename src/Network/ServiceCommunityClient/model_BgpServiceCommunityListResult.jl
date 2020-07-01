@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct BgpServiceCommunityListResult <: SwaggerModel
     value::Any # spec type: Union{ Nothing, Vector{BgpServiceCommunity} } # spec name: value
     nextLink::Any # spec type: Union{ Nothing, String } # spec name: nextLink
@@ -20,7 +19,7 @@ end # type BgpServiceCommunityListResult
 const _property_map_BgpServiceCommunityListResult = Dict{Symbol,Symbol}(Symbol("value")=>Symbol("value"), Symbol("nextLink")=>Symbol("nextLink"))
 const _property_types_BgpServiceCommunityListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{BgpServiceCommunity}", Symbol("nextLink")=>"String")
 Base.propertynames(::Type{ BgpServiceCommunityListResult }) = collect(keys(_property_map_BgpServiceCommunityListResult))
-Swagger.property_type(::Type{ BgpServiceCommunityListResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_BgpServiceCommunityListResult[name]))}
+Swagger.property_type(::Type{ BgpServiceCommunityListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_BgpServiceCommunityListResult[name]))}
 Swagger.field_name(::Type{ BgpServiceCommunityListResult }, property_name::Symbol) =  _property_map_BgpServiceCommunityListResult[property_name]
 
 function check_required(o::BgpServiceCommunityListResult)

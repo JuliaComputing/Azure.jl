@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualMachineScaleSetSku <: SwaggerModel
     resourceType::Any # spec type: Union{ Nothing, String } # spec name: resourceType
     sku::Any # spec type: Union{ Nothing, Sku } # spec name: sku
@@ -23,7 +22,7 @@ end # type VirtualMachineScaleSetSku
 const _property_map_VirtualMachineScaleSetSku = Dict{Symbol,Symbol}(Symbol("resourceType")=>Symbol("resourceType"), Symbol("sku")=>Symbol("sku"), Symbol("capacity")=>Symbol("capacity"))
 const _property_types_VirtualMachineScaleSetSku = Dict{Symbol,String}(Symbol("resourceType")=>"String", Symbol("sku")=>"Sku", Symbol("capacity")=>"VirtualMachineScaleSetSkuCapacity")
 Base.propertynames(::Type{ VirtualMachineScaleSetSku }) = collect(keys(_property_map_VirtualMachineScaleSetSku))
-Swagger.property_type(::Type{ VirtualMachineScaleSetSku }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualMachineScaleSetSku[name]))}
+Swagger.property_type(::Type{ VirtualMachineScaleSetSku }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetSku[name]))}
 Swagger.field_name(::Type{ VirtualMachineScaleSetSku }, property_name::Symbol) =  _property_map_VirtualMachineScaleSetSku[property_name]
 
 function check_required(o::VirtualMachineScaleSetSku)

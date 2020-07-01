@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct NetworkInterfaceAssociation <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
     securityRules::Any # spec type: Union{ Nothing, Vector{SecurityRule} } # spec name: securityRules
@@ -20,7 +19,7 @@ end # type NetworkInterfaceAssociation
 const _property_map_NetworkInterfaceAssociation = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("securityRules")=>Symbol("securityRules"))
 const _property_types_NetworkInterfaceAssociation = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("securityRules")=>"Vector{SecurityRule}")
 Base.propertynames(::Type{ NetworkInterfaceAssociation }) = collect(keys(_property_map_NetworkInterfaceAssociation))
-Swagger.property_type(::Type{ NetworkInterfaceAssociation }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_NetworkInterfaceAssociation[name]))}
+Swagger.property_type(::Type{ NetworkInterfaceAssociation }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkInterfaceAssociation[name]))}
 Swagger.field_name(::Type{ NetworkInterfaceAssociation }, property_name::Symbol) =  _property_map_NetworkInterfaceAssociation[property_name]
 
 function check_required(o::NetworkInterfaceAssociation)

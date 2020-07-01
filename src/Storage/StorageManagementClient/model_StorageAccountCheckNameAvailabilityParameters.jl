@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct StorageAccountCheckNameAvailabilityParameters <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     type::Any # spec type: Union{ Nothing, String } # spec name: type
@@ -20,7 +19,7 @@ end # type StorageAccountCheckNameAvailabilityParameters
 const _property_map_StorageAccountCheckNameAvailabilityParameters = Dict{Symbol,Symbol}(Symbol("name")=>Symbol("name"), Symbol("type")=>Symbol("type"))
 const _property_types_StorageAccountCheckNameAvailabilityParameters = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("type")=>"String")
 Base.propertynames(::Type{ StorageAccountCheckNameAvailabilityParameters }) = collect(keys(_property_map_StorageAccountCheckNameAvailabilityParameters))
-Swagger.property_type(::Type{ StorageAccountCheckNameAvailabilityParameters }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_StorageAccountCheckNameAvailabilityParameters[name]))}
+Swagger.property_type(::Type{ StorageAccountCheckNameAvailabilityParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_StorageAccountCheckNameAvailabilityParameters[name]))}
 Swagger.field_name(::Type{ StorageAccountCheckNameAvailabilityParameters }, property_name::Symbol) =  _property_map_StorageAccountCheckNameAvailabilityParameters[property_name]
 
 const _allowed_StorageAccountCheckNameAvailabilityParameters_type = ["Microsoft.Storage/storageAccounts"]

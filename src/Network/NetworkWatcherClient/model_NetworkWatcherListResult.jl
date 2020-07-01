@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct NetworkWatcherListResult <: SwaggerModel
     value::Any # spec type: Union{ Nothing, Vector{NetworkWatcher} } # spec name: value
 
@@ -17,7 +16,7 @@ end # type NetworkWatcherListResult
 const _property_map_NetworkWatcherListResult = Dict{Symbol,Symbol}(Symbol("value")=>Symbol("value"))
 const _property_types_NetworkWatcherListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{NetworkWatcher}")
 Base.propertynames(::Type{ NetworkWatcherListResult }) = collect(keys(_property_map_NetworkWatcherListResult))
-Swagger.property_type(::Type{ NetworkWatcherListResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_NetworkWatcherListResult[name]))}
+Swagger.property_type(::Type{ NetworkWatcherListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkWatcherListResult[name]))}
 Swagger.field_name(::Type{ NetworkWatcherListResult }, property_name::Symbol) =  _property_map_NetworkWatcherListResult[property_name]
 
 function check_required(o::NetworkWatcherListResult)

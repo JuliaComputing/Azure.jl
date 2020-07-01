@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ApplicationGatewayFirewallRule <: SwaggerModel
     ruleId::Any # spec type: Union{ Nothing, Int32 } # spec name: ruleId
     description::Any # spec type: Union{ Nothing, String } # spec name: description
@@ -20,7 +19,7 @@ end # type ApplicationGatewayFirewallRule
 const _property_map_ApplicationGatewayFirewallRule = Dict{Symbol,Symbol}(Symbol("ruleId")=>Symbol("ruleId"), Symbol("description")=>Symbol("description"))
 const _property_types_ApplicationGatewayFirewallRule = Dict{Symbol,String}(Symbol("ruleId")=>"Int32", Symbol("description")=>"String")
 Base.propertynames(::Type{ ApplicationGatewayFirewallRule }) = collect(keys(_property_map_ApplicationGatewayFirewallRule))
-Swagger.property_type(::Type{ ApplicationGatewayFirewallRule }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ApplicationGatewayFirewallRule[name]))}
+Swagger.property_type(::Type{ ApplicationGatewayFirewallRule }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayFirewallRule[name]))}
 Swagger.field_name(::Type{ ApplicationGatewayFirewallRule }, property_name::Symbol) =  _property_map_ApplicationGatewayFirewallRule[property_name]
 
 function check_required(o::ApplicationGatewayFirewallRule)

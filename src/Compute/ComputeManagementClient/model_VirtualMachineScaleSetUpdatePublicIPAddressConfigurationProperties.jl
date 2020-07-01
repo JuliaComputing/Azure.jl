@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties <: SwaggerModel
     idleTimeoutInMinutes::Any # spec type: Union{ Nothing, Int32 } # spec name: idleTimeoutInMinutes
     dnsSettings::Any # spec type: Union{ Nothing, VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings } # spec name: dnsSettings
@@ -20,7 +19,7 @@ end # type VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties
 const _property_map_VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties = Dict{Symbol,Symbol}(Symbol("idleTimeoutInMinutes")=>Symbol("idleTimeoutInMinutes"), Symbol("dnsSettings")=>Symbol("dnsSettings"))
 const _property_types_VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties = Dict{Symbol,String}(Symbol("idleTimeoutInMinutes")=>"Int32", Symbol("dnsSettings")=>"VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings")
 Base.propertynames(::Type{ VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties }) = collect(keys(_property_map_VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties))
-Swagger.property_type(::Type{ VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties[name]))}
+Swagger.property_type(::Type{ VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties[name]))}
 Swagger.field_name(::Type{ VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties }, property_name::Symbol) =  _property_map_VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties[property_name]
 
 function check_required(o::VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties)

@@ -2,15 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct StorageAccountPropertiesUpdateParameters <: SwaggerModel
     customDomain::Any # spec type: Union{ Nothing, CustomDomain } # spec name: customDomain
     encryption::Any # spec type: Union{ Nothing, Encryption } # spec name: encryption
     accessTier::Any # spec type: Union{ Nothing, String } # spec name: accessTier
+    azureFilesIdentityBasedAuthentication::Any # spec type: Union{ Nothing, AzureFilesIdentityBasedAuthentication } # spec name: azureFilesIdentityBasedAuthentication
     supportsHttpsTrafficOnly::Any # spec type: Union{ Nothing, Bool } # spec name: supportsHttpsTrafficOnly
     networkAcls::Any # spec type: Union{ Nothing, NetworkRuleSet } # spec name: networkAcls
+    largeFileSharesState::Any # spec type: Union{ Nothing, String } # spec name: largeFileSharesState
+    routingPreference::Any # spec type: Union{ Nothing, RoutingPreference } # spec name: routingPreference
+    allowBlobPublicAccess::Any # spec type: Union{ Nothing, Bool } # spec name: allowBlobPublicAccess
+    minimumTlsVersion::Any # spec type: Union{ Nothing, String } # spec name: minimumTlsVersion
 
-    function StorageAccountPropertiesUpdateParameters(;customDomain=nothing, encryption=nothing, accessTier=nothing, supportsHttpsTrafficOnly=false, networkAcls=nothing)
+    function StorageAccountPropertiesUpdateParameters(;customDomain=nothing, encryption=nothing, accessTier=nothing, azureFilesIdentityBasedAuthentication=nothing, supportsHttpsTrafficOnly=nothing, networkAcls=nothing, largeFileSharesState=nothing, routingPreference=nothing, allowBlobPublicAccess=nothing, minimumTlsVersion=nothing)
         o = new()
         validate_property(StorageAccountPropertiesUpdateParameters, Symbol("customDomain"), customDomain)
         setfield!(o, Symbol("customDomain"), customDomain)
@@ -18,21 +22,35 @@ mutable struct StorageAccountPropertiesUpdateParameters <: SwaggerModel
         setfield!(o, Symbol("encryption"), encryption)
         validate_property(StorageAccountPropertiesUpdateParameters, Symbol("accessTier"), accessTier)
         setfield!(o, Symbol("accessTier"), accessTier)
+        validate_property(StorageAccountPropertiesUpdateParameters, Symbol("azureFilesIdentityBasedAuthentication"), azureFilesIdentityBasedAuthentication)
+        setfield!(o, Symbol("azureFilesIdentityBasedAuthentication"), azureFilesIdentityBasedAuthentication)
         validate_property(StorageAccountPropertiesUpdateParameters, Symbol("supportsHttpsTrafficOnly"), supportsHttpsTrafficOnly)
         setfield!(o, Symbol("supportsHttpsTrafficOnly"), supportsHttpsTrafficOnly)
         validate_property(StorageAccountPropertiesUpdateParameters, Symbol("networkAcls"), networkAcls)
         setfield!(o, Symbol("networkAcls"), networkAcls)
+        validate_property(StorageAccountPropertiesUpdateParameters, Symbol("largeFileSharesState"), largeFileSharesState)
+        setfield!(o, Symbol("largeFileSharesState"), largeFileSharesState)
+        validate_property(StorageAccountPropertiesUpdateParameters, Symbol("routingPreference"), routingPreference)
+        setfield!(o, Symbol("routingPreference"), routingPreference)
+        validate_property(StorageAccountPropertiesUpdateParameters, Symbol("allowBlobPublicAccess"), allowBlobPublicAccess)
+        setfield!(o, Symbol("allowBlobPublicAccess"), allowBlobPublicAccess)
+        validate_property(StorageAccountPropertiesUpdateParameters, Symbol("minimumTlsVersion"), minimumTlsVersion)
+        setfield!(o, Symbol("minimumTlsVersion"), minimumTlsVersion)
         o
     end
 end # type StorageAccountPropertiesUpdateParameters
 
-const _property_map_StorageAccountPropertiesUpdateParameters = Dict{Symbol,Symbol}(Symbol("customDomain")=>Symbol("customDomain"), Symbol("encryption")=>Symbol("encryption"), Symbol("accessTier")=>Symbol("accessTier"), Symbol("supportsHttpsTrafficOnly")=>Symbol("supportsHttpsTrafficOnly"), Symbol("networkAcls")=>Symbol("networkAcls"))
-const _property_types_StorageAccountPropertiesUpdateParameters = Dict{Symbol,String}(Symbol("customDomain")=>"CustomDomain", Symbol("encryption")=>"Encryption", Symbol("accessTier")=>"String", Symbol("supportsHttpsTrafficOnly")=>"Bool", Symbol("networkAcls")=>"NetworkRuleSet")
+const _property_map_StorageAccountPropertiesUpdateParameters = Dict{Symbol,Symbol}(Symbol("customDomain")=>Symbol("customDomain"), Symbol("encryption")=>Symbol("encryption"), Symbol("accessTier")=>Symbol("accessTier"), Symbol("azureFilesIdentityBasedAuthentication")=>Symbol("azureFilesIdentityBasedAuthentication"), Symbol("supportsHttpsTrafficOnly")=>Symbol("supportsHttpsTrafficOnly"), Symbol("networkAcls")=>Symbol("networkAcls"), Symbol("largeFileSharesState")=>Symbol("largeFileSharesState"), Symbol("routingPreference")=>Symbol("routingPreference"), Symbol("allowBlobPublicAccess")=>Symbol("allowBlobPublicAccess"), Symbol("minimumTlsVersion")=>Symbol("minimumTlsVersion"))
+const _property_types_StorageAccountPropertiesUpdateParameters = Dict{Symbol,String}(Symbol("customDomain")=>"CustomDomain", Symbol("encryption")=>"Encryption", Symbol("accessTier")=>"String", Symbol("azureFilesIdentityBasedAuthentication")=>"AzureFilesIdentityBasedAuthentication", Symbol("supportsHttpsTrafficOnly")=>"Bool", Symbol("networkAcls")=>"NetworkRuleSet", Symbol("largeFileSharesState")=>"String", Symbol("routingPreference")=>"RoutingPreference", Symbol("allowBlobPublicAccess")=>"Bool", Symbol("minimumTlsVersion")=>"String")
 Base.propertynames(::Type{ StorageAccountPropertiesUpdateParameters }) = collect(keys(_property_map_StorageAccountPropertiesUpdateParameters))
-Swagger.property_type(::Type{ StorageAccountPropertiesUpdateParameters }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_StorageAccountPropertiesUpdateParameters[name]))}
+Swagger.property_type(::Type{ StorageAccountPropertiesUpdateParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_StorageAccountPropertiesUpdateParameters[name]))}
 Swagger.field_name(::Type{ StorageAccountPropertiesUpdateParameters }, property_name::Symbol) =  _property_map_StorageAccountPropertiesUpdateParameters[property_name]
 
 const _allowed_StorageAccountPropertiesUpdateParameters_accessTier = ["Hot", "Cool"]
+
+const _allowed_StorageAccountPropertiesUpdateParameters_largeFileSharesState = ["Disabled", "Enabled"]
+
+const _allowed_StorageAccountPropertiesUpdateParameters_minimumTlsVersion = ["TLS1_0", "TLS1_1", "TLS1_2"]
 
 function check_required(o::StorageAccountPropertiesUpdateParameters)
     true
@@ -41,5 +59,11 @@ end
 function validate_property(::Type{ StorageAccountPropertiesUpdateParameters }, name::Symbol, val)
     if name === Symbol("accessTier")
         Swagger.validate_param(name, "StorageAccountPropertiesUpdateParameters", :enum, val, _allowed_StorageAccountPropertiesUpdateParameters_accessTier)
+    end
+    if name === Symbol("largeFileSharesState")
+        Swagger.validate_param(name, "StorageAccountPropertiesUpdateParameters", :enum, val, _allowed_StorageAccountPropertiesUpdateParameters_largeFileSharesState)
+    end
+    if name === Symbol("minimumTlsVersion")
+        Swagger.validate_param(name, "StorageAccountPropertiesUpdateParameters", :enum, val, _allowed_StorageAccountPropertiesUpdateParameters_minimumTlsVersion)
     end
 end

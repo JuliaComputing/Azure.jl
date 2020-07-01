@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ExpressRouteCircuitServiceProviderProperties <: SwaggerModel
     serviceProviderName::Any # spec type: Union{ Nothing, String } # spec name: serviceProviderName
     peeringLocation::Any # spec type: Union{ Nothing, String } # spec name: peeringLocation
@@ -23,7 +22,7 @@ end # type ExpressRouteCircuitServiceProviderProperties
 const _property_map_ExpressRouteCircuitServiceProviderProperties = Dict{Symbol,Symbol}(Symbol("serviceProviderName")=>Symbol("serviceProviderName"), Symbol("peeringLocation")=>Symbol("peeringLocation"), Symbol("bandwidthInMbps")=>Symbol("bandwidthInMbps"))
 const _property_types_ExpressRouteCircuitServiceProviderProperties = Dict{Symbol,String}(Symbol("serviceProviderName")=>"String", Symbol("peeringLocation")=>"String", Symbol("bandwidthInMbps")=>"Int32")
 Base.propertynames(::Type{ ExpressRouteCircuitServiceProviderProperties }) = collect(keys(_property_map_ExpressRouteCircuitServiceProviderProperties))
-Swagger.property_type(::Type{ ExpressRouteCircuitServiceProviderProperties }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ExpressRouteCircuitServiceProviderProperties[name]))}
+Swagger.property_type(::Type{ ExpressRouteCircuitServiceProviderProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExpressRouteCircuitServiceProviderProperties[name]))}
 Swagger.field_name(::Type{ ExpressRouteCircuitServiceProviderProperties }, property_name::Symbol) =  _property_map_ExpressRouteCircuitServiceProviderProperties[property_name]
 
 function check_required(o::ExpressRouteCircuitServiceProviderProperties)

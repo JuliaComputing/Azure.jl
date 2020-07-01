@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct AdlsFileNotFoundException <: SwaggerModel
     exception::Any # spec type: Union{ Nothing, String } # spec name: exception
     javaClassName::Any # spec type: Union{ Nothing, String } # spec name: javaClassName
@@ -23,7 +22,7 @@ end # type AdlsFileNotFoundException
 const _property_map_AdlsFileNotFoundException = Dict{Symbol,Symbol}(Symbol("exception")=>Symbol("exception"), Symbol("javaClassName")=>Symbol("javaClassName"), Symbol("message")=>Symbol("message"))
 const _property_types_AdlsFileNotFoundException = Dict{Symbol,String}(Symbol("exception")=>"String", Symbol("javaClassName")=>"String", Symbol("message")=>"String")
 Base.propertynames(::Type{ AdlsFileNotFoundException }) = collect(keys(_property_map_AdlsFileNotFoundException))
-Swagger.property_type(::Type{ AdlsFileNotFoundException }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_AdlsFileNotFoundException[name]))}
+Swagger.property_type(::Type{ AdlsFileNotFoundException }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AdlsFileNotFoundException[name]))}
 Swagger.field_name(::Type{ AdlsFileNotFoundException }, property_name::Symbol) =  _property_map_AdlsFileNotFoundException[property_name]
 
 function check_required(o::AdlsFileNotFoundException)

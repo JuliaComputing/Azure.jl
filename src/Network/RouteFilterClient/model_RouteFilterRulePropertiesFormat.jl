@@ -2,12 +2,11 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct RouteFilterRulePropertiesFormat <: SwaggerModel
-    access::Any # spec type: Union{ Nothing, String } # spec name: access
+    access::Any # spec type: Union{ Nothing, Access } # spec name: access
     routeFilterRuleType::Any # spec type: Union{ Nothing, String } # spec name: routeFilterRuleType
     communities::Any # spec type: Union{ Nothing, Vector{String} } # spec name: communities
-    provisioningState::Any # spec type: Union{ Nothing, String } # spec name: provisioningState
+    provisioningState::Any # spec type: Union{ Nothing, ProvisioningState } # spec name: provisioningState
 
     function RouteFilterRulePropertiesFormat(;access=nothing, routeFilterRuleType=nothing, communities=nothing, provisioningState=nothing)
         o = new()
@@ -24,24 +23,20 @@ mutable struct RouteFilterRulePropertiesFormat <: SwaggerModel
 end # type RouteFilterRulePropertiesFormat
 
 const _property_map_RouteFilterRulePropertiesFormat = Dict{Symbol,Symbol}(Symbol("access")=>Symbol("access"), Symbol("routeFilterRuleType")=>Symbol("routeFilterRuleType"), Symbol("communities")=>Symbol("communities"), Symbol("provisioningState")=>Symbol("provisioningState"))
-const _property_types_RouteFilterRulePropertiesFormat = Dict{Symbol,String}(Symbol("access")=>"String", Symbol("routeFilterRuleType")=>"String", Symbol("communities")=>"Vector{String}", Symbol("provisioningState")=>"String")
+const _property_types_RouteFilterRulePropertiesFormat = Dict{Symbol,String}(Symbol("access")=>"Access", Symbol("routeFilterRuleType")=>"String", Symbol("communities")=>"Vector{String}", Symbol("provisioningState")=>"ProvisioningState")
 Base.propertynames(::Type{ RouteFilterRulePropertiesFormat }) = collect(keys(_property_map_RouteFilterRulePropertiesFormat))
-Swagger.property_type(::Type{ RouteFilterRulePropertiesFormat }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_RouteFilterRulePropertiesFormat[name]))}
+Swagger.property_type(::Type{ RouteFilterRulePropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RouteFilterRulePropertiesFormat[name]))}
 Swagger.field_name(::Type{ RouteFilterRulePropertiesFormat }, property_name::Symbol) =  _property_map_RouteFilterRulePropertiesFormat[property_name]
-
-const _allowed_RouteFilterRulePropertiesFormat_access = ["Allow", "Deny"]
 
 const _allowed_RouteFilterRulePropertiesFormat_routeFilterRuleType = ["Community"]
 
 function check_required(o::RouteFilterRulePropertiesFormat)
+    (getproperty(o, Symbol("access")) === nothing) && (return false)
     (getproperty(o, Symbol("communities")) === nothing) && (return false)
     true
 end
 
 function validate_property(::Type{ RouteFilterRulePropertiesFormat }, name::Symbol, val)
-    if name === Symbol("access")
-        Swagger.validate_param(name, "RouteFilterRulePropertiesFormat", :enum, val, _allowed_RouteFilterRulePropertiesFormat_access)
-    end
     if name === Symbol("routeFilterRuleType")
         Swagger.validate_param(name, "RouteFilterRulePropertiesFormat", :enum, val, _allowed_RouteFilterRulePropertiesFormat_routeFilterRuleType)
     end

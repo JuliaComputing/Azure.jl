@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualNetworkPeeringListResult <: SwaggerModel
     value::Any # spec type: Union{ Nothing, Vector{VirtualNetworkPeering} } # spec name: value
     nextLink::Any # spec type: Union{ Nothing, String } # spec name: nextLink
@@ -20,7 +19,7 @@ end # type VirtualNetworkPeeringListResult
 const _property_map_VirtualNetworkPeeringListResult = Dict{Symbol,Symbol}(Symbol("value")=>Symbol("value"), Symbol("nextLink")=>Symbol("nextLink"))
 const _property_types_VirtualNetworkPeeringListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{VirtualNetworkPeering}", Symbol("nextLink")=>"String")
 Base.propertynames(::Type{ VirtualNetworkPeeringListResult }) = collect(keys(_property_map_VirtualNetworkPeeringListResult))
-Swagger.property_type(::Type{ VirtualNetworkPeeringListResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualNetworkPeeringListResult[name]))}
+Swagger.property_type(::Type{ VirtualNetworkPeeringListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualNetworkPeeringListResult[name]))}
 Swagger.field_name(::Type{ VirtualNetworkPeeringListResult }, property_name::Symbol) =  _property_map_VirtualNetworkPeeringListResult[property_name]
 
 function check_required(o::VirtualNetworkPeeringListResult)

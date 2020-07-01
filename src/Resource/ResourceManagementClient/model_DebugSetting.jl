@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct DebugSetting <: SwaggerModel
     detailLevel::Any # spec type: Union{ Nothing, String } # spec name: detailLevel
 
@@ -17,7 +16,7 @@ end # type DebugSetting
 const _property_map_DebugSetting = Dict{Symbol,Symbol}(Symbol("detailLevel")=>Symbol("detailLevel"))
 const _property_types_DebugSetting = Dict{Symbol,String}(Symbol("detailLevel")=>"String")
 Base.propertynames(::Type{ DebugSetting }) = collect(keys(_property_map_DebugSetting))
-Swagger.property_type(::Type{ DebugSetting }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_DebugSetting[name]))}
+Swagger.property_type(::Type{ DebugSetting }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DebugSetting[name]))}
 Swagger.field_name(::Type{ DebugSetting }, property_name::Symbol) =  _property_map_DebugSetting[property_name]
 
 function check_required(o::DebugSetting)

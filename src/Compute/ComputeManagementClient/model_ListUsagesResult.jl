@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ListUsagesResult <: SwaggerModel
     value::Any # spec type: Union{ Nothing, Vector{Usage} } # spec name: value
     nextLink::Any # spec type: Union{ Nothing, String } # spec name: nextLink
@@ -20,7 +19,7 @@ end # type ListUsagesResult
 const _property_map_ListUsagesResult = Dict{Symbol,Symbol}(Symbol("value")=>Symbol("value"), Symbol("nextLink")=>Symbol("nextLink"))
 const _property_types_ListUsagesResult = Dict{Symbol,String}(Symbol("value")=>"Vector{Usage}", Symbol("nextLink")=>"String")
 Base.propertynames(::Type{ ListUsagesResult }) = collect(keys(_property_map_ListUsagesResult))
-Swagger.property_type(::Type{ ListUsagesResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ListUsagesResult[name]))}
+Swagger.property_type(::Type{ ListUsagesResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ListUsagesResult[name]))}
 Swagger.field_name(::Type{ ListUsagesResult }, property_name::Symbol) =  _property_map_ListUsagesResult[property_name]
 
 function check_required(o::ListUsagesResult)

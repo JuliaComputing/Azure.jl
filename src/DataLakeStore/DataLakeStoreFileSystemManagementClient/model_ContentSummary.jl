@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ContentSummary <: SwaggerModel
     directoryCount::Any # spec type: Union{ Nothing, Int64 } # spec name: directoryCount
     fileCount::Any # spec type: Union{ Nothing, Int64 } # spec name: fileCount
@@ -26,7 +25,7 @@ end # type ContentSummary
 const _property_map_ContentSummary = Dict{Symbol,Symbol}(Symbol("directoryCount")=>Symbol("directoryCount"), Symbol("fileCount")=>Symbol("fileCount"), Symbol("length")=>Symbol("length"), Symbol("spaceConsumed")=>Symbol("spaceConsumed"))
 const _property_types_ContentSummary = Dict{Symbol,String}(Symbol("directoryCount")=>"Int64", Symbol("fileCount")=>"Int64", Symbol("length")=>"Int64", Symbol("spaceConsumed")=>"Int64")
 Base.propertynames(::Type{ ContentSummary }) = collect(keys(_property_map_ContentSummary))
-Swagger.property_type(::Type{ ContentSummary }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ContentSummary[name]))}
+Swagger.property_type(::Type{ ContentSummary }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ContentSummary[name]))}
 Swagger.field_name(::Type{ ContentSummary }, property_name::Symbol) =  _property_map_ContentSummary[property_name]
 
 function check_required(o::ContentSummary)

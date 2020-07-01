@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualMachineScaleSetVMInstanceRequiredIDs <: SwaggerModel
     instanceIds::Any # spec type: Union{ Nothing, Vector{String} } # spec name: instanceIds
 
@@ -17,7 +16,7 @@ end # type VirtualMachineScaleSetVMInstanceRequiredIDs
 const _property_map_VirtualMachineScaleSetVMInstanceRequiredIDs = Dict{Symbol,Symbol}(Symbol("instanceIds")=>Symbol("instanceIds"))
 const _property_types_VirtualMachineScaleSetVMInstanceRequiredIDs = Dict{Symbol,String}(Symbol("instanceIds")=>"Vector{String}")
 Base.propertynames(::Type{ VirtualMachineScaleSetVMInstanceRequiredIDs }) = collect(keys(_property_map_VirtualMachineScaleSetVMInstanceRequiredIDs))
-Swagger.property_type(::Type{ VirtualMachineScaleSetVMInstanceRequiredIDs }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualMachineScaleSetVMInstanceRequiredIDs[name]))}
+Swagger.property_type(::Type{ VirtualMachineScaleSetVMInstanceRequiredIDs }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetVMInstanceRequiredIDs[name]))}
 Swagger.field_name(::Type{ VirtualMachineScaleSetVMInstanceRequiredIDs }, property_name::Symbol) =  _property_map_VirtualMachineScaleSetVMInstanceRequiredIDs[property_name]
 
 function check_required(o::VirtualMachineScaleSetVMInstanceRequiredIDs)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct UpdateEncryptionConfig <: SwaggerModel
     keyVaultMetaInfo::Any # spec type: Union{ Nothing, UpdateKeyVaultMetaInfo } # spec name: keyVaultMetaInfo
 
@@ -17,7 +16,7 @@ end # type UpdateEncryptionConfig
 const _property_map_UpdateEncryptionConfig = Dict{Symbol,Symbol}(Symbol("keyVaultMetaInfo")=>Symbol("keyVaultMetaInfo"))
 const _property_types_UpdateEncryptionConfig = Dict{Symbol,String}(Symbol("keyVaultMetaInfo")=>"UpdateKeyVaultMetaInfo")
 Base.propertynames(::Type{ UpdateEncryptionConfig }) = collect(keys(_property_map_UpdateEncryptionConfig))
-Swagger.property_type(::Type{ UpdateEncryptionConfig }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_UpdateEncryptionConfig[name]))}
+Swagger.property_type(::Type{ UpdateEncryptionConfig }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_UpdateEncryptionConfig[name]))}
 Swagger.field_name(::Type{ UpdateEncryptionConfig }, property_name::Symbol) =  _property_map_UpdateEncryptionConfig[property_name]
 
 function check_required(o::UpdateEncryptionConfig)

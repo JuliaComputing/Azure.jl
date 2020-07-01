@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ContainerServiceLinuxProfile <: SwaggerModel
     adminUsername::Any # spec type: Union{ Nothing, String } # spec name: adminUsername
     ssh::Any # spec type: Union{ Nothing, ContainerServiceSshConfiguration } # spec name: ssh
@@ -20,7 +19,7 @@ end # type ContainerServiceLinuxProfile
 const _property_map_ContainerServiceLinuxProfile = Dict{Symbol,Symbol}(Symbol("adminUsername")=>Symbol("adminUsername"), Symbol("ssh")=>Symbol("ssh"))
 const _property_types_ContainerServiceLinuxProfile = Dict{Symbol,String}(Symbol("adminUsername")=>"String", Symbol("ssh")=>"ContainerServiceSshConfiguration")
 Base.propertynames(::Type{ ContainerServiceLinuxProfile }) = collect(keys(_property_map_ContainerServiceLinuxProfile))
-Swagger.property_type(::Type{ ContainerServiceLinuxProfile }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ContainerServiceLinuxProfile[name]))}
+Swagger.property_type(::Type{ ContainerServiceLinuxProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ContainerServiceLinuxProfile[name]))}
 Swagger.field_name(::Type{ ContainerServiceLinuxProfile }, property_name::Symbol) =  _property_map_ContainerServiceLinuxProfile[property_name]
 
 function check_required(o::ContainerServiceLinuxProfile)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct MetricSpecification <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     displayName::Any # spec type: Union{ Nothing, String } # spec name: displayName
@@ -41,7 +40,7 @@ end # type MetricSpecification
 const _property_map_MetricSpecification = Dict{Symbol,Symbol}(Symbol("name")=>Symbol("name"), Symbol("displayName")=>Symbol("displayName"), Symbol("displayDescription")=>Symbol("displayDescription"), Symbol("unit")=>Symbol("unit"), Symbol("dimensions")=>Symbol("dimensions"), Symbol("aggregationType")=>Symbol("aggregationType"), Symbol("fillGapWithZero")=>Symbol("fillGapWithZero"), Symbol("category")=>Symbol("category"), Symbol("resourceIdDimensionNameOverride")=>Symbol("resourceIdDimensionNameOverride"))
 const _property_types_MetricSpecification = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("displayName")=>"String", Symbol("displayDescription")=>"String", Symbol("unit")=>"String", Symbol("dimensions")=>"Vector{Dimension}", Symbol("aggregationType")=>"String", Symbol("fillGapWithZero")=>"Bool", Symbol("category")=>"String", Symbol("resourceIdDimensionNameOverride")=>"String")
 Base.propertynames(::Type{ MetricSpecification }) = collect(keys(_property_map_MetricSpecification))
-Swagger.property_type(::Type{ MetricSpecification }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_MetricSpecification[name]))}
+Swagger.property_type(::Type{ MetricSpecification }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_MetricSpecification[name]))}
 Swagger.field_name(::Type{ MetricSpecification }, property_name::Symbol) =  _property_map_MetricSpecification[property_name]
 
 function check_required(o::MetricSpecification)

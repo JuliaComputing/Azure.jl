@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualMachineStatusCodeCount <: SwaggerModel
     code::Any # spec type: Union{ Nothing, String } # spec name: code
     count::Any # spec type: Union{ Nothing, Int32 } # spec name: count
@@ -20,7 +19,7 @@ end # type VirtualMachineStatusCodeCount
 const _property_map_VirtualMachineStatusCodeCount = Dict{Symbol,Symbol}(Symbol("code")=>Symbol("code"), Symbol("count")=>Symbol("count"))
 const _property_types_VirtualMachineStatusCodeCount = Dict{Symbol,String}(Symbol("code")=>"String", Symbol("count")=>"Int32")
 Base.propertynames(::Type{ VirtualMachineStatusCodeCount }) = collect(keys(_property_map_VirtualMachineStatusCodeCount))
-Swagger.property_type(::Type{ VirtualMachineStatusCodeCount }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualMachineStatusCodeCount[name]))}
+Swagger.property_type(::Type{ VirtualMachineStatusCodeCount }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineStatusCodeCount[name]))}
 Swagger.field_name(::Type{ VirtualMachineStatusCodeCount }, property_name::Symbol) =  _property_map_VirtualMachineStatusCodeCount[property_name]
 
 function check_required(o::VirtualMachineStatusCodeCount)

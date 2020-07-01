@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct TenantListResult <: SwaggerModel
     value::Any # spec type: Union{ Nothing, Vector{TenantIdDescription} } # spec name: value
     nextLink::Any # spec type: Union{ Nothing, String } # spec name: nextLink
@@ -20,7 +19,7 @@ end # type TenantListResult
 const _property_map_TenantListResult = Dict{Symbol,Symbol}(Symbol("value")=>Symbol("value"), Symbol("nextLink")=>Symbol("nextLink"))
 const _property_types_TenantListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{TenantIdDescription}", Symbol("nextLink")=>"String")
 Base.propertynames(::Type{ TenantListResult }) = collect(keys(_property_map_TenantListResult))
-Swagger.property_type(::Type{ TenantListResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_TenantListResult[name]))}
+Swagger.property_type(::Type{ TenantListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TenantListResult[name]))}
 Swagger.field_name(::Type{ TenantListResult }, property_name::Symbol) =  _property_map_TenantListResult[property_name]
 
 function check_required(o::TenantListResult)

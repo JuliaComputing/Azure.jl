@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ExpressRouteServiceProviderListResult <: SwaggerModel
     value::Any # spec type: Union{ Nothing, Vector{ExpressRouteServiceProvider} } # spec name: value
     nextLink::Any # spec type: Union{ Nothing, String } # spec name: nextLink
@@ -20,7 +19,7 @@ end # type ExpressRouteServiceProviderListResult
 const _property_map_ExpressRouteServiceProviderListResult = Dict{Symbol,Symbol}(Symbol("value")=>Symbol("value"), Symbol("nextLink")=>Symbol("nextLink"))
 const _property_types_ExpressRouteServiceProviderListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{ExpressRouteServiceProvider}", Symbol("nextLink")=>"String")
 Base.propertynames(::Type{ ExpressRouteServiceProviderListResult }) = collect(keys(_property_map_ExpressRouteServiceProviderListResult))
-Swagger.property_type(::Type{ ExpressRouteServiceProviderListResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ExpressRouteServiceProviderListResult[name]))}
+Swagger.property_type(::Type{ ExpressRouteServiceProviderListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExpressRouteServiceProviderListResult[name]))}
 Swagger.field_name(::Type{ ExpressRouteServiceProviderListResult }, property_name::Symbol) =  _property_map_ExpressRouteServiceProviderListResult[property_name]
 
 function check_required(o::ExpressRouteServiceProviderListResult)

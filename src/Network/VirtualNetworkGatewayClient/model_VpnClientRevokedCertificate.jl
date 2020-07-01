@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VpnClientRevokedCertificate <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
 
@@ -17,7 +16,7 @@ end # type VpnClientRevokedCertificate
 const _property_map_VpnClientRevokedCertificate = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"))
 const _property_types_VpnClientRevokedCertificate = Dict{Symbol,String}(Symbol("id")=>"String")
 Base.propertynames(::Type{ VpnClientRevokedCertificate }) = collect(keys(_property_map_VpnClientRevokedCertificate))
-Swagger.property_type(::Type{ VpnClientRevokedCertificate }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VpnClientRevokedCertificate[name]))}
+Swagger.property_type(::Type{ VpnClientRevokedCertificate }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VpnClientRevokedCertificate[name]))}
 Swagger.field_name(::Type{ VpnClientRevokedCertificate }, property_name::Symbol) =  _property_map_VpnClientRevokedCertificate[property_name]
 
 function check_required(o::VpnClientRevokedCertificate)

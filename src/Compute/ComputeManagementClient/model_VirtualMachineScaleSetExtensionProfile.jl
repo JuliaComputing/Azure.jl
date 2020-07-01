@@ -2,22 +2,24 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualMachineScaleSetExtensionProfile <: SwaggerModel
     extensions::Any # spec type: Union{ Nothing, Vector{VirtualMachineScaleSetExtension} } # spec name: extensions
+    extensionsTimeBudget::Any # spec type: Union{ Nothing, String } # spec name: extensionsTimeBudget
 
-    function VirtualMachineScaleSetExtensionProfile(;extensions=nothing)
+    function VirtualMachineScaleSetExtensionProfile(;extensions=nothing, extensionsTimeBudget=nothing)
         o = new()
         validate_property(VirtualMachineScaleSetExtensionProfile, Symbol("extensions"), extensions)
         setfield!(o, Symbol("extensions"), extensions)
+        validate_property(VirtualMachineScaleSetExtensionProfile, Symbol("extensionsTimeBudget"), extensionsTimeBudget)
+        setfield!(o, Symbol("extensionsTimeBudget"), extensionsTimeBudget)
         o
     end
 end # type VirtualMachineScaleSetExtensionProfile
 
-const _property_map_VirtualMachineScaleSetExtensionProfile = Dict{Symbol,Symbol}(Symbol("extensions")=>Symbol("extensions"))
-const _property_types_VirtualMachineScaleSetExtensionProfile = Dict{Symbol,String}(Symbol("extensions")=>"Vector{VirtualMachineScaleSetExtension}")
+const _property_map_VirtualMachineScaleSetExtensionProfile = Dict{Symbol,Symbol}(Symbol("extensions")=>Symbol("extensions"), Symbol("extensionsTimeBudget")=>Symbol("extensionsTimeBudget"))
+const _property_types_VirtualMachineScaleSetExtensionProfile = Dict{Symbol,String}(Symbol("extensions")=>"Vector{VirtualMachineScaleSetExtension}", Symbol("extensionsTimeBudget")=>"String")
 Base.propertynames(::Type{ VirtualMachineScaleSetExtensionProfile }) = collect(keys(_property_map_VirtualMachineScaleSetExtensionProfile))
-Swagger.property_type(::Type{ VirtualMachineScaleSetExtensionProfile }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualMachineScaleSetExtensionProfile[name]))}
+Swagger.property_type(::Type{ VirtualMachineScaleSetExtensionProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetExtensionProfile[name]))}
 Swagger.field_name(::Type{ VirtualMachineScaleSetExtensionProfile }, property_name::Symbol) =  _property_map_VirtualMachineScaleSetExtensionProfile[property_name]
 
 function check_required(o::VirtualMachineScaleSetExtensionProfile)

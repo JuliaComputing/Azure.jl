@@ -2,25 +2,24 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct CustomDomain <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
-    useSubDomain::Any # spec type: Union{ Nothing, Bool } # spec name: useSubDomain
+    useSubDomainName::Any # spec type: Union{ Nothing, Bool } # spec name: useSubDomainName
 
-    function CustomDomain(;name=nothing, useSubDomain=nothing)
+    function CustomDomain(;name=nothing, useSubDomainName=nothing)
         o = new()
         validate_property(CustomDomain, Symbol("name"), name)
         setfield!(o, Symbol("name"), name)
-        validate_property(CustomDomain, Symbol("useSubDomain"), useSubDomain)
-        setfield!(o, Symbol("useSubDomain"), useSubDomain)
+        validate_property(CustomDomain, Symbol("useSubDomainName"), useSubDomainName)
+        setfield!(o, Symbol("useSubDomainName"), useSubDomainName)
         o
     end
 end # type CustomDomain
 
-const _property_map_CustomDomain = Dict{Symbol,Symbol}(Symbol("name")=>Symbol("name"), Symbol("useSubDomain")=>Symbol("useSubDomain"))
-const _property_types_CustomDomain = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("useSubDomain")=>"Bool")
+const _property_map_CustomDomain = Dict{Symbol,Symbol}(Symbol("name")=>Symbol("name"), Symbol("useSubDomainName")=>Symbol("useSubDomainName"))
+const _property_types_CustomDomain = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("useSubDomainName")=>"Bool")
 Base.propertynames(::Type{ CustomDomain }) = collect(keys(_property_map_CustomDomain))
-Swagger.property_type(::Type{ CustomDomain }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_CustomDomain[name]))}
+Swagger.property_type(::Type{ CustomDomain }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_CustomDomain[name]))}
 Swagger.field_name(::Type{ CustomDomain }, property_name::Symbol) =  _property_map_CustomDomain[property_name]
 
 function check_required(o::CustomDomain)

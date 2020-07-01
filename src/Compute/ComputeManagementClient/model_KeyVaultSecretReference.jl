@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct KeyVaultSecretReference <: SwaggerModel
     secretUrl::Any # spec type: Union{ Nothing, String } # spec name: secretUrl
     sourceVault::Any # spec type: Union{ Nothing, SubResource } # spec name: sourceVault
@@ -20,7 +19,7 @@ end # type KeyVaultSecretReference
 const _property_map_KeyVaultSecretReference = Dict{Symbol,Symbol}(Symbol("secretUrl")=>Symbol("secretUrl"), Symbol("sourceVault")=>Symbol("sourceVault"))
 const _property_types_KeyVaultSecretReference = Dict{Symbol,String}(Symbol("secretUrl")=>"String", Symbol("sourceVault")=>"SubResource")
 Base.propertynames(::Type{ KeyVaultSecretReference }) = collect(keys(_property_map_KeyVaultSecretReference))
-Swagger.property_type(::Type{ KeyVaultSecretReference }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_KeyVaultSecretReference[name]))}
+Swagger.property_type(::Type{ KeyVaultSecretReference }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_KeyVaultSecretReference[name]))}
 Swagger.field_name(::Type{ KeyVaultSecretReference }, property_name::Symbol) =  _property_map_KeyVaultSecretReference[property_name]
 
 function check_required(o::KeyVaultSecretReference)

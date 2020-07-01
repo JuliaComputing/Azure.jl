@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ResourceProviderOperationDisplayProperties <: SwaggerModel
     publisher::Any # spec type: Union{ Nothing, String } # spec name: publisher
     provider::Any # spec type: Union{ Nothing, String } # spec name: provider
@@ -29,7 +28,7 @@ end # type ResourceProviderOperationDisplayProperties
 const _property_map_ResourceProviderOperationDisplayProperties = Dict{Symbol,Symbol}(Symbol("publisher")=>Symbol("publisher"), Symbol("provider")=>Symbol("provider"), Symbol("resource")=>Symbol("resource"), Symbol("operation")=>Symbol("operation"), Symbol("description")=>Symbol("description"))
 const _property_types_ResourceProviderOperationDisplayProperties = Dict{Symbol,String}(Symbol("publisher")=>"String", Symbol("provider")=>"String", Symbol("resource")=>"String", Symbol("operation")=>"String", Symbol("description")=>"String")
 Base.propertynames(::Type{ ResourceProviderOperationDisplayProperties }) = collect(keys(_property_map_ResourceProviderOperationDisplayProperties))
-Swagger.property_type(::Type{ ResourceProviderOperationDisplayProperties }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ResourceProviderOperationDisplayProperties[name]))}
+Swagger.property_type(::Type{ ResourceProviderOperationDisplayProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ResourceProviderOperationDisplayProperties[name]))}
 Swagger.field_name(::Type{ ResourceProviderOperationDisplayProperties }, property_name::Symbol) =  _property_map_ResourceProviderOperationDisplayProperties[property_name]
 
 function check_required(o::ResourceProviderOperationDisplayProperties)

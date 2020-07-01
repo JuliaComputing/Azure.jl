@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IPRule <: SwaggerModel
     value::Any # spec type: Union{ Nothing, String } # spec name: value
     action::Any # spec type: Union{ Nothing, String } # spec name: action
@@ -20,7 +19,7 @@ end # type IPRule
 const _property_map_IPRule = Dict{Symbol,Symbol}(Symbol("value")=>Symbol("value"), Symbol("action")=>Symbol("action"))
 const _property_types_IPRule = Dict{Symbol,String}(Symbol("value")=>"String", Symbol("action")=>"String")
 Base.propertynames(::Type{ IPRule }) = collect(keys(_property_map_IPRule))
-Swagger.property_type(::Type{ IPRule }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IPRule[name]))}
+Swagger.property_type(::Type{ IPRule }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IPRule[name]))}
 Swagger.field_name(::Type{ IPRule }, property_name::Symbol) =  _property_map_IPRule[property_name]
 
 const _allowed_IPRule_action = ["Allow"]

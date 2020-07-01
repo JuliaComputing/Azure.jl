@@ -2,22 +2,21 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ContentSummaryResult <: SwaggerModel
-    ContentSummary::Any # spec type: Union{ Nothing, ContentSummary } # spec name: ContentSummary
+    contentSummary::Any # spec type: Union{ Nothing, ContentSummary } # spec name: contentSummary
 
-    function ContentSummaryResult(;ContentSummary=nothing)
+    function ContentSummaryResult(;contentSummary=nothing)
         o = new()
-        validate_property(ContentSummaryResult, Symbol("ContentSummary"), ContentSummary)
-        setfield!(o, Symbol("ContentSummary"), ContentSummary)
+        validate_property(ContentSummaryResult, Symbol("contentSummary"), contentSummary)
+        setfield!(o, Symbol("contentSummary"), contentSummary)
         o
     end
 end # type ContentSummaryResult
 
-const _property_map_ContentSummaryResult = Dict{Symbol,Symbol}(Symbol("ContentSummary")=>Symbol("ContentSummary"))
-const _property_types_ContentSummaryResult = Dict{Symbol,String}(Symbol("ContentSummary")=>"ContentSummary")
+const _property_map_ContentSummaryResult = Dict{Symbol,Symbol}(Symbol("contentSummary")=>Symbol("contentSummary"))
+const _property_types_ContentSummaryResult = Dict{Symbol,String}(Symbol("contentSummary")=>"ContentSummary")
 Base.propertynames(::Type{ ContentSummaryResult }) = collect(keys(_property_map_ContentSummaryResult))
-Swagger.property_type(::Type{ ContentSummaryResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ContentSummaryResult[name]))}
+Swagger.property_type(::Type{ ContentSummaryResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ContentSummaryResult[name]))}
 Swagger.field_name(::Type{ ContentSummaryResult }, property_name::Symbol) =  _property_map_ContentSummaryResult[property_name]
 
 function check_required(o::ContentSummaryResult)

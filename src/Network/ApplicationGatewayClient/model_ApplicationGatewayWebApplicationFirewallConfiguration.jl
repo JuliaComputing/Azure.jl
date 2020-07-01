@@ -2,15 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ApplicationGatewayWebApplicationFirewallConfiguration <: SwaggerModel
     enabled::Any # spec type: Union{ Nothing, Bool } # spec name: enabled
     firewallMode::Any # spec type: Union{ Nothing, String } # spec name: firewallMode
     ruleSetType::Any # spec type: Union{ Nothing, String } # spec name: ruleSetType
     ruleSetVersion::Any # spec type: Union{ Nothing, String } # spec name: ruleSetVersion
     disabledRuleGroups::Any # spec type: Union{ Nothing, Vector{ApplicationGatewayFirewallDisabledRuleGroup} } # spec name: disabledRuleGroups
+    requestBodyCheck::Any # spec type: Union{ Nothing, Bool } # spec name: requestBodyCheck
+    maxRequestBodySize::Any # spec type: Union{ Nothing, Int32 } # spec name: maxRequestBodySize
+    maxRequestBodySizeInKb::Any # spec type: Union{ Nothing, Int32 } # spec name: maxRequestBodySizeInKb
+    fileUploadLimitInMb::Any # spec type: Union{ Nothing, Int32 } # spec name: fileUploadLimitInMb
+    exclusions::Any # spec type: Union{ Nothing, Vector{ApplicationGatewayFirewallExclusion} } # spec name: exclusions
 
-    function ApplicationGatewayWebApplicationFirewallConfiguration(;enabled=nothing, firewallMode=nothing, ruleSetType=nothing, ruleSetVersion=nothing, disabledRuleGroups=nothing)
+    function ApplicationGatewayWebApplicationFirewallConfiguration(;enabled=nothing, firewallMode=nothing, ruleSetType=nothing, ruleSetVersion=nothing, disabledRuleGroups=nothing, requestBodyCheck=nothing, maxRequestBodySize=nothing, maxRequestBodySizeInKb=nothing, fileUploadLimitInMb=nothing, exclusions=nothing)
         o = new()
         validate_property(ApplicationGatewayWebApplicationFirewallConfiguration, Symbol("enabled"), enabled)
         setfield!(o, Symbol("enabled"), enabled)
@@ -22,14 +26,24 @@ mutable struct ApplicationGatewayWebApplicationFirewallConfiguration <: SwaggerM
         setfield!(o, Symbol("ruleSetVersion"), ruleSetVersion)
         validate_property(ApplicationGatewayWebApplicationFirewallConfiguration, Symbol("disabledRuleGroups"), disabledRuleGroups)
         setfield!(o, Symbol("disabledRuleGroups"), disabledRuleGroups)
+        validate_property(ApplicationGatewayWebApplicationFirewallConfiguration, Symbol("requestBodyCheck"), requestBodyCheck)
+        setfield!(o, Symbol("requestBodyCheck"), requestBodyCheck)
+        validate_property(ApplicationGatewayWebApplicationFirewallConfiguration, Symbol("maxRequestBodySize"), maxRequestBodySize)
+        setfield!(o, Symbol("maxRequestBodySize"), maxRequestBodySize)
+        validate_property(ApplicationGatewayWebApplicationFirewallConfiguration, Symbol("maxRequestBodySizeInKb"), maxRequestBodySizeInKb)
+        setfield!(o, Symbol("maxRequestBodySizeInKb"), maxRequestBodySizeInKb)
+        validate_property(ApplicationGatewayWebApplicationFirewallConfiguration, Symbol("fileUploadLimitInMb"), fileUploadLimitInMb)
+        setfield!(o, Symbol("fileUploadLimitInMb"), fileUploadLimitInMb)
+        validate_property(ApplicationGatewayWebApplicationFirewallConfiguration, Symbol("exclusions"), exclusions)
+        setfield!(o, Symbol("exclusions"), exclusions)
         o
     end
 end # type ApplicationGatewayWebApplicationFirewallConfiguration
 
-const _property_map_ApplicationGatewayWebApplicationFirewallConfiguration = Dict{Symbol,Symbol}(Symbol("enabled")=>Symbol("enabled"), Symbol("firewallMode")=>Symbol("firewallMode"), Symbol("ruleSetType")=>Symbol("ruleSetType"), Symbol("ruleSetVersion")=>Symbol("ruleSetVersion"), Symbol("disabledRuleGroups")=>Symbol("disabledRuleGroups"))
-const _property_types_ApplicationGatewayWebApplicationFirewallConfiguration = Dict{Symbol,String}(Symbol("enabled")=>"Bool", Symbol("firewallMode")=>"String", Symbol("ruleSetType")=>"String", Symbol("ruleSetVersion")=>"String", Symbol("disabledRuleGroups")=>"Vector{ApplicationGatewayFirewallDisabledRuleGroup}")
+const _property_map_ApplicationGatewayWebApplicationFirewallConfiguration = Dict{Symbol,Symbol}(Symbol("enabled")=>Symbol("enabled"), Symbol("firewallMode")=>Symbol("firewallMode"), Symbol("ruleSetType")=>Symbol("ruleSetType"), Symbol("ruleSetVersion")=>Symbol("ruleSetVersion"), Symbol("disabledRuleGroups")=>Symbol("disabledRuleGroups"), Symbol("requestBodyCheck")=>Symbol("requestBodyCheck"), Symbol("maxRequestBodySize")=>Symbol("maxRequestBodySize"), Symbol("maxRequestBodySizeInKb")=>Symbol("maxRequestBodySizeInKb"), Symbol("fileUploadLimitInMb")=>Symbol("fileUploadLimitInMb"), Symbol("exclusions")=>Symbol("exclusions"))
+const _property_types_ApplicationGatewayWebApplicationFirewallConfiguration = Dict{Symbol,String}(Symbol("enabled")=>"Bool", Symbol("firewallMode")=>"String", Symbol("ruleSetType")=>"String", Symbol("ruleSetVersion")=>"String", Symbol("disabledRuleGroups")=>"Vector{ApplicationGatewayFirewallDisabledRuleGroup}", Symbol("requestBodyCheck")=>"Bool", Symbol("maxRequestBodySize")=>"Int32", Symbol("maxRequestBodySizeInKb")=>"Int32", Symbol("fileUploadLimitInMb")=>"Int32", Symbol("exclusions")=>"Vector{ApplicationGatewayFirewallExclusion}")
 Base.propertynames(::Type{ ApplicationGatewayWebApplicationFirewallConfiguration }) = collect(keys(_property_map_ApplicationGatewayWebApplicationFirewallConfiguration))
-Swagger.property_type(::Type{ ApplicationGatewayWebApplicationFirewallConfiguration }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ApplicationGatewayWebApplicationFirewallConfiguration[name]))}
+Swagger.property_type(::Type{ ApplicationGatewayWebApplicationFirewallConfiguration }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayWebApplicationFirewallConfiguration[name]))}
 Swagger.field_name(::Type{ ApplicationGatewayWebApplicationFirewallConfiguration }, property_name::Symbol) =  _property_map_ApplicationGatewayWebApplicationFirewallConfiguration[property_name]
 
 const _allowed_ApplicationGatewayWebApplicationFirewallConfiguration_firewallMode = ["Detection", "Prevention"]
@@ -44,5 +58,16 @@ end
 function validate_property(::Type{ ApplicationGatewayWebApplicationFirewallConfiguration }, name::Symbol, val)
     if name === Symbol("firewallMode")
         Swagger.validate_param(name, "ApplicationGatewayWebApplicationFirewallConfiguration", :enum, val, _allowed_ApplicationGatewayWebApplicationFirewallConfiguration_firewallMode)
+    end
+    if name === Symbol("maxRequestBodySize")
+        Swagger.validate_param(name, "ApplicationGatewayWebApplicationFirewallConfiguration", :maximum, val, 128, false)
+        Swagger.validate_param(name, "ApplicationGatewayWebApplicationFirewallConfiguration", :minimum, val, 8, false)
+    end
+    if name === Symbol("maxRequestBodySizeInKb")
+        Swagger.validate_param(name, "ApplicationGatewayWebApplicationFirewallConfiguration", :maximum, val, 128, false)
+        Swagger.validate_param(name, "ApplicationGatewayWebApplicationFirewallConfiguration", :minimum, val, 8, false)
+    end
+    if name === Symbol("fileUploadLimitInMb")
+        Swagger.validate_param(name, "ApplicationGatewayWebApplicationFirewallConfiguration", :minimum, val, 0, false)
     end
 end

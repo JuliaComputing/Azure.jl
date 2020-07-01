@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct Image <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
     name::Any # spec type: Union{ Nothing, String } # spec name: name
@@ -32,7 +31,7 @@ end # type Image
 const _property_map_Image = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("name")=>Symbol("name"), Symbol("type")=>Symbol("type"), Symbol("location")=>Symbol("location"), Symbol("tags")=>Symbol("tags"), Symbol("properties")=>Symbol("properties"))
 const _property_types_Image = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", Symbol("properties")=>"ImageProperties")
 Base.propertynames(::Type{ Image }) = collect(keys(_property_map_Image))
-Swagger.property_type(::Type{ Image }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_Image[name]))}
+Swagger.property_type(::Type{ Image }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Image[name]))}
 Swagger.field_name(::Type{ Image }, property_name::Symbol) =  _property_map_Image[property_name]
 
 function check_required(o::Image)

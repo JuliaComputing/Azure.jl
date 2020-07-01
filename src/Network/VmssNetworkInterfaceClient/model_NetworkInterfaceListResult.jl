@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct NetworkInterfaceListResult <: SwaggerModel
     value::Any # spec type: Union{ Nothing, Vector{NetworkInterface} } # spec name: value
     nextLink::Any # spec type: Union{ Nothing, String } # spec name: nextLink
@@ -20,7 +19,7 @@ end # type NetworkInterfaceListResult
 const _property_map_NetworkInterfaceListResult = Dict{Symbol,Symbol}(Symbol("value")=>Symbol("value"), Symbol("nextLink")=>Symbol("nextLink"))
 const _property_types_NetworkInterfaceListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{NetworkInterface}", Symbol("nextLink")=>"String")
 Base.propertynames(::Type{ NetworkInterfaceListResult }) = collect(keys(_property_map_NetworkInterfaceListResult))
-Swagger.property_type(::Type{ NetworkInterfaceListResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_NetworkInterfaceListResult[name]))}
+Swagger.property_type(::Type{ NetworkInterfaceListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkInterfaceListResult[name]))}
 Swagger.field_name(::Type{ NetworkInterfaceListResult }, property_name::Symbol) =  _property_map_NetworkInterfaceListResult[property_name]
 
 function check_required(o::NetworkInterfaceListResult)

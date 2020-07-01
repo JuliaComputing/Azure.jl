@@ -2,14 +2,13 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct PacketCaptureResult <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     id::Any # spec type: Union{ Nothing, String } # spec name: id
     etag::Any # spec type: Union{ Nothing, String } # spec name: etag
     properties::Any # spec type: Union{ Nothing, PacketCaptureResultProperties } # spec name: properties
 
-    function PacketCaptureResult(;name=nothing, id=nothing, etag="A unique read-only string that changes whenever the resource is updated.", properties=nothing)
+    function PacketCaptureResult(;name=nothing, id=nothing, etag=nothing, properties=nothing)
         o = new()
         validate_property(PacketCaptureResult, Symbol("name"), name)
         setfield!(o, Symbol("name"), name)
@@ -26,7 +25,7 @@ end # type PacketCaptureResult
 const _property_map_PacketCaptureResult = Dict{Symbol,Symbol}(Symbol("name")=>Symbol("name"), Symbol("id")=>Symbol("id"), Symbol("etag")=>Symbol("etag"), Symbol("properties")=>Symbol("properties"))
 const _property_types_PacketCaptureResult = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("id")=>"String", Symbol("etag")=>"String", Symbol("properties")=>"PacketCaptureResultProperties")
 Base.propertynames(::Type{ PacketCaptureResult }) = collect(keys(_property_map_PacketCaptureResult))
-Swagger.property_type(::Type{ PacketCaptureResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_PacketCaptureResult[name]))}
+Swagger.property_type(::Type{ PacketCaptureResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PacketCaptureResult[name]))}
 Swagger.field_name(::Type{ PacketCaptureResult }, property_name::Symbol) =  _property_map_PacketCaptureResult[property_name]
 
 function check_required(o::PacketCaptureResult)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ApplicationGatewayConnectionDraining <: SwaggerModel
     enabled::Any # spec type: Union{ Nothing, Bool } # spec name: enabled
     drainTimeoutInSec::Any # spec type: Union{ Nothing, Int32 } # spec name: drainTimeoutInSec
@@ -20,7 +19,7 @@ end # type ApplicationGatewayConnectionDraining
 const _property_map_ApplicationGatewayConnectionDraining = Dict{Symbol,Symbol}(Symbol("enabled")=>Symbol("enabled"), Symbol("drainTimeoutInSec")=>Symbol("drainTimeoutInSec"))
 const _property_types_ApplicationGatewayConnectionDraining = Dict{Symbol,String}(Symbol("enabled")=>"Bool", Symbol("drainTimeoutInSec")=>"Int32")
 Base.propertynames(::Type{ ApplicationGatewayConnectionDraining }) = collect(keys(_property_map_ApplicationGatewayConnectionDraining))
-Swagger.property_type(::Type{ ApplicationGatewayConnectionDraining }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ApplicationGatewayConnectionDraining[name]))}
+Swagger.property_type(::Type{ ApplicationGatewayConnectionDraining }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayConnectionDraining[name]))}
 Swagger.field_name(::Type{ ApplicationGatewayConnectionDraining }, property_name::Symbol) =  _property_map_ApplicationGatewayConnectionDraining[property_name]
 
 function check_required(o::ApplicationGatewayConnectionDraining)

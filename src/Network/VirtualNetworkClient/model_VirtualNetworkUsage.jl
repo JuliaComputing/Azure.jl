@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualNetworkUsage <: SwaggerModel
     currentValue::Any # spec type: Union{ Nothing, Float64 } # spec name: currentValue
     id::Any # spec type: Union{ Nothing, String } # spec name: id
@@ -29,7 +28,7 @@ end # type VirtualNetworkUsage
 const _property_map_VirtualNetworkUsage = Dict{Symbol,Symbol}(Symbol("currentValue")=>Symbol("currentValue"), Symbol("id")=>Symbol("id"), Symbol("limit")=>Symbol("limit"), Symbol("name")=>Symbol("name"), Symbol("unit")=>Symbol("unit"))
 const _property_types_VirtualNetworkUsage = Dict{Symbol,String}(Symbol("currentValue")=>"Float64", Symbol("id")=>"String", Symbol("limit")=>"Float64", Symbol("name")=>"VirtualNetworkUsageName", Symbol("unit")=>"String")
 Base.propertynames(::Type{ VirtualNetworkUsage }) = collect(keys(_property_map_VirtualNetworkUsage))
-Swagger.property_type(::Type{ VirtualNetworkUsage }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualNetworkUsage[name]))}
+Swagger.property_type(::Type{ VirtualNetworkUsage }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualNetworkUsage[name]))}
 Swagger.field_name(::Type{ VirtualNetworkUsage }, property_name::Symbol) =  _property_map_VirtualNetworkUsage[property_name]
 
 function check_required(o::VirtualNetworkUsage)

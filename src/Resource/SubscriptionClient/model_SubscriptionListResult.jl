@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct SubscriptionListResult <: SwaggerModel
     value::Any # spec type: Union{ Nothing, Vector{Subscription} } # spec name: value
     nextLink::Any # spec type: Union{ Nothing, String } # spec name: nextLink
@@ -20,7 +19,7 @@ end # type SubscriptionListResult
 const _property_map_SubscriptionListResult = Dict{Symbol,Symbol}(Symbol("value")=>Symbol("value"), Symbol("nextLink")=>Symbol("nextLink"))
 const _property_types_SubscriptionListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{Subscription}", Symbol("nextLink")=>"String")
 Base.propertynames(::Type{ SubscriptionListResult }) = collect(keys(_property_map_SubscriptionListResult))
-Swagger.property_type(::Type{ SubscriptionListResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_SubscriptionListResult[name]))}
+Swagger.property_type(::Type{ SubscriptionListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SubscriptionListResult[name]))}
 Swagger.field_name(::Type{ SubscriptionListResult }, property_name::Symbol) =  _property_map_SubscriptionListResult[property_name]
 
 function check_required(o::SubscriptionListResult)

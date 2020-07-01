@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct InnerError <: SwaggerModel
     exceptiontype::Any # spec type: Union{ Nothing, String } # spec name: exceptiontype
     errordetail::Any # spec type: Union{ Nothing, String } # spec name: errordetail
@@ -20,7 +19,7 @@ end # type InnerError
 const _property_map_InnerError = Dict{Symbol,Symbol}(Symbol("exceptiontype")=>Symbol("exceptiontype"), Symbol("errordetail")=>Symbol("errordetail"))
 const _property_types_InnerError = Dict{Symbol,String}(Symbol("exceptiontype")=>"String", Symbol("errordetail")=>"String")
 Base.propertynames(::Type{ InnerError }) = collect(keys(_property_map_InnerError))
-Swagger.property_type(::Type{ InnerError }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_InnerError[name]))}
+Swagger.property_type(::Type{ InnerError }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_InnerError[name]))}
 Swagger.field_name(::Type{ InnerError }, property_name::Symbol) =  _property_map_InnerError[property_name]
 
 function check_required(o::InnerError)

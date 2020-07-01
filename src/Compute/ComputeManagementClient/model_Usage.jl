@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct Usage <: SwaggerModel
     unit::Any # spec type: Union{ Nothing, String } # spec name: unit
     currentValue::Any # spec type: Union{ Nothing, Int32 } # spec name: currentValue
@@ -26,7 +25,7 @@ end # type Usage
 const _property_map_Usage = Dict{Symbol,Symbol}(Symbol("unit")=>Symbol("unit"), Symbol("currentValue")=>Symbol("currentValue"), Symbol("limit")=>Symbol("limit"), Symbol("name")=>Symbol("name"))
 const _property_types_Usage = Dict{Symbol,String}(Symbol("unit")=>"String", Symbol("currentValue")=>"Int32", Symbol("limit")=>"Int64", Symbol("name")=>"UsageName")
 Base.propertynames(::Type{ Usage }) = collect(keys(_property_map_Usage))
-Swagger.property_type(::Type{ Usage }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_Usage[name]))}
+Swagger.property_type(::Type{ Usage }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Usage[name]))}
 Swagger.field_name(::Type{ Usage }, property_name::Symbol) =  _property_map_Usage[property_name]
 
 const _allowed_Usage_unit = ["Count"]

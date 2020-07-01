@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct NextHopResult <: SwaggerModel
     nextHopType::Any # spec type: Union{ Nothing, String } # spec name: nextHopType
     nextHopIpAddress::Any # spec type: Union{ Nothing, String } # spec name: nextHopIpAddress
@@ -23,7 +22,7 @@ end # type NextHopResult
 const _property_map_NextHopResult = Dict{Symbol,Symbol}(Symbol("nextHopType")=>Symbol("nextHopType"), Symbol("nextHopIpAddress")=>Symbol("nextHopIpAddress"), Symbol("routeTableId")=>Symbol("routeTableId"))
 const _property_types_NextHopResult = Dict{Symbol,String}(Symbol("nextHopType")=>"String", Symbol("nextHopIpAddress")=>"String", Symbol("routeTableId")=>"String")
 Base.propertynames(::Type{ NextHopResult }) = collect(keys(_property_map_NextHopResult))
-Swagger.property_type(::Type{ NextHopResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_NextHopResult[name]))}
+Swagger.property_type(::Type{ NextHopResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NextHopResult[name]))}
 Swagger.field_name(::Type{ NextHopResult }, property_name::Symbol) =  _property_map_NextHopResult[property_name]
 
 const _allowed_NextHopResult_nextHopType = ["Internet", "VirtualAppliance", "VirtualNetworkGateway", "VnetLocal", "HyperNetGateway", "None"]

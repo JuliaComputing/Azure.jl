@@ -2,28 +2,27 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct UpgradePolicy <: SwaggerModel
     mode::Any # spec type: Union{ Nothing, String } # spec name: mode
     rollingUpgradePolicy::Any # spec type: Union{ Nothing, RollingUpgradePolicy } # spec name: rollingUpgradePolicy
-    automaticOSUpgrade::Any # spec type: Union{ Nothing, Bool } # spec name: automaticOSUpgrade
+    automaticOSUpgradePolicy::Any # spec type: Union{ Nothing, AutomaticOSUpgradePolicy } # spec name: automaticOSUpgradePolicy
 
-    function UpgradePolicy(;mode=nothing, rollingUpgradePolicy=nothing, automaticOSUpgrade=nothing)
+    function UpgradePolicy(;mode=nothing, rollingUpgradePolicy=nothing, automaticOSUpgradePolicy=nothing)
         o = new()
         validate_property(UpgradePolicy, Symbol("mode"), mode)
         setfield!(o, Symbol("mode"), mode)
         validate_property(UpgradePolicy, Symbol("rollingUpgradePolicy"), rollingUpgradePolicy)
         setfield!(o, Symbol("rollingUpgradePolicy"), rollingUpgradePolicy)
-        validate_property(UpgradePolicy, Symbol("automaticOSUpgrade"), automaticOSUpgrade)
-        setfield!(o, Symbol("automaticOSUpgrade"), automaticOSUpgrade)
+        validate_property(UpgradePolicy, Symbol("automaticOSUpgradePolicy"), automaticOSUpgradePolicy)
+        setfield!(o, Symbol("automaticOSUpgradePolicy"), automaticOSUpgradePolicy)
         o
     end
 end # type UpgradePolicy
 
-const _property_map_UpgradePolicy = Dict{Symbol,Symbol}(Symbol("mode")=>Symbol("mode"), Symbol("rollingUpgradePolicy")=>Symbol("rollingUpgradePolicy"), Symbol("automaticOSUpgrade")=>Symbol("automaticOSUpgrade"))
-const _property_types_UpgradePolicy = Dict{Symbol,String}(Symbol("mode")=>"String", Symbol("rollingUpgradePolicy")=>"RollingUpgradePolicy", Symbol("automaticOSUpgrade")=>"Bool")
+const _property_map_UpgradePolicy = Dict{Symbol,Symbol}(Symbol("mode")=>Symbol("mode"), Symbol("rollingUpgradePolicy")=>Symbol("rollingUpgradePolicy"), Symbol("automaticOSUpgradePolicy")=>Symbol("automaticOSUpgradePolicy"))
+const _property_types_UpgradePolicy = Dict{Symbol,String}(Symbol("mode")=>"String", Symbol("rollingUpgradePolicy")=>"RollingUpgradePolicy", Symbol("automaticOSUpgradePolicy")=>"AutomaticOSUpgradePolicy")
 Base.propertynames(::Type{ UpgradePolicy }) = collect(keys(_property_map_UpgradePolicy))
-Swagger.property_type(::Type{ UpgradePolicy }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_UpgradePolicy[name]))}
+Swagger.property_type(::Type{ UpgradePolicy }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_UpgradePolicy[name]))}
 Swagger.field_name(::Type{ UpgradePolicy }, property_name::Symbol) =  _property_map_UpgradePolicy[property_name]
 
 const _allowed_UpgradePolicy_mode = ["Automatic", "Manual", "Rolling"]

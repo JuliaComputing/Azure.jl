@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct AccountSasParameters <: SwaggerModel
     signedServices::Any # spec type: Union{ Nothing, String } # spec name: signedServices
     signedResourceTypes::Any # spec type: Union{ Nothing, String } # spec name: signedResourceTypes
@@ -38,7 +37,7 @@ end # type AccountSasParameters
 const _property_map_AccountSasParameters = Dict{Symbol,Symbol}(Symbol("signedServices")=>Symbol("signedServices"), Symbol("signedResourceTypes")=>Symbol("signedResourceTypes"), Symbol("signedPermission")=>Symbol("signedPermission"), Symbol("signedIp")=>Symbol("signedIp"), Symbol("signedProtocol")=>Symbol("signedProtocol"), Symbol("signedStart")=>Symbol("signedStart"), Symbol("signedExpiry")=>Symbol("signedExpiry"), Symbol("keyToSign")=>Symbol("keyToSign"))
 const _property_types_AccountSasParameters = Dict{Symbol,String}(Symbol("signedServices")=>"String", Symbol("signedResourceTypes")=>"String", Symbol("signedPermission")=>"String", Symbol("signedIp")=>"String", Symbol("signedProtocol")=>"String", Symbol("signedStart")=>"DateTime", Symbol("signedExpiry")=>"DateTime", Symbol("keyToSign")=>"String")
 Base.propertynames(::Type{ AccountSasParameters }) = collect(keys(_property_map_AccountSasParameters))
-Swagger.property_type(::Type{ AccountSasParameters }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_AccountSasParameters[name]))}
+Swagger.property_type(::Type{ AccountSasParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AccountSasParameters[name]))}
 Swagger.field_name(::Type{ AccountSasParameters }, property_name::Symbol) =  _property_map_AccountSasParameters[property_name]
 
 const _allowed_AccountSasParameters_signedServices = ["b", "q", "t", "f"]

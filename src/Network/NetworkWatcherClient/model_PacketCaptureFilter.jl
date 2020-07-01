@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct PacketCaptureFilter <: SwaggerModel
     protocol::Any # spec type: Union{ Nothing, String } # spec name: protocol
     localIPAddress::Any # spec type: Union{ Nothing, String } # spec name: localIPAddress
@@ -29,7 +28,7 @@ end # type PacketCaptureFilter
 const _property_map_PacketCaptureFilter = Dict{Symbol,Symbol}(Symbol("protocol")=>Symbol("protocol"), Symbol("localIPAddress")=>Symbol("localIPAddress"), Symbol("remoteIPAddress")=>Symbol("remoteIPAddress"), Symbol("localPort")=>Symbol("localPort"), Symbol("remotePort")=>Symbol("remotePort"))
 const _property_types_PacketCaptureFilter = Dict{Symbol,String}(Symbol("protocol")=>"String", Symbol("localIPAddress")=>"String", Symbol("remoteIPAddress")=>"String", Symbol("localPort")=>"String", Symbol("remotePort")=>"String")
 Base.propertynames(::Type{ PacketCaptureFilter }) = collect(keys(_property_map_PacketCaptureFilter))
-Swagger.property_type(::Type{ PacketCaptureFilter }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_PacketCaptureFilter[name]))}
+Swagger.property_type(::Type{ PacketCaptureFilter }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PacketCaptureFilter[name]))}
 Swagger.field_name(::Type{ PacketCaptureFilter }, property_name::Symbol) =  _property_map_PacketCaptureFilter[property_name]
 
 const _allowed_PacketCaptureFilter_protocol = ["TCP", "UDP", "Any"]

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ConnectivityInformation <: SwaggerModel
     hops::Any # spec type: Union{ Nothing, Vector{ConnectivityHop} } # spec name: hops
     connectionStatus::Any # spec type: Union{ Nothing, String } # spec name: connectionStatus
@@ -35,7 +34,7 @@ end # type ConnectivityInformation
 const _property_map_ConnectivityInformation = Dict{Symbol,Symbol}(Symbol("hops")=>Symbol("hops"), Symbol("connectionStatus")=>Symbol("connectionStatus"), Symbol("avgLatencyInMs")=>Symbol("avgLatencyInMs"), Symbol("minLatencyInMs")=>Symbol("minLatencyInMs"), Symbol("maxLatencyInMs")=>Symbol("maxLatencyInMs"), Symbol("probesSent")=>Symbol("probesSent"), Symbol("probesFailed")=>Symbol("probesFailed"))
 const _property_types_ConnectivityInformation = Dict{Symbol,String}(Symbol("hops")=>"Vector{ConnectivityHop}", Symbol("connectionStatus")=>"String", Symbol("avgLatencyInMs")=>"Int32", Symbol("minLatencyInMs")=>"Int32", Symbol("maxLatencyInMs")=>"Int32", Symbol("probesSent")=>"Int32", Symbol("probesFailed")=>"Int32")
 Base.propertynames(::Type{ ConnectivityInformation }) = collect(keys(_property_map_ConnectivityInformation))
-Swagger.property_type(::Type{ ConnectivityInformation }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ConnectivityInformation[name]))}
+Swagger.property_type(::Type{ ConnectivityInformation }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ConnectivityInformation[name]))}
 Swagger.field_name(::Type{ ConnectivityInformation }, property_name::Symbol) =  _property_map_ConnectivityInformation[property_name]
 
 const _allowed_ConnectivityInformation_connectionStatus = ["Unknown", "Connected", "Disconnected", "Degraded"]

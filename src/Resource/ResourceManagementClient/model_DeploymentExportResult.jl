@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct DeploymentExportResult <: SwaggerModel
     template::Any # spec type: Union{ Nothing, Any } # spec name: template
 
@@ -17,7 +16,7 @@ end # type DeploymentExportResult
 const _property_map_DeploymentExportResult = Dict{Symbol,Symbol}(Symbol("template")=>Symbol("template"))
 const _property_types_DeploymentExportResult = Dict{Symbol,String}(Symbol("template")=>"Any")
 Base.propertynames(::Type{ DeploymentExportResult }) = collect(keys(_property_map_DeploymentExportResult))
-Swagger.property_type(::Type{ DeploymentExportResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_DeploymentExportResult[name]))}
+Swagger.property_type(::Type{ DeploymentExportResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DeploymentExportResult[name]))}
 Swagger.field_name(::Type{ DeploymentExportResult }, property_name::Symbol) =  _property_map_DeploymentExportResult[property_name]
 
 function check_required(o::DeploymentExportResult)

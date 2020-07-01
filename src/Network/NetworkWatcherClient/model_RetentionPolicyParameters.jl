@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct RetentionPolicyParameters <: SwaggerModel
     days::Any # spec type: Union{ Nothing, Int32 } # spec name: days
     enabled::Any # spec type: Union{ Nothing, Bool } # spec name: enabled
@@ -20,7 +19,7 @@ end # type RetentionPolicyParameters
 const _property_map_RetentionPolicyParameters = Dict{Symbol,Symbol}(Symbol("days")=>Symbol("days"), Symbol("enabled")=>Symbol("enabled"))
 const _property_types_RetentionPolicyParameters = Dict{Symbol,String}(Symbol("days")=>"Int32", Symbol("enabled")=>"Bool")
 Base.propertynames(::Type{ RetentionPolicyParameters }) = collect(keys(_property_map_RetentionPolicyParameters))
-Swagger.property_type(::Type{ RetentionPolicyParameters }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_RetentionPolicyParameters[name]))}
+Swagger.property_type(::Type{ RetentionPolicyParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RetentionPolicyParameters[name]))}
 Swagger.field_name(::Type{ RetentionPolicyParameters }, property_name::Symbol) =  _property_map_RetentionPolicyParameters[property_name]
 
 function check_required(o::RetentionPolicyParameters)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct AvailabilitySet <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
     name::Any # spec type: Union{ Nothing, String } # spec name: name
@@ -35,7 +34,7 @@ end # type AvailabilitySet
 const _property_map_AvailabilitySet = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("name")=>Symbol("name"), Symbol("type")=>Symbol("type"), Symbol("location")=>Symbol("location"), Symbol("tags")=>Symbol("tags"), Symbol("properties")=>Symbol("properties"), Symbol("sku")=>Symbol("sku"))
 const _property_types_AvailabilitySet = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", Symbol("properties")=>"AvailabilitySetProperties", Symbol("sku")=>"Sku")
 Base.propertynames(::Type{ AvailabilitySet }) = collect(keys(_property_map_AvailabilitySet))
-Swagger.property_type(::Type{ AvailabilitySet }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_AvailabilitySet[name]))}
+Swagger.property_type(::Type{ AvailabilitySet }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AvailabilitySet[name]))}
 Swagger.field_name(::Type{ AvailabilitySet }, property_name::Symbol) =  _property_map_AvailabilitySet[property_name]
 
 function check_required(o::AvailabilitySet)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct StorageProfile <: SwaggerModel
     imageReference::Any # spec type: Union{ Nothing, ImageReference } # spec name: imageReference
     osDisk::Any # spec type: Union{ Nothing, OSDisk } # spec name: osDisk
@@ -23,7 +22,7 @@ end # type StorageProfile
 const _property_map_StorageProfile = Dict{Symbol,Symbol}(Symbol("imageReference")=>Symbol("imageReference"), Symbol("osDisk")=>Symbol("osDisk"), Symbol("dataDisks")=>Symbol("dataDisks"))
 const _property_types_StorageProfile = Dict{Symbol,String}(Symbol("imageReference")=>"ImageReference", Symbol("osDisk")=>"OSDisk", Symbol("dataDisks")=>"Vector{DataDisk}")
 Base.propertynames(::Type{ StorageProfile }) = collect(keys(_property_map_StorageProfile))
-Swagger.property_type(::Type{ StorageProfile }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_StorageProfile[name]))}
+Swagger.property_type(::Type{ StorageProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_StorageProfile[name]))}
 Swagger.field_name(::Type{ StorageProfile }, property_name::Symbol) =  _property_map_StorageProfile[property_name]
 
 function check_required(o::StorageProfile)

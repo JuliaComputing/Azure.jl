@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct SKUCapability <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     value::Any # spec type: Union{ Nothing, String } # spec name: value
@@ -20,7 +19,7 @@ end # type SKUCapability
 const _property_map_SKUCapability = Dict{Symbol,Symbol}(Symbol("name")=>Symbol("name"), Symbol("value")=>Symbol("value"))
 const _property_types_SKUCapability = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("value")=>"String")
 Base.propertynames(::Type{ SKUCapability }) = collect(keys(_property_map_SKUCapability))
-Swagger.property_type(::Type{ SKUCapability }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_SKUCapability[name]))}
+Swagger.property_type(::Type{ SKUCapability }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SKUCapability[name]))}
 Swagger.field_name(::Type{ SKUCapability }, property_name::Symbol) =  _property_map_SKUCapability[property_name]
 
 function check_required(o::SKUCapability)

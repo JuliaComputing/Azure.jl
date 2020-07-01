@@ -1,38 +1,42 @@
+using Logging
+
 const DIR = dirname(@__FILE__)
 const GENDIR = joinpath(DIR, "..")
 const TEMPCFGFILE = joinpath(GENDIR, "config.json")
 const SRCDIR = joinpath(GENDIR, "src")
-const SWAGGERDIR=read(`$(ENV["JULIA"]) -e 'import Swagger; print(normpath(joinpath(dirname(pathof(Swagger)), "..")))'`, String)
+const SWAGGERDIR=read(`$(joinpath(Sys.BINDIR, "julia")) -e 'import Swagger; print(normpath(joinpath(dirname(pathof(Swagger)), "..")))'`, String)
 const SWAGGERGEN = joinpath(SWAGGERDIR, "plugin", "generate.sh")
 
 const SPECS = [
-    ("DataLakeStoreAccountManagementClient",    "DataLakeStore",    "2016-11-01",           "specification/datalake-store/resource-manager/Microsoft.DataLakeStore/{VER}/account.json"),
-    ("DataLakeStoreFileSystemManagementClient", "DataLakeStore",    "2016-11-01",           "specification/datalake-store/data-plane/Microsoft.DataLakeStore/{VER}/filesystem.json"),
-    ("StorageManagementClient",                 "Storage",          "2017-06-01",           "specification/storage/resource-manager/Microsoft.Storage/{VER}/storage.json"),
-    ("ComputeManagementClient",                 "Compute",          "2017-03-30",           "specification/compute/resource-manager/Microsoft.Compute/{VER}/compute.json"),
-    ("DiskResourceProviderClient",              "Compute",          "2017-03-30",           "specification/compute/resource-manager/Microsoft.Compute/{VER}/disk.json"),
-    ("RunCommandsClient",                       "Compute",          "2017-03-30",           "specification/compute/resource-manager/Microsoft.Compute/{VER}/runCommands.json"),
-    ("ContainerServiceClient",                  "Compute",          "2017-01-31",           "specification/compute/resource-manager/Microsoft.ContainerService/{VER}/containerService.json"),
-    ("ApplicationGatewayClient",                "Network",          "2017-03-01",           "specification/network/resource-manager/Microsoft.Network/{VER}/applicationGateway.json"),
-    ("CheckDnsAvailabilityClient",              "Network",          "2017-03-01",           "specification/network/resource-manager/Microsoft.Network/{VER}/checkDnsAvailability.json"),
-    ("ExpressRouteCircuitClient",               "Network",          "2017-03-01",           "specification/network/resource-manager/Microsoft.Network/{VER}/expressRouteCircuit.json"),
-    ("LoadBalancerClient",                      "Network",          "2017-03-01",           "specification/network/resource-manager/Microsoft.Network/{VER}/loadBalancer.json"),
-    ("NetworkManagementClient",                 "Network",          "2017-03-01",           "specification/network/resource-manager/Microsoft.Network/{VER}/network.json"),
-    ("NetworkInterfaceClient",                  "Network",          "2017-03-01",           "specification/network/resource-manager/Microsoft.Network/{VER}/networkInterface.json"),
-    ("NetworkSecurityGroupClient",              "Network",          "2017-03-01",           "specification/network/resource-manager/Microsoft.Network/{VER}/networkSecurityGroup.json"),
-    ("NetworkWatcherClient",                    "Network",          "2017-03-01",           "specification/network/resource-manager/Microsoft.Network/{VER}/networkWatcher.json"),
-    ("PublicIpAddressClient",                   "Network",          "2017-03-01",           "specification/network/resource-manager/Microsoft.Network/{VER}/publicIpAddress.json"),
-    ("RouteFilterClient",                       "Network",          "2017-03-01",           "specification/network/resource-manager/Microsoft.Network/{VER}/routeFilter.json"),
-    ("RouteTableClient",                        "Network",          "2017-03-01",           "specification/network/resource-manager/Microsoft.Network/{VER}/routeTable.json"),
-    ("ServiceCommunityClient",                  "Network",          "2017-03-01",           "specification/network/resource-manager/Microsoft.Network/{VER}/serviceCommunity.json"),
-    ("UsageClient",                             "Network",          "2017-03-01",           "specification/network/resource-manager/Microsoft.Network/{VER}/usage.json"),
-    ("VirtualNetworkClient",                    "Network",          "2017-03-01",           "specification/network/resource-manager/Microsoft.Network/{VER}/virtualNetwork.json"),
-    ("VirtualNetworkGatewayClient",             "Network",          "2017-03-01",           "specification/network/resource-manager/Microsoft.Network/{VER}/virtualNetworkGateway.json"),
-    ("VmssNetworkInterfaceClient",              "Network",          "2017-03-01",           "specification/network/resource-manager/Microsoft.Network/{VER}/vmssNetworkInterface.json"),
-    ("ResourceManagementClient",                "Resource",         "2017-05-10",           "specification/resources/resource-manager/Microsoft.Resources/{VER}/resources.json"),
-    ("SubscriptionClient",                      "Resource",         "2016-06-01",           "specification/resources/resource-manager/Microsoft.Resources/{VER}/subscriptions.json"),
-    ("PolicyClient",                            "Resource",         "2016-04-01",           "specification/resources/resource-manager/Microsoft.Authorization/{VER}/policy.json"),
-    ("UsageManagementClient",                   "Commerce",         "2015-06-01-preview",   "specification/commerce/resource-manager/Microsoft.Commerce/{VER}/commerce.json")
+    ("DataLakeStoreAccountManagementClient",    "DataLakeStore",    "2016-11-01",           "specification/datalake-store/resource-manager/Microsoft.DataLakeStore/stable/{VER}/account.json"),
+    ("DataLakeStoreFileSystemManagementClient", "DataLakeStore",    "2016-11-01",           "specification/datalake-store/data-plane/Microsoft.DataLakeStore/stable/{VER}/filesystem.json"),
+    ("StorageManagementClient",                 "Storage",          "2019-06-01",           "specification/storage/resource-manager/Microsoft.Storage/stable/{VER}/storage.json"),
+    ("ComputeManagementClient",                 "Compute",          "2020-06-01",           "specification/compute/resource-manager/Microsoft.Compute/stable/{VER}/compute.json"),
+    ("DiskResourceProviderClient",              "Compute",          "2020-05-01",           "specification/compute/resource-manager/Microsoft.Compute/stable/{VER}/disk.json"),
+    ("RunCommandsClient",                       "Compute",          "2020-06-01",           "specification/compute/resource-manager/Microsoft.Compute/stable/{VER}/runCommands.json"),
+    ("ContainerServiceClient",                  "Compute",          "2017-01-31",           "specification/compute/resource-manager/Microsoft.ContainerService/stable/{VER}/containerService.json"),
+    ("ApplicationGatewayClient",                "Network",          "2020-05-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/applicationGateway.json"),
+    ("CheckDnsAvailabilityClient",              "Network",          "2020-05-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/checkDnsAvailability.json"),
+    ("ExpressRouteCircuitClient",               "Network",          "2020-05-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/expressRouteCircuit.json"),
+    ("LoadBalancerClient",                      "Network",          "2020-05-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/loadBalancer.json"),
+    ("NetworkManagementClient",                 "Network",          "2020-05-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/network.json"),
+    ("NetworkInterfaceClient",                  "Network",          "2020-05-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/networkInterface.json"),
+    ("NetworkSecurityGroupClient",              "Network",          "2020-05-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/networkSecurityGroup.json"),
+    ("NetworkWatcherClient",                    "Network",          "2020-05-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/networkWatcher.json"),
+    ("PublicIpAddressClient",                   "Network",          "2020-05-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/publicIpAddress.json"),
+    ("RouteFilterClient",                       "Network",          "2020-05-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/routeFilter.json"),
+    ("RouteTableClient",                        "Network",          "2020-05-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/routeTable.json"),
+    ("ServiceCommunityClient",                  "Network",          "2020-05-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/serviceCommunity.json"),
+    ("UsageClient",                             "Network",          "2020-05-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/usage.json"),
+    ("VirtualNetworkClient",                    "Network",          "2020-05-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/virtualNetwork.json"),
+    ("VirtualNetworkGatewayClient",             "Network",          "2020-05-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/virtualNetworkGateway.json"),
+    ("VmssNetworkInterfaceClient",              "Network",          "2020-05-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/vmssNetworkInterface.json"),
+    ("ResourceManagementClient",                "Resource",         "2020-06-01",           "specification/resources/resource-manager/Microsoft.Resources/stable/{VER}/resources.json"),
+    ("SubscriptionClient",                      "Resource",         "2020-01-01",           "specification/resources/resource-manager/Microsoft.Resources/stable/{VER}/subscriptions.json"),
+    ("PolicyAssignmentsClient",                 "Resource",         "2019-09-01",           "specification/resources/resource-manager/Microsoft.Authorization/stable/{VER}/policyAssignments.json"),
+    ("PolicyDefinitionsClient",                 "Resource",         "2019-09-01",           "specification/resources/resource-manager/Microsoft.Authorization/stable/{VER}/policyDefinitions.json"),
+    ("PolicySetDefinitionsClient",              "Resource",         "2019-09-01",           "specification/resources/resource-manager/Microsoft.Authorization/stable/{VER}/policySetDefinitions.json"),
+    ("UsageManagementClient",                   "Commerce",         "2015-06-01-preview",  "specification/commerce/resource-manager/Microsoft.Commerce/preview/{VER}/commerce.json")
 ]
 
 const PATCHES = Dict(
@@ -57,7 +61,7 @@ include("rest_api_protocol.jl")
 
 const MODULE_TAIL = """
 # Storage services
-include("Storage/StorageServices/StorageServices.jl")
+include("StorageServices/StorageServices.jl")
 
 # helper methods to assist in authentication, logging and such
 include("helper.jl")
@@ -70,9 +74,15 @@ function genunit(pkg, grp, swg)
     end
     outpath = joinpath(SRCDIR, grp)
     pkgpath = joinpath(outpath, pkg)
-    mkpath(outpath)
+    mkpath(pkgpath)
     run(`$SWAGGERGEN -i $swg -o $outpath -c $TEMPCFGFILE`)
-    mv(joinpath(outpath, "src"), pkgpath; force=true)
+    for outfile in readdir(joinpath(outpath, "src"))
+        outfile_from = joinpath(outpath, "src", outfile)
+        outfile_to = joinpath(pkgpath, outfile)
+        @debug("moving $outfile from $outfile_from to $outfile_to")
+        mv(outfile_from, outfile_to)
+    end
+    rm(joinpath(outpath, "src"); force=true)
     rm(joinpath(outpath, "REQUIRE"); force=true)
     rm(joinpath(outpath, "LICENSE"); force=true)
     rm(joinpath(outpath, ".swagger-codegen-ignore"); force=true)
@@ -103,6 +113,12 @@ end
 
 function gen(swgroot)
     mkpath(SRCDIR)
+
+    for spec in SPECS
+        pkg, grp, ver, swg = spec
+        grppath = joinpath(SRCDIR, grp)
+        rm(grppath; recursive=true, force=true)
+    end
 
     open(joinpath(SRCDIR, "Azure.jl"), "w") do azf
         println(azf, MODULE_HEAD)

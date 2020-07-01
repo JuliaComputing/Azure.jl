@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct CheckNameAvailabilityResult <: SwaggerModel
     nameAvailable::Any # spec type: Union{ Nothing, Bool } # spec name: nameAvailable
     reason::Any # spec type: Union{ Nothing, String } # spec name: reason
@@ -23,7 +22,7 @@ end # type CheckNameAvailabilityResult
 const _property_map_CheckNameAvailabilityResult = Dict{Symbol,Symbol}(Symbol("nameAvailable")=>Symbol("nameAvailable"), Symbol("reason")=>Symbol("reason"), Symbol("message")=>Symbol("message"))
 const _property_types_CheckNameAvailabilityResult = Dict{Symbol,String}(Symbol("nameAvailable")=>"Bool", Symbol("reason")=>"String", Symbol("message")=>"String")
 Base.propertynames(::Type{ CheckNameAvailabilityResult }) = collect(keys(_property_map_CheckNameAvailabilityResult))
-Swagger.property_type(::Type{ CheckNameAvailabilityResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_CheckNameAvailabilityResult[name]))}
+Swagger.property_type(::Type{ CheckNameAvailabilityResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_CheckNameAvailabilityResult[name]))}
 Swagger.field_name(::Type{ CheckNameAvailabilityResult }, property_name::Symbol) =  _property_map_CheckNameAvailabilityResult[property_name]
 
 const _allowed_CheckNameAvailabilityResult_reason = ["AccountNameInvalid", "AlreadyExists"]

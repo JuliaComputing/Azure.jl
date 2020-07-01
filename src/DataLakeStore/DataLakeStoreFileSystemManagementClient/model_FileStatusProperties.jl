@@ -2,11 +2,9 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct FileStatusProperties <: SwaggerModel
     accessTime::Any # spec type: Union{ Nothing, Int64 } # spec name: accessTime
     blockSize::Any # spec type: Union{ Nothing, Int64 } # spec name: blockSize
-    childrenNum::Any # spec type: Union{ Nothing, Int64 } # spec name: childrenNum
     msExpirationTime::Any # spec type: Union{ Nothing, Int64 } # spec name: msExpirationTime
     group::Any # spec type: Union{ Nothing, String } # spec name: group
     length::Any # spec type: Union{ Nothing, Int64 } # spec name: length
@@ -17,14 +15,12 @@ mutable struct FileStatusProperties <: SwaggerModel
     type::Any # spec type: Union{ Nothing, String } # spec name: type
     aclBit::Any # spec type: Union{ Nothing, Bool } # spec name: aclBit
 
-    function FileStatusProperties(;accessTime=nothing, blockSize=nothing, childrenNum=nothing, msExpirationTime=nothing, group=nothing, length=nothing, modificationTime=nothing, owner=nothing, pathSuffix=nothing, permission=nothing, type=nothing, aclBit=nothing)
+    function FileStatusProperties(;accessTime=nothing, blockSize=nothing, msExpirationTime=nothing, group=nothing, length=nothing, modificationTime=nothing, owner=nothing, pathSuffix=nothing, permission=nothing, type=nothing, aclBit=nothing)
         o = new()
         validate_property(FileStatusProperties, Symbol("accessTime"), accessTime)
         setfield!(o, Symbol("accessTime"), accessTime)
         validate_property(FileStatusProperties, Symbol("blockSize"), blockSize)
         setfield!(o, Symbol("blockSize"), blockSize)
-        validate_property(FileStatusProperties, Symbol("childrenNum"), childrenNum)
-        setfield!(o, Symbol("childrenNum"), childrenNum)
         validate_property(FileStatusProperties, Symbol("msExpirationTime"), msExpirationTime)
         setfield!(o, Symbol("msExpirationTime"), msExpirationTime)
         validate_property(FileStatusProperties, Symbol("group"), group)
@@ -47,10 +43,10 @@ mutable struct FileStatusProperties <: SwaggerModel
     end
 end # type FileStatusProperties
 
-const _property_map_FileStatusProperties = Dict{Symbol,Symbol}(Symbol("accessTime")=>Symbol("accessTime"), Symbol("blockSize")=>Symbol("blockSize"), Symbol("childrenNum")=>Symbol("childrenNum"), Symbol("msExpirationTime")=>Symbol("msExpirationTime"), Symbol("group")=>Symbol("group"), Symbol("length")=>Symbol("length"), Symbol("modificationTime")=>Symbol("modificationTime"), Symbol("owner")=>Symbol("owner"), Symbol("pathSuffix")=>Symbol("pathSuffix"), Symbol("permission")=>Symbol("permission"), Symbol("type")=>Symbol("type"), Symbol("aclBit")=>Symbol("aclBit"))
-const _property_types_FileStatusProperties = Dict{Symbol,String}(Symbol("accessTime")=>"Int64", Symbol("blockSize")=>"Int64", Symbol("childrenNum")=>"Int64", Symbol("msExpirationTime")=>"Int64", Symbol("group")=>"String", Symbol("length")=>"Int64", Symbol("modificationTime")=>"Int64", Symbol("owner")=>"String", Symbol("pathSuffix")=>"String", Symbol("permission")=>"String", Symbol("type")=>"String", Symbol("aclBit")=>"Bool")
+const _property_map_FileStatusProperties = Dict{Symbol,Symbol}(Symbol("accessTime")=>Symbol("accessTime"), Symbol("blockSize")=>Symbol("blockSize"), Symbol("msExpirationTime")=>Symbol("msExpirationTime"), Symbol("group")=>Symbol("group"), Symbol("length")=>Symbol("length"), Symbol("modificationTime")=>Symbol("modificationTime"), Symbol("owner")=>Symbol("owner"), Symbol("pathSuffix")=>Symbol("pathSuffix"), Symbol("permission")=>Symbol("permission"), Symbol("type")=>Symbol("type"), Symbol("aclBit")=>Symbol("aclBit"))
+const _property_types_FileStatusProperties = Dict{Symbol,String}(Symbol("accessTime")=>"Int64", Symbol("blockSize")=>"Int64", Symbol("msExpirationTime")=>"Int64", Symbol("group")=>"String", Symbol("length")=>"Int64", Symbol("modificationTime")=>"Int64", Symbol("owner")=>"String", Symbol("pathSuffix")=>"String", Symbol("permission")=>"String", Symbol("type")=>"String", Symbol("aclBit")=>"Bool")
 Base.propertynames(::Type{ FileStatusProperties }) = collect(keys(_property_map_FileStatusProperties))
-Swagger.property_type(::Type{ FileStatusProperties }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_FileStatusProperties[name]))}
+Swagger.property_type(::Type{ FileStatusProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_FileStatusProperties[name]))}
 Swagger.field_name(::Type{ FileStatusProperties }, property_name::Symbol) =  _property_map_FileStatusProperties[property_name]
 
 const _allowed_FileStatusProperties_type = ["FILE", "DIRECTORY"]

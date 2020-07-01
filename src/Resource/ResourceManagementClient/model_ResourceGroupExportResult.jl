@@ -2,10 +2,9 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ResourceGroupExportResult <: SwaggerModel
     template::Any # spec type: Union{ Nothing, Any } # spec name: template
-    error::Any # spec type: Union{ Nothing, ResourceManagementErrorWithDetails } # spec name: error
+    error::Any # spec type: Union{ Nothing, ErrorResponse } # spec name: error
 
     function ResourceGroupExportResult(;template=nothing, error=nothing)
         o = new()
@@ -18,9 +17,9 @@ mutable struct ResourceGroupExportResult <: SwaggerModel
 end # type ResourceGroupExportResult
 
 const _property_map_ResourceGroupExportResult = Dict{Symbol,Symbol}(Symbol("template")=>Symbol("template"), Symbol("error")=>Symbol("error"))
-const _property_types_ResourceGroupExportResult = Dict{Symbol,String}(Symbol("template")=>"Any", Symbol("error")=>"ResourceManagementErrorWithDetails")
+const _property_types_ResourceGroupExportResult = Dict{Symbol,String}(Symbol("template")=>"Any", Symbol("error")=>"ErrorResponse")
 Base.propertynames(::Type{ ResourceGroupExportResult }) = collect(keys(_property_map_ResourceGroupExportResult))
-Swagger.property_type(::Type{ ResourceGroupExportResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ResourceGroupExportResult[name]))}
+Swagger.property_type(::Type{ ResourceGroupExportResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ResourceGroupExportResult[name]))}
 Swagger.field_name(::Type{ ResourceGroupExportResult }, property_name::Symbol) =  _property_map_ResourceGroupExportResult[property_name]
 
 function check_required(o::ResourceGroupExportResult)

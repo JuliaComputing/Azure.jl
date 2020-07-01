@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualNetworkGatewayIPConfiguration <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
 
@@ -17,7 +16,7 @@ end # type VirtualNetworkGatewayIPConfiguration
 const _property_map_VirtualNetworkGatewayIPConfiguration = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"))
 const _property_types_VirtualNetworkGatewayIPConfiguration = Dict{Symbol,String}(Symbol("id")=>"String")
 Base.propertynames(::Type{ VirtualNetworkGatewayIPConfiguration }) = collect(keys(_property_map_VirtualNetworkGatewayIPConfiguration))
-Swagger.property_type(::Type{ VirtualNetworkGatewayIPConfiguration }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualNetworkGatewayIPConfiguration[name]))}
+Swagger.property_type(::Type{ VirtualNetworkGatewayIPConfiguration }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualNetworkGatewayIPConfiguration[name]))}
 Swagger.field_name(::Type{ VirtualNetworkGatewayIPConfiguration }, property_name::Symbol) =  _property_map_VirtualNetworkGatewayIPConfiguration[property_name]
 
 function check_required(o::VirtualNetworkGatewayIPConfiguration)

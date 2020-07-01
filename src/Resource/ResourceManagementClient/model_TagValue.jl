@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct TagValue <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
     tagValue::Any # spec type: Union{ Nothing, String } # spec name: tagValue
@@ -23,7 +22,7 @@ end # type TagValue
 const _property_map_TagValue = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("tagValue")=>Symbol("tagValue"), Symbol("count")=>Symbol("count"))
 const _property_types_TagValue = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("tagValue")=>"String", Symbol("count")=>"TagCount")
 Base.propertynames(::Type{ TagValue }) = collect(keys(_property_map_TagValue))
-Swagger.property_type(::Type{ TagValue }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_TagValue[name]))}
+Swagger.property_type(::Type{ TagValue }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TagValue[name]))}
 Swagger.field_name(::Type{ TagValue }, property_name::Symbol) =  _property_map_TagValue[property_name]
 
 function check_required(o::TagValue)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct PacketCaptureParameters <: SwaggerModel
     target::Any # spec type: Union{ Nothing, String } # spec name: target
     bytesToCapturePerPacket::Any # spec type: Union{ Nothing, Int32 } # spec name: bytesToCapturePerPacket
@@ -32,7 +31,7 @@ end # type PacketCaptureParameters
 const _property_map_PacketCaptureParameters = Dict{Symbol,Symbol}(Symbol("target")=>Symbol("target"), Symbol("bytesToCapturePerPacket")=>Symbol("bytesToCapturePerPacket"), Symbol("totalBytesPerSession")=>Symbol("totalBytesPerSession"), Symbol("timeLimitInSeconds")=>Symbol("timeLimitInSeconds"), Symbol("storageLocation")=>Symbol("storageLocation"), Symbol("filters")=>Symbol("filters"))
 const _property_types_PacketCaptureParameters = Dict{Symbol,String}(Symbol("target")=>"String", Symbol("bytesToCapturePerPacket")=>"Int32", Symbol("totalBytesPerSession")=>"Int32", Symbol("timeLimitInSeconds")=>"Int32", Symbol("storageLocation")=>"PacketCaptureStorageLocation", Symbol("filters")=>"Vector{PacketCaptureFilter}")
 Base.propertynames(::Type{ PacketCaptureParameters }) = collect(keys(_property_map_PacketCaptureParameters))
-Swagger.property_type(::Type{ PacketCaptureParameters }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_PacketCaptureParameters[name]))}
+Swagger.property_type(::Type{ PacketCaptureParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PacketCaptureParameters[name]))}
 Swagger.field_name(::Type{ PacketCaptureParameters }, property_name::Symbol) =  _property_map_PacketCaptureParameters[property_name]
 
 function check_required(o::PacketCaptureParameters)

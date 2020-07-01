@@ -2,26 +2,24 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ConnectionSharedKey <: SwaggerModel
-    value::Any # spec type: Union{ Nothing, String } # spec name: value
+    id::Any # spec type: Union{ Nothing, String } # spec name: id
 
-    function ConnectionSharedKey(;value=nothing)
+    function ConnectionSharedKey(;id=nothing)
         o = new()
-        validate_property(ConnectionSharedKey, Symbol("value"), value)
-        setfield!(o, Symbol("value"), value)
+        validate_property(ConnectionSharedKey, Symbol("id"), id)
+        setfield!(o, Symbol("id"), id)
         o
     end
 end # type ConnectionSharedKey
 
-const _property_map_ConnectionSharedKey = Dict{Symbol,Symbol}(Symbol("value")=>Symbol("value"))
-const _property_types_ConnectionSharedKey = Dict{Symbol,String}(Symbol("value")=>"String")
+const _property_map_ConnectionSharedKey = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"))
+const _property_types_ConnectionSharedKey = Dict{Symbol,String}(Symbol("id")=>"String")
 Base.propertynames(::Type{ ConnectionSharedKey }) = collect(keys(_property_map_ConnectionSharedKey))
-Swagger.property_type(::Type{ ConnectionSharedKey }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ConnectionSharedKey[name]))}
+Swagger.property_type(::Type{ ConnectionSharedKey }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ConnectionSharedKey[name]))}
 Swagger.field_name(::Type{ ConnectionSharedKey }, property_name::Symbol) =  _property_map_ConnectionSharedKey[property_name]
 
 function check_required(o::ConnectionSharedKey)
-    (getproperty(o, Symbol("value")) === nothing) && (return false)
     true
 end
 

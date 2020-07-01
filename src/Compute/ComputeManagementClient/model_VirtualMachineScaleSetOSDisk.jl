@@ -2,24 +2,32 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualMachineScaleSetOSDisk <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     caching::Any # spec type: Union{ Nothing, Caching } # spec name: caching
+    writeAcceleratorEnabled::Any # spec type: Union{ Nothing, Bool } # spec name: writeAcceleratorEnabled
     createOption::Any # spec type: Union{ Nothing, CreateOption } # spec name: createOption
+    diffDiskSettings::Any # spec type: Union{ Nothing, DiffDiskSettings } # spec name: diffDiskSettings
+    diskSizeGB::Any # spec type: Union{ Nothing, Int32 } # spec name: diskSizeGB
     osType::Any # spec type: Union{ Nothing, String } # spec name: osType
     image::Any # spec type: Union{ Nothing, VirtualHardDisk } # spec name: image
     vhdContainers::Any # spec type: Union{ Nothing, Vector{String} } # spec name: vhdContainers
     managedDisk::Any # spec type: Union{ Nothing, VirtualMachineScaleSetManagedDiskParameters } # spec name: managedDisk
 
-    function VirtualMachineScaleSetOSDisk(;name=nothing, caching=nothing, createOption=nothing, osType=nothing, image=nothing, vhdContainers=nothing, managedDisk=nothing)
+    function VirtualMachineScaleSetOSDisk(;name=nothing, caching=nothing, writeAcceleratorEnabled=nothing, createOption=nothing, diffDiskSettings=nothing, diskSizeGB=nothing, osType=nothing, image=nothing, vhdContainers=nothing, managedDisk=nothing)
         o = new()
         validate_property(VirtualMachineScaleSetOSDisk, Symbol("name"), name)
         setfield!(o, Symbol("name"), name)
         validate_property(VirtualMachineScaleSetOSDisk, Symbol("caching"), caching)
         setfield!(o, Symbol("caching"), caching)
+        validate_property(VirtualMachineScaleSetOSDisk, Symbol("writeAcceleratorEnabled"), writeAcceleratorEnabled)
+        setfield!(o, Symbol("writeAcceleratorEnabled"), writeAcceleratorEnabled)
         validate_property(VirtualMachineScaleSetOSDisk, Symbol("createOption"), createOption)
         setfield!(o, Symbol("createOption"), createOption)
+        validate_property(VirtualMachineScaleSetOSDisk, Symbol("diffDiskSettings"), diffDiskSettings)
+        setfield!(o, Symbol("diffDiskSettings"), diffDiskSettings)
+        validate_property(VirtualMachineScaleSetOSDisk, Symbol("diskSizeGB"), diskSizeGB)
+        setfield!(o, Symbol("diskSizeGB"), diskSizeGB)
         validate_property(VirtualMachineScaleSetOSDisk, Symbol("osType"), osType)
         setfield!(o, Symbol("osType"), osType)
         validate_property(VirtualMachineScaleSetOSDisk, Symbol("image"), image)
@@ -32,10 +40,10 @@ mutable struct VirtualMachineScaleSetOSDisk <: SwaggerModel
     end
 end # type VirtualMachineScaleSetOSDisk
 
-const _property_map_VirtualMachineScaleSetOSDisk = Dict{Symbol,Symbol}(Symbol("name")=>Symbol("name"), Symbol("caching")=>Symbol("caching"), Symbol("createOption")=>Symbol("createOption"), Symbol("osType")=>Symbol("osType"), Symbol("image")=>Symbol("image"), Symbol("vhdContainers")=>Symbol("vhdContainers"), Symbol("managedDisk")=>Symbol("managedDisk"))
-const _property_types_VirtualMachineScaleSetOSDisk = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("caching")=>"Caching", Symbol("createOption")=>"CreateOption", Symbol("osType")=>"String", Symbol("image")=>"VirtualHardDisk", Symbol("vhdContainers")=>"Vector{String}", Symbol("managedDisk")=>"VirtualMachineScaleSetManagedDiskParameters")
+const _property_map_VirtualMachineScaleSetOSDisk = Dict{Symbol,Symbol}(Symbol("name")=>Symbol("name"), Symbol("caching")=>Symbol("caching"), Symbol("writeAcceleratorEnabled")=>Symbol("writeAcceleratorEnabled"), Symbol("createOption")=>Symbol("createOption"), Symbol("diffDiskSettings")=>Symbol("diffDiskSettings"), Symbol("diskSizeGB")=>Symbol("diskSizeGB"), Symbol("osType")=>Symbol("osType"), Symbol("image")=>Symbol("image"), Symbol("vhdContainers")=>Symbol("vhdContainers"), Symbol("managedDisk")=>Symbol("managedDisk"))
+const _property_types_VirtualMachineScaleSetOSDisk = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("caching")=>"Caching", Symbol("writeAcceleratorEnabled")=>"Bool", Symbol("createOption")=>"CreateOption", Symbol("diffDiskSettings")=>"DiffDiskSettings", Symbol("diskSizeGB")=>"Int32", Symbol("osType")=>"String", Symbol("image")=>"VirtualHardDisk", Symbol("vhdContainers")=>"Vector{String}", Symbol("managedDisk")=>"VirtualMachineScaleSetManagedDiskParameters")
 Base.propertynames(::Type{ VirtualMachineScaleSetOSDisk }) = collect(keys(_property_map_VirtualMachineScaleSetOSDisk))
-Swagger.property_type(::Type{ VirtualMachineScaleSetOSDisk }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualMachineScaleSetOSDisk[name]))}
+Swagger.property_type(::Type{ VirtualMachineScaleSetOSDisk }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetOSDisk[name]))}
 Swagger.field_name(::Type{ VirtualMachineScaleSetOSDisk }, property_name::Symbol) =  _property_map_VirtualMachineScaleSetOSDisk[property_name]
 
 const _allowed_VirtualMachineScaleSetOSDisk_osType = ["Windows", "Linux"]

@@ -2,11 +2,10 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ApplicationGatewayBackendAddressPoolPropertiesFormat <: SwaggerModel
     backendIPConfigurations::Any # spec type: Union{ Nothing, Vector{NetworkInterfaceIPConfiguration} } # spec name: backendIPConfigurations
     backendAddresses::Any # spec type: Union{ Nothing, Vector{ApplicationGatewayBackendAddress} } # spec name: backendAddresses
-    provisioningState::Any # spec type: Union{ Nothing, String } # spec name: provisioningState
+    provisioningState::Any # spec type: Union{ Nothing, ProvisioningState } # spec name: provisioningState
 
     function ApplicationGatewayBackendAddressPoolPropertiesFormat(;backendIPConfigurations=nothing, backendAddresses=nothing, provisioningState=nothing)
         o = new()
@@ -21,9 +20,9 @@ mutable struct ApplicationGatewayBackendAddressPoolPropertiesFormat <: SwaggerMo
 end # type ApplicationGatewayBackendAddressPoolPropertiesFormat
 
 const _property_map_ApplicationGatewayBackendAddressPoolPropertiesFormat = Dict{Symbol,Symbol}(Symbol("backendIPConfigurations")=>Symbol("backendIPConfigurations"), Symbol("backendAddresses")=>Symbol("backendAddresses"), Symbol("provisioningState")=>Symbol("provisioningState"))
-const _property_types_ApplicationGatewayBackendAddressPoolPropertiesFormat = Dict{Symbol,String}(Symbol("backendIPConfigurations")=>"Vector{NetworkInterfaceIPConfiguration}", Symbol("backendAddresses")=>"Vector{ApplicationGatewayBackendAddress}", Symbol("provisioningState")=>"String")
+const _property_types_ApplicationGatewayBackendAddressPoolPropertiesFormat = Dict{Symbol,String}(Symbol("backendIPConfigurations")=>"Vector{NetworkInterfaceIPConfiguration}", Symbol("backendAddresses")=>"Vector{ApplicationGatewayBackendAddress}", Symbol("provisioningState")=>"ProvisioningState")
 Base.propertynames(::Type{ ApplicationGatewayBackendAddressPoolPropertiesFormat }) = collect(keys(_property_map_ApplicationGatewayBackendAddressPoolPropertiesFormat))
-Swagger.property_type(::Type{ ApplicationGatewayBackendAddressPoolPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ApplicationGatewayBackendAddressPoolPropertiesFormat[name]))}
+Swagger.property_type(::Type{ ApplicationGatewayBackendAddressPoolPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayBackendAddressPoolPropertiesFormat[name]))}
 Swagger.field_name(::Type{ ApplicationGatewayBackendAddressPoolPropertiesFormat }, property_name::Symbol) =  _property_map_ApplicationGatewayBackendAddressPoolPropertiesFormat[property_name]
 
 function check_required(o::ApplicationGatewayBackendAddressPoolPropertiesFormat)

@@ -2,26 +2,30 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct TopologyParameters <: SwaggerModel
     targetResourceGroupName::Any # spec type: Union{ Nothing, String } # spec name: targetResourceGroupName
+    targetVirtualNetwork::Any # spec type: Union{ Nothing, SubResource } # spec name: targetVirtualNetwork
+    targetSubnet::Any # spec type: Union{ Nothing, SubResource } # spec name: targetSubnet
 
-    function TopologyParameters(;targetResourceGroupName=nothing)
+    function TopologyParameters(;targetResourceGroupName=nothing, targetVirtualNetwork=nothing, targetSubnet=nothing)
         o = new()
         validate_property(TopologyParameters, Symbol("targetResourceGroupName"), targetResourceGroupName)
         setfield!(o, Symbol("targetResourceGroupName"), targetResourceGroupName)
+        validate_property(TopologyParameters, Symbol("targetVirtualNetwork"), targetVirtualNetwork)
+        setfield!(o, Symbol("targetVirtualNetwork"), targetVirtualNetwork)
+        validate_property(TopologyParameters, Symbol("targetSubnet"), targetSubnet)
+        setfield!(o, Symbol("targetSubnet"), targetSubnet)
         o
     end
 end # type TopologyParameters
 
-const _property_map_TopologyParameters = Dict{Symbol,Symbol}(Symbol("targetResourceGroupName")=>Symbol("targetResourceGroupName"))
-const _property_types_TopologyParameters = Dict{Symbol,String}(Symbol("targetResourceGroupName")=>"String")
+const _property_map_TopologyParameters = Dict{Symbol,Symbol}(Symbol("targetResourceGroupName")=>Symbol("targetResourceGroupName"), Symbol("targetVirtualNetwork")=>Symbol("targetVirtualNetwork"), Symbol("targetSubnet")=>Symbol("targetSubnet"))
+const _property_types_TopologyParameters = Dict{Symbol,String}(Symbol("targetResourceGroupName")=>"String", Symbol("targetVirtualNetwork")=>"SubResource", Symbol("targetSubnet")=>"SubResource")
 Base.propertynames(::Type{ TopologyParameters }) = collect(keys(_property_map_TopologyParameters))
-Swagger.property_type(::Type{ TopologyParameters }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_TopologyParameters[name]))}
+Swagger.property_type(::Type{ TopologyParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TopologyParameters[name]))}
 Swagger.field_name(::Type{ TopologyParameters }, property_name::Symbol) =  _property_map_TopologyParameters[property_name]
 
 function check_required(o::TopologyParameters)
-    (getproperty(o, Symbol("targetResourceGroupName")) === nothing) && (return false)
     true
 end
 

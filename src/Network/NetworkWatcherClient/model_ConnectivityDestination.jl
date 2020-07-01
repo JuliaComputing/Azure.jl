@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ConnectivityDestination <: SwaggerModel
     resourceId::Any # spec type: Union{ Nothing, String } # spec name: resourceId
     address::Any # spec type: Union{ Nothing, String } # spec name: address
@@ -23,7 +22,7 @@ end # type ConnectivityDestination
 const _property_map_ConnectivityDestination = Dict{Symbol,Symbol}(Symbol("resourceId")=>Symbol("resourceId"), Symbol("address")=>Symbol("address"), Symbol("port")=>Symbol("port"))
 const _property_types_ConnectivityDestination = Dict{Symbol,String}(Symbol("resourceId")=>"String", Symbol("address")=>"String", Symbol("port")=>"Int32")
 Base.propertynames(::Type{ ConnectivityDestination }) = collect(keys(_property_map_ConnectivityDestination))
-Swagger.property_type(::Type{ ConnectivityDestination }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ConnectivityDestination[name]))}
+Swagger.property_type(::Type{ ConnectivityDestination }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ConnectivityDestination[name]))}
 Swagger.field_name(::Type{ ConnectivityDestination }, property_name::Symbol) =  _property_map_ConnectivityDestination[property_name]
 
 function check_required(o::ConnectivityDestination)

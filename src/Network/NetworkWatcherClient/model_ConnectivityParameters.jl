@@ -2,26 +2,36 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ConnectivityParameters <: SwaggerModel
     source::Any # spec type: Union{ Nothing, ConnectivitySource } # spec name: source
     destination::Any # spec type: Union{ Nothing, ConnectivityDestination } # spec name: destination
+    protocol::Any # spec type: Union{ Nothing, String } # spec name: protocol
+    protocolConfiguration::Any # spec type: Union{ Nothing, ProtocolConfiguration } # spec name: protocolConfiguration
+    preferredIPVersion::Any # spec type: Union{ Nothing, IPVersion } # spec name: preferredIPVersion
 
-    function ConnectivityParameters(;source=nothing, destination=nothing)
+    function ConnectivityParameters(;source=nothing, destination=nothing, protocol=nothing, protocolConfiguration=nothing, preferredIPVersion=nothing)
         o = new()
         validate_property(ConnectivityParameters, Symbol("source"), source)
         setfield!(o, Symbol("source"), source)
         validate_property(ConnectivityParameters, Symbol("destination"), destination)
         setfield!(o, Symbol("destination"), destination)
+        validate_property(ConnectivityParameters, Symbol("protocol"), protocol)
+        setfield!(o, Symbol("protocol"), protocol)
+        validate_property(ConnectivityParameters, Symbol("protocolConfiguration"), protocolConfiguration)
+        setfield!(o, Symbol("protocolConfiguration"), protocolConfiguration)
+        validate_property(ConnectivityParameters, Symbol("preferredIPVersion"), preferredIPVersion)
+        setfield!(o, Symbol("preferredIPVersion"), preferredIPVersion)
         o
     end
 end # type ConnectivityParameters
 
-const _property_map_ConnectivityParameters = Dict{Symbol,Symbol}(Symbol("source")=>Symbol("source"), Symbol("destination")=>Symbol("destination"))
-const _property_types_ConnectivityParameters = Dict{Symbol,String}(Symbol("source")=>"ConnectivitySource", Symbol("destination")=>"ConnectivityDestination")
+const _property_map_ConnectivityParameters = Dict{Symbol,Symbol}(Symbol("source")=>Symbol("source"), Symbol("destination")=>Symbol("destination"), Symbol("protocol")=>Symbol("protocol"), Symbol("protocolConfiguration")=>Symbol("protocolConfiguration"), Symbol("preferredIPVersion")=>Symbol("preferredIPVersion"))
+const _property_types_ConnectivityParameters = Dict{Symbol,String}(Symbol("source")=>"ConnectivitySource", Symbol("destination")=>"ConnectivityDestination", Symbol("protocol")=>"String", Symbol("protocolConfiguration")=>"ProtocolConfiguration", Symbol("preferredIPVersion")=>"IPVersion")
 Base.propertynames(::Type{ ConnectivityParameters }) = collect(keys(_property_map_ConnectivityParameters))
-Swagger.property_type(::Type{ ConnectivityParameters }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ConnectivityParameters[name]))}
+Swagger.property_type(::Type{ ConnectivityParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ConnectivityParameters[name]))}
 Swagger.field_name(::Type{ ConnectivityParameters }, property_name::Symbol) =  _property_map_ConnectivityParameters[property_name]
+
+const _allowed_ConnectivityParameters_protocol = ["Tcp", "Http", "Https", "Icmp"]
 
 function check_required(o::ConnectivityParameters)
     (getproperty(o, Symbol("source")) === nothing) && (return false)
@@ -30,4 +40,7 @@ function check_required(o::ConnectivityParameters)
 end
 
 function validate_property(::Type{ ConnectivityParameters }, name::Symbol, val)
+    if name === Symbol("protocol")
+        Swagger.validate_param(name, "ConnectivityParameters", :enum, val, _allowed_ConnectivityParameters_protocol)
+    end
 end

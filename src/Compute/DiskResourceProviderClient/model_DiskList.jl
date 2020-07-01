@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct DiskList <: SwaggerModel
     value::Any # spec type: Union{ Nothing, Vector{Disk} } # spec name: value
     nextLink::Any # spec type: Union{ Nothing, String } # spec name: nextLink
@@ -20,7 +19,7 @@ end # type DiskList
 const _property_map_DiskList = Dict{Symbol,Symbol}(Symbol("value")=>Symbol("value"), Symbol("nextLink")=>Symbol("nextLink"))
 const _property_types_DiskList = Dict{Symbol,String}(Symbol("value")=>"Vector{Disk}", Symbol("nextLink")=>"String")
 Base.propertynames(::Type{ DiskList }) = collect(keys(_property_map_DiskList))
-Swagger.property_type(::Type{ DiskList }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_DiskList[name]))}
+Swagger.property_type(::Type{ DiskList }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DiskList[name]))}
 Swagger.field_name(::Type{ DiskList }, property_name::Symbol) =  _property_map_DiskList[property_name]
 
 function check_required(o::DiskList)

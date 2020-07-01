@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ContainerServiceMasterProfile <: SwaggerModel
     count::Any # spec type: Union{ Nothing, Int32 } # spec name: count
     dnsPrefix::Any # spec type: Union{ Nothing, String } # spec name: dnsPrefix
@@ -23,7 +22,7 @@ end # type ContainerServiceMasterProfile
 const _property_map_ContainerServiceMasterProfile = Dict{Symbol,Symbol}(Symbol("count")=>Symbol("count"), Symbol("dnsPrefix")=>Symbol("dnsPrefix"), Symbol("fqdn")=>Symbol("fqdn"))
 const _property_types_ContainerServiceMasterProfile = Dict{Symbol,String}(Symbol("count")=>"Int32", Symbol("dnsPrefix")=>"String", Symbol("fqdn")=>"String")
 Base.propertynames(::Type{ ContainerServiceMasterProfile }) = collect(keys(_property_map_ContainerServiceMasterProfile))
-Swagger.property_type(::Type{ ContainerServiceMasterProfile }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ContainerServiceMasterProfile[name]))}
+Swagger.property_type(::Type{ ContainerServiceMasterProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ContainerServiceMasterProfile[name]))}
 Swagger.field_name(::Type{ ContainerServiceMasterProfile }, property_name::Symbol) =  _property_map_ContainerServiceMasterProfile[property_name]
 
 const _allowed_ContainerServiceMasterProfile_count = ["1", "3", "5"]

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ContainerServiceWindowsProfile <: SwaggerModel
     adminUsername::Any # spec type: Union{ Nothing, String } # spec name: adminUsername
     adminPassword::Any # spec type: Union{ Nothing, String } # spec name: adminPassword
@@ -20,7 +19,7 @@ end # type ContainerServiceWindowsProfile
 const _property_map_ContainerServiceWindowsProfile = Dict{Symbol,Symbol}(Symbol("adminUsername")=>Symbol("adminUsername"), Symbol("adminPassword")=>Symbol("adminPassword"))
 const _property_types_ContainerServiceWindowsProfile = Dict{Symbol,String}(Symbol("adminUsername")=>"String", Symbol("adminPassword")=>"String")
 Base.propertynames(::Type{ ContainerServiceWindowsProfile }) = collect(keys(_property_map_ContainerServiceWindowsProfile))
-Swagger.property_type(::Type{ ContainerServiceWindowsProfile }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ContainerServiceWindowsProfile[name]))}
+Swagger.property_type(::Type{ ContainerServiceWindowsProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ContainerServiceWindowsProfile[name]))}
 Swagger.field_name(::Type{ ContainerServiceWindowsProfile }, property_name::Symbol) =  _property_map_ContainerServiceWindowsProfile[property_name]
 
 function check_required(o::ContainerServiceWindowsProfile)

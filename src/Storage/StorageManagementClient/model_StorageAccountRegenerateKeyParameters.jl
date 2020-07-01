@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct StorageAccountRegenerateKeyParameters <: SwaggerModel
     keyName::Any # spec type: Union{ Nothing, String } # spec name: keyName
 
@@ -17,7 +16,7 @@ end # type StorageAccountRegenerateKeyParameters
 const _property_map_StorageAccountRegenerateKeyParameters = Dict{Symbol,Symbol}(Symbol("keyName")=>Symbol("keyName"))
 const _property_types_StorageAccountRegenerateKeyParameters = Dict{Symbol,String}(Symbol("keyName")=>"String")
 Base.propertynames(::Type{ StorageAccountRegenerateKeyParameters }) = collect(keys(_property_map_StorageAccountRegenerateKeyParameters))
-Swagger.property_type(::Type{ StorageAccountRegenerateKeyParameters }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_StorageAccountRegenerateKeyParameters[name]))}
+Swagger.property_type(::Type{ StorageAccountRegenerateKeyParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_StorageAccountRegenerateKeyParameters[name]))}
 Swagger.field_name(::Type{ StorageAccountRegenerateKeyParameters }, property_name::Symbol) =  _property_map_StorageAccountRegenerateKeyParameters[property_name]
 
 function check_required(o::StorageAccountRegenerateKeyParameters)

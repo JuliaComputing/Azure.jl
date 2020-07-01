@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualMachineImage <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
     name::Any # spec type: Union{ Nothing, String } # spec name: name
@@ -29,7 +28,7 @@ end # type VirtualMachineImage
 const _property_map_VirtualMachineImage = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("name")=>Symbol("name"), Symbol("location")=>Symbol("location"), Symbol("tags")=>Symbol("tags"), Symbol("properties")=>Symbol("properties"))
 const _property_types_VirtualMachineImage = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", Symbol("properties")=>"VirtualMachineImageProperties")
 Base.propertynames(::Type{ VirtualMachineImage }) = collect(keys(_property_map_VirtualMachineImage))
-Swagger.property_type(::Type{ VirtualMachineImage }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualMachineImage[name]))}
+Swagger.property_type(::Type{ VirtualMachineImage }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineImage[name]))}
 Swagger.field_name(::Type{ VirtualMachineImage }, property_name::Symbol) =  _property_map_VirtualMachineImage[property_name]
 
 function check_required(o::VirtualMachineImage)

@@ -2,9 +2,8 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VerificationIPFlowResult <: SwaggerModel
-    access::Any # spec type: Union{ Nothing, String } # spec name: access
+    access::Any # spec type: Union{ Nothing, Access } # spec name: access
     ruleName::Any # spec type: Union{ Nothing, String } # spec name: ruleName
 
     function VerificationIPFlowResult(;access=nothing, ruleName=nothing)
@@ -18,19 +17,14 @@ mutable struct VerificationIPFlowResult <: SwaggerModel
 end # type VerificationIPFlowResult
 
 const _property_map_VerificationIPFlowResult = Dict{Symbol,Symbol}(Symbol("access")=>Symbol("access"), Symbol("ruleName")=>Symbol("ruleName"))
-const _property_types_VerificationIPFlowResult = Dict{Symbol,String}(Symbol("access")=>"String", Symbol("ruleName")=>"String")
+const _property_types_VerificationIPFlowResult = Dict{Symbol,String}(Symbol("access")=>"Access", Symbol("ruleName")=>"String")
 Base.propertynames(::Type{ VerificationIPFlowResult }) = collect(keys(_property_map_VerificationIPFlowResult))
-Swagger.property_type(::Type{ VerificationIPFlowResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VerificationIPFlowResult[name]))}
+Swagger.property_type(::Type{ VerificationIPFlowResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VerificationIPFlowResult[name]))}
 Swagger.field_name(::Type{ VerificationIPFlowResult }, property_name::Symbol) =  _property_map_VerificationIPFlowResult[property_name]
-
-const _allowed_VerificationIPFlowResult_access = ["Allow", "Deny"]
 
 function check_required(o::VerificationIPFlowResult)
     true
 end
 
 function validate_property(::Type{ VerificationIPFlowResult }, name::Symbol, val)
-    if name === Symbol("access")
-        Swagger.validate_param(name, "VerificationIPFlowResult", :enum, val, _allowed_VerificationIPFlowResult_access)
-    end
 end

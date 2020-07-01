@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct FlowLogStatusParameters <: SwaggerModel
     targetResourceId::Any # spec type: Union{ Nothing, String } # spec name: targetResourceId
 
@@ -17,7 +16,7 @@ end # type FlowLogStatusParameters
 const _property_map_FlowLogStatusParameters = Dict{Symbol,Symbol}(Symbol("targetResourceId")=>Symbol("targetResourceId"))
 const _property_types_FlowLogStatusParameters = Dict{Symbol,String}(Symbol("targetResourceId")=>"String")
 Base.propertynames(::Type{ FlowLogStatusParameters }) = collect(keys(_property_map_FlowLogStatusParameters))
-Swagger.property_type(::Type{ FlowLogStatusParameters }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_FlowLogStatusParameters[name]))}
+Swagger.property_type(::Type{ FlowLogStatusParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_FlowLogStatusParameters[name]))}
 Swagger.field_name(::Type{ FlowLogStatusParameters }, property_name::Symbol) =  _property_map_FlowLogStatusParameters[property_name]
 
 function check_required(o::FlowLogStatusParameters)

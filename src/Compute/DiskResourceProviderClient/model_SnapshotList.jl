@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct SnapshotList <: SwaggerModel
     value::Any # spec type: Union{ Nothing, Vector{Snapshot} } # spec name: value
     nextLink::Any # spec type: Union{ Nothing, String } # spec name: nextLink
@@ -20,7 +19,7 @@ end # type SnapshotList
 const _property_map_SnapshotList = Dict{Symbol,Symbol}(Symbol("value")=>Symbol("value"), Symbol("nextLink")=>Symbol("nextLink"))
 const _property_types_SnapshotList = Dict{Symbol,String}(Symbol("value")=>"Vector{Snapshot}", Symbol("nextLink")=>"String")
 Base.propertynames(::Type{ SnapshotList }) = collect(keys(_property_map_SnapshotList))
-Swagger.property_type(::Type{ SnapshotList }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_SnapshotList[name]))}
+Swagger.property_type(::Type{ SnapshotList }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SnapshotList[name]))}
 Swagger.field_name(::Type{ SnapshotList }, property_name::Symbol) =  _property_map_SnapshotList[property_name]
 
 function check_required(o::SnapshotList)

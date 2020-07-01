@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct StorageAccountProperties <: SwaggerModel
     provisioningState::Any # spec type: Union{ Nothing, String } # spec name: provisioningState
     primaryEndpoints::Any # spec type: Union{ Nothing, Endpoints } # spec name: primaryEndpoints
@@ -16,10 +15,20 @@ mutable struct StorageAccountProperties <: SwaggerModel
     secondaryEndpoints::Any # spec type: Union{ Nothing, Endpoints } # spec name: secondaryEndpoints
     encryption::Any # spec type: Union{ Nothing, Encryption } # spec name: encryption
     accessTier::Any # spec type: Union{ Nothing, String } # spec name: accessTier
+    azureFilesIdentityBasedAuthentication::Any # spec type: Union{ Nothing, AzureFilesIdentityBasedAuthentication } # spec name: azureFilesIdentityBasedAuthentication
     supportsHttpsTrafficOnly::Any # spec type: Union{ Nothing, Bool } # spec name: supportsHttpsTrafficOnly
     networkAcls::Any # spec type: Union{ Nothing, NetworkRuleSet } # spec name: networkAcls
+    isHnsEnabled::Any # spec type: Union{ Nothing, Bool } # spec name: isHnsEnabled
+    geoReplicationStats::Any # spec type: Union{ Nothing, GeoReplicationStats } # spec name: geoReplicationStats
+    failoverInProgress::Any # spec type: Union{ Nothing, Bool } # spec name: failoverInProgress
+    largeFileSharesState::Any # spec type: Union{ Nothing, String } # spec name: largeFileSharesState
+    privateEndpointConnections::Any # spec type: Union{ Nothing, Vector{PrivateEndpointConnection} } # spec name: privateEndpointConnections
+    routingPreference::Any # spec type: Union{ Nothing, RoutingPreference } # spec name: routingPreference
+    blobRestoreStatus::Any # spec type: Union{ Nothing, BlobRestoreStatus } # spec name: blobRestoreStatus
+    allowBlobPublicAccess::Any # spec type: Union{ Nothing, Bool } # spec name: allowBlobPublicAccess
+    minimumTlsVersion::Any # spec type: Union{ Nothing, String } # spec name: minimumTlsVersion
 
-    function StorageAccountProperties(;provisioningState=nothing, primaryEndpoints=nothing, primaryLocation=nothing, statusOfPrimary=nothing, lastGeoFailoverTime=nothing, secondaryLocation=nothing, statusOfSecondary=nothing, creationTime=nothing, customDomain=nothing, secondaryEndpoints=nothing, encryption=nothing, accessTier=nothing, supportsHttpsTrafficOnly=false, networkAcls=nothing)
+    function StorageAccountProperties(;provisioningState=nothing, primaryEndpoints=nothing, primaryLocation=nothing, statusOfPrimary=nothing, lastGeoFailoverTime=nothing, secondaryLocation=nothing, statusOfSecondary=nothing, creationTime=nothing, customDomain=nothing, secondaryEndpoints=nothing, encryption=nothing, accessTier=nothing, azureFilesIdentityBasedAuthentication=nothing, supportsHttpsTrafficOnly=nothing, networkAcls=nothing, isHnsEnabled=nothing, geoReplicationStats=nothing, failoverInProgress=nothing, largeFileSharesState=nothing, privateEndpointConnections=nothing, routingPreference=nothing, blobRestoreStatus=nothing, allowBlobPublicAccess=nothing, minimumTlsVersion=nothing)
         o = new()
         validate_property(StorageAccountProperties, Symbol("provisioningState"), provisioningState)
         setfield!(o, Symbol("provisioningState"), provisioningState)
@@ -45,18 +54,38 @@ mutable struct StorageAccountProperties <: SwaggerModel
         setfield!(o, Symbol("encryption"), encryption)
         validate_property(StorageAccountProperties, Symbol("accessTier"), accessTier)
         setfield!(o, Symbol("accessTier"), accessTier)
+        validate_property(StorageAccountProperties, Symbol("azureFilesIdentityBasedAuthentication"), azureFilesIdentityBasedAuthentication)
+        setfield!(o, Symbol("azureFilesIdentityBasedAuthentication"), azureFilesIdentityBasedAuthentication)
         validate_property(StorageAccountProperties, Symbol("supportsHttpsTrafficOnly"), supportsHttpsTrafficOnly)
         setfield!(o, Symbol("supportsHttpsTrafficOnly"), supportsHttpsTrafficOnly)
         validate_property(StorageAccountProperties, Symbol("networkAcls"), networkAcls)
         setfield!(o, Symbol("networkAcls"), networkAcls)
+        validate_property(StorageAccountProperties, Symbol("isHnsEnabled"), isHnsEnabled)
+        setfield!(o, Symbol("isHnsEnabled"), isHnsEnabled)
+        validate_property(StorageAccountProperties, Symbol("geoReplicationStats"), geoReplicationStats)
+        setfield!(o, Symbol("geoReplicationStats"), geoReplicationStats)
+        validate_property(StorageAccountProperties, Symbol("failoverInProgress"), failoverInProgress)
+        setfield!(o, Symbol("failoverInProgress"), failoverInProgress)
+        validate_property(StorageAccountProperties, Symbol("largeFileSharesState"), largeFileSharesState)
+        setfield!(o, Symbol("largeFileSharesState"), largeFileSharesState)
+        validate_property(StorageAccountProperties, Symbol("privateEndpointConnections"), privateEndpointConnections)
+        setfield!(o, Symbol("privateEndpointConnections"), privateEndpointConnections)
+        validate_property(StorageAccountProperties, Symbol("routingPreference"), routingPreference)
+        setfield!(o, Symbol("routingPreference"), routingPreference)
+        validate_property(StorageAccountProperties, Symbol("blobRestoreStatus"), blobRestoreStatus)
+        setfield!(o, Symbol("blobRestoreStatus"), blobRestoreStatus)
+        validate_property(StorageAccountProperties, Symbol("allowBlobPublicAccess"), allowBlobPublicAccess)
+        setfield!(o, Symbol("allowBlobPublicAccess"), allowBlobPublicAccess)
+        validate_property(StorageAccountProperties, Symbol("minimumTlsVersion"), minimumTlsVersion)
+        setfield!(o, Symbol("minimumTlsVersion"), minimumTlsVersion)
         o
     end
 end # type StorageAccountProperties
 
-const _property_map_StorageAccountProperties = Dict{Symbol,Symbol}(Symbol("provisioningState")=>Symbol("provisioningState"), Symbol("primaryEndpoints")=>Symbol("primaryEndpoints"), Symbol("primaryLocation")=>Symbol("primaryLocation"), Symbol("statusOfPrimary")=>Symbol("statusOfPrimary"), Symbol("lastGeoFailoverTime")=>Symbol("lastGeoFailoverTime"), Symbol("secondaryLocation")=>Symbol("secondaryLocation"), Symbol("statusOfSecondary")=>Symbol("statusOfSecondary"), Symbol("creationTime")=>Symbol("creationTime"), Symbol("customDomain")=>Symbol("customDomain"), Symbol("secondaryEndpoints")=>Symbol("secondaryEndpoints"), Symbol("encryption")=>Symbol("encryption"), Symbol("accessTier")=>Symbol("accessTier"), Symbol("supportsHttpsTrafficOnly")=>Symbol("supportsHttpsTrafficOnly"), Symbol("networkAcls")=>Symbol("networkAcls"))
-const _property_types_StorageAccountProperties = Dict{Symbol,String}(Symbol("provisioningState")=>"String", Symbol("primaryEndpoints")=>"Endpoints", Symbol("primaryLocation")=>"String", Symbol("statusOfPrimary")=>"String", Symbol("lastGeoFailoverTime")=>"DateTime", Symbol("secondaryLocation")=>"String", Symbol("statusOfSecondary")=>"String", Symbol("creationTime")=>"DateTime", Symbol("customDomain")=>"CustomDomain", Symbol("secondaryEndpoints")=>"Endpoints", Symbol("encryption")=>"Encryption", Symbol("accessTier")=>"String", Symbol("supportsHttpsTrafficOnly")=>"Bool", Symbol("networkAcls")=>"NetworkRuleSet")
+const _property_map_StorageAccountProperties = Dict{Symbol,Symbol}(Symbol("provisioningState")=>Symbol("provisioningState"), Symbol("primaryEndpoints")=>Symbol("primaryEndpoints"), Symbol("primaryLocation")=>Symbol("primaryLocation"), Symbol("statusOfPrimary")=>Symbol("statusOfPrimary"), Symbol("lastGeoFailoverTime")=>Symbol("lastGeoFailoverTime"), Symbol("secondaryLocation")=>Symbol("secondaryLocation"), Symbol("statusOfSecondary")=>Symbol("statusOfSecondary"), Symbol("creationTime")=>Symbol("creationTime"), Symbol("customDomain")=>Symbol("customDomain"), Symbol("secondaryEndpoints")=>Symbol("secondaryEndpoints"), Symbol("encryption")=>Symbol("encryption"), Symbol("accessTier")=>Symbol("accessTier"), Symbol("azureFilesIdentityBasedAuthentication")=>Symbol("azureFilesIdentityBasedAuthentication"), Symbol("supportsHttpsTrafficOnly")=>Symbol("supportsHttpsTrafficOnly"), Symbol("networkAcls")=>Symbol("networkAcls"), Symbol("isHnsEnabled")=>Symbol("isHnsEnabled"), Symbol("geoReplicationStats")=>Symbol("geoReplicationStats"), Symbol("failoverInProgress")=>Symbol("failoverInProgress"), Symbol("largeFileSharesState")=>Symbol("largeFileSharesState"), Symbol("privateEndpointConnections")=>Symbol("privateEndpointConnections"), Symbol("routingPreference")=>Symbol("routingPreference"), Symbol("blobRestoreStatus")=>Symbol("blobRestoreStatus"), Symbol("allowBlobPublicAccess")=>Symbol("allowBlobPublicAccess"), Symbol("minimumTlsVersion")=>Symbol("minimumTlsVersion"))
+const _property_types_StorageAccountProperties = Dict{Symbol,String}(Symbol("provisioningState")=>"String", Symbol("primaryEndpoints")=>"Endpoints", Symbol("primaryLocation")=>"String", Symbol("statusOfPrimary")=>"String", Symbol("lastGeoFailoverTime")=>"DateTime", Symbol("secondaryLocation")=>"String", Symbol("statusOfSecondary")=>"String", Symbol("creationTime")=>"DateTime", Symbol("customDomain")=>"CustomDomain", Symbol("secondaryEndpoints")=>"Endpoints", Symbol("encryption")=>"Encryption", Symbol("accessTier")=>"String", Symbol("azureFilesIdentityBasedAuthentication")=>"AzureFilesIdentityBasedAuthentication", Symbol("supportsHttpsTrafficOnly")=>"Bool", Symbol("networkAcls")=>"NetworkRuleSet", Symbol("isHnsEnabled")=>"Bool", Symbol("geoReplicationStats")=>"GeoReplicationStats", Symbol("failoverInProgress")=>"Bool", Symbol("largeFileSharesState")=>"String", Symbol("privateEndpointConnections")=>"Vector{PrivateEndpointConnection}", Symbol("routingPreference")=>"RoutingPreference", Symbol("blobRestoreStatus")=>"BlobRestoreStatus", Symbol("allowBlobPublicAccess")=>"Bool", Symbol("minimumTlsVersion")=>"String")
 Base.propertynames(::Type{ StorageAccountProperties }) = collect(keys(_property_map_StorageAccountProperties))
-Swagger.property_type(::Type{ StorageAccountProperties }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_StorageAccountProperties[name]))}
+Swagger.property_type(::Type{ StorageAccountProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_StorageAccountProperties[name]))}
 Swagger.field_name(::Type{ StorageAccountProperties }, property_name::Symbol) =  _property_map_StorageAccountProperties[property_name]
 
 const _allowed_StorageAccountProperties_provisioningState = ["Creating", "ResolvingDNS", "Succeeded"]
@@ -66,6 +95,10 @@ const _allowed_StorageAccountProperties_statusOfPrimary = ["available", "unavail
 const _allowed_StorageAccountProperties_statusOfSecondary = ["available", "unavailable"]
 
 const _allowed_StorageAccountProperties_accessTier = ["Hot", "Cool"]
+
+const _allowed_StorageAccountProperties_largeFileSharesState = ["Disabled", "Enabled"]
+
+const _allowed_StorageAccountProperties_minimumTlsVersion = ["TLS1_0", "TLS1_1", "TLS1_2"]
 
 function check_required(o::StorageAccountProperties)
     true
@@ -83,5 +116,11 @@ function validate_property(::Type{ StorageAccountProperties }, name::Symbol, val
     end
     if name === Symbol("accessTier")
         Swagger.validate_param(name, "StorageAccountProperties", :enum, val, _allowed_StorageAccountProperties_accessTier)
+    end
+    if name === Symbol("largeFileSharesState")
+        Swagger.validate_param(name, "StorageAccountProperties", :enum, val, _allowed_StorageAccountProperties_largeFileSharesState)
+    end
+    if name === Symbol("minimumTlsVersion")
+        Swagger.validate_param(name, "StorageAccountProperties", :enum, val, _allowed_StorageAccountProperties_minimumTlsVersion)
     end
 end

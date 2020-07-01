@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ServiceSasParameters <: SwaggerModel
     canonicalizedResource::Any # spec type: Union{ Nothing, String } # spec name: canonicalizedResource
     signedResource::Any # spec type: Union{ Nothing, String } # spec name: signedResource
@@ -68,7 +67,7 @@ end # type ServiceSasParameters
 const _property_map_ServiceSasParameters = Dict{Symbol,Symbol}(Symbol("canonicalizedResource")=>Symbol("canonicalizedResource"), Symbol("signedResource")=>Symbol("signedResource"), Symbol("signedPermission")=>Symbol("signedPermission"), Symbol("signedIp")=>Symbol("signedIp"), Symbol("signedProtocol")=>Symbol("signedProtocol"), Symbol("signedStart")=>Symbol("signedStart"), Symbol("signedExpiry")=>Symbol("signedExpiry"), Symbol("signedIdentifier")=>Symbol("signedIdentifier"), Symbol("startPk")=>Symbol("startPk"), Symbol("endPk")=>Symbol("endPk"), Symbol("startRk")=>Symbol("startRk"), Symbol("endRk")=>Symbol("endRk"), Symbol("keyToSign")=>Symbol("keyToSign"), Symbol("rscc")=>Symbol("rscc"), Symbol("rscd")=>Symbol("rscd"), Symbol("rsce")=>Symbol("rsce"), Symbol("rscl")=>Symbol("rscl"), Symbol("rsct")=>Symbol("rsct"))
 const _property_types_ServiceSasParameters = Dict{Symbol,String}(Symbol("canonicalizedResource")=>"String", Symbol("signedResource")=>"String", Symbol("signedPermission")=>"String", Symbol("signedIp")=>"String", Symbol("signedProtocol")=>"String", Symbol("signedStart")=>"DateTime", Symbol("signedExpiry")=>"DateTime", Symbol("signedIdentifier")=>"String", Symbol("startPk")=>"String", Symbol("endPk")=>"String", Symbol("startRk")=>"String", Symbol("endRk")=>"String", Symbol("keyToSign")=>"String", Symbol("rscc")=>"String", Symbol("rscd")=>"String", Symbol("rsce")=>"String", Symbol("rscl")=>"String", Symbol("rsct")=>"String")
 Base.propertynames(::Type{ ServiceSasParameters }) = collect(keys(_property_map_ServiceSasParameters))
-Swagger.property_type(::Type{ ServiceSasParameters }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ServiceSasParameters[name]))}
+Swagger.property_type(::Type{ ServiceSasParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ServiceSasParameters[name]))}
 Swagger.field_name(::Type{ ServiceSasParameters }, property_name::Symbol) =  _property_map_ServiceSasParameters[property_name]
 
 const _allowed_ServiceSasParameters_signedResource = ["b", "c", "f", "s"]

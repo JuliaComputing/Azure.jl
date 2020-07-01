@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct PatchRouteFilterRule <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
 
@@ -17,7 +16,7 @@ end # type PatchRouteFilterRule
 const _property_map_PatchRouteFilterRule = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"))
 const _property_types_PatchRouteFilterRule = Dict{Symbol,String}(Symbol("id")=>"String")
 Base.propertynames(::Type{ PatchRouteFilterRule }) = collect(keys(_property_map_PatchRouteFilterRule))
-Swagger.property_type(::Type{ PatchRouteFilterRule }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_PatchRouteFilterRule[name]))}
+Swagger.property_type(::Type{ PatchRouteFilterRule }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PatchRouteFilterRule[name]))}
 Swagger.field_name(::Type{ PatchRouteFilterRule }, property_name::Symbol) =  _property_map_PatchRouteFilterRule[property_name]
 
 function check_required(o::PatchRouteFilterRule)

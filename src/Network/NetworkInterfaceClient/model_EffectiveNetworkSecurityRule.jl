@@ -2,21 +2,24 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct EffectiveNetworkSecurityRule <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     protocol::Any # spec type: Union{ Nothing, String } # spec name: protocol
     sourcePortRange::Any # spec type: Union{ Nothing, String } # spec name: sourcePortRange
     destinationPortRange::Any # spec type: Union{ Nothing, String } # spec name: destinationPortRange
+    sourcePortRanges::Any # spec type: Union{ Nothing, Vector{String} } # spec name: sourcePortRanges
+    destinationPortRanges::Any # spec type: Union{ Nothing, Vector{String} } # spec name: destinationPortRanges
     sourceAddressPrefix::Any # spec type: Union{ Nothing, String } # spec name: sourceAddressPrefix
     destinationAddressPrefix::Any # spec type: Union{ Nothing, String } # spec name: destinationAddressPrefix
+    sourceAddressPrefixes::Any # spec type: Union{ Nothing, Vector{String} } # spec name: sourceAddressPrefixes
+    destinationAddressPrefixes::Any # spec type: Union{ Nothing, Vector{String} } # spec name: destinationAddressPrefixes
     expandedSourceAddressPrefix::Any # spec type: Union{ Nothing, Vector{String} } # spec name: expandedSourceAddressPrefix
     expandedDestinationAddressPrefix::Any # spec type: Union{ Nothing, Vector{String} } # spec name: expandedDestinationAddressPrefix
-    access::Any # spec type: Union{ Nothing, String } # spec name: access
+    access::Any # spec type: Union{ Nothing, SecurityRuleAccess } # spec name: access
     priority::Any # spec type: Union{ Nothing, Int32 } # spec name: priority
-    direction::Any # spec type: Union{ Nothing, String } # spec name: direction
+    direction::Any # spec type: Union{ Nothing, SecurityRuleDirection } # spec name: direction
 
-    function EffectiveNetworkSecurityRule(;name=nothing, protocol=nothing, sourcePortRange=nothing, destinationPortRange=nothing, sourceAddressPrefix=nothing, destinationAddressPrefix=nothing, expandedSourceAddressPrefix=nothing, expandedDestinationAddressPrefix=nothing, access=nothing, priority=nothing, direction=nothing)
+    function EffectiveNetworkSecurityRule(;name=nothing, protocol=nothing, sourcePortRange=nothing, destinationPortRange=nothing, sourcePortRanges=nothing, destinationPortRanges=nothing, sourceAddressPrefix=nothing, destinationAddressPrefix=nothing, sourceAddressPrefixes=nothing, destinationAddressPrefixes=nothing, expandedSourceAddressPrefix=nothing, expandedDestinationAddressPrefix=nothing, access=nothing, priority=nothing, direction=nothing)
         o = new()
         validate_property(EffectiveNetworkSecurityRule, Symbol("name"), name)
         setfield!(o, Symbol("name"), name)
@@ -26,10 +29,18 @@ mutable struct EffectiveNetworkSecurityRule <: SwaggerModel
         setfield!(o, Symbol("sourcePortRange"), sourcePortRange)
         validate_property(EffectiveNetworkSecurityRule, Symbol("destinationPortRange"), destinationPortRange)
         setfield!(o, Symbol("destinationPortRange"), destinationPortRange)
+        validate_property(EffectiveNetworkSecurityRule, Symbol("sourcePortRanges"), sourcePortRanges)
+        setfield!(o, Symbol("sourcePortRanges"), sourcePortRanges)
+        validate_property(EffectiveNetworkSecurityRule, Symbol("destinationPortRanges"), destinationPortRanges)
+        setfield!(o, Symbol("destinationPortRanges"), destinationPortRanges)
         validate_property(EffectiveNetworkSecurityRule, Symbol("sourceAddressPrefix"), sourceAddressPrefix)
         setfield!(o, Symbol("sourceAddressPrefix"), sourceAddressPrefix)
         validate_property(EffectiveNetworkSecurityRule, Symbol("destinationAddressPrefix"), destinationAddressPrefix)
         setfield!(o, Symbol("destinationAddressPrefix"), destinationAddressPrefix)
+        validate_property(EffectiveNetworkSecurityRule, Symbol("sourceAddressPrefixes"), sourceAddressPrefixes)
+        setfield!(o, Symbol("sourceAddressPrefixes"), sourceAddressPrefixes)
+        validate_property(EffectiveNetworkSecurityRule, Symbol("destinationAddressPrefixes"), destinationAddressPrefixes)
+        setfield!(o, Symbol("destinationAddressPrefixes"), destinationAddressPrefixes)
         validate_property(EffectiveNetworkSecurityRule, Symbol("expandedSourceAddressPrefix"), expandedSourceAddressPrefix)
         setfield!(o, Symbol("expandedSourceAddressPrefix"), expandedSourceAddressPrefix)
         validate_property(EffectiveNetworkSecurityRule, Symbol("expandedDestinationAddressPrefix"), expandedDestinationAddressPrefix)
@@ -44,17 +55,13 @@ mutable struct EffectiveNetworkSecurityRule <: SwaggerModel
     end
 end # type EffectiveNetworkSecurityRule
 
-const _property_map_EffectiveNetworkSecurityRule = Dict{Symbol,Symbol}(Symbol("name")=>Symbol("name"), Symbol("protocol")=>Symbol("protocol"), Symbol("sourcePortRange")=>Symbol("sourcePortRange"), Symbol("destinationPortRange")=>Symbol("destinationPortRange"), Symbol("sourceAddressPrefix")=>Symbol("sourceAddressPrefix"), Symbol("destinationAddressPrefix")=>Symbol("destinationAddressPrefix"), Symbol("expandedSourceAddressPrefix")=>Symbol("expandedSourceAddressPrefix"), Symbol("expandedDestinationAddressPrefix")=>Symbol("expandedDestinationAddressPrefix"), Symbol("access")=>Symbol("access"), Symbol("priority")=>Symbol("priority"), Symbol("direction")=>Symbol("direction"))
-const _property_types_EffectiveNetworkSecurityRule = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("protocol")=>"String", Symbol("sourcePortRange")=>"String", Symbol("destinationPortRange")=>"String", Symbol("sourceAddressPrefix")=>"String", Symbol("destinationAddressPrefix")=>"String", Symbol("expandedSourceAddressPrefix")=>"Vector{String}", Symbol("expandedDestinationAddressPrefix")=>"Vector{String}", Symbol("access")=>"String", Symbol("priority")=>"Int32", Symbol("direction")=>"String")
+const _property_map_EffectiveNetworkSecurityRule = Dict{Symbol,Symbol}(Symbol("name")=>Symbol("name"), Symbol("protocol")=>Symbol("protocol"), Symbol("sourcePortRange")=>Symbol("sourcePortRange"), Symbol("destinationPortRange")=>Symbol("destinationPortRange"), Symbol("sourcePortRanges")=>Symbol("sourcePortRanges"), Symbol("destinationPortRanges")=>Symbol("destinationPortRanges"), Symbol("sourceAddressPrefix")=>Symbol("sourceAddressPrefix"), Symbol("destinationAddressPrefix")=>Symbol("destinationAddressPrefix"), Symbol("sourceAddressPrefixes")=>Symbol("sourceAddressPrefixes"), Symbol("destinationAddressPrefixes")=>Symbol("destinationAddressPrefixes"), Symbol("expandedSourceAddressPrefix")=>Symbol("expandedSourceAddressPrefix"), Symbol("expandedDestinationAddressPrefix")=>Symbol("expandedDestinationAddressPrefix"), Symbol("access")=>Symbol("access"), Symbol("priority")=>Symbol("priority"), Symbol("direction")=>Symbol("direction"))
+const _property_types_EffectiveNetworkSecurityRule = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("protocol")=>"String", Symbol("sourcePortRange")=>"String", Symbol("destinationPortRange")=>"String", Symbol("sourcePortRanges")=>"Vector{String}", Symbol("destinationPortRanges")=>"Vector{String}", Symbol("sourceAddressPrefix")=>"String", Symbol("destinationAddressPrefix")=>"String", Symbol("sourceAddressPrefixes")=>"Vector{String}", Symbol("destinationAddressPrefixes")=>"Vector{String}", Symbol("expandedSourceAddressPrefix")=>"Vector{String}", Symbol("expandedDestinationAddressPrefix")=>"Vector{String}", Symbol("access")=>"SecurityRuleAccess", Symbol("priority")=>"Int32", Symbol("direction")=>"SecurityRuleDirection")
 Base.propertynames(::Type{ EffectiveNetworkSecurityRule }) = collect(keys(_property_map_EffectiveNetworkSecurityRule))
-Swagger.property_type(::Type{ EffectiveNetworkSecurityRule }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_EffectiveNetworkSecurityRule[name]))}
+Swagger.property_type(::Type{ EffectiveNetworkSecurityRule }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_EffectiveNetworkSecurityRule[name]))}
 Swagger.field_name(::Type{ EffectiveNetworkSecurityRule }, property_name::Symbol) =  _property_map_EffectiveNetworkSecurityRule[property_name]
 
-const _allowed_EffectiveNetworkSecurityRule_protocol = ["Tcp", "Udp", "*"]
-
-const _allowed_EffectiveNetworkSecurityRule_access = ["Allow", "Deny"]
-
-const _allowed_EffectiveNetworkSecurityRule_direction = ["Inbound", "Outbound"]
+const _allowed_EffectiveNetworkSecurityRule_protocol = ["Tcp", "Udp", "All"]
 
 function check_required(o::EffectiveNetworkSecurityRule)
     true
@@ -63,11 +70,5 @@ end
 function validate_property(::Type{ EffectiveNetworkSecurityRule }, name::Symbol, val)
     if name === Symbol("protocol")
         Swagger.validate_param(name, "EffectiveNetworkSecurityRule", :enum, val, _allowed_EffectiveNetworkSecurityRule_protocol)
-    end
-    if name === Symbol("access")
-        Swagger.validate_param(name, "EffectiveNetworkSecurityRule", :enum, val, _allowed_EffectiveNetworkSecurityRule_access)
-    end
-    if name === Symbol("direction")
-        Swagger.validate_param(name, "EffectiveNetworkSecurityRule", :enum, val, _allowed_EffectiveNetworkSecurityRule_direction)
     end
 end

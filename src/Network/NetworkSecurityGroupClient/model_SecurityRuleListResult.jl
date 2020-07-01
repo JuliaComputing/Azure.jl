@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct SecurityRuleListResult <: SwaggerModel
     value::Any # spec type: Union{ Nothing, Vector{SecurityRule} } # spec name: value
     nextLink::Any # spec type: Union{ Nothing, String } # spec name: nextLink
@@ -20,7 +19,7 @@ end # type SecurityRuleListResult
 const _property_map_SecurityRuleListResult = Dict{Symbol,Symbol}(Symbol("value")=>Symbol("value"), Symbol("nextLink")=>Symbol("nextLink"))
 const _property_types_SecurityRuleListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{SecurityRule}", Symbol("nextLink")=>"String")
 Base.propertynames(::Type{ SecurityRuleListResult }) = collect(keys(_property_map_SecurityRuleListResult))
-Swagger.property_type(::Type{ SecurityRuleListResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_SecurityRuleListResult[name]))}
+Swagger.property_type(::Type{ SecurityRuleListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SecurityRuleListResult[name]))}
 Swagger.field_name(::Type{ SecurityRuleListResult }, property_name::Symbol) =  _property_map_SecurityRuleListResult[property_name]
 
 function check_required(o::SecurityRuleListResult)

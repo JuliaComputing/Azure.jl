@@ -2,27 +2,31 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualNetworkGatewayConnectionPropertiesFormat <: SwaggerModel
     authorizationKey::Any # spec type: Union{ Nothing, String } # spec name: authorizationKey
     virtualNetworkGateway1::Any # spec type: Union{ Nothing, VirtualNetworkGateway } # spec name: virtualNetworkGateway1
     virtualNetworkGateway2::Any # spec type: Union{ Nothing, VirtualNetworkGateway } # spec name: virtualNetworkGateway2
     localNetworkGateway2::Any # spec type: Union{ Nothing, LocalNetworkGateway } # spec name: localNetworkGateway2
-    connectionType::Any # spec type: Union{ Nothing, String } # spec name: connectionType
+    connectionType::Any # spec type: Union{ Nothing, VirtualNetworkGatewayConnectionType } # spec name: connectionType
+    connectionProtocol::Any # spec type: Union{ Nothing, ConnectionProtocol } # spec name: connectionProtocol
     routingWeight::Any # spec type: Union{ Nothing, Int32 } # spec name: routingWeight
+    dpdTimeoutSeconds::Any # spec type: Union{ Nothing, Int32 } # spec name: dpdTimeoutSeconds
     sharedKey::Any # spec type: Union{ Nothing, String } # spec name: sharedKey
-    connectionStatus::Any # spec type: Union{ Nothing, String } # spec name: connectionStatus
+    connectionStatus::Any # spec type: Union{ Nothing, VirtualNetworkGatewayConnectionStatus } # spec name: connectionStatus
     tunnelConnectionStatus::Any # spec type: Union{ Nothing, Vector{TunnelConnectionHealth} } # spec name: tunnelConnectionStatus
     egressBytesTransferred::Any # spec type: Union{ Nothing, Int64 } # spec name: egressBytesTransferred
     ingressBytesTransferred::Any # spec type: Union{ Nothing, Int64 } # spec name: ingressBytesTransferred
     peer::Any # spec type: Union{ Nothing, SubResource } # spec name: peer
     enableBgp::Any # spec type: Union{ Nothing, Bool } # spec name: enableBgp
+    useLocalAzureIpAddress::Any # spec type: Union{ Nothing, Bool } # spec name: useLocalAzureIpAddress
     usePolicyBasedTrafficSelectors::Any # spec type: Union{ Nothing, Bool } # spec name: usePolicyBasedTrafficSelectors
     ipsecPolicies::Any # spec type: Union{ Nothing, Vector{IpsecPolicy} } # spec name: ipsecPolicies
+    trafficSelectorPolicies::Any # spec type: Union{ Nothing, Vector{TrafficSelectorPolicy} } # spec name: trafficSelectorPolicies
     resourceGuid::Any # spec type: Union{ Nothing, String } # spec name: resourceGuid
-    provisioningState::Any # spec type: Union{ Nothing, String } # spec name: provisioningState
+    provisioningState::Any # spec type: Union{ Nothing, ProvisioningState } # spec name: provisioningState
+    expressRouteGatewayBypass::Any # spec type: Union{ Nothing, Bool } # spec name: expressRouteGatewayBypass
 
-    function VirtualNetworkGatewayConnectionPropertiesFormat(;authorizationKey=nothing, virtualNetworkGateway1=nothing, virtualNetworkGateway2=nothing, localNetworkGateway2=nothing, connectionType=nothing, routingWeight=nothing, sharedKey=nothing, connectionStatus=nothing, tunnelConnectionStatus=nothing, egressBytesTransferred=nothing, ingressBytesTransferred=nothing, peer=nothing, enableBgp=nothing, usePolicyBasedTrafficSelectors=nothing, ipsecPolicies=nothing, resourceGuid=nothing, provisioningState=nothing)
+    function VirtualNetworkGatewayConnectionPropertiesFormat(;authorizationKey=nothing, virtualNetworkGateway1=nothing, virtualNetworkGateway2=nothing, localNetworkGateway2=nothing, connectionType=nothing, connectionProtocol=nothing, routingWeight=nothing, dpdTimeoutSeconds=nothing, sharedKey=nothing, connectionStatus=nothing, tunnelConnectionStatus=nothing, egressBytesTransferred=nothing, ingressBytesTransferred=nothing, peer=nothing, enableBgp=nothing, useLocalAzureIpAddress=nothing, usePolicyBasedTrafficSelectors=nothing, ipsecPolicies=nothing, trafficSelectorPolicies=nothing, resourceGuid=nothing, provisioningState=nothing, expressRouteGatewayBypass=nothing)
         o = new()
         validate_property(VirtualNetworkGatewayConnectionPropertiesFormat, Symbol("authorizationKey"), authorizationKey)
         setfield!(o, Symbol("authorizationKey"), authorizationKey)
@@ -34,8 +38,12 @@ mutable struct VirtualNetworkGatewayConnectionPropertiesFormat <: SwaggerModel
         setfield!(o, Symbol("localNetworkGateway2"), localNetworkGateway2)
         validate_property(VirtualNetworkGatewayConnectionPropertiesFormat, Symbol("connectionType"), connectionType)
         setfield!(o, Symbol("connectionType"), connectionType)
+        validate_property(VirtualNetworkGatewayConnectionPropertiesFormat, Symbol("connectionProtocol"), connectionProtocol)
+        setfield!(o, Symbol("connectionProtocol"), connectionProtocol)
         validate_property(VirtualNetworkGatewayConnectionPropertiesFormat, Symbol("routingWeight"), routingWeight)
         setfield!(o, Symbol("routingWeight"), routingWeight)
+        validate_property(VirtualNetworkGatewayConnectionPropertiesFormat, Symbol("dpdTimeoutSeconds"), dpdTimeoutSeconds)
+        setfield!(o, Symbol("dpdTimeoutSeconds"), dpdTimeoutSeconds)
         validate_property(VirtualNetworkGatewayConnectionPropertiesFormat, Symbol("sharedKey"), sharedKey)
         setfield!(o, Symbol("sharedKey"), sharedKey)
         validate_property(VirtualNetworkGatewayConnectionPropertiesFormat, Symbol("connectionStatus"), connectionStatus)
@@ -50,38 +58,35 @@ mutable struct VirtualNetworkGatewayConnectionPropertiesFormat <: SwaggerModel
         setfield!(o, Symbol("peer"), peer)
         validate_property(VirtualNetworkGatewayConnectionPropertiesFormat, Symbol("enableBgp"), enableBgp)
         setfield!(o, Symbol("enableBgp"), enableBgp)
+        validate_property(VirtualNetworkGatewayConnectionPropertiesFormat, Symbol("useLocalAzureIpAddress"), useLocalAzureIpAddress)
+        setfield!(o, Symbol("useLocalAzureIpAddress"), useLocalAzureIpAddress)
         validate_property(VirtualNetworkGatewayConnectionPropertiesFormat, Symbol("usePolicyBasedTrafficSelectors"), usePolicyBasedTrafficSelectors)
         setfield!(o, Symbol("usePolicyBasedTrafficSelectors"), usePolicyBasedTrafficSelectors)
         validate_property(VirtualNetworkGatewayConnectionPropertiesFormat, Symbol("ipsecPolicies"), ipsecPolicies)
         setfield!(o, Symbol("ipsecPolicies"), ipsecPolicies)
+        validate_property(VirtualNetworkGatewayConnectionPropertiesFormat, Symbol("trafficSelectorPolicies"), trafficSelectorPolicies)
+        setfield!(o, Symbol("trafficSelectorPolicies"), trafficSelectorPolicies)
         validate_property(VirtualNetworkGatewayConnectionPropertiesFormat, Symbol("resourceGuid"), resourceGuid)
         setfield!(o, Symbol("resourceGuid"), resourceGuid)
         validate_property(VirtualNetworkGatewayConnectionPropertiesFormat, Symbol("provisioningState"), provisioningState)
         setfield!(o, Symbol("provisioningState"), provisioningState)
+        validate_property(VirtualNetworkGatewayConnectionPropertiesFormat, Symbol("expressRouteGatewayBypass"), expressRouteGatewayBypass)
+        setfield!(o, Symbol("expressRouteGatewayBypass"), expressRouteGatewayBypass)
         o
     end
 end # type VirtualNetworkGatewayConnectionPropertiesFormat
 
-const _property_map_VirtualNetworkGatewayConnectionPropertiesFormat = Dict{Symbol,Symbol}(Symbol("authorizationKey")=>Symbol("authorizationKey"), Symbol("virtualNetworkGateway1")=>Symbol("virtualNetworkGateway1"), Symbol("virtualNetworkGateway2")=>Symbol("virtualNetworkGateway2"), Symbol("localNetworkGateway2")=>Symbol("localNetworkGateway2"), Symbol("connectionType")=>Symbol("connectionType"), Symbol("routingWeight")=>Symbol("routingWeight"), Symbol("sharedKey")=>Symbol("sharedKey"), Symbol("connectionStatus")=>Symbol("connectionStatus"), Symbol("tunnelConnectionStatus")=>Symbol("tunnelConnectionStatus"), Symbol("egressBytesTransferred")=>Symbol("egressBytesTransferred"), Symbol("ingressBytesTransferred")=>Symbol("ingressBytesTransferred"), Symbol("peer")=>Symbol("peer"), Symbol("enableBgp")=>Symbol("enableBgp"), Symbol("usePolicyBasedTrafficSelectors")=>Symbol("usePolicyBasedTrafficSelectors"), Symbol("ipsecPolicies")=>Symbol("ipsecPolicies"), Symbol("resourceGuid")=>Symbol("resourceGuid"), Symbol("provisioningState")=>Symbol("provisioningState"))
-const _property_types_VirtualNetworkGatewayConnectionPropertiesFormat = Dict{Symbol,String}(Symbol("authorizationKey")=>"String", Symbol("virtualNetworkGateway1")=>"VirtualNetworkGateway", Symbol("virtualNetworkGateway2")=>"VirtualNetworkGateway", Symbol("localNetworkGateway2")=>"LocalNetworkGateway", Symbol("connectionType")=>"String", Symbol("routingWeight")=>"Int32", Symbol("sharedKey")=>"String", Symbol("connectionStatus")=>"String", Symbol("tunnelConnectionStatus")=>"Vector{TunnelConnectionHealth}", Symbol("egressBytesTransferred")=>"Int64", Symbol("ingressBytesTransferred")=>"Int64", Symbol("peer")=>"SubResource", Symbol("enableBgp")=>"Bool", Symbol("usePolicyBasedTrafficSelectors")=>"Bool", Symbol("ipsecPolicies")=>"Vector{IpsecPolicy}", Symbol("resourceGuid")=>"String", Symbol("provisioningState")=>"String")
+const _property_map_VirtualNetworkGatewayConnectionPropertiesFormat = Dict{Symbol,Symbol}(Symbol("authorizationKey")=>Symbol("authorizationKey"), Symbol("virtualNetworkGateway1")=>Symbol("virtualNetworkGateway1"), Symbol("virtualNetworkGateway2")=>Symbol("virtualNetworkGateway2"), Symbol("localNetworkGateway2")=>Symbol("localNetworkGateway2"), Symbol("connectionType")=>Symbol("connectionType"), Symbol("connectionProtocol")=>Symbol("connectionProtocol"), Symbol("routingWeight")=>Symbol("routingWeight"), Symbol("dpdTimeoutSeconds")=>Symbol("dpdTimeoutSeconds"), Symbol("sharedKey")=>Symbol("sharedKey"), Symbol("connectionStatus")=>Symbol("connectionStatus"), Symbol("tunnelConnectionStatus")=>Symbol("tunnelConnectionStatus"), Symbol("egressBytesTransferred")=>Symbol("egressBytesTransferred"), Symbol("ingressBytesTransferred")=>Symbol("ingressBytesTransferred"), Symbol("peer")=>Symbol("peer"), Symbol("enableBgp")=>Symbol("enableBgp"), Symbol("useLocalAzureIpAddress")=>Symbol("useLocalAzureIpAddress"), Symbol("usePolicyBasedTrafficSelectors")=>Symbol("usePolicyBasedTrafficSelectors"), Symbol("ipsecPolicies")=>Symbol("ipsecPolicies"), Symbol("trafficSelectorPolicies")=>Symbol("trafficSelectorPolicies"), Symbol("resourceGuid")=>Symbol("resourceGuid"), Symbol("provisioningState")=>Symbol("provisioningState"), Symbol("expressRouteGatewayBypass")=>Symbol("expressRouteGatewayBypass"))
+const _property_types_VirtualNetworkGatewayConnectionPropertiesFormat = Dict{Symbol,String}(Symbol("authorizationKey")=>"String", Symbol("virtualNetworkGateway1")=>"VirtualNetworkGateway", Symbol("virtualNetworkGateway2")=>"VirtualNetworkGateway", Symbol("localNetworkGateway2")=>"LocalNetworkGateway", Symbol("connectionType")=>"VirtualNetworkGatewayConnectionType", Symbol("connectionProtocol")=>"ConnectionProtocol", Symbol("routingWeight")=>"Int32", Symbol("dpdTimeoutSeconds")=>"Int32", Symbol("sharedKey")=>"String", Symbol("connectionStatus")=>"VirtualNetworkGatewayConnectionStatus", Symbol("tunnelConnectionStatus")=>"Vector{TunnelConnectionHealth}", Symbol("egressBytesTransferred")=>"Int64", Symbol("ingressBytesTransferred")=>"Int64", Symbol("peer")=>"SubResource", Symbol("enableBgp")=>"Bool", Symbol("useLocalAzureIpAddress")=>"Bool", Symbol("usePolicyBasedTrafficSelectors")=>"Bool", Symbol("ipsecPolicies")=>"Vector{IpsecPolicy}", Symbol("trafficSelectorPolicies")=>"Vector{TrafficSelectorPolicy}", Symbol("resourceGuid")=>"String", Symbol("provisioningState")=>"ProvisioningState", Symbol("expressRouteGatewayBypass")=>"Bool")
 Base.propertynames(::Type{ VirtualNetworkGatewayConnectionPropertiesFormat }) = collect(keys(_property_map_VirtualNetworkGatewayConnectionPropertiesFormat))
-Swagger.property_type(::Type{ VirtualNetworkGatewayConnectionPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualNetworkGatewayConnectionPropertiesFormat[name]))}
+Swagger.property_type(::Type{ VirtualNetworkGatewayConnectionPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualNetworkGatewayConnectionPropertiesFormat[name]))}
 Swagger.field_name(::Type{ VirtualNetworkGatewayConnectionPropertiesFormat }, property_name::Symbol) =  _property_map_VirtualNetworkGatewayConnectionPropertiesFormat[property_name]
-
-const _allowed_VirtualNetworkGatewayConnectionPropertiesFormat_connectionType = ["IPsec", "Vnet2Vnet", "ExpressRoute", "VPNClient"]
-
-const _allowed_VirtualNetworkGatewayConnectionPropertiesFormat_connectionStatus = ["Unknown", "Connecting", "Connected", "NotConnected"]
 
 function check_required(o::VirtualNetworkGatewayConnectionPropertiesFormat)
     (getproperty(o, Symbol("virtualNetworkGateway1")) === nothing) && (return false)
+    (getproperty(o, Symbol("connectionType")) === nothing) && (return false)
     true
 end
 
 function validate_property(::Type{ VirtualNetworkGatewayConnectionPropertiesFormat }, name::Symbol, val)
-    if name === Symbol("connectionType")
-        Swagger.validate_param(name, "VirtualNetworkGatewayConnectionPropertiesFormat", :enum, val, _allowed_VirtualNetworkGatewayConnectionPropertiesFormat_connectionType)
-    end
-    if name === Symbol("connectionStatus")
-        Swagger.validate_param(name, "VirtualNetworkGatewayConnectionPropertiesFormat", :enum, val, _allowed_VirtualNetworkGatewayConnectionPropertiesFormat_connectionStatus)
-    end
 end

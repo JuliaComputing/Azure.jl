@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ApplicationGatewayBackendHealthPool <: SwaggerModel
     backendAddressPool::Any # spec type: Union{ Nothing, ApplicationGatewayBackendAddressPool } # spec name: backendAddressPool
     backendHttpSettingsCollection::Any # spec type: Union{ Nothing, Vector{ApplicationGatewayBackendHealthHttpSettings} } # spec name: backendHttpSettingsCollection
@@ -20,7 +19,7 @@ end # type ApplicationGatewayBackendHealthPool
 const _property_map_ApplicationGatewayBackendHealthPool = Dict{Symbol,Symbol}(Symbol("backendAddressPool")=>Symbol("backendAddressPool"), Symbol("backendHttpSettingsCollection")=>Symbol("backendHttpSettingsCollection"))
 const _property_types_ApplicationGatewayBackendHealthPool = Dict{Symbol,String}(Symbol("backendAddressPool")=>"ApplicationGatewayBackendAddressPool", Symbol("backendHttpSettingsCollection")=>"Vector{ApplicationGatewayBackendHealthHttpSettings}")
 Base.propertynames(::Type{ ApplicationGatewayBackendHealthPool }) = collect(keys(_property_map_ApplicationGatewayBackendHealthPool))
-Swagger.property_type(::Type{ ApplicationGatewayBackendHealthPool }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ApplicationGatewayBackendHealthPool[name]))}
+Swagger.property_type(::Type{ ApplicationGatewayBackendHealthPool }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayBackendHealthPool[name]))}
 Swagger.field_name(::Type{ ApplicationGatewayBackendHealthPool }, property_name::Symbol) =  _property_map_ApplicationGatewayBackendHealthPool[property_name]
 
 function check_required(o::ApplicationGatewayBackendHealthPool)

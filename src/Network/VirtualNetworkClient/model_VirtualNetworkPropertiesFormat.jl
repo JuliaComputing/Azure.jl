@@ -2,16 +2,20 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualNetworkPropertiesFormat <: SwaggerModel
     addressSpace::Any # spec type: Union{ Nothing, AddressSpace } # spec name: addressSpace
     dhcpOptions::Any # spec type: Union{ Nothing, DhcpOptions } # spec name: dhcpOptions
     subnets::Any # spec type: Union{ Nothing, Vector{Subnet} } # spec name: subnets
     virtualNetworkPeerings::Any # spec type: Union{ Nothing, Vector{VirtualNetworkPeering} } # spec name: virtualNetworkPeerings
     resourceGuid::Any # spec type: Union{ Nothing, String } # spec name: resourceGuid
-    provisioningState::Any # spec type: Union{ Nothing, String } # spec name: provisioningState
+    provisioningState::Any # spec type: Union{ Nothing, ProvisioningState } # spec name: provisioningState
+    enableDdosProtection::Any # spec type: Union{ Nothing, Bool } # spec name: enableDdosProtection
+    enableVmProtection::Any # spec type: Union{ Nothing, Bool } # spec name: enableVmProtection
+    ddosProtectionPlan::Any # spec type: Union{ Nothing, SubResource } # spec name: ddosProtectionPlan
+    bgpCommunities::Any # spec type: Union{ Nothing, VirtualNetworkBgpCommunities } # spec name: bgpCommunities
+    ipAllocations::Any # spec type: Union{ Nothing, Vector{SubResource} } # spec name: ipAllocations
 
-    function VirtualNetworkPropertiesFormat(;addressSpace=nothing, dhcpOptions=nothing, subnets=nothing, virtualNetworkPeerings=nothing, resourceGuid=nothing, provisioningState=nothing)
+    function VirtualNetworkPropertiesFormat(;addressSpace=nothing, dhcpOptions=nothing, subnets=nothing, virtualNetworkPeerings=nothing, resourceGuid=nothing, provisioningState=nothing, enableDdosProtection=false, enableVmProtection=false, ddosProtectionPlan=nothing, bgpCommunities=nothing, ipAllocations=nothing)
         o = new()
         validate_property(VirtualNetworkPropertiesFormat, Symbol("addressSpace"), addressSpace)
         setfield!(o, Symbol("addressSpace"), addressSpace)
@@ -25,14 +29,24 @@ mutable struct VirtualNetworkPropertiesFormat <: SwaggerModel
         setfield!(o, Symbol("resourceGuid"), resourceGuid)
         validate_property(VirtualNetworkPropertiesFormat, Symbol("provisioningState"), provisioningState)
         setfield!(o, Symbol("provisioningState"), provisioningState)
+        validate_property(VirtualNetworkPropertiesFormat, Symbol("enableDdosProtection"), enableDdosProtection)
+        setfield!(o, Symbol("enableDdosProtection"), enableDdosProtection)
+        validate_property(VirtualNetworkPropertiesFormat, Symbol("enableVmProtection"), enableVmProtection)
+        setfield!(o, Symbol("enableVmProtection"), enableVmProtection)
+        validate_property(VirtualNetworkPropertiesFormat, Symbol("ddosProtectionPlan"), ddosProtectionPlan)
+        setfield!(o, Symbol("ddosProtectionPlan"), ddosProtectionPlan)
+        validate_property(VirtualNetworkPropertiesFormat, Symbol("bgpCommunities"), bgpCommunities)
+        setfield!(o, Symbol("bgpCommunities"), bgpCommunities)
+        validate_property(VirtualNetworkPropertiesFormat, Symbol("ipAllocations"), ipAllocations)
+        setfield!(o, Symbol("ipAllocations"), ipAllocations)
         o
     end
 end # type VirtualNetworkPropertiesFormat
 
-const _property_map_VirtualNetworkPropertiesFormat = Dict{Symbol,Symbol}(Symbol("addressSpace")=>Symbol("addressSpace"), Symbol("dhcpOptions")=>Symbol("dhcpOptions"), Symbol("subnets")=>Symbol("subnets"), Symbol("virtualNetworkPeerings")=>Symbol("virtualNetworkPeerings"), Symbol("resourceGuid")=>Symbol("resourceGuid"), Symbol("provisioningState")=>Symbol("provisioningState"))
-const _property_types_VirtualNetworkPropertiesFormat = Dict{Symbol,String}(Symbol("addressSpace")=>"AddressSpace", Symbol("dhcpOptions")=>"DhcpOptions", Symbol("subnets")=>"Vector{Subnet}", Symbol("virtualNetworkPeerings")=>"Vector{VirtualNetworkPeering}", Symbol("resourceGuid")=>"String", Symbol("provisioningState")=>"String")
+const _property_map_VirtualNetworkPropertiesFormat = Dict{Symbol,Symbol}(Symbol("addressSpace")=>Symbol("addressSpace"), Symbol("dhcpOptions")=>Symbol("dhcpOptions"), Symbol("subnets")=>Symbol("subnets"), Symbol("virtualNetworkPeerings")=>Symbol("virtualNetworkPeerings"), Symbol("resourceGuid")=>Symbol("resourceGuid"), Symbol("provisioningState")=>Symbol("provisioningState"), Symbol("enableDdosProtection")=>Symbol("enableDdosProtection"), Symbol("enableVmProtection")=>Symbol("enableVmProtection"), Symbol("ddosProtectionPlan")=>Symbol("ddosProtectionPlan"), Symbol("bgpCommunities")=>Symbol("bgpCommunities"), Symbol("ipAllocations")=>Symbol("ipAllocations"))
+const _property_types_VirtualNetworkPropertiesFormat = Dict{Symbol,String}(Symbol("addressSpace")=>"AddressSpace", Symbol("dhcpOptions")=>"DhcpOptions", Symbol("subnets")=>"Vector{Subnet}", Symbol("virtualNetworkPeerings")=>"Vector{VirtualNetworkPeering}", Symbol("resourceGuid")=>"String", Symbol("provisioningState")=>"ProvisioningState", Symbol("enableDdosProtection")=>"Bool", Symbol("enableVmProtection")=>"Bool", Symbol("ddosProtectionPlan")=>"SubResource", Symbol("bgpCommunities")=>"VirtualNetworkBgpCommunities", Symbol("ipAllocations")=>"Vector{SubResource}")
 Base.propertynames(::Type{ VirtualNetworkPropertiesFormat }) = collect(keys(_property_map_VirtualNetworkPropertiesFormat))
-Swagger.property_type(::Type{ VirtualNetworkPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualNetworkPropertiesFormat[name]))}
+Swagger.property_type(::Type{ VirtualNetworkPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualNetworkPropertiesFormat[name]))}
 Swagger.field_name(::Type{ VirtualNetworkPropertiesFormat }, property_name::Symbol) =  _property_map_VirtualNetworkPropertiesFormat[property_name]
 
 function check_required(o::VirtualNetworkPropertiesFormat)

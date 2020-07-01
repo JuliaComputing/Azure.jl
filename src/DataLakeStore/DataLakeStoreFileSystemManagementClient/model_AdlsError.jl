@@ -2,22 +2,21 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct AdlsError <: SwaggerModel
-    RemoteException::Any # spec type: Union{ Nothing, AdlsRemoteException } # spec name: RemoteException
+    remoteException::Any # spec type: Union{ Nothing, AdlsRemoteException } # spec name: remoteException
 
-    function AdlsError(;RemoteException=nothing)
+    function AdlsError(;remoteException=nothing)
         o = new()
-        validate_property(AdlsError, Symbol("RemoteException"), RemoteException)
-        setfield!(o, Symbol("RemoteException"), RemoteException)
+        validate_property(AdlsError, Symbol("remoteException"), remoteException)
+        setfield!(o, Symbol("remoteException"), remoteException)
         o
     end
 end # type AdlsError
 
-const _property_map_AdlsError = Dict{Symbol,Symbol}(Symbol("RemoteException")=>Symbol("RemoteException"))
-const _property_types_AdlsError = Dict{Symbol,String}(Symbol("RemoteException")=>"AdlsRemoteException")
+const _property_map_AdlsError = Dict{Symbol,Symbol}(Symbol("remoteException")=>Symbol("remoteException"))
+const _property_types_AdlsError = Dict{Symbol,String}(Symbol("remoteException")=>"AdlsRemoteException")
 Base.propertynames(::Type{ AdlsError }) = collect(keys(_property_map_AdlsError))
-Swagger.property_type(::Type{ AdlsError }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_AdlsError[name]))}
+Swagger.property_type(::Type{ AdlsError }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AdlsError[name]))}
 Swagger.field_name(::Type{ AdlsError }, property_name::Symbol) =  _property_map_AdlsError[property_name]
 
 function check_required(o::AdlsError)

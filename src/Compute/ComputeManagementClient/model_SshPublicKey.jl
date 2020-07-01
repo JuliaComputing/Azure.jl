@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct SshPublicKey <: SwaggerModel
     path::Any # spec type: Union{ Nothing, String } # spec name: path
     keyData::Any # spec type: Union{ Nothing, String } # spec name: keyData
@@ -20,7 +19,7 @@ end # type SshPublicKey
 const _property_map_SshPublicKey = Dict{Symbol,Symbol}(Symbol("path")=>Symbol("path"), Symbol("keyData")=>Symbol("keyData"))
 const _property_types_SshPublicKey = Dict{Symbol,String}(Symbol("path")=>"String", Symbol("keyData")=>"String")
 Base.propertynames(::Type{ SshPublicKey }) = collect(keys(_property_map_SshPublicKey))
-Swagger.property_type(::Type{ SshPublicKey }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_SshPublicKey[name]))}
+Swagger.property_type(::Type{ SshPublicKey }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SshPublicKey[name]))}
 Swagger.field_name(::Type{ SshPublicKey }, property_name::Symbol) =  _property_map_SshPublicKey[property_name]
 
 function check_required(o::SshPublicKey)

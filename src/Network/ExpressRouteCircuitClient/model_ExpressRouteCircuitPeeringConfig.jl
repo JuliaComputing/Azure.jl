@@ -2,19 +2,24 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ExpressRouteCircuitPeeringConfig <: SwaggerModel
     advertisedPublicPrefixes::Any # spec type: Union{ Nothing, Vector{String} } # spec name: advertisedPublicPrefixes
+    advertisedCommunities::Any # spec type: Union{ Nothing, Vector{String} } # spec name: advertisedCommunities
     advertisedPublicPrefixesState::Any # spec type: Union{ Nothing, String } # spec name: advertisedPublicPrefixesState
+    legacyMode::Any # spec type: Union{ Nothing, Int32 } # spec name: legacyMode
     customerASN::Any # spec type: Union{ Nothing, Int32 } # spec name: customerASN
     routingRegistryName::Any # spec type: Union{ Nothing, String } # spec name: routingRegistryName
 
-    function ExpressRouteCircuitPeeringConfig(;advertisedPublicPrefixes=nothing, advertisedPublicPrefixesState=nothing, customerASN=nothing, routingRegistryName=nothing)
+    function ExpressRouteCircuitPeeringConfig(;advertisedPublicPrefixes=nothing, advertisedCommunities=nothing, advertisedPublicPrefixesState=nothing, legacyMode=nothing, customerASN=nothing, routingRegistryName=nothing)
         o = new()
         validate_property(ExpressRouteCircuitPeeringConfig, Symbol("advertisedPublicPrefixes"), advertisedPublicPrefixes)
         setfield!(o, Symbol("advertisedPublicPrefixes"), advertisedPublicPrefixes)
+        validate_property(ExpressRouteCircuitPeeringConfig, Symbol("advertisedCommunities"), advertisedCommunities)
+        setfield!(o, Symbol("advertisedCommunities"), advertisedCommunities)
         validate_property(ExpressRouteCircuitPeeringConfig, Symbol("advertisedPublicPrefixesState"), advertisedPublicPrefixesState)
         setfield!(o, Symbol("advertisedPublicPrefixesState"), advertisedPublicPrefixesState)
+        validate_property(ExpressRouteCircuitPeeringConfig, Symbol("legacyMode"), legacyMode)
+        setfield!(o, Symbol("legacyMode"), legacyMode)
         validate_property(ExpressRouteCircuitPeeringConfig, Symbol("customerASN"), customerASN)
         setfield!(o, Symbol("customerASN"), customerASN)
         validate_property(ExpressRouteCircuitPeeringConfig, Symbol("routingRegistryName"), routingRegistryName)
@@ -23,10 +28,10 @@ mutable struct ExpressRouteCircuitPeeringConfig <: SwaggerModel
     end
 end # type ExpressRouteCircuitPeeringConfig
 
-const _property_map_ExpressRouteCircuitPeeringConfig = Dict{Symbol,Symbol}(Symbol("advertisedPublicPrefixes")=>Symbol("advertisedPublicPrefixes"), Symbol("advertisedPublicPrefixesState")=>Symbol("advertisedPublicPrefixesState"), Symbol("customerASN")=>Symbol("customerASN"), Symbol("routingRegistryName")=>Symbol("routingRegistryName"))
-const _property_types_ExpressRouteCircuitPeeringConfig = Dict{Symbol,String}(Symbol("advertisedPublicPrefixes")=>"Vector{String}", Symbol("advertisedPublicPrefixesState")=>"String", Symbol("customerASN")=>"Int32", Symbol("routingRegistryName")=>"String")
+const _property_map_ExpressRouteCircuitPeeringConfig = Dict{Symbol,Symbol}(Symbol("advertisedPublicPrefixes")=>Symbol("advertisedPublicPrefixes"), Symbol("advertisedCommunities")=>Symbol("advertisedCommunities"), Symbol("advertisedPublicPrefixesState")=>Symbol("advertisedPublicPrefixesState"), Symbol("legacyMode")=>Symbol("legacyMode"), Symbol("customerASN")=>Symbol("customerASN"), Symbol("routingRegistryName")=>Symbol("routingRegistryName"))
+const _property_types_ExpressRouteCircuitPeeringConfig = Dict{Symbol,String}(Symbol("advertisedPublicPrefixes")=>"Vector{String}", Symbol("advertisedCommunities")=>"Vector{String}", Symbol("advertisedPublicPrefixesState")=>"String", Symbol("legacyMode")=>"Int32", Symbol("customerASN")=>"Int32", Symbol("routingRegistryName")=>"String")
 Base.propertynames(::Type{ ExpressRouteCircuitPeeringConfig }) = collect(keys(_property_map_ExpressRouteCircuitPeeringConfig))
-Swagger.property_type(::Type{ ExpressRouteCircuitPeeringConfig }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ExpressRouteCircuitPeeringConfig[name]))}
+Swagger.property_type(::Type{ ExpressRouteCircuitPeeringConfig }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExpressRouteCircuitPeeringConfig[name]))}
 Swagger.field_name(::Type{ ExpressRouteCircuitPeeringConfig }, property_name::Symbol) =  _property_map_ExpressRouteCircuitPeeringConfig[property_name]
 
 const _allowed_ExpressRouteCircuitPeeringConfig_advertisedPublicPrefixesState = ["NotConfigured", "Configuring", "Configured", "ValidationNeeded"]

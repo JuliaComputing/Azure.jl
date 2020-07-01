@@ -2,12 +2,11 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct Ipv6ExpressRouteCircuitPeeringConfig <: SwaggerModel
     primaryPeerAddressPrefix::Any # spec type: Union{ Nothing, String } # spec name: primaryPeerAddressPrefix
     secondaryPeerAddressPrefix::Any # spec type: Union{ Nothing, String } # spec name: secondaryPeerAddressPrefix
     microsoftPeeringConfig::Any # spec type: Union{ Nothing, ExpressRouteCircuitPeeringConfig } # spec name: microsoftPeeringConfig
-    routeFilter::Any # spec type: Union{ Nothing, RouteFilter } # spec name: routeFilter
+    routeFilter::Any # spec type: Union{ Nothing, SubResource } # spec name: routeFilter
     state::Any # spec type: Union{ Nothing, String } # spec name: state
 
     function Ipv6ExpressRouteCircuitPeeringConfig(;primaryPeerAddressPrefix=nothing, secondaryPeerAddressPrefix=nothing, microsoftPeeringConfig=nothing, routeFilter=nothing, state=nothing)
@@ -27,9 +26,9 @@ mutable struct Ipv6ExpressRouteCircuitPeeringConfig <: SwaggerModel
 end # type Ipv6ExpressRouteCircuitPeeringConfig
 
 const _property_map_Ipv6ExpressRouteCircuitPeeringConfig = Dict{Symbol,Symbol}(Symbol("primaryPeerAddressPrefix")=>Symbol("primaryPeerAddressPrefix"), Symbol("secondaryPeerAddressPrefix")=>Symbol("secondaryPeerAddressPrefix"), Symbol("microsoftPeeringConfig")=>Symbol("microsoftPeeringConfig"), Symbol("routeFilter")=>Symbol("routeFilter"), Symbol("state")=>Symbol("state"))
-const _property_types_Ipv6ExpressRouteCircuitPeeringConfig = Dict{Symbol,String}(Symbol("primaryPeerAddressPrefix")=>"String", Symbol("secondaryPeerAddressPrefix")=>"String", Symbol("microsoftPeeringConfig")=>"ExpressRouteCircuitPeeringConfig", Symbol("routeFilter")=>"RouteFilter", Symbol("state")=>"String")
+const _property_types_Ipv6ExpressRouteCircuitPeeringConfig = Dict{Symbol,String}(Symbol("primaryPeerAddressPrefix")=>"String", Symbol("secondaryPeerAddressPrefix")=>"String", Symbol("microsoftPeeringConfig")=>"ExpressRouteCircuitPeeringConfig", Symbol("routeFilter")=>"SubResource", Symbol("state")=>"String")
 Base.propertynames(::Type{ Ipv6ExpressRouteCircuitPeeringConfig }) = collect(keys(_property_map_Ipv6ExpressRouteCircuitPeeringConfig))
-Swagger.property_type(::Type{ Ipv6ExpressRouteCircuitPeeringConfig }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_Ipv6ExpressRouteCircuitPeeringConfig[name]))}
+Swagger.property_type(::Type{ Ipv6ExpressRouteCircuitPeeringConfig }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Ipv6ExpressRouteCircuitPeeringConfig[name]))}
 Swagger.field_name(::Type{ Ipv6ExpressRouteCircuitPeeringConfig }, property_name::Symbol) =  _property_map_Ipv6ExpressRouteCircuitPeeringConfig[property_name]
 
 const _allowed_Ipv6ExpressRouteCircuitPeeringConfig_state = ["Disabled", "Enabled"]

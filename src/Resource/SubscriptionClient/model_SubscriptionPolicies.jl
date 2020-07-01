@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct SubscriptionPolicies <: SwaggerModel
     locationPlacementId::Any # spec type: Union{ Nothing, String } # spec name: locationPlacementId
     quotaId::Any # spec type: Union{ Nothing, String } # spec name: quotaId
@@ -23,7 +22,7 @@ end # type SubscriptionPolicies
 const _property_map_SubscriptionPolicies = Dict{Symbol,Symbol}(Symbol("locationPlacementId")=>Symbol("locationPlacementId"), Symbol("quotaId")=>Symbol("quotaId"), Symbol("spendingLimit")=>Symbol("spendingLimit"))
 const _property_types_SubscriptionPolicies = Dict{Symbol,String}(Symbol("locationPlacementId")=>"String", Symbol("quotaId")=>"String", Symbol("spendingLimit")=>"String")
 Base.propertynames(::Type{ SubscriptionPolicies }) = collect(keys(_property_map_SubscriptionPolicies))
-Swagger.property_type(::Type{ SubscriptionPolicies }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_SubscriptionPolicies[name]))}
+Swagger.property_type(::Type{ SubscriptionPolicies }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SubscriptionPolicies[name]))}
 Swagger.field_name(::Type{ SubscriptionPolicies }, property_name::Symbol) =  _property_map_SubscriptionPolicies[property_name]
 
 const _allowed_SubscriptionPolicies_spendingLimit = ["On", "Off", "CurrentPeriodOff"]
