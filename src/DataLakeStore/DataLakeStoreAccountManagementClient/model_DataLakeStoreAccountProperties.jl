@@ -2,17 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct DataLakeStoreAccountProperties <: SwaggerModel
+    accountId::Any # spec type: Union{ Nothing, String } # spec name: accountId
     provisioningState::Any # spec type: Union{ Nothing, String } # spec name: provisioningState
     state::Any # spec type: Union{ Nothing, String } # spec name: state
     creationTime::Any # spec type: Union{ Nothing, DateTime } # spec name: creationTime
     lastModifiedTime::Any # spec type: Union{ Nothing, DateTime } # spec name: lastModifiedTime
     endpoint::Any # spec type: Union{ Nothing, String } # spec name: endpoint
-    accountId::Any # spec type: Union{ Nothing, String } # spec name: accountId
 
-    function DataLakeStoreAccountProperties(;provisioningState=nothing, state=nothing, creationTime=nothing, lastModifiedTime=nothing, endpoint=nothing, accountId=nothing)
+    function DataLakeStoreAccountProperties(;accountId=nothing, provisioningState=nothing, state=nothing, creationTime=nothing, lastModifiedTime=nothing, endpoint=nothing)
         o = new()
+        validate_property(DataLakeStoreAccountProperties, Symbol("accountId"), accountId)
+        setfield!(o, Symbol("accountId"), accountId)
         validate_property(DataLakeStoreAccountProperties, Symbol("provisioningState"), provisioningState)
         setfield!(o, Symbol("provisioningState"), provisioningState)
         validate_property(DataLakeStoreAccountProperties, Symbol("state"), state)
@@ -23,16 +24,14 @@ mutable struct DataLakeStoreAccountProperties <: SwaggerModel
         setfield!(o, Symbol("lastModifiedTime"), lastModifiedTime)
         validate_property(DataLakeStoreAccountProperties, Symbol("endpoint"), endpoint)
         setfield!(o, Symbol("endpoint"), endpoint)
-        validate_property(DataLakeStoreAccountProperties, Symbol("accountId"), accountId)
-        setfield!(o, Symbol("accountId"), accountId)
         o
     end
 end # type DataLakeStoreAccountProperties
 
-const _property_map_DataLakeStoreAccountProperties = Dict{Symbol,Symbol}(Symbol("provisioningState")=>Symbol("provisioningState"), Symbol("state")=>Symbol("state"), Symbol("creationTime")=>Symbol("creationTime"), Symbol("lastModifiedTime")=>Symbol("lastModifiedTime"), Symbol("endpoint")=>Symbol("endpoint"), Symbol("accountId")=>Symbol("accountId"))
-const _property_types_DataLakeStoreAccountProperties = Dict{Symbol,String}(Symbol("provisioningState")=>"String", Symbol("state")=>"String", Symbol("creationTime")=>"DateTime", Symbol("lastModifiedTime")=>"DateTime", Symbol("endpoint")=>"String", Symbol("accountId")=>"String")
+const _property_map_DataLakeStoreAccountProperties = Dict{Symbol,Symbol}(Symbol("accountId")=>Symbol("accountId"), Symbol("provisioningState")=>Symbol("provisioningState"), Symbol("state")=>Symbol("state"), Symbol("creationTime")=>Symbol("creationTime"), Symbol("lastModifiedTime")=>Symbol("lastModifiedTime"), Symbol("endpoint")=>Symbol("endpoint"))
+const _property_types_DataLakeStoreAccountProperties = Dict{Symbol,String}(Symbol("accountId")=>"String", Symbol("provisioningState")=>"String", Symbol("state")=>"String", Symbol("creationTime")=>"DateTime", Symbol("lastModifiedTime")=>"DateTime", Symbol("endpoint")=>"String")
 Base.propertynames(::Type{ DataLakeStoreAccountProperties }) = collect(keys(_property_map_DataLakeStoreAccountProperties))
-Swagger.property_type(::Type{ DataLakeStoreAccountProperties }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_DataLakeStoreAccountProperties[name]))}
+Swagger.property_type(::Type{ DataLakeStoreAccountProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DataLakeStoreAccountProperties[name]))}
 Swagger.field_name(::Type{ DataLakeStoreAccountProperties }, property_name::Symbol) =  _property_map_DataLakeStoreAccountProperties[property_name]
 
 const _allowed_DataLakeStoreAccountProperties_provisioningState = ["Failed", "Creating", "Running", "Succeeded", "Patching", "Suspending", "Resuming", "Deleting", "Deleted", "Undeleting", "Canceled"]

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct SubnetListResult <: SwaggerModel
     value::Any # spec type: Union{ Nothing, Vector{Subnet} } # spec name: value
     nextLink::Any # spec type: Union{ Nothing, String } # spec name: nextLink
@@ -20,7 +19,7 @@ end # type SubnetListResult
 const _property_map_SubnetListResult = Dict{Symbol,Symbol}(Symbol("value")=>Symbol("value"), Symbol("nextLink")=>Symbol("nextLink"))
 const _property_types_SubnetListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{Subnet}", Symbol("nextLink")=>"String")
 Base.propertynames(::Type{ SubnetListResult }) = collect(keys(_property_map_SubnetListResult))
-Swagger.property_type(::Type{ SubnetListResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_SubnetListResult[name]))}
+Swagger.property_type(::Type{ SubnetListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SubnetListResult[name]))}
 Swagger.field_name(::Type{ SubnetListResult }, property_name::Symbol) =  _property_map_SubnetListResult[property_name]
 
 function check_required(o::SubnetListResult)

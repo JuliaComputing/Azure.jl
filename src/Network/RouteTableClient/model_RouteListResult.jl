@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct RouteListResult <: SwaggerModel
     value::Any # spec type: Union{ Nothing, Vector{Route} } # spec name: value
     nextLink::Any # spec type: Union{ Nothing, String } # spec name: nextLink
@@ -20,7 +19,7 @@ end # type RouteListResult
 const _property_map_RouteListResult = Dict{Symbol,Symbol}(Symbol("value")=>Symbol("value"), Symbol("nextLink")=>Symbol("nextLink"))
 const _property_types_RouteListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{Route}", Symbol("nextLink")=>"String")
 Base.propertynames(::Type{ RouteListResult }) = collect(keys(_property_map_RouteListResult))
-Swagger.property_type(::Type{ RouteListResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_RouteListResult[name]))}
+Swagger.property_type(::Type{ RouteListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RouteListResult[name]))}
 Swagger.field_name(::Type{ RouteListResult }, property_name::Symbol) =  _property_map_RouteListResult[property_name]
 
 function check_required(o::RouteListResult)

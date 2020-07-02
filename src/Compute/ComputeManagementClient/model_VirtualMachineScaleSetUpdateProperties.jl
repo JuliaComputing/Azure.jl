@@ -2,31 +2,45 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualMachineScaleSetUpdateProperties <: SwaggerModel
     upgradePolicy::Any # spec type: Union{ Nothing, UpgradePolicy } # spec name: upgradePolicy
+    automaticRepairsPolicy::Any # spec type: Union{ Nothing, AutomaticRepairsPolicy } # spec name: automaticRepairsPolicy
     virtualMachineProfile::Any # spec type: Union{ Nothing, VirtualMachineScaleSetUpdateVMProfile } # spec name: virtualMachineProfile
     overprovision::Any # spec type: Union{ Nothing, Bool } # spec name: overprovision
+    doNotRunExtensionsOnOverprovisionedVMs::Any # spec type: Union{ Nothing, Bool } # spec name: doNotRunExtensionsOnOverprovisionedVMs
     singlePlacementGroup::Any # spec type: Union{ Nothing, Bool } # spec name: singlePlacementGroup
+    additionalCapabilities::Any # spec type: Union{ Nothing, AdditionalCapabilities } # spec name: additionalCapabilities
+    scaleInPolicy::Any # spec type: Union{ Nothing, ScaleInPolicy } # spec name: scaleInPolicy
+    proximityPlacementGroup::Any # spec type: Union{ Nothing, SubResource } # spec name: proximityPlacementGroup
 
-    function VirtualMachineScaleSetUpdateProperties(;upgradePolicy=nothing, virtualMachineProfile=nothing, overprovision=nothing, singlePlacementGroup=nothing)
+    function VirtualMachineScaleSetUpdateProperties(;upgradePolicy=nothing, automaticRepairsPolicy=nothing, virtualMachineProfile=nothing, overprovision=nothing, doNotRunExtensionsOnOverprovisionedVMs=nothing, singlePlacementGroup=nothing, additionalCapabilities=nothing, scaleInPolicy=nothing, proximityPlacementGroup=nothing)
         o = new()
         validate_property(VirtualMachineScaleSetUpdateProperties, Symbol("upgradePolicy"), upgradePolicy)
         setfield!(o, Symbol("upgradePolicy"), upgradePolicy)
+        validate_property(VirtualMachineScaleSetUpdateProperties, Symbol("automaticRepairsPolicy"), automaticRepairsPolicy)
+        setfield!(o, Symbol("automaticRepairsPolicy"), automaticRepairsPolicy)
         validate_property(VirtualMachineScaleSetUpdateProperties, Symbol("virtualMachineProfile"), virtualMachineProfile)
         setfield!(o, Symbol("virtualMachineProfile"), virtualMachineProfile)
         validate_property(VirtualMachineScaleSetUpdateProperties, Symbol("overprovision"), overprovision)
         setfield!(o, Symbol("overprovision"), overprovision)
+        validate_property(VirtualMachineScaleSetUpdateProperties, Symbol("doNotRunExtensionsOnOverprovisionedVMs"), doNotRunExtensionsOnOverprovisionedVMs)
+        setfield!(o, Symbol("doNotRunExtensionsOnOverprovisionedVMs"), doNotRunExtensionsOnOverprovisionedVMs)
         validate_property(VirtualMachineScaleSetUpdateProperties, Symbol("singlePlacementGroup"), singlePlacementGroup)
         setfield!(o, Symbol("singlePlacementGroup"), singlePlacementGroup)
+        validate_property(VirtualMachineScaleSetUpdateProperties, Symbol("additionalCapabilities"), additionalCapabilities)
+        setfield!(o, Symbol("additionalCapabilities"), additionalCapabilities)
+        validate_property(VirtualMachineScaleSetUpdateProperties, Symbol("scaleInPolicy"), scaleInPolicy)
+        setfield!(o, Symbol("scaleInPolicy"), scaleInPolicy)
+        validate_property(VirtualMachineScaleSetUpdateProperties, Symbol("proximityPlacementGroup"), proximityPlacementGroup)
+        setfield!(o, Symbol("proximityPlacementGroup"), proximityPlacementGroup)
         o
     end
 end # type VirtualMachineScaleSetUpdateProperties
 
-const _property_map_VirtualMachineScaleSetUpdateProperties = Dict{Symbol,Symbol}(Symbol("upgradePolicy")=>Symbol("upgradePolicy"), Symbol("virtualMachineProfile")=>Symbol("virtualMachineProfile"), Symbol("overprovision")=>Symbol("overprovision"), Symbol("singlePlacementGroup")=>Symbol("singlePlacementGroup"))
-const _property_types_VirtualMachineScaleSetUpdateProperties = Dict{Symbol,String}(Symbol("upgradePolicy")=>"UpgradePolicy", Symbol("virtualMachineProfile")=>"VirtualMachineScaleSetUpdateVMProfile", Symbol("overprovision")=>"Bool", Symbol("singlePlacementGroup")=>"Bool")
+const _property_map_VirtualMachineScaleSetUpdateProperties = Dict{Symbol,Symbol}(Symbol("upgradePolicy")=>Symbol("upgradePolicy"), Symbol("automaticRepairsPolicy")=>Symbol("automaticRepairsPolicy"), Symbol("virtualMachineProfile")=>Symbol("virtualMachineProfile"), Symbol("overprovision")=>Symbol("overprovision"), Symbol("doNotRunExtensionsOnOverprovisionedVMs")=>Symbol("doNotRunExtensionsOnOverprovisionedVMs"), Symbol("singlePlacementGroup")=>Symbol("singlePlacementGroup"), Symbol("additionalCapabilities")=>Symbol("additionalCapabilities"), Symbol("scaleInPolicy")=>Symbol("scaleInPolicy"), Symbol("proximityPlacementGroup")=>Symbol("proximityPlacementGroup"))
+const _property_types_VirtualMachineScaleSetUpdateProperties = Dict{Symbol,String}(Symbol("upgradePolicy")=>"UpgradePolicy", Symbol("automaticRepairsPolicy")=>"AutomaticRepairsPolicy", Symbol("virtualMachineProfile")=>"VirtualMachineScaleSetUpdateVMProfile", Symbol("overprovision")=>"Bool", Symbol("doNotRunExtensionsOnOverprovisionedVMs")=>"Bool", Symbol("singlePlacementGroup")=>"Bool", Symbol("additionalCapabilities")=>"AdditionalCapabilities", Symbol("scaleInPolicy")=>"ScaleInPolicy", Symbol("proximityPlacementGroup")=>"SubResource")
 Base.propertynames(::Type{ VirtualMachineScaleSetUpdateProperties }) = collect(keys(_property_map_VirtualMachineScaleSetUpdateProperties))
-Swagger.property_type(::Type{ VirtualMachineScaleSetUpdateProperties }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualMachineScaleSetUpdateProperties[name]))}
+Swagger.property_type(::Type{ VirtualMachineScaleSetUpdateProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetUpdateProperties[name]))}
 Swagger.field_name(::Type{ VirtualMachineScaleSetUpdateProperties }, property_name::Symbol) =  _property_map_VirtualMachineScaleSetUpdateProperties[property_name]
 
 function check_required(o::VirtualMachineScaleSetUpdateProperties)

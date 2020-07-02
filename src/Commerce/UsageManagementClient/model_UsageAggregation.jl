@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct UsageAggregation <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
     name::Any # spec type: Union{ Nothing, String } # spec name: name
@@ -26,7 +25,7 @@ end # type UsageAggregation
 const _property_map_UsageAggregation = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("name")=>Symbol("name"), Symbol("type")=>Symbol("type"), Symbol("properties")=>Symbol("properties"))
 const _property_types_UsageAggregation = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("properties")=>"UsageSample")
 Base.propertynames(::Type{ UsageAggregation }) = collect(keys(_property_map_UsageAggregation))
-Swagger.property_type(::Type{ UsageAggregation }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_UsageAggregation[name]))}
+Swagger.property_type(::Type{ UsageAggregation }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_UsageAggregation[name]))}
 Swagger.field_name(::Type{ UsageAggregation }, property_name::Symbol) =  _property_map_UsageAggregation[property_name]
 
 function check_required(o::UsageAggregation)

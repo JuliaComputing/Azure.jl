@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ResourceRateCardInfo <: SwaggerModel
     Currency::Any # spec type: Union{ Nothing, String } # spec name: Currency
     Locale::Any # spec type: Union{ Nothing, String } # spec name: Locale
@@ -29,7 +28,7 @@ end # type ResourceRateCardInfo
 const _property_map_ResourceRateCardInfo = Dict{Symbol,Symbol}(Symbol("Currency")=>Symbol("Currency"), Symbol("Locale")=>Symbol("Locale"), Symbol("IsTaxIncluded")=>Symbol("IsTaxIncluded"), Symbol("OfferTerms")=>Symbol("OfferTerms"), Symbol("Meters")=>Symbol("Meters"))
 const _property_types_ResourceRateCardInfo = Dict{Symbol,String}(Symbol("Currency")=>"String", Symbol("Locale")=>"String", Symbol("IsTaxIncluded")=>"Bool", Symbol("OfferTerms")=>"Vector{OfferTermInfo}", Symbol("Meters")=>"Vector{MeterInfo}")
 Base.propertynames(::Type{ ResourceRateCardInfo }) = collect(keys(_property_map_ResourceRateCardInfo))
-Swagger.property_type(::Type{ ResourceRateCardInfo }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ResourceRateCardInfo[name]))}
+Swagger.property_type(::Type{ ResourceRateCardInfo }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ResourceRateCardInfo[name]))}
 Swagger.field_name(::Type{ ResourceRateCardInfo }, property_name::Symbol) =  _property_map_ResourceRateCardInfo[property_name]
 
 function check_required(o::ResourceRateCardInfo)

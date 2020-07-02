@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct GenericResourceFilter <: SwaggerModel
     resourceType::Any # spec type: Union{ Nothing, String } # spec name: resourceType
     tagname::Any # spec type: Union{ Nothing, String } # spec name: tagname
@@ -23,7 +22,7 @@ end # type GenericResourceFilter
 const _property_map_GenericResourceFilter = Dict{Symbol,Symbol}(Symbol("resourceType")=>Symbol("resourceType"), Symbol("tagname")=>Symbol("tagname"), Symbol("tagvalue")=>Symbol("tagvalue"))
 const _property_types_GenericResourceFilter = Dict{Symbol,String}(Symbol("resourceType")=>"String", Symbol("tagname")=>"String", Symbol("tagvalue")=>"String")
 Base.propertynames(::Type{ GenericResourceFilter }) = collect(keys(_property_map_GenericResourceFilter))
-Swagger.property_type(::Type{ GenericResourceFilter }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_GenericResourceFilter[name]))}
+Swagger.property_type(::Type{ GenericResourceFilter }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_GenericResourceFilter[name]))}
 Swagger.field_name(::Type{ GenericResourceFilter }, property_name::Symbol) =  _property_map_GenericResourceFilter[property_name]
 
 function check_required(o::GenericResourceFilter)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct SubResource <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
 
@@ -17,7 +16,7 @@ end # type SubResource
 const _property_map_SubResource = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"))
 const _property_types_SubResource = Dict{Symbol,String}(Symbol("id")=>"String")
 Base.propertynames(::Type{ SubResource }) = collect(keys(_property_map_SubResource))
-Swagger.property_type(::Type{ SubResource }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_SubResource[name]))}
+Swagger.property_type(::Type{ SubResource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SubResource[name]))}
 Swagger.field_name(::Type{ SubResource }, property_name::Symbol) =  _property_map_SubResource[property_name]
 
 function check_required(o::SubResource)

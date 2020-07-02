@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ContainerServiceVMDiagnostics <: SwaggerModel
     enabled::Any # spec type: Union{ Nothing, Bool } # spec name: enabled
     storageUri::Any # spec type: Union{ Nothing, String } # spec name: storageUri
@@ -20,7 +19,7 @@ end # type ContainerServiceVMDiagnostics
 const _property_map_ContainerServiceVMDiagnostics = Dict{Symbol,Symbol}(Symbol("enabled")=>Symbol("enabled"), Symbol("storageUri")=>Symbol("storageUri"))
 const _property_types_ContainerServiceVMDiagnostics = Dict{Symbol,String}(Symbol("enabled")=>"Bool", Symbol("storageUri")=>"String")
 Base.propertynames(::Type{ ContainerServiceVMDiagnostics }) = collect(keys(_property_map_ContainerServiceVMDiagnostics))
-Swagger.property_type(::Type{ ContainerServiceVMDiagnostics }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ContainerServiceVMDiagnostics[name]))}
+Swagger.property_type(::Type{ ContainerServiceVMDiagnostics }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ContainerServiceVMDiagnostics[name]))}
 Swagger.field_name(::Type{ ContainerServiceVMDiagnostics }, property_name::Symbol) =  _property_map_ContainerServiceVMDiagnostics[property_name]
 
 function check_required(o::ContainerServiceVMDiagnostics)

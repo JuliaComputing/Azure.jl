@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualNetworkRule <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
     action::Any # spec type: Union{ Nothing, String } # spec name: action
@@ -23,7 +22,7 @@ end # type VirtualNetworkRule
 const _property_map_VirtualNetworkRule = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("action")=>Symbol("action"), Symbol("state")=>Symbol("state"))
 const _property_types_VirtualNetworkRule = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("action")=>"String", Symbol("state")=>"String")
 Base.propertynames(::Type{ VirtualNetworkRule }) = collect(keys(_property_map_VirtualNetworkRule))
-Swagger.property_type(::Type{ VirtualNetworkRule }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualNetworkRule[name]))}
+Swagger.property_type(::Type{ VirtualNetworkRule }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualNetworkRule[name]))}
 Swagger.field_name(::Type{ VirtualNetworkRule }, property_name::Symbol) =  _property_map_VirtualNetworkRule[property_name]
 
 const _allowed_VirtualNetworkRule_action = ["Allow"]

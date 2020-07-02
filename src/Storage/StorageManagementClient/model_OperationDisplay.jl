@@ -2,13 +2,13 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct OperationDisplay <: SwaggerModel
     provider::Any # spec type: Union{ Nothing, String } # spec name: provider
     resource::Any # spec type: Union{ Nothing, String } # spec name: resource
     operation::Any # spec type: Union{ Nothing, String } # spec name: operation
+    description::Any # spec type: Union{ Nothing, String } # spec name: description
 
-    function OperationDisplay(;provider=nothing, resource=nothing, operation=nothing)
+    function OperationDisplay(;provider=nothing, resource=nothing, operation=nothing, description=nothing)
         o = new()
         validate_property(OperationDisplay, Symbol("provider"), provider)
         setfield!(o, Symbol("provider"), provider)
@@ -16,14 +16,16 @@ mutable struct OperationDisplay <: SwaggerModel
         setfield!(o, Symbol("resource"), resource)
         validate_property(OperationDisplay, Symbol("operation"), operation)
         setfield!(o, Symbol("operation"), operation)
+        validate_property(OperationDisplay, Symbol("description"), description)
+        setfield!(o, Symbol("description"), description)
         o
     end
 end # type OperationDisplay
 
-const _property_map_OperationDisplay = Dict{Symbol,Symbol}(Symbol("provider")=>Symbol("provider"), Symbol("resource")=>Symbol("resource"), Symbol("operation")=>Symbol("operation"))
-const _property_types_OperationDisplay = Dict{Symbol,String}(Symbol("provider")=>"String", Symbol("resource")=>"String", Symbol("operation")=>"String")
+const _property_map_OperationDisplay = Dict{Symbol,Symbol}(Symbol("provider")=>Symbol("provider"), Symbol("resource")=>Symbol("resource"), Symbol("operation")=>Symbol("operation"), Symbol("description")=>Symbol("description"))
+const _property_types_OperationDisplay = Dict{Symbol,String}(Symbol("provider")=>"String", Symbol("resource")=>"String", Symbol("operation")=>"String", Symbol("description")=>"String")
 Base.propertynames(::Type{ OperationDisplay }) = collect(keys(_property_map_OperationDisplay))
-Swagger.property_type(::Type{ OperationDisplay }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_OperationDisplay[name]))}
+Swagger.property_type(::Type{ OperationDisplay }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_OperationDisplay[name]))}
 Swagger.field_name(::Type{ OperationDisplay }, property_name::Symbol) =  _property_map_OperationDisplay[property_name]
 
 function check_required(o::OperationDisplay)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct EffectiveNetworkSecurityGroupAssociation <: SwaggerModel
     subnet::Any # spec type: Union{ Nothing, SubResource } # spec name: subnet
     networkInterface::Any # spec type: Union{ Nothing, SubResource } # spec name: networkInterface
@@ -20,7 +19,7 @@ end # type EffectiveNetworkSecurityGroupAssociation
 const _property_map_EffectiveNetworkSecurityGroupAssociation = Dict{Symbol,Symbol}(Symbol("subnet")=>Symbol("subnet"), Symbol("networkInterface")=>Symbol("networkInterface"))
 const _property_types_EffectiveNetworkSecurityGroupAssociation = Dict{Symbol,String}(Symbol("subnet")=>"SubResource", Symbol("networkInterface")=>"SubResource")
 Base.propertynames(::Type{ EffectiveNetworkSecurityGroupAssociation }) = collect(keys(_property_map_EffectiveNetworkSecurityGroupAssociation))
-Swagger.property_type(::Type{ EffectiveNetworkSecurityGroupAssociation }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_EffectiveNetworkSecurityGroupAssociation[name]))}
+Swagger.property_type(::Type{ EffectiveNetworkSecurityGroupAssociation }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_EffectiveNetworkSecurityGroupAssociation[name]))}
 Swagger.field_name(::Type{ EffectiveNetworkSecurityGroupAssociation }, property_name::Symbol) =  _property_map_EffectiveNetworkSecurityGroupAssociation[property_name]
 
 function check_required(o::EffectiveNetworkSecurityGroupAssociation)

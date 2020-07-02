@@ -2,16 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IpsecPolicy <: SwaggerModel
     saLifeTimeSeconds::Any # spec type: Union{ Nothing, Int32 } # spec name: saLifeTimeSeconds
     saDataSizeKilobytes::Any # spec type: Union{ Nothing, Int32 } # spec name: saDataSizeKilobytes
-    ipsecEncryption::Any # spec type: Union{ Nothing, String } # spec name: ipsecEncryption
-    ipsecIntegrity::Any # spec type: Union{ Nothing, String } # spec name: ipsecIntegrity
-    ikeEncryption::Any # spec type: Union{ Nothing, String } # spec name: ikeEncryption
-    ikeIntegrity::Any # spec type: Union{ Nothing, String } # spec name: ikeIntegrity
-    dhGroup::Any # spec type: Union{ Nothing, String } # spec name: dhGroup
-    pfsGroup::Any # spec type: Union{ Nothing, String } # spec name: pfsGroup
+    ipsecEncryption::Any # spec type: Union{ Nothing, IpsecEncryption } # spec name: ipsecEncryption
+    ipsecIntegrity::Any # spec type: Union{ Nothing, IpsecIntegrity } # spec name: ipsecIntegrity
+    ikeEncryption::Any # spec type: Union{ Nothing, IkeEncryption } # spec name: ikeEncryption
+    ikeIntegrity::Any # spec type: Union{ Nothing, IkeIntegrity } # spec name: ikeIntegrity
+    dhGroup::Any # spec type: Union{ Nothing, DhGroup } # spec name: dhGroup
+    pfsGroup::Any # spec type: Union{ Nothing, PfsGroup } # spec name: pfsGroup
 
     function IpsecPolicy(;saLifeTimeSeconds=nothing, saDataSizeKilobytes=nothing, ipsecEncryption=nothing, ipsecIntegrity=nothing, ikeEncryption=nothing, ikeIntegrity=nothing, dhGroup=nothing, pfsGroup=nothing)
         o = new()
@@ -36,46 +35,22 @@ mutable struct IpsecPolicy <: SwaggerModel
 end # type IpsecPolicy
 
 const _property_map_IpsecPolicy = Dict{Symbol,Symbol}(Symbol("saLifeTimeSeconds")=>Symbol("saLifeTimeSeconds"), Symbol("saDataSizeKilobytes")=>Symbol("saDataSizeKilobytes"), Symbol("ipsecEncryption")=>Symbol("ipsecEncryption"), Symbol("ipsecIntegrity")=>Symbol("ipsecIntegrity"), Symbol("ikeEncryption")=>Symbol("ikeEncryption"), Symbol("ikeIntegrity")=>Symbol("ikeIntegrity"), Symbol("dhGroup")=>Symbol("dhGroup"), Symbol("pfsGroup")=>Symbol("pfsGroup"))
-const _property_types_IpsecPolicy = Dict{Symbol,String}(Symbol("saLifeTimeSeconds")=>"Int32", Symbol("saDataSizeKilobytes")=>"Int32", Symbol("ipsecEncryption")=>"String", Symbol("ipsecIntegrity")=>"String", Symbol("ikeEncryption")=>"String", Symbol("ikeIntegrity")=>"String", Symbol("dhGroup")=>"String", Symbol("pfsGroup")=>"String")
+const _property_types_IpsecPolicy = Dict{Symbol,String}(Symbol("saLifeTimeSeconds")=>"Int32", Symbol("saDataSizeKilobytes")=>"Int32", Symbol("ipsecEncryption")=>"IpsecEncryption", Symbol("ipsecIntegrity")=>"IpsecIntegrity", Symbol("ikeEncryption")=>"IkeEncryption", Symbol("ikeIntegrity")=>"IkeIntegrity", Symbol("dhGroup")=>"DhGroup", Symbol("pfsGroup")=>"PfsGroup")
 Base.propertynames(::Type{ IpsecPolicy }) = collect(keys(_property_map_IpsecPolicy))
-Swagger.property_type(::Type{ IpsecPolicy }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IpsecPolicy[name]))}
+Swagger.property_type(::Type{ IpsecPolicy }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IpsecPolicy[name]))}
 Swagger.field_name(::Type{ IpsecPolicy }, property_name::Symbol) =  _property_map_IpsecPolicy[property_name]
-
-const _allowed_IpsecPolicy_ipsecEncryption = ["None", "DES", "DES3", "AES128", "AES192", "AES256", "GCMAES128", "GCMAES192", "GCMAES256"]
-
-const _allowed_IpsecPolicy_ipsecIntegrity = ["MD5", "SHA1", "SHA256", "GCMAES128", "GCMAES192", "GCMAES256"]
-
-const _allowed_IpsecPolicy_ikeEncryption = ["DES", "DES3", "AES128", "AES192", "AES256"]
-
-const _allowed_IpsecPolicy_ikeIntegrity = ["MD5", "SHA1", "SHA256", "SHA384"]
-
-const _allowed_IpsecPolicy_dhGroup = ["None", "DHGroup1", "DHGroup2", "DHGroup14", "DHGroup2048", "ECP256", "ECP384", "DHGroup24"]
-
-const _allowed_IpsecPolicy_pfsGroup = ["None", "PFS1", "PFS2", "PFS2048", "ECP256", "ECP384", "PFS24"]
 
 function check_required(o::IpsecPolicy)
     (getproperty(o, Symbol("saLifeTimeSeconds")) === nothing) && (return false)
     (getproperty(o, Symbol("saDataSizeKilobytes")) === nothing) && (return false)
+    (getproperty(o, Symbol("ipsecEncryption")) === nothing) && (return false)
+    (getproperty(o, Symbol("ipsecIntegrity")) === nothing) && (return false)
+    (getproperty(o, Symbol("ikeEncryption")) === nothing) && (return false)
+    (getproperty(o, Symbol("ikeIntegrity")) === nothing) && (return false)
+    (getproperty(o, Symbol("dhGroup")) === nothing) && (return false)
+    (getproperty(o, Symbol("pfsGroup")) === nothing) && (return false)
     true
 end
 
 function validate_property(::Type{ IpsecPolicy }, name::Symbol, val)
-    if name === Symbol("ipsecEncryption")
-        Swagger.validate_param(name, "IpsecPolicy", :enum, val, _allowed_IpsecPolicy_ipsecEncryption)
-    end
-    if name === Symbol("ipsecIntegrity")
-        Swagger.validate_param(name, "IpsecPolicy", :enum, val, _allowed_IpsecPolicy_ipsecIntegrity)
-    end
-    if name === Symbol("ikeEncryption")
-        Swagger.validate_param(name, "IpsecPolicy", :enum, val, _allowed_IpsecPolicy_ikeEncryption)
-    end
-    if name === Symbol("ikeIntegrity")
-        Swagger.validate_param(name, "IpsecPolicy", :enum, val, _allowed_IpsecPolicy_ikeIntegrity)
-    end
-    if name === Symbol("dhGroup")
-        Swagger.validate_param(name, "IpsecPolicy", :enum, val, _allowed_IpsecPolicy_dhGroup)
-    end
-    if name === Symbol("pfsGroup")
-        Swagger.validate_param(name, "IpsecPolicy", :enum, val, _allowed_IpsecPolicy_pfsGroup)
-    end
 end

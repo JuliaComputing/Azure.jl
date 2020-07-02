@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualMachineExtensionImageProperties <: SwaggerModel
     operatingSystem::Any # spec type: Union{ Nothing, String } # spec name: operatingSystem
     computeRole::Any # spec type: Union{ Nothing, String } # spec name: computeRole
@@ -29,7 +28,7 @@ end # type VirtualMachineExtensionImageProperties
 const _property_map_VirtualMachineExtensionImageProperties = Dict{Symbol,Symbol}(Symbol("operatingSystem")=>Symbol("operatingSystem"), Symbol("computeRole")=>Symbol("computeRole"), Symbol("handlerSchema")=>Symbol("handlerSchema"), Symbol("vmScaleSetEnabled")=>Symbol("vmScaleSetEnabled"), Symbol("supportsMultipleExtensions")=>Symbol("supportsMultipleExtensions"))
 const _property_types_VirtualMachineExtensionImageProperties = Dict{Symbol,String}(Symbol("operatingSystem")=>"String", Symbol("computeRole")=>"String", Symbol("handlerSchema")=>"String", Symbol("vmScaleSetEnabled")=>"Bool", Symbol("supportsMultipleExtensions")=>"Bool")
 Base.propertynames(::Type{ VirtualMachineExtensionImageProperties }) = collect(keys(_property_map_VirtualMachineExtensionImageProperties))
-Swagger.property_type(::Type{ VirtualMachineExtensionImageProperties }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualMachineExtensionImageProperties[name]))}
+Swagger.property_type(::Type{ VirtualMachineExtensionImageProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineExtensionImageProperties[name]))}
 Swagger.field_name(::Type{ VirtualMachineExtensionImageProperties }, property_name::Symbol) =  _property_map_VirtualMachineExtensionImageProperties[property_name]
 
 function check_required(o::VirtualMachineExtensionImageProperties)

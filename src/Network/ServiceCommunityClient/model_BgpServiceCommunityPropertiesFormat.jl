@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct BgpServiceCommunityPropertiesFormat <: SwaggerModel
     serviceName::Any # spec type: Union{ Nothing, String } # spec name: serviceName
     bgpCommunities::Any # spec type: Union{ Nothing, Vector{BGPCommunity} } # spec name: bgpCommunities
@@ -20,7 +19,7 @@ end # type BgpServiceCommunityPropertiesFormat
 const _property_map_BgpServiceCommunityPropertiesFormat = Dict{Symbol,Symbol}(Symbol("serviceName")=>Symbol("serviceName"), Symbol("bgpCommunities")=>Symbol("bgpCommunities"))
 const _property_types_BgpServiceCommunityPropertiesFormat = Dict{Symbol,String}(Symbol("serviceName")=>"String", Symbol("bgpCommunities")=>"Vector{BGPCommunity}")
 Base.propertynames(::Type{ BgpServiceCommunityPropertiesFormat }) = collect(keys(_property_map_BgpServiceCommunityPropertiesFormat))
-Swagger.property_type(::Type{ BgpServiceCommunityPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_BgpServiceCommunityPropertiesFormat[name]))}
+Swagger.property_type(::Type{ BgpServiceCommunityPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_BgpServiceCommunityPropertiesFormat[name]))}
 Swagger.field_name(::Type{ BgpServiceCommunityPropertiesFormat }, property_name::Symbol) =  _property_map_BgpServiceCommunityPropertiesFormat[property_name]
 
 function check_required(o::BgpServiceCommunityPropertiesFormat)

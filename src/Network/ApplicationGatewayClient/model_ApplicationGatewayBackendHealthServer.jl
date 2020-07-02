@@ -2,13 +2,13 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ApplicationGatewayBackendHealthServer <: SwaggerModel
     address::Any # spec type: Union{ Nothing, String } # spec name: address
-    ipConfiguration::Any # spec type: Union{ Nothing, SubResource } # spec name: ipConfiguration
+    ipConfiguration::Any # spec type: Union{ Nothing, NetworkInterfaceIPConfiguration } # spec name: ipConfiguration
     health::Any # spec type: Union{ Nothing, String } # spec name: health
+    healthProbeLog::Any # spec type: Union{ Nothing, String } # spec name: healthProbeLog
 
-    function ApplicationGatewayBackendHealthServer(;address=nothing, ipConfiguration=nothing, health=nothing)
+    function ApplicationGatewayBackendHealthServer(;address=nothing, ipConfiguration=nothing, health=nothing, healthProbeLog=nothing)
         o = new()
         validate_property(ApplicationGatewayBackendHealthServer, Symbol("address"), address)
         setfield!(o, Symbol("address"), address)
@@ -16,14 +16,16 @@ mutable struct ApplicationGatewayBackendHealthServer <: SwaggerModel
         setfield!(o, Symbol("ipConfiguration"), ipConfiguration)
         validate_property(ApplicationGatewayBackendHealthServer, Symbol("health"), health)
         setfield!(o, Symbol("health"), health)
+        validate_property(ApplicationGatewayBackendHealthServer, Symbol("healthProbeLog"), healthProbeLog)
+        setfield!(o, Symbol("healthProbeLog"), healthProbeLog)
         o
     end
 end # type ApplicationGatewayBackendHealthServer
 
-const _property_map_ApplicationGatewayBackendHealthServer = Dict{Symbol,Symbol}(Symbol("address")=>Symbol("address"), Symbol("ipConfiguration")=>Symbol("ipConfiguration"), Symbol("health")=>Symbol("health"))
-const _property_types_ApplicationGatewayBackendHealthServer = Dict{Symbol,String}(Symbol("address")=>"String", Symbol("ipConfiguration")=>"SubResource", Symbol("health")=>"String")
+const _property_map_ApplicationGatewayBackendHealthServer = Dict{Symbol,Symbol}(Symbol("address")=>Symbol("address"), Symbol("ipConfiguration")=>Symbol("ipConfiguration"), Symbol("health")=>Symbol("health"), Symbol("healthProbeLog")=>Symbol("healthProbeLog"))
+const _property_types_ApplicationGatewayBackendHealthServer = Dict{Symbol,String}(Symbol("address")=>"String", Symbol("ipConfiguration")=>"NetworkInterfaceIPConfiguration", Symbol("health")=>"String", Symbol("healthProbeLog")=>"String")
 Base.propertynames(::Type{ ApplicationGatewayBackendHealthServer }) = collect(keys(_property_map_ApplicationGatewayBackendHealthServer))
-Swagger.property_type(::Type{ ApplicationGatewayBackendHealthServer }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ApplicationGatewayBackendHealthServer[name]))}
+Swagger.property_type(::Type{ ApplicationGatewayBackendHealthServer }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayBackendHealthServer[name]))}
 Swagger.field_name(::Type{ ApplicationGatewayBackendHealthServer }, property_name::Symbol) =  _property_map_ApplicationGatewayBackendHealthServer[property_name]
 
 const _allowed_ApplicationGatewayBackendHealthServer_health = ["Unknown", "Up", "Down", "Partial", "Draining"]

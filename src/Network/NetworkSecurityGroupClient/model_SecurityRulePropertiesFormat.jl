@@ -2,20 +2,25 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct SecurityRulePropertiesFormat <: SwaggerModel
     description::Any # spec type: Union{ Nothing, String } # spec name: description
     protocol::Any # spec type: Union{ Nothing, String } # spec name: protocol
     sourcePortRange::Any # spec type: Union{ Nothing, String } # spec name: sourcePortRange
     destinationPortRange::Any # spec type: Union{ Nothing, String } # spec name: destinationPortRange
     sourceAddressPrefix::Any # spec type: Union{ Nothing, String } # spec name: sourceAddressPrefix
+    sourceAddressPrefixes::Any # spec type: Union{ Nothing, Vector{String} } # spec name: sourceAddressPrefixes
+    sourceApplicationSecurityGroups::Any # spec type: Union{ Nothing, Vector{ApplicationSecurityGroup} } # spec name: sourceApplicationSecurityGroups
     destinationAddressPrefix::Any # spec type: Union{ Nothing, String } # spec name: destinationAddressPrefix
-    access::Any # spec type: Union{ Nothing, String } # spec name: access
+    destinationAddressPrefixes::Any # spec type: Union{ Nothing, Vector{String} } # spec name: destinationAddressPrefixes
+    destinationApplicationSecurityGroups::Any # spec type: Union{ Nothing, Vector{ApplicationSecurityGroup} } # spec name: destinationApplicationSecurityGroups
+    sourcePortRanges::Any # spec type: Union{ Nothing, Vector{String} } # spec name: sourcePortRanges
+    destinationPortRanges::Any # spec type: Union{ Nothing, Vector{String} } # spec name: destinationPortRanges
+    access::Any # spec type: Union{ Nothing, SecurityRuleAccess } # spec name: access
     priority::Any # spec type: Union{ Nothing, Int32 } # spec name: priority
-    direction::Any # spec type: Union{ Nothing, String } # spec name: direction
-    provisioningState::Any # spec type: Union{ Nothing, String } # spec name: provisioningState
+    direction::Any # spec type: Union{ Nothing, SecurityRuleDirection } # spec name: direction
+    provisioningState::Any # spec type: Union{ Nothing, ProvisioningState } # spec name: provisioningState
 
-    function SecurityRulePropertiesFormat(;description=nothing, protocol=nothing, sourcePortRange=nothing, destinationPortRange=nothing, sourceAddressPrefix=nothing, destinationAddressPrefix=nothing, access=nothing, priority=nothing, direction=nothing, provisioningState=nothing)
+    function SecurityRulePropertiesFormat(;description=nothing, protocol=nothing, sourcePortRange=nothing, destinationPortRange=nothing, sourceAddressPrefix=nothing, sourceAddressPrefixes=nothing, sourceApplicationSecurityGroups=nothing, destinationAddressPrefix=nothing, destinationAddressPrefixes=nothing, destinationApplicationSecurityGroups=nothing, sourcePortRanges=nothing, destinationPortRanges=nothing, access=nothing, priority=nothing, direction=nothing, provisioningState=nothing)
         o = new()
         validate_property(SecurityRulePropertiesFormat, Symbol("description"), description)
         setfield!(o, Symbol("description"), description)
@@ -27,8 +32,20 @@ mutable struct SecurityRulePropertiesFormat <: SwaggerModel
         setfield!(o, Symbol("destinationPortRange"), destinationPortRange)
         validate_property(SecurityRulePropertiesFormat, Symbol("sourceAddressPrefix"), sourceAddressPrefix)
         setfield!(o, Symbol("sourceAddressPrefix"), sourceAddressPrefix)
+        validate_property(SecurityRulePropertiesFormat, Symbol("sourceAddressPrefixes"), sourceAddressPrefixes)
+        setfield!(o, Symbol("sourceAddressPrefixes"), sourceAddressPrefixes)
+        validate_property(SecurityRulePropertiesFormat, Symbol("sourceApplicationSecurityGroups"), sourceApplicationSecurityGroups)
+        setfield!(o, Symbol("sourceApplicationSecurityGroups"), sourceApplicationSecurityGroups)
         validate_property(SecurityRulePropertiesFormat, Symbol("destinationAddressPrefix"), destinationAddressPrefix)
         setfield!(o, Symbol("destinationAddressPrefix"), destinationAddressPrefix)
+        validate_property(SecurityRulePropertiesFormat, Symbol("destinationAddressPrefixes"), destinationAddressPrefixes)
+        setfield!(o, Symbol("destinationAddressPrefixes"), destinationAddressPrefixes)
+        validate_property(SecurityRulePropertiesFormat, Symbol("destinationApplicationSecurityGroups"), destinationApplicationSecurityGroups)
+        setfield!(o, Symbol("destinationApplicationSecurityGroups"), destinationApplicationSecurityGroups)
+        validate_property(SecurityRulePropertiesFormat, Symbol("sourcePortRanges"), sourcePortRanges)
+        setfield!(o, Symbol("sourcePortRanges"), sourcePortRanges)
+        validate_property(SecurityRulePropertiesFormat, Symbol("destinationPortRanges"), destinationPortRanges)
+        setfield!(o, Symbol("destinationPortRanges"), destinationPortRanges)
         validate_property(SecurityRulePropertiesFormat, Symbol("access"), access)
         setfield!(o, Symbol("access"), access)
         validate_property(SecurityRulePropertiesFormat, Symbol("priority"), priority)
@@ -41,32 +58,22 @@ mutable struct SecurityRulePropertiesFormat <: SwaggerModel
     end
 end # type SecurityRulePropertiesFormat
 
-const _property_map_SecurityRulePropertiesFormat = Dict{Symbol,Symbol}(Symbol("description")=>Symbol("description"), Symbol("protocol")=>Symbol("protocol"), Symbol("sourcePortRange")=>Symbol("sourcePortRange"), Symbol("destinationPortRange")=>Symbol("destinationPortRange"), Symbol("sourceAddressPrefix")=>Symbol("sourceAddressPrefix"), Symbol("destinationAddressPrefix")=>Symbol("destinationAddressPrefix"), Symbol("access")=>Symbol("access"), Symbol("priority")=>Symbol("priority"), Symbol("direction")=>Symbol("direction"), Symbol("provisioningState")=>Symbol("provisioningState"))
-const _property_types_SecurityRulePropertiesFormat = Dict{Symbol,String}(Symbol("description")=>"String", Symbol("protocol")=>"String", Symbol("sourcePortRange")=>"String", Symbol("destinationPortRange")=>"String", Symbol("sourceAddressPrefix")=>"String", Symbol("destinationAddressPrefix")=>"String", Symbol("access")=>"String", Symbol("priority")=>"Int32", Symbol("direction")=>"String", Symbol("provisioningState")=>"String")
+const _property_map_SecurityRulePropertiesFormat = Dict{Symbol,Symbol}(Symbol("description")=>Symbol("description"), Symbol("protocol")=>Symbol("protocol"), Symbol("sourcePortRange")=>Symbol("sourcePortRange"), Symbol("destinationPortRange")=>Symbol("destinationPortRange"), Symbol("sourceAddressPrefix")=>Symbol("sourceAddressPrefix"), Symbol("sourceAddressPrefixes")=>Symbol("sourceAddressPrefixes"), Symbol("sourceApplicationSecurityGroups")=>Symbol("sourceApplicationSecurityGroups"), Symbol("destinationAddressPrefix")=>Symbol("destinationAddressPrefix"), Symbol("destinationAddressPrefixes")=>Symbol("destinationAddressPrefixes"), Symbol("destinationApplicationSecurityGroups")=>Symbol("destinationApplicationSecurityGroups"), Symbol("sourcePortRanges")=>Symbol("sourcePortRanges"), Symbol("destinationPortRanges")=>Symbol("destinationPortRanges"), Symbol("access")=>Symbol("access"), Symbol("priority")=>Symbol("priority"), Symbol("direction")=>Symbol("direction"), Symbol("provisioningState")=>Symbol("provisioningState"))
+const _property_types_SecurityRulePropertiesFormat = Dict{Symbol,String}(Symbol("description")=>"String", Symbol("protocol")=>"String", Symbol("sourcePortRange")=>"String", Symbol("destinationPortRange")=>"String", Symbol("sourceAddressPrefix")=>"String", Symbol("sourceAddressPrefixes")=>"Vector{String}", Symbol("sourceApplicationSecurityGroups")=>"Vector{ApplicationSecurityGroup}", Symbol("destinationAddressPrefix")=>"String", Symbol("destinationAddressPrefixes")=>"Vector{String}", Symbol("destinationApplicationSecurityGroups")=>"Vector{ApplicationSecurityGroup}", Symbol("sourcePortRanges")=>"Vector{String}", Symbol("destinationPortRanges")=>"Vector{String}", Symbol("access")=>"SecurityRuleAccess", Symbol("priority")=>"Int32", Symbol("direction")=>"SecurityRuleDirection", Symbol("provisioningState")=>"ProvisioningState")
 Base.propertynames(::Type{ SecurityRulePropertiesFormat }) = collect(keys(_property_map_SecurityRulePropertiesFormat))
-Swagger.property_type(::Type{ SecurityRulePropertiesFormat }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_SecurityRulePropertiesFormat[name]))}
+Swagger.property_type(::Type{ SecurityRulePropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SecurityRulePropertiesFormat[name]))}
 Swagger.field_name(::Type{ SecurityRulePropertiesFormat }, property_name::Symbol) =  _property_map_SecurityRulePropertiesFormat[property_name]
 
-const _allowed_SecurityRulePropertiesFormat_protocol = ["Tcp", "Udp", "*"]
-
-const _allowed_SecurityRulePropertiesFormat_access = ["Allow", "Deny"]
-
-const _allowed_SecurityRulePropertiesFormat_direction = ["Inbound", "Outbound"]
+const _allowed_SecurityRulePropertiesFormat_protocol = ["Tcp", "Udp", "Icmp", "Esp", "*", "Ah"]
 
 function check_required(o::SecurityRulePropertiesFormat)
-    (getproperty(o, Symbol("sourceAddressPrefix")) === nothing) && (return false)
-    (getproperty(o, Symbol("destinationAddressPrefix")) === nothing) && (return false)
+    (getproperty(o, Symbol("access")) === nothing) && (return false)
+    (getproperty(o, Symbol("direction")) === nothing) && (return false)
     true
 end
 
 function validate_property(::Type{ SecurityRulePropertiesFormat }, name::Symbol, val)
     if name === Symbol("protocol")
         Swagger.validate_param(name, "SecurityRulePropertiesFormat", :enum, val, _allowed_SecurityRulePropertiesFormat_protocol)
-    end
-    if name === Symbol("access")
-        Swagger.validate_param(name, "SecurityRulePropertiesFormat", :enum, val, _allowed_SecurityRulePropertiesFormat_access)
-    end
-    if name === Symbol("direction")
-        Swagger.validate_param(name, "SecurityRulePropertiesFormat", :enum, val, _allowed_SecurityRulePropertiesFormat_direction)
     end
 end

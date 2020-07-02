@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct PacketCapture <: SwaggerModel
     properties::Any # spec type: Union{ Nothing, PacketCaptureParameters } # spec name: properties
 
@@ -17,7 +16,7 @@ end # type PacketCapture
 const _property_map_PacketCapture = Dict{Symbol,Symbol}(Symbol("properties")=>Symbol("properties"))
 const _property_types_PacketCapture = Dict{Symbol,String}(Symbol("properties")=>"PacketCaptureParameters")
 Base.propertynames(::Type{ PacketCapture }) = collect(keys(_property_map_PacketCapture))
-Swagger.property_type(::Type{ PacketCapture }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_PacketCapture[name]))}
+Swagger.property_type(::Type{ PacketCapture }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PacketCapture[name]))}
 Swagger.field_name(::Type{ PacketCapture }, property_name::Symbol) =  _property_map_PacketCapture[property_name]
 
 function check_required(o::PacketCapture)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct Dimension <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     displayName::Any # spec type: Union{ Nothing, String } # spec name: displayName
@@ -20,7 +19,7 @@ end # type Dimension
 const _property_map_Dimension = Dict{Symbol,Symbol}(Symbol("name")=>Symbol("name"), Symbol("displayName")=>Symbol("displayName"))
 const _property_types_Dimension = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("displayName")=>"String")
 Base.propertynames(::Type{ Dimension }) = collect(keys(_property_map_Dimension))
-Swagger.property_type(::Type{ Dimension }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_Dimension[name]))}
+Swagger.property_type(::Type{ Dimension }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Dimension[name]))}
 Swagger.field_name(::Type{ Dimension }, property_name::Symbol) =  _property_map_Dimension[property_name]
 
 function check_required(o::Dimension)

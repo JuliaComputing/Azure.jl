@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct RunCommandDocumentBase <: SwaggerModel
     schema::Any # spec type: Union{ Nothing, String } # spec name: \$schema
     id::Any # spec type: Union{ Nothing, String } # spec name: id
@@ -29,7 +28,7 @@ end # type RunCommandDocumentBase
 const _property_map_RunCommandDocumentBase = Dict{Symbol,Symbol}(Symbol("\$schema")=>Symbol("schema"), Symbol("id")=>Symbol("id"), Symbol("osType")=>Symbol("osType"), Symbol("label")=>Symbol("label"), Symbol("description")=>Symbol("description"))
 const _property_types_RunCommandDocumentBase = Dict{Symbol,String}(Symbol("\$schema")=>"String", Symbol("id")=>"String", Symbol("osType")=>"String", Symbol("label")=>"String", Symbol("description")=>"String")
 Base.propertynames(::Type{ RunCommandDocumentBase }) = collect(keys(_property_map_RunCommandDocumentBase))
-Swagger.property_type(::Type{ RunCommandDocumentBase }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_RunCommandDocumentBase[name]))}
+Swagger.property_type(::Type{ RunCommandDocumentBase }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RunCommandDocumentBase[name]))}
 Swagger.field_name(::Type{ RunCommandDocumentBase }, property_name::Symbol) =  _property_map_RunCommandDocumentBase[property_name]
 
 const _allowed_RunCommandDocumentBase_osType = ["Windows", "Linux"]

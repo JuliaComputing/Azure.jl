@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ExportTemplateRequest <: SwaggerModel
     resources::Any # spec type: Union{ Nothing, Vector{String} } # spec name: resources
     options::Any # spec type: Union{ Nothing, String } # spec name: options
@@ -20,7 +19,7 @@ end # type ExportTemplateRequest
 const _property_map_ExportTemplateRequest = Dict{Symbol,Symbol}(Symbol("resources")=>Symbol("resources"), Symbol("options")=>Symbol("options"))
 const _property_types_ExportTemplateRequest = Dict{Symbol,String}(Symbol("resources")=>"Vector{String}", Symbol("options")=>"String")
 Base.propertynames(::Type{ ExportTemplateRequest }) = collect(keys(_property_map_ExportTemplateRequest))
-Swagger.property_type(::Type{ ExportTemplateRequest }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ExportTemplateRequest[name]))}
+Swagger.property_type(::Type{ ExportTemplateRequest }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExportTemplateRequest[name]))}
 Swagger.field_name(::Type{ ExportTemplateRequest }, property_name::Symbol) =  _property_map_ExportTemplateRequest[property_name]
 
 function check_required(o::ExportTemplateRequest)

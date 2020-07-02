@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct NetworkInterfaceReferenceProperties <: SwaggerModel
     primary::Any # spec type: Union{ Nothing, Bool } # spec name: primary
 
@@ -17,7 +16,7 @@ end # type NetworkInterfaceReferenceProperties
 const _property_map_NetworkInterfaceReferenceProperties = Dict{Symbol,Symbol}(Symbol("primary")=>Symbol("primary"))
 const _property_types_NetworkInterfaceReferenceProperties = Dict{Symbol,String}(Symbol("primary")=>"Bool")
 Base.propertynames(::Type{ NetworkInterfaceReferenceProperties }) = collect(keys(_property_map_NetworkInterfaceReferenceProperties))
-Swagger.property_type(::Type{ NetworkInterfaceReferenceProperties }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_NetworkInterfaceReferenceProperties[name]))}
+Swagger.property_type(::Type{ NetworkInterfaceReferenceProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkInterfaceReferenceProperties[name]))}
 Swagger.field_name(::Type{ NetworkInterfaceReferenceProperties }, property_name::Symbol) =  _property_map_NetworkInterfaceReferenceProperties[property_name]
 
 function check_required(o::NetworkInterfaceReferenceProperties)

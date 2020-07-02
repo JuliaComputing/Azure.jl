@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct AdlsAccessControlException <: SwaggerModel
     exception::Any # spec type: Union{ Nothing, String } # spec name: exception
     javaClassName::Any # spec type: Union{ Nothing, String } # spec name: javaClassName
@@ -23,7 +22,7 @@ end # type AdlsAccessControlException
 const _property_map_AdlsAccessControlException = Dict{Symbol,Symbol}(Symbol("exception")=>Symbol("exception"), Symbol("javaClassName")=>Symbol("javaClassName"), Symbol("message")=>Symbol("message"))
 const _property_types_AdlsAccessControlException = Dict{Symbol,String}(Symbol("exception")=>"String", Symbol("javaClassName")=>"String", Symbol("message")=>"String")
 Base.propertynames(::Type{ AdlsAccessControlException }) = collect(keys(_property_map_AdlsAccessControlException))
-Swagger.property_type(::Type{ AdlsAccessControlException }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_AdlsAccessControlException[name]))}
+Swagger.property_type(::Type{ AdlsAccessControlException }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AdlsAccessControlException[name]))}
 Swagger.field_name(::Type{ AdlsAccessControlException }, property_name::Symbol) =  _property_map_AdlsAccessControlException[property_name]
 
 function check_required(o::AdlsAccessControlException)

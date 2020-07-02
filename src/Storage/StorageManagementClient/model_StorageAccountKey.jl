@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct StorageAccountKey <: SwaggerModel
     keyName::Any # spec type: Union{ Nothing, String } # spec name: keyName
     value::Any # spec type: Union{ Nothing, String } # spec name: value
@@ -23,7 +22,7 @@ end # type StorageAccountKey
 const _property_map_StorageAccountKey = Dict{Symbol,Symbol}(Symbol("keyName")=>Symbol("keyName"), Symbol("value")=>Symbol("value"), Symbol("permissions")=>Symbol("permissions"))
 const _property_types_StorageAccountKey = Dict{Symbol,String}(Symbol("keyName")=>"String", Symbol("value")=>"String", Symbol("permissions")=>"String")
 Base.propertynames(::Type{ StorageAccountKey }) = collect(keys(_property_map_StorageAccountKey))
-Swagger.property_type(::Type{ StorageAccountKey }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_StorageAccountKey[name]))}
+Swagger.property_type(::Type{ StorageAccountKey }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_StorageAccountKey[name]))}
 Swagger.field_name(::Type{ StorageAccountKey }, property_name::Symbol) =  _property_map_StorageAccountKey[property_name]
 
 const _allowed_StorageAccountKey_permissions = ["Read", "Full"]

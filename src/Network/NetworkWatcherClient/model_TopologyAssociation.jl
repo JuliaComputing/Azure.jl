@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct TopologyAssociation <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     resourceId::Any # spec type: Union{ Nothing, String } # spec name: resourceId
@@ -23,7 +22,7 @@ end # type TopologyAssociation
 const _property_map_TopologyAssociation = Dict{Symbol,Symbol}(Symbol("name")=>Symbol("name"), Symbol("resourceId")=>Symbol("resourceId"), Symbol("associationType")=>Symbol("associationType"))
 const _property_types_TopologyAssociation = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("resourceId")=>"String", Symbol("associationType")=>"String")
 Base.propertynames(::Type{ TopologyAssociation }) = collect(keys(_property_map_TopologyAssociation))
-Swagger.property_type(::Type{ TopologyAssociation }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_TopologyAssociation[name]))}
+Swagger.property_type(::Type{ TopologyAssociation }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TopologyAssociation[name]))}
 Swagger.field_name(::Type{ TopologyAssociation }, property_name::Symbol) =  _property_map_TopologyAssociation[property_name]
 
 const _allowed_TopologyAssociation_associationType = ["Associated", "Contains"]

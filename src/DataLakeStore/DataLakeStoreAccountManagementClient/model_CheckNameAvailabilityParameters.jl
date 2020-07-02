@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct CheckNameAvailabilityParameters <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     type::Any # spec type: Union{ Nothing, String } # spec name: type
@@ -20,7 +19,7 @@ end # type CheckNameAvailabilityParameters
 const _property_map_CheckNameAvailabilityParameters = Dict{Symbol,Symbol}(Symbol("name")=>Symbol("name"), Symbol("type")=>Symbol("type"))
 const _property_types_CheckNameAvailabilityParameters = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("type")=>"String")
 Base.propertynames(::Type{ CheckNameAvailabilityParameters }) = collect(keys(_property_map_CheckNameAvailabilityParameters))
-Swagger.property_type(::Type{ CheckNameAvailabilityParameters }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_CheckNameAvailabilityParameters[name]))}
+Swagger.property_type(::Type{ CheckNameAvailabilityParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_CheckNameAvailabilityParameters[name]))}
 Swagger.field_name(::Type{ CheckNameAvailabilityParameters }, property_name::Symbol) =  _property_map_CheckNameAvailabilityParameters[property_name]
 
 const _allowed_CheckNameAvailabilityParameters_type = ["Microsoft.DataLakeStore/accounts"]

@@ -2,10 +2,9 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct TunnelConnectionHealth <: SwaggerModel
     tunnel::Any # spec type: Union{ Nothing, String } # spec name: tunnel
-    connectionStatus::Any # spec type: Union{ Nothing, String } # spec name: connectionStatus
+    connectionStatus::Any # spec type: Union{ Nothing, VirtualNetworkGatewayConnectionStatus } # spec name: connectionStatus
     ingressBytesTransferred::Any # spec type: Union{ Nothing, Int64 } # spec name: ingressBytesTransferred
     egressBytesTransferred::Any # spec type: Union{ Nothing, Int64 } # spec name: egressBytesTransferred
     lastConnectionEstablishedUtcTime::Any # spec type: Union{ Nothing, String } # spec name: lastConnectionEstablishedUtcTime
@@ -27,19 +26,14 @@ mutable struct TunnelConnectionHealth <: SwaggerModel
 end # type TunnelConnectionHealth
 
 const _property_map_TunnelConnectionHealth = Dict{Symbol,Symbol}(Symbol("tunnel")=>Symbol("tunnel"), Symbol("connectionStatus")=>Symbol("connectionStatus"), Symbol("ingressBytesTransferred")=>Symbol("ingressBytesTransferred"), Symbol("egressBytesTransferred")=>Symbol("egressBytesTransferred"), Symbol("lastConnectionEstablishedUtcTime")=>Symbol("lastConnectionEstablishedUtcTime"))
-const _property_types_TunnelConnectionHealth = Dict{Symbol,String}(Symbol("tunnel")=>"String", Symbol("connectionStatus")=>"String", Symbol("ingressBytesTransferred")=>"Int64", Symbol("egressBytesTransferred")=>"Int64", Symbol("lastConnectionEstablishedUtcTime")=>"String")
+const _property_types_TunnelConnectionHealth = Dict{Symbol,String}(Symbol("tunnel")=>"String", Symbol("connectionStatus")=>"VirtualNetworkGatewayConnectionStatus", Symbol("ingressBytesTransferred")=>"Int64", Symbol("egressBytesTransferred")=>"Int64", Symbol("lastConnectionEstablishedUtcTime")=>"String")
 Base.propertynames(::Type{ TunnelConnectionHealth }) = collect(keys(_property_map_TunnelConnectionHealth))
-Swagger.property_type(::Type{ TunnelConnectionHealth }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_TunnelConnectionHealth[name]))}
+Swagger.property_type(::Type{ TunnelConnectionHealth }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TunnelConnectionHealth[name]))}
 Swagger.field_name(::Type{ TunnelConnectionHealth }, property_name::Symbol) =  _property_map_TunnelConnectionHealth[property_name]
-
-const _allowed_TunnelConnectionHealth_connectionStatus = ["Unknown", "Connecting", "Connected", "NotConnected"]
 
 function check_required(o::TunnelConnectionHealth)
     true
 end
 
 function validate_property(::Type{ TunnelConnectionHealth }, name::Symbol, val)
-    if name === Symbol("connectionStatus")
-        Swagger.validate_param(name, "TunnelConnectionHealth", :enum, val, _allowed_TunnelConnectionHealth_connectionStatus)
-    end
 end

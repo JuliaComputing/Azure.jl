@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct SshConfiguration <: SwaggerModel
     publicKeys::Any # spec type: Union{ Nothing, Vector{SshPublicKey} } # spec name: publicKeys
 
@@ -17,7 +16,7 @@ end # type SshConfiguration
 const _property_map_SshConfiguration = Dict{Symbol,Symbol}(Symbol("publicKeys")=>Symbol("publicKeys"))
 const _property_types_SshConfiguration = Dict{Symbol,String}(Symbol("publicKeys")=>"Vector{SshPublicKey}")
 Base.propertynames(::Type{ SshConfiguration }) = collect(keys(_property_map_SshConfiguration))
-Swagger.property_type(::Type{ SshConfiguration }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_SshConfiguration[name]))}
+Swagger.property_type(::Type{ SshConfiguration }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SshConfiguration[name]))}
 Swagger.field_name(::Type{ SshConfiguration }, property_name::Symbol) =  _property_map_SshConfiguration[property_name]
 
 function check_required(o::SshConfiguration)

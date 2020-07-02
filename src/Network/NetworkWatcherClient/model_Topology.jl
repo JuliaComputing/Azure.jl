@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct Topology <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
     createdDateTime::Any # spec type: Union{ Nothing, DateTime } # spec name: createdDateTime
@@ -26,7 +25,7 @@ end # type Topology
 const _property_map_Topology = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("createdDateTime")=>Symbol("createdDateTime"), Symbol("lastModified")=>Symbol("lastModified"), Symbol("resources")=>Symbol("resources"))
 const _property_types_Topology = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("createdDateTime")=>"DateTime", Symbol("lastModified")=>"DateTime", Symbol("resources")=>"Vector{TopologyResource}")
 Base.propertynames(::Type{ Topology }) = collect(keys(_property_map_Topology))
-Swagger.property_type(::Type{ Topology }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_Topology[name]))}
+Swagger.property_type(::Type{ Topology }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Topology[name]))}
 Swagger.field_name(::Type{ Topology }, property_name::Symbol) =  _property_map_Topology[property_name]
 
 function check_required(o::Topology)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ApplicationGatewayAuthenticationCertificate <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
 
@@ -17,7 +16,7 @@ end # type ApplicationGatewayAuthenticationCertificate
 const _property_map_ApplicationGatewayAuthenticationCertificate = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"))
 const _property_types_ApplicationGatewayAuthenticationCertificate = Dict{Symbol,String}(Symbol("id")=>"String")
 Base.propertynames(::Type{ ApplicationGatewayAuthenticationCertificate }) = collect(keys(_property_map_ApplicationGatewayAuthenticationCertificate))
-Swagger.property_type(::Type{ ApplicationGatewayAuthenticationCertificate }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ApplicationGatewayAuthenticationCertificate[name]))}
+Swagger.property_type(::Type{ ApplicationGatewayAuthenticationCertificate }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayAuthenticationCertificate[name]))}
 Swagger.field_name(::Type{ ApplicationGatewayAuthenticationCertificate }, property_name::Symbol) =  _property_map_ApplicationGatewayAuthenticationCertificate[property_name]
 
 function check_required(o::ApplicationGatewayAuthenticationCertificate)

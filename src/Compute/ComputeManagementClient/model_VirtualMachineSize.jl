@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualMachineSize <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     numberOfCores::Any # spec type: Union{ Nothing, Int32 } # spec name: numberOfCores
@@ -32,7 +31,7 @@ end # type VirtualMachineSize
 const _property_map_VirtualMachineSize = Dict{Symbol,Symbol}(Symbol("name")=>Symbol("name"), Symbol("numberOfCores")=>Symbol("numberOfCores"), Symbol("osDiskSizeInMB")=>Symbol("osDiskSizeInMB"), Symbol("resourceDiskSizeInMB")=>Symbol("resourceDiskSizeInMB"), Symbol("memoryInMB")=>Symbol("memoryInMB"), Symbol("maxDataDiskCount")=>Symbol("maxDataDiskCount"))
 const _property_types_VirtualMachineSize = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("numberOfCores")=>"Int32", Symbol("osDiskSizeInMB")=>"Int32", Symbol("resourceDiskSizeInMB")=>"Int32", Symbol("memoryInMB")=>"Int32", Symbol("maxDataDiskCount")=>"Int32")
 Base.propertynames(::Type{ VirtualMachineSize }) = collect(keys(_property_map_VirtualMachineSize))
-Swagger.property_type(::Type{ VirtualMachineSize }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualMachineSize[name]))}
+Swagger.property_type(::Type{ VirtualMachineSize }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineSize[name]))}
 Swagger.field_name(::Type{ VirtualMachineSize }, property_name::Symbol) =  _property_map_VirtualMachineSize[property_name]
 
 function check_required(o::VirtualMachineSize)

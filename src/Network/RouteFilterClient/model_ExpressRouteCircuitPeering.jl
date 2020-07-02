@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ExpressRouteCircuitPeering <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
 
@@ -17,7 +16,7 @@ end # type ExpressRouteCircuitPeering
 const _property_map_ExpressRouteCircuitPeering = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"))
 const _property_types_ExpressRouteCircuitPeering = Dict{Symbol,String}(Symbol("id")=>"String")
 Base.propertynames(::Type{ ExpressRouteCircuitPeering }) = collect(keys(_property_map_ExpressRouteCircuitPeering))
-Swagger.property_type(::Type{ ExpressRouteCircuitPeering }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ExpressRouteCircuitPeering[name]))}
+Swagger.property_type(::Type{ ExpressRouteCircuitPeering }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExpressRouteCircuitPeering[name]))}
 Swagger.field_name(::Type{ ExpressRouteCircuitPeering }, property_name::Symbol) =  _property_map_ExpressRouteCircuitPeering[property_name]
 
 function check_required(o::ExpressRouteCircuitPeering)

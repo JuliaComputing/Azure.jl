@@ -2,16 +2,20 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualMachineScaleSetVMProfile <: SwaggerModel
     osProfile::Any # spec type: Union{ Nothing, VirtualMachineScaleSetOSProfile } # spec name: osProfile
     storageProfile::Any # spec type: Union{ Nothing, VirtualMachineScaleSetStorageProfile } # spec name: storageProfile
     networkProfile::Any # spec type: Union{ Nothing, VirtualMachineScaleSetNetworkProfile } # spec name: networkProfile
+    securityProfile::Any # spec type: Union{ Nothing, SecurityProfile } # spec name: securityProfile
     diagnosticsProfile::Any # spec type: Union{ Nothing, DiagnosticsProfile } # spec name: diagnosticsProfile
     extensionProfile::Any # spec type: Union{ Nothing, VirtualMachineScaleSetExtensionProfile } # spec name: extensionProfile
     licenseType::Any # spec type: Union{ Nothing, String } # spec name: licenseType
+    priority::Any # spec type: Union{ Nothing, Priority } # spec name: priority
+    evictionPolicy::Any # spec type: Union{ Nothing, EvictionPolicy } # spec name: evictionPolicy
+    billingProfile::Any # spec type: Union{ Nothing, BillingProfile } # spec name: billingProfile
+    scheduledEventsProfile::Any # spec type: Union{ Nothing, ScheduledEventsProfile } # spec name: scheduledEventsProfile
 
-    function VirtualMachineScaleSetVMProfile(;osProfile=nothing, storageProfile=nothing, networkProfile=nothing, diagnosticsProfile=nothing, extensionProfile=nothing, licenseType=nothing)
+    function VirtualMachineScaleSetVMProfile(;osProfile=nothing, storageProfile=nothing, networkProfile=nothing, securityProfile=nothing, diagnosticsProfile=nothing, extensionProfile=nothing, licenseType=nothing, priority=nothing, evictionPolicy=nothing, billingProfile=nothing, scheduledEventsProfile=nothing)
         o = new()
         validate_property(VirtualMachineScaleSetVMProfile, Symbol("osProfile"), osProfile)
         setfield!(o, Symbol("osProfile"), osProfile)
@@ -19,20 +23,30 @@ mutable struct VirtualMachineScaleSetVMProfile <: SwaggerModel
         setfield!(o, Symbol("storageProfile"), storageProfile)
         validate_property(VirtualMachineScaleSetVMProfile, Symbol("networkProfile"), networkProfile)
         setfield!(o, Symbol("networkProfile"), networkProfile)
+        validate_property(VirtualMachineScaleSetVMProfile, Symbol("securityProfile"), securityProfile)
+        setfield!(o, Symbol("securityProfile"), securityProfile)
         validate_property(VirtualMachineScaleSetVMProfile, Symbol("diagnosticsProfile"), diagnosticsProfile)
         setfield!(o, Symbol("diagnosticsProfile"), diagnosticsProfile)
         validate_property(VirtualMachineScaleSetVMProfile, Symbol("extensionProfile"), extensionProfile)
         setfield!(o, Symbol("extensionProfile"), extensionProfile)
         validate_property(VirtualMachineScaleSetVMProfile, Symbol("licenseType"), licenseType)
         setfield!(o, Symbol("licenseType"), licenseType)
+        validate_property(VirtualMachineScaleSetVMProfile, Symbol("priority"), priority)
+        setfield!(o, Symbol("priority"), priority)
+        validate_property(VirtualMachineScaleSetVMProfile, Symbol("evictionPolicy"), evictionPolicy)
+        setfield!(o, Symbol("evictionPolicy"), evictionPolicy)
+        validate_property(VirtualMachineScaleSetVMProfile, Symbol("billingProfile"), billingProfile)
+        setfield!(o, Symbol("billingProfile"), billingProfile)
+        validate_property(VirtualMachineScaleSetVMProfile, Symbol("scheduledEventsProfile"), scheduledEventsProfile)
+        setfield!(o, Symbol("scheduledEventsProfile"), scheduledEventsProfile)
         o
     end
 end # type VirtualMachineScaleSetVMProfile
 
-const _property_map_VirtualMachineScaleSetVMProfile = Dict{Symbol,Symbol}(Symbol("osProfile")=>Symbol("osProfile"), Symbol("storageProfile")=>Symbol("storageProfile"), Symbol("networkProfile")=>Symbol("networkProfile"), Symbol("diagnosticsProfile")=>Symbol("diagnosticsProfile"), Symbol("extensionProfile")=>Symbol("extensionProfile"), Symbol("licenseType")=>Symbol("licenseType"))
-const _property_types_VirtualMachineScaleSetVMProfile = Dict{Symbol,String}(Symbol("osProfile")=>"VirtualMachineScaleSetOSProfile", Symbol("storageProfile")=>"VirtualMachineScaleSetStorageProfile", Symbol("networkProfile")=>"VirtualMachineScaleSetNetworkProfile", Symbol("diagnosticsProfile")=>"DiagnosticsProfile", Symbol("extensionProfile")=>"VirtualMachineScaleSetExtensionProfile", Symbol("licenseType")=>"String")
+const _property_map_VirtualMachineScaleSetVMProfile = Dict{Symbol,Symbol}(Symbol("osProfile")=>Symbol("osProfile"), Symbol("storageProfile")=>Symbol("storageProfile"), Symbol("networkProfile")=>Symbol("networkProfile"), Symbol("securityProfile")=>Symbol("securityProfile"), Symbol("diagnosticsProfile")=>Symbol("diagnosticsProfile"), Symbol("extensionProfile")=>Symbol("extensionProfile"), Symbol("licenseType")=>Symbol("licenseType"), Symbol("priority")=>Symbol("priority"), Symbol("evictionPolicy")=>Symbol("evictionPolicy"), Symbol("billingProfile")=>Symbol("billingProfile"), Symbol("scheduledEventsProfile")=>Symbol("scheduledEventsProfile"))
+const _property_types_VirtualMachineScaleSetVMProfile = Dict{Symbol,String}(Symbol("osProfile")=>"VirtualMachineScaleSetOSProfile", Symbol("storageProfile")=>"VirtualMachineScaleSetStorageProfile", Symbol("networkProfile")=>"VirtualMachineScaleSetNetworkProfile", Symbol("securityProfile")=>"SecurityProfile", Symbol("diagnosticsProfile")=>"DiagnosticsProfile", Symbol("extensionProfile")=>"VirtualMachineScaleSetExtensionProfile", Symbol("licenseType")=>"String", Symbol("priority")=>"Priority", Symbol("evictionPolicy")=>"EvictionPolicy", Symbol("billingProfile")=>"BillingProfile", Symbol("scheduledEventsProfile")=>"ScheduledEventsProfile")
 Base.propertynames(::Type{ VirtualMachineScaleSetVMProfile }) = collect(keys(_property_map_VirtualMachineScaleSetVMProfile))
-Swagger.property_type(::Type{ VirtualMachineScaleSetVMProfile }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualMachineScaleSetVMProfile[name]))}
+Swagger.property_type(::Type{ VirtualMachineScaleSetVMProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetVMProfile[name]))}
 Swagger.field_name(::Type{ VirtualMachineScaleSetVMProfile }, property_name::Symbol) =  _property_map_VirtualMachineScaleSetVMProfile[property_name]
 
 function check_required(o::VirtualMachineScaleSetVMProfile)

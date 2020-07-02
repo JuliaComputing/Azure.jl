@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct UpdateTrustedIdProviderProperties <: SwaggerModel
     idProvider::Any # spec type: Union{ Nothing, String } # spec name: idProvider
 
@@ -17,7 +16,7 @@ end # type UpdateTrustedIdProviderProperties
 const _property_map_UpdateTrustedIdProviderProperties = Dict{Symbol,Symbol}(Symbol("idProvider")=>Symbol("idProvider"))
 const _property_types_UpdateTrustedIdProviderProperties = Dict{Symbol,String}(Symbol("idProvider")=>"String")
 Base.propertynames(::Type{ UpdateTrustedIdProviderProperties }) = collect(keys(_property_map_UpdateTrustedIdProviderProperties))
-Swagger.property_type(::Type{ UpdateTrustedIdProviderProperties }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_UpdateTrustedIdProviderProperties[name]))}
+Swagger.property_type(::Type{ UpdateTrustedIdProviderProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_UpdateTrustedIdProviderProperties[name]))}
 Swagger.field_name(::Type{ UpdateTrustedIdProviderProperties }, property_name::Symbol) =  _property_map_UpdateTrustedIdProviderProperties[property_name]
 
 function check_required(o::UpdateTrustedIdProviderProperties)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ConnectionResetSharedKey <: SwaggerModel
     keyLength::Any # spec type: Union{ Nothing, Int32 } # spec name: keyLength
 
@@ -17,7 +16,7 @@ end # type ConnectionResetSharedKey
 const _property_map_ConnectionResetSharedKey = Dict{Symbol,Symbol}(Symbol("keyLength")=>Symbol("keyLength"))
 const _property_types_ConnectionResetSharedKey = Dict{Symbol,String}(Symbol("keyLength")=>"Int32")
 Base.propertynames(::Type{ ConnectionResetSharedKey }) = collect(keys(_property_map_ConnectionResetSharedKey))
-Swagger.property_type(::Type{ ConnectionResetSharedKey }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ConnectionResetSharedKey[name]))}
+Swagger.property_type(::Type{ ConnectionResetSharedKey }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ConnectionResetSharedKey[name]))}
 Swagger.field_name(::Type{ ConnectionResetSharedKey }, property_name::Symbol) =  _property_map_ConnectionResetSharedKey[property_name]
 
 function check_required(o::ConnectionResetSharedKey)

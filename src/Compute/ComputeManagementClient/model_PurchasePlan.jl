@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct PurchasePlan <: SwaggerModel
     publisher::Any # spec type: Union{ Nothing, String } # spec name: publisher
     name::Any # spec type: Union{ Nothing, String } # spec name: name
@@ -23,7 +22,7 @@ end # type PurchasePlan
 const _property_map_PurchasePlan = Dict{Symbol,Symbol}(Symbol("publisher")=>Symbol("publisher"), Symbol("name")=>Symbol("name"), Symbol("product")=>Symbol("product"))
 const _property_types_PurchasePlan = Dict{Symbol,String}(Symbol("publisher")=>"String", Symbol("name")=>"String", Symbol("product")=>"String")
 Base.propertynames(::Type{ PurchasePlan }) = collect(keys(_property_map_PurchasePlan))
-Swagger.property_type(::Type{ PurchasePlan }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_PurchasePlan[name]))}
+Swagger.property_type(::Type{ PurchasePlan }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PurchasePlan[name]))}
 Swagger.field_name(::Type{ PurchasePlan }, property_name::Symbol) =  _property_map_PurchasePlan[property_name]
 
 function check_required(o::PurchasePlan)

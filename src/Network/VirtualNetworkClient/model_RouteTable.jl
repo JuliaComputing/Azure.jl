@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct RouteTable <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
     name::Any # spec type: Union{ Nothing, String } # spec name: name
@@ -29,7 +28,7 @@ end # type RouteTable
 const _property_map_RouteTable = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("name")=>Symbol("name"), Symbol("type")=>Symbol("type"), Symbol("location")=>Symbol("location"), Symbol("tags")=>Symbol("tags"))
 const _property_types_RouteTable = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}")
 Base.propertynames(::Type{ RouteTable }) = collect(keys(_property_map_RouteTable))
-Swagger.property_type(::Type{ RouteTable }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_RouteTable[name]))}
+Swagger.property_type(::Type{ RouteTable }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RouteTable[name]))}
 Swagger.field_name(::Type{ RouteTable }, property_name::Symbol) =  _property_map_RouteTable[property_name]
 
 function check_required(o::RouteTable)

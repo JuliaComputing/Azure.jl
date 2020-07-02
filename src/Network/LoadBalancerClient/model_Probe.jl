@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct Probe <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
 
@@ -17,7 +16,7 @@ end # type Probe
 const _property_map_Probe = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"))
 const _property_types_Probe = Dict{Symbol,String}(Symbol("id")=>"String")
 Base.propertynames(::Type{ Probe }) = collect(keys(_property_map_Probe))
-Swagger.property_type(::Type{ Probe }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_Probe[name]))}
+Swagger.property_type(::Type{ Probe }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Probe[name]))}
 Swagger.field_name(::Type{ Probe }, property_name::Symbol) =  _property_map_Probe[property_name]
 
 function check_required(o::Probe)

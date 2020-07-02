@@ -2,22 +2,27 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct Deployment <: SwaggerModel
+    location::Any # spec type: Union{ Nothing, String } # spec name: location
     properties::Any # spec type: Union{ Nothing, DeploymentProperties } # spec name: properties
+    tags::Any # spec type: Union{ Nothing, Dict{String, String} } # spec name: tags
 
-    function Deployment(;properties=nothing)
+    function Deployment(;location=nothing, properties=nothing, tags=nothing)
         o = new()
+        validate_property(Deployment, Symbol("location"), location)
+        setfield!(o, Symbol("location"), location)
         validate_property(Deployment, Symbol("properties"), properties)
         setfield!(o, Symbol("properties"), properties)
+        validate_property(Deployment, Symbol("tags"), tags)
+        setfield!(o, Symbol("tags"), tags)
         o
     end
 end # type Deployment
 
-const _property_map_Deployment = Dict{Symbol,Symbol}(Symbol("properties")=>Symbol("properties"))
-const _property_types_Deployment = Dict{Symbol,String}(Symbol("properties")=>"DeploymentProperties")
+const _property_map_Deployment = Dict{Symbol,Symbol}(Symbol("location")=>Symbol("location"), Symbol("properties")=>Symbol("properties"), Symbol("tags")=>Symbol("tags"))
+const _property_types_Deployment = Dict{Symbol,String}(Symbol("location")=>"String", Symbol("properties")=>"DeploymentProperties", Symbol("tags")=>"Dict{String, String}")
 Base.propertynames(::Type{ Deployment }) = collect(keys(_property_map_Deployment))
-Swagger.property_type(::Type{ Deployment }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_Deployment[name]))}
+Swagger.property_type(::Type{ Deployment }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Deployment[name]))}
 Swagger.field_name(::Type{ Deployment }, property_name::Symbol) =  _property_map_Deployment[property_name]
 
 function check_required(o::Deployment)

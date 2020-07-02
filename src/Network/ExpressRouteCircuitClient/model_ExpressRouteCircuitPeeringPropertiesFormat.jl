@@ -2,12 +2,11 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ExpressRouteCircuitPeeringPropertiesFormat <: SwaggerModel
-    peeringType::Any # spec type: Union{ Nothing, String } # spec name: peeringType
-    state::Any # spec type: Union{ Nothing, String } # spec name: state
+    peeringType::Any # spec type: Union{ Nothing, ExpressRoutePeeringType } # spec name: peeringType
+    state::Any # spec type: Union{ Nothing, ExpressRoutePeeringState } # spec name: state
     azureASN::Any # spec type: Union{ Nothing, Int32 } # spec name: azureASN
-    peerASN::Any # spec type: Union{ Nothing, Int32 } # spec name: peerASN
+    peerASN::Any # spec type: Union{ Nothing, Int64 } # spec name: peerASN
     primaryPeerAddressPrefix::Any # spec type: Union{ Nothing, String } # spec name: primaryPeerAddressPrefix
     secondaryPeerAddressPrefix::Any # spec type: Union{ Nothing, String } # spec name: secondaryPeerAddressPrefix
     primaryAzurePort::Any # spec type: Union{ Nothing, String } # spec name: primaryAzurePort
@@ -16,13 +15,16 @@ mutable struct ExpressRouteCircuitPeeringPropertiesFormat <: SwaggerModel
     vlanId::Any # spec type: Union{ Nothing, Int32 } # spec name: vlanId
     microsoftPeeringConfig::Any # spec type: Union{ Nothing, ExpressRouteCircuitPeeringConfig } # spec name: microsoftPeeringConfig
     stats::Any # spec type: Union{ Nothing, ExpressRouteCircuitStats } # spec name: stats
-    provisioningState::Any # spec type: Union{ Nothing, String } # spec name: provisioningState
+    provisioningState::Any # spec type: Union{ Nothing, ProvisioningState } # spec name: provisioningState
     gatewayManagerEtag::Any # spec type: Union{ Nothing, String } # spec name: gatewayManagerEtag
     lastModifiedBy::Any # spec type: Union{ Nothing, String } # spec name: lastModifiedBy
-    routeFilter::Any # spec type: Union{ Nothing, RouteFilter } # spec name: routeFilter
+    routeFilter::Any # spec type: Union{ Nothing, SubResource } # spec name: routeFilter
     ipv6PeeringConfig::Any # spec type: Union{ Nothing, Ipv6ExpressRouteCircuitPeeringConfig } # spec name: ipv6PeeringConfig
+    expressRouteConnection::Any # spec type: Union{ Nothing, ExpressRouteConnectionId } # spec name: expressRouteConnection
+    connections::Any # spec type: Union{ Nothing, Vector{ExpressRouteCircuitConnection} } # spec name: connections
+    peeredConnections::Any # spec type: Union{ Nothing, Vector{PeerExpressRouteCircuitConnection} } # spec name: peeredConnections
 
-    function ExpressRouteCircuitPeeringPropertiesFormat(;peeringType=nothing, state=nothing, azureASN=nothing, peerASN=nothing, primaryPeerAddressPrefix=nothing, secondaryPeerAddressPrefix=nothing, primaryAzurePort=nothing, secondaryAzurePort=nothing, sharedKey=nothing, vlanId=nothing, microsoftPeeringConfig=nothing, stats=nothing, provisioningState=nothing, gatewayManagerEtag=nothing, lastModifiedBy=nothing, routeFilter=nothing, ipv6PeeringConfig=nothing)
+    function ExpressRouteCircuitPeeringPropertiesFormat(;peeringType=nothing, state=nothing, azureASN=nothing, peerASN=nothing, primaryPeerAddressPrefix=nothing, secondaryPeerAddressPrefix=nothing, primaryAzurePort=nothing, secondaryAzurePort=nothing, sharedKey=nothing, vlanId=nothing, microsoftPeeringConfig=nothing, stats=nothing, provisioningState=nothing, gatewayManagerEtag=nothing, lastModifiedBy=nothing, routeFilter=nothing, ipv6PeeringConfig=nothing, expressRouteConnection=nothing, connections=nothing, peeredConnections=nothing)
         o = new()
         validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("peeringType"), peeringType)
         setfield!(o, Symbol("peeringType"), peeringType)
@@ -58,29 +60,29 @@ mutable struct ExpressRouteCircuitPeeringPropertiesFormat <: SwaggerModel
         setfield!(o, Symbol("routeFilter"), routeFilter)
         validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("ipv6PeeringConfig"), ipv6PeeringConfig)
         setfield!(o, Symbol("ipv6PeeringConfig"), ipv6PeeringConfig)
+        validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("expressRouteConnection"), expressRouteConnection)
+        setfield!(o, Symbol("expressRouteConnection"), expressRouteConnection)
+        validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("connections"), connections)
+        setfield!(o, Symbol("connections"), connections)
+        validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("peeredConnections"), peeredConnections)
+        setfield!(o, Symbol("peeredConnections"), peeredConnections)
         o
     end
 end # type ExpressRouteCircuitPeeringPropertiesFormat
 
-const _property_map_ExpressRouteCircuitPeeringPropertiesFormat = Dict{Symbol,Symbol}(Symbol("peeringType")=>Symbol("peeringType"), Symbol("state")=>Symbol("state"), Symbol("azureASN")=>Symbol("azureASN"), Symbol("peerASN")=>Symbol("peerASN"), Symbol("primaryPeerAddressPrefix")=>Symbol("primaryPeerAddressPrefix"), Symbol("secondaryPeerAddressPrefix")=>Symbol("secondaryPeerAddressPrefix"), Symbol("primaryAzurePort")=>Symbol("primaryAzurePort"), Symbol("secondaryAzurePort")=>Symbol("secondaryAzurePort"), Symbol("sharedKey")=>Symbol("sharedKey"), Symbol("vlanId")=>Symbol("vlanId"), Symbol("microsoftPeeringConfig")=>Symbol("microsoftPeeringConfig"), Symbol("stats")=>Symbol("stats"), Symbol("provisioningState")=>Symbol("provisioningState"), Symbol("gatewayManagerEtag")=>Symbol("gatewayManagerEtag"), Symbol("lastModifiedBy")=>Symbol("lastModifiedBy"), Symbol("routeFilter")=>Symbol("routeFilter"), Symbol("ipv6PeeringConfig")=>Symbol("ipv6PeeringConfig"))
-const _property_types_ExpressRouteCircuitPeeringPropertiesFormat = Dict{Symbol,String}(Symbol("peeringType")=>"String", Symbol("state")=>"String", Symbol("azureASN")=>"Int32", Symbol("peerASN")=>"Int32", Symbol("primaryPeerAddressPrefix")=>"String", Symbol("secondaryPeerAddressPrefix")=>"String", Symbol("primaryAzurePort")=>"String", Symbol("secondaryAzurePort")=>"String", Symbol("sharedKey")=>"String", Symbol("vlanId")=>"Int32", Symbol("microsoftPeeringConfig")=>"ExpressRouteCircuitPeeringConfig", Symbol("stats")=>"ExpressRouteCircuitStats", Symbol("provisioningState")=>"String", Symbol("gatewayManagerEtag")=>"String", Symbol("lastModifiedBy")=>"String", Symbol("routeFilter")=>"RouteFilter", Symbol("ipv6PeeringConfig")=>"Ipv6ExpressRouteCircuitPeeringConfig")
+const _property_map_ExpressRouteCircuitPeeringPropertiesFormat = Dict{Symbol,Symbol}(Symbol("peeringType")=>Symbol("peeringType"), Symbol("state")=>Symbol("state"), Symbol("azureASN")=>Symbol("azureASN"), Symbol("peerASN")=>Symbol("peerASN"), Symbol("primaryPeerAddressPrefix")=>Symbol("primaryPeerAddressPrefix"), Symbol("secondaryPeerAddressPrefix")=>Symbol("secondaryPeerAddressPrefix"), Symbol("primaryAzurePort")=>Symbol("primaryAzurePort"), Symbol("secondaryAzurePort")=>Symbol("secondaryAzurePort"), Symbol("sharedKey")=>Symbol("sharedKey"), Symbol("vlanId")=>Symbol("vlanId"), Symbol("microsoftPeeringConfig")=>Symbol("microsoftPeeringConfig"), Symbol("stats")=>Symbol("stats"), Symbol("provisioningState")=>Symbol("provisioningState"), Symbol("gatewayManagerEtag")=>Symbol("gatewayManagerEtag"), Symbol("lastModifiedBy")=>Symbol("lastModifiedBy"), Symbol("routeFilter")=>Symbol("routeFilter"), Symbol("ipv6PeeringConfig")=>Symbol("ipv6PeeringConfig"), Symbol("expressRouteConnection")=>Symbol("expressRouteConnection"), Symbol("connections")=>Symbol("connections"), Symbol("peeredConnections")=>Symbol("peeredConnections"))
+const _property_types_ExpressRouteCircuitPeeringPropertiesFormat = Dict{Symbol,String}(Symbol("peeringType")=>"ExpressRoutePeeringType", Symbol("state")=>"ExpressRoutePeeringState", Symbol("azureASN")=>"Int32", Symbol("peerASN")=>"Int64", Symbol("primaryPeerAddressPrefix")=>"String", Symbol("secondaryPeerAddressPrefix")=>"String", Symbol("primaryAzurePort")=>"String", Symbol("secondaryAzurePort")=>"String", Symbol("sharedKey")=>"String", Symbol("vlanId")=>"Int32", Symbol("microsoftPeeringConfig")=>"ExpressRouteCircuitPeeringConfig", Symbol("stats")=>"ExpressRouteCircuitStats", Symbol("provisioningState")=>"ProvisioningState", Symbol("gatewayManagerEtag")=>"String", Symbol("lastModifiedBy")=>"String", Symbol("routeFilter")=>"SubResource", Symbol("ipv6PeeringConfig")=>"Ipv6ExpressRouteCircuitPeeringConfig", Symbol("expressRouteConnection")=>"ExpressRouteConnectionId", Symbol("connections")=>"Vector{ExpressRouteCircuitConnection}", Symbol("peeredConnections")=>"Vector{PeerExpressRouteCircuitConnection}")
 Base.propertynames(::Type{ ExpressRouteCircuitPeeringPropertiesFormat }) = collect(keys(_property_map_ExpressRouteCircuitPeeringPropertiesFormat))
-Swagger.property_type(::Type{ ExpressRouteCircuitPeeringPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ExpressRouteCircuitPeeringPropertiesFormat[name]))}
+Swagger.property_type(::Type{ ExpressRouteCircuitPeeringPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExpressRouteCircuitPeeringPropertiesFormat[name]))}
 Swagger.field_name(::Type{ ExpressRouteCircuitPeeringPropertiesFormat }, property_name::Symbol) =  _property_map_ExpressRouteCircuitPeeringPropertiesFormat[property_name]
-
-const _allowed_ExpressRouteCircuitPeeringPropertiesFormat_peeringType = ["AzurePublicPeering", "AzurePrivatePeering", "MicrosoftPeering"]
-
-const _allowed_ExpressRouteCircuitPeeringPropertiesFormat_state = ["Disabled", "Enabled"]
 
 function check_required(o::ExpressRouteCircuitPeeringPropertiesFormat)
     true
 end
 
 function validate_property(::Type{ ExpressRouteCircuitPeeringPropertiesFormat }, name::Symbol, val)
-    if name === Symbol("peeringType")
-        Swagger.validate_param(name, "ExpressRouteCircuitPeeringPropertiesFormat", :enum, val, _allowed_ExpressRouteCircuitPeeringPropertiesFormat_peeringType)
-    end
-    if name === Symbol("state")
-        Swagger.validate_param(name, "ExpressRouteCircuitPeeringPropertiesFormat", :enum, val, _allowed_ExpressRouteCircuitPeeringPropertiesFormat_state)
+    if name === Symbol("peerASN")
+        Swagger.validate_param(name, "ExpressRouteCircuitPeeringPropertiesFormat", :maximum, val, 4294967295, false)
+        Swagger.validate_param(name, "ExpressRouteCircuitPeeringPropertiesFormat", :minimum, val, 1, false)
     end
 end

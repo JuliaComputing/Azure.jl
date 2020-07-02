@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct MaintenanceRedeployStatus <: SwaggerModel
     isCustomerInitiatedMaintenanceAllowed::Any # spec type: Union{ Nothing, Bool } # spec name: isCustomerInitiatedMaintenanceAllowed
     preMaintenanceWindowStartTime::Any # spec type: Union{ Nothing, DateTime } # spec name: preMaintenanceWindowStartTime
@@ -35,7 +34,7 @@ end # type MaintenanceRedeployStatus
 const _property_map_MaintenanceRedeployStatus = Dict{Symbol,Symbol}(Symbol("isCustomerInitiatedMaintenanceAllowed")=>Symbol("isCustomerInitiatedMaintenanceAllowed"), Symbol("preMaintenanceWindowStartTime")=>Symbol("preMaintenanceWindowStartTime"), Symbol("preMaintenanceWindowEndTime")=>Symbol("preMaintenanceWindowEndTime"), Symbol("maintenanceWindowStartTime")=>Symbol("maintenanceWindowStartTime"), Symbol("maintenanceWindowEndTime")=>Symbol("maintenanceWindowEndTime"), Symbol("lastOperationResultCode")=>Symbol("lastOperationResultCode"), Symbol("lastOperationMessage")=>Symbol("lastOperationMessage"))
 const _property_types_MaintenanceRedeployStatus = Dict{Symbol,String}(Symbol("isCustomerInitiatedMaintenanceAllowed")=>"Bool", Symbol("preMaintenanceWindowStartTime")=>"DateTime", Symbol("preMaintenanceWindowEndTime")=>"DateTime", Symbol("maintenanceWindowStartTime")=>"DateTime", Symbol("maintenanceWindowEndTime")=>"DateTime", Symbol("lastOperationResultCode")=>"String", Symbol("lastOperationMessage")=>"String")
 Base.propertynames(::Type{ MaintenanceRedeployStatus }) = collect(keys(_property_map_MaintenanceRedeployStatus))
-Swagger.property_type(::Type{ MaintenanceRedeployStatus }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_MaintenanceRedeployStatus[name]))}
+Swagger.property_type(::Type{ MaintenanceRedeployStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_MaintenanceRedeployStatus[name]))}
 Swagger.field_name(::Type{ MaintenanceRedeployStatus }, property_name::Symbol) =  _property_map_MaintenanceRedeployStatus[property_name]
 
 const _allowed_MaintenanceRedeployStatus_lastOperationResultCode = ["None", "RetryLater", "MaintenanceAborted", "MaintenanceCompleted"]

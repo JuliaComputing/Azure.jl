@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ContainerService <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
     name::Any # spec type: Union{ Nothing, String } # spec name: name
@@ -29,7 +28,7 @@ end # type ContainerService
 const _property_map_ContainerService = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("name")=>Symbol("name"), Symbol("type")=>Symbol("type"), Symbol("location")=>Symbol("location"), Symbol("tags")=>Symbol("tags"))
 const _property_types_ContainerService = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}")
 Base.propertynames(::Type{ ContainerService }) = collect(keys(_property_map_ContainerService))
-Swagger.property_type(::Type{ ContainerService }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ContainerService[name]))}
+Swagger.property_type(::Type{ ContainerService }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ContainerService[name]))}
 Swagger.field_name(::Type{ ContainerService }, property_name::Symbol) =  _property_map_ContainerService[property_name]
 
 function check_required(o::ContainerService)

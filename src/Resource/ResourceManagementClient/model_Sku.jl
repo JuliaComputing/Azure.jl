@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct Sku <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     tier::Any # spec type: Union{ Nothing, String } # spec name: tier
@@ -32,7 +31,7 @@ end # type Sku
 const _property_map_Sku = Dict{Symbol,Symbol}(Symbol("name")=>Symbol("name"), Symbol("tier")=>Symbol("tier"), Symbol("size")=>Symbol("size"), Symbol("family")=>Symbol("family"), Symbol("model")=>Symbol("model"), Symbol("capacity")=>Symbol("capacity"))
 const _property_types_Sku = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("tier")=>"String", Symbol("size")=>"String", Symbol("family")=>"String", Symbol("model")=>"String", Symbol("capacity")=>"Int32")
 Base.propertynames(::Type{ Sku }) = collect(keys(_property_map_Sku))
-Swagger.property_type(::Type{ Sku }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_Sku[name]))}
+Swagger.property_type(::Type{ Sku }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Sku[name]))}
 Swagger.field_name(::Type{ Sku }, property_name::Symbol) =  _property_map_Sku[property_name]
 
 function check_required(o::Sku)

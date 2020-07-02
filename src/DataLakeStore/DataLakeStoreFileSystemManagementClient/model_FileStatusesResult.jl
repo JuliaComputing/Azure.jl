@@ -2,22 +2,21 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct FileStatusesResult <: SwaggerModel
-    FileStatuses::Any # spec type: Union{ Nothing, FileStatuses } # spec name: FileStatuses
+    fileStatuses::Any # spec type: Union{ Nothing, FileStatuses } # spec name: fileStatuses
 
-    function FileStatusesResult(;FileStatuses=nothing)
+    function FileStatusesResult(;fileStatuses=nothing)
         o = new()
-        validate_property(FileStatusesResult, Symbol("FileStatuses"), FileStatuses)
-        setfield!(o, Symbol("FileStatuses"), FileStatuses)
+        validate_property(FileStatusesResult, Symbol("fileStatuses"), fileStatuses)
+        setfield!(o, Symbol("fileStatuses"), fileStatuses)
         o
     end
 end # type FileStatusesResult
 
-const _property_map_FileStatusesResult = Dict{Symbol,Symbol}(Symbol("FileStatuses")=>Symbol("FileStatuses"))
-const _property_types_FileStatusesResult = Dict{Symbol,String}(Symbol("FileStatuses")=>"FileStatuses")
+const _property_map_FileStatusesResult = Dict{Symbol,Symbol}(Symbol("fileStatuses")=>Symbol("fileStatuses"))
+const _property_types_FileStatusesResult = Dict{Symbol,String}(Symbol("fileStatuses")=>"FileStatuses")
 Base.propertynames(::Type{ FileStatusesResult }) = collect(keys(_property_map_FileStatusesResult))
-Swagger.property_type(::Type{ FileStatusesResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_FileStatusesResult[name]))}
+Swagger.property_type(::Type{ FileStatusesResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_FileStatusesResult[name]))}
 Swagger.field_name(::Type{ FileStatusesResult }, property_name::Symbol) =  _property_map_FileStatusesResult[property_name]
 
 function check_required(o::FileStatusesResult)

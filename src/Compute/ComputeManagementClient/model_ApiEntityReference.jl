@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ApiEntityReference <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
 
@@ -17,7 +16,7 @@ end # type ApiEntityReference
 const _property_map_ApiEntityReference = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"))
 const _property_types_ApiEntityReference = Dict{Symbol,String}(Symbol("id")=>"String")
 Base.propertynames(::Type{ ApiEntityReference }) = collect(keys(_property_map_ApiEntityReference))
-Swagger.property_type(::Type{ ApiEntityReference }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ApiEntityReference[name]))}
+Swagger.property_type(::Type{ ApiEntityReference }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApiEntityReference[name]))}
 Swagger.field_name(::Type{ ApiEntityReference }, property_name::Symbol) =  _property_map_ApiEntityReference[property_name]
 
 function check_required(o::ApiEntityReference)

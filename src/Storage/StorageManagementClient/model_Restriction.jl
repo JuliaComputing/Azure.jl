@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct Restriction <: SwaggerModel
     type::Any # spec type: Union{ Nothing, String } # spec name: type
     values::Any # spec type: Union{ Nothing, Vector{String} } # spec name: values
@@ -23,7 +22,7 @@ end # type Restriction
 const _property_map_Restriction = Dict{Symbol,Symbol}(Symbol("type")=>Symbol("type"), Symbol("values")=>Symbol("values"), Symbol("reasonCode")=>Symbol("reasonCode"))
 const _property_types_Restriction = Dict{Symbol,String}(Symbol("type")=>"String", Symbol("values")=>"Vector{String}", Symbol("reasonCode")=>"String")
 Base.propertynames(::Type{ Restriction }) = collect(keys(_property_map_Restriction))
-Swagger.property_type(::Type{ Restriction }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_Restriction[name]))}
+Swagger.property_type(::Type{ Restriction }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Restriction[name]))}
 Swagger.field_name(::Type{ Restriction }, property_name::Symbol) =  _property_map_Restriction[property_name]
 
 const _allowed_Restriction_reasonCode = ["QuotaId", "NotAvailableForSubscription"]

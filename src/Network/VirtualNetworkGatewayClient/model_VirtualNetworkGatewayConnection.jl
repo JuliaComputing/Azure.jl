@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualNetworkGatewayConnection <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
     name::Any # spec type: Union{ Nothing, String } # spec name: name
@@ -29,7 +28,7 @@ end # type VirtualNetworkGatewayConnection
 const _property_map_VirtualNetworkGatewayConnection = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("name")=>Symbol("name"), Symbol("type")=>Symbol("type"), Symbol("location")=>Symbol("location"), Symbol("tags")=>Symbol("tags"))
 const _property_types_VirtualNetworkGatewayConnection = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}")
 Base.propertynames(::Type{ VirtualNetworkGatewayConnection }) = collect(keys(_property_map_VirtualNetworkGatewayConnection))
-Swagger.property_type(::Type{ VirtualNetworkGatewayConnection }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualNetworkGatewayConnection[name]))}
+Swagger.property_type(::Type{ VirtualNetworkGatewayConnection }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualNetworkGatewayConnection[name]))}
 Swagger.field_name(::Type{ VirtualNetworkGatewayConnection }, property_name::Symbol) =  _property_map_VirtualNetworkGatewayConnection[property_name]
 
 function check_required(o::VirtualNetworkGatewayConnection)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ExpressRouteCircuitStats <: SwaggerModel
     primarybytesIn::Any # spec type: Union{ Nothing, Int64 } # spec name: primarybytesIn
     primarybytesOut::Any # spec type: Union{ Nothing, Int64 } # spec name: primarybytesOut
@@ -26,7 +25,7 @@ end # type ExpressRouteCircuitStats
 const _property_map_ExpressRouteCircuitStats = Dict{Symbol,Symbol}(Symbol("primarybytesIn")=>Symbol("primarybytesIn"), Symbol("primarybytesOut")=>Symbol("primarybytesOut"), Symbol("secondarybytesIn")=>Symbol("secondarybytesIn"), Symbol("secondarybytesOut")=>Symbol("secondarybytesOut"))
 const _property_types_ExpressRouteCircuitStats = Dict{Symbol,String}(Symbol("primarybytesIn")=>"Int64", Symbol("primarybytesOut")=>"Int64", Symbol("secondarybytesIn")=>"Int64", Symbol("secondarybytesOut")=>"Int64")
 Base.propertynames(::Type{ ExpressRouteCircuitStats }) = collect(keys(_property_map_ExpressRouteCircuitStats))
-Swagger.property_type(::Type{ ExpressRouteCircuitStats }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ExpressRouteCircuitStats[name]))}
+Swagger.property_type(::Type{ ExpressRouteCircuitStats }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExpressRouteCircuitStats[name]))}
 Swagger.field_name(::Type{ ExpressRouteCircuitStats }, property_name::Symbol) =  _property_map_ExpressRouteCircuitStats[property_name]
 
 function check_required(o::ExpressRouteCircuitStats)

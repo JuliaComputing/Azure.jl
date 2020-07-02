@@ -2,11 +2,10 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct BgpPeerStatus <: SwaggerModel
     localAddress::Any # spec type: Union{ Nothing, String } # spec name: localAddress
     neighbor::Any # spec type: Union{ Nothing, String } # spec name: neighbor
-    asn::Any # spec type: Union{ Nothing, Int32 } # spec name: asn
+    asn::Any # spec type: Union{ Nothing, Int64 } # spec name: asn
     state::Any # spec type: Union{ Nothing, String } # spec name: state
     connectedDuration::Any # spec type: Union{ Nothing, String } # spec name: connectedDuration
     routesReceived::Any # spec type: Union{ Nothing, Int64 } # spec name: routesReceived
@@ -36,9 +35,9 @@ mutable struct BgpPeerStatus <: SwaggerModel
 end # type BgpPeerStatus
 
 const _property_map_BgpPeerStatus = Dict{Symbol,Symbol}(Symbol("localAddress")=>Symbol("localAddress"), Symbol("neighbor")=>Symbol("neighbor"), Symbol("asn")=>Symbol("asn"), Symbol("state")=>Symbol("state"), Symbol("connectedDuration")=>Symbol("connectedDuration"), Symbol("routesReceived")=>Symbol("routesReceived"), Symbol("messagesSent")=>Symbol("messagesSent"), Symbol("messagesReceived")=>Symbol("messagesReceived"))
-const _property_types_BgpPeerStatus = Dict{Symbol,String}(Symbol("localAddress")=>"String", Symbol("neighbor")=>"String", Symbol("asn")=>"Int32", Symbol("state")=>"String", Symbol("connectedDuration")=>"String", Symbol("routesReceived")=>"Int64", Symbol("messagesSent")=>"Int64", Symbol("messagesReceived")=>"Int64")
+const _property_types_BgpPeerStatus = Dict{Symbol,String}(Symbol("localAddress")=>"String", Symbol("neighbor")=>"String", Symbol("asn")=>"Int64", Symbol("state")=>"String", Symbol("connectedDuration")=>"String", Symbol("routesReceived")=>"Int64", Symbol("messagesSent")=>"Int64", Symbol("messagesReceived")=>"Int64")
 Base.propertynames(::Type{ BgpPeerStatus }) = collect(keys(_property_map_BgpPeerStatus))
-Swagger.property_type(::Type{ BgpPeerStatus }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_BgpPeerStatus[name]))}
+Swagger.property_type(::Type{ BgpPeerStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_BgpPeerStatus[name]))}
 Swagger.field_name(::Type{ BgpPeerStatus }, property_name::Symbol) =  _property_map_BgpPeerStatus[property_name]
 
 const _allowed_BgpPeerStatus_state = ["Unknown", "Stopped", "Idle", "Connecting", "Connected"]
@@ -48,6 +47,10 @@ function check_required(o::BgpPeerStatus)
 end
 
 function validate_property(::Type{ BgpPeerStatus }, name::Symbol, val)
+    if name === Symbol("asn")
+        Swagger.validate_param(name, "BgpPeerStatus", :maximum, val, 4294967295, false)
+        Swagger.validate_param(name, "BgpPeerStatus", :minimum, val, 0, false)
+    end
     if name === Symbol("state")
         Swagger.validate_param(name, "BgpPeerStatus", :enum, val, _allowed_BgpPeerStatus_state)
     end

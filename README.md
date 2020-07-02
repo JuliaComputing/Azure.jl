@@ -43,7 +43,9 @@ ctx = AzureContext(creds)
 
 ## List operations
 ```
-operationsList(api(ctx, OperationsApi), apiver(OperationsApi))
+StorageManagementClient.operationsList(api(ctx, OperationsApi), apiver(OperationsApi))
+
+ComputeManagementClient.operationsList(api(ctx, ComputeOperationsApi), apiver(ComputeOperationsApi))
 ```
 
 ## Get a VM and list out some of its attributes

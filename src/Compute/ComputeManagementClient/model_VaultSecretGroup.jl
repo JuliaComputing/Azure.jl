@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VaultSecretGroup <: SwaggerModel
     sourceVault::Any # spec type: Union{ Nothing, SubResource } # spec name: sourceVault
     vaultCertificates::Any # spec type: Union{ Nothing, Vector{VaultCertificate} } # spec name: vaultCertificates
@@ -20,7 +19,7 @@ end # type VaultSecretGroup
 const _property_map_VaultSecretGroup = Dict{Symbol,Symbol}(Symbol("sourceVault")=>Symbol("sourceVault"), Symbol("vaultCertificates")=>Symbol("vaultCertificates"))
 const _property_types_VaultSecretGroup = Dict{Symbol,String}(Symbol("sourceVault")=>"SubResource", Symbol("vaultCertificates")=>"Vector{VaultCertificate}")
 Base.propertynames(::Type{ VaultSecretGroup }) = collect(keys(_property_map_VaultSecretGroup))
-Swagger.property_type(::Type{ VaultSecretGroup }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VaultSecretGroup[name]))}
+Swagger.property_type(::Type{ VaultSecretGroup }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VaultSecretGroup[name]))}
 Swagger.field_name(::Type{ VaultSecretGroup }, property_name::Symbol) =  _property_map_VaultSecretGroup[property_name]
 
 function check_required(o::VaultSecretGroup)

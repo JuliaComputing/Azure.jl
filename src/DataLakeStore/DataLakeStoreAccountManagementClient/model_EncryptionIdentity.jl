@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct EncryptionIdentity <: SwaggerModel
     type::Any # spec type: Union{ Nothing, String } # spec name: type
     principalId::Any # spec type: Union{ Nothing, String } # spec name: principalId
@@ -23,7 +22,7 @@ end # type EncryptionIdentity
 const _property_map_EncryptionIdentity = Dict{Symbol,Symbol}(Symbol("type")=>Symbol("type"), Symbol("principalId")=>Symbol("principalId"), Symbol("tenantId")=>Symbol("tenantId"))
 const _property_types_EncryptionIdentity = Dict{Symbol,String}(Symbol("type")=>"String", Symbol("principalId")=>"String", Symbol("tenantId")=>"String")
 Base.propertynames(::Type{ EncryptionIdentity }) = collect(keys(_property_map_EncryptionIdentity))
-Swagger.property_type(::Type{ EncryptionIdentity }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_EncryptionIdentity[name]))}
+Swagger.property_type(::Type{ EncryptionIdentity }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_EncryptionIdentity[name]))}
 Swagger.field_name(::Type{ EncryptionIdentity }, property_name::Symbol) =  _property_map_EncryptionIdentity[property_name]
 
 const _allowed_EncryptionIdentity_type = ["SystemAssigned"]

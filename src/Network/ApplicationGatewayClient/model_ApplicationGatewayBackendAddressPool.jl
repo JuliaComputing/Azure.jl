@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ApplicationGatewayBackendAddressPool <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
 
@@ -17,7 +16,7 @@ end # type ApplicationGatewayBackendAddressPool
 const _property_map_ApplicationGatewayBackendAddressPool = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"))
 const _property_types_ApplicationGatewayBackendAddressPool = Dict{Symbol,String}(Symbol("id")=>"String")
 Base.propertynames(::Type{ ApplicationGatewayBackendAddressPool }) = collect(keys(_property_map_ApplicationGatewayBackendAddressPool))
-Swagger.property_type(::Type{ ApplicationGatewayBackendAddressPool }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ApplicationGatewayBackendAddressPool[name]))}
+Swagger.property_type(::Type{ ApplicationGatewayBackendAddressPool }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayBackendAddressPool[name]))}
 Swagger.field_name(::Type{ ApplicationGatewayBackendAddressPool }, property_name::Symbol) =  _property_map_ApplicationGatewayBackendAddressPool[property_name]
 
 function check_required(o::ApplicationGatewayBackendAddressPool)

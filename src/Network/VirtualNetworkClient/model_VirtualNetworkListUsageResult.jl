@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualNetworkListUsageResult <: SwaggerModel
     value::Any # spec type: Union{ Nothing, Vector{VirtualNetworkUsage} } # spec name: value
     nextLink::Any # spec type: Union{ Nothing, String } # spec name: nextLink
@@ -20,7 +19,7 @@ end # type VirtualNetworkListUsageResult
 const _property_map_VirtualNetworkListUsageResult = Dict{Symbol,Symbol}(Symbol("value")=>Symbol("value"), Symbol("nextLink")=>Symbol("nextLink"))
 const _property_types_VirtualNetworkListUsageResult = Dict{Symbol,String}(Symbol("value")=>"Vector{VirtualNetworkUsage}", Symbol("nextLink")=>"String")
 Base.propertynames(::Type{ VirtualNetworkListUsageResult }) = collect(keys(_property_map_VirtualNetworkListUsageResult))
-Swagger.property_type(::Type{ VirtualNetworkListUsageResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualNetworkListUsageResult[name]))}
+Swagger.property_type(::Type{ VirtualNetworkListUsageResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualNetworkListUsageResult[name]))}
 Swagger.field_name(::Type{ VirtualNetworkListUsageResult }, property_name::Symbol) =  _property_map_VirtualNetworkListUsageResult[property_name]
 
 function check_required(o::VirtualNetworkListUsageResult)

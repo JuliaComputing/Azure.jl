@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct DeploymentExtendedFilter <: SwaggerModel
     provisioningState::Any # spec type: Union{ Nothing, String } # spec name: provisioningState
 
@@ -17,7 +16,7 @@ end # type DeploymentExtendedFilter
 const _property_map_DeploymentExtendedFilter = Dict{Symbol,Symbol}(Symbol("provisioningState")=>Symbol("provisioningState"))
 const _property_types_DeploymentExtendedFilter = Dict{Symbol,String}(Symbol("provisioningState")=>"String")
 Base.propertynames(::Type{ DeploymentExtendedFilter }) = collect(keys(_property_map_DeploymentExtendedFilter))
-Swagger.property_type(::Type{ DeploymentExtendedFilter }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_DeploymentExtendedFilter[name]))}
+Swagger.property_type(::Type{ DeploymentExtendedFilter }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DeploymentExtendedFilter[name]))}
 Swagger.field_name(::Type{ DeploymentExtendedFilter }, property_name::Symbol) =  _property_map_DeploymentExtendedFilter[property_name]
 
 function check_required(o::DeploymentExtendedFilter)

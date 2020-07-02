@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct FirewallRuleProperties <: SwaggerModel
     startIpAddress::Any # spec type: Union{ Nothing, String } # spec name: startIpAddress
     endIpAddress::Any # spec type: Union{ Nothing, String } # spec name: endIpAddress
@@ -20,12 +19,10 @@ end # type FirewallRuleProperties
 const _property_map_FirewallRuleProperties = Dict{Symbol,Symbol}(Symbol("startIpAddress")=>Symbol("startIpAddress"), Symbol("endIpAddress")=>Symbol("endIpAddress"))
 const _property_types_FirewallRuleProperties = Dict{Symbol,String}(Symbol("startIpAddress")=>"String", Symbol("endIpAddress")=>"String")
 Base.propertynames(::Type{ FirewallRuleProperties }) = collect(keys(_property_map_FirewallRuleProperties))
-Swagger.property_type(::Type{ FirewallRuleProperties }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_FirewallRuleProperties[name]))}
+Swagger.property_type(::Type{ FirewallRuleProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_FirewallRuleProperties[name]))}
 Swagger.field_name(::Type{ FirewallRuleProperties }, property_name::Symbol) =  _property_map_FirewallRuleProperties[property_name]
 
 function check_required(o::FirewallRuleProperties)
-    (getproperty(o, Symbol("startIpAddress")) === nothing) && (return false)
-    (getproperty(o, Symbol("endIpAddress")) === nothing) && (return false)
     true
 end
 

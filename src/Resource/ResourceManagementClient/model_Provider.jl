@@ -2,14 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct Provider <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
     namespace::Any # spec type: Union{ Nothing, String } # spec name: namespace
     registrationState::Any # spec type: Union{ Nothing, String } # spec name: registrationState
+    registrationPolicy::Any # spec type: Union{ Nothing, String } # spec name: registrationPolicy
     resourceTypes::Any # spec type: Union{ Nothing, Vector{ProviderResourceType} } # spec name: resourceTypes
 
-    function Provider(;id=nothing, namespace=nothing, registrationState=nothing, resourceTypes=nothing)
+    function Provider(;id=nothing, namespace=nothing, registrationState=nothing, registrationPolicy=nothing, resourceTypes=nothing)
         o = new()
         validate_property(Provider, Symbol("id"), id)
         setfield!(o, Symbol("id"), id)
@@ -17,16 +17,18 @@ mutable struct Provider <: SwaggerModel
         setfield!(o, Symbol("namespace"), namespace)
         validate_property(Provider, Symbol("registrationState"), registrationState)
         setfield!(o, Symbol("registrationState"), registrationState)
+        validate_property(Provider, Symbol("registrationPolicy"), registrationPolicy)
+        setfield!(o, Symbol("registrationPolicy"), registrationPolicy)
         validate_property(Provider, Symbol("resourceTypes"), resourceTypes)
         setfield!(o, Symbol("resourceTypes"), resourceTypes)
         o
     end
 end # type Provider
 
-const _property_map_Provider = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("namespace")=>Symbol("namespace"), Symbol("registrationState")=>Symbol("registrationState"), Symbol("resourceTypes")=>Symbol("resourceTypes"))
-const _property_types_Provider = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("namespace")=>"String", Symbol("registrationState")=>"String", Symbol("resourceTypes")=>"Vector{ProviderResourceType}")
+const _property_map_Provider = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("namespace")=>Symbol("namespace"), Symbol("registrationState")=>Symbol("registrationState"), Symbol("registrationPolicy")=>Symbol("registrationPolicy"), Symbol("resourceTypes")=>Symbol("resourceTypes"))
+const _property_types_Provider = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("namespace")=>"String", Symbol("registrationState")=>"String", Symbol("registrationPolicy")=>"String", Symbol("resourceTypes")=>"Vector{ProviderResourceType}")
 Base.propertynames(::Type{ Provider }) = collect(keys(_property_map_Provider))
-Swagger.property_type(::Type{ Provider }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_Provider[name]))}
+Swagger.property_type(::Type{ Provider }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Provider[name]))}
 Swagger.field_name(::Type{ Provider }, property_name::Symbol) =  _property_map_Provider[property_name]
 
 function check_required(o::Provider)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct TagCount <: SwaggerModel
     type::Any # spec type: Union{ Nothing, String } # spec name: type
     value::Any # spec type: Union{ Nothing, Int32 } # spec name: value
@@ -20,7 +19,7 @@ end # type TagCount
 const _property_map_TagCount = Dict{Symbol,Symbol}(Symbol("type")=>Symbol("type"), Symbol("value")=>Symbol("value"))
 const _property_types_TagCount = Dict{Symbol,String}(Symbol("type")=>"String", Symbol("value")=>"Int32")
 Base.propertynames(::Type{ TagCount }) = collect(keys(_property_map_TagCount))
-Swagger.property_type(::Type{ TagCount }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_TagCount[name]))}
+Swagger.property_type(::Type{ TagCount }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TagCount[name]))}
 Swagger.field_name(::Type{ TagCount }, property_name::Symbol) =  _property_map_TagCount[property_name]
 
 function check_required(o::TagCount)

@@ -2,46 +2,54 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct UpdateDataLakeStoreAccountProperties <: SwaggerModel
-    firewallState::Any # spec type: Union{ Nothing, String } # spec name: firewallState
-    trustedIdProviderState::Any # spec type: Union{ Nothing, String } # spec name: trustedIdProviderState
     defaultGroup::Any # spec type: Union{ Nothing, String } # spec name: defaultGroup
-    newTier::Any # spec type: Union{ Nothing, String } # spec name: newTier
-    firewallAllowAzureIps::Any # spec type: Union{ Nothing, String } # spec name: firewallAllowAzureIps
     encryptionConfig::Any # spec type: Union{ Nothing, UpdateEncryptionConfig } # spec name: encryptionConfig
+    firewallRules::Any # spec type: Union{ Nothing, Vector{UpdateFirewallRuleWithAccountParameters} } # spec name: firewallRules
+    virtualNetworkRules::Any # spec type: Union{ Nothing, Vector{UpdateVirtualNetworkRuleWithAccountParameters} } # spec name: virtualNetworkRules
+    firewallState::Any # spec type: Union{ Nothing, String } # spec name: firewallState
+    firewallAllowAzureIps::Any # spec type: Union{ Nothing, String } # spec name: firewallAllowAzureIps
+    trustedIdProviders::Any # spec type: Union{ Nothing, Vector{UpdateTrustedIdProviderWithAccountParameters} } # spec name: trustedIdProviders
+    trustedIdProviderState::Any # spec type: Union{ Nothing, String } # spec name: trustedIdProviderState
+    newTier::Any # spec type: Union{ Nothing, String } # spec name: newTier
 
-    function UpdateDataLakeStoreAccountProperties(;firewallState=nothing, trustedIdProviderState=nothing, defaultGroup=nothing, newTier=nothing, firewallAllowAzureIps=nothing, encryptionConfig=nothing)
+    function UpdateDataLakeStoreAccountProperties(;defaultGroup=nothing, encryptionConfig=nothing, firewallRules=nothing, virtualNetworkRules=nothing, firewallState=nothing, firewallAllowAzureIps=nothing, trustedIdProviders=nothing, trustedIdProviderState=nothing, newTier=nothing)
         o = new()
-        validate_property(UpdateDataLakeStoreAccountProperties, Symbol("firewallState"), firewallState)
-        setfield!(o, Symbol("firewallState"), firewallState)
-        validate_property(UpdateDataLakeStoreAccountProperties, Symbol("trustedIdProviderState"), trustedIdProviderState)
-        setfield!(o, Symbol("trustedIdProviderState"), trustedIdProviderState)
         validate_property(UpdateDataLakeStoreAccountProperties, Symbol("defaultGroup"), defaultGroup)
         setfield!(o, Symbol("defaultGroup"), defaultGroup)
-        validate_property(UpdateDataLakeStoreAccountProperties, Symbol("newTier"), newTier)
-        setfield!(o, Symbol("newTier"), newTier)
-        validate_property(UpdateDataLakeStoreAccountProperties, Symbol("firewallAllowAzureIps"), firewallAllowAzureIps)
-        setfield!(o, Symbol("firewallAllowAzureIps"), firewallAllowAzureIps)
         validate_property(UpdateDataLakeStoreAccountProperties, Symbol("encryptionConfig"), encryptionConfig)
         setfield!(o, Symbol("encryptionConfig"), encryptionConfig)
+        validate_property(UpdateDataLakeStoreAccountProperties, Symbol("firewallRules"), firewallRules)
+        setfield!(o, Symbol("firewallRules"), firewallRules)
+        validate_property(UpdateDataLakeStoreAccountProperties, Symbol("virtualNetworkRules"), virtualNetworkRules)
+        setfield!(o, Symbol("virtualNetworkRules"), virtualNetworkRules)
+        validate_property(UpdateDataLakeStoreAccountProperties, Symbol("firewallState"), firewallState)
+        setfield!(o, Symbol("firewallState"), firewallState)
+        validate_property(UpdateDataLakeStoreAccountProperties, Symbol("firewallAllowAzureIps"), firewallAllowAzureIps)
+        setfield!(o, Symbol("firewallAllowAzureIps"), firewallAllowAzureIps)
+        validate_property(UpdateDataLakeStoreAccountProperties, Symbol("trustedIdProviders"), trustedIdProviders)
+        setfield!(o, Symbol("trustedIdProviders"), trustedIdProviders)
+        validate_property(UpdateDataLakeStoreAccountProperties, Symbol("trustedIdProviderState"), trustedIdProviderState)
+        setfield!(o, Symbol("trustedIdProviderState"), trustedIdProviderState)
+        validate_property(UpdateDataLakeStoreAccountProperties, Symbol("newTier"), newTier)
+        setfield!(o, Symbol("newTier"), newTier)
         o
     end
 end # type UpdateDataLakeStoreAccountProperties
 
-const _property_map_UpdateDataLakeStoreAccountProperties = Dict{Symbol,Symbol}(Symbol("firewallState")=>Symbol("firewallState"), Symbol("trustedIdProviderState")=>Symbol("trustedIdProviderState"), Symbol("defaultGroup")=>Symbol("defaultGroup"), Symbol("newTier")=>Symbol("newTier"), Symbol("firewallAllowAzureIps")=>Symbol("firewallAllowAzureIps"), Symbol("encryptionConfig")=>Symbol("encryptionConfig"))
-const _property_types_UpdateDataLakeStoreAccountProperties = Dict{Symbol,String}(Symbol("firewallState")=>"String", Symbol("trustedIdProviderState")=>"String", Symbol("defaultGroup")=>"String", Symbol("newTier")=>"String", Symbol("firewallAllowAzureIps")=>"String", Symbol("encryptionConfig")=>"UpdateEncryptionConfig")
+const _property_map_UpdateDataLakeStoreAccountProperties = Dict{Symbol,Symbol}(Symbol("defaultGroup")=>Symbol("defaultGroup"), Symbol("encryptionConfig")=>Symbol("encryptionConfig"), Symbol("firewallRules")=>Symbol("firewallRules"), Symbol("virtualNetworkRules")=>Symbol("virtualNetworkRules"), Symbol("firewallState")=>Symbol("firewallState"), Symbol("firewallAllowAzureIps")=>Symbol("firewallAllowAzureIps"), Symbol("trustedIdProviders")=>Symbol("trustedIdProviders"), Symbol("trustedIdProviderState")=>Symbol("trustedIdProviderState"), Symbol("newTier")=>Symbol("newTier"))
+const _property_types_UpdateDataLakeStoreAccountProperties = Dict{Symbol,String}(Symbol("defaultGroup")=>"String", Symbol("encryptionConfig")=>"UpdateEncryptionConfig", Symbol("firewallRules")=>"Vector{UpdateFirewallRuleWithAccountParameters}", Symbol("virtualNetworkRules")=>"Vector{UpdateVirtualNetworkRuleWithAccountParameters}", Symbol("firewallState")=>"String", Symbol("firewallAllowAzureIps")=>"String", Symbol("trustedIdProviders")=>"Vector{UpdateTrustedIdProviderWithAccountParameters}", Symbol("trustedIdProviderState")=>"String", Symbol("newTier")=>"String")
 Base.propertynames(::Type{ UpdateDataLakeStoreAccountProperties }) = collect(keys(_property_map_UpdateDataLakeStoreAccountProperties))
-Swagger.property_type(::Type{ UpdateDataLakeStoreAccountProperties }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_UpdateDataLakeStoreAccountProperties[name]))}
+Swagger.property_type(::Type{ UpdateDataLakeStoreAccountProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_UpdateDataLakeStoreAccountProperties[name]))}
 Swagger.field_name(::Type{ UpdateDataLakeStoreAccountProperties }, property_name::Symbol) =  _property_map_UpdateDataLakeStoreAccountProperties[property_name]
 
 const _allowed_UpdateDataLakeStoreAccountProperties_firewallState = ["Enabled", "Disabled"]
 
+const _allowed_UpdateDataLakeStoreAccountProperties_firewallAllowAzureIps = ["Enabled", "Disabled"]
+
 const _allowed_UpdateDataLakeStoreAccountProperties_trustedIdProviderState = ["Enabled", "Disabled"]
 
 const _allowed_UpdateDataLakeStoreAccountProperties_newTier = ["Consumption", "Commitment_1TB", "Commitment_10TB", "Commitment_100TB", "Commitment_500TB", "Commitment_1PB", "Commitment_5PB"]
-
-const _allowed_UpdateDataLakeStoreAccountProperties_firewallAllowAzureIps = ["Enabled", "Disabled"]
 
 function check_required(o::UpdateDataLakeStoreAccountProperties)
     true
@@ -51,13 +59,13 @@ function validate_property(::Type{ UpdateDataLakeStoreAccountProperties }, name:
     if name === Symbol("firewallState")
         Swagger.validate_param(name, "UpdateDataLakeStoreAccountProperties", :enum, val, _allowed_UpdateDataLakeStoreAccountProperties_firewallState)
     end
+    if name === Symbol("firewallAllowAzureIps")
+        Swagger.validate_param(name, "UpdateDataLakeStoreAccountProperties", :enum, val, _allowed_UpdateDataLakeStoreAccountProperties_firewallAllowAzureIps)
+    end
     if name === Symbol("trustedIdProviderState")
         Swagger.validate_param(name, "UpdateDataLakeStoreAccountProperties", :enum, val, _allowed_UpdateDataLakeStoreAccountProperties_trustedIdProviderState)
     end
     if name === Symbol("newTier")
         Swagger.validate_param(name, "UpdateDataLakeStoreAccountProperties", :enum, val, _allowed_UpdateDataLakeStoreAccountProperties_newTier)
-    end
-    if name === Symbol("firewallAllowAzureIps")
-        Swagger.validate_param(name, "UpdateDataLakeStoreAccountProperties", :enum, val, _allowed_UpdateDataLakeStoreAccountProperties_firewallAllowAzureIps)
     end
 end

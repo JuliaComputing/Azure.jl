@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ExpressRouteCircuitAuthorization <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
 
@@ -17,7 +16,7 @@ end # type ExpressRouteCircuitAuthorization
 const _property_map_ExpressRouteCircuitAuthorization = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"))
 const _property_types_ExpressRouteCircuitAuthorization = Dict{Symbol,String}(Symbol("id")=>"String")
 Base.propertynames(::Type{ ExpressRouteCircuitAuthorization }) = collect(keys(_property_map_ExpressRouteCircuitAuthorization))
-Swagger.property_type(::Type{ ExpressRouteCircuitAuthorization }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ExpressRouteCircuitAuthorization[name]))}
+Swagger.property_type(::Type{ ExpressRouteCircuitAuthorization }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExpressRouteCircuitAuthorization[name]))}
 Swagger.field_name(::Type{ ExpressRouteCircuitAuthorization }, property_name::Symbol) =  _property_map_ExpressRouteCircuitAuthorization[property_name]
 
 function check_required(o::ExpressRouteCircuitAuthorization)

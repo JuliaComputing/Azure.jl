@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ContainerServiceSshPublicKey <: SwaggerModel
     keyData::Any # spec type: Union{ Nothing, String } # spec name: keyData
 
@@ -17,7 +16,7 @@ end # type ContainerServiceSshPublicKey
 const _property_map_ContainerServiceSshPublicKey = Dict{Symbol,Symbol}(Symbol("keyData")=>Symbol("keyData"))
 const _property_types_ContainerServiceSshPublicKey = Dict{Symbol,String}(Symbol("keyData")=>"String")
 Base.propertynames(::Type{ ContainerServiceSshPublicKey }) = collect(keys(_property_map_ContainerServiceSshPublicKey))
-Swagger.property_type(::Type{ ContainerServiceSshPublicKey }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ContainerServiceSshPublicKey[name]))}
+Swagger.property_type(::Type{ ContainerServiceSshPublicKey }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ContainerServiceSshPublicKey[name]))}
 Swagger.field_name(::Type{ ContainerServiceSshPublicKey }, property_name::Symbol) =  _property_map_ContainerServiceSshPublicKey[property_name]
 
 function check_required(o::ContainerServiceSshPublicKey)

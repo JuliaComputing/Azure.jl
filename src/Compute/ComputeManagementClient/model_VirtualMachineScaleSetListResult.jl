@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualMachineScaleSetListResult <: SwaggerModel
     value::Any # spec type: Union{ Nothing, Vector{VirtualMachineScaleSet} } # spec name: value
     nextLink::Any # spec type: Union{ Nothing, String } # spec name: nextLink
@@ -20,7 +19,7 @@ end # type VirtualMachineScaleSetListResult
 const _property_map_VirtualMachineScaleSetListResult = Dict{Symbol,Symbol}(Symbol("value")=>Symbol("value"), Symbol("nextLink")=>Symbol("nextLink"))
 const _property_types_VirtualMachineScaleSetListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{VirtualMachineScaleSet}", Symbol("nextLink")=>"String")
 Base.propertynames(::Type{ VirtualMachineScaleSetListResult }) = collect(keys(_property_map_VirtualMachineScaleSetListResult))
-Swagger.property_type(::Type{ VirtualMachineScaleSetListResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualMachineScaleSetListResult[name]))}
+Swagger.property_type(::Type{ VirtualMachineScaleSetListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetListResult[name]))}
 Swagger.field_name(::Type{ VirtualMachineScaleSetListResult }, property_name::Symbol) =  _property_map_VirtualMachineScaleSetListResult[property_name]
 
 function check_required(o::VirtualMachineScaleSetListResult)

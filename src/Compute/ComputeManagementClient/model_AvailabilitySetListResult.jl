@@ -2,25 +2,28 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct AvailabilitySetListResult <: SwaggerModel
     value::Any # spec type: Union{ Nothing, Vector{AvailabilitySet} } # spec name: value
+    nextLink::Any # spec type: Union{ Nothing, String } # spec name: nextLink
 
-    function AvailabilitySetListResult(;value=nothing)
+    function AvailabilitySetListResult(;value=nothing, nextLink=nothing)
         o = new()
         validate_property(AvailabilitySetListResult, Symbol("value"), value)
         setfield!(o, Symbol("value"), value)
+        validate_property(AvailabilitySetListResult, Symbol("nextLink"), nextLink)
+        setfield!(o, Symbol("nextLink"), nextLink)
         o
     end
 end # type AvailabilitySetListResult
 
-const _property_map_AvailabilitySetListResult = Dict{Symbol,Symbol}(Symbol("value")=>Symbol("value"))
-const _property_types_AvailabilitySetListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{AvailabilitySet}")
+const _property_map_AvailabilitySetListResult = Dict{Symbol,Symbol}(Symbol("value")=>Symbol("value"), Symbol("nextLink")=>Symbol("nextLink"))
+const _property_types_AvailabilitySetListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{AvailabilitySet}", Symbol("nextLink")=>"String")
 Base.propertynames(::Type{ AvailabilitySetListResult }) = collect(keys(_property_map_AvailabilitySetListResult))
-Swagger.property_type(::Type{ AvailabilitySetListResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_AvailabilitySetListResult[name]))}
+Swagger.property_type(::Type{ AvailabilitySetListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AvailabilitySetListResult[name]))}
 Swagger.field_name(::Type{ AvailabilitySetListResult }, property_name::Symbol) =  _property_map_AvailabilitySetListResult[property_name]
 
 function check_required(o::AvailabilitySetListResult)
+    (getproperty(o, Symbol("value")) === nothing) && (return false)
     true
 end
 

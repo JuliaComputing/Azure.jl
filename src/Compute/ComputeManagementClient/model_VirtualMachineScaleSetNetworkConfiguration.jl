@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualMachineScaleSetNetworkConfiguration <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
     name::Any # spec type: Union{ Nothing, String } # spec name: name
@@ -23,7 +22,7 @@ end # type VirtualMachineScaleSetNetworkConfiguration
 const _property_map_VirtualMachineScaleSetNetworkConfiguration = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("name")=>Symbol("name"), Symbol("properties")=>Symbol("properties"))
 const _property_types_VirtualMachineScaleSetNetworkConfiguration = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("properties")=>"VirtualMachineScaleSetNetworkConfigurationProperties")
 Base.propertynames(::Type{ VirtualMachineScaleSetNetworkConfiguration }) = collect(keys(_property_map_VirtualMachineScaleSetNetworkConfiguration))
-Swagger.property_type(::Type{ VirtualMachineScaleSetNetworkConfiguration }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualMachineScaleSetNetworkConfiguration[name]))}
+Swagger.property_type(::Type{ VirtualMachineScaleSetNetworkConfiguration }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetNetworkConfiguration[name]))}
 Swagger.field_name(::Type{ VirtualMachineScaleSetNetworkConfiguration }, property_name::Symbol) =  _property_map_VirtualMachineScaleSetNetworkConfiguration[property_name]
 
 function check_required(o::VirtualMachineScaleSetNetworkConfiguration)

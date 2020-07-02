@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct EffectiveNetworkSecurityGroupListResult <: SwaggerModel
     value::Any # spec type: Union{ Nothing, Vector{EffectiveNetworkSecurityGroup} } # spec name: value
     nextLink::Any # spec type: Union{ Nothing, String } # spec name: nextLink
@@ -20,7 +19,7 @@ end # type EffectiveNetworkSecurityGroupListResult
 const _property_map_EffectiveNetworkSecurityGroupListResult = Dict{Symbol,Symbol}(Symbol("value")=>Symbol("value"), Symbol("nextLink")=>Symbol("nextLink"))
 const _property_types_EffectiveNetworkSecurityGroupListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{EffectiveNetworkSecurityGroup}", Symbol("nextLink")=>"String")
 Base.propertynames(::Type{ EffectiveNetworkSecurityGroupListResult }) = collect(keys(_property_map_EffectiveNetworkSecurityGroupListResult))
-Swagger.property_type(::Type{ EffectiveNetworkSecurityGroupListResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_EffectiveNetworkSecurityGroupListResult[name]))}
+Swagger.property_type(::Type{ EffectiveNetworkSecurityGroupListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_EffectiveNetworkSecurityGroupListResult[name]))}
 Swagger.field_name(::Type{ EffectiveNetworkSecurityGroupListResult }, property_name::Symbol) =  _property_map_EffectiveNetworkSecurityGroupListResult[property_name]
 
 function check_required(o::EffectiveNetworkSecurityGroupListResult)

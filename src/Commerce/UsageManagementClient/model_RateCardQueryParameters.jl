@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct RateCardQueryParameters <: SwaggerModel
     OfferDurableId::Any # spec type: Union{ Nothing, String } # spec name: OfferDurableId
     Currency::Any # spec type: Union{ Nothing, String } # spec name: Currency
@@ -26,7 +25,7 @@ end # type RateCardQueryParameters
 const _property_map_RateCardQueryParameters = Dict{Symbol,Symbol}(Symbol("OfferDurableId")=>Symbol("OfferDurableId"), Symbol("Currency")=>Symbol("Currency"), Symbol("Locale")=>Symbol("Locale"), Symbol("RegionInfo")=>Symbol("RegionInfo"))
 const _property_types_RateCardQueryParameters = Dict{Symbol,String}(Symbol("OfferDurableId")=>"String", Symbol("Currency")=>"String", Symbol("Locale")=>"String", Symbol("RegionInfo")=>"String")
 Base.propertynames(::Type{ RateCardQueryParameters }) = collect(keys(_property_map_RateCardQueryParameters))
-Swagger.property_type(::Type{ RateCardQueryParameters }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_RateCardQueryParameters[name]))}
+Swagger.property_type(::Type{ RateCardQueryParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RateCardQueryParameters[name]))}
 Swagger.field_name(::Type{ RateCardQueryParameters }, property_name::Symbol) =  _property_map_RateCardQueryParameters[property_name]
 
 function check_required(o::RateCardQueryParameters)

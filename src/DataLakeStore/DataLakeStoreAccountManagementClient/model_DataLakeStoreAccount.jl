@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct DataLakeStoreAccount <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
     name::Any # spec type: Union{ Nothing, String } # spec name: name
@@ -29,11 +28,10 @@ end # type DataLakeStoreAccount
 const _property_map_DataLakeStoreAccount = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("name")=>Symbol("name"), Symbol("type")=>Symbol("type"), Symbol("location")=>Symbol("location"), Symbol("tags")=>Symbol("tags"))
 const _property_types_DataLakeStoreAccount = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}")
 Base.propertynames(::Type{ DataLakeStoreAccount }) = collect(keys(_property_map_DataLakeStoreAccount))
-Swagger.property_type(::Type{ DataLakeStoreAccount }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_DataLakeStoreAccount[name]))}
+Swagger.property_type(::Type{ DataLakeStoreAccount }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DataLakeStoreAccount[name]))}
 Swagger.field_name(::Type{ DataLakeStoreAccount }, property_name::Symbol) =  _property_map_DataLakeStoreAccount[property_name]
 
 function check_required(o::DataLakeStoreAccount)
-    (getproperty(o, Symbol("location")) === nothing) && (return false)
     true
 end
 

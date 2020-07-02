@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct RollingUpgradePolicy <: SwaggerModel
     maxBatchInstancePercent::Any # spec type: Union{ Nothing, Int32 } # spec name: maxBatchInstancePercent
     maxUnhealthyInstancePercent::Any # spec type: Union{ Nothing, Int32 } # spec name: maxUnhealthyInstancePercent
@@ -26,7 +25,7 @@ end # type RollingUpgradePolicy
 const _property_map_RollingUpgradePolicy = Dict{Symbol,Symbol}(Symbol("maxBatchInstancePercent")=>Symbol("maxBatchInstancePercent"), Symbol("maxUnhealthyInstancePercent")=>Symbol("maxUnhealthyInstancePercent"), Symbol("maxUnhealthyUpgradedInstancePercent")=>Symbol("maxUnhealthyUpgradedInstancePercent"), Symbol("pauseTimeBetweenBatches")=>Symbol("pauseTimeBetweenBatches"))
 const _property_types_RollingUpgradePolicy = Dict{Symbol,String}(Symbol("maxBatchInstancePercent")=>"Int32", Symbol("maxUnhealthyInstancePercent")=>"Int32", Symbol("maxUnhealthyUpgradedInstancePercent")=>"Int32", Symbol("pauseTimeBetweenBatches")=>"String")
 Base.propertynames(::Type{ RollingUpgradePolicy }) = collect(keys(_property_map_RollingUpgradePolicy))
-Swagger.property_type(::Type{ RollingUpgradePolicy }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_RollingUpgradePolicy[name]))}
+Swagger.property_type(::Type{ RollingUpgradePolicy }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RollingUpgradePolicy[name]))}
 Swagger.field_name(::Type{ RollingUpgradePolicy }, property_name::Symbol) =  _property_map_RollingUpgradePolicy[property_name]
 
 function check_required(o::RollingUpgradePolicy)

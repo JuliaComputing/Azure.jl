@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct Operation <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     display::Any # spec type: Union{ Nothing, OperationDisplay } # spec name: display
@@ -23,7 +22,7 @@ end # type Operation
 const _property_map_Operation = Dict{Symbol,Symbol}(Symbol("name")=>Symbol("name"), Symbol("display")=>Symbol("display"), Symbol("origin")=>Symbol("origin"))
 const _property_types_Operation = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("display")=>"OperationDisplay", Symbol("origin")=>"String")
 Base.propertynames(::Type{ Operation }) = collect(keys(_property_map_Operation))
-Swagger.property_type(::Type{ Operation }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_Operation[name]))}
+Swagger.property_type(::Type{ Operation }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Operation[name]))}
 Swagger.field_name(::Type{ Operation }, property_name::Symbol) =  _property_map_Operation[property_name]
 
 const _allowed_Operation_origin = ["user", "system", "user,system"]

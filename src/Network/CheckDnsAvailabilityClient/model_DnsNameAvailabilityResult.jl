@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct DnsNameAvailabilityResult <: SwaggerModel
     available::Any # spec type: Union{ Nothing, Bool } # spec name: available
 
@@ -17,7 +16,7 @@ end # type DnsNameAvailabilityResult
 const _property_map_DnsNameAvailabilityResult = Dict{Symbol,Symbol}(Symbol("available")=>Symbol("available"))
 const _property_types_DnsNameAvailabilityResult = Dict{Symbol,String}(Symbol("available")=>"Bool")
 Base.propertynames(::Type{ DnsNameAvailabilityResult }) = collect(keys(_property_map_DnsNameAvailabilityResult))
-Swagger.property_type(::Type{ DnsNameAvailabilityResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_DnsNameAvailabilityResult[name]))}
+Swagger.property_type(::Type{ DnsNameAvailabilityResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DnsNameAvailabilityResult[name]))}
 Swagger.field_name(::Type{ DnsNameAvailabilityResult }, property_name::Symbol) =  _property_map_DnsNameAvailabilityResult[property_name]
 
 function check_required(o::DnsNameAvailabilityResult)

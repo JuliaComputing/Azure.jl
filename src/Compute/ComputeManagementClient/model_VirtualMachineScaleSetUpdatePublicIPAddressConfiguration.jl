@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualMachineScaleSetUpdatePublicIPAddressConfiguration <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     properties::Any # spec type: Union{ Nothing, VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties } # spec name: properties
@@ -20,7 +19,7 @@ end # type VirtualMachineScaleSetUpdatePublicIPAddressConfiguration
 const _property_map_VirtualMachineScaleSetUpdatePublicIPAddressConfiguration = Dict{Symbol,Symbol}(Symbol("name")=>Symbol("name"), Symbol("properties")=>Symbol("properties"))
 const _property_types_VirtualMachineScaleSetUpdatePublicIPAddressConfiguration = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("properties")=>"VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties")
 Base.propertynames(::Type{ VirtualMachineScaleSetUpdatePublicIPAddressConfiguration }) = collect(keys(_property_map_VirtualMachineScaleSetUpdatePublicIPAddressConfiguration))
-Swagger.property_type(::Type{ VirtualMachineScaleSetUpdatePublicIPAddressConfiguration }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualMachineScaleSetUpdatePublicIPAddressConfiguration[name]))}
+Swagger.property_type(::Type{ VirtualMachineScaleSetUpdatePublicIPAddressConfiguration }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetUpdatePublicIPAddressConfiguration[name]))}
 Swagger.field_name(::Type{ VirtualMachineScaleSetUpdatePublicIPAddressConfiguration }, property_name::Symbol) =  _property_map_VirtualMachineScaleSetUpdatePublicIPAddressConfiguration[property_name]
 
 function check_required(o::VirtualMachineScaleSetUpdatePublicIPAddressConfiguration)

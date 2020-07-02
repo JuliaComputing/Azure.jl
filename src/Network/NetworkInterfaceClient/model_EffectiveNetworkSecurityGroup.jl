@@ -2,13 +2,13 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct EffectiveNetworkSecurityGroup <: SwaggerModel
     networkSecurityGroup::Any # spec type: Union{ Nothing, SubResource } # spec name: networkSecurityGroup
     association::Any # spec type: Union{ Nothing, EffectiveNetworkSecurityGroupAssociation } # spec name: association
     effectiveSecurityRules::Any # spec type: Union{ Nothing, Vector{EffectiveNetworkSecurityRule} } # spec name: effectiveSecurityRules
+    tagMap::Any # spec type: Union{ Nothing, String } # spec name: tagMap
 
-    function EffectiveNetworkSecurityGroup(;networkSecurityGroup=nothing, association=nothing, effectiveSecurityRules=nothing)
+    function EffectiveNetworkSecurityGroup(;networkSecurityGroup=nothing, association=nothing, effectiveSecurityRules=nothing, tagMap=nothing)
         o = new()
         validate_property(EffectiveNetworkSecurityGroup, Symbol("networkSecurityGroup"), networkSecurityGroup)
         setfield!(o, Symbol("networkSecurityGroup"), networkSecurityGroup)
@@ -16,14 +16,16 @@ mutable struct EffectiveNetworkSecurityGroup <: SwaggerModel
         setfield!(o, Symbol("association"), association)
         validate_property(EffectiveNetworkSecurityGroup, Symbol("effectiveSecurityRules"), effectiveSecurityRules)
         setfield!(o, Symbol("effectiveSecurityRules"), effectiveSecurityRules)
+        validate_property(EffectiveNetworkSecurityGroup, Symbol("tagMap"), tagMap)
+        setfield!(o, Symbol("tagMap"), tagMap)
         o
     end
 end # type EffectiveNetworkSecurityGroup
 
-const _property_map_EffectiveNetworkSecurityGroup = Dict{Symbol,Symbol}(Symbol("networkSecurityGroup")=>Symbol("networkSecurityGroup"), Symbol("association")=>Symbol("association"), Symbol("effectiveSecurityRules")=>Symbol("effectiveSecurityRules"))
-const _property_types_EffectiveNetworkSecurityGroup = Dict{Symbol,String}(Symbol("networkSecurityGroup")=>"SubResource", Symbol("association")=>"EffectiveNetworkSecurityGroupAssociation", Symbol("effectiveSecurityRules")=>"Vector{EffectiveNetworkSecurityRule}")
+const _property_map_EffectiveNetworkSecurityGroup = Dict{Symbol,Symbol}(Symbol("networkSecurityGroup")=>Symbol("networkSecurityGroup"), Symbol("association")=>Symbol("association"), Symbol("effectiveSecurityRules")=>Symbol("effectiveSecurityRules"), Symbol("tagMap")=>Symbol("tagMap"))
+const _property_types_EffectiveNetworkSecurityGroup = Dict{Symbol,String}(Symbol("networkSecurityGroup")=>"SubResource", Symbol("association")=>"EffectiveNetworkSecurityGroupAssociation", Symbol("effectiveSecurityRules")=>"Vector{EffectiveNetworkSecurityRule}", Symbol("tagMap")=>"String")
 Base.propertynames(::Type{ EffectiveNetworkSecurityGroup }) = collect(keys(_property_map_EffectiveNetworkSecurityGroup))
-Swagger.property_type(::Type{ EffectiveNetworkSecurityGroup }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_EffectiveNetworkSecurityGroup[name]))}
+Swagger.property_type(::Type{ EffectiveNetworkSecurityGroup }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_EffectiveNetworkSecurityGroup[name]))}
 Swagger.field_name(::Type{ EffectiveNetworkSecurityGroup }, property_name::Symbol) =  _property_map_EffectiveNetworkSecurityGroup[property_name]
 
 function check_required(o::EffectiveNetworkSecurityGroup)

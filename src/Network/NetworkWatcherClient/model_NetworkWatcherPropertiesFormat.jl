@@ -2,9 +2,8 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct NetworkWatcherPropertiesFormat <: SwaggerModel
-    provisioningState::Any # spec type: Union{ Nothing, String } # spec name: provisioningState
+    provisioningState::Any # spec type: Union{ Nothing, ProvisioningState } # spec name: provisioningState
 
     function NetworkWatcherPropertiesFormat(;provisioningState=nothing)
         o = new()
@@ -15,19 +14,14 @@ mutable struct NetworkWatcherPropertiesFormat <: SwaggerModel
 end # type NetworkWatcherPropertiesFormat
 
 const _property_map_NetworkWatcherPropertiesFormat = Dict{Symbol,Symbol}(Symbol("provisioningState")=>Symbol("provisioningState"))
-const _property_types_NetworkWatcherPropertiesFormat = Dict{Symbol,String}(Symbol("provisioningState")=>"String")
+const _property_types_NetworkWatcherPropertiesFormat = Dict{Symbol,String}(Symbol("provisioningState")=>"ProvisioningState")
 Base.propertynames(::Type{ NetworkWatcherPropertiesFormat }) = collect(keys(_property_map_NetworkWatcherPropertiesFormat))
-Swagger.property_type(::Type{ NetworkWatcherPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_NetworkWatcherPropertiesFormat[name]))}
+Swagger.property_type(::Type{ NetworkWatcherPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkWatcherPropertiesFormat[name]))}
 Swagger.field_name(::Type{ NetworkWatcherPropertiesFormat }, property_name::Symbol) =  _property_map_NetworkWatcherPropertiesFormat[property_name]
-
-const _allowed_NetworkWatcherPropertiesFormat_provisioningState = ["Succeeded", "Updating", "Deleting", "Failed"]
 
 function check_required(o::NetworkWatcherPropertiesFormat)
     true
 end
 
 function validate_property(::Type{ NetworkWatcherPropertiesFormat }, name::Symbol, val)
-    if name === Symbol("provisioningState")
-        Swagger.validate_param(name, "NetworkWatcherPropertiesFormat", :enum, val, _allowed_NetworkWatcherPropertiesFormat_provisioningState)
-    end
 end

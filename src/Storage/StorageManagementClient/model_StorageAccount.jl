@@ -2,15 +2,12 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct StorageAccount <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     type::Any # spec type: Union{ Nothing, String } # spec name: type
-    location::Any # spec type: Union{ Nothing, String } # spec name: location
-    tags::Any # spec type: Union{ Nothing, Dict{String, String} } # spec name: tags
 
-    function StorageAccount(;id=nothing, name=nothing, type=nothing, location=nothing, tags=nothing)
+    function StorageAccount(;id=nothing, name=nothing, type=nothing)
         o = new()
         validate_property(StorageAccount, Symbol("id"), id)
         setfield!(o, Symbol("id"), id)
@@ -18,18 +15,14 @@ mutable struct StorageAccount <: SwaggerModel
         setfield!(o, Symbol("name"), name)
         validate_property(StorageAccount, Symbol("type"), type)
         setfield!(o, Symbol("type"), type)
-        validate_property(StorageAccount, Symbol("location"), location)
-        setfield!(o, Symbol("location"), location)
-        validate_property(StorageAccount, Symbol("tags"), tags)
-        setfield!(o, Symbol("tags"), tags)
         o
     end
 end # type StorageAccount
 
-const _property_map_StorageAccount = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("name")=>Symbol("name"), Symbol("type")=>Symbol("type"), Symbol("location")=>Symbol("location"), Symbol("tags")=>Symbol("tags"))
-const _property_types_StorageAccount = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}")
+const _property_map_StorageAccount = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("name")=>Symbol("name"), Symbol("type")=>Symbol("type"))
+const _property_types_StorageAccount = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String")
 Base.propertynames(::Type{ StorageAccount }) = collect(keys(_property_map_StorageAccount))
-Swagger.property_type(::Type{ StorageAccount }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_StorageAccount[name]))}
+Swagger.property_type(::Type{ StorageAccount }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_StorageAccount[name]))}
 Swagger.field_name(::Type{ StorageAccount }, property_name::Symbol) =  _property_map_StorageAccount[property_name]
 
 function check_required(o::StorageAccount)

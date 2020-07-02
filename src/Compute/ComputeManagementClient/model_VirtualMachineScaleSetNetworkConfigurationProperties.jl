@@ -2,15 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualMachineScaleSetNetworkConfigurationProperties <: SwaggerModel
     primary::Any # spec type: Union{ Nothing, Bool } # spec name: primary
     enableAcceleratedNetworking::Any # spec type: Union{ Nothing, Bool } # spec name: enableAcceleratedNetworking
     networkSecurityGroup::Any # spec type: Union{ Nothing, SubResource } # spec name: networkSecurityGroup
     dnsSettings::Any # spec type: Union{ Nothing, VirtualMachineScaleSetNetworkConfigurationDnsSettings } # spec name: dnsSettings
     ipConfigurations::Any # spec type: Union{ Nothing, Vector{VirtualMachineScaleSetIPConfiguration} } # spec name: ipConfigurations
+    enableIPForwarding::Any # spec type: Union{ Nothing, Bool } # spec name: enableIPForwarding
 
-    function VirtualMachineScaleSetNetworkConfigurationProperties(;primary=nothing, enableAcceleratedNetworking=nothing, networkSecurityGroup=nothing, dnsSettings=nothing, ipConfigurations=nothing)
+    function VirtualMachineScaleSetNetworkConfigurationProperties(;primary=nothing, enableAcceleratedNetworking=nothing, networkSecurityGroup=nothing, dnsSettings=nothing, ipConfigurations=nothing, enableIPForwarding=nothing)
         o = new()
         validate_property(VirtualMachineScaleSetNetworkConfigurationProperties, Symbol("primary"), primary)
         setfield!(o, Symbol("primary"), primary)
@@ -22,14 +22,16 @@ mutable struct VirtualMachineScaleSetNetworkConfigurationProperties <: SwaggerMo
         setfield!(o, Symbol("dnsSettings"), dnsSettings)
         validate_property(VirtualMachineScaleSetNetworkConfigurationProperties, Symbol("ipConfigurations"), ipConfigurations)
         setfield!(o, Symbol("ipConfigurations"), ipConfigurations)
+        validate_property(VirtualMachineScaleSetNetworkConfigurationProperties, Symbol("enableIPForwarding"), enableIPForwarding)
+        setfield!(o, Symbol("enableIPForwarding"), enableIPForwarding)
         o
     end
 end # type VirtualMachineScaleSetNetworkConfigurationProperties
 
-const _property_map_VirtualMachineScaleSetNetworkConfigurationProperties = Dict{Symbol,Symbol}(Symbol("primary")=>Symbol("primary"), Symbol("enableAcceleratedNetworking")=>Symbol("enableAcceleratedNetworking"), Symbol("networkSecurityGroup")=>Symbol("networkSecurityGroup"), Symbol("dnsSettings")=>Symbol("dnsSettings"), Symbol("ipConfigurations")=>Symbol("ipConfigurations"))
-const _property_types_VirtualMachineScaleSetNetworkConfigurationProperties = Dict{Symbol,String}(Symbol("primary")=>"Bool", Symbol("enableAcceleratedNetworking")=>"Bool", Symbol("networkSecurityGroup")=>"SubResource", Symbol("dnsSettings")=>"VirtualMachineScaleSetNetworkConfigurationDnsSettings", Symbol("ipConfigurations")=>"Vector{VirtualMachineScaleSetIPConfiguration}")
+const _property_map_VirtualMachineScaleSetNetworkConfigurationProperties = Dict{Symbol,Symbol}(Symbol("primary")=>Symbol("primary"), Symbol("enableAcceleratedNetworking")=>Symbol("enableAcceleratedNetworking"), Symbol("networkSecurityGroup")=>Symbol("networkSecurityGroup"), Symbol("dnsSettings")=>Symbol("dnsSettings"), Symbol("ipConfigurations")=>Symbol("ipConfigurations"), Symbol("enableIPForwarding")=>Symbol("enableIPForwarding"))
+const _property_types_VirtualMachineScaleSetNetworkConfigurationProperties = Dict{Symbol,String}(Symbol("primary")=>"Bool", Symbol("enableAcceleratedNetworking")=>"Bool", Symbol("networkSecurityGroup")=>"SubResource", Symbol("dnsSettings")=>"VirtualMachineScaleSetNetworkConfigurationDnsSettings", Symbol("ipConfigurations")=>"Vector{VirtualMachineScaleSetIPConfiguration}", Symbol("enableIPForwarding")=>"Bool")
 Base.propertynames(::Type{ VirtualMachineScaleSetNetworkConfigurationProperties }) = collect(keys(_property_map_VirtualMachineScaleSetNetworkConfigurationProperties))
-Swagger.property_type(::Type{ VirtualMachineScaleSetNetworkConfigurationProperties }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualMachineScaleSetNetworkConfigurationProperties[name]))}
+Swagger.property_type(::Type{ VirtualMachineScaleSetNetworkConfigurationProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetNetworkConfigurationProperties[name]))}
 Swagger.field_name(::Type{ VirtualMachineScaleSetNetworkConfigurationProperties }, property_name::Symbol) =  _property_map_VirtualMachineScaleSetNetworkConfigurationProperties[property_name]
 
 function check_required(o::VirtualMachineScaleSetNetworkConfigurationProperties)

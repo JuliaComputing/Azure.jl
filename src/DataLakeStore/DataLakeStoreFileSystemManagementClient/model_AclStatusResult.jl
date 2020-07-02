@@ -2,22 +2,21 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct AclStatusResult <: SwaggerModel
-    AclStatus::Any # spec type: Union{ Nothing, AclStatus } # spec name: AclStatus
+    aclStatus::Any # spec type: Union{ Nothing, AclStatus } # spec name: aclStatus
 
-    function AclStatusResult(;AclStatus=nothing)
+    function AclStatusResult(;aclStatus=nothing)
         o = new()
-        validate_property(AclStatusResult, Symbol("AclStatus"), AclStatus)
-        setfield!(o, Symbol("AclStatus"), AclStatus)
+        validate_property(AclStatusResult, Symbol("aclStatus"), aclStatus)
+        setfield!(o, Symbol("aclStatus"), aclStatus)
         o
     end
 end # type AclStatusResult
 
-const _property_map_AclStatusResult = Dict{Symbol,Symbol}(Symbol("AclStatus")=>Symbol("AclStatus"))
-const _property_types_AclStatusResult = Dict{Symbol,String}(Symbol("AclStatus")=>"AclStatus")
+const _property_map_AclStatusResult = Dict{Symbol,Symbol}(Symbol("aclStatus")=>Symbol("aclStatus"))
+const _property_types_AclStatusResult = Dict{Symbol,String}(Symbol("aclStatus")=>"AclStatus")
 Base.propertynames(::Type{ AclStatusResult }) = collect(keys(_property_map_AclStatusResult))
-Swagger.property_type(::Type{ AclStatusResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_AclStatusResult[name]))}
+Swagger.property_type(::Type{ AclStatusResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AclStatusResult[name]))}
 Swagger.field_name(::Type{ AclStatusResult }, property_name::Symbol) =  _property_map_AclStatusResult[property_name]
 
 function check_required(o::AclStatusResult)

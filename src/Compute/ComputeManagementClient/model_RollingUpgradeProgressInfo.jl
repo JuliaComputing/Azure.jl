@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct RollingUpgradeProgressInfo <: SwaggerModel
     successfulInstanceCount::Any # spec type: Union{ Nothing, Int32 } # spec name: successfulInstanceCount
     failedInstanceCount::Any # spec type: Union{ Nothing, Int32 } # spec name: failedInstanceCount
@@ -26,7 +25,7 @@ end # type RollingUpgradeProgressInfo
 const _property_map_RollingUpgradeProgressInfo = Dict{Symbol,Symbol}(Symbol("successfulInstanceCount")=>Symbol("successfulInstanceCount"), Symbol("failedInstanceCount")=>Symbol("failedInstanceCount"), Symbol("inProgressInstanceCount")=>Symbol("inProgressInstanceCount"), Symbol("pendingInstanceCount")=>Symbol("pendingInstanceCount"))
 const _property_types_RollingUpgradeProgressInfo = Dict{Symbol,String}(Symbol("successfulInstanceCount")=>"Int32", Symbol("failedInstanceCount")=>"Int32", Symbol("inProgressInstanceCount")=>"Int32", Symbol("pendingInstanceCount")=>"Int32")
 Base.propertynames(::Type{ RollingUpgradeProgressInfo }) = collect(keys(_property_map_RollingUpgradeProgressInfo))
-Swagger.property_type(::Type{ RollingUpgradeProgressInfo }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_RollingUpgradeProgressInfo[name]))}
+Swagger.property_type(::Type{ RollingUpgradeProgressInfo }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RollingUpgradeProgressInfo[name]))}
 Swagger.field_name(::Type{ RollingUpgradeProgressInfo }, property_name::Symbol) =  _property_map_RollingUpgradeProgressInfo[property_name]
 
 function check_required(o::RollingUpgradeProgressInfo)

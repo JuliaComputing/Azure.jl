@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct RollingUpgradeRunningStatus <: SwaggerModel
     code::Any # spec type: Union{ Nothing, String } # spec name: code
     startTime::Any # spec type: Union{ Nothing, DateTime } # spec name: startTime
@@ -26,7 +25,7 @@ end # type RollingUpgradeRunningStatus
 const _property_map_RollingUpgradeRunningStatus = Dict{Symbol,Symbol}(Symbol("code")=>Symbol("code"), Symbol("startTime")=>Symbol("startTime"), Symbol("lastAction")=>Symbol("lastAction"), Symbol("lastActionTime")=>Symbol("lastActionTime"))
 const _property_types_RollingUpgradeRunningStatus = Dict{Symbol,String}(Symbol("code")=>"String", Symbol("startTime")=>"DateTime", Symbol("lastAction")=>"String", Symbol("lastActionTime")=>"DateTime")
 Base.propertynames(::Type{ RollingUpgradeRunningStatus }) = collect(keys(_property_map_RollingUpgradeRunningStatus))
-Swagger.property_type(::Type{ RollingUpgradeRunningStatus }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_RollingUpgradeRunningStatus[name]))}
+Swagger.property_type(::Type{ RollingUpgradeRunningStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RollingUpgradeRunningStatus[name]))}
 Swagger.field_name(::Type{ RollingUpgradeRunningStatus }, property_name::Symbol) =  _property_map_RollingUpgradeRunningStatus[property_name]
 
 const _allowed_RollingUpgradeRunningStatus_code = ["RollingForward", "Cancelled", "Completed", "Faulted"]

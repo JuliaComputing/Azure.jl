@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct RunCommandInput <: SwaggerModel
     commandId::Any # spec type: Union{ Nothing, String } # spec name: commandId
     script::Any # spec type: Union{ Nothing, Vector{String} } # spec name: script
@@ -23,7 +22,7 @@ end # type RunCommandInput
 const _property_map_RunCommandInput = Dict{Symbol,Symbol}(Symbol("commandId")=>Symbol("commandId"), Symbol("script")=>Symbol("script"), Symbol("parameters")=>Symbol("parameters"))
 const _property_types_RunCommandInput = Dict{Symbol,String}(Symbol("commandId")=>"String", Symbol("script")=>"Vector{String}", Symbol("parameters")=>"Vector{RunCommandInputParameter}")
 Base.propertynames(::Type{ RunCommandInput }) = collect(keys(_property_map_RunCommandInput))
-Swagger.property_type(::Type{ RunCommandInput }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_RunCommandInput[name]))}
+Swagger.property_type(::Type{ RunCommandInput }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RunCommandInput[name]))}
 Swagger.field_name(::Type{ RunCommandInput }, property_name::Symbol) =  _property_map_RunCommandInput[property_name]
 
 function check_required(o::RunCommandInput)

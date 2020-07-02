@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualMachineScaleSetUpdateOSProfile <: SwaggerModel
     customData::Any # spec type: Union{ Nothing, String } # spec name: customData
     windowsConfiguration::Any # spec type: Union{ Nothing, WindowsConfiguration } # spec name: windowsConfiguration
@@ -26,7 +25,7 @@ end # type VirtualMachineScaleSetUpdateOSProfile
 const _property_map_VirtualMachineScaleSetUpdateOSProfile = Dict{Symbol,Symbol}(Symbol("customData")=>Symbol("customData"), Symbol("windowsConfiguration")=>Symbol("windowsConfiguration"), Symbol("linuxConfiguration")=>Symbol("linuxConfiguration"), Symbol("secrets")=>Symbol("secrets"))
 const _property_types_VirtualMachineScaleSetUpdateOSProfile = Dict{Symbol,String}(Symbol("customData")=>"String", Symbol("windowsConfiguration")=>"WindowsConfiguration", Symbol("linuxConfiguration")=>"LinuxConfiguration", Symbol("secrets")=>"Vector{VaultSecretGroup}")
 Base.propertynames(::Type{ VirtualMachineScaleSetUpdateOSProfile }) = collect(keys(_property_map_VirtualMachineScaleSetUpdateOSProfile))
-Swagger.property_type(::Type{ VirtualMachineScaleSetUpdateOSProfile }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualMachineScaleSetUpdateOSProfile[name]))}
+Swagger.property_type(::Type{ VirtualMachineScaleSetUpdateOSProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetUpdateOSProfile[name]))}
 Swagger.field_name(::Type{ VirtualMachineScaleSetUpdateOSProfile }, property_name::Symbol) =  _property_map_VirtualMachineScaleSetUpdateOSProfile[property_name]
 
 function check_required(o::VirtualMachineScaleSetUpdateOSProfile)

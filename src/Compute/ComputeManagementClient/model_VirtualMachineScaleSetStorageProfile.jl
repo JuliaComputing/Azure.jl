@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualMachineScaleSetStorageProfile <: SwaggerModel
     imageReference::Any # spec type: Union{ Nothing, ImageReference } # spec name: imageReference
     osDisk::Any # spec type: Union{ Nothing, VirtualMachineScaleSetOSDisk } # spec name: osDisk
@@ -23,7 +22,7 @@ end # type VirtualMachineScaleSetStorageProfile
 const _property_map_VirtualMachineScaleSetStorageProfile = Dict{Symbol,Symbol}(Symbol("imageReference")=>Symbol("imageReference"), Symbol("osDisk")=>Symbol("osDisk"), Symbol("dataDisks")=>Symbol("dataDisks"))
 const _property_types_VirtualMachineScaleSetStorageProfile = Dict{Symbol,String}(Symbol("imageReference")=>"ImageReference", Symbol("osDisk")=>"VirtualMachineScaleSetOSDisk", Symbol("dataDisks")=>"Vector{VirtualMachineScaleSetDataDisk}")
 Base.propertynames(::Type{ VirtualMachineScaleSetStorageProfile }) = collect(keys(_property_map_VirtualMachineScaleSetStorageProfile))
-Swagger.property_type(::Type{ VirtualMachineScaleSetStorageProfile }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualMachineScaleSetStorageProfile[name]))}
+Swagger.property_type(::Type{ VirtualMachineScaleSetStorageProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetStorageProfile[name]))}
 Swagger.field_name(::Type{ VirtualMachineScaleSetStorageProfile }, property_name::Symbol) =  _property_map_VirtualMachineScaleSetStorageProfile[property_name]
 
 function check_required(o::VirtualMachineScaleSetStorageProfile)

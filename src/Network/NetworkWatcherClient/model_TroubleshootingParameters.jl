@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct TroubleshootingParameters <: SwaggerModel
     targetResourceId::Any # spec type: Union{ Nothing, String } # spec name: targetResourceId
     properties::Any # spec type: Union{ Nothing, TroubleshootingProperties } # spec name: properties
@@ -20,7 +19,7 @@ end # type TroubleshootingParameters
 const _property_map_TroubleshootingParameters = Dict{Symbol,Symbol}(Symbol("targetResourceId")=>Symbol("targetResourceId"), Symbol("properties")=>Symbol("properties"))
 const _property_types_TroubleshootingParameters = Dict{Symbol,String}(Symbol("targetResourceId")=>"String", Symbol("properties")=>"TroubleshootingProperties")
 Base.propertynames(::Type{ TroubleshootingParameters }) = collect(keys(_property_map_TroubleshootingParameters))
-Swagger.property_type(::Type{ TroubleshootingParameters }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_TroubleshootingParameters[name]))}
+Swagger.property_type(::Type{ TroubleshootingParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TroubleshootingParameters[name]))}
 Swagger.field_name(::Type{ TroubleshootingParameters }, property_name::Symbol) =  _property_map_TroubleshootingParameters[property_name]
 
 function check_required(o::TroubleshootingParameters)

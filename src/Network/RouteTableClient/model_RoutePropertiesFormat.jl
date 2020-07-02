@@ -2,12 +2,11 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct RoutePropertiesFormat <: SwaggerModel
     addressPrefix::Any # spec type: Union{ Nothing, String } # spec name: addressPrefix
-    nextHopType::Any # spec type: Union{ Nothing, String } # spec name: nextHopType
+    nextHopType::Any # spec type: Union{ Nothing, RouteNextHopType } # spec name: nextHopType
     nextHopIpAddress::Any # spec type: Union{ Nothing, String } # spec name: nextHopIpAddress
-    provisioningState::Any # spec type: Union{ Nothing, String } # spec name: provisioningState
+    provisioningState::Any # spec type: Union{ Nothing, ProvisioningState } # spec name: provisioningState
 
     function RoutePropertiesFormat(;addressPrefix=nothing, nextHopType=nothing, nextHopIpAddress=nothing, provisioningState=nothing)
         o = new()
@@ -24,19 +23,15 @@ mutable struct RoutePropertiesFormat <: SwaggerModel
 end # type RoutePropertiesFormat
 
 const _property_map_RoutePropertiesFormat = Dict{Symbol,Symbol}(Symbol("addressPrefix")=>Symbol("addressPrefix"), Symbol("nextHopType")=>Symbol("nextHopType"), Symbol("nextHopIpAddress")=>Symbol("nextHopIpAddress"), Symbol("provisioningState")=>Symbol("provisioningState"))
-const _property_types_RoutePropertiesFormat = Dict{Symbol,String}(Symbol("addressPrefix")=>"String", Symbol("nextHopType")=>"String", Symbol("nextHopIpAddress")=>"String", Symbol("provisioningState")=>"String")
+const _property_types_RoutePropertiesFormat = Dict{Symbol,String}(Symbol("addressPrefix")=>"String", Symbol("nextHopType")=>"RouteNextHopType", Symbol("nextHopIpAddress")=>"String", Symbol("provisioningState")=>"ProvisioningState")
 Base.propertynames(::Type{ RoutePropertiesFormat }) = collect(keys(_property_map_RoutePropertiesFormat))
-Swagger.property_type(::Type{ RoutePropertiesFormat }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_RoutePropertiesFormat[name]))}
+Swagger.property_type(::Type{ RoutePropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RoutePropertiesFormat[name]))}
 Swagger.field_name(::Type{ RoutePropertiesFormat }, property_name::Symbol) =  _property_map_RoutePropertiesFormat[property_name]
 
-const _allowed_RoutePropertiesFormat_nextHopType = ["VirtualNetworkGateway", "VnetLocal", "Internet", "VirtualAppliance", "None"]
-
 function check_required(o::RoutePropertiesFormat)
+    (getproperty(o, Symbol("nextHopType")) === nothing) && (return false)
     true
 end
 
 function validate_property(::Type{ RoutePropertiesFormat }, name::Symbol, val)
-    if name === Symbol("nextHopType")
-        Swagger.validate_param(name, "RoutePropertiesFormat", :enum, val, _allowed_RoutePropertiesFormat_nextHopType)
-    end
 end

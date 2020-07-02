@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ApplicationGatewayHttpListener <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
 
@@ -17,7 +16,7 @@ end # type ApplicationGatewayHttpListener
 const _property_map_ApplicationGatewayHttpListener = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"))
 const _property_types_ApplicationGatewayHttpListener = Dict{Symbol,String}(Symbol("id")=>"String")
 Base.propertynames(::Type{ ApplicationGatewayHttpListener }) = collect(keys(_property_map_ApplicationGatewayHttpListener))
-Swagger.property_type(::Type{ ApplicationGatewayHttpListener }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ApplicationGatewayHttpListener[name]))}
+Swagger.property_type(::Type{ ApplicationGatewayHttpListener }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayHttpListener[name]))}
 Swagger.field_name(::Type{ ApplicationGatewayHttpListener }, property_name::Symbol) =  _property_map_ApplicationGatewayHttpListener[property_name]
 
 function check_required(o::ApplicationGatewayHttpListener)

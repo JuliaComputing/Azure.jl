@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualMachineExtensionHandlerInstanceView <: SwaggerModel
     type::Any # spec type: Union{ Nothing, String } # spec name: type
     typeHandlerVersion::Any # spec type: Union{ Nothing, String } # spec name: typeHandlerVersion
@@ -23,7 +22,7 @@ end # type VirtualMachineExtensionHandlerInstanceView
 const _property_map_VirtualMachineExtensionHandlerInstanceView = Dict{Symbol,Symbol}(Symbol("type")=>Symbol("type"), Symbol("typeHandlerVersion")=>Symbol("typeHandlerVersion"), Symbol("status")=>Symbol("status"))
 const _property_types_VirtualMachineExtensionHandlerInstanceView = Dict{Symbol,String}(Symbol("type")=>"String", Symbol("typeHandlerVersion")=>"String", Symbol("status")=>"InstanceViewStatus")
 Base.propertynames(::Type{ VirtualMachineExtensionHandlerInstanceView }) = collect(keys(_property_map_VirtualMachineExtensionHandlerInstanceView))
-Swagger.property_type(::Type{ VirtualMachineExtensionHandlerInstanceView }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualMachineExtensionHandlerInstanceView[name]))}
+Swagger.property_type(::Type{ VirtualMachineExtensionHandlerInstanceView }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineExtensionHandlerInstanceView[name]))}
 Swagger.field_name(::Type{ VirtualMachineExtensionHandlerInstanceView }, property_name::Symbol) =  _property_map_VirtualMachineExtensionHandlerInstanceView[property_name]
 
 function check_required(o::VirtualMachineExtensionHandlerInstanceView)

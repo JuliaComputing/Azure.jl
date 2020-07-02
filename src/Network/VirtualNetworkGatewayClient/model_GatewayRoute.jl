@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct GatewayRoute <: SwaggerModel
     localAddress::Any # spec type: Union{ Nothing, String } # spec name: localAddress
     network::Any # spec type: Union{ Nothing, String } # spec name: network
@@ -35,7 +34,7 @@ end # type GatewayRoute
 const _property_map_GatewayRoute = Dict{Symbol,Symbol}(Symbol("localAddress")=>Symbol("localAddress"), Symbol("network")=>Symbol("network"), Symbol("nextHop")=>Symbol("nextHop"), Symbol("sourcePeer")=>Symbol("sourcePeer"), Symbol("origin")=>Symbol("origin"), Symbol("asPath")=>Symbol("asPath"), Symbol("weight")=>Symbol("weight"))
 const _property_types_GatewayRoute = Dict{Symbol,String}(Symbol("localAddress")=>"String", Symbol("network")=>"String", Symbol("nextHop")=>"String", Symbol("sourcePeer")=>"String", Symbol("origin")=>"String", Symbol("asPath")=>"String", Symbol("weight")=>"Int32")
 Base.propertynames(::Type{ GatewayRoute }) = collect(keys(_property_map_GatewayRoute))
-Swagger.property_type(::Type{ GatewayRoute }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_GatewayRoute[name]))}
+Swagger.property_type(::Type{ GatewayRoute }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_GatewayRoute[name]))}
 Swagger.field_name(::Type{ GatewayRoute }, property_name::Symbol) =  _property_map_GatewayRoute[property_name]
 
 function check_required(o::GatewayRoute)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct OfferTermInfo <: SwaggerModel
     Name::Any # spec type: Union{ Nothing, String } # spec name: Name
     EffectiveDate::Any # spec type: Union{ Nothing, DateTime } # spec name: EffectiveDate
@@ -20,7 +19,7 @@ end # type OfferTermInfo
 const _property_map_OfferTermInfo = Dict{Symbol,Symbol}(Symbol("Name")=>Symbol("Name"), Symbol("EffectiveDate")=>Symbol("EffectiveDate"))
 const _property_types_OfferTermInfo = Dict{Symbol,String}(Symbol("Name")=>"String", Symbol("EffectiveDate")=>"DateTime")
 Base.propertynames(::Type{ OfferTermInfo }) = collect(keys(_property_map_OfferTermInfo))
-Swagger.property_type(::Type{ OfferTermInfo }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_OfferTermInfo[name]))}
+Swagger.property_type(::Type{ OfferTermInfo }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_OfferTermInfo[name]))}
 Swagger.field_name(::Type{ OfferTermInfo }, property_name::Symbol) =  _property_map_OfferTermInfo[property_name]
 
 const _allowed_OfferTermInfo_Name = ["Recurring Charge", "Monetary Commitment", "Monetary Credit"]

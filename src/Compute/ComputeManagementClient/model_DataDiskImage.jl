@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct DataDiskImage <: SwaggerModel
     lun::Any # spec type: Union{ Nothing, Int32 } # spec name: lun
 
@@ -17,7 +16,7 @@ end # type DataDiskImage
 const _property_map_DataDiskImage = Dict{Symbol,Symbol}(Symbol("lun")=>Symbol("lun"))
 const _property_types_DataDiskImage = Dict{Symbol,String}(Symbol("lun")=>"Int32")
 Base.propertynames(::Type{ DataDiskImage }) = collect(keys(_property_map_DataDiskImage))
-Swagger.property_type(::Type{ DataDiskImage }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_DataDiskImage[name]))}
+Swagger.property_type(::Type{ DataDiskImage }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DataDiskImage[name]))}
 Swagger.field_name(::Type{ DataDiskImage }, property_name::Symbol) =  _property_map_DataDiskImage[property_name]
 
 function check_required(o::DataDiskImage)

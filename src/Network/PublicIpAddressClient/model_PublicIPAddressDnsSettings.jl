@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct PublicIPAddressDnsSettings <: SwaggerModel
     domainNameLabel::Any # spec type: Union{ Nothing, String } # spec name: domainNameLabel
     fqdn::Any # spec type: Union{ Nothing, String } # spec name: fqdn
@@ -23,7 +22,7 @@ end # type PublicIPAddressDnsSettings
 const _property_map_PublicIPAddressDnsSettings = Dict{Symbol,Symbol}(Symbol("domainNameLabel")=>Symbol("domainNameLabel"), Symbol("fqdn")=>Symbol("fqdn"), Symbol("reverseFqdn")=>Symbol("reverseFqdn"))
 const _property_types_PublicIPAddressDnsSettings = Dict{Symbol,String}(Symbol("domainNameLabel")=>"String", Symbol("fqdn")=>"String", Symbol("reverseFqdn")=>"String")
 Base.propertynames(::Type{ PublicIPAddressDnsSettings }) = collect(keys(_property_map_PublicIPAddressDnsSettings))
-Swagger.property_type(::Type{ PublicIPAddressDnsSettings }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_PublicIPAddressDnsSettings[name]))}
+Swagger.property_type(::Type{ PublicIPAddressDnsSettings }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PublicIPAddressDnsSettings[name]))}
 Swagger.field_name(::Type{ PublicIPAddressDnsSettings }, property_name::Symbol) =  _property_map_PublicIPAddressDnsSettings[property_name]
 
 function check_required(o::PublicIPAddressDnsSettings)

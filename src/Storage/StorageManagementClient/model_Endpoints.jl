@@ -2,14 +2,17 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct Endpoints <: SwaggerModel
     blob::Any # spec type: Union{ Nothing, String } # spec name: blob
     queue::Any # spec type: Union{ Nothing, String } # spec name: queue
     table::Any # spec type: Union{ Nothing, String } # spec name: table
     file::Any # spec type: Union{ Nothing, String } # spec name: file
+    web::Any # spec type: Union{ Nothing, String } # spec name: web
+    dfs::Any # spec type: Union{ Nothing, String } # spec name: dfs
+    microsoftEndpoints::Any # spec type: Union{ Nothing, StorageAccountMicrosoftEndpoints } # spec name: microsoftEndpoints
+    internetEndpoints::Any # spec type: Union{ Nothing, StorageAccountInternetEndpoints } # spec name: internetEndpoints
 
-    function Endpoints(;blob=nothing, queue=nothing, table=nothing, file=nothing)
+    function Endpoints(;blob=nothing, queue=nothing, table=nothing, file=nothing, web=nothing, dfs=nothing, microsoftEndpoints=nothing, internetEndpoints=nothing)
         o = new()
         validate_property(Endpoints, Symbol("blob"), blob)
         setfield!(o, Symbol("blob"), blob)
@@ -19,14 +22,22 @@ mutable struct Endpoints <: SwaggerModel
         setfield!(o, Symbol("table"), table)
         validate_property(Endpoints, Symbol("file"), file)
         setfield!(o, Symbol("file"), file)
+        validate_property(Endpoints, Symbol("web"), web)
+        setfield!(o, Symbol("web"), web)
+        validate_property(Endpoints, Symbol("dfs"), dfs)
+        setfield!(o, Symbol("dfs"), dfs)
+        validate_property(Endpoints, Symbol("microsoftEndpoints"), microsoftEndpoints)
+        setfield!(o, Symbol("microsoftEndpoints"), microsoftEndpoints)
+        validate_property(Endpoints, Symbol("internetEndpoints"), internetEndpoints)
+        setfield!(o, Symbol("internetEndpoints"), internetEndpoints)
         o
     end
 end # type Endpoints
 
-const _property_map_Endpoints = Dict{Symbol,Symbol}(Symbol("blob")=>Symbol("blob"), Symbol("queue")=>Symbol("queue"), Symbol("table")=>Symbol("table"), Symbol("file")=>Symbol("file"))
-const _property_types_Endpoints = Dict{Symbol,String}(Symbol("blob")=>"String", Symbol("queue")=>"String", Symbol("table")=>"String", Symbol("file")=>"String")
+const _property_map_Endpoints = Dict{Symbol,Symbol}(Symbol("blob")=>Symbol("blob"), Symbol("queue")=>Symbol("queue"), Symbol("table")=>Symbol("table"), Symbol("file")=>Symbol("file"), Symbol("web")=>Symbol("web"), Symbol("dfs")=>Symbol("dfs"), Symbol("microsoftEndpoints")=>Symbol("microsoftEndpoints"), Symbol("internetEndpoints")=>Symbol("internetEndpoints"))
+const _property_types_Endpoints = Dict{Symbol,String}(Symbol("blob")=>"String", Symbol("queue")=>"String", Symbol("table")=>"String", Symbol("file")=>"String", Symbol("web")=>"String", Symbol("dfs")=>"String", Symbol("microsoftEndpoints")=>"StorageAccountMicrosoftEndpoints", Symbol("internetEndpoints")=>"StorageAccountInternetEndpoints")
 Base.propertynames(::Type{ Endpoints }) = collect(keys(_property_map_Endpoints))
-Swagger.property_type(::Type{ Endpoints }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_Endpoints[name]))}
+Swagger.property_type(::Type{ Endpoints }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Endpoints[name]))}
 Swagger.field_name(::Type{ Endpoints }, property_name::Symbol) =  _property_map_Endpoints[property_name]
 
 function check_required(o::Endpoints)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct PacketCaptureStorageLocation <: SwaggerModel
     storageId::Any # spec type: Union{ Nothing, String } # spec name: storageId
     storagePath::Any # spec type: Union{ Nothing, String } # spec name: storagePath
@@ -23,7 +22,7 @@ end # type PacketCaptureStorageLocation
 const _property_map_PacketCaptureStorageLocation = Dict{Symbol,Symbol}(Symbol("storageId")=>Symbol("storageId"), Symbol("storagePath")=>Symbol("storagePath"), Symbol("filePath")=>Symbol("filePath"))
 const _property_types_PacketCaptureStorageLocation = Dict{Symbol,String}(Symbol("storageId")=>"String", Symbol("storagePath")=>"String", Symbol("filePath")=>"String")
 Base.propertynames(::Type{ PacketCaptureStorageLocation }) = collect(keys(_property_map_PacketCaptureStorageLocation))
-Swagger.property_type(::Type{ PacketCaptureStorageLocation }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_PacketCaptureStorageLocation[name]))}
+Swagger.property_type(::Type{ PacketCaptureStorageLocation }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PacketCaptureStorageLocation[name]))}
 Swagger.field_name(::Type{ PacketCaptureStorageLocation }, property_name::Symbol) =  _property_map_PacketCaptureStorageLocation[property_name]
 
 function check_required(o::PacketCaptureStorageLocation)

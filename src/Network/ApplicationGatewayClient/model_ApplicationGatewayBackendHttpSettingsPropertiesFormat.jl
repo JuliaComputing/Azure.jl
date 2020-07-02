@@ -2,18 +2,23 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ApplicationGatewayBackendHttpSettingsPropertiesFormat <: SwaggerModel
     port::Any # spec type: Union{ Nothing, Int32 } # spec name: port
-    protocol::Any # spec type: Union{ Nothing, String } # spec name: protocol
+    protocol::Any # spec type: Union{ Nothing, ApplicationGatewayProtocol } # spec name: protocol
     cookieBasedAffinity::Any # spec type: Union{ Nothing, String } # spec name: cookieBasedAffinity
     requestTimeout::Any # spec type: Union{ Nothing, Int32 } # spec name: requestTimeout
     probe::Any # spec type: Union{ Nothing, SubResource } # spec name: probe
     authenticationCertificates::Any # spec type: Union{ Nothing, Vector{SubResource} } # spec name: authenticationCertificates
-    provisioningState::Any # spec type: Union{ Nothing, String } # spec name: provisioningState
+    trustedRootCertificates::Any # spec type: Union{ Nothing, Vector{SubResource} } # spec name: trustedRootCertificates
     connectionDraining::Any # spec type: Union{ Nothing, ApplicationGatewayConnectionDraining } # spec name: connectionDraining
+    hostName::Any # spec type: Union{ Nothing, String } # spec name: hostName
+    pickHostNameFromBackendAddress::Any # spec type: Union{ Nothing, Bool } # spec name: pickHostNameFromBackendAddress
+    affinityCookieName::Any # spec type: Union{ Nothing, String } # spec name: affinityCookieName
+    probeEnabled::Any # spec type: Union{ Nothing, Bool } # spec name: probeEnabled
+    path::Any # spec type: Union{ Nothing, String } # spec name: path
+    provisioningState::Any # spec type: Union{ Nothing, ProvisioningState } # spec name: provisioningState
 
-    function ApplicationGatewayBackendHttpSettingsPropertiesFormat(;port=nothing, protocol=nothing, cookieBasedAffinity=nothing, requestTimeout=nothing, probe=nothing, authenticationCertificates=nothing, provisioningState=nothing, connectionDraining=nothing)
+    function ApplicationGatewayBackendHttpSettingsPropertiesFormat(;port=nothing, protocol=nothing, cookieBasedAffinity=nothing, requestTimeout=nothing, probe=nothing, authenticationCertificates=nothing, trustedRootCertificates=nothing, connectionDraining=nothing, hostName=nothing, pickHostNameFromBackendAddress=nothing, affinityCookieName=nothing, probeEnabled=nothing, path=nothing, provisioningState=nothing)
         o = new()
         validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("port"), port)
         setfield!(o, Symbol("port"), port)
@@ -27,21 +32,31 @@ mutable struct ApplicationGatewayBackendHttpSettingsPropertiesFormat <: SwaggerM
         setfield!(o, Symbol("probe"), probe)
         validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("authenticationCertificates"), authenticationCertificates)
         setfield!(o, Symbol("authenticationCertificates"), authenticationCertificates)
-        validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        setfield!(o, Symbol("provisioningState"), provisioningState)
+        validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("trustedRootCertificates"), trustedRootCertificates)
+        setfield!(o, Symbol("trustedRootCertificates"), trustedRootCertificates)
         validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("connectionDraining"), connectionDraining)
         setfield!(o, Symbol("connectionDraining"), connectionDraining)
+        validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("hostName"), hostName)
+        setfield!(o, Symbol("hostName"), hostName)
+        validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("pickHostNameFromBackendAddress"), pickHostNameFromBackendAddress)
+        setfield!(o, Symbol("pickHostNameFromBackendAddress"), pickHostNameFromBackendAddress)
+        validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("affinityCookieName"), affinityCookieName)
+        setfield!(o, Symbol("affinityCookieName"), affinityCookieName)
+        validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("probeEnabled"), probeEnabled)
+        setfield!(o, Symbol("probeEnabled"), probeEnabled)
+        validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("path"), path)
+        setfield!(o, Symbol("path"), path)
+        validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("provisioningState"), provisioningState)
+        setfield!(o, Symbol("provisioningState"), provisioningState)
         o
     end
 end # type ApplicationGatewayBackendHttpSettingsPropertiesFormat
 
-const _property_map_ApplicationGatewayBackendHttpSettingsPropertiesFormat = Dict{Symbol,Symbol}(Symbol("port")=>Symbol("port"), Symbol("protocol")=>Symbol("protocol"), Symbol("cookieBasedAffinity")=>Symbol("cookieBasedAffinity"), Symbol("requestTimeout")=>Symbol("requestTimeout"), Symbol("probe")=>Symbol("probe"), Symbol("authenticationCertificates")=>Symbol("authenticationCertificates"), Symbol("provisioningState")=>Symbol("provisioningState"), Symbol("connectionDraining")=>Symbol("connectionDraining"))
-const _property_types_ApplicationGatewayBackendHttpSettingsPropertiesFormat = Dict{Symbol,String}(Symbol("port")=>"Int32", Symbol("protocol")=>"String", Symbol("cookieBasedAffinity")=>"String", Symbol("requestTimeout")=>"Int32", Symbol("probe")=>"SubResource", Symbol("authenticationCertificates")=>"Vector{SubResource}", Symbol("provisioningState")=>"String", Symbol("connectionDraining")=>"ApplicationGatewayConnectionDraining")
+const _property_map_ApplicationGatewayBackendHttpSettingsPropertiesFormat = Dict{Symbol,Symbol}(Symbol("port")=>Symbol("port"), Symbol("protocol")=>Symbol("protocol"), Symbol("cookieBasedAffinity")=>Symbol("cookieBasedAffinity"), Symbol("requestTimeout")=>Symbol("requestTimeout"), Symbol("probe")=>Symbol("probe"), Symbol("authenticationCertificates")=>Symbol("authenticationCertificates"), Symbol("trustedRootCertificates")=>Symbol("trustedRootCertificates"), Symbol("connectionDraining")=>Symbol("connectionDraining"), Symbol("hostName")=>Symbol("hostName"), Symbol("pickHostNameFromBackendAddress")=>Symbol("pickHostNameFromBackendAddress"), Symbol("affinityCookieName")=>Symbol("affinityCookieName"), Symbol("probeEnabled")=>Symbol("probeEnabled"), Symbol("path")=>Symbol("path"), Symbol("provisioningState")=>Symbol("provisioningState"))
+const _property_types_ApplicationGatewayBackendHttpSettingsPropertiesFormat = Dict{Symbol,String}(Symbol("port")=>"Int32", Symbol("protocol")=>"ApplicationGatewayProtocol", Symbol("cookieBasedAffinity")=>"String", Symbol("requestTimeout")=>"Int32", Symbol("probe")=>"SubResource", Symbol("authenticationCertificates")=>"Vector{SubResource}", Symbol("trustedRootCertificates")=>"Vector{SubResource}", Symbol("connectionDraining")=>"ApplicationGatewayConnectionDraining", Symbol("hostName")=>"String", Symbol("pickHostNameFromBackendAddress")=>"Bool", Symbol("affinityCookieName")=>"String", Symbol("probeEnabled")=>"Bool", Symbol("path")=>"String", Symbol("provisioningState")=>"ProvisioningState")
 Base.propertynames(::Type{ ApplicationGatewayBackendHttpSettingsPropertiesFormat }) = collect(keys(_property_map_ApplicationGatewayBackendHttpSettingsPropertiesFormat))
-Swagger.property_type(::Type{ ApplicationGatewayBackendHttpSettingsPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ApplicationGatewayBackendHttpSettingsPropertiesFormat[name]))}
+Swagger.property_type(::Type{ ApplicationGatewayBackendHttpSettingsPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayBackendHttpSettingsPropertiesFormat[name]))}
 Swagger.field_name(::Type{ ApplicationGatewayBackendHttpSettingsPropertiesFormat }, property_name::Symbol) =  _property_map_ApplicationGatewayBackendHttpSettingsPropertiesFormat[property_name]
-
-const _allowed_ApplicationGatewayBackendHttpSettingsPropertiesFormat_protocol = ["Http", "Https"]
 
 const _allowed_ApplicationGatewayBackendHttpSettingsPropertiesFormat_cookieBasedAffinity = ["Enabled", "Disabled"]
 
@@ -50,9 +65,6 @@ function check_required(o::ApplicationGatewayBackendHttpSettingsPropertiesFormat
 end
 
 function validate_property(::Type{ ApplicationGatewayBackendHttpSettingsPropertiesFormat }, name::Symbol, val)
-    if name === Symbol("protocol")
-        Swagger.validate_param(name, "ApplicationGatewayBackendHttpSettingsPropertiesFormat", :enum, val, _allowed_ApplicationGatewayBackendHttpSettingsPropertiesFormat_protocol)
-    end
     if name === Symbol("cookieBasedAffinity")
         Swagger.validate_param(name, "ApplicationGatewayBackendHttpSettingsPropertiesFormat", :enum, val, _allowed_ApplicationGatewayBackendHttpSettingsPropertiesFormat_cookieBasedAffinity)
     end

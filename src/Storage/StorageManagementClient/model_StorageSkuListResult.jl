@@ -2,9 +2,8 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct StorageSkuListResult <: SwaggerModel
-    value::Any # spec type: Union{ Nothing, Vector{Sku} } # spec name: value
+    value::Any # spec type: Union{ Nothing, Vector{SkuInformation} } # spec name: value
 
     function StorageSkuListResult(;value=nothing)
         o = new()
@@ -15,9 +14,9 @@ mutable struct StorageSkuListResult <: SwaggerModel
 end # type StorageSkuListResult
 
 const _property_map_StorageSkuListResult = Dict{Symbol,Symbol}(Symbol("value")=>Symbol("value"))
-const _property_types_StorageSkuListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{Sku}")
+const _property_types_StorageSkuListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{SkuInformation}")
 Base.propertynames(::Type{ StorageSkuListResult }) = collect(keys(_property_map_StorageSkuListResult))
-Swagger.property_type(::Type{ StorageSkuListResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_StorageSkuListResult[name]))}
+Swagger.property_type(::Type{ StorageSkuListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_StorageSkuListResult[name]))}
 Swagger.field_name(::Type{ StorageSkuListResult }, property_name::Symbol) =  _property_map_StorageSkuListResult[property_name]
 
 function check_required(o::StorageSkuListResult)

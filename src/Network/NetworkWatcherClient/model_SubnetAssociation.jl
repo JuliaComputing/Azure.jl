@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct SubnetAssociation <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
     securityRules::Any # spec type: Union{ Nothing, Vector{SecurityRule} } # spec name: securityRules
@@ -20,7 +19,7 @@ end # type SubnetAssociation
 const _property_map_SubnetAssociation = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("securityRules")=>Symbol("securityRules"))
 const _property_types_SubnetAssociation = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("securityRules")=>"Vector{SecurityRule}")
 Base.propertynames(::Type{ SubnetAssociation }) = collect(keys(_property_map_SubnetAssociation))
-Swagger.property_type(::Type{ SubnetAssociation }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_SubnetAssociation[name]))}
+Swagger.property_type(::Type{ SubnetAssociation }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SubnetAssociation[name]))}
 Swagger.field_name(::Type{ SubnetAssociation }, property_name::Symbol) =  _property_map_SubnetAssociation[property_name]
 
 function check_required(o::SubnetAssociation)

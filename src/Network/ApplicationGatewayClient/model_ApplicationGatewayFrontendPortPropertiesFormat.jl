@@ -2,10 +2,9 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ApplicationGatewayFrontendPortPropertiesFormat <: SwaggerModel
     port::Any # spec type: Union{ Nothing, Int32 } # spec name: port
-    provisioningState::Any # spec type: Union{ Nothing, String } # spec name: provisioningState
+    provisioningState::Any # spec type: Union{ Nothing, ProvisioningState } # spec name: provisioningState
 
     function ApplicationGatewayFrontendPortPropertiesFormat(;port=nothing, provisioningState=nothing)
         o = new()
@@ -18,9 +17,9 @@ mutable struct ApplicationGatewayFrontendPortPropertiesFormat <: SwaggerModel
 end # type ApplicationGatewayFrontendPortPropertiesFormat
 
 const _property_map_ApplicationGatewayFrontendPortPropertiesFormat = Dict{Symbol,Symbol}(Symbol("port")=>Symbol("port"), Symbol("provisioningState")=>Symbol("provisioningState"))
-const _property_types_ApplicationGatewayFrontendPortPropertiesFormat = Dict{Symbol,String}(Symbol("port")=>"Int32", Symbol("provisioningState")=>"String")
+const _property_types_ApplicationGatewayFrontendPortPropertiesFormat = Dict{Symbol,String}(Symbol("port")=>"Int32", Symbol("provisioningState")=>"ProvisioningState")
 Base.propertynames(::Type{ ApplicationGatewayFrontendPortPropertiesFormat }) = collect(keys(_property_map_ApplicationGatewayFrontendPortPropertiesFormat))
-Swagger.property_type(::Type{ ApplicationGatewayFrontendPortPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ApplicationGatewayFrontendPortPropertiesFormat[name]))}
+Swagger.property_type(::Type{ ApplicationGatewayFrontendPortPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayFrontendPortPropertiesFormat[name]))}
 Swagger.field_name(::Type{ ApplicationGatewayFrontendPortPropertiesFormat }, property_name::Symbol) =  _property_map_ApplicationGatewayFrontendPortPropertiesFormat[property_name]
 
 function check_required(o::ApplicationGatewayFrontendPortPropertiesFormat)

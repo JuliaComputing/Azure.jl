@@ -2,12 +2,11 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct AclStatus <: SwaggerModel
     entries::Any # spec type: Union{ Nothing, Vector{String} } # spec name: entries
     group::Any # spec type: Union{ Nothing, String } # spec name: group
     owner::Any # spec type: Union{ Nothing, String } # spec name: owner
-    permission::Any # spec type: Union{ Nothing, Int32 } # spec name: permission
+    permission::Any # spec type: Union{ Nothing, String } # spec name: permission
     stickyBit::Any # spec type: Union{ Nothing, Bool } # spec name: stickyBit
 
     function AclStatus(;entries=nothing, group=nothing, owner=nothing, permission=nothing, stickyBit=nothing)
@@ -27,9 +26,9 @@ mutable struct AclStatus <: SwaggerModel
 end # type AclStatus
 
 const _property_map_AclStatus = Dict{Symbol,Symbol}(Symbol("entries")=>Symbol("entries"), Symbol("group")=>Symbol("group"), Symbol("owner")=>Symbol("owner"), Symbol("permission")=>Symbol("permission"), Symbol("stickyBit")=>Symbol("stickyBit"))
-const _property_types_AclStatus = Dict{Symbol,String}(Symbol("entries")=>"Vector{String}", Symbol("group")=>"String", Symbol("owner")=>"String", Symbol("permission")=>"Int32", Symbol("stickyBit")=>"Bool")
+const _property_types_AclStatus = Dict{Symbol,String}(Symbol("entries")=>"Vector{String}", Symbol("group")=>"String", Symbol("owner")=>"String", Symbol("permission")=>"String", Symbol("stickyBit")=>"Bool")
 Base.propertynames(::Type{ AclStatus }) = collect(keys(_property_map_AclStatus))
-Swagger.property_type(::Type{ AclStatus }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_AclStatus[name]))}
+Swagger.property_type(::Type{ AclStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AclStatus[name]))}
 Swagger.field_name(::Type{ AclStatus }, property_name::Symbol) =  _property_map_AclStatus[property_name]
 
 function check_required(o::AclStatus)

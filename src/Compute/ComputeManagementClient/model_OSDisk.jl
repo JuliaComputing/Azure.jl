@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct OSDisk <: SwaggerModel
     osType::Any # spec type: Union{ Nothing, String } # spec name: osType
     encryptionSettings::Any # spec type: Union{ Nothing, DiskEncryptionSettings } # spec name: encryptionSettings
@@ -10,11 +9,13 @@ mutable struct OSDisk <: SwaggerModel
     vhd::Any # spec type: Union{ Nothing, VirtualHardDisk } # spec name: vhd
     image::Any # spec type: Union{ Nothing, VirtualHardDisk } # spec name: image
     caching::Any # spec type: Union{ Nothing, Caching } # spec name: caching
+    writeAcceleratorEnabled::Any # spec type: Union{ Nothing, Bool } # spec name: writeAcceleratorEnabled
+    diffDiskSettings::Any # spec type: Union{ Nothing, DiffDiskSettings } # spec name: diffDiskSettings
     createOption::Any # spec type: Union{ Nothing, CreateOption } # spec name: createOption
     diskSizeGB::Any # spec type: Union{ Nothing, Int32 } # spec name: diskSizeGB
     managedDisk::Any # spec type: Union{ Nothing, ManagedDiskParameters } # spec name: managedDisk
 
-    function OSDisk(;osType=nothing, encryptionSettings=nothing, name=nothing, vhd=nothing, image=nothing, caching=nothing, createOption=nothing, diskSizeGB=nothing, managedDisk=nothing)
+    function OSDisk(;osType=nothing, encryptionSettings=nothing, name=nothing, vhd=nothing, image=nothing, caching=nothing, writeAcceleratorEnabled=nothing, diffDiskSettings=nothing, createOption=nothing, diskSizeGB=nothing, managedDisk=nothing)
         o = new()
         validate_property(OSDisk, Symbol("osType"), osType)
         setfield!(o, Symbol("osType"), osType)
@@ -28,6 +29,10 @@ mutable struct OSDisk <: SwaggerModel
         setfield!(o, Symbol("image"), image)
         validate_property(OSDisk, Symbol("caching"), caching)
         setfield!(o, Symbol("caching"), caching)
+        validate_property(OSDisk, Symbol("writeAcceleratorEnabled"), writeAcceleratorEnabled)
+        setfield!(o, Symbol("writeAcceleratorEnabled"), writeAcceleratorEnabled)
+        validate_property(OSDisk, Symbol("diffDiskSettings"), diffDiskSettings)
+        setfield!(o, Symbol("diffDiskSettings"), diffDiskSettings)
         validate_property(OSDisk, Symbol("createOption"), createOption)
         setfield!(o, Symbol("createOption"), createOption)
         validate_property(OSDisk, Symbol("diskSizeGB"), diskSizeGB)
@@ -38,10 +43,10 @@ mutable struct OSDisk <: SwaggerModel
     end
 end # type OSDisk
 
-const _property_map_OSDisk = Dict{Symbol,Symbol}(Symbol("osType")=>Symbol("osType"), Symbol("encryptionSettings")=>Symbol("encryptionSettings"), Symbol("name")=>Symbol("name"), Symbol("vhd")=>Symbol("vhd"), Symbol("image")=>Symbol("image"), Symbol("caching")=>Symbol("caching"), Symbol("createOption")=>Symbol("createOption"), Symbol("diskSizeGB")=>Symbol("diskSizeGB"), Symbol("managedDisk")=>Symbol("managedDisk"))
-const _property_types_OSDisk = Dict{Symbol,String}(Symbol("osType")=>"String", Symbol("encryptionSettings")=>"DiskEncryptionSettings", Symbol("name")=>"String", Symbol("vhd")=>"VirtualHardDisk", Symbol("image")=>"VirtualHardDisk", Symbol("caching")=>"Caching", Symbol("createOption")=>"CreateOption", Symbol("diskSizeGB")=>"Int32", Symbol("managedDisk")=>"ManagedDiskParameters")
+const _property_map_OSDisk = Dict{Symbol,Symbol}(Symbol("osType")=>Symbol("osType"), Symbol("encryptionSettings")=>Symbol("encryptionSettings"), Symbol("name")=>Symbol("name"), Symbol("vhd")=>Symbol("vhd"), Symbol("image")=>Symbol("image"), Symbol("caching")=>Symbol("caching"), Symbol("writeAcceleratorEnabled")=>Symbol("writeAcceleratorEnabled"), Symbol("diffDiskSettings")=>Symbol("diffDiskSettings"), Symbol("createOption")=>Symbol("createOption"), Symbol("diskSizeGB")=>Symbol("diskSizeGB"), Symbol("managedDisk")=>Symbol("managedDisk"))
+const _property_types_OSDisk = Dict{Symbol,String}(Symbol("osType")=>"String", Symbol("encryptionSettings")=>"DiskEncryptionSettings", Symbol("name")=>"String", Symbol("vhd")=>"VirtualHardDisk", Symbol("image")=>"VirtualHardDisk", Symbol("caching")=>"Caching", Symbol("writeAcceleratorEnabled")=>"Bool", Symbol("diffDiskSettings")=>"DiffDiskSettings", Symbol("createOption")=>"CreateOption", Symbol("diskSizeGB")=>"Int32", Symbol("managedDisk")=>"ManagedDiskParameters")
 Base.propertynames(::Type{ OSDisk }) = collect(keys(_property_map_OSDisk))
-Swagger.property_type(::Type{ OSDisk }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_OSDisk[name]))}
+Swagger.property_type(::Type{ OSDisk }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_OSDisk[name]))}
 Swagger.field_name(::Type{ OSDisk }, property_name::Symbol) =  _property_map_OSDisk[property_name]
 
 const _allowed_OSDisk_osType = ["Windows", "Linux"]

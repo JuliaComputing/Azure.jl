@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct AdditionalUnattendContent <: SwaggerModel
     passName::Any # spec type: Union{ Nothing, String } # spec name: passName
     componentName::Any # spec type: Union{ Nothing, String } # spec name: componentName
@@ -26,7 +25,7 @@ end # type AdditionalUnattendContent
 const _property_map_AdditionalUnattendContent = Dict{Symbol,Symbol}(Symbol("passName")=>Symbol("passName"), Symbol("componentName")=>Symbol("componentName"), Symbol("settingName")=>Symbol("settingName"), Symbol("content")=>Symbol("content"))
 const _property_types_AdditionalUnattendContent = Dict{Symbol,String}(Symbol("passName")=>"String", Symbol("componentName")=>"String", Symbol("settingName")=>"String", Symbol("content")=>"String")
 Base.propertynames(::Type{ AdditionalUnattendContent }) = collect(keys(_property_map_AdditionalUnattendContent))
-Swagger.property_type(::Type{ AdditionalUnattendContent }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_AdditionalUnattendContent[name]))}
+Swagger.property_type(::Type{ AdditionalUnattendContent }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AdditionalUnattendContent[name]))}
 Swagger.field_name(::Type{ AdditionalUnattendContent }, property_name::Symbol) =  _property_map_AdditionalUnattendContent[property_name]
 
 const _allowed_AdditionalUnattendContent_passName = ["OobeSystem"]

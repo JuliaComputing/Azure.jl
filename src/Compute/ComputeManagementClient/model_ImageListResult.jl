@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ImageListResult <: SwaggerModel
     value::Any # spec type: Union{ Nothing, Vector{Image} } # spec name: value
     nextLink::Any # spec type: Union{ Nothing, String } # spec name: nextLink
@@ -20,7 +19,7 @@ end # type ImageListResult
 const _property_map_ImageListResult = Dict{Symbol,Symbol}(Symbol("value")=>Symbol("value"), Symbol("nextLink")=>Symbol("nextLink"))
 const _property_types_ImageListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{Image}", Symbol("nextLink")=>"String")
 Base.propertynames(::Type{ ImageListResult }) = collect(keys(_property_map_ImageListResult))
-Swagger.property_type(::Type{ ImageListResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ImageListResult[name]))}
+Swagger.property_type(::Type{ ImageListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ImageListResult[name]))}
 Swagger.field_name(::Type{ ImageListResult }, property_name::Symbol) =  _property_map_ImageListResult[property_name]
 
 function check_required(o::ImageListResult)

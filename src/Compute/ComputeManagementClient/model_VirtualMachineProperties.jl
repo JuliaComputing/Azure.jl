@@ -2,33 +2,60 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualMachineProperties <: SwaggerModel
     hardwareProfile::Any # spec type: Union{ Nothing, HardwareProfile } # spec name: hardwareProfile
     storageProfile::Any # spec type: Union{ Nothing, StorageProfile } # spec name: storageProfile
+    additionalCapabilities::Any # spec type: Union{ Nothing, AdditionalCapabilities } # spec name: additionalCapabilities
     osProfile::Any # spec type: Union{ Nothing, OSProfile } # spec name: osProfile
     networkProfile::Any # spec type: Union{ Nothing, NetworkProfile } # spec name: networkProfile
+    securityProfile::Any # spec type: Union{ Nothing, SecurityProfile } # spec name: securityProfile
     diagnosticsProfile::Any # spec type: Union{ Nothing, DiagnosticsProfile } # spec name: diagnosticsProfile
     availabilitySet::Any # spec type: Union{ Nothing, SubResource } # spec name: availabilitySet
+    virtualMachineScaleSet::Any # spec type: Union{ Nothing, SubResource } # spec name: virtualMachineScaleSet
+    proximityPlacementGroup::Any # spec type: Union{ Nothing, SubResource } # spec name: proximityPlacementGroup
+    priority::Any # spec type: Union{ Nothing, Priority } # spec name: priority
+    evictionPolicy::Any # spec type: Union{ Nothing, EvictionPolicy } # spec name: evictionPolicy
+    billingProfile::Any # spec type: Union{ Nothing, BillingProfile } # spec name: billingProfile
+    host::Any # spec type: Union{ Nothing, SubResource } # spec name: host
+    hostGroup::Any # spec type: Union{ Nothing, SubResource } # spec name: hostGroup
     provisioningState::Any # spec type: Union{ Nothing, String } # spec name: provisioningState
     instanceView::Any # spec type: Union{ Nothing, VirtualMachineInstanceView } # spec name: instanceView
     licenseType::Any # spec type: Union{ Nothing, String } # spec name: licenseType
     vmId::Any # spec type: Union{ Nothing, String } # spec name: vmId
+    extensionsTimeBudget::Any # spec type: Union{ Nothing, String } # spec name: extensionsTimeBudget
 
-    function VirtualMachineProperties(;hardwareProfile=nothing, storageProfile=nothing, osProfile=nothing, networkProfile=nothing, diagnosticsProfile=nothing, availabilitySet=nothing, provisioningState=nothing, instanceView=nothing, licenseType=nothing, vmId=nothing)
+    function VirtualMachineProperties(;hardwareProfile=nothing, storageProfile=nothing, additionalCapabilities=nothing, osProfile=nothing, networkProfile=nothing, securityProfile=nothing, diagnosticsProfile=nothing, availabilitySet=nothing, virtualMachineScaleSet=nothing, proximityPlacementGroup=nothing, priority=nothing, evictionPolicy=nothing, billingProfile=nothing, host=nothing, hostGroup=nothing, provisioningState=nothing, instanceView=nothing, licenseType=nothing, vmId=nothing, extensionsTimeBudget=nothing)
         o = new()
         validate_property(VirtualMachineProperties, Symbol("hardwareProfile"), hardwareProfile)
         setfield!(o, Symbol("hardwareProfile"), hardwareProfile)
         validate_property(VirtualMachineProperties, Symbol("storageProfile"), storageProfile)
         setfield!(o, Symbol("storageProfile"), storageProfile)
+        validate_property(VirtualMachineProperties, Symbol("additionalCapabilities"), additionalCapabilities)
+        setfield!(o, Symbol("additionalCapabilities"), additionalCapabilities)
         validate_property(VirtualMachineProperties, Symbol("osProfile"), osProfile)
         setfield!(o, Symbol("osProfile"), osProfile)
         validate_property(VirtualMachineProperties, Symbol("networkProfile"), networkProfile)
         setfield!(o, Symbol("networkProfile"), networkProfile)
+        validate_property(VirtualMachineProperties, Symbol("securityProfile"), securityProfile)
+        setfield!(o, Symbol("securityProfile"), securityProfile)
         validate_property(VirtualMachineProperties, Symbol("diagnosticsProfile"), diagnosticsProfile)
         setfield!(o, Symbol("diagnosticsProfile"), diagnosticsProfile)
         validate_property(VirtualMachineProperties, Symbol("availabilitySet"), availabilitySet)
         setfield!(o, Symbol("availabilitySet"), availabilitySet)
+        validate_property(VirtualMachineProperties, Symbol("virtualMachineScaleSet"), virtualMachineScaleSet)
+        setfield!(o, Symbol("virtualMachineScaleSet"), virtualMachineScaleSet)
+        validate_property(VirtualMachineProperties, Symbol("proximityPlacementGroup"), proximityPlacementGroup)
+        setfield!(o, Symbol("proximityPlacementGroup"), proximityPlacementGroup)
+        validate_property(VirtualMachineProperties, Symbol("priority"), priority)
+        setfield!(o, Symbol("priority"), priority)
+        validate_property(VirtualMachineProperties, Symbol("evictionPolicy"), evictionPolicy)
+        setfield!(o, Symbol("evictionPolicy"), evictionPolicy)
+        validate_property(VirtualMachineProperties, Symbol("billingProfile"), billingProfile)
+        setfield!(o, Symbol("billingProfile"), billingProfile)
+        validate_property(VirtualMachineProperties, Symbol("host"), host)
+        setfield!(o, Symbol("host"), host)
+        validate_property(VirtualMachineProperties, Symbol("hostGroup"), hostGroup)
+        setfield!(o, Symbol("hostGroup"), hostGroup)
         validate_property(VirtualMachineProperties, Symbol("provisioningState"), provisioningState)
         setfield!(o, Symbol("provisioningState"), provisioningState)
         validate_property(VirtualMachineProperties, Symbol("instanceView"), instanceView)
@@ -37,14 +64,16 @@ mutable struct VirtualMachineProperties <: SwaggerModel
         setfield!(o, Symbol("licenseType"), licenseType)
         validate_property(VirtualMachineProperties, Symbol("vmId"), vmId)
         setfield!(o, Symbol("vmId"), vmId)
+        validate_property(VirtualMachineProperties, Symbol("extensionsTimeBudget"), extensionsTimeBudget)
+        setfield!(o, Symbol("extensionsTimeBudget"), extensionsTimeBudget)
         o
     end
 end # type VirtualMachineProperties
 
-const _property_map_VirtualMachineProperties = Dict{Symbol,Symbol}(Symbol("hardwareProfile")=>Symbol("hardwareProfile"), Symbol("storageProfile")=>Symbol("storageProfile"), Symbol("osProfile")=>Symbol("osProfile"), Symbol("networkProfile")=>Symbol("networkProfile"), Symbol("diagnosticsProfile")=>Symbol("diagnosticsProfile"), Symbol("availabilitySet")=>Symbol("availabilitySet"), Symbol("provisioningState")=>Symbol("provisioningState"), Symbol("instanceView")=>Symbol("instanceView"), Symbol("licenseType")=>Symbol("licenseType"), Symbol("vmId")=>Symbol("vmId"))
-const _property_types_VirtualMachineProperties = Dict{Symbol,String}(Symbol("hardwareProfile")=>"HardwareProfile", Symbol("storageProfile")=>"StorageProfile", Symbol("osProfile")=>"OSProfile", Symbol("networkProfile")=>"NetworkProfile", Symbol("diagnosticsProfile")=>"DiagnosticsProfile", Symbol("availabilitySet")=>"SubResource", Symbol("provisioningState")=>"String", Symbol("instanceView")=>"VirtualMachineInstanceView", Symbol("licenseType")=>"String", Symbol("vmId")=>"String")
+const _property_map_VirtualMachineProperties = Dict{Symbol,Symbol}(Symbol("hardwareProfile")=>Symbol("hardwareProfile"), Symbol("storageProfile")=>Symbol("storageProfile"), Symbol("additionalCapabilities")=>Symbol("additionalCapabilities"), Symbol("osProfile")=>Symbol("osProfile"), Symbol("networkProfile")=>Symbol("networkProfile"), Symbol("securityProfile")=>Symbol("securityProfile"), Symbol("diagnosticsProfile")=>Symbol("diagnosticsProfile"), Symbol("availabilitySet")=>Symbol("availabilitySet"), Symbol("virtualMachineScaleSet")=>Symbol("virtualMachineScaleSet"), Symbol("proximityPlacementGroup")=>Symbol("proximityPlacementGroup"), Symbol("priority")=>Symbol("priority"), Symbol("evictionPolicy")=>Symbol("evictionPolicy"), Symbol("billingProfile")=>Symbol("billingProfile"), Symbol("host")=>Symbol("host"), Symbol("hostGroup")=>Symbol("hostGroup"), Symbol("provisioningState")=>Symbol("provisioningState"), Symbol("instanceView")=>Symbol("instanceView"), Symbol("licenseType")=>Symbol("licenseType"), Symbol("vmId")=>Symbol("vmId"), Symbol("extensionsTimeBudget")=>Symbol("extensionsTimeBudget"))
+const _property_types_VirtualMachineProperties = Dict{Symbol,String}(Symbol("hardwareProfile")=>"HardwareProfile", Symbol("storageProfile")=>"StorageProfile", Symbol("additionalCapabilities")=>"AdditionalCapabilities", Symbol("osProfile")=>"OSProfile", Symbol("networkProfile")=>"NetworkProfile", Symbol("securityProfile")=>"SecurityProfile", Symbol("diagnosticsProfile")=>"DiagnosticsProfile", Symbol("availabilitySet")=>"SubResource", Symbol("virtualMachineScaleSet")=>"SubResource", Symbol("proximityPlacementGroup")=>"SubResource", Symbol("priority")=>"Priority", Symbol("evictionPolicy")=>"EvictionPolicy", Symbol("billingProfile")=>"BillingProfile", Symbol("host")=>"SubResource", Symbol("hostGroup")=>"SubResource", Symbol("provisioningState")=>"String", Symbol("instanceView")=>"VirtualMachineInstanceView", Symbol("licenseType")=>"String", Symbol("vmId")=>"String", Symbol("extensionsTimeBudget")=>"String")
 Base.propertynames(::Type{ VirtualMachineProperties }) = collect(keys(_property_map_VirtualMachineProperties))
-Swagger.property_type(::Type{ VirtualMachineProperties }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualMachineProperties[name]))}
+Swagger.property_type(::Type{ VirtualMachineProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineProperties[name]))}
 Swagger.field_name(::Type{ VirtualMachineProperties }, property_name::Symbol) =  _property_map_VirtualMachineProperties[property_name]
 
 function check_required(o::VirtualMachineProperties)

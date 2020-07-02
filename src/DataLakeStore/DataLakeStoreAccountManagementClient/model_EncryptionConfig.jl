@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct EncryptionConfig <: SwaggerModel
     type::Any # spec type: Union{ Nothing, String } # spec name: type
     keyVaultMetaInfo::Any # spec type: Union{ Nothing, KeyVaultMetaInfo } # spec name: keyVaultMetaInfo
@@ -20,7 +19,7 @@ end # type EncryptionConfig
 const _property_map_EncryptionConfig = Dict{Symbol,Symbol}(Symbol("type")=>Symbol("type"), Symbol("keyVaultMetaInfo")=>Symbol("keyVaultMetaInfo"))
 const _property_types_EncryptionConfig = Dict{Symbol,String}(Symbol("type")=>"String", Symbol("keyVaultMetaInfo")=>"KeyVaultMetaInfo")
 Base.propertynames(::Type{ EncryptionConfig }) = collect(keys(_property_map_EncryptionConfig))
-Swagger.property_type(::Type{ EncryptionConfig }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_EncryptionConfig[name]))}
+Swagger.property_type(::Type{ EncryptionConfig }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_EncryptionConfig[name]))}
 Swagger.field_name(::Type{ EncryptionConfig }, property_name::Symbol) =  _property_map_EncryptionConfig[property_name]
 
 const _allowed_EncryptionConfig_type = ["UserManaged", "ServiceManaged"]

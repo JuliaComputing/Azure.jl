@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct NetworkInterfaceDnsSettings <: SwaggerModel
     dnsServers::Any # spec type: Union{ Nothing, Vector{String} } # spec name: dnsServers
     appliedDnsServers::Any # spec type: Union{ Nothing, Vector{String} } # spec name: appliedDnsServers
@@ -29,7 +28,7 @@ end # type NetworkInterfaceDnsSettings
 const _property_map_NetworkInterfaceDnsSettings = Dict{Symbol,Symbol}(Symbol("dnsServers")=>Symbol("dnsServers"), Symbol("appliedDnsServers")=>Symbol("appliedDnsServers"), Symbol("internalDnsNameLabel")=>Symbol("internalDnsNameLabel"), Symbol("internalFqdn")=>Symbol("internalFqdn"), Symbol("internalDomainNameSuffix")=>Symbol("internalDomainNameSuffix"))
 const _property_types_NetworkInterfaceDnsSettings = Dict{Symbol,String}(Symbol("dnsServers")=>"Vector{String}", Symbol("appliedDnsServers")=>"Vector{String}", Symbol("internalDnsNameLabel")=>"String", Symbol("internalFqdn")=>"String", Symbol("internalDomainNameSuffix")=>"String")
 Base.propertynames(::Type{ NetworkInterfaceDnsSettings }) = collect(keys(_property_map_NetworkInterfaceDnsSettings))
-Swagger.property_type(::Type{ NetworkInterfaceDnsSettings }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_NetworkInterfaceDnsSettings[name]))}
+Swagger.property_type(::Type{ NetworkInterfaceDnsSettings }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkInterfaceDnsSettings[name]))}
 Swagger.field_name(::Type{ NetworkInterfaceDnsSettings }, property_name::Symbol) =  _property_map_NetworkInterfaceDnsSettings[property_name]
 
 function check_required(o::NetworkInterfaceDnsSettings)

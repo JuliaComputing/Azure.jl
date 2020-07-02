@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct UpdateFirewallRuleParameters <: SwaggerModel
     properties::Any # spec type: Union{ Nothing, UpdateFirewallRuleProperties } # spec name: properties
 
@@ -17,7 +16,7 @@ end # type UpdateFirewallRuleParameters
 const _property_map_UpdateFirewallRuleParameters = Dict{Symbol,Symbol}(Symbol("properties")=>Symbol("properties"))
 const _property_types_UpdateFirewallRuleParameters = Dict{Symbol,String}(Symbol("properties")=>"UpdateFirewallRuleProperties")
 Base.propertynames(::Type{ UpdateFirewallRuleParameters }) = collect(keys(_property_map_UpdateFirewallRuleParameters))
-Swagger.property_type(::Type{ UpdateFirewallRuleParameters }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_UpdateFirewallRuleParameters[name]))}
+Swagger.property_type(::Type{ UpdateFirewallRuleParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_UpdateFirewallRuleParameters[name]))}
 Swagger.field_name(::Type{ UpdateFirewallRuleParameters }, property_name::Symbol) =  _property_map_UpdateFirewallRuleParameters[property_name]
 
 function check_required(o::UpdateFirewallRuleParameters)

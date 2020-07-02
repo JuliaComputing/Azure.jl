@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ApplicationGatewayFrontendIPConfiguration <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
 
@@ -17,7 +16,7 @@ end # type ApplicationGatewayFrontendIPConfiguration
 const _property_map_ApplicationGatewayFrontendIPConfiguration = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"))
 const _property_types_ApplicationGatewayFrontendIPConfiguration = Dict{Symbol,String}(Symbol("id")=>"String")
 Base.propertynames(::Type{ ApplicationGatewayFrontendIPConfiguration }) = collect(keys(_property_map_ApplicationGatewayFrontendIPConfiguration))
-Swagger.property_type(::Type{ ApplicationGatewayFrontendIPConfiguration }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ApplicationGatewayFrontendIPConfiguration[name]))}
+Swagger.property_type(::Type{ ApplicationGatewayFrontendIPConfiguration }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayFrontendIPConfiguration[name]))}
 Swagger.field_name(::Type{ ApplicationGatewayFrontendIPConfiguration }, property_name::Symbol) =  _property_map_ApplicationGatewayFrontendIPConfiguration[property_name]
 
 function check_required(o::ApplicationGatewayFrontendIPConfiguration)

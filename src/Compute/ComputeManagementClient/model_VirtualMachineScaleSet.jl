@@ -2,15 +2,19 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualMachineScaleSet <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     type::Any # spec type: Union{ Nothing, String } # spec name: type
     location::Any # spec type: Union{ Nothing, String } # spec name: location
     tags::Any # spec type: Union{ Nothing, Dict{String, String} } # spec name: tags
+    sku::Any # spec type: Union{ Nothing, Sku } # spec name: sku
+    plan::Any # spec type: Union{ Nothing, Plan } # spec name: plan
+    properties::Any # spec type: Union{ Nothing, VirtualMachineScaleSetProperties } # spec name: properties
+    identity::Any # spec type: Union{ Nothing, VirtualMachineScaleSetIdentity } # spec name: identity
+    zones::Any # spec type: Union{ Nothing, Vector{String} } # spec name: zones
 
-    function VirtualMachineScaleSet(;id=nothing, name=nothing, type=nothing, location=nothing, tags=nothing)
+    function VirtualMachineScaleSet(;id=nothing, name=nothing, type=nothing, location=nothing, tags=nothing, sku=nothing, plan=nothing, properties=nothing, identity=nothing, zones=nothing)
         o = new()
         validate_property(VirtualMachineScaleSet, Symbol("id"), id)
         setfield!(o, Symbol("id"), id)
@@ -22,14 +26,24 @@ mutable struct VirtualMachineScaleSet <: SwaggerModel
         setfield!(o, Symbol("location"), location)
         validate_property(VirtualMachineScaleSet, Symbol("tags"), tags)
         setfield!(o, Symbol("tags"), tags)
+        validate_property(VirtualMachineScaleSet, Symbol("sku"), sku)
+        setfield!(o, Symbol("sku"), sku)
+        validate_property(VirtualMachineScaleSet, Symbol("plan"), plan)
+        setfield!(o, Symbol("plan"), plan)
+        validate_property(VirtualMachineScaleSet, Symbol("properties"), properties)
+        setfield!(o, Symbol("properties"), properties)
+        validate_property(VirtualMachineScaleSet, Symbol("identity"), identity)
+        setfield!(o, Symbol("identity"), identity)
+        validate_property(VirtualMachineScaleSet, Symbol("zones"), zones)
+        setfield!(o, Symbol("zones"), zones)
         o
     end
 end # type VirtualMachineScaleSet
 
-const _property_map_VirtualMachineScaleSet = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("name")=>Symbol("name"), Symbol("type")=>Symbol("type"), Symbol("location")=>Symbol("location"), Symbol("tags")=>Symbol("tags"))
-const _property_types_VirtualMachineScaleSet = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}")
+const _property_map_VirtualMachineScaleSet = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("name")=>Symbol("name"), Symbol("type")=>Symbol("type"), Symbol("location")=>Symbol("location"), Symbol("tags")=>Symbol("tags"), Symbol("sku")=>Symbol("sku"), Symbol("plan")=>Symbol("plan"), Symbol("properties")=>Symbol("properties"), Symbol("identity")=>Symbol("identity"), Symbol("zones")=>Symbol("zones"))
+const _property_types_VirtualMachineScaleSet = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", Symbol("sku")=>"Sku", Symbol("plan")=>"Plan", Symbol("properties")=>"VirtualMachineScaleSetProperties", Symbol("identity")=>"VirtualMachineScaleSetIdentity", Symbol("zones")=>"Vector{String}")
 Base.propertynames(::Type{ VirtualMachineScaleSet }) = collect(keys(_property_map_VirtualMachineScaleSet))
-Swagger.property_type(::Type{ VirtualMachineScaleSet }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualMachineScaleSet[name]))}
+Swagger.property_type(::Type{ VirtualMachineScaleSet }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSet[name]))}
 Swagger.field_name(::Type{ VirtualMachineScaleSet }, property_name::Symbol) =  _property_map_VirtualMachineScaleSet[property_name]
 
 function check_required(o::VirtualMachineScaleSet)

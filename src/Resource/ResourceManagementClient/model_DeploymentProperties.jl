@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct DeploymentProperties <: SwaggerModel
     template::Any # spec type: Union{ Nothing, Any } # spec name: template
     templateLink::Any # spec type: Union{ Nothing, TemplateLink } # spec name: templateLink
@@ -10,8 +9,9 @@ mutable struct DeploymentProperties <: SwaggerModel
     parametersLink::Any # spec type: Union{ Nothing, ParametersLink } # spec name: parametersLink
     mode::Any # spec type: Union{ Nothing, String } # spec name: mode
     debugSetting::Any # spec type: Union{ Nothing, DebugSetting } # spec name: debugSetting
+    onErrorDeployment::Any # spec type: Union{ Nothing, OnErrorDeployment } # spec name: onErrorDeployment
 
-    function DeploymentProperties(;template=nothing, templateLink=nothing, parameters=nothing, parametersLink=nothing, mode=nothing, debugSetting=nothing)
+    function DeploymentProperties(;template=nothing, templateLink=nothing, parameters=nothing, parametersLink=nothing, mode=nothing, debugSetting=nothing, onErrorDeployment=nothing)
         o = new()
         validate_property(DeploymentProperties, Symbol("template"), template)
         setfield!(o, Symbol("template"), template)
@@ -25,14 +25,16 @@ mutable struct DeploymentProperties <: SwaggerModel
         setfield!(o, Symbol("mode"), mode)
         validate_property(DeploymentProperties, Symbol("debugSetting"), debugSetting)
         setfield!(o, Symbol("debugSetting"), debugSetting)
+        validate_property(DeploymentProperties, Symbol("onErrorDeployment"), onErrorDeployment)
+        setfield!(o, Symbol("onErrorDeployment"), onErrorDeployment)
         o
     end
 end # type DeploymentProperties
 
-const _property_map_DeploymentProperties = Dict{Symbol,Symbol}(Symbol("template")=>Symbol("template"), Symbol("templateLink")=>Symbol("templateLink"), Symbol("parameters")=>Symbol("parameters"), Symbol("parametersLink")=>Symbol("parametersLink"), Symbol("mode")=>Symbol("mode"), Symbol("debugSetting")=>Symbol("debugSetting"))
-const _property_types_DeploymentProperties = Dict{Symbol,String}(Symbol("template")=>"Any", Symbol("templateLink")=>"TemplateLink", Symbol("parameters")=>"Any", Symbol("parametersLink")=>"ParametersLink", Symbol("mode")=>"String", Symbol("debugSetting")=>"DebugSetting")
+const _property_map_DeploymentProperties = Dict{Symbol,Symbol}(Symbol("template")=>Symbol("template"), Symbol("templateLink")=>Symbol("templateLink"), Symbol("parameters")=>Symbol("parameters"), Symbol("parametersLink")=>Symbol("parametersLink"), Symbol("mode")=>Symbol("mode"), Symbol("debugSetting")=>Symbol("debugSetting"), Symbol("onErrorDeployment")=>Symbol("onErrorDeployment"))
+const _property_types_DeploymentProperties = Dict{Symbol,String}(Symbol("template")=>"Any", Symbol("templateLink")=>"TemplateLink", Symbol("parameters")=>"Any", Symbol("parametersLink")=>"ParametersLink", Symbol("mode")=>"String", Symbol("debugSetting")=>"DebugSetting", Symbol("onErrorDeployment")=>"OnErrorDeployment")
 Base.propertynames(::Type{ DeploymentProperties }) = collect(keys(_property_map_DeploymentProperties))
-Swagger.property_type(::Type{ DeploymentProperties }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_DeploymentProperties[name]))}
+Swagger.property_type(::Type{ DeploymentProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DeploymentProperties[name]))}
 Swagger.field_name(::Type{ DeploymentProperties }, property_name::Symbol) =  _property_map_DeploymentProperties[property_name]
 
 const _allowed_DeploymentProperties_mode = ["Incremental", "Complete"]

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualMachineScaleSetSkuCapacity <: SwaggerModel
     minimum::Any # spec type: Union{ Nothing, Int64 } # spec name: minimum
     maximum::Any # spec type: Union{ Nothing, Int64 } # spec name: maximum
@@ -26,7 +25,7 @@ end # type VirtualMachineScaleSetSkuCapacity
 const _property_map_VirtualMachineScaleSetSkuCapacity = Dict{Symbol,Symbol}(Symbol("minimum")=>Symbol("minimum"), Symbol("maximum")=>Symbol("maximum"), Symbol("defaultCapacity")=>Symbol("defaultCapacity"), Symbol("scaleType")=>Symbol("scaleType"))
 const _property_types_VirtualMachineScaleSetSkuCapacity = Dict{Symbol,String}(Symbol("minimum")=>"Int64", Symbol("maximum")=>"Int64", Symbol("defaultCapacity")=>"Int64", Symbol("scaleType")=>"String")
 Base.propertynames(::Type{ VirtualMachineScaleSetSkuCapacity }) = collect(keys(_property_map_VirtualMachineScaleSetSkuCapacity))
-Swagger.property_type(::Type{ VirtualMachineScaleSetSkuCapacity }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualMachineScaleSetSkuCapacity[name]))}
+Swagger.property_type(::Type{ VirtualMachineScaleSetSkuCapacity }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetSkuCapacity[name]))}
 Swagger.field_name(::Type{ VirtualMachineScaleSetSkuCapacity }, property_name::Symbol) =  _property_map_VirtualMachineScaleSetSkuCapacity[property_name]
 
 const _allowed_VirtualMachineScaleSetSkuCapacity_scaleType = ["Automatic", "None"]

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ApplicationGatewayPathRule <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
 
@@ -17,7 +16,7 @@ end # type ApplicationGatewayPathRule
 const _property_map_ApplicationGatewayPathRule = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"))
 const _property_types_ApplicationGatewayPathRule = Dict{Symbol,String}(Symbol("id")=>"String")
 Base.propertynames(::Type{ ApplicationGatewayPathRule }) = collect(keys(_property_map_ApplicationGatewayPathRule))
-Swagger.property_type(::Type{ ApplicationGatewayPathRule }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ApplicationGatewayPathRule[name]))}
+Swagger.property_type(::Type{ ApplicationGatewayPathRule }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayPathRule[name]))}
 Swagger.field_name(::Type{ ApplicationGatewayPathRule }, property_name::Symbol) =  _property_map_ApplicationGatewayPathRule[property_name]
 
 function check_required(o::ApplicationGatewayPathRule)

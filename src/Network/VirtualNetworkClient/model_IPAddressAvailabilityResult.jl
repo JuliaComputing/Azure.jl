@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct IPAddressAvailabilityResult <: SwaggerModel
     available::Any # spec type: Union{ Nothing, Bool } # spec name: available
     availableIPAddresses::Any # spec type: Union{ Nothing, Vector{String} } # spec name: availableIPAddresses
@@ -20,7 +19,7 @@ end # type IPAddressAvailabilityResult
 const _property_map_IPAddressAvailabilityResult = Dict{Symbol,Symbol}(Symbol("available")=>Symbol("available"), Symbol("availableIPAddresses")=>Symbol("availableIPAddresses"))
 const _property_types_IPAddressAvailabilityResult = Dict{Symbol,String}(Symbol("available")=>"Bool", Symbol("availableIPAddresses")=>"Vector{String}")
 Base.propertynames(::Type{ IPAddressAvailabilityResult }) = collect(keys(_property_map_IPAddressAvailabilityResult))
-Swagger.property_type(::Type{ IPAddressAvailabilityResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_IPAddressAvailabilityResult[name]))}
+Swagger.property_type(::Type{ IPAddressAvailabilityResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IPAddressAvailabilityResult[name]))}
 Swagger.field_name(::Type{ IPAddressAvailabilityResult }, property_name::Symbol) =  _property_map_IPAddressAvailabilityResult[property_name]
 
 function check_required(o::IPAddressAvailabilityResult)

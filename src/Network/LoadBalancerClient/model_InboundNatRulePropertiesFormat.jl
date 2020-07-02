@@ -2,18 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct InboundNatRulePropertiesFormat <: SwaggerModel
     frontendIPConfiguration::Any # spec type: Union{ Nothing, SubResource } # spec name: frontendIPConfiguration
     backendIPConfiguration::Any # spec type: Union{ Nothing, NetworkInterfaceIPConfiguration } # spec name: backendIPConfiguration
-    protocol::Any # spec type: Union{ Nothing, String } # spec name: protocol
+    protocol::Any # spec type: Union{ Nothing, TransportProtocol } # spec name: protocol
     frontendPort::Any # spec type: Union{ Nothing, Int32 } # spec name: frontendPort
     backendPort::Any # spec type: Union{ Nothing, Int32 } # spec name: backendPort
     idleTimeoutInMinutes::Any # spec type: Union{ Nothing, Int32 } # spec name: idleTimeoutInMinutes
     enableFloatingIP::Any # spec type: Union{ Nothing, Bool } # spec name: enableFloatingIP
-    provisioningState::Any # spec type: Union{ Nothing, String } # spec name: provisioningState
+    enableTcpReset::Any # spec type: Union{ Nothing, Bool } # spec name: enableTcpReset
+    provisioningState::Any # spec type: Union{ Nothing, ProvisioningState } # spec name: provisioningState
 
-    function InboundNatRulePropertiesFormat(;frontendIPConfiguration=nothing, backendIPConfiguration=nothing, protocol=nothing, frontendPort=nothing, backendPort=nothing, idleTimeoutInMinutes=nothing, enableFloatingIP=nothing, provisioningState=nothing)
+    function InboundNatRulePropertiesFormat(;frontendIPConfiguration=nothing, backendIPConfiguration=nothing, protocol=nothing, frontendPort=nothing, backendPort=nothing, idleTimeoutInMinutes=nothing, enableFloatingIP=nothing, enableTcpReset=nothing, provisioningState=nothing)
         o = new()
         validate_property(InboundNatRulePropertiesFormat, Symbol("frontendIPConfiguration"), frontendIPConfiguration)
         setfield!(o, Symbol("frontendIPConfiguration"), frontendIPConfiguration)
@@ -29,26 +29,23 @@ mutable struct InboundNatRulePropertiesFormat <: SwaggerModel
         setfield!(o, Symbol("idleTimeoutInMinutes"), idleTimeoutInMinutes)
         validate_property(InboundNatRulePropertiesFormat, Symbol("enableFloatingIP"), enableFloatingIP)
         setfield!(o, Symbol("enableFloatingIP"), enableFloatingIP)
+        validate_property(InboundNatRulePropertiesFormat, Symbol("enableTcpReset"), enableTcpReset)
+        setfield!(o, Symbol("enableTcpReset"), enableTcpReset)
         validate_property(InboundNatRulePropertiesFormat, Symbol("provisioningState"), provisioningState)
         setfield!(o, Symbol("provisioningState"), provisioningState)
         o
     end
 end # type InboundNatRulePropertiesFormat
 
-const _property_map_InboundNatRulePropertiesFormat = Dict{Symbol,Symbol}(Symbol("frontendIPConfiguration")=>Symbol("frontendIPConfiguration"), Symbol("backendIPConfiguration")=>Symbol("backendIPConfiguration"), Symbol("protocol")=>Symbol("protocol"), Symbol("frontendPort")=>Symbol("frontendPort"), Symbol("backendPort")=>Symbol("backendPort"), Symbol("idleTimeoutInMinutes")=>Symbol("idleTimeoutInMinutes"), Symbol("enableFloatingIP")=>Symbol("enableFloatingIP"), Symbol("provisioningState")=>Symbol("provisioningState"))
-const _property_types_InboundNatRulePropertiesFormat = Dict{Symbol,String}(Symbol("frontendIPConfiguration")=>"SubResource", Symbol("backendIPConfiguration")=>"NetworkInterfaceIPConfiguration", Symbol("protocol")=>"String", Symbol("frontendPort")=>"Int32", Symbol("backendPort")=>"Int32", Symbol("idleTimeoutInMinutes")=>"Int32", Symbol("enableFloatingIP")=>"Bool", Symbol("provisioningState")=>"String")
+const _property_map_InboundNatRulePropertiesFormat = Dict{Symbol,Symbol}(Symbol("frontendIPConfiguration")=>Symbol("frontendIPConfiguration"), Symbol("backendIPConfiguration")=>Symbol("backendIPConfiguration"), Symbol("protocol")=>Symbol("protocol"), Symbol("frontendPort")=>Symbol("frontendPort"), Symbol("backendPort")=>Symbol("backendPort"), Symbol("idleTimeoutInMinutes")=>Symbol("idleTimeoutInMinutes"), Symbol("enableFloatingIP")=>Symbol("enableFloatingIP"), Symbol("enableTcpReset")=>Symbol("enableTcpReset"), Symbol("provisioningState")=>Symbol("provisioningState"))
+const _property_types_InboundNatRulePropertiesFormat = Dict{Symbol,String}(Symbol("frontendIPConfiguration")=>"SubResource", Symbol("backendIPConfiguration")=>"NetworkInterfaceIPConfiguration", Symbol("protocol")=>"TransportProtocol", Symbol("frontendPort")=>"Int32", Symbol("backendPort")=>"Int32", Symbol("idleTimeoutInMinutes")=>"Int32", Symbol("enableFloatingIP")=>"Bool", Symbol("enableTcpReset")=>"Bool", Symbol("provisioningState")=>"ProvisioningState")
 Base.propertynames(::Type{ InboundNatRulePropertiesFormat }) = collect(keys(_property_map_InboundNatRulePropertiesFormat))
-Swagger.property_type(::Type{ InboundNatRulePropertiesFormat }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_InboundNatRulePropertiesFormat[name]))}
+Swagger.property_type(::Type{ InboundNatRulePropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_InboundNatRulePropertiesFormat[name]))}
 Swagger.field_name(::Type{ InboundNatRulePropertiesFormat }, property_name::Symbol) =  _property_map_InboundNatRulePropertiesFormat[property_name]
-
-const _allowed_InboundNatRulePropertiesFormat_protocol = ["Udp", "Tcp"]
 
 function check_required(o::InboundNatRulePropertiesFormat)
     true
 end
 
 function validate_property(::Type{ InboundNatRulePropertiesFormat }, name::Symbol, val)
-    if name === Symbol("protocol")
-        Swagger.validate_param(name, "InboundNatRulePropertiesFormat", :enum, val, _allowed_InboundNatRulePropertiesFormat_protocol)
-    end
 end

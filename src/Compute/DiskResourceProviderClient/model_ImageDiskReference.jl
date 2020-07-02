@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ImageDiskReference <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
     lun::Any # spec type: Union{ Nothing, Int32 } # spec name: lun
@@ -20,7 +19,7 @@ end # type ImageDiskReference
 const _property_map_ImageDiskReference = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("lun")=>Symbol("lun"))
 const _property_types_ImageDiskReference = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("lun")=>"Int32")
 Base.propertynames(::Type{ ImageDiskReference }) = collect(keys(_property_map_ImageDiskReference))
-Swagger.property_type(::Type{ ImageDiskReference }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ImageDiskReference[name]))}
+Swagger.property_type(::Type{ ImageDiskReference }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ImageDiskReference[name]))}
 Swagger.field_name(::Type{ ImageDiskReference }, property_name::Symbol) =  _property_map_ImageDiskReference[property_name]
 
 function check_required(o::ImageDiskReference)

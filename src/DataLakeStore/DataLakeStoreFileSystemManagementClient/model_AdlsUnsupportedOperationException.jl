@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct AdlsUnsupportedOperationException <: SwaggerModel
     exception::Any # spec type: Union{ Nothing, String } # spec name: exception
     javaClassName::Any # spec type: Union{ Nothing, String } # spec name: javaClassName
@@ -23,7 +22,7 @@ end # type AdlsUnsupportedOperationException
 const _property_map_AdlsUnsupportedOperationException = Dict{Symbol,Symbol}(Symbol("exception")=>Symbol("exception"), Symbol("javaClassName")=>Symbol("javaClassName"), Symbol("message")=>Symbol("message"))
 const _property_types_AdlsUnsupportedOperationException = Dict{Symbol,String}(Symbol("exception")=>"String", Symbol("javaClassName")=>"String", Symbol("message")=>"String")
 Base.propertynames(::Type{ AdlsUnsupportedOperationException }) = collect(keys(_property_map_AdlsUnsupportedOperationException))
-Swagger.property_type(::Type{ AdlsUnsupportedOperationException }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_AdlsUnsupportedOperationException[name]))}
+Swagger.property_type(::Type{ AdlsUnsupportedOperationException }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AdlsUnsupportedOperationException[name]))}
 Swagger.field_name(::Type{ AdlsUnsupportedOperationException }, property_name::Symbol) =  _property_map_AdlsUnsupportedOperationException[property_name]
 
 function check_required(o::AdlsUnsupportedOperationException)

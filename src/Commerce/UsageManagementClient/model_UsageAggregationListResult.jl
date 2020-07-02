@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct UsageAggregationListResult <: SwaggerModel
     value::Any # spec type: Union{ Nothing, Vector{UsageAggregation} } # spec name: value
     nextLink::Any # spec type: Union{ Nothing, String } # spec name: nextLink
@@ -20,7 +19,7 @@ end # type UsageAggregationListResult
 const _property_map_UsageAggregationListResult = Dict{Symbol,Symbol}(Symbol("value")=>Symbol("value"), Symbol("nextLink")=>Symbol("nextLink"))
 const _property_types_UsageAggregationListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{UsageAggregation}", Symbol("nextLink")=>"String")
 Base.propertynames(::Type{ UsageAggregationListResult }) = collect(keys(_property_map_UsageAggregationListResult))
-Swagger.property_type(::Type{ UsageAggregationListResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_UsageAggregationListResult[name]))}
+Swagger.property_type(::Type{ UsageAggregationListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_UsageAggregationListResult[name]))}
 Swagger.field_name(::Type{ UsageAggregationListResult }, property_name::Symbol) =  _property_map_UsageAggregationListResult[property_name]
 
 function check_required(o::UsageAggregationListResult)

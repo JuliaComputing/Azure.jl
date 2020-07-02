@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct AdlsThrottledException <: SwaggerModel
     exception::Any # spec type: Union{ Nothing, String } # spec name: exception
     javaClassName::Any # spec type: Union{ Nothing, String } # spec name: javaClassName
@@ -23,7 +22,7 @@ end # type AdlsThrottledException
 const _property_map_AdlsThrottledException = Dict{Symbol,Symbol}(Symbol("exception")=>Symbol("exception"), Symbol("javaClassName")=>Symbol("javaClassName"), Symbol("message")=>Symbol("message"))
 const _property_types_AdlsThrottledException = Dict{Symbol,String}(Symbol("exception")=>"String", Symbol("javaClassName")=>"String", Symbol("message")=>"String")
 Base.propertynames(::Type{ AdlsThrottledException }) = collect(keys(_property_map_AdlsThrottledException))
-Swagger.property_type(::Type{ AdlsThrottledException }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_AdlsThrottledException[name]))}
+Swagger.property_type(::Type{ AdlsThrottledException }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AdlsThrottledException[name]))}
 Swagger.field_name(::Type{ AdlsThrottledException }, property_name::Symbol) =  _property_map_AdlsThrottledException[property_name]
 
 function check_required(o::AdlsThrottledException)

@@ -2,28 +2,27 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct DiskUpdate <: SwaggerModel
+    properties::Any # spec type: Union{ Nothing, DiskUpdateProperties } # spec name: properties
     tags::Any # spec type: Union{ Nothing, Dict{String, String} } # spec name: tags
     sku::Any # spec type: Union{ Nothing, DiskSku } # spec name: sku
-    properties::Any # spec type: Union{ Nothing, DiskUpdateProperties } # spec name: properties
 
-    function DiskUpdate(;tags=nothing, sku=nothing, properties=nothing)
+    function DiskUpdate(;properties=nothing, tags=nothing, sku=nothing)
         o = new()
+        validate_property(DiskUpdate, Symbol("properties"), properties)
+        setfield!(o, Symbol("properties"), properties)
         validate_property(DiskUpdate, Symbol("tags"), tags)
         setfield!(o, Symbol("tags"), tags)
         validate_property(DiskUpdate, Symbol("sku"), sku)
         setfield!(o, Symbol("sku"), sku)
-        validate_property(DiskUpdate, Symbol("properties"), properties)
-        setfield!(o, Symbol("properties"), properties)
         o
     end
 end # type DiskUpdate
 
-const _property_map_DiskUpdate = Dict{Symbol,Symbol}(Symbol("tags")=>Symbol("tags"), Symbol("sku")=>Symbol("sku"), Symbol("properties")=>Symbol("properties"))
-const _property_types_DiskUpdate = Dict{Symbol,String}(Symbol("tags")=>"Dict{String, String}", Symbol("sku")=>"DiskSku", Symbol("properties")=>"DiskUpdateProperties")
+const _property_map_DiskUpdate = Dict{Symbol,Symbol}(Symbol("properties")=>Symbol("properties"), Symbol("tags")=>Symbol("tags"), Symbol("sku")=>Symbol("sku"))
+const _property_types_DiskUpdate = Dict{Symbol,String}(Symbol("properties")=>"DiskUpdateProperties", Symbol("tags")=>"Dict{String, String}", Symbol("sku")=>"DiskSku")
 Base.propertynames(::Type{ DiskUpdate }) = collect(keys(_property_map_DiskUpdate))
-Swagger.property_type(::Type{ DiskUpdate }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_DiskUpdate[name]))}
+Swagger.property_type(::Type{ DiskUpdate }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DiskUpdate[name]))}
 Swagger.field_name(::Type{ DiskUpdate }, property_name::Symbol) =  _property_map_DiskUpdate[property_name]
 
 function check_required(o::DiskUpdate)

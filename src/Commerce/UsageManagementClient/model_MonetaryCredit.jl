@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct MonetaryCredit <: SwaggerModel
     Name::Any # spec type: Union{ Nothing, String } # spec name: Name
     EffectiveDate::Any # spec type: Union{ Nothing, DateTime } # spec name: EffectiveDate
@@ -20,7 +19,7 @@ end # type MonetaryCredit
 const _property_map_MonetaryCredit = Dict{Symbol,Symbol}(Symbol("Name")=>Symbol("Name"), Symbol("EffectiveDate")=>Symbol("EffectiveDate"))
 const _property_types_MonetaryCredit = Dict{Symbol,String}(Symbol("Name")=>"String", Symbol("EffectiveDate")=>"DateTime")
 Base.propertynames(::Type{ MonetaryCredit }) = collect(keys(_property_map_MonetaryCredit))
-Swagger.property_type(::Type{ MonetaryCredit }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_MonetaryCredit[name]))}
+Swagger.property_type(::Type{ MonetaryCredit }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_MonetaryCredit[name]))}
 Swagger.field_name(::Type{ MonetaryCredit }, property_name::Symbol) =  _property_map_MonetaryCredit[property_name]
 
 const _allowed_MonetaryCredit_Name = ["Recurring Charge", "Monetary Commitment", "Monetary Credit"]

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct OperationProperties <: SwaggerModel
     serviceSpecification::Any # spec type: Union{ Nothing, ServiceSpecification } # spec name: serviceSpecification
 
@@ -17,7 +16,7 @@ end # type OperationProperties
 const _property_map_OperationProperties = Dict{Symbol,Symbol}(Symbol("serviceSpecification")=>Symbol("serviceSpecification"))
 const _property_types_OperationProperties = Dict{Symbol,String}(Symbol("serviceSpecification")=>"ServiceSpecification")
 Base.propertynames(::Type{ OperationProperties }) = collect(keys(_property_map_OperationProperties))
-Swagger.property_type(::Type{ OperationProperties }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_OperationProperties[name]))}
+Swagger.property_type(::Type{ OperationProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_OperationProperties[name]))}
 Swagger.field_name(::Type{ OperationProperties }, property_name::Symbol) =  _property_map_OperationProperties[property_name]
 
 function check_required(o::OperationProperties)

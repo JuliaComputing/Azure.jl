@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualMachineExtensionImage <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
     name::Any # spec type: Union{ Nothing, String } # spec name: name
@@ -32,7 +31,7 @@ end # type VirtualMachineExtensionImage
 const _property_map_VirtualMachineExtensionImage = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("name")=>Symbol("name"), Symbol("type")=>Symbol("type"), Symbol("location")=>Symbol("location"), Symbol("tags")=>Symbol("tags"), Symbol("properties")=>Symbol("properties"))
 const _property_types_VirtualMachineExtensionImage = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", Symbol("properties")=>"VirtualMachineExtensionImageProperties")
 Base.propertynames(::Type{ VirtualMachineExtensionImage }) = collect(keys(_property_map_VirtualMachineExtensionImage))
-Swagger.property_type(::Type{ VirtualMachineExtensionImage }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualMachineExtensionImage[name]))}
+Swagger.property_type(::Type{ VirtualMachineExtensionImage }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineExtensionImage[name]))}
 Swagger.field_name(::Type{ VirtualMachineExtensionImage }, property_name::Symbol) =  _property_map_VirtualMachineExtensionImage[property_name]
 
 function check_required(o::VirtualMachineExtensionImage)

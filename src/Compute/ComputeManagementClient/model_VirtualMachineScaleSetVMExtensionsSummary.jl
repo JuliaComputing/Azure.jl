@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualMachineScaleSetVMExtensionsSummary <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     statusesSummary::Any # spec type: Union{ Nothing, Vector{VirtualMachineStatusCodeCount} } # spec name: statusesSummary
@@ -20,7 +19,7 @@ end # type VirtualMachineScaleSetVMExtensionsSummary
 const _property_map_VirtualMachineScaleSetVMExtensionsSummary = Dict{Symbol,Symbol}(Symbol("name")=>Symbol("name"), Symbol("statusesSummary")=>Symbol("statusesSummary"))
 const _property_types_VirtualMachineScaleSetVMExtensionsSummary = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("statusesSummary")=>"Vector{VirtualMachineStatusCodeCount}")
 Base.propertynames(::Type{ VirtualMachineScaleSetVMExtensionsSummary }) = collect(keys(_property_map_VirtualMachineScaleSetVMExtensionsSummary))
-Swagger.property_type(::Type{ VirtualMachineScaleSetVMExtensionsSummary }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualMachineScaleSetVMExtensionsSummary[name]))}
+Swagger.property_type(::Type{ VirtualMachineScaleSetVMExtensionsSummary }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetVMExtensionsSummary[name]))}
 Swagger.field_name(::Type{ VirtualMachineScaleSetVMExtensionsSummary }, property_name::Symbol) =  _property_map_VirtualMachineScaleSetVMExtensionsSummary[property_name]
 
 function check_required(o::VirtualMachineScaleSetVMExtensionsSummary)

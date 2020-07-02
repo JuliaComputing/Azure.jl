@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ConnectivityIssue <: SwaggerModel
     origin::Any # spec type: Union{ Nothing, String } # spec name: origin
     severity::Any # spec type: Union{ Nothing, String } # spec name: severity
@@ -26,7 +25,7 @@ end # type ConnectivityIssue
 const _property_map_ConnectivityIssue = Dict{Symbol,Symbol}(Symbol("origin")=>Symbol("origin"), Symbol("severity")=>Symbol("severity"), Symbol("type")=>Symbol("type"), Symbol("context")=>Symbol("context"))
 const _property_types_ConnectivityIssue = Dict{Symbol,String}(Symbol("origin")=>"String", Symbol("severity")=>"String", Symbol("type")=>"String", Symbol("context")=>"Vector{IssueContext}")
 Base.propertynames(::Type{ ConnectivityIssue }) = collect(keys(_property_map_ConnectivityIssue))
-Swagger.property_type(::Type{ ConnectivityIssue }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ConnectivityIssue[name]))}
+Swagger.property_type(::Type{ ConnectivityIssue }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ConnectivityIssue[name]))}
 Swagger.field_name(::Type{ ConnectivityIssue }, property_name::Symbol) =  _property_map_ConnectivityIssue[property_name]
 
 const _allowed_ConnectivityIssue_origin = ["Local", "Inbound", "Outbound"]

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualMachineScaleSetOSProfile <: SwaggerModel
     computerNamePrefix::Any # spec type: Union{ Nothing, String } # spec name: computerNamePrefix
     adminUsername::Any # spec type: Union{ Nothing, String } # spec name: adminUsername
@@ -35,7 +34,7 @@ end # type VirtualMachineScaleSetOSProfile
 const _property_map_VirtualMachineScaleSetOSProfile = Dict{Symbol,Symbol}(Symbol("computerNamePrefix")=>Symbol("computerNamePrefix"), Symbol("adminUsername")=>Symbol("adminUsername"), Symbol("adminPassword")=>Symbol("adminPassword"), Symbol("customData")=>Symbol("customData"), Symbol("windowsConfiguration")=>Symbol("windowsConfiguration"), Symbol("linuxConfiguration")=>Symbol("linuxConfiguration"), Symbol("secrets")=>Symbol("secrets"))
 const _property_types_VirtualMachineScaleSetOSProfile = Dict{Symbol,String}(Symbol("computerNamePrefix")=>"String", Symbol("adminUsername")=>"String", Symbol("adminPassword")=>"String", Symbol("customData")=>"String", Symbol("windowsConfiguration")=>"WindowsConfiguration", Symbol("linuxConfiguration")=>"LinuxConfiguration", Symbol("secrets")=>"Vector{VaultSecretGroup}")
 Base.propertynames(::Type{ VirtualMachineScaleSetOSProfile }) = collect(keys(_property_map_VirtualMachineScaleSetOSProfile))
-Swagger.property_type(::Type{ VirtualMachineScaleSetOSProfile }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualMachineScaleSetOSProfile[name]))}
+Swagger.property_type(::Type{ VirtualMachineScaleSetOSProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetOSProfile[name]))}
 Swagger.field_name(::Type{ VirtualMachineScaleSetOSProfile }, property_name::Symbol) =  _property_map_VirtualMachineScaleSetOSProfile[property_name]
 
 function check_required(o::VirtualMachineScaleSetOSProfile)

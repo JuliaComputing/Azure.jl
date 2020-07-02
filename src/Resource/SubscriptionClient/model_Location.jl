@@ -2,16 +2,15 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct Location <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
     subscriptionId::Any # spec type: Union{ Nothing, String } # spec name: subscriptionId
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     displayName::Any # spec type: Union{ Nothing, String } # spec name: displayName
-    latitude::Any # spec type: Union{ Nothing, String } # spec name: latitude
-    longitude::Any # spec type: Union{ Nothing, String } # spec name: longitude
+    regionalDisplayName::Any # spec type: Union{ Nothing, String } # spec name: regionalDisplayName
+    metadata::Any # spec type: Union{ Nothing, LocationMetadata } # spec name: metadata
 
-    function Location(;id=nothing, subscriptionId=nothing, name=nothing, displayName=nothing, latitude=nothing, longitude=nothing)
+    function Location(;id=nothing, subscriptionId=nothing, name=nothing, displayName=nothing, regionalDisplayName=nothing, metadata=nothing)
         o = new()
         validate_property(Location, Symbol("id"), id)
         setfield!(o, Symbol("id"), id)
@@ -21,18 +20,18 @@ mutable struct Location <: SwaggerModel
         setfield!(o, Symbol("name"), name)
         validate_property(Location, Symbol("displayName"), displayName)
         setfield!(o, Symbol("displayName"), displayName)
-        validate_property(Location, Symbol("latitude"), latitude)
-        setfield!(o, Symbol("latitude"), latitude)
-        validate_property(Location, Symbol("longitude"), longitude)
-        setfield!(o, Symbol("longitude"), longitude)
+        validate_property(Location, Symbol("regionalDisplayName"), regionalDisplayName)
+        setfield!(o, Symbol("regionalDisplayName"), regionalDisplayName)
+        validate_property(Location, Symbol("metadata"), metadata)
+        setfield!(o, Symbol("metadata"), metadata)
         o
     end
 end # type Location
 
-const _property_map_Location = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("subscriptionId")=>Symbol("subscriptionId"), Symbol("name")=>Symbol("name"), Symbol("displayName")=>Symbol("displayName"), Symbol("latitude")=>Symbol("latitude"), Symbol("longitude")=>Symbol("longitude"))
-const _property_types_Location = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("subscriptionId")=>"String", Symbol("name")=>"String", Symbol("displayName")=>"String", Symbol("latitude")=>"String", Symbol("longitude")=>"String")
+const _property_map_Location = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("subscriptionId")=>Symbol("subscriptionId"), Symbol("name")=>Symbol("name"), Symbol("displayName")=>Symbol("displayName"), Symbol("regionalDisplayName")=>Symbol("regionalDisplayName"), Symbol("metadata")=>Symbol("metadata"))
+const _property_types_Location = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("subscriptionId")=>"String", Symbol("name")=>"String", Symbol("displayName")=>"String", Symbol("regionalDisplayName")=>"String", Symbol("metadata")=>"LocationMetadata")
 Base.propertynames(::Type{ Location }) = collect(keys(_property_map_Location))
-Swagger.property_type(::Type{ Location }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_Location[name]))}
+Swagger.property_type(::Type{ Location }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Location[name]))}
 Swagger.field_name(::Type{ Location }, property_name::Symbol) =  _property_map_Location[property_name]
 
 function check_required(o::Location)

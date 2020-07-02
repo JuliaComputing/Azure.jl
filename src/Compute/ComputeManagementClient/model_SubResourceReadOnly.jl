@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct SubResourceReadOnly <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
 
@@ -17,7 +16,7 @@ end # type SubResourceReadOnly
 const _property_map_SubResourceReadOnly = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"))
 const _property_types_SubResourceReadOnly = Dict{Symbol,String}(Symbol("id")=>"String")
 Base.propertynames(::Type{ SubResourceReadOnly }) = collect(keys(_property_map_SubResourceReadOnly))
-Swagger.property_type(::Type{ SubResourceReadOnly }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_SubResourceReadOnly[name]))}
+Swagger.property_type(::Type{ SubResourceReadOnly }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SubResourceReadOnly[name]))}
 Swagger.field_name(::Type{ SubResourceReadOnly }, property_name::Symbol) =  _property_map_SubResourceReadOnly[property_name]
 
 function check_required(o::SubResourceReadOnly)

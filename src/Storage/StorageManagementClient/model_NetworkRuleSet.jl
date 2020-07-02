@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct NetworkRuleSet <: SwaggerModel
     bypass::Any # spec type: Union{ Nothing, String } # spec name: bypass
     virtualNetworkRules::Any # spec type: Union{ Nothing, Vector{VirtualNetworkRule} } # spec name: virtualNetworkRules
@@ -26,7 +25,7 @@ end # type NetworkRuleSet
 const _property_map_NetworkRuleSet = Dict{Symbol,Symbol}(Symbol("bypass")=>Symbol("bypass"), Symbol("virtualNetworkRules")=>Symbol("virtualNetworkRules"), Symbol("ipRules")=>Symbol("ipRules"), Symbol("defaultAction")=>Symbol("defaultAction"))
 const _property_types_NetworkRuleSet = Dict{Symbol,String}(Symbol("bypass")=>"String", Symbol("virtualNetworkRules")=>"Vector{VirtualNetworkRule}", Symbol("ipRules")=>"Vector{IPRule}", Symbol("defaultAction")=>"String")
 Base.propertynames(::Type{ NetworkRuleSet }) = collect(keys(_property_map_NetworkRuleSet))
-Swagger.property_type(::Type{ NetworkRuleSet }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_NetworkRuleSet[name]))}
+Swagger.property_type(::Type{ NetworkRuleSet }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkRuleSet[name]))}
 Swagger.field_name(::Type{ NetworkRuleSet }, property_name::Symbol) =  _property_map_NetworkRuleSet[property_name]
 
 const _allowed_NetworkRuleSet_bypass = ["None", "Logging", "Metrics", "AzureServices"]

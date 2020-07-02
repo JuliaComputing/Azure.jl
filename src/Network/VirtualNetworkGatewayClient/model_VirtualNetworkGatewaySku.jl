@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualNetworkGatewaySku <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     tier::Any # spec type: Union{ Nothing, String } # spec name: tier
@@ -23,12 +22,12 @@ end # type VirtualNetworkGatewaySku
 const _property_map_VirtualNetworkGatewaySku = Dict{Symbol,Symbol}(Symbol("name")=>Symbol("name"), Symbol("tier")=>Symbol("tier"), Symbol("capacity")=>Symbol("capacity"))
 const _property_types_VirtualNetworkGatewaySku = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("tier")=>"String", Symbol("capacity")=>"Int32")
 Base.propertynames(::Type{ VirtualNetworkGatewaySku }) = collect(keys(_property_map_VirtualNetworkGatewaySku))
-Swagger.property_type(::Type{ VirtualNetworkGatewaySku }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualNetworkGatewaySku[name]))}
+Swagger.property_type(::Type{ VirtualNetworkGatewaySku }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualNetworkGatewaySku[name]))}
 Swagger.field_name(::Type{ VirtualNetworkGatewaySku }, property_name::Symbol) =  _property_map_VirtualNetworkGatewaySku[property_name]
 
-const _allowed_VirtualNetworkGatewaySku_name = ["Basic", "HighPerformance", "Standard", "UltraPerformance", "VpnGw1", "VpnGw2", "VpnGw3"]
+const _allowed_VirtualNetworkGatewaySku_name = ["Basic", "HighPerformance", "Standard", "UltraPerformance", "VpnGw1", "VpnGw2", "VpnGw3", "VpnGw4", "VpnGw5", "VpnGw1AZ", "VpnGw2AZ", "VpnGw3AZ", "VpnGw4AZ", "VpnGw5AZ", "ErGw1AZ", "ErGw2AZ", "ErGw3AZ"]
 
-const _allowed_VirtualNetworkGatewaySku_tier = ["Basic", "HighPerformance", "Standard", "UltraPerformance", "VpnGw1", "VpnGw2", "VpnGw3"]
+const _allowed_VirtualNetworkGatewaySku_tier = ["Basic", "HighPerformance", "Standard", "UltraPerformance", "VpnGw1", "VpnGw2", "VpnGw3", "VpnGw4", "VpnGw5", "VpnGw1AZ", "VpnGw2AZ", "VpnGw3AZ", "VpnGw4AZ", "VpnGw5AZ", "ErGw1AZ", "ErGw2AZ", "ErGw3AZ"]
 
 function check_required(o::VirtualNetworkGatewaySku)
     true

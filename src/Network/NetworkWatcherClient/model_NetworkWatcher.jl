@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct NetworkWatcher <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
     name::Any # spec type: Union{ Nothing, String } # spec name: name
@@ -29,7 +28,7 @@ end # type NetworkWatcher
 const _property_map_NetworkWatcher = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("name")=>Symbol("name"), Symbol("type")=>Symbol("type"), Symbol("location")=>Symbol("location"), Symbol("tags")=>Symbol("tags"))
 const _property_types_NetworkWatcher = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}")
 Base.propertynames(::Type{ NetworkWatcher }) = collect(keys(_property_map_NetworkWatcher))
-Swagger.property_type(::Type{ NetworkWatcher }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_NetworkWatcher[name]))}
+Swagger.property_type(::Type{ NetworkWatcher }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkWatcher[name]))}
 Swagger.field_name(::Type{ NetworkWatcher }, property_name::Symbol) =  _property_map_NetworkWatcher[property_name]
 
 function check_required(o::NetworkWatcher)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ResourceGroupProperties <: SwaggerModel
     provisioningState::Any # spec type: Union{ Nothing, String } # spec name: provisioningState
 
@@ -17,7 +16,7 @@ end # type ResourceGroupProperties
 const _property_map_ResourceGroupProperties = Dict{Symbol,Symbol}(Symbol("provisioningState")=>Symbol("provisioningState"))
 const _property_types_ResourceGroupProperties = Dict{Symbol,String}(Symbol("provisioningState")=>"String")
 Base.propertynames(::Type{ ResourceGroupProperties }) = collect(keys(_property_map_ResourceGroupProperties))
-Swagger.property_type(::Type{ ResourceGroupProperties }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ResourceGroupProperties[name]))}
+Swagger.property_type(::Type{ ResourceGroupProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ResourceGroupProperties[name]))}
 Swagger.field_name(::Type{ ResourceGroupProperties }, property_name::Symbol) =  _property_map_ResourceGroupProperties[property_name]
 
 function check_required(o::ResourceGroupProperties)

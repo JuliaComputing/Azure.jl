@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct SecurityGroupViewParameters <: SwaggerModel
     targetResourceId::Any # spec type: Union{ Nothing, String } # spec name: targetResourceId
 
@@ -17,7 +16,7 @@ end # type SecurityGroupViewParameters
 const _property_map_SecurityGroupViewParameters = Dict{Symbol,Symbol}(Symbol("targetResourceId")=>Symbol("targetResourceId"))
 const _property_types_SecurityGroupViewParameters = Dict{Symbol,String}(Symbol("targetResourceId")=>"String")
 Base.propertynames(::Type{ SecurityGroupViewParameters }) = collect(keys(_property_map_SecurityGroupViewParameters))
-Swagger.property_type(::Type{ SecurityGroupViewParameters }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_SecurityGroupViewParameters[name]))}
+Swagger.property_type(::Type{ SecurityGroupViewParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SecurityGroupViewParameters[name]))}
 Swagger.field_name(::Type{ SecurityGroupViewParameters }, property_name::Symbol) =  _property_map_SecurityGroupViewParameters[property_name]
 
 function check_required(o::SecurityGroupViewParameters)

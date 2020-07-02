@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ExpressRouteCircuitPeeringListResult <: SwaggerModel
     value::Any # spec type: Union{ Nothing, Vector{ExpressRouteCircuitPeering} } # spec name: value
     nextLink::Any # spec type: Union{ Nothing, String } # spec name: nextLink
@@ -20,7 +19,7 @@ end # type ExpressRouteCircuitPeeringListResult
 const _property_map_ExpressRouteCircuitPeeringListResult = Dict{Symbol,Symbol}(Symbol("value")=>Symbol("value"), Symbol("nextLink")=>Symbol("nextLink"))
 const _property_types_ExpressRouteCircuitPeeringListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{ExpressRouteCircuitPeering}", Symbol("nextLink")=>"String")
 Base.propertynames(::Type{ ExpressRouteCircuitPeeringListResult }) = collect(keys(_property_map_ExpressRouteCircuitPeeringListResult))
-Swagger.property_type(::Type{ ExpressRouteCircuitPeeringListResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ExpressRouteCircuitPeeringListResult[name]))}
+Swagger.property_type(::Type{ ExpressRouteCircuitPeeringListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExpressRouteCircuitPeeringListResult[name]))}
 Swagger.field_name(::Type{ ExpressRouteCircuitPeeringListResult }, property_name::Symbol) =  _property_map_ExpressRouteCircuitPeeringListResult[property_name]
 
 function check_required(o::ExpressRouteCircuitPeeringListResult)

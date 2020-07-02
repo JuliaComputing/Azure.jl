@@ -2,16 +2,18 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct InboundNatPoolPropertiesFormat <: SwaggerModel
     frontendIPConfiguration::Any # spec type: Union{ Nothing, SubResource } # spec name: frontendIPConfiguration
-    protocol::Any # spec type: Union{ Nothing, String } # spec name: protocol
+    protocol::Any # spec type: Union{ Nothing, TransportProtocol } # spec name: protocol
     frontendPortRangeStart::Any # spec type: Union{ Nothing, Int32 } # spec name: frontendPortRangeStart
     frontendPortRangeEnd::Any # spec type: Union{ Nothing, Int32 } # spec name: frontendPortRangeEnd
     backendPort::Any # spec type: Union{ Nothing, Int32 } # spec name: backendPort
-    provisioningState::Any # spec type: Union{ Nothing, String } # spec name: provisioningState
+    idleTimeoutInMinutes::Any # spec type: Union{ Nothing, Int32 } # spec name: idleTimeoutInMinutes
+    enableFloatingIP::Any # spec type: Union{ Nothing, Bool } # spec name: enableFloatingIP
+    enableTcpReset::Any # spec type: Union{ Nothing, Bool } # spec name: enableTcpReset
+    provisioningState::Any # spec type: Union{ Nothing, ProvisioningState } # spec name: provisioningState
 
-    function InboundNatPoolPropertiesFormat(;frontendIPConfiguration=nothing, protocol=nothing, frontendPortRangeStart=nothing, frontendPortRangeEnd=nothing, backendPort=nothing, provisioningState=nothing)
+    function InboundNatPoolPropertiesFormat(;frontendIPConfiguration=nothing, protocol=nothing, frontendPortRangeStart=nothing, frontendPortRangeEnd=nothing, backendPort=nothing, idleTimeoutInMinutes=nothing, enableFloatingIP=nothing, enableTcpReset=nothing, provisioningState=nothing)
         o = new()
         validate_property(InboundNatPoolPropertiesFormat, Symbol("frontendIPConfiguration"), frontendIPConfiguration)
         setfield!(o, Symbol("frontendIPConfiguration"), frontendIPConfiguration)
@@ -23,21 +25,26 @@ mutable struct InboundNatPoolPropertiesFormat <: SwaggerModel
         setfield!(o, Symbol("frontendPortRangeEnd"), frontendPortRangeEnd)
         validate_property(InboundNatPoolPropertiesFormat, Symbol("backendPort"), backendPort)
         setfield!(o, Symbol("backendPort"), backendPort)
+        validate_property(InboundNatPoolPropertiesFormat, Symbol("idleTimeoutInMinutes"), idleTimeoutInMinutes)
+        setfield!(o, Symbol("idleTimeoutInMinutes"), idleTimeoutInMinutes)
+        validate_property(InboundNatPoolPropertiesFormat, Symbol("enableFloatingIP"), enableFloatingIP)
+        setfield!(o, Symbol("enableFloatingIP"), enableFloatingIP)
+        validate_property(InboundNatPoolPropertiesFormat, Symbol("enableTcpReset"), enableTcpReset)
+        setfield!(o, Symbol("enableTcpReset"), enableTcpReset)
         validate_property(InboundNatPoolPropertiesFormat, Symbol("provisioningState"), provisioningState)
         setfield!(o, Symbol("provisioningState"), provisioningState)
         o
     end
 end # type InboundNatPoolPropertiesFormat
 
-const _property_map_InboundNatPoolPropertiesFormat = Dict{Symbol,Symbol}(Symbol("frontendIPConfiguration")=>Symbol("frontendIPConfiguration"), Symbol("protocol")=>Symbol("protocol"), Symbol("frontendPortRangeStart")=>Symbol("frontendPortRangeStart"), Symbol("frontendPortRangeEnd")=>Symbol("frontendPortRangeEnd"), Symbol("backendPort")=>Symbol("backendPort"), Symbol("provisioningState")=>Symbol("provisioningState"))
-const _property_types_InboundNatPoolPropertiesFormat = Dict{Symbol,String}(Symbol("frontendIPConfiguration")=>"SubResource", Symbol("protocol")=>"String", Symbol("frontendPortRangeStart")=>"Int32", Symbol("frontendPortRangeEnd")=>"Int32", Symbol("backendPort")=>"Int32", Symbol("provisioningState")=>"String")
+const _property_map_InboundNatPoolPropertiesFormat = Dict{Symbol,Symbol}(Symbol("frontendIPConfiguration")=>Symbol("frontendIPConfiguration"), Symbol("protocol")=>Symbol("protocol"), Symbol("frontendPortRangeStart")=>Symbol("frontendPortRangeStart"), Symbol("frontendPortRangeEnd")=>Symbol("frontendPortRangeEnd"), Symbol("backendPort")=>Symbol("backendPort"), Symbol("idleTimeoutInMinutes")=>Symbol("idleTimeoutInMinutes"), Symbol("enableFloatingIP")=>Symbol("enableFloatingIP"), Symbol("enableTcpReset")=>Symbol("enableTcpReset"), Symbol("provisioningState")=>Symbol("provisioningState"))
+const _property_types_InboundNatPoolPropertiesFormat = Dict{Symbol,String}(Symbol("frontendIPConfiguration")=>"SubResource", Symbol("protocol")=>"TransportProtocol", Symbol("frontendPortRangeStart")=>"Int32", Symbol("frontendPortRangeEnd")=>"Int32", Symbol("backendPort")=>"Int32", Symbol("idleTimeoutInMinutes")=>"Int32", Symbol("enableFloatingIP")=>"Bool", Symbol("enableTcpReset")=>"Bool", Symbol("provisioningState")=>"ProvisioningState")
 Base.propertynames(::Type{ InboundNatPoolPropertiesFormat }) = collect(keys(_property_map_InboundNatPoolPropertiesFormat))
-Swagger.property_type(::Type{ InboundNatPoolPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_InboundNatPoolPropertiesFormat[name]))}
+Swagger.property_type(::Type{ InboundNatPoolPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_InboundNatPoolPropertiesFormat[name]))}
 Swagger.field_name(::Type{ InboundNatPoolPropertiesFormat }, property_name::Symbol) =  _property_map_InboundNatPoolPropertiesFormat[property_name]
 
-const _allowed_InboundNatPoolPropertiesFormat_protocol = ["Udp", "Tcp"]
-
 function check_required(o::InboundNatPoolPropertiesFormat)
+    (getproperty(o, Symbol("protocol")) === nothing) && (return false)
     (getproperty(o, Symbol("frontendPortRangeStart")) === nothing) && (return false)
     (getproperty(o, Symbol("frontendPortRangeEnd")) === nothing) && (return false)
     (getproperty(o, Symbol("backendPort")) === nothing) && (return false)
@@ -45,7 +52,4 @@ function check_required(o::InboundNatPoolPropertiesFormat)
 end
 
 function validate_property(::Type{ InboundNatPoolPropertiesFormat }, name::Symbol, val)
-    if name === Symbol("protocol")
-        Swagger.validate_param(name, "InboundNatPoolPropertiesFormat", :enum, val, _allowed_InboundNatPoolPropertiesFormat_protocol)
-    end
 end

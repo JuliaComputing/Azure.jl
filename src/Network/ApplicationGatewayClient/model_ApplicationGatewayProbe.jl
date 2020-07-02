@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ApplicationGatewayProbe <: SwaggerModel
     id::Any # spec type: Union{ Nothing, String } # spec name: id
 
@@ -17,7 +16,7 @@ end # type ApplicationGatewayProbe
 const _property_map_ApplicationGatewayProbe = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"))
 const _property_types_ApplicationGatewayProbe = Dict{Symbol,String}(Symbol("id")=>"String")
 Base.propertynames(::Type{ ApplicationGatewayProbe }) = collect(keys(_property_map_ApplicationGatewayProbe))
-Swagger.property_type(::Type{ ApplicationGatewayProbe }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ApplicationGatewayProbe[name]))}
+Swagger.property_type(::Type{ ApplicationGatewayProbe }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayProbe[name]))}
 Swagger.field_name(::Type{ ApplicationGatewayProbe }, property_name::Symbol) =  _property_map_ApplicationGatewayProbe[property_name]
 
 function check_required(o::ApplicationGatewayProbe)

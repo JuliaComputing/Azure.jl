@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct EncryptionServices <: SwaggerModel
     blob::Any # spec type: Union{ Nothing, EncryptionService } # spec name: blob
     file::Any # spec type: Union{ Nothing, EncryptionService } # spec name: file
@@ -26,7 +25,7 @@ end # type EncryptionServices
 const _property_map_EncryptionServices = Dict{Symbol,Symbol}(Symbol("blob")=>Symbol("blob"), Symbol("file")=>Symbol("file"), Symbol("table")=>Symbol("table"), Symbol("queue")=>Symbol("queue"))
 const _property_types_EncryptionServices = Dict{Symbol,String}(Symbol("blob")=>"EncryptionService", Symbol("file")=>"EncryptionService", Symbol("table")=>"EncryptionService", Symbol("queue")=>"EncryptionService")
 Base.propertynames(::Type{ EncryptionServices }) = collect(keys(_property_map_EncryptionServices))
-Swagger.property_type(::Type{ EncryptionServices }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_EncryptionServices[name]))}
+Swagger.property_type(::Type{ EncryptionServices }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_EncryptionServices[name]))}
 Swagger.field_name(::Type{ EncryptionServices }, property_name::Symbol) =  _property_map_EncryptionServices[property_name]
 
 function check_required(o::EncryptionServices)

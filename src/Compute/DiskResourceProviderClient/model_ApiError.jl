@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ApiError <: SwaggerModel
     details::Any # spec type: Union{ Nothing, Vector{ApiErrorBase} } # spec name: details
     innererror::Any # spec type: Union{ Nothing, InnerError } # spec name: innererror
@@ -29,7 +28,7 @@ end # type ApiError
 const _property_map_ApiError = Dict{Symbol,Symbol}(Symbol("details")=>Symbol("details"), Symbol("innererror")=>Symbol("innererror"), Symbol("code")=>Symbol("code"), Symbol("target")=>Symbol("target"), Symbol("message")=>Symbol("message"))
 const _property_types_ApiError = Dict{Symbol,String}(Symbol("details")=>"Vector{ApiErrorBase}", Symbol("innererror")=>"InnerError", Symbol("code")=>"String", Symbol("target")=>"String", Symbol("message")=>"String")
 Base.propertynames(::Type{ ApiError }) = collect(keys(_property_map_ApiError))
-Swagger.property_type(::Type{ ApiError }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ApiError[name]))}
+Swagger.property_type(::Type{ ApiError }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApiError[name]))}
 Swagger.field_name(::Type{ ApiError }, property_name::Symbol) =  _property_map_ApiError[property_name]
 
 function check_required(o::ApiError)

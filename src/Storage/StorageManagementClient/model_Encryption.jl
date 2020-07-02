@@ -2,28 +2,30 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct Encryption <: SwaggerModel
     services::Any # spec type: Union{ Nothing, EncryptionServices } # spec name: services
     keySource::Any # spec type: Union{ Nothing, String } # spec name: keySource
+    requireInfrastructureEncryption::Any # spec type: Union{ Nothing, Bool } # spec name: requireInfrastructureEncryption
     keyvaultproperties::Any # spec type: Union{ Nothing, KeyVaultProperties } # spec name: keyvaultproperties
 
-    function Encryption(;services=nothing, keySource="Microsoft.Storage", keyvaultproperties=nothing)
+    function Encryption(;services=nothing, keySource="Microsoft.Storage", requireInfrastructureEncryption=nothing, keyvaultproperties=nothing)
         o = new()
         validate_property(Encryption, Symbol("services"), services)
         setfield!(o, Symbol("services"), services)
         validate_property(Encryption, Symbol("keySource"), keySource)
         setfield!(o, Symbol("keySource"), keySource)
+        validate_property(Encryption, Symbol("requireInfrastructureEncryption"), requireInfrastructureEncryption)
+        setfield!(o, Symbol("requireInfrastructureEncryption"), requireInfrastructureEncryption)
         validate_property(Encryption, Symbol("keyvaultproperties"), keyvaultproperties)
         setfield!(o, Symbol("keyvaultproperties"), keyvaultproperties)
         o
     end
 end # type Encryption
 
-const _property_map_Encryption = Dict{Symbol,Symbol}(Symbol("services")=>Symbol("services"), Symbol("keySource")=>Symbol("keySource"), Symbol("keyvaultproperties")=>Symbol("keyvaultproperties"))
-const _property_types_Encryption = Dict{Symbol,String}(Symbol("services")=>"EncryptionServices", Symbol("keySource")=>"String", Symbol("keyvaultproperties")=>"KeyVaultProperties")
+const _property_map_Encryption = Dict{Symbol,Symbol}(Symbol("services")=>Symbol("services"), Symbol("keySource")=>Symbol("keySource"), Symbol("requireInfrastructureEncryption")=>Symbol("requireInfrastructureEncryption"), Symbol("keyvaultproperties")=>Symbol("keyvaultproperties"))
+const _property_types_Encryption = Dict{Symbol,String}(Symbol("services")=>"EncryptionServices", Symbol("keySource")=>"String", Symbol("requireInfrastructureEncryption")=>"Bool", Symbol("keyvaultproperties")=>"KeyVaultProperties")
 Base.propertynames(::Type{ Encryption }) = collect(keys(_property_map_Encryption))
-Swagger.property_type(::Type{ Encryption }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_Encryption[name]))}
+Swagger.property_type(::Type{ Encryption }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Encryption[name]))}
 Swagger.field_name(::Type{ Encryption }, property_name::Symbol) =  _property_map_Encryption[property_name]
 
 const _allowed_Encryption_keySource = ["Microsoft.Storage", "Microsoft.Keyvault"]

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ExpressRouteCircuitSku <: SwaggerModel
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     tier::Any # spec type: Union{ Nothing, String } # spec name: tier
@@ -23,10 +22,10 @@ end # type ExpressRouteCircuitSku
 const _property_map_ExpressRouteCircuitSku = Dict{Symbol,Symbol}(Symbol("name")=>Symbol("name"), Symbol("tier")=>Symbol("tier"), Symbol("family")=>Symbol("family"))
 const _property_types_ExpressRouteCircuitSku = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("tier")=>"String", Symbol("family")=>"String")
 Base.propertynames(::Type{ ExpressRouteCircuitSku }) = collect(keys(_property_map_ExpressRouteCircuitSku))
-Swagger.property_type(::Type{ ExpressRouteCircuitSku }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ExpressRouteCircuitSku[name]))}
+Swagger.property_type(::Type{ ExpressRouteCircuitSku }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExpressRouteCircuitSku[name]))}
 Swagger.field_name(::Type{ ExpressRouteCircuitSku }, property_name::Symbol) =  _property_map_ExpressRouteCircuitSku[property_name]
 
-const _allowed_ExpressRouteCircuitSku_tier = ["Standard", "Premium"]
+const _allowed_ExpressRouteCircuitSku_tier = ["Standard", "Premium", "Basic", "Local"]
 
 const _allowed_ExpressRouteCircuitSku_family = ["UnlimitedData", "MeteredData"]
 

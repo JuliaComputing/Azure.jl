@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct ExpressRouteCircuitsRoutesTableSummaryListResult <: SwaggerModel
     value::Any # spec type: Union{ Nothing, Vector{ExpressRouteCircuitRoutesTableSummary} } # spec name: value
     nextLink::Any # spec type: Union{ Nothing, String } # spec name: nextLink
@@ -20,7 +19,7 @@ end # type ExpressRouteCircuitsRoutesTableSummaryListResult
 const _property_map_ExpressRouteCircuitsRoutesTableSummaryListResult = Dict{Symbol,Symbol}(Symbol("value")=>Symbol("value"), Symbol("nextLink")=>Symbol("nextLink"))
 const _property_types_ExpressRouteCircuitsRoutesTableSummaryListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{ExpressRouteCircuitRoutesTableSummary}", Symbol("nextLink")=>"String")
 Base.propertynames(::Type{ ExpressRouteCircuitsRoutesTableSummaryListResult }) = collect(keys(_property_map_ExpressRouteCircuitsRoutesTableSummaryListResult))
-Swagger.property_type(::Type{ ExpressRouteCircuitsRoutesTableSummaryListResult }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_ExpressRouteCircuitsRoutesTableSummaryListResult[name]))}
+Swagger.property_type(::Type{ ExpressRouteCircuitsRoutesTableSummaryListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExpressRouteCircuitsRoutesTableSummaryListResult[name]))}
 Swagger.field_name(::Type{ ExpressRouteCircuitsRoutesTableSummaryListResult }, property_name::Symbol) =  _property_map_ExpressRouteCircuitsRoutesTableSummaryListResult[property_name]
 
 function check_required(o::ExpressRouteCircuitsRoutesTableSummaryListResult)

@@ -2,13 +2,14 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct KeyVaultProperties <: SwaggerModel
     keyname::Any # spec type: Union{ Nothing, String } # spec name: keyname
     keyversion::Any # spec type: Union{ Nothing, String } # spec name: keyversion
     keyvaulturi::Any # spec type: Union{ Nothing, String } # spec name: keyvaulturi
+    currentVersionedKeyIdentifier::Any # spec type: Union{ Nothing, String } # spec name: currentVersionedKeyIdentifier
+    lastKeyRotationTimestamp::Any # spec type: Union{ Nothing, DateTime } # spec name: lastKeyRotationTimestamp
 
-    function KeyVaultProperties(;keyname=nothing, keyversion=nothing, keyvaulturi=nothing)
+    function KeyVaultProperties(;keyname=nothing, keyversion=nothing, keyvaulturi=nothing, currentVersionedKeyIdentifier=nothing, lastKeyRotationTimestamp=nothing)
         o = new()
         validate_property(KeyVaultProperties, Symbol("keyname"), keyname)
         setfield!(o, Symbol("keyname"), keyname)
@@ -16,14 +17,18 @@ mutable struct KeyVaultProperties <: SwaggerModel
         setfield!(o, Symbol("keyversion"), keyversion)
         validate_property(KeyVaultProperties, Symbol("keyvaulturi"), keyvaulturi)
         setfield!(o, Symbol("keyvaulturi"), keyvaulturi)
+        validate_property(KeyVaultProperties, Symbol("currentVersionedKeyIdentifier"), currentVersionedKeyIdentifier)
+        setfield!(o, Symbol("currentVersionedKeyIdentifier"), currentVersionedKeyIdentifier)
+        validate_property(KeyVaultProperties, Symbol("lastKeyRotationTimestamp"), lastKeyRotationTimestamp)
+        setfield!(o, Symbol("lastKeyRotationTimestamp"), lastKeyRotationTimestamp)
         o
     end
 end # type KeyVaultProperties
 
-const _property_map_KeyVaultProperties = Dict{Symbol,Symbol}(Symbol("keyname")=>Symbol("keyname"), Symbol("keyversion")=>Symbol("keyversion"), Symbol("keyvaulturi")=>Symbol("keyvaulturi"))
-const _property_types_KeyVaultProperties = Dict{Symbol,String}(Symbol("keyname")=>"String", Symbol("keyversion")=>"String", Symbol("keyvaulturi")=>"String")
+const _property_map_KeyVaultProperties = Dict{Symbol,Symbol}(Symbol("keyname")=>Symbol("keyname"), Symbol("keyversion")=>Symbol("keyversion"), Symbol("keyvaulturi")=>Symbol("keyvaulturi"), Symbol("currentVersionedKeyIdentifier")=>Symbol("currentVersionedKeyIdentifier"), Symbol("lastKeyRotationTimestamp")=>Symbol("lastKeyRotationTimestamp"))
+const _property_types_KeyVaultProperties = Dict{Symbol,String}(Symbol("keyname")=>"String", Symbol("keyversion")=>"String", Symbol("keyvaulturi")=>"String", Symbol("currentVersionedKeyIdentifier")=>"String", Symbol("lastKeyRotationTimestamp")=>"DateTime")
 Base.propertynames(::Type{ KeyVaultProperties }) = collect(keys(_property_map_KeyVaultProperties))
-Swagger.property_type(::Type{ KeyVaultProperties }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_KeyVaultProperties[name]))}
+Swagger.property_type(::Type{ KeyVaultProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_KeyVaultProperties[name]))}
 Swagger.field_name(::Type{ KeyVaultProperties }, property_name::Symbol) =  _property_map_KeyVaultProperties[property_name]
 
 function check_required(o::KeyVaultProperties)

@@ -2,7 +2,6 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct RollingUpgradeStatusInfoProperties <: SwaggerModel
     policy::Any # spec type: Union{ Nothing, RollingUpgradePolicy } # spec name: policy
     runningStatus::Any # spec type: Union{ Nothing, RollingUpgradeRunningStatus } # spec name: runningStatus
@@ -26,7 +25,7 @@ end # type RollingUpgradeStatusInfoProperties
 const _property_map_RollingUpgradeStatusInfoProperties = Dict{Symbol,Symbol}(Symbol("policy")=>Symbol("policy"), Symbol("runningStatus")=>Symbol("runningStatus"), Symbol("progress")=>Symbol("progress"), Symbol("error")=>Symbol("error"))
 const _property_types_RollingUpgradeStatusInfoProperties = Dict{Symbol,String}(Symbol("policy")=>"RollingUpgradePolicy", Symbol("runningStatus")=>"RollingUpgradeRunningStatus", Symbol("progress")=>"RollingUpgradeProgressInfo", Symbol("error")=>"ApiError")
 Base.propertynames(::Type{ RollingUpgradeStatusInfoProperties }) = collect(keys(_property_map_RollingUpgradeStatusInfoProperties))
-Swagger.property_type(::Type{ RollingUpgradeStatusInfoProperties }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_RollingUpgradeStatusInfoProperties[name]))}
+Swagger.property_type(::Type{ RollingUpgradeStatusInfoProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RollingUpgradeStatusInfoProperties[name]))}
 Swagger.field_name(::Type{ RollingUpgradeStatusInfoProperties }, property_name::Symbol) =  _property_map_RollingUpgradeStatusInfoProperties[property_name]
 
 function check_required(o::RollingUpgradeStatusInfoProperties)

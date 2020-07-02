@@ -2,13 +2,13 @@
 # Do not modify this file directly. Modify the swagger specification instead.
 
 
-
 mutable struct VirtualMachineScaleSetIdentity <: SwaggerModel
     principalId::Any # spec type: Union{ Nothing, String } # spec name: principalId
     tenantId::Any # spec type: Union{ Nothing, String } # spec name: tenantId
     type::Any # spec type: Union{ Nothing, String } # spec name: type
+    userAssignedIdentities::Any # spec type: Union{ Nothing, Dict{String, VirtualMachineIdentityUserAssignedIdentities} } # spec name: userAssignedIdentities
 
-    function VirtualMachineScaleSetIdentity(;principalId=nothing, tenantId=nothing, type=nothing)
+    function VirtualMachineScaleSetIdentity(;principalId=nothing, tenantId=nothing, type=nothing, userAssignedIdentities=nothing)
         o = new()
         validate_property(VirtualMachineScaleSetIdentity, Symbol("principalId"), principalId)
         setfield!(o, Symbol("principalId"), principalId)
@@ -16,17 +16,19 @@ mutable struct VirtualMachineScaleSetIdentity <: SwaggerModel
         setfield!(o, Symbol("tenantId"), tenantId)
         validate_property(VirtualMachineScaleSetIdentity, Symbol("type"), type)
         setfield!(o, Symbol("type"), type)
+        validate_property(VirtualMachineScaleSetIdentity, Symbol("userAssignedIdentities"), userAssignedIdentities)
+        setfield!(o, Symbol("userAssignedIdentities"), userAssignedIdentities)
         o
     end
 end # type VirtualMachineScaleSetIdentity
 
-const _property_map_VirtualMachineScaleSetIdentity = Dict{Symbol,Symbol}(Symbol("principalId")=>Symbol("principalId"), Symbol("tenantId")=>Symbol("tenantId"), Symbol("type")=>Symbol("type"))
-const _property_types_VirtualMachineScaleSetIdentity = Dict{Symbol,String}(Symbol("principalId")=>"String", Symbol("tenantId")=>"String", Symbol("type")=>"String")
+const _property_map_VirtualMachineScaleSetIdentity = Dict{Symbol,Symbol}(Symbol("principalId")=>Symbol("principalId"), Symbol("tenantId")=>Symbol("tenantId"), Symbol("type")=>Symbol("type"), Symbol("userAssignedIdentities")=>Symbol("userAssignedIdentities"))
+const _property_types_VirtualMachineScaleSetIdentity = Dict{Symbol,String}(Symbol("principalId")=>"String", Symbol("tenantId")=>"String", Symbol("type")=>"String", Symbol("userAssignedIdentities")=>"Dict{String, VirtualMachineIdentityUserAssignedIdentities}")
 Base.propertynames(::Type{ VirtualMachineScaleSetIdentity }) = collect(keys(_property_map_VirtualMachineScaleSetIdentity))
-Swagger.property_type(::Type{ VirtualMachineScaleSetIdentity }, name::Symbol) = Union{Nothing,eval(Meta.parse(_property_types_VirtualMachineScaleSetIdentity[name]))}
+Swagger.property_type(::Type{ VirtualMachineScaleSetIdentity }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetIdentity[name]))}
 Swagger.field_name(::Type{ VirtualMachineScaleSetIdentity }, property_name::Symbol) =  _property_map_VirtualMachineScaleSetIdentity[property_name]
 
-const _allowed_VirtualMachineScaleSetIdentity_type = ["SystemAssigned"]
+const _allowed_VirtualMachineScaleSetIdentity_type = ["SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned", "None"]
 
 function check_required(o::VirtualMachineScaleSetIdentity)
     true
