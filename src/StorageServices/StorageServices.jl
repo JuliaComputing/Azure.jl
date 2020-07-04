@@ -3,6 +3,7 @@ module StorageServices
 using ..Azure
 using Azure.StorageManagementClient
 using Azure.REST
+using Azure.REST: AccountKey, service_response, parse_service_response, issuccess
 using HTTP
 using MbedTLS
 using Dates

@@ -4,6 +4,7 @@ using HTTP
 using MbedTLS
 using Dates
 using Base64
+using XMLDict
 
 const API_VER = "2016-05-31"
 
@@ -31,18 +32,26 @@ function StandardHeaders(; kwargs...)
     obj
 end
 
+struct ServiceRequestError <: Exception
+    code::Symbol
+    resp::HTTP.Response
+end
+
 struct ServiceRequest
     account::String
     verb::String
     resource::String
     standard_headers::StandardHeaders
     headers::Dict{String,String}
+    data::Any
 
-    function ServiceRequest(account::String, verb::String, resource::String; headers...)
+    function ServiceRequest(account::String, verb::String, resource::String, data=nothing; headers...)
         hdrdate = Dates.format(now(Dates.UTC), Dates.RFC1123Format)
         endswith(hdrdate, "GMT") || (hdrdate *= " GMT")
     
         reqhdrs = Dict{String,String}("x-ms-date"=>hdrdate, "x-ms-version"=>API_VER)
+        (verb == "PUT") && (data === nothing) && (reqhdrs["Content-Length"] = "0")
+
         stdhdrparams = Dict{Symbol,String}()
         for (n,v) in headers
             if (n in fieldnames(StandardHeaders))
@@ -52,14 +61,18 @@ struct ServiceRequest
                 reqhdrs[string(n)] = v
             end
         end
-        (verb == "PUT") && (reqhdrs["Content-Length"] = "0")
         stdhdr = StandardHeaders(; stdhdrparams...)
 
-        new(account, verb, resource, stdhdr, reqhdrs)
+        new(account, verb, resource, stdhdr, reqhdrs, data)
     end
 end
 
-to_http_header_name(n::Symbol) = join(map(ucfirst, split(string(n), '_')), '-')
+struct AccountKey
+    account::String
+    key::String
+end
+
+to_http_header_name(n::Symbol) = join(map(titlecase, split(string(n), '_')), '-')
 
 sign_strip(str::String) = replace(strip(str), "\n"=>" ")
 sign_hdr(nv::Pair{String,String}) = lowercase(sign_strip(nv[1])) * ":" * sign_strip(nv[2])
@@ -73,7 +86,7 @@ function sign_sharedkey(req::ServiceRequest, key::String)
     for n in fieldnames(StandardHeaders)
         v = getfield(req.standard_headers, n)
         # special case rule for Content-Length header in api version 2015-02-21 and later
-        (n == :content_length) && (v !== nothing) && !isempty(v) && (parse(Int, v) == 0) && (v = nothing)
+        (n === :content_length) && (v !== nothing) && !isempty(v) && (parse(Int, v) == 0) && (v = nothing)
         println(iob, v === nothing ? "" : v)
     end
 
@@ -114,7 +127,15 @@ function execute(req::ServiceRequest, key::String; retry_count::Int=0, retry_int
     while !success && count <= retry_count
         count += 1
         (count == 1) || sleep(retry_interval)
-        resp = HTTP.request(uppercase(req.verb), HTTP.URIs.URI(req.resource), req.headers; DEFAULT_KWARGS...)
+        verb = uppercase(req.verb)
+        uri = HTTP.URIs.URI(req.resource)
+        if (verb in ("POST", "PUT")) && (req.data !== nothing)
+            #@debug("HTTP request", verb, uri, req.headers, req.data, DEFAULT_KWARGS)
+            resp = HTTP.request(verb, uri, req.headers, req.data; DEFAULT_KWARGS...)
+        else
+            #@debug("HTTP request", verb, uri, req.headers, DEFAULT_KWARGS)
+            resp = HTTP.request(verb, uri, req.headers; DEFAULT_KWARGS...)
+        end
         success = (200 <= resp.status <= 206)
         success && (return resp)
         @warn("Storage service request failed. ", resp)
@@ -123,5 +144,12 @@ function execute(req::ServiceRequest, key::String; retry_count::Int=0, retry_int
 end
 
 issuccess(resp::HTTP.Response) = (200 <= resp.status <= 206)
+
+parse_service_response(resp::HTTP.Response) = parse_xml(String(service_response(resp)))
+
+function service_response(resp::HTTP.Response)
+    issuccess(resp) || throw(ServiceRequestError(:http_error, resp))
+    resp.body
+end
 
 end # module REST
