@@ -2,7 +2,7 @@ name = "Azure"
 uuid = "34b51195-c7f2-5807-8107-6ca017e2682c"
 keywords = ["azure", "cloud", "api", "julia"]
 desc = "Julia interface to Azure APIs"
-version = "0.3.0"
+version = "0.3.1"
 
 [deps]
 Base64 = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"
@@ -15,7 +15,7 @@ Swagger = "2d69052b-6a58-5cd9-a030-a48559c324ac"
 XMLDict = "228000da-037f-5747-90a9-8195ccbf91a5"
 
 [compat]
-HTTP = "0.8"
+HTTP = "0.8, 0.9"
 Swagger = "0.2"
 XMLDict = "0.3, 0.4"
 JSON = "0.21"
