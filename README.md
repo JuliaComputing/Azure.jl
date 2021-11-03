@@ -2,9 +2,7 @@
 
 A Julia library to access Microsoft Azure REST APIs. Most code in this file is generated automatically using [Swagger.jl](https://github.com/JuliaComputing/Swagger.jl)
 
-[![Build Status](https://travis-ci.org/JuliaComputing/Azure.jl.svg?branch=master)](https://travis-ci.org/JuliaComputing/Azure.jl)
-[![Coverage Status](https://coveralls.io/repos/JuliaComputing/Azure.jl/badge.svg?branch=master&service=github)](https://coveralls.io/github/JuliaComputing/Azure.jl?branch=master)
-[![codecov.io](http://codecov.io/github/JuliaComputing/Azure.jl/coverage.svg?branch=master)](http://codecov.io/github/JuliaComputing/Azure.jl?branch=master)
+[![Build Status](https://github.com/JuliaComputing/Azure.jl/workflows/CI/badge.svg)](https://github.com/JuliaComputing/Azure.jl/actions?query=workflow%3ACI+branch%3Amaster)
 
 ```
 using Azure
