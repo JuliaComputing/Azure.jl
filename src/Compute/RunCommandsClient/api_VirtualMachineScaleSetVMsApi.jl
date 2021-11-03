@@ -16,7 +16,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: RunCommandResult
 """
-function virtualMachineScaleSetVMsRunCommand(_api::VirtualMachineScaleSetVMsApi, resourceGroupName::String, vmScaleSetName::String, instanceId::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualMachineScaleSetVMsRunCommand(_api::VirtualMachineScaleSetVMsApi, resourceGroupName::String, vmScaleSetName::String, instanceId::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", RunCommandResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/runCommand", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "vmScaleSetName", vmScaleSetName)  # type String
@@ -25,7 +25,17 @@ function virtualMachineScaleSetVMsRunCommand(_api::VirtualMachineScaleSetVMsApi,
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "text/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "text/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualMachineScaleSetVMsRunCommand(_api::VirtualMachineScaleSetVMsApi, resourceGroupName::String, vmScaleSetName::String, instanceId::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualMachineScaleSetVMsRunCommand(_api, resourceGroupName, vmScaleSetName, instanceId, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualMachineScaleSetVMsRunCommand(_api::VirtualMachineScaleSetVMsApi, response_stream::Channel, resourceGroupName::String, vmScaleSetName::String, instanceId::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualMachineScaleSetVMsRunCommand(_api, resourceGroupName, vmScaleSetName, instanceId, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export virtualMachineScaleSetVMsRunCommand

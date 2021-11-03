@@ -14,14 +14,24 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: PolicySetDefinition
 """
-function policySetDefinitionsCreateOrUpdate(_api::PolicySetDefinitionsApi, policySetDefinitionName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_policySetDefinitionsCreateOrUpdate(_api::PolicySetDefinitionsApi, policySetDefinitionName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", PolicySetDefinition, "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "policySetDefinitionName", policySetDefinitionName)  # type String
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function policySetDefinitionsCreateOrUpdate(_api::PolicySetDefinitionsApi, policySetDefinitionName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policySetDefinitionsCreateOrUpdate(_api, policySetDefinitionName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function policySetDefinitionsCreateOrUpdate(_api::PolicySetDefinitionsApi, response_stream::Channel, policySetDefinitionName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policySetDefinitionsCreateOrUpdate(_api, policySetDefinitionName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -33,14 +43,24 @@ Param: api_version::String (required)
 Param: managementGroupId::String (required)
 Return: PolicySetDefinition
 """
-function policySetDefinitionsCreateOrUpdateAtManagementGroup(_api::PolicySetDefinitionsApi, policySetDefinitionName::String, parameters, api_version::String, managementGroupId::String; _mediaType=nothing)
+function _swaggerinternal_policySetDefinitionsCreateOrUpdateAtManagementGroup(_api::PolicySetDefinitionsApi, policySetDefinitionName::String, parameters, api_version::String, managementGroupId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", PolicySetDefinition, "/providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "policySetDefinitionName", policySetDefinitionName)  # type String
     Swagger.set_param(_ctx.path, "managementGroupId", managementGroupId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function policySetDefinitionsCreateOrUpdateAtManagementGroup(_api::PolicySetDefinitionsApi, policySetDefinitionName::String, parameters, api_version::String, managementGroupId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policySetDefinitionsCreateOrUpdateAtManagementGroup(_api, policySetDefinitionName, parameters, api_version, managementGroupId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function policySetDefinitionsCreateOrUpdateAtManagementGroup(_api::PolicySetDefinitionsApi, response_stream::Channel, policySetDefinitionName::String, parameters, api_version::String, managementGroupId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policySetDefinitionsCreateOrUpdateAtManagementGroup(_api, policySetDefinitionName, parameters, api_version, managementGroupId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -51,14 +71,24 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function policySetDefinitionsDelete(_api::PolicySetDefinitionsApi, policySetDefinitionName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_policySetDefinitionsDelete(_api::PolicySetDefinitionsApi, policySetDefinitionName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "policySetDefinitionName", policySetDefinitionName)  # type String
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function policySetDefinitionsDelete(_api::PolicySetDefinitionsApi, policySetDefinitionName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policySetDefinitionsDelete(_api, policySetDefinitionName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function policySetDefinitionsDelete(_api::PolicySetDefinitionsApi, response_stream::Channel, policySetDefinitionName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policySetDefinitionsDelete(_api, policySetDefinitionName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -69,14 +99,24 @@ Param: api_version::String (required)
 Param: managementGroupId::String (required)
 Return: Nothing
 """
-function policySetDefinitionsDeleteAtManagementGroup(_api::PolicySetDefinitionsApi, policySetDefinitionName::String, api_version::String, managementGroupId::String; _mediaType=nothing)
+function _swaggerinternal_policySetDefinitionsDeleteAtManagementGroup(_api::PolicySetDefinitionsApi, policySetDefinitionName::String, api_version::String, managementGroupId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "policySetDefinitionName", policySetDefinitionName)  # type String
     Swagger.set_param(_ctx.path, "managementGroupId", managementGroupId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function policySetDefinitionsDeleteAtManagementGroup(_api::PolicySetDefinitionsApi, policySetDefinitionName::String, api_version::String, managementGroupId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policySetDefinitionsDeleteAtManagementGroup(_api, policySetDefinitionName, api_version, managementGroupId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function policySetDefinitionsDeleteAtManagementGroup(_api::PolicySetDefinitionsApi, response_stream::Channel, policySetDefinitionName::String, api_version::String, managementGroupId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policySetDefinitionsDeleteAtManagementGroup(_api, policySetDefinitionName, api_version, managementGroupId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -87,14 +127,24 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: PolicySetDefinition
 """
-function policySetDefinitionsGet(_api::PolicySetDefinitionsApi, policySetDefinitionName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_policySetDefinitionsGet(_api::PolicySetDefinitionsApi, policySetDefinitionName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", PolicySetDefinition, "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "policySetDefinitionName", policySetDefinitionName)  # type String
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function policySetDefinitionsGet(_api::PolicySetDefinitionsApi, policySetDefinitionName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policySetDefinitionsGet(_api, policySetDefinitionName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function policySetDefinitionsGet(_api::PolicySetDefinitionsApi, response_stream::Channel, policySetDefinitionName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policySetDefinitionsGet(_api, policySetDefinitionName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -105,14 +155,24 @@ Param: api_version::String (required)
 Param: managementGroupId::String (required)
 Return: PolicySetDefinition
 """
-function policySetDefinitionsGetAtManagementGroup(_api::PolicySetDefinitionsApi, policySetDefinitionName::String, api_version::String, managementGroupId::String; _mediaType=nothing)
+function _swaggerinternal_policySetDefinitionsGetAtManagementGroup(_api::PolicySetDefinitionsApi, policySetDefinitionName::String, api_version::String, managementGroupId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", PolicySetDefinition, "/providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "policySetDefinitionName", policySetDefinitionName)  # type String
     Swagger.set_param(_ctx.path, "managementGroupId", managementGroupId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function policySetDefinitionsGetAtManagementGroup(_api::PolicySetDefinitionsApi, policySetDefinitionName::String, api_version::String, managementGroupId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policySetDefinitionsGetAtManagementGroup(_api, policySetDefinitionName, api_version, managementGroupId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function policySetDefinitionsGetAtManagementGroup(_api::PolicySetDefinitionsApi, response_stream::Channel, policySetDefinitionName::String, api_version::String, managementGroupId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policySetDefinitionsGetAtManagementGroup(_api, policySetDefinitionName, api_version, managementGroupId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -122,13 +182,23 @@ Param: policySetDefinitionName::String (required)
 Param: api_version::String (required)
 Return: PolicySetDefinition
 """
-function policySetDefinitionsGetBuiltIn(_api::PolicySetDefinitionsApi, policySetDefinitionName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_policySetDefinitionsGetBuiltIn(_api::PolicySetDefinitionsApi, policySetDefinitionName::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", PolicySetDefinition, "/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "policySetDefinitionName", policySetDefinitionName)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function policySetDefinitionsGetBuiltIn(_api::PolicySetDefinitionsApi, policySetDefinitionName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policySetDefinitionsGetBuiltIn(_api, policySetDefinitionName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function policySetDefinitionsGetBuiltIn(_api::PolicySetDefinitionsApi, response_stream::Channel, policySetDefinitionName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policySetDefinitionsGetBuiltIn(_api, policySetDefinitionName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -138,13 +208,23 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: PolicySetDefinitionListResult
 """
-function policySetDefinitionsList(_api::PolicySetDefinitionsApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_policySetDefinitionsList(_api::PolicySetDefinitionsApi, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", PolicySetDefinitionListResult, "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function policySetDefinitionsList(_api::PolicySetDefinitionsApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policySetDefinitionsList(_api, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function policySetDefinitionsList(_api::PolicySetDefinitionsApi, response_stream::Channel, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policySetDefinitionsList(_api, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -153,12 +233,22 @@ This operation retrieves a list of all the built-in policy set definitions.
 Param: api_version::String (required)
 Return: PolicySetDefinitionListResult
 """
-function policySetDefinitionsListBuiltIn(_api::PolicySetDefinitionsApi, api_version::String; _mediaType=nothing)
+function _swaggerinternal_policySetDefinitionsListBuiltIn(_api::PolicySetDefinitionsApi, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", PolicySetDefinitionListResult, "/providers/Microsoft.Authorization/policySetDefinitions", ["azure_auth"])
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function policySetDefinitionsListBuiltIn(_api::PolicySetDefinitionsApi, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policySetDefinitionsListBuiltIn(_api, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function policySetDefinitionsListBuiltIn(_api::PolicySetDefinitionsApi, response_stream::Channel, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policySetDefinitionsListBuiltIn(_api, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -168,13 +258,23 @@ Param: api_version::String (required)
 Param: managementGroupId::String (required)
 Return: PolicySetDefinitionListResult
 """
-function policySetDefinitionsListByManagementGroup(_api::PolicySetDefinitionsApi, api_version::String, managementGroupId::String; _mediaType=nothing)
+function _swaggerinternal_policySetDefinitionsListByManagementGroup(_api::PolicySetDefinitionsApi, api_version::String, managementGroupId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", PolicySetDefinitionListResult, "/providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions", ["azure_auth"])
     Swagger.set_param(_ctx.path, "managementGroupId", managementGroupId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function policySetDefinitionsListByManagementGroup(_api::PolicySetDefinitionsApi, api_version::String, managementGroupId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policySetDefinitionsListByManagementGroup(_api, api_version, managementGroupId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function policySetDefinitionsListByManagementGroup(_api::PolicySetDefinitionsApi, response_stream::Channel, api_version::String, managementGroupId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policySetDefinitionsListByManagementGroup(_api, api_version, managementGroupId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export policySetDefinitionsCreateOrUpdate, policySetDefinitionsCreateOrUpdateAtManagementGroup, policySetDefinitionsDelete, policySetDefinitionsDeleteAtManagementGroup, policySetDefinitionsGet, policySetDefinitionsGetAtManagementGroup, policySetDefinitionsGetBuiltIn, policySetDefinitionsList, policySetDefinitionsListBuiltIn, policySetDefinitionsListByManagementGroup

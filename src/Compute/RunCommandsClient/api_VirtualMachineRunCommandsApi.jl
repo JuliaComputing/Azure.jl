@@ -14,7 +14,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: RunCommandDocument
 """
-function virtualMachineRunCommandsGet(_api::VirtualMachineRunCommandsApi, location::String, commandId::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualMachineRunCommandsGet(_api::VirtualMachineRunCommandsApi, location::String, commandId::String, api_version::String, subscriptionId::String; _mediaType=nothing)
 
     _ctx = Swagger.Ctx(_api.client, "GET", RunCommandDocument, "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/runCommands/{commandId}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "location", location)  # type String
@@ -23,7 +23,17 @@ function virtualMachineRunCommandsGet(_api::VirtualMachineRunCommandsApi, locati
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "text/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "text/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualMachineRunCommandsGet(_api::VirtualMachineRunCommandsApi, location::String, commandId::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualMachineRunCommandsGet(_api, location, commandId, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualMachineRunCommandsGet(_api::VirtualMachineRunCommandsApi, response_stream::Channel, location::String, commandId::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualMachineRunCommandsGet(_api, location, commandId, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -34,7 +44,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: RunCommandListResult
 """
-function virtualMachineRunCommandsList(_api::VirtualMachineRunCommandsApi, location::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualMachineRunCommandsList(_api::VirtualMachineRunCommandsApi, location::String, api_version::String, subscriptionId::String; _mediaType=nothing)
 
     _ctx = Swagger.Ctx(_api.client, "GET", RunCommandListResult, "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/runCommands", ["azure_auth"])
     Swagger.set_param(_ctx.path, "location", location)  # type String
@@ -42,7 +52,17 @@ function virtualMachineRunCommandsList(_api::VirtualMachineRunCommandsApi, locat
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "text/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "text/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualMachineRunCommandsList(_api::VirtualMachineRunCommandsApi, location::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualMachineRunCommandsList(_api, location, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualMachineRunCommandsList(_api::VirtualMachineRunCommandsApi, response_stream::Channel, location::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualMachineRunCommandsList(_api, location, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export virtualMachineRunCommandsGet, virtualMachineRunCommandsList

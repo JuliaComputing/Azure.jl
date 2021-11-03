@@ -5,7 +5,6 @@ module DataLakeStoreFileSystemManagementClient
 
 using Random
 using Dates
-using HTTP
 using Swagger
 import Swagger: field_name, property_type, hasproperty, validate_property, SwaggerApi, SwaggerModel
 import Base: convert, propertynames
@@ -17,8 +16,18 @@ include("api_FileSystemApi.jl")
 # export models
 export convert, AclStatus
 export convert, AclStatusResult
+export convert, AdlsAccessControlException
+export convert, AdlsBadOffsetException
 export convert, AdlsError
+export convert, AdlsFileAlreadyExistsException
+export convert, AdlsFileNotFoundException
+export convert, AdlsIOException
+export convert, AdlsIllegalArgumentException
 export convert, AdlsRemoteException
+export convert, AdlsRuntimeException
+export convert, AdlsSecurityException
+export convert, AdlsThrottledException
+export convert, AdlsUnsupportedOperationException
 export convert, ContentSummary
 export convert, ContentSummaryResult
 export convert, FileOperationResult
@@ -26,16 +35,6 @@ export convert, FileStatusProperties
 export convert, FileStatusResult
 export convert, FileStatuses
 export convert, FileStatusesResult
-export convert, AdlsAccessControlException
-export convert, AdlsBadOffsetException
-export convert, AdlsFileAlreadyExistsException
-export convert, AdlsFileNotFoundException
-export convert, AdlsIOException
-export convert, AdlsIllegalArgumentException
-export convert, AdlsRuntimeException
-export convert, AdlsSecurityException
-export convert, AdlsThrottledException
-export convert, AdlsUnsupportedOperationException
 
 # export operations
 export convert, FileSystemApi

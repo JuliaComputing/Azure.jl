@@ -16,7 +16,7 @@ Param: managementPolicyName::String (required)
 Param: properties::ManagementPolicy (required)
 Return: ManagementPolicy
 """
-function managementPoliciesCreateOrUpdate(_api::ManagementPoliciesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, managementPolicyName::String, properties; _mediaType=nothing)
+function _swaggerinternal_managementPoliciesCreateOrUpdate(_api::ManagementPoliciesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, managementPolicyName::String, properties; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "managementPoliciesCreateOrUpdate", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "managementPoliciesCreateOrUpdate", :minLength, resourceGroupName, 1)
 
@@ -35,7 +35,17 @@ function managementPoliciesCreateOrUpdate(_api::ManagementPoliciesApi, resourceG
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function managementPoliciesCreateOrUpdate(_api::ManagementPoliciesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, managementPolicyName::String, properties; _mediaType=nothing)
+    _ctx = _swaggerinternal_managementPoliciesCreateOrUpdate(_api, resourceGroupName, accountName, api_version, subscriptionId, managementPolicyName, properties; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function managementPoliciesCreateOrUpdate(_api::ManagementPoliciesApi, response_stream::Channel, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, managementPolicyName::String, properties; _mediaType=nothing)
+    _ctx = _swaggerinternal_managementPoliciesCreateOrUpdate(_api, resourceGroupName, accountName, api_version, subscriptionId, managementPolicyName, properties; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -48,7 +58,7 @@ Param: subscriptionId::String (required)
 Param: managementPolicyName::String (required)
 Return: Nothing
 """
-function managementPoliciesDelete(_api::ManagementPoliciesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, managementPolicyName::String; _mediaType=nothing)
+function _swaggerinternal_managementPoliciesDelete(_api::ManagementPoliciesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, managementPolicyName::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "managementPoliciesDelete", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "managementPoliciesDelete", :minLength, resourceGroupName, 1)
 
@@ -67,7 +77,17 @@ function managementPoliciesDelete(_api::ManagementPoliciesApi, resourceGroupName
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function managementPoliciesDelete(_api::ManagementPoliciesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, managementPolicyName::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_managementPoliciesDelete(_api, resourceGroupName, accountName, api_version, subscriptionId, managementPolicyName; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function managementPoliciesDelete(_api::ManagementPoliciesApi, response_stream::Channel, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, managementPolicyName::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_managementPoliciesDelete(_api, resourceGroupName, accountName, api_version, subscriptionId, managementPolicyName; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -80,7 +100,7 @@ Param: subscriptionId::String (required)
 Param: managementPolicyName::String (required)
 Return: ManagementPolicy
 """
-function managementPoliciesGet(_api::ManagementPoliciesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, managementPolicyName::String; _mediaType=nothing)
+function _swaggerinternal_managementPoliciesGet(_api::ManagementPoliciesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, managementPolicyName::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "managementPoliciesGet", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "managementPoliciesGet", :minLength, resourceGroupName, 1)
 
@@ -99,7 +119,17 @@ function managementPoliciesGet(_api::ManagementPoliciesApi, resourceGroupName::S
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function managementPoliciesGet(_api::ManagementPoliciesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, managementPolicyName::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_managementPoliciesGet(_api, resourceGroupName, accountName, api_version, subscriptionId, managementPolicyName; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function managementPoliciesGet(_api::ManagementPoliciesApi, response_stream::Channel, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, managementPolicyName::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_managementPoliciesGet(_api, resourceGroupName, accountName, api_version, subscriptionId, managementPolicyName; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export managementPoliciesCreateOrUpdate, managementPoliciesDelete, managementPoliciesGet

@@ -14,7 +14,7 @@ Param: op::String (required)
 Param: api_version::String (required)
 Return: Nothing
 """
-function fileSystemCheckAccess(_api::FileSystemApi, path::String, fsaction::String, op::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_fileSystemCheckAccess(_api::FileSystemApi, path::String, fsaction::String, op::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", Nothing, "/webhdfs/v1/{path}", [])
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_param(_ctx.query, "fsaction", fsaction)  # type String
@@ -22,7 +22,17 @@ function fileSystemCheckAccess(_api::FileSystemApi, path::String, fsaction::Stri
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function fileSystemCheckAccess(_api::FileSystemApi, path::String, fsaction::String, op::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_fileSystemCheckAccess(_api, path, fsaction, op, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function fileSystemCheckAccess(_api::FileSystemApi, response_stream::Channel, path::String, fsaction::String, op::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_fileSystemCheckAccess(_api, path, fsaction, op, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -37,7 +47,7 @@ Param: appendMode::String
 Param: syncFlag::String
 Return: Nothing
 """
-function fileSystemConcurrentAppend(_api::FileSystemApi, path::String, streamContents, op::String, Transfer_Encoding::String, api_version::String; appendMode=nothing, syncFlag=nothing, _mediaType=nothing)
+function _swaggerinternal_fileSystemConcurrentAppend(_api::FileSystemApi, path::String, streamContents, op::String, Transfer_Encoding::String, api_version::String; appendMode=nothing, syncFlag=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", Nothing, "/WebHdfsExt/{path}", [], streamContents)
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_param(_ctx.query, "appendMode", appendMode)  # type String
@@ -47,7 +57,17 @@ function fileSystemConcurrentAppend(_api::FileSystemApi, path::String, streamCon
     Swagger.set_param(_ctx.header, "Transfer-Encoding", Transfer_Encoding)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/octet-stream"] : [_mediaType])
+    return _ctx
+end
+
+function fileSystemConcurrentAppend(_api::FileSystemApi, path::String, streamContents, op::String, Transfer_Encoding::String, api_version::String; appendMode=nothing, syncFlag=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_fileSystemConcurrentAppend(_api, path, streamContents, op, Transfer_Encoding, api_version; appendMode=appendMode, syncFlag=syncFlag, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function fileSystemConcurrentAppend(_api::FileSystemApi, response_stream::Channel, path::String, streamContents, op::String, Transfer_Encoding::String, api_version::String; appendMode=nothing, syncFlag=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_fileSystemConcurrentAppend(_api, path, streamContents, op, Transfer_Encoding, api_version; appendMode=appendMode, syncFlag=syncFlag, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -60,7 +80,7 @@ Param: api_version::String (required)
 Param: expireTime::Int64
 Return: Nothing
 """
-function fileSystemSetFileExpiry(_api::FileSystemApi, path::String, expiryOption::String, op::String, api_version::String; expireTime=nothing, _mediaType=nothing)
+function _swaggerinternal_fileSystemSetFileExpiry(_api::FileSystemApi, path::String, expiryOption::String, op::String, api_version::String; expireTime=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", Nothing, "/WebHdfsExt/{path}", [])
     Swagger.set_param(_ctx.path, "path", path)  # type String
     Swagger.set_param(_ctx.query, "expiryOption", expiryOption)  # type String
@@ -69,7 +89,17 @@ function fileSystemSetFileExpiry(_api::FileSystemApi, path::String, expiryOption
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function fileSystemSetFileExpiry(_api::FileSystemApi, path::String, expiryOption::String, op::String, api_version::String; expireTime=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_fileSystemSetFileExpiry(_api, path, expiryOption, op, api_version; expireTime=expireTime, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function fileSystemSetFileExpiry(_api::FileSystemApi, response_stream::Channel, path::String, expiryOption::String, op::String, api_version::String; expireTime=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_fileSystemSetFileExpiry(_api, path, expiryOption, op, api_version; expireTime=expireTime, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export fileSystemCheckAccess, fileSystemConcurrentAppend, fileSystemSetFileExpiry

@@ -15,7 +15,7 @@ Param: subscriptionId::String (required)
 Param: expand::String
 Return: ApplicationGatewayBackendHealth
 """
-function applicationGatewaysBackendHealth(_api::ApplicationGatewaysApi, resourceGroupName::String, applicationGatewayName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+function _swaggerinternal_applicationGatewaysBackendHealth(_api::ApplicationGatewaysApi, resourceGroupName::String, applicationGatewayName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", ApplicationGatewayBackendHealth, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/backendhealth", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "applicationGatewayName", applicationGatewayName)  # type String
@@ -24,7 +24,17 @@ function applicationGatewaysBackendHealth(_api::ApplicationGatewaysApi, resource
     Swagger.set_param(_ctx.query, "\$expand", expand)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function applicationGatewaysBackendHealth(_api::ApplicationGatewaysApi, resourceGroupName::String, applicationGatewayName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysBackendHealth(_api, resourceGroupName, applicationGatewayName, api_version, subscriptionId; expand=expand, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function applicationGatewaysBackendHealth(_api::ApplicationGatewaysApi, response_stream::Channel, resourceGroupName::String, applicationGatewayName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysBackendHealth(_api, resourceGroupName, applicationGatewayName, api_version, subscriptionId; expand=expand, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -38,7 +48,7 @@ Param: probeRequest::ApplicationGatewayOnDemandProbe (required)
 Param: expand::String
 Return: ApplicationGatewayBackendHealthOnDemand
 """
-function applicationGatewaysBackendHealthOnDemand(_api::ApplicationGatewaysApi, resourceGroupName::String, applicationGatewayName::String, api_version::String, subscriptionId::String, probeRequest; expand=nothing, _mediaType=nothing)
+function _swaggerinternal_applicationGatewaysBackendHealthOnDemand(_api::ApplicationGatewaysApi, resourceGroupName::String, applicationGatewayName::String, api_version::String, subscriptionId::String, probeRequest; expand=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", ApplicationGatewayBackendHealthOnDemand, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/getBackendHealthOnDemand", ["azure_auth"], probeRequest)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "applicationGatewayName", applicationGatewayName)  # type String
@@ -47,7 +57,17 @@ function applicationGatewaysBackendHealthOnDemand(_api::ApplicationGatewaysApi, 
     Swagger.set_param(_ctx.query, "\$expand", expand)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function applicationGatewaysBackendHealthOnDemand(_api::ApplicationGatewaysApi, resourceGroupName::String, applicationGatewayName::String, api_version::String, subscriptionId::String, probeRequest; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysBackendHealthOnDemand(_api, resourceGroupName, applicationGatewayName, api_version, subscriptionId, probeRequest; expand=expand, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function applicationGatewaysBackendHealthOnDemand(_api::ApplicationGatewaysApi, response_stream::Channel, resourceGroupName::String, applicationGatewayName::String, api_version::String, subscriptionId::String, probeRequest; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysBackendHealthOnDemand(_api, resourceGroupName, applicationGatewayName, api_version, subscriptionId, probeRequest; expand=expand, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -60,7 +80,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ApplicationGateway
 """
-function applicationGatewaysCreateOrUpdate(_api::ApplicationGatewaysApi, resourceGroupName::String, applicationGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_applicationGatewaysCreateOrUpdate(_api::ApplicationGatewaysApi, resourceGroupName::String, applicationGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", ApplicationGateway, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "applicationGatewayName", applicationGatewayName)  # type String
@@ -68,7 +88,17 @@ function applicationGatewaysCreateOrUpdate(_api::ApplicationGatewaysApi, resourc
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function applicationGatewaysCreateOrUpdate(_api::ApplicationGatewaysApi, resourceGroupName::String, applicationGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysCreateOrUpdate(_api, resourceGroupName, applicationGatewayName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function applicationGatewaysCreateOrUpdate(_api::ApplicationGatewaysApi, response_stream::Channel, resourceGroupName::String, applicationGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysCreateOrUpdate(_api, resourceGroupName, applicationGatewayName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -80,7 +110,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function applicationGatewaysDelete(_api::ApplicationGatewaysApi, resourceGroupName::String, applicationGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_applicationGatewaysDelete(_api::ApplicationGatewaysApi, resourceGroupName::String, applicationGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "applicationGatewayName", applicationGatewayName)  # type String
@@ -88,7 +118,17 @@ function applicationGatewaysDelete(_api::ApplicationGatewaysApi, resourceGroupNa
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function applicationGatewaysDelete(_api::ApplicationGatewaysApi, resourceGroupName::String, applicationGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysDelete(_api, resourceGroupName, applicationGatewayName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function applicationGatewaysDelete(_api::ApplicationGatewaysApi, response_stream::Channel, resourceGroupName::String, applicationGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysDelete(_api, resourceGroupName, applicationGatewayName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -100,7 +140,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ApplicationGateway
 """
-function applicationGatewaysGet(_api::ApplicationGatewaysApi, resourceGroupName::String, applicationGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_applicationGatewaysGet(_api::ApplicationGatewaysApi, resourceGroupName::String, applicationGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", ApplicationGateway, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "applicationGatewayName", applicationGatewayName)  # type String
@@ -108,7 +148,17 @@ function applicationGatewaysGet(_api::ApplicationGatewaysApi, resourceGroupName:
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function applicationGatewaysGet(_api::ApplicationGatewaysApi, resourceGroupName::String, applicationGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysGet(_api, resourceGroupName, applicationGatewayName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function applicationGatewaysGet(_api::ApplicationGatewaysApi, response_stream::Channel, resourceGroupName::String, applicationGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysGet(_api, resourceGroupName, applicationGatewayName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -119,14 +169,24 @@ Param: subscriptionId::String (required)
 Param: predefinedPolicyName::String (required)
 Return: ApplicationGatewaySslPredefinedPolicy
 """
-function applicationGatewaysGetSslPredefinedPolicy(_api::ApplicationGatewaysApi, api_version::String, subscriptionId::String, predefinedPolicyName::String; _mediaType=nothing)
+function _swaggerinternal_applicationGatewaysGetSslPredefinedPolicy(_api::ApplicationGatewaysApi, api_version::String, subscriptionId::String, predefinedPolicyName::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", ApplicationGatewaySslPredefinedPolicy, "/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGatewayAvailableSslOptions/default/predefinedPolicies/{predefinedPolicyName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "predefinedPolicyName", predefinedPolicyName)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function applicationGatewaysGetSslPredefinedPolicy(_api::ApplicationGatewaysApi, api_version::String, subscriptionId::String, predefinedPolicyName::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysGetSslPredefinedPolicy(_api, api_version, subscriptionId, predefinedPolicyName; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function applicationGatewaysGetSslPredefinedPolicy(_api::ApplicationGatewaysApi, response_stream::Channel, api_version::String, subscriptionId::String, predefinedPolicyName::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysGetSslPredefinedPolicy(_api, api_version, subscriptionId, predefinedPolicyName; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -137,14 +197,24 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ApplicationGatewayListResult
 """
-function applicationGatewaysList(_api::ApplicationGatewaysApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_applicationGatewaysList(_api::ApplicationGatewaysApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", ApplicationGatewayListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function applicationGatewaysList(_api::ApplicationGatewaysApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysList(_api, resourceGroupName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function applicationGatewaysList(_api::ApplicationGatewaysApi, response_stream::Channel, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysList(_api, resourceGroupName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -154,13 +224,23 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ApplicationGatewayListResult
 """
-function applicationGatewaysListAll(_api::ApplicationGatewaysApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_applicationGatewaysListAll(_api::ApplicationGatewaysApi, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", ApplicationGatewayListResult, "/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGateways", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function applicationGatewaysListAll(_api::ApplicationGatewaysApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysListAll(_api, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function applicationGatewaysListAll(_api::ApplicationGatewaysApi, response_stream::Channel, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysListAll(_api, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -170,13 +250,23 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ApplicationGatewayAvailableRequestHeadersResult
 """
-function applicationGatewaysListAvailableRequestHeaders(_api::ApplicationGatewaysApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_applicationGatewaysListAvailableRequestHeaders(_api::ApplicationGatewaysApi, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", ApplicationGatewayAvailableRequestHeadersResult, "/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGatewayAvailableRequestHeaders", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function applicationGatewaysListAvailableRequestHeaders(_api::ApplicationGatewaysApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysListAvailableRequestHeaders(_api, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function applicationGatewaysListAvailableRequestHeaders(_api::ApplicationGatewaysApi, response_stream::Channel, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysListAvailableRequestHeaders(_api, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -186,13 +276,23 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ApplicationGatewayAvailableResponseHeadersResult
 """
-function applicationGatewaysListAvailableResponseHeaders(_api::ApplicationGatewaysApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_applicationGatewaysListAvailableResponseHeaders(_api::ApplicationGatewaysApi, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", ApplicationGatewayAvailableResponseHeadersResult, "/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGatewayAvailableResponseHeaders", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function applicationGatewaysListAvailableResponseHeaders(_api::ApplicationGatewaysApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysListAvailableResponseHeaders(_api, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function applicationGatewaysListAvailableResponseHeaders(_api::ApplicationGatewaysApi, response_stream::Channel, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysListAvailableResponseHeaders(_api, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -202,13 +302,23 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ApplicationGatewayAvailableServerVariablesResult
 """
-function applicationGatewaysListAvailableServerVariables(_api::ApplicationGatewaysApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_applicationGatewaysListAvailableServerVariables(_api::ApplicationGatewaysApi, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", ApplicationGatewayAvailableServerVariablesResult, "/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGatewayAvailableServerVariables", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function applicationGatewaysListAvailableServerVariables(_api::ApplicationGatewaysApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysListAvailableServerVariables(_api, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function applicationGatewaysListAvailableServerVariables(_api::ApplicationGatewaysApi, response_stream::Channel, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysListAvailableServerVariables(_api, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -218,13 +328,23 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ApplicationGatewayAvailableSslOptions
 """
-function applicationGatewaysListAvailableSslOptions(_api::ApplicationGatewaysApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_applicationGatewaysListAvailableSslOptions(_api::ApplicationGatewaysApi, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", ApplicationGatewayAvailableSslOptions, "/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGatewayAvailableSslOptions/default", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function applicationGatewaysListAvailableSslOptions(_api::ApplicationGatewaysApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysListAvailableSslOptions(_api, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function applicationGatewaysListAvailableSslOptions(_api::ApplicationGatewaysApi, response_stream::Channel, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysListAvailableSslOptions(_api, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -234,13 +354,23 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ApplicationGatewayAvailableSslPredefinedPolicies
 """
-function applicationGatewaysListAvailableSslPredefinedPolicies(_api::ApplicationGatewaysApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_applicationGatewaysListAvailableSslPredefinedPolicies(_api::ApplicationGatewaysApi, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", ApplicationGatewayAvailableSslPredefinedPolicies, "/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGatewayAvailableSslOptions/default/predefinedPolicies", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function applicationGatewaysListAvailableSslPredefinedPolicies(_api::ApplicationGatewaysApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysListAvailableSslPredefinedPolicies(_api, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function applicationGatewaysListAvailableSslPredefinedPolicies(_api::ApplicationGatewaysApi, response_stream::Channel, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysListAvailableSslPredefinedPolicies(_api, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -250,13 +380,23 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ApplicationGatewayAvailableWafRuleSetsResult
 """
-function applicationGatewaysListAvailableWafRuleSets(_api::ApplicationGatewaysApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_applicationGatewaysListAvailableWafRuleSets(_api::ApplicationGatewaysApi, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", ApplicationGatewayAvailableWafRuleSetsResult, "/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGatewayAvailableWafRuleSets", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function applicationGatewaysListAvailableWafRuleSets(_api::ApplicationGatewaysApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysListAvailableWafRuleSets(_api, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function applicationGatewaysListAvailableWafRuleSets(_api::ApplicationGatewaysApi, response_stream::Channel, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysListAvailableWafRuleSets(_api, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -268,7 +408,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function applicationGatewaysStart(_api::ApplicationGatewaysApi, resourceGroupName::String, applicationGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_applicationGatewaysStart(_api::ApplicationGatewaysApi, resourceGroupName::String, applicationGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/start", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "applicationGatewayName", applicationGatewayName)  # type String
@@ -276,7 +416,17 @@ function applicationGatewaysStart(_api::ApplicationGatewaysApi, resourceGroupNam
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function applicationGatewaysStart(_api::ApplicationGatewaysApi, resourceGroupName::String, applicationGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysStart(_api, resourceGroupName, applicationGatewayName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function applicationGatewaysStart(_api::ApplicationGatewaysApi, response_stream::Channel, resourceGroupName::String, applicationGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysStart(_api, resourceGroupName, applicationGatewayName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -288,7 +438,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function applicationGatewaysStop(_api::ApplicationGatewaysApi, resourceGroupName::String, applicationGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_applicationGatewaysStop(_api::ApplicationGatewaysApi, resourceGroupName::String, applicationGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/stop", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "applicationGatewayName", applicationGatewayName)  # type String
@@ -296,7 +446,17 @@ function applicationGatewaysStop(_api::ApplicationGatewaysApi, resourceGroupName
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function applicationGatewaysStop(_api::ApplicationGatewaysApi, resourceGroupName::String, applicationGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysStop(_api, resourceGroupName, applicationGatewayName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function applicationGatewaysStop(_api::ApplicationGatewaysApi, response_stream::Channel, resourceGroupName::String, applicationGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysStop(_api, resourceGroupName, applicationGatewayName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -309,7 +469,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ApplicationGateway
 """
-function applicationGatewaysUpdateTags(_api::ApplicationGatewaysApi, resourceGroupName::String, applicationGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_applicationGatewaysUpdateTags(_api::ApplicationGatewaysApi, resourceGroupName::String, applicationGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", ApplicationGateway, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "applicationGatewayName", applicationGatewayName)  # type String
@@ -317,7 +477,17 @@ function applicationGatewaysUpdateTags(_api::ApplicationGatewaysApi, resourceGro
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function applicationGatewaysUpdateTags(_api::ApplicationGatewaysApi, resourceGroupName::String, applicationGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysUpdateTags(_api, resourceGroupName, applicationGatewayName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function applicationGatewaysUpdateTags(_api::ApplicationGatewaysApi, response_stream::Channel, resourceGroupName::String, applicationGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewaysUpdateTags(_api, resourceGroupName, applicationGatewayName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export applicationGatewaysBackendHealth, applicationGatewaysBackendHealthOnDemand, applicationGatewaysCreateOrUpdate, applicationGatewaysDelete, applicationGatewaysGet, applicationGatewaysGetSslPredefinedPolicy, applicationGatewaysList, applicationGatewaysListAll, applicationGatewaysListAvailableRequestHeaders, applicationGatewaysListAvailableResponseHeaders, applicationGatewaysListAvailableServerVariables, applicationGatewaysListAvailableSslOptions, applicationGatewaysListAvailableSslPredefinedPolicies, applicationGatewaysListAvailableWafRuleSets, applicationGatewaysStart, applicationGatewaysStop, applicationGatewaysUpdateTags

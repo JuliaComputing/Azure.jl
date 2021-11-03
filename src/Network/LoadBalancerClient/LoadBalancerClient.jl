@@ -5,7 +5,6 @@ module LoadBalancerClient
 
 using Random
 using Dates
-using HTTP
 using Swagger
 import Swagger: field_name, property_type, hasproperty, validate_property, SwaggerApi, SwaggerModel
 import Base: convert, propertynames
@@ -15,18 +14,47 @@ include("modelincludes.jl")
 include("api_LoadBalancersApi.jl")
 
 # export models
+export convert, ApplicationGatewayBackendAddress
+export convert, ApplicationGatewayBackendAddressPool
+export convert, ApplicationGatewayBackendAddressPoolPropertiesFormat
+export convert, ApplicationSecurityGroup
+export convert, ApplicationSecurityGroupPropertiesFormat
+export convert, BackendAddressPool
+export convert, BackendAddressPool2
 export convert, BackendAddressPoolPropertiesFormat
+export convert, BackendAddressPoolPropertiesFormat2
 export convert, CloudError
 export convert, CloudErrorBody
+export convert, CustomDnsConfigPropertiesFormat
+export convert, DdosSettings
+export convert, Delegation
+export convert, FlowLog
+export convert, FlowLogFormatParameters
+export convert, FlowLogPropertiesFormat
+export convert, FrontendIPConfiguration
+export convert, FrontendIPConfiguration2
 export convert, FrontendIPConfigurationPropertiesFormat
+export convert, FrontendIPConfigurationPropertiesFormat2
 export convert, IPAllocationMethod
+export convert, IPConfiguration
+export convert, IPConfigurationProfile
+export convert, IPConfigurationProfilePropertiesFormat
+export convert, IPConfigurationPropertiesFormat
 export convert, IPVersion
+export convert, InboundNatPool
 export convert, InboundNatPoolPropertiesFormat
+export convert, InboundNatRule
+export convert, InboundNatRule2
 export convert, InboundNatRuleListResult
 export convert, InboundNatRulePropertiesFormat
+export convert, InboundNatRulePropertiesFormat2
+export convert, IpTag
+export convert, LoadBalancer
 export convert, LoadBalancerBackendAddress
+export convert, LoadBalancerBackendAddress2
 export convert, LoadBalancerBackendAddressPoolListResult
 export convert, LoadBalancerBackendAddressPropertiesFormat
+export convert, LoadBalancerBackendAddressPropertiesFormat2
 export convert, LoadBalancerFrontendIPConfigurationListResult
 export convert, LoadBalancerListResult
 export convert, LoadBalancerLoadBalancingRuleListResult
@@ -34,27 +62,64 @@ export convert, LoadBalancerOutboundRuleListResult
 export convert, LoadBalancerProbeListResult
 export convert, LoadBalancerPropertiesFormat
 export convert, LoadBalancerSku
+export convert, LoadBalancingRule
 export convert, LoadBalancingRulePropertiesFormat
+export convert, NetworkInterface
+export convert, NetworkInterfaceDnsSettings
+export convert, NetworkInterfaceIPConfiguration
+export convert, NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties
+export convert, NetworkInterfaceIPConfigurationPropertiesFormat
 export convert, NetworkInterfaceListResult
+export convert, NetworkInterfacePropertiesFormat
+export convert, NetworkInterfaceTapConfiguration
+export convert, NetworkInterfaceTapConfigurationPropertiesFormat
+export convert, NetworkSecurityGroup
+export convert, NetworkSecurityGroupPropertiesFormat
+export convert, OutboundRule
 export convert, OutboundRulePropertiesFormat
+export convert, PrivateEndpoint
+export convert, PrivateEndpointProperties
+export convert, PrivateLinkServiceConnection
+export convert, PrivateLinkServiceConnectionProperties
+export convert, PrivateLinkServiceConnectionState
+export convert, Probe
 export convert, ProbePropertiesFormat
 export convert, ProvisioningState
-export convert, Resource
-export convert, SubResource
-export convert, TagsObject
-export convert, TransportProtocol
-export convert, BackendAddressPool
-export convert, FrontendIPConfiguration
-export convert, InboundNatPool
-export convert, InboundNatRule
-export convert, LoadBalancer
-export convert, LoadBalancingRule
-export convert, NetworkInterface
-export convert, NetworkInterfaceIPConfiguration
-export convert, OutboundRule
-export convert, Probe
 export convert, PublicIPAddress
+export convert, PublicIPAddressDnsSettings
+export convert, PublicIPAddressPropertiesFormat
+export convert, PublicIPAddressSku
+export convert, Resource
+export convert, ResourceNavigationLink
+export convert, ResourceNavigationLinkFormat
+export convert, RetentionPolicyParameters
+export convert, Route
+export convert, RouteNextHopType
+export convert, RoutePropertiesFormat
+export convert, RouteTable
+export convert, RouteTablePropertiesFormat
+export convert, SecurityRule
+export convert, SecurityRuleAccess
+export convert, SecurityRuleDirection
+export convert, SecurityRulePropertiesFormat
+export convert, ServiceAssociationLink
+export convert, ServiceAssociationLinkPropertiesFormat
+export convert, ServiceDelegationPropertiesFormat
+export convert, ServiceEndpointPolicy
+export convert, ServiceEndpointPolicyDefinition
+export convert, ServiceEndpointPolicyDefinitionPropertiesFormat
+export convert, ServiceEndpointPolicyPropertiesFormat
+export convert, ServiceEndpointPropertiesFormat
+export convert, SubResource
 export convert, Subnet
+export convert, SubnetPropertiesFormat
+export convert, TagsObject
+export convert, TrafficAnalyticsConfigurationProperties
+export convert, TrafficAnalyticsProperties
+export convert, TransportProtocol
+export convert, TransportProtocol2
+export convert, VirtualNetworkTap
+export convert, VirtualNetworkTapPropertiesFormat
 
 # export operations
 export convert, LoadBalancersApi

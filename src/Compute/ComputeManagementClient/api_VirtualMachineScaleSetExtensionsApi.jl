@@ -16,7 +16,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: VirtualMachineScaleSetExtension
 """
-function virtualMachineScaleSetExtensionsCreateOrUpdate(_api::VirtualMachineScaleSetExtensionsApi, resourceGroupName::String, vmScaleSetName::String, vmssExtensionName::String, extensionParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualMachineScaleSetExtensionsCreateOrUpdate(_api::VirtualMachineScaleSetExtensionsApi, resourceGroupName::String, vmScaleSetName::String, vmssExtensionName::String, extensionParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", VirtualMachineScaleSetExtension, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}", ["azure_auth"], extensionParameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "vmScaleSetName", vmScaleSetName)  # type String
@@ -25,7 +25,17 @@ function virtualMachineScaleSetExtensionsCreateOrUpdate(_api::VirtualMachineScal
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualMachineScaleSetExtensionsCreateOrUpdate(_api::VirtualMachineScaleSetExtensionsApi, resourceGroupName::String, vmScaleSetName::String, vmssExtensionName::String, extensionParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualMachineScaleSetExtensionsCreateOrUpdate(_api, resourceGroupName, vmScaleSetName, vmssExtensionName, extensionParameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualMachineScaleSetExtensionsCreateOrUpdate(_api::VirtualMachineScaleSetExtensionsApi, response_stream::Channel, resourceGroupName::String, vmScaleSetName::String, vmssExtensionName::String, extensionParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualMachineScaleSetExtensionsCreateOrUpdate(_api, resourceGroupName, vmScaleSetName, vmssExtensionName, extensionParameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -38,7 +48,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function virtualMachineScaleSetExtensionsDelete(_api::VirtualMachineScaleSetExtensionsApi, resourceGroupName::String, vmScaleSetName::String, vmssExtensionName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualMachineScaleSetExtensionsDelete(_api::VirtualMachineScaleSetExtensionsApi, resourceGroupName::String, vmScaleSetName::String, vmssExtensionName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "vmScaleSetName", vmScaleSetName)  # type String
@@ -47,7 +57,17 @@ function virtualMachineScaleSetExtensionsDelete(_api::VirtualMachineScaleSetExte
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualMachineScaleSetExtensionsDelete(_api::VirtualMachineScaleSetExtensionsApi, resourceGroupName::String, vmScaleSetName::String, vmssExtensionName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualMachineScaleSetExtensionsDelete(_api, resourceGroupName, vmScaleSetName, vmssExtensionName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualMachineScaleSetExtensionsDelete(_api::VirtualMachineScaleSetExtensionsApi, response_stream::Channel, resourceGroupName::String, vmScaleSetName::String, vmssExtensionName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualMachineScaleSetExtensionsDelete(_api, resourceGroupName, vmScaleSetName, vmssExtensionName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -61,7 +81,7 @@ Param: subscriptionId::String (required)
 Param: expand::String
 Return: VirtualMachineScaleSetExtension
 """
-function virtualMachineScaleSetExtensionsGet(_api::VirtualMachineScaleSetExtensionsApi, resourceGroupName::String, vmScaleSetName::String, vmssExtensionName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+function _swaggerinternal_virtualMachineScaleSetExtensionsGet(_api::VirtualMachineScaleSetExtensionsApi, resourceGroupName::String, vmScaleSetName::String, vmssExtensionName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VirtualMachineScaleSetExtension, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "vmScaleSetName", vmScaleSetName)  # type String
@@ -71,7 +91,17 @@ function virtualMachineScaleSetExtensionsGet(_api::VirtualMachineScaleSetExtensi
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualMachineScaleSetExtensionsGet(_api::VirtualMachineScaleSetExtensionsApi, resourceGroupName::String, vmScaleSetName::String, vmssExtensionName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualMachineScaleSetExtensionsGet(_api, resourceGroupName, vmScaleSetName, vmssExtensionName, api_version, subscriptionId; expand=expand, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualMachineScaleSetExtensionsGet(_api::VirtualMachineScaleSetExtensionsApi, response_stream::Channel, resourceGroupName::String, vmScaleSetName::String, vmssExtensionName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualMachineScaleSetExtensionsGet(_api, resourceGroupName, vmScaleSetName, vmssExtensionName, api_version, subscriptionId; expand=expand, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -83,7 +113,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: VirtualMachineScaleSetExtensionListResult
 """
-function virtualMachineScaleSetExtensionsList(_api::VirtualMachineScaleSetExtensionsApi, resourceGroupName::String, vmScaleSetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualMachineScaleSetExtensionsList(_api::VirtualMachineScaleSetExtensionsApi, resourceGroupName::String, vmScaleSetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VirtualMachineScaleSetExtensionListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "vmScaleSetName", vmScaleSetName)  # type String
@@ -91,7 +121,17 @@ function virtualMachineScaleSetExtensionsList(_api::VirtualMachineScaleSetExtens
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualMachineScaleSetExtensionsList(_api::VirtualMachineScaleSetExtensionsApi, resourceGroupName::String, vmScaleSetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualMachineScaleSetExtensionsList(_api, resourceGroupName, vmScaleSetName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualMachineScaleSetExtensionsList(_api::VirtualMachineScaleSetExtensionsApi, response_stream::Channel, resourceGroupName::String, vmScaleSetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualMachineScaleSetExtensionsList(_api, resourceGroupName, vmScaleSetName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -105,7 +145,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: VirtualMachineScaleSetExtension
 """
-function virtualMachineScaleSetExtensionsUpdate(_api::VirtualMachineScaleSetExtensionsApi, resourceGroupName::String, vmScaleSetName::String, vmssExtensionName::String, extensionParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualMachineScaleSetExtensionsUpdate(_api::VirtualMachineScaleSetExtensionsApi, resourceGroupName::String, vmScaleSetName::String, vmssExtensionName::String, extensionParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", VirtualMachineScaleSetExtension, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensions/{vmssExtensionName}", ["azure_auth"], extensionParameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "vmScaleSetName", vmScaleSetName)  # type String
@@ -114,7 +154,17 @@ function virtualMachineScaleSetExtensionsUpdate(_api::VirtualMachineScaleSetExte
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualMachineScaleSetExtensionsUpdate(_api::VirtualMachineScaleSetExtensionsApi, resourceGroupName::String, vmScaleSetName::String, vmssExtensionName::String, extensionParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualMachineScaleSetExtensionsUpdate(_api, resourceGroupName, vmScaleSetName, vmssExtensionName, extensionParameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualMachineScaleSetExtensionsUpdate(_api::VirtualMachineScaleSetExtensionsApi, response_stream::Channel, resourceGroupName::String, vmScaleSetName::String, vmssExtensionName::String, extensionParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualMachineScaleSetExtensionsUpdate(_api, resourceGroupName, vmScaleSetName, vmssExtensionName, extensionParameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export virtualMachineScaleSetExtensionsCreateOrUpdate, virtualMachineScaleSetExtensionsDelete, virtualMachineScaleSetExtensionsGet, virtualMachineScaleSetExtensionsList, virtualMachineScaleSetExtensionsUpdate

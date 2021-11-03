@@ -15,7 +15,7 @@ Param: subscriptionId::String (required)
 Param: encryptionScopeName::String (required)
 Return: EncryptionScope
 """
-function encryptionScopesGet(_api::EncryptionScopesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, encryptionScopeName::String; _mediaType=nothing)
+function _swaggerinternal_encryptionScopesGet(_api::EncryptionScopesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, encryptionScopeName::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "encryptionScopesGet", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "encryptionScopesGet", :minLength, resourceGroupName, 1)
 
@@ -37,7 +37,17 @@ function encryptionScopesGet(_api::EncryptionScopesApi, resourceGroupName::Strin
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function encryptionScopesGet(_api::EncryptionScopesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, encryptionScopeName::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_encryptionScopesGet(_api, resourceGroupName, accountName, api_version, subscriptionId, encryptionScopeName; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function encryptionScopesGet(_api::EncryptionScopesApi, response_stream::Channel, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, encryptionScopeName::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_encryptionScopesGet(_api, resourceGroupName, accountName, api_version, subscriptionId, encryptionScopeName; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -49,7 +59,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: EncryptionScopeListResult
 """
-function encryptionScopesList(_api::EncryptionScopesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_encryptionScopesList(_api::EncryptionScopesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "encryptionScopesList", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "encryptionScopesList", :minLength, resourceGroupName, 1)
 
@@ -67,7 +77,17 @@ function encryptionScopesList(_api::EncryptionScopesApi, resourceGroupName::Stri
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function encryptionScopesList(_api::EncryptionScopesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_encryptionScopesList(_api, resourceGroupName, accountName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function encryptionScopesList(_api::EncryptionScopesApi, response_stream::Channel, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_encryptionScopesList(_api, resourceGroupName, accountName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -81,7 +101,7 @@ Param: encryptionScopeName::String (required)
 Param: encryptionScope::EncryptionScope (required)
 Return: EncryptionScope
 """
-function encryptionScopesPatch(_api::EncryptionScopesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, encryptionScopeName::String, encryptionScope; _mediaType=nothing)
+function _swaggerinternal_encryptionScopesPatch(_api::EncryptionScopesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, encryptionScopeName::String, encryptionScope; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "encryptionScopesPatch", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "encryptionScopesPatch", :minLength, resourceGroupName, 1)
 
@@ -103,7 +123,17 @@ function encryptionScopesPatch(_api::EncryptionScopesApi, resourceGroupName::Str
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function encryptionScopesPatch(_api::EncryptionScopesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, encryptionScopeName::String, encryptionScope; _mediaType=nothing)
+    _ctx = _swaggerinternal_encryptionScopesPatch(_api, resourceGroupName, accountName, api_version, subscriptionId, encryptionScopeName, encryptionScope; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function encryptionScopesPatch(_api::EncryptionScopesApi, response_stream::Channel, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, encryptionScopeName::String, encryptionScope; _mediaType=nothing)
+    _ctx = _swaggerinternal_encryptionScopesPatch(_api, resourceGroupName, accountName, api_version, subscriptionId, encryptionScopeName, encryptionScope; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -117,7 +147,7 @@ Param: encryptionScopeName::String (required)
 Param: encryptionScope::EncryptionScope (required)
 Return: EncryptionScope
 """
-function encryptionScopesPut(_api::EncryptionScopesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, encryptionScopeName::String, encryptionScope; _mediaType=nothing)
+function _swaggerinternal_encryptionScopesPut(_api::EncryptionScopesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, encryptionScopeName::String, encryptionScope; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "encryptionScopesPut", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "encryptionScopesPut", :minLength, resourceGroupName, 1)
 
@@ -139,7 +169,17 @@ function encryptionScopesPut(_api::EncryptionScopesApi, resourceGroupName::Strin
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function encryptionScopesPut(_api::EncryptionScopesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, encryptionScopeName::String, encryptionScope; _mediaType=nothing)
+    _ctx = _swaggerinternal_encryptionScopesPut(_api, resourceGroupName, accountName, api_version, subscriptionId, encryptionScopeName, encryptionScope; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function encryptionScopesPut(_api::EncryptionScopesApi, response_stream::Channel, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, encryptionScopeName::String, encryptionScope; _mediaType=nothing)
+    _ctx = _swaggerinternal_encryptionScopesPut(_api, resourceGroupName, accountName, api_version, subscriptionId, encryptionScopeName, encryptionScope; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export encryptionScopesGet, encryptionScopesList, encryptionScopesPatch, encryptionScopesPut

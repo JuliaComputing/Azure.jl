@@ -16,7 +16,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: InboundNatRule
 """
-function inboundNatRulesCreateOrUpdate(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, inboundNatRuleName::String, inboundNatRuleParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_inboundNatRulesCreateOrUpdate(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, inboundNatRuleName::String, inboundNatRuleParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", InboundNatRule, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatRules/{inboundNatRuleName}", ["azure_auth"], inboundNatRuleParameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "loadBalancerName", loadBalancerName)  # type String
@@ -25,7 +25,17 @@ function inboundNatRulesCreateOrUpdate(_api::LoadBalancersApi, resourceGroupName
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function inboundNatRulesCreateOrUpdate(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, inboundNatRuleName::String, inboundNatRuleParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_inboundNatRulesCreateOrUpdate(_api, resourceGroupName, loadBalancerName, inboundNatRuleName, inboundNatRuleParameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function inboundNatRulesCreateOrUpdate(_api::LoadBalancersApi, response_stream::Channel, resourceGroupName::String, loadBalancerName::String, inboundNatRuleName::String, inboundNatRuleParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_inboundNatRulesCreateOrUpdate(_api, resourceGroupName, loadBalancerName, inboundNatRuleName, inboundNatRuleParameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -38,7 +48,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function inboundNatRulesDelete(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, inboundNatRuleName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_inboundNatRulesDelete(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, inboundNatRuleName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatRules/{inboundNatRuleName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "loadBalancerName", loadBalancerName)  # type String
@@ -47,7 +57,17 @@ function inboundNatRulesDelete(_api::LoadBalancersApi, resourceGroupName::String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function inboundNatRulesDelete(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, inboundNatRuleName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_inboundNatRulesDelete(_api, resourceGroupName, loadBalancerName, inboundNatRuleName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function inboundNatRulesDelete(_api::LoadBalancersApi, response_stream::Channel, resourceGroupName::String, loadBalancerName::String, inboundNatRuleName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_inboundNatRulesDelete(_api, resourceGroupName, loadBalancerName, inboundNatRuleName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -61,7 +81,7 @@ Param: subscriptionId::String (required)
 Param: expand::String
 Return: InboundNatRule
 """
-function inboundNatRulesGet(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, inboundNatRuleName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+function _swaggerinternal_inboundNatRulesGet(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, inboundNatRuleName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", InboundNatRule, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatRules/{inboundNatRuleName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "loadBalancerName", loadBalancerName)  # type String
@@ -71,7 +91,17 @@ function inboundNatRulesGet(_api::LoadBalancersApi, resourceGroupName::String, l
     Swagger.set_param(_ctx.query, "\$expand", expand)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function inboundNatRulesGet(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, inboundNatRuleName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_inboundNatRulesGet(_api, resourceGroupName, loadBalancerName, inboundNatRuleName, api_version, subscriptionId; expand=expand, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function inboundNatRulesGet(_api::LoadBalancersApi, response_stream::Channel, resourceGroupName::String, loadBalancerName::String, inboundNatRuleName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_inboundNatRulesGet(_api, resourceGroupName, loadBalancerName, inboundNatRuleName, api_version, subscriptionId; expand=expand, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -83,7 +113,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: InboundNatRuleListResult
 """
-function inboundNatRulesList(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_inboundNatRulesList(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", InboundNatRuleListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/inboundNatRules", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "loadBalancerName", loadBalancerName)  # type String
@@ -91,7 +121,17 @@ function inboundNatRulesList(_api::LoadBalancersApi, resourceGroupName::String, 
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function inboundNatRulesList(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_inboundNatRulesList(_api, resourceGroupName, loadBalancerName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function inboundNatRulesList(_api::LoadBalancersApi, response_stream::Channel, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_inboundNatRulesList(_api, resourceGroupName, loadBalancerName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -105,7 +145,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: BackendAddressPool
 """
-function loadBalancerBackendAddressPoolsCreateOrUpdate(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, backendAddressPoolName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_loadBalancerBackendAddressPoolsCreateOrUpdate(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, backendAddressPoolName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", BackendAddressPool, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendAddressPoolName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "loadBalancerName", loadBalancerName)  # type String
@@ -114,7 +154,17 @@ function loadBalancerBackendAddressPoolsCreateOrUpdate(_api::LoadBalancersApi, r
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function loadBalancerBackendAddressPoolsCreateOrUpdate(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, backendAddressPoolName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancerBackendAddressPoolsCreateOrUpdate(_api, resourceGroupName, loadBalancerName, backendAddressPoolName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function loadBalancerBackendAddressPoolsCreateOrUpdate(_api::LoadBalancersApi, response_stream::Channel, resourceGroupName::String, loadBalancerName::String, backendAddressPoolName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancerBackendAddressPoolsCreateOrUpdate(_api, resourceGroupName, loadBalancerName, backendAddressPoolName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -127,7 +177,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function loadBalancerBackendAddressPoolsDelete(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, backendAddressPoolName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_loadBalancerBackendAddressPoolsDelete(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, backendAddressPoolName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendAddressPoolName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "loadBalancerName", loadBalancerName)  # type String
@@ -136,7 +186,17 @@ function loadBalancerBackendAddressPoolsDelete(_api::LoadBalancersApi, resourceG
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function loadBalancerBackendAddressPoolsDelete(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, backendAddressPoolName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancerBackendAddressPoolsDelete(_api, resourceGroupName, loadBalancerName, backendAddressPoolName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function loadBalancerBackendAddressPoolsDelete(_api::LoadBalancersApi, response_stream::Channel, resourceGroupName::String, loadBalancerName::String, backendAddressPoolName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancerBackendAddressPoolsDelete(_api, resourceGroupName, loadBalancerName, backendAddressPoolName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -149,7 +209,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: BackendAddressPool
 """
-function loadBalancerBackendAddressPoolsGet(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, backendAddressPoolName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_loadBalancerBackendAddressPoolsGet(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, backendAddressPoolName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", BackendAddressPool, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendAddressPoolName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "loadBalancerName", loadBalancerName)  # type String
@@ -158,7 +218,17 @@ function loadBalancerBackendAddressPoolsGet(_api::LoadBalancersApi, resourceGrou
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function loadBalancerBackendAddressPoolsGet(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, backendAddressPoolName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancerBackendAddressPoolsGet(_api, resourceGroupName, loadBalancerName, backendAddressPoolName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function loadBalancerBackendAddressPoolsGet(_api::LoadBalancersApi, response_stream::Channel, resourceGroupName::String, loadBalancerName::String, backendAddressPoolName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancerBackendAddressPoolsGet(_api, resourceGroupName, loadBalancerName, backendAddressPoolName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -170,7 +240,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: LoadBalancerBackendAddressPoolListResult
 """
-function loadBalancerBackendAddressPoolsList(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_loadBalancerBackendAddressPoolsList(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", LoadBalancerBackendAddressPoolListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "loadBalancerName", loadBalancerName)  # type String
@@ -178,7 +248,17 @@ function loadBalancerBackendAddressPoolsList(_api::LoadBalancersApi, resourceGro
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function loadBalancerBackendAddressPoolsList(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancerBackendAddressPoolsList(_api, resourceGroupName, loadBalancerName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function loadBalancerBackendAddressPoolsList(_api::LoadBalancersApi, response_stream::Channel, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancerBackendAddressPoolsList(_api, resourceGroupName, loadBalancerName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -191,7 +271,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: FrontendIPConfiguration
 """
-function loadBalancerFrontendIPConfigurationsGet(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, frontendIPConfigurationName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_loadBalancerFrontendIPConfigurationsGet(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, frontendIPConfigurationName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", FrontendIPConfiguration, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/frontendIPConfigurations/{frontendIPConfigurationName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "loadBalancerName", loadBalancerName)  # type String
@@ -200,7 +280,17 @@ function loadBalancerFrontendIPConfigurationsGet(_api::LoadBalancersApi, resourc
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function loadBalancerFrontendIPConfigurationsGet(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, frontendIPConfigurationName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancerFrontendIPConfigurationsGet(_api, resourceGroupName, loadBalancerName, frontendIPConfigurationName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function loadBalancerFrontendIPConfigurationsGet(_api::LoadBalancersApi, response_stream::Channel, resourceGroupName::String, loadBalancerName::String, frontendIPConfigurationName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancerFrontendIPConfigurationsGet(_api, resourceGroupName, loadBalancerName, frontendIPConfigurationName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -212,7 +302,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: LoadBalancerFrontendIPConfigurationListResult
 """
-function loadBalancerFrontendIPConfigurationsList(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_loadBalancerFrontendIPConfigurationsList(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", LoadBalancerFrontendIPConfigurationListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/frontendIPConfigurations", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "loadBalancerName", loadBalancerName)  # type String
@@ -220,7 +310,17 @@ function loadBalancerFrontendIPConfigurationsList(_api::LoadBalancersApi, resour
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function loadBalancerFrontendIPConfigurationsList(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancerFrontendIPConfigurationsList(_api, resourceGroupName, loadBalancerName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function loadBalancerFrontendIPConfigurationsList(_api::LoadBalancersApi, response_stream::Channel, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancerFrontendIPConfigurationsList(_api, resourceGroupName, loadBalancerName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -233,7 +333,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: LoadBalancingRule
 """
-function loadBalancerLoadBalancingRulesGet(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, loadBalancingRuleName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_loadBalancerLoadBalancingRulesGet(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, loadBalancingRuleName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", LoadBalancingRule, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/loadBalancingRules/{loadBalancingRuleName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "loadBalancerName", loadBalancerName)  # type String
@@ -242,7 +342,17 @@ function loadBalancerLoadBalancingRulesGet(_api::LoadBalancersApi, resourceGroup
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function loadBalancerLoadBalancingRulesGet(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, loadBalancingRuleName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancerLoadBalancingRulesGet(_api, resourceGroupName, loadBalancerName, loadBalancingRuleName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function loadBalancerLoadBalancingRulesGet(_api::LoadBalancersApi, response_stream::Channel, resourceGroupName::String, loadBalancerName::String, loadBalancingRuleName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancerLoadBalancingRulesGet(_api, resourceGroupName, loadBalancerName, loadBalancingRuleName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -254,7 +364,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: LoadBalancerLoadBalancingRuleListResult
 """
-function loadBalancerLoadBalancingRulesList(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_loadBalancerLoadBalancingRulesList(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", LoadBalancerLoadBalancingRuleListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/loadBalancingRules", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "loadBalancerName", loadBalancerName)  # type String
@@ -262,7 +372,17 @@ function loadBalancerLoadBalancingRulesList(_api::LoadBalancersApi, resourceGrou
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function loadBalancerLoadBalancingRulesList(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancerLoadBalancingRulesList(_api, resourceGroupName, loadBalancerName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function loadBalancerLoadBalancingRulesList(_api::LoadBalancersApi, response_stream::Channel, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancerLoadBalancingRulesList(_api, resourceGroupName, loadBalancerName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -274,7 +394,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: NetworkInterfaceListResult
 """
-function loadBalancerNetworkInterfacesList(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_loadBalancerNetworkInterfacesList(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", NetworkInterfaceListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/networkInterfaces", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "loadBalancerName", loadBalancerName)  # type String
@@ -282,7 +402,17 @@ function loadBalancerNetworkInterfacesList(_api::LoadBalancersApi, resourceGroup
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function loadBalancerNetworkInterfacesList(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancerNetworkInterfacesList(_api, resourceGroupName, loadBalancerName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function loadBalancerNetworkInterfacesList(_api::LoadBalancersApi, response_stream::Channel, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancerNetworkInterfacesList(_api, resourceGroupName, loadBalancerName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -295,7 +425,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: OutboundRule
 """
-function loadBalancerOutboundRulesGet(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, outboundRuleName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_loadBalancerOutboundRulesGet(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, outboundRuleName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", OutboundRule, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/outboundRules/{outboundRuleName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "loadBalancerName", loadBalancerName)  # type String
@@ -304,7 +434,17 @@ function loadBalancerOutboundRulesGet(_api::LoadBalancersApi, resourceGroupName:
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function loadBalancerOutboundRulesGet(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, outboundRuleName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancerOutboundRulesGet(_api, resourceGroupName, loadBalancerName, outboundRuleName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function loadBalancerOutboundRulesGet(_api::LoadBalancersApi, response_stream::Channel, resourceGroupName::String, loadBalancerName::String, outboundRuleName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancerOutboundRulesGet(_api, resourceGroupName, loadBalancerName, outboundRuleName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -316,7 +456,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: LoadBalancerOutboundRuleListResult
 """
-function loadBalancerOutboundRulesList(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_loadBalancerOutboundRulesList(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", LoadBalancerOutboundRuleListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/outboundRules", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "loadBalancerName", loadBalancerName)  # type String
@@ -324,7 +464,17 @@ function loadBalancerOutboundRulesList(_api::LoadBalancersApi, resourceGroupName
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function loadBalancerOutboundRulesList(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancerOutboundRulesList(_api, resourceGroupName, loadBalancerName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function loadBalancerOutboundRulesList(_api::LoadBalancersApi, response_stream::Channel, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancerOutboundRulesList(_api, resourceGroupName, loadBalancerName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -337,7 +487,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Probe
 """
-function loadBalancerProbesGet(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, probeName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_loadBalancerProbesGet(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, probeName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", Probe, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "loadBalancerName", loadBalancerName)  # type String
@@ -346,7 +496,17 @@ function loadBalancerProbesGet(_api::LoadBalancersApi, resourceGroupName::String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function loadBalancerProbesGet(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, probeName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancerProbesGet(_api, resourceGroupName, loadBalancerName, probeName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function loadBalancerProbesGet(_api::LoadBalancersApi, response_stream::Channel, resourceGroupName::String, loadBalancerName::String, probeName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancerProbesGet(_api, resourceGroupName, loadBalancerName, probeName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -358,7 +518,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: LoadBalancerProbeListResult
 """
-function loadBalancerProbesList(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_loadBalancerProbesList(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", LoadBalancerProbeListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "loadBalancerName", loadBalancerName)  # type String
@@ -366,7 +526,17 @@ function loadBalancerProbesList(_api::LoadBalancersApi, resourceGroupName::Strin
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function loadBalancerProbesList(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancerProbesList(_api, resourceGroupName, loadBalancerName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function loadBalancerProbesList(_api::LoadBalancersApi, response_stream::Channel, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancerProbesList(_api, resourceGroupName, loadBalancerName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -379,7 +549,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: LoadBalancer
 """
-function loadBalancersCreateOrUpdate(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_loadBalancersCreateOrUpdate(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", LoadBalancer, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "loadBalancerName", loadBalancerName)  # type String
@@ -387,7 +557,17 @@ function loadBalancersCreateOrUpdate(_api::LoadBalancersApi, resourceGroupName::
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function loadBalancersCreateOrUpdate(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancersCreateOrUpdate(_api, resourceGroupName, loadBalancerName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function loadBalancersCreateOrUpdate(_api::LoadBalancersApi, response_stream::Channel, resourceGroupName::String, loadBalancerName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancersCreateOrUpdate(_api, resourceGroupName, loadBalancerName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -399,7 +579,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function loadBalancersDelete(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_loadBalancersDelete(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "loadBalancerName", loadBalancerName)  # type String
@@ -407,7 +587,17 @@ function loadBalancersDelete(_api::LoadBalancersApi, resourceGroupName::String, 
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function loadBalancersDelete(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancersDelete(_api, resourceGroupName, loadBalancerName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function loadBalancersDelete(_api::LoadBalancersApi, response_stream::Channel, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancersDelete(_api, resourceGroupName, loadBalancerName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -420,7 +610,7 @@ Param: subscriptionId::String (required)
 Param: expand::String
 Return: LoadBalancer
 """
-function loadBalancersGet(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+function _swaggerinternal_loadBalancersGet(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", LoadBalancer, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "loadBalancerName", loadBalancerName)  # type String
@@ -429,7 +619,17 @@ function loadBalancersGet(_api::LoadBalancersApi, resourceGroupName::String, loa
     Swagger.set_param(_ctx.query, "\$expand", expand)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function loadBalancersGet(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancersGet(_api, resourceGroupName, loadBalancerName, api_version, subscriptionId; expand=expand, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function loadBalancersGet(_api::LoadBalancersApi, response_stream::Channel, resourceGroupName::String, loadBalancerName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancersGet(_api, resourceGroupName, loadBalancerName, api_version, subscriptionId; expand=expand, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -440,14 +640,24 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: LoadBalancerListResult
 """
-function loadBalancersList(_api::LoadBalancersApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_loadBalancersList(_api::LoadBalancersApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", LoadBalancerListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function loadBalancersList(_api::LoadBalancersApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancersList(_api, resourceGroupName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function loadBalancersList(_api::LoadBalancersApi, response_stream::Channel, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancersList(_api, resourceGroupName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -457,13 +667,23 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: LoadBalancerListResult
 """
-function loadBalancersListAll(_api::LoadBalancersApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_loadBalancersListAll(_api::LoadBalancersApi, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", LoadBalancerListResult, "/subscriptions/{subscriptionId}/providers/Microsoft.Network/loadBalancers", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function loadBalancersListAll(_api::LoadBalancersApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancersListAll(_api, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function loadBalancersListAll(_api::LoadBalancersApi, response_stream::Channel, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancersListAll(_api, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -476,7 +696,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: LoadBalancer
 """
-function loadBalancersUpdateTags(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_loadBalancersUpdateTags(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", LoadBalancer, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "loadBalancerName", loadBalancerName)  # type String
@@ -484,7 +704,17 @@ function loadBalancersUpdateTags(_api::LoadBalancersApi, resourceGroupName::Stri
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function loadBalancersUpdateTags(_api::LoadBalancersApi, resourceGroupName::String, loadBalancerName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancersUpdateTags(_api, resourceGroupName, loadBalancerName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function loadBalancersUpdateTags(_api::LoadBalancersApi, response_stream::Channel, resourceGroupName::String, loadBalancerName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_loadBalancersUpdateTags(_api, resourceGroupName, loadBalancerName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export inboundNatRulesCreateOrUpdate, inboundNatRulesDelete, inboundNatRulesGet, inboundNatRulesList, loadBalancerBackendAddressPoolsCreateOrUpdate, loadBalancerBackendAddressPoolsDelete, loadBalancerBackendAddressPoolsGet, loadBalancerBackendAddressPoolsList, loadBalancerFrontendIPConfigurationsGet, loadBalancerFrontendIPConfigurationsList, loadBalancerLoadBalancingRulesGet, loadBalancerLoadBalancingRulesList, loadBalancerNetworkInterfacesList, loadBalancerOutboundRulesGet, loadBalancerOutboundRulesList, loadBalancerProbesGet, loadBalancerProbesList, loadBalancersCreateOrUpdate, loadBalancersDelete, loadBalancersGet, loadBalancersList, loadBalancersListAll, loadBalancersUpdateTags

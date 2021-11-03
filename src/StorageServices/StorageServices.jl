@@ -4,7 +4,7 @@ using ..Azure
 using Azure.StorageManagementClient
 using Azure.REST
 using Azure.REST: AccountKey, service_response, parse_service_response, issuccess
-using HTTP
+using URIs
 using MbedTLS
 using Dates
 using Base64

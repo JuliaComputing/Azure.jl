@@ -15,7 +15,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ResourceNavigationLinksListResult
 """
-function resourceNavigationLinksList(_api::DefaultApi, resourceGroupName::String, virtualNetworkName::String, subnetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_resourceNavigationLinksList(_api::DefaultApi, resourceGroupName::String, virtualNetworkName::String, subnetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", ResourceNavigationLinksListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/ResourceNavigationLinks", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkName", virtualNetworkName)  # type String
@@ -24,7 +24,17 @@ function resourceNavigationLinksList(_api::DefaultApi, resourceGroupName::String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function resourceNavigationLinksList(_api::DefaultApi, resourceGroupName::String, virtualNetworkName::String, subnetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourceNavigationLinksList(_api, resourceGroupName, virtualNetworkName, subnetName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function resourceNavigationLinksList(_api::DefaultApi, response_stream::Channel, resourceGroupName::String, virtualNetworkName::String, subnetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourceNavigationLinksList(_api, resourceGroupName, virtualNetworkName, subnetName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -37,7 +47,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ServiceAssociationLinksListResult
 """
-function serviceAssociationLinksList(_api::DefaultApi, resourceGroupName::String, virtualNetworkName::String, subnetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_serviceAssociationLinksList(_api::DefaultApi, resourceGroupName::String, virtualNetworkName::String, subnetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", ServiceAssociationLinksListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/ServiceAssociationLinks", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkName", virtualNetworkName)  # type String
@@ -46,7 +56,17 @@ function serviceAssociationLinksList(_api::DefaultApi, resourceGroupName::String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function serviceAssociationLinksList(_api::DefaultApi, resourceGroupName::String, virtualNetworkName::String, subnetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_serviceAssociationLinksList(_api, resourceGroupName, virtualNetworkName, subnetName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function serviceAssociationLinksList(_api::DefaultApi, response_stream::Channel, resourceGroupName::String, virtualNetworkName::String, subnetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_serviceAssociationLinksList(_api, resourceGroupName, virtualNetworkName, subnetName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -60,7 +80,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function subnetsPrepareNetworkPolicies(_api::DefaultApi, resourceGroupName::String, virtualNetworkName::String, subnetName::String, prepareNetworkPoliciesRequestParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_subnetsPrepareNetworkPolicies(_api::DefaultApi, resourceGroupName::String, virtualNetworkName::String, subnetName::String, prepareNetworkPoliciesRequestParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/PrepareNetworkPolicies", ["azure_auth"], prepareNetworkPoliciesRequestParameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkName", virtualNetworkName)  # type String
@@ -69,7 +89,17 @@ function subnetsPrepareNetworkPolicies(_api::DefaultApi, resourceGroupName::Stri
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function subnetsPrepareNetworkPolicies(_api::DefaultApi, resourceGroupName::String, virtualNetworkName::String, subnetName::String, prepareNetworkPoliciesRequestParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_subnetsPrepareNetworkPolicies(_api, resourceGroupName, virtualNetworkName, subnetName, prepareNetworkPoliciesRequestParameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function subnetsPrepareNetworkPolicies(_api::DefaultApi, response_stream::Channel, resourceGroupName::String, virtualNetworkName::String, subnetName::String, prepareNetworkPoliciesRequestParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_subnetsPrepareNetworkPolicies(_api, resourceGroupName, virtualNetworkName, subnetName, prepareNetworkPoliciesRequestParameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -83,7 +113,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function subnetsUnprepareNetworkPolicies(_api::DefaultApi, resourceGroupName::String, virtualNetworkName::String, subnetName::String, unprepareNetworkPoliciesRequestParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_subnetsUnprepareNetworkPolicies(_api::DefaultApi, resourceGroupName::String, virtualNetworkName::String, subnetName::String, unprepareNetworkPoliciesRequestParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}/UnprepareNetworkPolicies", ["azure_auth"], unprepareNetworkPoliciesRequestParameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkName", virtualNetworkName)  # type String
@@ -92,7 +122,17 @@ function subnetsUnprepareNetworkPolicies(_api::DefaultApi, resourceGroupName::St
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function subnetsUnprepareNetworkPolicies(_api::DefaultApi, resourceGroupName::String, virtualNetworkName::String, subnetName::String, unprepareNetworkPoliciesRequestParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_subnetsUnprepareNetworkPolicies(_api, resourceGroupName, virtualNetworkName, subnetName, unprepareNetworkPoliciesRequestParameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function subnetsUnprepareNetworkPolicies(_api::DefaultApi, response_stream::Channel, resourceGroupName::String, virtualNetworkName::String, subnetName::String, unprepareNetworkPoliciesRequestParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_subnetsUnprepareNetworkPolicies(_api, resourceGroupName, virtualNetworkName, subnetName, unprepareNetworkPoliciesRequestParameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -105,7 +145,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: IPAddressAvailabilityResult
 """
-function virtualNetworksCheckIPAddressAvailability(_api::DefaultApi, resourceGroupName::String, virtualNetworkName::String, ipAddress::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualNetworksCheckIPAddressAvailability(_api::DefaultApi, resourceGroupName::String, virtualNetworkName::String, ipAddress::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", IPAddressAvailabilityResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/CheckIPAddressAvailability", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkName", virtualNetworkName)  # type String
@@ -114,7 +154,17 @@ function virtualNetworksCheckIPAddressAvailability(_api::DefaultApi, resourceGro
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworksCheckIPAddressAvailability(_api::DefaultApi, resourceGroupName::String, virtualNetworkName::String, ipAddress::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworksCheckIPAddressAvailability(_api, resourceGroupName, virtualNetworkName, ipAddress, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworksCheckIPAddressAvailability(_api::DefaultApi, response_stream::Channel, resourceGroupName::String, virtualNetworkName::String, ipAddress::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworksCheckIPAddressAvailability(_api, resourceGroupName, virtualNetworkName, ipAddress, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -126,7 +176,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: VirtualNetworkListUsageResult
 """
-function virtualNetworksListUsage(_api::DefaultApi, resourceGroupName::String, virtualNetworkName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualNetworksListUsage(_api::DefaultApi, resourceGroupName::String, virtualNetworkName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VirtualNetworkListUsageResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/usages", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkName", virtualNetworkName)  # type String
@@ -134,7 +184,17 @@ function virtualNetworksListUsage(_api::DefaultApi, resourceGroupName::String, v
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworksListUsage(_api::DefaultApi, resourceGroupName::String, virtualNetworkName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworksListUsage(_api, resourceGroupName, virtualNetworkName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworksListUsage(_api::DefaultApi, response_stream::Channel, resourceGroupName::String, virtualNetworkName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworksListUsage(_api, resourceGroupName, virtualNetworkName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export resourceNavigationLinksList, serviceAssociationLinksList, subnetsPrepareNetworkPolicies, subnetsUnprepareNetworkPolicies, virtualNetworksCheckIPAddressAvailability, virtualNetworksListUsage

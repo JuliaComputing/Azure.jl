@@ -13,7 +13,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function resourceGroupsCheckExistence(_api::ResourceGroupsApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_resourceGroupsCheckExistence(_api::ResourceGroupsApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "resourceGroupsCheckExistence", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "resourceGroupsCheckExistence", :minLength, resourceGroupName, 1)
 
@@ -23,7 +23,17 @@ function resourceGroupsCheckExistence(_api::ResourceGroupsApi, resourceGroupName
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function resourceGroupsCheckExistence(_api::ResourceGroupsApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourceGroupsCheckExistence(_api, resourceGroupName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function resourceGroupsCheckExistence(_api::ResourceGroupsApi, response_stream::Channel, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourceGroupsCheckExistence(_api, resourceGroupName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -35,7 +45,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ResourceGroup
 """
-function resourceGroupsCreateOrUpdate(_api::ResourceGroupsApi, resourceGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_resourceGroupsCreateOrUpdate(_api::ResourceGroupsApi, resourceGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "resourceGroupsCreateOrUpdate", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "resourceGroupsCreateOrUpdate", :minLength, resourceGroupName, 1)
 
@@ -45,7 +55,17 @@ function resourceGroupsCreateOrUpdate(_api::ResourceGroupsApi, resourceGroupName
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function resourceGroupsCreateOrUpdate(_api::ResourceGroupsApi, resourceGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourceGroupsCreateOrUpdate(_api, resourceGroupName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function resourceGroupsCreateOrUpdate(_api::ResourceGroupsApi, response_stream::Channel, resourceGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourceGroupsCreateOrUpdate(_api, resourceGroupName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -56,7 +76,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function resourceGroupsDelete(_api::ResourceGroupsApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_resourceGroupsDelete(_api::ResourceGroupsApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "resourceGroupsDelete", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "resourceGroupsDelete", :minLength, resourceGroupName, 1)
 
@@ -66,7 +86,17 @@ function resourceGroupsDelete(_api::ResourceGroupsApi, resourceGroupName::String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function resourceGroupsDelete(_api::ResourceGroupsApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourceGroupsDelete(_api, resourceGroupName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function resourceGroupsDelete(_api::ResourceGroupsApi, response_stream::Channel, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourceGroupsDelete(_api, resourceGroupName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -78,7 +108,7 @@ Param: api_version::String (required)
 Param: parameters::ExportTemplateRequest (required)
 Return: ResourceGroupExportResult
 """
-function resourceGroupsExportTemplate(_api::ResourceGroupsApi, subscriptionId::String, resourceGroupName::String, api_version::String, parameters; _mediaType=nothing)
+function _swaggerinternal_resourceGroupsExportTemplate(_api::ResourceGroupsApi, subscriptionId::String, resourceGroupName::String, api_version::String, parameters; _mediaType=nothing)
     Swagger.validate_param("subscriptionId", "resourceGroupsExportTemplate", :minLength, subscriptionId, 1)
 
     Swagger.validate_param("resourceGroupName", "resourceGroupsExportTemplate", :maxLength, resourceGroupName, 90)
@@ -92,7 +122,17 @@ function resourceGroupsExportTemplate(_api::ResourceGroupsApi, subscriptionId::S
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function resourceGroupsExportTemplate(_api::ResourceGroupsApi, subscriptionId::String, resourceGroupName::String, api_version::String, parameters; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourceGroupsExportTemplate(_api, subscriptionId, resourceGroupName, api_version, parameters; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function resourceGroupsExportTemplate(_api::ResourceGroupsApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, api_version::String, parameters; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourceGroupsExportTemplate(_api, subscriptionId, resourceGroupName, api_version, parameters; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -103,7 +143,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ResourceGroup
 """
-function resourceGroupsGet(_api::ResourceGroupsApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_resourceGroupsGet(_api::ResourceGroupsApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "resourceGroupsGet", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "resourceGroupsGet", :minLength, resourceGroupName, 1)
 
@@ -113,7 +153,17 @@ function resourceGroupsGet(_api::ResourceGroupsApi, resourceGroupName::String, a
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function resourceGroupsGet(_api::ResourceGroupsApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourceGroupsGet(_api, resourceGroupName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function resourceGroupsGet(_api::ResourceGroupsApi, response_stream::Channel, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourceGroupsGet(_api, resourceGroupName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -125,7 +175,7 @@ Param: filter::String
 Param: top::Int32
 Return: ResourceGroupListResult
 """
-function resourceGroupsList(_api::ResourceGroupsApi, api_version::String, subscriptionId::String; filter=nothing, top=nothing, _mediaType=nothing)
+function _swaggerinternal_resourceGroupsList(_api::ResourceGroupsApi, api_version::String, subscriptionId::String; filter=nothing, top=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", ResourceGroupListResult, "/subscriptions/{subscriptionId}/resourcegroups", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "\$filter", filter)  # type String
@@ -133,7 +183,17 @@ function resourceGroupsList(_api::ResourceGroupsApi, api_version::String, subscr
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function resourceGroupsList(_api::ResourceGroupsApi, api_version::String, subscriptionId::String; filter=nothing, top=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_resourceGroupsList(_api, api_version, subscriptionId; filter=filter, top=top, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function resourceGroupsList(_api::ResourceGroupsApi, response_stream::Channel, api_version::String, subscriptionId::String; filter=nothing, top=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_resourceGroupsList(_api, api_version, subscriptionId; filter=filter, top=top, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -145,7 +205,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ResourceGroup
 """
-function resourceGroupsUpdate(_api::ResourceGroupsApi, resourceGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_resourceGroupsUpdate(_api::ResourceGroupsApi, resourceGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "resourceGroupsUpdate", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "resourceGroupsUpdate", :minLength, resourceGroupName, 1)
 
@@ -155,7 +215,17 @@ function resourceGroupsUpdate(_api::ResourceGroupsApi, resourceGroupName::String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function resourceGroupsUpdate(_api::ResourceGroupsApi, resourceGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourceGroupsUpdate(_api, resourceGroupName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function resourceGroupsUpdate(_api::ResourceGroupsApi, response_stream::Channel, resourceGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourceGroupsUpdate(_api, resourceGroupName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -169,7 +239,7 @@ Param: expand::String
 Param: top::Int32
 Return: ResourceListResult
 """
-function resourcesListByResourceGroup(_api::ResourceGroupsApi, resourceGroupName::String, api_version::String, subscriptionId::String; filter=nothing, expand=nothing, top=nothing, _mediaType=nothing)
+function _swaggerinternal_resourcesListByResourceGroup(_api::ResourceGroupsApi, resourceGroupName::String, api_version::String, subscriptionId::String; filter=nothing, expand=nothing, top=nothing, _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "resourcesListByResourceGroup", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "resourcesListByResourceGroup", :minLength, resourceGroupName, 1)
 
@@ -182,7 +252,17 @@ function resourcesListByResourceGroup(_api::ResourceGroupsApi, resourceGroupName
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function resourcesListByResourceGroup(_api::ResourceGroupsApi, resourceGroupName::String, api_version::String, subscriptionId::String; filter=nothing, expand=nothing, top=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_resourcesListByResourceGroup(_api, resourceGroupName, api_version, subscriptionId; filter=filter, expand=expand, top=top, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function resourcesListByResourceGroup(_api::ResourceGroupsApi, response_stream::Channel, resourceGroupName::String, api_version::String, subscriptionId::String; filter=nothing, expand=nothing, top=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_resourcesListByResourceGroup(_api, resourceGroupName, api_version, subscriptionId; filter=filter, expand=expand, top=top, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export resourceGroupsCheckExistence, resourceGroupsCreateOrUpdate, resourceGroupsDelete, resourceGroupsExportTemplate, resourceGroupsGet, resourceGroupsList, resourceGroupsUpdate, resourcesListByResourceGroup

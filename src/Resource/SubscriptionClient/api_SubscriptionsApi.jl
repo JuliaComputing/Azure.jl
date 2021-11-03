@@ -12,13 +12,23 @@ Param: subscriptionId::String (required)
 Param: api_version::String (required)
 Return: Subscription
 """
-function subscriptionsGet(_api::SubscriptionsApi, subscriptionId::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_subscriptionsGet(_api::SubscriptionsApi, subscriptionId::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", Subscription, "/subscriptions/{subscriptionId}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function subscriptionsGet(_api::SubscriptionsApi, subscriptionId::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_subscriptionsGet(_api, subscriptionId, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function subscriptionsGet(_api::SubscriptionsApi, response_stream::Channel, subscriptionId::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_subscriptionsGet(_api, subscriptionId, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -27,12 +37,22 @@ Gets all subscriptions for a tenant.
 Param: api_version::String (required)
 Return: SubscriptionListResult
 """
-function subscriptionsList(_api::SubscriptionsApi, api_version::String; _mediaType=nothing)
+function _swaggerinternal_subscriptionsList(_api::SubscriptionsApi, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", SubscriptionListResult, "/subscriptions", ["azure_auth"])
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function subscriptionsList(_api::SubscriptionsApi, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_subscriptionsList(_api, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function subscriptionsList(_api::SubscriptionsApi, response_stream::Channel, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_subscriptionsList(_api, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -42,13 +62,23 @@ Param: subscriptionId::String (required)
 Param: api_version::String (required)
 Return: LocationListResult
 """
-function subscriptionsListLocations(_api::SubscriptionsApi, subscriptionId::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_subscriptionsListLocations(_api::SubscriptionsApi, subscriptionId::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", LocationListResult, "/subscriptions/{subscriptionId}/locations", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function subscriptionsListLocations(_api::SubscriptionsApi, subscriptionId::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_subscriptionsListLocations(_api, subscriptionId, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function subscriptionsListLocations(_api::SubscriptionsApi, response_stream::Channel, subscriptionId::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_subscriptionsListLocations(_api, subscriptionId, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export subscriptionsGet, subscriptionsList, subscriptionsListLocations

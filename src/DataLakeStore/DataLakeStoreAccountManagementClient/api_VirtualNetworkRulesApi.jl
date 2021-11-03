@@ -16,7 +16,7 @@ Param: parameters::CreateOrUpdateVirtualNetworkRuleParameters (required)
 Param: api_version::String (required)
 Return: VirtualNetworkRule
 """
-function virtualNetworkRulesCreateOrUpdate(_api::VirtualNetworkRulesApi, subscriptionId::String, resourceGroupName::String, accountName::String, virtualNetworkRuleName::String, parameters, api_version::String; _mediaType=nothing)
+function _swaggerinternal_virtualNetworkRulesCreateOrUpdate(_api::VirtualNetworkRulesApi, subscriptionId::String, resourceGroupName::String, accountName::String, virtualNetworkRuleName::String, parameters, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", VirtualNetworkRule, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/virtualNetworkRules/{virtualNetworkRuleName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
@@ -25,7 +25,17 @@ function virtualNetworkRulesCreateOrUpdate(_api::VirtualNetworkRulesApi, subscri
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworkRulesCreateOrUpdate(_api::VirtualNetworkRulesApi, subscriptionId::String, resourceGroupName::String, accountName::String, virtualNetworkRuleName::String, parameters, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkRulesCreateOrUpdate(_api, subscriptionId, resourceGroupName, accountName, virtualNetworkRuleName, parameters, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworkRulesCreateOrUpdate(_api::VirtualNetworkRulesApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, accountName::String, virtualNetworkRuleName::String, parameters, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkRulesCreateOrUpdate(_api, subscriptionId, resourceGroupName, accountName, virtualNetworkRuleName, parameters, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -38,7 +48,7 @@ Param: virtualNetworkRuleName::String (required)
 Param: api_version::String (required)
 Return: Nothing
 """
-function virtualNetworkRulesDelete(_api::VirtualNetworkRulesApi, subscriptionId::String, resourceGroupName::String, accountName::String, virtualNetworkRuleName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_virtualNetworkRulesDelete(_api::VirtualNetworkRulesApi, subscriptionId::String, resourceGroupName::String, accountName::String, virtualNetworkRuleName::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/virtualNetworkRules/{virtualNetworkRuleName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
@@ -47,7 +57,17 @@ function virtualNetworkRulesDelete(_api::VirtualNetworkRulesApi, subscriptionId:
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworkRulesDelete(_api::VirtualNetworkRulesApi, subscriptionId::String, resourceGroupName::String, accountName::String, virtualNetworkRuleName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkRulesDelete(_api, subscriptionId, resourceGroupName, accountName, virtualNetworkRuleName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworkRulesDelete(_api::VirtualNetworkRulesApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, accountName::String, virtualNetworkRuleName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkRulesDelete(_api, subscriptionId, resourceGroupName, accountName, virtualNetworkRuleName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -60,7 +80,7 @@ Param: virtualNetworkRuleName::String (required)
 Param: api_version::String (required)
 Return: VirtualNetworkRule
 """
-function virtualNetworkRulesGet(_api::VirtualNetworkRulesApi, subscriptionId::String, resourceGroupName::String, accountName::String, virtualNetworkRuleName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_virtualNetworkRulesGet(_api::VirtualNetworkRulesApi, subscriptionId::String, resourceGroupName::String, accountName::String, virtualNetworkRuleName::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VirtualNetworkRule, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/virtualNetworkRules/{virtualNetworkRuleName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
@@ -69,7 +89,17 @@ function virtualNetworkRulesGet(_api::VirtualNetworkRulesApi, subscriptionId::St
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworkRulesGet(_api::VirtualNetworkRulesApi, subscriptionId::String, resourceGroupName::String, accountName::String, virtualNetworkRuleName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkRulesGet(_api, subscriptionId, resourceGroupName, accountName, virtualNetworkRuleName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworkRulesGet(_api::VirtualNetworkRulesApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, accountName::String, virtualNetworkRuleName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkRulesGet(_api, subscriptionId, resourceGroupName, accountName, virtualNetworkRuleName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -81,7 +111,7 @@ Param: accountName::String (required)
 Param: api_version::String (required)
 Return: VirtualNetworkRuleListResult
 """
-function virtualNetworkRulesListByAccount(_api::VirtualNetworkRulesApi, subscriptionId::String, resourceGroupName::String, accountName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_virtualNetworkRulesListByAccount(_api::VirtualNetworkRulesApi, subscriptionId::String, resourceGroupName::String, accountName::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VirtualNetworkRuleListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/virtualNetworkRules", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
@@ -89,7 +119,17 @@ function virtualNetworkRulesListByAccount(_api::VirtualNetworkRulesApi, subscrip
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworkRulesListByAccount(_api::VirtualNetworkRulesApi, subscriptionId::String, resourceGroupName::String, accountName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkRulesListByAccount(_api, subscriptionId, resourceGroupName, accountName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworkRulesListByAccount(_api::VirtualNetworkRulesApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, accountName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkRulesListByAccount(_api, subscriptionId, resourceGroupName, accountName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -103,7 +143,7 @@ Param: api_version::String (required)
 Param: parameters::UpdateVirtualNetworkRuleParameters
 Return: VirtualNetworkRule
 """
-function virtualNetworkRulesUpdate(_api::VirtualNetworkRulesApi, subscriptionId::String, resourceGroupName::String, accountName::String, virtualNetworkRuleName::String, api_version::String; parameters=nothing, _mediaType=nothing)
+function _swaggerinternal_virtualNetworkRulesUpdate(_api::VirtualNetworkRulesApi, subscriptionId::String, resourceGroupName::String, accountName::String, virtualNetworkRuleName::String, api_version::String; parameters=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", VirtualNetworkRule, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/virtualNetworkRules/{virtualNetworkRuleName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
@@ -112,7 +152,17 @@ function virtualNetworkRulesUpdate(_api::VirtualNetworkRulesApi, subscriptionId:
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworkRulesUpdate(_api::VirtualNetworkRulesApi, subscriptionId::String, resourceGroupName::String, accountName::String, virtualNetworkRuleName::String, api_version::String; parameters=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkRulesUpdate(_api, subscriptionId, resourceGroupName, accountName, virtualNetworkRuleName, api_version; parameters=parameters, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworkRulesUpdate(_api::VirtualNetworkRulesApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, accountName::String, virtualNetworkRuleName::String, api_version::String; parameters=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkRulesUpdate(_api, subscriptionId, resourceGroupName, accountName, virtualNetworkRuleName, api_version; parameters=parameters, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export virtualNetworkRulesCreateOrUpdate, virtualNetworkRulesDelete, virtualNetworkRulesGet, virtualNetworkRulesListByAccount, virtualNetworkRulesUpdate

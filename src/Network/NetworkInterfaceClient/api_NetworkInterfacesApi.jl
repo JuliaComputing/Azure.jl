@@ -15,7 +15,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: NetworkInterfaceIPConfiguration
 """
-function networkInterfaceIPConfigurationsGet(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, ipConfigurationName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkInterfaceIPConfigurationsGet(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, ipConfigurationName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", NetworkInterfaceIPConfiguration, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/ipConfigurations/{ipConfigurationName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkInterfaceName", networkInterfaceName)  # type String
@@ -24,7 +24,17 @@ function networkInterfaceIPConfigurationsGet(_api::NetworkInterfacesApi, resourc
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkInterfaceIPConfigurationsGet(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, ipConfigurationName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfaceIPConfigurationsGet(_api, resourceGroupName, networkInterfaceName, ipConfigurationName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkInterfaceIPConfigurationsGet(_api::NetworkInterfacesApi, response_stream::Channel, resourceGroupName::String, networkInterfaceName::String, ipConfigurationName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfaceIPConfigurationsGet(_api, resourceGroupName, networkInterfaceName, ipConfigurationName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -36,7 +46,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: NetworkInterfaceIPConfigurationListResult
 """
-function networkInterfaceIPConfigurationsList(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkInterfaceIPConfigurationsList(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", NetworkInterfaceIPConfigurationListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/ipConfigurations", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkInterfaceName", networkInterfaceName)  # type String
@@ -44,7 +54,17 @@ function networkInterfaceIPConfigurationsList(_api::NetworkInterfacesApi, resour
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkInterfaceIPConfigurationsList(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfaceIPConfigurationsList(_api, resourceGroupName, networkInterfaceName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkInterfaceIPConfigurationsList(_api::NetworkInterfacesApi, response_stream::Channel, resourceGroupName::String, networkInterfaceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfaceIPConfigurationsList(_api, resourceGroupName, networkInterfaceName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -56,7 +76,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: NetworkInterfaceLoadBalancerListResult
 """
-function networkInterfaceLoadBalancersList(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkInterfaceLoadBalancersList(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", NetworkInterfaceLoadBalancerListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/loadBalancers", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkInterfaceName", networkInterfaceName)  # type String
@@ -64,7 +84,17 @@ function networkInterfaceLoadBalancersList(_api::NetworkInterfacesApi, resourceG
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkInterfaceLoadBalancersList(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfaceLoadBalancersList(_api, resourceGroupName, networkInterfaceName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkInterfaceLoadBalancersList(_api::NetworkInterfacesApi, response_stream::Channel, resourceGroupName::String, networkInterfaceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfaceLoadBalancersList(_api, resourceGroupName, networkInterfaceName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -78,7 +108,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: NetworkInterfaceTapConfiguration
 """
-function networkInterfaceTapConfigurationsCreateOrUpdate(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, tapConfigurationName::String, tapConfigurationParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkInterfaceTapConfigurationsCreateOrUpdate(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, tapConfigurationName::String, tapConfigurationParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", NetworkInterfaceTapConfiguration, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/tapConfigurations/{tapConfigurationName}", ["azure_auth"], tapConfigurationParameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkInterfaceName", networkInterfaceName)  # type String
@@ -87,7 +117,17 @@ function networkInterfaceTapConfigurationsCreateOrUpdate(_api::NetworkInterfaces
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkInterfaceTapConfigurationsCreateOrUpdate(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, tapConfigurationName::String, tapConfigurationParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfaceTapConfigurationsCreateOrUpdate(_api, resourceGroupName, networkInterfaceName, tapConfigurationName, tapConfigurationParameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkInterfaceTapConfigurationsCreateOrUpdate(_api::NetworkInterfacesApi, response_stream::Channel, resourceGroupName::String, networkInterfaceName::String, tapConfigurationName::String, tapConfigurationParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfaceTapConfigurationsCreateOrUpdate(_api, resourceGroupName, networkInterfaceName, tapConfigurationName, tapConfigurationParameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -100,7 +140,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function networkInterfaceTapConfigurationsDelete(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, tapConfigurationName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkInterfaceTapConfigurationsDelete(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, tapConfigurationName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/tapConfigurations/{tapConfigurationName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkInterfaceName", networkInterfaceName)  # type String
@@ -109,7 +149,17 @@ function networkInterfaceTapConfigurationsDelete(_api::NetworkInterfacesApi, res
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkInterfaceTapConfigurationsDelete(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, tapConfigurationName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfaceTapConfigurationsDelete(_api, resourceGroupName, networkInterfaceName, tapConfigurationName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkInterfaceTapConfigurationsDelete(_api::NetworkInterfacesApi, response_stream::Channel, resourceGroupName::String, networkInterfaceName::String, tapConfigurationName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfaceTapConfigurationsDelete(_api, resourceGroupName, networkInterfaceName, tapConfigurationName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -122,7 +172,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: NetworkInterfaceTapConfiguration
 """
-function networkInterfaceTapConfigurationsGet(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, tapConfigurationName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkInterfaceTapConfigurationsGet(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, tapConfigurationName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", NetworkInterfaceTapConfiguration, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/tapConfigurations/{tapConfigurationName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkInterfaceName", networkInterfaceName)  # type String
@@ -131,7 +181,17 @@ function networkInterfaceTapConfigurationsGet(_api::NetworkInterfacesApi, resour
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkInterfaceTapConfigurationsGet(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, tapConfigurationName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfaceTapConfigurationsGet(_api, resourceGroupName, networkInterfaceName, tapConfigurationName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkInterfaceTapConfigurationsGet(_api::NetworkInterfacesApi, response_stream::Channel, resourceGroupName::String, networkInterfaceName::String, tapConfigurationName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfaceTapConfigurationsGet(_api, resourceGroupName, networkInterfaceName, tapConfigurationName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -143,7 +203,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: NetworkInterfaceTapConfigurationListResult
 """
-function networkInterfaceTapConfigurationsList(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkInterfaceTapConfigurationsList(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", NetworkInterfaceTapConfigurationListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/tapConfigurations", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkInterfaceName", networkInterfaceName)  # type String
@@ -151,7 +211,17 @@ function networkInterfaceTapConfigurationsList(_api::NetworkInterfacesApi, resou
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkInterfaceTapConfigurationsList(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfaceTapConfigurationsList(_api, resourceGroupName, networkInterfaceName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkInterfaceTapConfigurationsList(_api::NetworkInterfacesApi, response_stream::Channel, resourceGroupName::String, networkInterfaceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfaceTapConfigurationsList(_api, resourceGroupName, networkInterfaceName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -164,7 +234,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: NetworkInterface
 """
-function networkInterfacesCreateOrUpdate(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkInterfacesCreateOrUpdate(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", NetworkInterface, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkInterfaceName", networkInterfaceName)  # type String
@@ -172,7 +242,17 @@ function networkInterfacesCreateOrUpdate(_api::NetworkInterfacesApi, resourceGro
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkInterfacesCreateOrUpdate(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfacesCreateOrUpdate(_api, resourceGroupName, networkInterfaceName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkInterfacesCreateOrUpdate(_api::NetworkInterfacesApi, response_stream::Channel, resourceGroupName::String, networkInterfaceName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfacesCreateOrUpdate(_api, resourceGroupName, networkInterfaceName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -184,7 +264,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function networkInterfacesDelete(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkInterfacesDelete(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkInterfaceName", networkInterfaceName)  # type String
@@ -192,7 +272,17 @@ function networkInterfacesDelete(_api::NetworkInterfacesApi, resourceGroupName::
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkInterfacesDelete(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfacesDelete(_api, resourceGroupName, networkInterfaceName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkInterfacesDelete(_api::NetworkInterfacesApi, response_stream::Channel, resourceGroupName::String, networkInterfaceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfacesDelete(_api, resourceGroupName, networkInterfaceName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -205,7 +295,7 @@ Param: subscriptionId::String (required)
 Param: expand::String
 Return: NetworkInterface
 """
-function networkInterfacesGet(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+function _swaggerinternal_networkInterfacesGet(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", NetworkInterface, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkInterfaceName", networkInterfaceName)  # type String
@@ -214,7 +304,17 @@ function networkInterfacesGet(_api::NetworkInterfacesApi, resourceGroupName::Str
     Swagger.set_param(_ctx.query, "\$expand", expand)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkInterfacesGet(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfacesGet(_api, resourceGroupName, networkInterfaceName, api_version, subscriptionId; expand=expand, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkInterfacesGet(_api::NetworkInterfacesApi, response_stream::Channel, resourceGroupName::String, networkInterfaceName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfacesGet(_api, resourceGroupName, networkInterfaceName, api_version, subscriptionId; expand=expand, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -226,7 +326,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: EffectiveRouteListResult
 """
-function networkInterfacesGetEffectiveRouteTable(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkInterfacesGetEffectiveRouteTable(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", EffectiveRouteListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/effectiveRouteTable", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkInterfaceName", networkInterfaceName)  # type String
@@ -234,7 +334,17 @@ function networkInterfacesGetEffectiveRouteTable(_api::NetworkInterfacesApi, res
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkInterfacesGetEffectiveRouteTable(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfacesGetEffectiveRouteTable(_api, resourceGroupName, networkInterfaceName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkInterfacesGetEffectiveRouteTable(_api::NetworkInterfacesApi, response_stream::Channel, resourceGroupName::String, networkInterfaceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfacesGetEffectiveRouteTable(_api, resourceGroupName, networkInterfaceName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -245,14 +355,24 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: NetworkInterfaceListResult
 """
-function networkInterfacesList(_api::NetworkInterfacesApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkInterfacesList(_api::NetworkInterfacesApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", NetworkInterfaceListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkInterfacesList(_api::NetworkInterfacesApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfacesList(_api, resourceGroupName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkInterfacesList(_api::NetworkInterfacesApi, response_stream::Channel, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfacesList(_api, resourceGroupName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -262,13 +382,23 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: NetworkInterfaceListResult
 """
-function networkInterfacesListAll(_api::NetworkInterfacesApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkInterfacesListAll(_api::NetworkInterfacesApi, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", NetworkInterfaceListResult, "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkInterfaces", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkInterfacesListAll(_api::NetworkInterfacesApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfacesListAll(_api, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkInterfacesListAll(_api::NetworkInterfacesApi, response_stream::Channel, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfacesListAll(_api, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -280,7 +410,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: EffectiveNetworkSecurityGroupListResult
 """
-function networkInterfacesListEffectiveNetworkSecurityGroups(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkInterfacesListEffectiveNetworkSecurityGroups(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", EffectiveNetworkSecurityGroupListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}/effectiveNetworkSecurityGroups", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkInterfaceName", networkInterfaceName)  # type String
@@ -288,7 +418,17 @@ function networkInterfacesListEffectiveNetworkSecurityGroups(_api::NetworkInterf
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkInterfacesListEffectiveNetworkSecurityGroups(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfacesListEffectiveNetworkSecurityGroups(_api, resourceGroupName, networkInterfaceName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkInterfacesListEffectiveNetworkSecurityGroups(_api::NetworkInterfacesApi, response_stream::Channel, resourceGroupName::String, networkInterfaceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfacesListEffectiveNetworkSecurityGroups(_api, resourceGroupName, networkInterfaceName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -301,7 +441,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: NetworkInterface
 """
-function networkInterfacesUpdateTags(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkInterfacesUpdateTags(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", NetworkInterface, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{networkInterfaceName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkInterfaceName", networkInterfaceName)  # type String
@@ -309,7 +449,17 @@ function networkInterfacesUpdateTags(_api::NetworkInterfacesApi, resourceGroupNa
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkInterfacesUpdateTags(_api::NetworkInterfacesApi, resourceGroupName::String, networkInterfaceName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfacesUpdateTags(_api, resourceGroupName, networkInterfaceName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkInterfacesUpdateTags(_api::NetworkInterfacesApi, response_stream::Channel, resourceGroupName::String, networkInterfaceName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfacesUpdateTags(_api, resourceGroupName, networkInterfaceName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export networkInterfaceIPConfigurationsGet, networkInterfaceIPConfigurationsList, networkInterfaceLoadBalancersList, networkInterfaceTapConfigurationsCreateOrUpdate, networkInterfaceTapConfigurationsDelete, networkInterfaceTapConfigurationsGet, networkInterfaceTapConfigurationsList, networkInterfacesCreateOrUpdate, networkInterfacesDelete, networkInterfacesGet, networkInterfacesGetEffectiveRouteTable, networkInterfacesList, networkInterfacesListAll, networkInterfacesListEffectiveNetworkSecurityGroups, networkInterfacesUpdateTags

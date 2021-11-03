@@ -15,7 +15,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: VirtualNetworkGateway
 """
-function virtualNetworkGatewaysCreateOrUpdate(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualNetworkGatewaysCreateOrUpdate(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", VirtualNetworkGateway, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkGatewayName", virtualNetworkGatewayName)  # type String
@@ -23,7 +23,17 @@ function virtualNetworkGatewaysCreateOrUpdate(_api::VirtualNetworkGatewaysApi, r
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworkGatewaysCreateOrUpdate(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysCreateOrUpdate(_api, resourceGroupName, virtualNetworkGatewayName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworkGatewaysCreateOrUpdate(_api::VirtualNetworkGatewaysApi, response_stream::Channel, resourceGroupName::String, virtualNetworkGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysCreateOrUpdate(_api, resourceGroupName, virtualNetworkGatewayName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -35,7 +45,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function virtualNetworkGatewaysDelete(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualNetworkGatewaysDelete(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkGatewayName", virtualNetworkGatewayName)  # type String
@@ -43,7 +53,17 @@ function virtualNetworkGatewaysDelete(_api::VirtualNetworkGatewaysApi, resourceG
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworkGatewaysDelete(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysDelete(_api, resourceGroupName, virtualNetworkGatewayName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworkGatewaysDelete(_api::VirtualNetworkGatewaysApi, response_stream::Channel, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysDelete(_api, resourceGroupName, virtualNetworkGatewayName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -56,7 +76,7 @@ Param: request::P2SVpnConnectionRequest (required)
 Param: api_version::String (required)
 Return: Nothing
 """
-function virtualNetworkGatewaysDisconnectVirtualNetworkGatewayVpnConnections(_api::VirtualNetworkGatewaysApi, subscriptionId::String, resourceGroupName::String, virtualNetworkGatewayName::String, request, api_version::String; _mediaType=nothing)
+function _swaggerinternal_virtualNetworkGatewaysDisconnectVirtualNetworkGatewayVpnConnections(_api::VirtualNetworkGatewaysApi, subscriptionId::String, resourceGroupName::String, virtualNetworkGatewayName::String, request, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/disconnectVirtualNetworkGatewayVpnConnections", ["azure_auth"], request)
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
@@ -64,7 +84,17 @@ function virtualNetworkGatewaysDisconnectVirtualNetworkGatewayVpnConnections(_ap
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworkGatewaysDisconnectVirtualNetworkGatewayVpnConnections(_api::VirtualNetworkGatewaysApi, subscriptionId::String, resourceGroupName::String, virtualNetworkGatewayName::String, request, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysDisconnectVirtualNetworkGatewayVpnConnections(_api, subscriptionId, resourceGroupName, virtualNetworkGatewayName, request, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworkGatewaysDisconnectVirtualNetworkGatewayVpnConnections(_api::VirtualNetworkGatewaysApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, virtualNetworkGatewayName::String, request, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysDisconnectVirtualNetworkGatewayVpnConnections(_api, subscriptionId, resourceGroupName, virtualNetworkGatewayName, request, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -77,7 +107,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: String
 """
-function virtualNetworkGatewaysGenerateVpnProfile(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualNetworkGatewaysGenerateVpnProfile(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/generatevpnprofile", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkGatewayName", virtualNetworkGatewayName)  # type String
@@ -85,7 +115,17 @@ function virtualNetworkGatewaysGenerateVpnProfile(_api::VirtualNetworkGatewaysAp
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworkGatewaysGenerateVpnProfile(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysGenerateVpnProfile(_api, resourceGroupName, virtualNetworkGatewayName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworkGatewaysGenerateVpnProfile(_api::VirtualNetworkGatewaysApi, response_stream::Channel, resourceGroupName::String, virtualNetworkGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysGenerateVpnProfile(_api, resourceGroupName, virtualNetworkGatewayName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -98,7 +138,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: String
 """
-function virtualNetworkGatewaysGeneratevpnclientpackage(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualNetworkGatewaysGeneratevpnclientpackage(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/generatevpnclientpackage", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkGatewayName", virtualNetworkGatewayName)  # type String
@@ -106,7 +146,17 @@ function virtualNetworkGatewaysGeneratevpnclientpackage(_api::VirtualNetworkGate
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworkGatewaysGeneratevpnclientpackage(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysGeneratevpnclientpackage(_api, resourceGroupName, virtualNetworkGatewayName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworkGatewaysGeneratevpnclientpackage(_api::VirtualNetworkGatewaysApi, response_stream::Channel, resourceGroupName::String, virtualNetworkGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysGeneratevpnclientpackage(_api, resourceGroupName, virtualNetworkGatewayName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -118,7 +168,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: VirtualNetworkGateway
 """
-function virtualNetworkGatewaysGet(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualNetworkGatewaysGet(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VirtualNetworkGateway, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkGatewayName", virtualNetworkGatewayName)  # type String
@@ -126,7 +176,17 @@ function virtualNetworkGatewaysGet(_api::VirtualNetworkGatewaysApi, resourceGrou
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworkGatewaysGet(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysGet(_api, resourceGroupName, virtualNetworkGatewayName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworkGatewaysGet(_api::VirtualNetworkGatewaysApi, response_stream::Channel, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysGet(_api, resourceGroupName, virtualNetworkGatewayName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -139,7 +199,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: GatewayRouteListResult
 """
-function virtualNetworkGatewaysGetAdvertisedRoutes(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, peer::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualNetworkGatewaysGetAdvertisedRoutes(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, peer::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", GatewayRouteListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getAdvertisedRoutes", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkGatewayName", virtualNetworkGatewayName)  # type String
@@ -148,7 +208,17 @@ function virtualNetworkGatewaysGetAdvertisedRoutes(_api::VirtualNetworkGatewaysA
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworkGatewaysGetAdvertisedRoutes(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, peer::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysGetAdvertisedRoutes(_api, resourceGroupName, virtualNetworkGatewayName, peer, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworkGatewaysGetAdvertisedRoutes(_api::VirtualNetworkGatewaysApi, response_stream::Channel, resourceGroupName::String, virtualNetworkGatewayName::String, peer::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysGetAdvertisedRoutes(_api, resourceGroupName, virtualNetworkGatewayName, peer, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -161,7 +231,7 @@ Param: subscriptionId::String (required)
 Param: peer::String
 Return: BgpPeerStatusListResult
 """
-function virtualNetworkGatewaysGetBgpPeerStatus(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; peer=nothing, _mediaType=nothing)
+function _swaggerinternal_virtualNetworkGatewaysGetBgpPeerStatus(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; peer=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", BgpPeerStatusListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getBgpPeerStatus", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkGatewayName", virtualNetworkGatewayName)  # type String
@@ -170,7 +240,17 @@ function virtualNetworkGatewaysGetBgpPeerStatus(_api::VirtualNetworkGatewaysApi,
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworkGatewaysGetBgpPeerStatus(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; peer=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysGetBgpPeerStatus(_api, resourceGroupName, virtualNetworkGatewayName, api_version, subscriptionId; peer=peer, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworkGatewaysGetBgpPeerStatus(_api::VirtualNetworkGatewaysApi, response_stream::Channel, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; peer=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysGetBgpPeerStatus(_api, resourceGroupName, virtualNetworkGatewayName, api_version, subscriptionId; peer=peer, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -182,7 +262,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: GatewayRouteListResult
 """
-function virtualNetworkGatewaysGetLearnedRoutes(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualNetworkGatewaysGetLearnedRoutes(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", GatewayRouteListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getLearnedRoutes", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkGatewayName", virtualNetworkGatewayName)  # type String
@@ -190,7 +270,17 @@ function virtualNetworkGatewaysGetLearnedRoutes(_api::VirtualNetworkGatewaysApi,
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworkGatewaysGetLearnedRoutes(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysGetLearnedRoutes(_api, resourceGroupName, virtualNetworkGatewayName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworkGatewaysGetLearnedRoutes(_api::VirtualNetworkGatewaysApi, response_stream::Channel, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysGetLearnedRoutes(_api, resourceGroupName, virtualNetworkGatewayName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -202,7 +292,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: String
 """
-function virtualNetworkGatewaysGetVpnProfilePackageUrl(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualNetworkGatewaysGetVpnProfilePackageUrl(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getvpnprofilepackageurl", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkGatewayName", virtualNetworkGatewayName)  # type String
@@ -210,7 +300,17 @@ function virtualNetworkGatewaysGetVpnProfilePackageUrl(_api::VirtualNetworkGatew
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworkGatewaysGetVpnProfilePackageUrl(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysGetVpnProfilePackageUrl(_api, resourceGroupName, virtualNetworkGatewayName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworkGatewaysGetVpnProfilePackageUrl(_api::VirtualNetworkGatewaysApi, response_stream::Channel, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysGetVpnProfilePackageUrl(_api, resourceGroupName, virtualNetworkGatewayName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -222,7 +322,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: VpnClientConnectionHealthDetailListResult
 """
-function virtualNetworkGatewaysGetVpnclientConnectionHealth(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualNetworkGatewaysGetVpnclientConnectionHealth(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", VpnClientConnectionHealthDetailListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getVpnClientConnectionHealth", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkGatewayName", virtualNetworkGatewayName)  # type String
@@ -230,7 +330,17 @@ function virtualNetworkGatewaysGetVpnclientConnectionHealth(_api::VirtualNetwork
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworkGatewaysGetVpnclientConnectionHealth(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysGetVpnclientConnectionHealth(_api, resourceGroupName, virtualNetworkGatewayName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworkGatewaysGetVpnclientConnectionHealth(_api::VirtualNetworkGatewaysApi, response_stream::Channel, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysGetVpnclientConnectionHealth(_api, resourceGroupName, virtualNetworkGatewayName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -242,7 +352,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: VpnClientIPsecParameters
 """
-function virtualNetworkGatewaysGetVpnclientIpsecParameters(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualNetworkGatewaysGetVpnclientIpsecParameters(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", VpnClientIPsecParameters, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getvpnclientipsecparameters", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkGatewayName", virtualNetworkGatewayName)  # type String
@@ -250,7 +360,17 @@ function virtualNetworkGatewaysGetVpnclientIpsecParameters(_api::VirtualNetworkG
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworkGatewaysGetVpnclientIpsecParameters(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysGetVpnclientIpsecParameters(_api, resourceGroupName, virtualNetworkGatewayName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworkGatewaysGetVpnclientIpsecParameters(_api::VirtualNetworkGatewaysApi, response_stream::Channel, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysGetVpnclientIpsecParameters(_api, resourceGroupName, virtualNetworkGatewayName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -261,14 +381,24 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: VirtualNetworkGatewayListResult
 """
-function virtualNetworkGatewaysList(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualNetworkGatewaysList(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VirtualNetworkGatewayListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworkGatewaysList(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysList(_api, resourceGroupName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworkGatewaysList(_api::VirtualNetworkGatewaysApi, response_stream::Channel, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysList(_api, resourceGroupName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -280,7 +410,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: VirtualNetworkGatewayListConnectionsResult
 """
-function virtualNetworkGatewaysListConnections(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualNetworkGatewaysListConnections(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VirtualNetworkGatewayListConnectionsResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/connections", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkGatewayName", virtualNetworkGatewayName)  # type String
@@ -288,7 +418,17 @@ function virtualNetworkGatewaysListConnections(_api::VirtualNetworkGatewaysApi, 
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworkGatewaysListConnections(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysListConnections(_api, resourceGroupName, virtualNetworkGatewayName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworkGatewaysListConnections(_api::VirtualNetworkGatewaysApi, response_stream::Channel, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysListConnections(_api, resourceGroupName, virtualNetworkGatewayName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -301,7 +441,7 @@ Param: subscriptionId::String (required)
 Param: gatewayVip::String
 Return: VirtualNetworkGateway
 """
-function virtualNetworkGatewaysReset(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; gatewayVip=nothing, _mediaType=nothing)
+function _swaggerinternal_virtualNetworkGatewaysReset(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; gatewayVip=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", VirtualNetworkGateway, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/reset", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkGatewayName", virtualNetworkGatewayName)  # type String
@@ -310,7 +450,17 @@ function virtualNetworkGatewaysReset(_api::VirtualNetworkGatewaysApi, resourceGr
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworkGatewaysReset(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; gatewayVip=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysReset(_api, resourceGroupName, virtualNetworkGatewayName, api_version, subscriptionId; gatewayVip=gatewayVip, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworkGatewaysReset(_api::VirtualNetworkGatewaysApi, response_stream::Channel, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; gatewayVip=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysReset(_api, resourceGroupName, virtualNetworkGatewayName, api_version, subscriptionId; gatewayVip=gatewayVip, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -322,7 +472,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function virtualNetworkGatewaysResetVpnClientSharedKey(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualNetworkGatewaysResetVpnClientSharedKey(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/resetvpnclientsharedkey", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkGatewayName", virtualNetworkGatewayName)  # type String
@@ -330,7 +480,17 @@ function virtualNetworkGatewaysResetVpnClientSharedKey(_api::VirtualNetworkGatew
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworkGatewaysResetVpnClientSharedKey(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysResetVpnClientSharedKey(_api, resourceGroupName, virtualNetworkGatewayName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworkGatewaysResetVpnClientSharedKey(_api::VirtualNetworkGatewaysApi, response_stream::Channel, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysResetVpnClientSharedKey(_api, resourceGroupName, virtualNetworkGatewayName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -343,7 +503,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: VpnClientIPsecParameters
 """
-function virtualNetworkGatewaysSetVpnclientIpsecParameters(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, vpnclientIpsecParams, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualNetworkGatewaysSetVpnclientIpsecParameters(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, vpnclientIpsecParams, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", VpnClientIPsecParameters, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/setvpnclientipsecparameters", ["azure_auth"], vpnclientIpsecParams)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkGatewayName", virtualNetworkGatewayName)  # type String
@@ -351,7 +511,17 @@ function virtualNetworkGatewaysSetVpnclientIpsecParameters(_api::VirtualNetworkG
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworkGatewaysSetVpnclientIpsecParameters(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, vpnclientIpsecParams, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysSetVpnclientIpsecParameters(_api, resourceGroupName, virtualNetworkGatewayName, vpnclientIpsecParams, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworkGatewaysSetVpnclientIpsecParameters(_api::VirtualNetworkGatewaysApi, response_stream::Channel, resourceGroupName::String, virtualNetworkGatewayName::String, vpnclientIpsecParams, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysSetVpnclientIpsecParameters(_api, resourceGroupName, virtualNetworkGatewayName, vpnclientIpsecParams, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -364,7 +534,7 @@ Param: subscriptionId::String (required)
 Param: parameters::VpnPacketCaptureStartParameters
 Return: String
 """
-function virtualNetworkGatewaysStartPacketCapture(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; parameters=nothing, _mediaType=nothing)
+function _swaggerinternal_virtualNetworkGatewaysStartPacketCapture(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; parameters=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/startPacketCapture", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkGatewayName", virtualNetworkGatewayName)  # type String
@@ -372,7 +542,17 @@ function virtualNetworkGatewaysStartPacketCapture(_api::VirtualNetworkGatewaysAp
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworkGatewaysStartPacketCapture(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; parameters=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysStartPacketCapture(_api, resourceGroupName, virtualNetworkGatewayName, api_version, subscriptionId; parameters=parameters, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworkGatewaysStartPacketCapture(_api::VirtualNetworkGatewaysApi, response_stream::Channel, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; parameters=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysStartPacketCapture(_api, resourceGroupName, virtualNetworkGatewayName, api_version, subscriptionId; parameters=parameters, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -385,7 +565,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: String
 """
-function virtualNetworkGatewaysStopPacketCapture(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualNetworkGatewaysStopPacketCapture(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/stopPacketCapture", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkGatewayName", virtualNetworkGatewayName)  # type String
@@ -393,7 +573,17 @@ function virtualNetworkGatewaysStopPacketCapture(_api::VirtualNetworkGatewaysApi
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworkGatewaysStopPacketCapture(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysStopPacketCapture(_api, resourceGroupName, virtualNetworkGatewayName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworkGatewaysStopPacketCapture(_api::VirtualNetworkGatewaysApi, response_stream::Channel, resourceGroupName::String, virtualNetworkGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysStopPacketCapture(_api, resourceGroupName, virtualNetworkGatewayName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -405,7 +595,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: String
 """
-function virtualNetworkGatewaysSupportedVpnDevices(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualNetworkGatewaysSupportedVpnDevices(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/supportedvpndevices", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkGatewayName", virtualNetworkGatewayName)  # type String
@@ -413,7 +603,17 @@ function virtualNetworkGatewaysSupportedVpnDevices(_api::VirtualNetworkGatewaysA
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworkGatewaysSupportedVpnDevices(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysSupportedVpnDevices(_api, resourceGroupName, virtualNetworkGatewayName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworkGatewaysSupportedVpnDevices(_api::VirtualNetworkGatewaysApi, response_stream::Channel, resourceGroupName::String, virtualNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysSupportedVpnDevices(_api, resourceGroupName, virtualNetworkGatewayName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -426,7 +626,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: VirtualNetworkGateway
 """
-function virtualNetworkGatewaysUpdateTags(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualNetworkGatewaysUpdateTags(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", VirtualNetworkGateway, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkGatewayName", virtualNetworkGatewayName)  # type String
@@ -434,7 +634,17 @@ function virtualNetworkGatewaysUpdateTags(_api::VirtualNetworkGatewaysApi, resou
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworkGatewaysUpdateTags(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysUpdateTags(_api, resourceGroupName, virtualNetworkGatewayName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworkGatewaysUpdateTags(_api::VirtualNetworkGatewaysApi, response_stream::Channel, resourceGroupName::String, virtualNetworkGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysUpdateTags(_api, resourceGroupName, virtualNetworkGatewayName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -447,7 +657,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: String
 """
-function virtualNetworkGatewaysVpnDeviceConfigurationScript(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayConnectionName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualNetworkGatewaysVpnDeviceConfigurationScript(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayConnectionName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", String, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/vpndeviceconfigurationscript", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkGatewayConnectionName", virtualNetworkGatewayConnectionName)  # type String
@@ -455,7 +665,17 @@ function virtualNetworkGatewaysVpnDeviceConfigurationScript(_api::VirtualNetwork
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworkGatewaysVpnDeviceConfigurationScript(_api::VirtualNetworkGatewaysApi, resourceGroupName::String, virtualNetworkGatewayConnectionName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysVpnDeviceConfigurationScript(_api, resourceGroupName, virtualNetworkGatewayConnectionName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworkGatewaysVpnDeviceConfigurationScript(_api::VirtualNetworkGatewaysApi, response_stream::Channel, resourceGroupName::String, virtualNetworkGatewayConnectionName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkGatewaysVpnDeviceConfigurationScript(_api, resourceGroupName, virtualNetworkGatewayConnectionName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export virtualNetworkGatewaysCreateOrUpdate, virtualNetworkGatewaysDelete, virtualNetworkGatewaysDisconnectVirtualNetworkGatewayVpnConnections, virtualNetworkGatewaysGenerateVpnProfile, virtualNetworkGatewaysGeneratevpnclientpackage, virtualNetworkGatewaysGet, virtualNetworkGatewaysGetAdvertisedRoutes, virtualNetworkGatewaysGetBgpPeerStatus, virtualNetworkGatewaysGetLearnedRoutes, virtualNetworkGatewaysGetVpnProfilePackageUrl, virtualNetworkGatewaysGetVpnclientConnectionHealth, virtualNetworkGatewaysGetVpnclientIpsecParameters, virtualNetworkGatewaysList, virtualNetworkGatewaysListConnections, virtualNetworkGatewaysReset, virtualNetworkGatewaysResetVpnClientSharedKey, virtualNetworkGatewaysSetVpnclientIpsecParameters, virtualNetworkGatewaysStartPacketCapture, virtualNetworkGatewaysStopPacketCapture, virtualNetworkGatewaysSupportedVpnDevices, virtualNetworkGatewaysUpdateTags, virtualNetworkGatewaysVpnDeviceConfigurationScript

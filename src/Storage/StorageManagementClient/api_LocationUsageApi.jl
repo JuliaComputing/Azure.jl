@@ -13,7 +13,7 @@ Param: subscriptionId::String (required)
 Param: location::String (required)
 Return: UsageListResult
 """
-function usagesListByLocation(_api::LocationUsageApi, api_version::String, subscriptionId::String, location::String; _mediaType=nothing)
+function _swaggerinternal_usagesListByLocation(_api::LocationUsageApi, api_version::String, subscriptionId::String, location::String; _mediaType=nothing)
     Swagger.validate_param("api_version", "usagesListByLocation", :minLength, api_version, 1)
 
     Swagger.validate_param("subscriptionId", "usagesListByLocation", :minLength, subscriptionId, 1)
@@ -24,7 +24,17 @@ function usagesListByLocation(_api::LocationUsageApi, api_version::String, subsc
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function usagesListByLocation(_api::LocationUsageApi, api_version::String, subscriptionId::String, location::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_usagesListByLocation(_api, api_version, subscriptionId, location; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function usagesListByLocation(_api::LocationUsageApi, response_stream::Channel, api_version::String, subscriptionId::String, location::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_usagesListByLocation(_api, api_version, subscriptionId, location; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export usagesListByLocation

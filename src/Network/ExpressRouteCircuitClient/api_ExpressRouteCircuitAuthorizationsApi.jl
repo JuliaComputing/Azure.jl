@@ -16,7 +16,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ExpressRouteCircuitAuthorization
 """
-function expressRouteCircuitAuthorizationsCreateOrUpdate(_api::ExpressRouteCircuitAuthorizationsApi, resourceGroupName::String, circuitName::String, authorizationName::String, authorizationParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_expressRouteCircuitAuthorizationsCreateOrUpdate(_api::ExpressRouteCircuitAuthorizationsApi, resourceGroupName::String, circuitName::String, authorizationName::String, authorizationParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", ExpressRouteCircuitAuthorization, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/authorizations/{authorizationName}", ["azure_auth"], authorizationParameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "circuitName", circuitName)  # type String
@@ -25,7 +25,17 @@ function expressRouteCircuitAuthorizationsCreateOrUpdate(_api::ExpressRouteCircu
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function expressRouteCircuitAuthorizationsCreateOrUpdate(_api::ExpressRouteCircuitAuthorizationsApi, resourceGroupName::String, circuitName::String, authorizationName::String, authorizationParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_expressRouteCircuitAuthorizationsCreateOrUpdate(_api, resourceGroupName, circuitName, authorizationName, authorizationParameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function expressRouteCircuitAuthorizationsCreateOrUpdate(_api::ExpressRouteCircuitAuthorizationsApi, response_stream::Channel, resourceGroupName::String, circuitName::String, authorizationName::String, authorizationParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_expressRouteCircuitAuthorizationsCreateOrUpdate(_api, resourceGroupName, circuitName, authorizationName, authorizationParameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -38,7 +48,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function expressRouteCircuitAuthorizationsDelete(_api::ExpressRouteCircuitAuthorizationsApi, resourceGroupName::String, circuitName::String, authorizationName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_expressRouteCircuitAuthorizationsDelete(_api::ExpressRouteCircuitAuthorizationsApi, resourceGroupName::String, circuitName::String, authorizationName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/authorizations/{authorizationName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "circuitName", circuitName)  # type String
@@ -47,7 +57,17 @@ function expressRouteCircuitAuthorizationsDelete(_api::ExpressRouteCircuitAuthor
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function expressRouteCircuitAuthorizationsDelete(_api::ExpressRouteCircuitAuthorizationsApi, resourceGroupName::String, circuitName::String, authorizationName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_expressRouteCircuitAuthorizationsDelete(_api, resourceGroupName, circuitName, authorizationName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function expressRouteCircuitAuthorizationsDelete(_api::ExpressRouteCircuitAuthorizationsApi, response_stream::Channel, resourceGroupName::String, circuitName::String, authorizationName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_expressRouteCircuitAuthorizationsDelete(_api, resourceGroupName, circuitName, authorizationName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -60,7 +80,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ExpressRouteCircuitAuthorization
 """
-function expressRouteCircuitAuthorizationsGet(_api::ExpressRouteCircuitAuthorizationsApi, resourceGroupName::String, circuitName::String, authorizationName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_expressRouteCircuitAuthorizationsGet(_api::ExpressRouteCircuitAuthorizationsApi, resourceGroupName::String, circuitName::String, authorizationName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", ExpressRouteCircuitAuthorization, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/authorizations/{authorizationName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "circuitName", circuitName)  # type String
@@ -69,7 +89,17 @@ function expressRouteCircuitAuthorizationsGet(_api::ExpressRouteCircuitAuthoriza
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function expressRouteCircuitAuthorizationsGet(_api::ExpressRouteCircuitAuthorizationsApi, resourceGroupName::String, circuitName::String, authorizationName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_expressRouteCircuitAuthorizationsGet(_api, resourceGroupName, circuitName, authorizationName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function expressRouteCircuitAuthorizationsGet(_api::ExpressRouteCircuitAuthorizationsApi, response_stream::Channel, resourceGroupName::String, circuitName::String, authorizationName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_expressRouteCircuitAuthorizationsGet(_api, resourceGroupName, circuitName, authorizationName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -81,7 +111,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: AuthorizationListResult
 """
-function expressRouteCircuitAuthorizationsList(_api::ExpressRouteCircuitAuthorizationsApi, resourceGroupName::String, circuitName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_expressRouteCircuitAuthorizationsList(_api::ExpressRouteCircuitAuthorizationsApi, resourceGroupName::String, circuitName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", AuthorizationListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/authorizations", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "circuitName", circuitName)  # type String
@@ -89,7 +119,17 @@ function expressRouteCircuitAuthorizationsList(_api::ExpressRouteCircuitAuthoriz
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function expressRouteCircuitAuthorizationsList(_api::ExpressRouteCircuitAuthorizationsApi, resourceGroupName::String, circuitName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_expressRouteCircuitAuthorizationsList(_api, resourceGroupName, circuitName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function expressRouteCircuitAuthorizationsList(_api::ExpressRouteCircuitAuthorizationsApi, response_stream::Channel, resourceGroupName::String, circuitName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_expressRouteCircuitAuthorizationsList(_api, resourceGroupName, circuitName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export expressRouteCircuitAuthorizationsCreateOrUpdate, expressRouteCircuitAuthorizationsDelete, expressRouteCircuitAuthorizationsGet, expressRouteCircuitAuthorizationsList

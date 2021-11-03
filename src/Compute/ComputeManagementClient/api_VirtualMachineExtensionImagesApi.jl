@@ -16,7 +16,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: VirtualMachineExtensionImage
 """
-function virtualMachineExtensionImagesGet(_api::VirtualMachineExtensionImagesApi, location::String, publisherName::String, type::String, version::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualMachineExtensionImagesGet(_api::VirtualMachineExtensionImagesApi, location::String, publisherName::String, type::String, version::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VirtualMachineExtensionImage, "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmextension/types/{type}/versions/{version}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "location", location)  # type String
     Swagger.set_param(_ctx.path, "publisherName", publisherName)  # type String
@@ -26,7 +26,17 @@ function virtualMachineExtensionImagesGet(_api::VirtualMachineExtensionImagesApi
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualMachineExtensionImagesGet(_api::VirtualMachineExtensionImagesApi, location::String, publisherName::String, type::String, version::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualMachineExtensionImagesGet(_api, location, publisherName, type, version, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualMachineExtensionImagesGet(_api::VirtualMachineExtensionImagesApi, response_stream::Channel, location::String, publisherName::String, type::String, version::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualMachineExtensionImagesGet(_api, location, publisherName, type, version, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -38,7 +48,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Vector{VirtualMachineExtensionImage}
 """
-function virtualMachineExtensionImagesListTypes(_api::VirtualMachineExtensionImagesApi, location::String, publisherName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualMachineExtensionImagesListTypes(_api::VirtualMachineExtensionImagesApi, location::String, publisherName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", Vector{VirtualMachineExtensionImage}, "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmextension/types", ["azure_auth"])
     Swagger.set_param(_ctx.path, "location", location)  # type String
     Swagger.set_param(_ctx.path, "publisherName", publisherName)  # type String
@@ -46,7 +56,17 @@ function virtualMachineExtensionImagesListTypes(_api::VirtualMachineExtensionIma
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualMachineExtensionImagesListTypes(_api::VirtualMachineExtensionImagesApi, location::String, publisherName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualMachineExtensionImagesListTypes(_api, location, publisherName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualMachineExtensionImagesListTypes(_api::VirtualMachineExtensionImagesApi, response_stream::Channel, location::String, publisherName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualMachineExtensionImagesListTypes(_api, location, publisherName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -62,7 +82,7 @@ Param: top::Int32
 Param: orderby::String
 Return: Vector{VirtualMachineExtensionImage}
 """
-function virtualMachineExtensionImagesListVersions(_api::VirtualMachineExtensionImagesApi, location::String, publisherName::String, type::String, api_version::String, subscriptionId::String; filter=nothing, top=nothing, orderby=nothing, _mediaType=nothing)
+function _swaggerinternal_virtualMachineExtensionImagesListVersions(_api::VirtualMachineExtensionImagesApi, location::String, publisherName::String, type::String, api_version::String, subscriptionId::String; filter=nothing, top=nothing, orderby=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", Vector{VirtualMachineExtensionImage}, "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmextension/types/{type}/versions", ["azure_auth"])
     Swagger.set_param(_ctx.path, "location", location)  # type String
     Swagger.set_param(_ctx.path, "publisherName", publisherName)  # type String
@@ -74,7 +94,17 @@ function virtualMachineExtensionImagesListVersions(_api::VirtualMachineExtension
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualMachineExtensionImagesListVersions(_api::VirtualMachineExtensionImagesApi, location::String, publisherName::String, type::String, api_version::String, subscriptionId::String; filter=nothing, top=nothing, orderby=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualMachineExtensionImagesListVersions(_api, location, publisherName, type, api_version, subscriptionId; filter=filter, top=top, orderby=orderby, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualMachineExtensionImagesListVersions(_api::VirtualMachineExtensionImagesApi, response_stream::Channel, location::String, publisherName::String, type::String, api_version::String, subscriptionId::String; filter=nothing, top=nothing, orderby=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualMachineExtensionImagesListVersions(_api, location, publisherName, type, api_version, subscriptionId; filter=filter, top=top, orderby=orderby, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export virtualMachineExtensionImagesGet, virtualMachineExtensionImagesListTypes, virtualMachineExtensionImagesListVersions

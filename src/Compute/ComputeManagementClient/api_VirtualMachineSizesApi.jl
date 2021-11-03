@@ -13,7 +13,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: VirtualMachineSizeListResult
 """
-function virtualMachineSizesList(_api::VirtualMachineSizesApi, location::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualMachineSizesList(_api::VirtualMachineSizesApi, location::String, api_version::String, subscriptionId::String; _mediaType=nothing)
 
     _ctx = Swagger.Ctx(_api.client, "GET", VirtualMachineSizeListResult, "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/vmSizes", ["azure_auth"])
     Swagger.set_param(_ctx.path, "location", location)  # type String
@@ -21,7 +21,17 @@ function virtualMachineSizesList(_api::VirtualMachineSizesApi, location::String,
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualMachineSizesList(_api::VirtualMachineSizesApi, location::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualMachineSizesList(_api, location, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualMachineSizesList(_api::VirtualMachineSizesApi, response_stream::Channel, location::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualMachineSizesList(_api, location, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export virtualMachineSizesList

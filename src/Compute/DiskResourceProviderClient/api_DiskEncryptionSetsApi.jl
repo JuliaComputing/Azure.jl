@@ -15,7 +15,7 @@ Param: api_version::String (required)
 Param: diskEncryptionSet::DiskEncryptionSet (required)
 Return: DiskEncryptionSet
 """
-function diskEncryptionSetsCreateOrUpdate(_api::DiskEncryptionSetsApi, subscriptionId::String, resourceGroupName::String, diskEncryptionSetName::String, api_version::String, diskEncryptionSet; _mediaType=nothing)
+function _swaggerinternal_diskEncryptionSetsCreateOrUpdate(_api::DiskEncryptionSetsApi, subscriptionId::String, resourceGroupName::String, diskEncryptionSetName::String, api_version::String, diskEncryptionSet; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", DiskEncryptionSet, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{diskEncryptionSetName}", ["azure_auth"], diskEncryptionSet)
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
@@ -23,7 +23,17 @@ function diskEncryptionSetsCreateOrUpdate(_api::DiskEncryptionSetsApi, subscript
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function diskEncryptionSetsCreateOrUpdate(_api::DiskEncryptionSetsApi, subscriptionId::String, resourceGroupName::String, diskEncryptionSetName::String, api_version::String, diskEncryptionSet; _mediaType=nothing)
+    _ctx = _swaggerinternal_diskEncryptionSetsCreateOrUpdate(_api, subscriptionId, resourceGroupName, diskEncryptionSetName, api_version, diskEncryptionSet; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function diskEncryptionSetsCreateOrUpdate(_api::DiskEncryptionSetsApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, diskEncryptionSetName::String, api_version::String, diskEncryptionSet; _mediaType=nothing)
+    _ctx = _swaggerinternal_diskEncryptionSetsCreateOrUpdate(_api, subscriptionId, resourceGroupName, diskEncryptionSetName, api_version, diskEncryptionSet; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -35,7 +45,7 @@ Param: diskEncryptionSetName::String (required)
 Param: api_version::String (required)
 Return: Nothing
 """
-function diskEncryptionSetsDelete(_api::DiskEncryptionSetsApi, subscriptionId::String, resourceGroupName::String, diskEncryptionSetName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_diskEncryptionSetsDelete(_api::DiskEncryptionSetsApi, subscriptionId::String, resourceGroupName::String, diskEncryptionSetName::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{diskEncryptionSetName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
@@ -43,7 +53,17 @@ function diskEncryptionSetsDelete(_api::DiskEncryptionSetsApi, subscriptionId::S
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function diskEncryptionSetsDelete(_api::DiskEncryptionSetsApi, subscriptionId::String, resourceGroupName::String, diskEncryptionSetName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_diskEncryptionSetsDelete(_api, subscriptionId, resourceGroupName, diskEncryptionSetName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function diskEncryptionSetsDelete(_api::DiskEncryptionSetsApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, diskEncryptionSetName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_diskEncryptionSetsDelete(_api, subscriptionId, resourceGroupName, diskEncryptionSetName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -55,7 +75,7 @@ Param: diskEncryptionSetName::String (required)
 Param: api_version::String (required)
 Return: DiskEncryptionSet
 """
-function diskEncryptionSetsGet(_api::DiskEncryptionSetsApi, subscriptionId::String, resourceGroupName::String, diskEncryptionSetName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_diskEncryptionSetsGet(_api::DiskEncryptionSetsApi, subscriptionId::String, resourceGroupName::String, diskEncryptionSetName::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", DiskEncryptionSet, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{diskEncryptionSetName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
@@ -63,7 +83,17 @@ function diskEncryptionSetsGet(_api::DiskEncryptionSetsApi, subscriptionId::Stri
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function diskEncryptionSetsGet(_api::DiskEncryptionSetsApi, subscriptionId::String, resourceGroupName::String, diskEncryptionSetName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_diskEncryptionSetsGet(_api, subscriptionId, resourceGroupName, diskEncryptionSetName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function diskEncryptionSetsGet(_api::DiskEncryptionSetsApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, diskEncryptionSetName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_diskEncryptionSetsGet(_api, subscriptionId, resourceGroupName, diskEncryptionSetName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -73,13 +103,23 @@ Param: subscriptionId::String (required)
 Param: api_version::String (required)
 Return: DiskEncryptionSetList
 """
-function diskEncryptionSetsList(_api::DiskEncryptionSetsApi, subscriptionId::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_diskEncryptionSetsList(_api::DiskEncryptionSetsApi, subscriptionId::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", DiskEncryptionSetList, "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/diskEncryptionSets", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function diskEncryptionSetsList(_api::DiskEncryptionSetsApi, subscriptionId::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_diskEncryptionSetsList(_api, subscriptionId, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function diskEncryptionSetsList(_api::DiskEncryptionSetsApi, response_stream::Channel, subscriptionId::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_diskEncryptionSetsList(_api, subscriptionId, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -90,14 +130,24 @@ Param: resourceGroupName::String (required)
 Param: api_version::String (required)
 Return: DiskEncryptionSetList
 """
-function diskEncryptionSetsListByResourceGroup(_api::DiskEncryptionSetsApi, subscriptionId::String, resourceGroupName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_diskEncryptionSetsListByResourceGroup(_api::DiskEncryptionSetsApi, subscriptionId::String, resourceGroupName::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", DiskEncryptionSetList, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function diskEncryptionSetsListByResourceGroup(_api::DiskEncryptionSetsApi, subscriptionId::String, resourceGroupName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_diskEncryptionSetsListByResourceGroup(_api, subscriptionId, resourceGroupName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function diskEncryptionSetsListByResourceGroup(_api::DiskEncryptionSetsApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_diskEncryptionSetsListByResourceGroup(_api, subscriptionId, resourceGroupName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -110,7 +160,7 @@ Param: api_version::String (required)
 Param: diskEncryptionSet::DiskEncryptionSetUpdate (required)
 Return: DiskEncryptionSet
 """
-function diskEncryptionSetsUpdate(_api::DiskEncryptionSetsApi, subscriptionId::String, resourceGroupName::String, diskEncryptionSetName::String, api_version::String, diskEncryptionSet; _mediaType=nothing)
+function _swaggerinternal_diskEncryptionSetsUpdate(_api::DiskEncryptionSetsApi, subscriptionId::String, resourceGroupName::String, diskEncryptionSetName::String, api_version::String, diskEncryptionSet; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", DiskEncryptionSet, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{diskEncryptionSetName}", ["azure_auth"], diskEncryptionSet)
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
@@ -118,7 +168,17 @@ function diskEncryptionSetsUpdate(_api::DiskEncryptionSetsApi, subscriptionId::S
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function diskEncryptionSetsUpdate(_api::DiskEncryptionSetsApi, subscriptionId::String, resourceGroupName::String, diskEncryptionSetName::String, api_version::String, diskEncryptionSet; _mediaType=nothing)
+    _ctx = _swaggerinternal_diskEncryptionSetsUpdate(_api, subscriptionId, resourceGroupName, diskEncryptionSetName, api_version, diskEncryptionSet; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function diskEncryptionSetsUpdate(_api::DiskEncryptionSetsApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, diskEncryptionSetName::String, api_version::String, diskEncryptionSet; _mediaType=nothing)
+    _ctx = _swaggerinternal_diskEncryptionSetsUpdate(_api, subscriptionId, resourceGroupName, diskEncryptionSetName, api_version, diskEncryptionSet; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export diskEncryptionSetsCreateOrUpdate, diskEncryptionSetsDelete, diskEncryptionSetsGet, diskEncryptionSetsList, diskEncryptionSetsListByResourceGroup, diskEncryptionSetsUpdate

@@ -13,14 +13,24 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ResourceRateCardInfo
 """
-function rateCardGet(_api::RateCardApi, filter::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_rateCardGet(_api::RateCardApi, filter::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", ResourceRateCardInfo, "/subscriptions/{subscriptionId}/providers/Microsoft.Commerce/RateCard", [])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "\$filter", filter)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "text/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "text/json"] : [_mediaType])
+    return _ctx
+end
+
+function rateCardGet(_api::RateCardApi, filter::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_rateCardGet(_api, filter, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function rateCardGet(_api::RateCardApi, response_stream::Channel, filter::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_rateCardGet(_api, filter, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export rateCardGet

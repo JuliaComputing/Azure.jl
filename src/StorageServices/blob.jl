@@ -98,7 +98,7 @@ function listBlobs(ctx, subscription_id::String, resource_group_name::String, ur
             @assert partstr in valid_list_blobs_include_data
             push!(include_data_parts, partstr)
         end 
-        include_data_repr = HTTP.URIs.escapeuri(join(include_data_parts, ","))
+        include_data_repr = URIs.escapeuri(join(include_data_parts, ","))
     end
     uri = append_params(uri; restype="container", comp="list", prefix=prefix, maxresults=maxresults, include_data=include_data_repr, timeout=timeout)
     resp = getResource(ctx, subscription_id, resource_group_name, uri, accountkey; kwargs...)
@@ -127,7 +127,7 @@ Keyword arguments:
 """
 function putBlob(ctx, subscription_id::String, resource_group_name::String, uri::String, blob_type::String, accountkey::Union{Nothing,AccountKey}=nothing;
         metadata::Union{Dict{String,String},Nothing}=nothing,
-        block_blob_contents=nothing,
+        block_blob_contents::Union{AbstractString,Vector{UInt8},IO,Nothing}=nothing,
         page_blob_max_size::Union{Int,Nothing}=nothing,
         access_tier::Union{String,Nothing}=nothing,
         timeout=nothing,
@@ -160,14 +160,10 @@ function putBlob(ctx, subscription_id::String, resource_group_name::String, uri:
     if blob_type == "BlockBlob"
         if block_blob_contents !== nothing
             if content_length === nothing
-                if isa(block_blob_contents, String)
+                if isa(block_blob_contents, AbstractString)
                     content_length = length(codeunits(block_blob_contents))
-                elseif isa(block_blob_contents, Vector{Vector{String}})
-                    content_length = sum(length.(codeunits.(block_blob_contents)))
                 elseif isa(block_blob_contents, Vector{UInt8})
                     content_length = length(block_blob_contents)
-                elseif isa(block_blob_contents, Vector{Vector{UInt8}})
-                    content_length = sum(length.(block_blob_contents))
                 else
                     error("content_length must be specified for blob contents of type $(typeof(block_blob_contents))")
                 end

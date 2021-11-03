@@ -16,7 +16,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ConnectionMonitorResult
 """
-function connectionMonitorsCreateOrUpdate(_api::ConnectionMonitorsApi, resourceGroupName::String, networkWatcherName::String, connectionMonitorName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_connectionMonitorsCreateOrUpdate(_api::ConnectionMonitorsApi, resourceGroupName::String, networkWatcherName::String, connectionMonitorName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", ConnectionMonitorResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkWatcherName", networkWatcherName)  # type String
@@ -25,7 +25,17 @@ function connectionMonitorsCreateOrUpdate(_api::ConnectionMonitorsApi, resourceG
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function connectionMonitorsCreateOrUpdate(_api::ConnectionMonitorsApi, resourceGroupName::String, networkWatcherName::String, connectionMonitorName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_connectionMonitorsCreateOrUpdate(_api, resourceGroupName, networkWatcherName, connectionMonitorName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function connectionMonitorsCreateOrUpdate(_api::ConnectionMonitorsApi, response_stream::Channel, resourceGroupName::String, networkWatcherName::String, connectionMonitorName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_connectionMonitorsCreateOrUpdate(_api, resourceGroupName, networkWatcherName, connectionMonitorName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -38,7 +48,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function connectionMonitorsDelete(_api::ConnectionMonitorsApi, resourceGroupName::String, networkWatcherName::String, connectionMonitorName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_connectionMonitorsDelete(_api::ConnectionMonitorsApi, resourceGroupName::String, networkWatcherName::String, connectionMonitorName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkWatcherName", networkWatcherName)  # type String
@@ -47,7 +57,17 @@ function connectionMonitorsDelete(_api::ConnectionMonitorsApi, resourceGroupName
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function connectionMonitorsDelete(_api::ConnectionMonitorsApi, resourceGroupName::String, networkWatcherName::String, connectionMonitorName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_connectionMonitorsDelete(_api, resourceGroupName, networkWatcherName, connectionMonitorName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function connectionMonitorsDelete(_api::ConnectionMonitorsApi, response_stream::Channel, resourceGroupName::String, networkWatcherName::String, connectionMonitorName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_connectionMonitorsDelete(_api, resourceGroupName, networkWatcherName, connectionMonitorName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -60,7 +80,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ConnectionMonitorResult
 """
-function connectionMonitorsGet(_api::ConnectionMonitorsApi, resourceGroupName::String, networkWatcherName::String, connectionMonitorName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_connectionMonitorsGet(_api::ConnectionMonitorsApi, resourceGroupName::String, networkWatcherName::String, connectionMonitorName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", ConnectionMonitorResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkWatcherName", networkWatcherName)  # type String
@@ -69,7 +89,17 @@ function connectionMonitorsGet(_api::ConnectionMonitorsApi, resourceGroupName::S
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function connectionMonitorsGet(_api::ConnectionMonitorsApi, resourceGroupName::String, networkWatcherName::String, connectionMonitorName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_connectionMonitorsGet(_api, resourceGroupName, networkWatcherName, connectionMonitorName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function connectionMonitorsGet(_api::ConnectionMonitorsApi, response_stream::Channel, resourceGroupName::String, networkWatcherName::String, connectionMonitorName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_connectionMonitorsGet(_api, resourceGroupName, networkWatcherName, connectionMonitorName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -81,7 +111,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ConnectionMonitorListResult
 """
-function connectionMonitorsList(_api::ConnectionMonitorsApi, resourceGroupName::String, networkWatcherName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_connectionMonitorsList(_api::ConnectionMonitorsApi, resourceGroupName::String, networkWatcherName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", ConnectionMonitorListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkWatcherName", networkWatcherName)  # type String
@@ -89,7 +119,17 @@ function connectionMonitorsList(_api::ConnectionMonitorsApi, resourceGroupName::
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function connectionMonitorsList(_api::ConnectionMonitorsApi, resourceGroupName::String, networkWatcherName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_connectionMonitorsList(_api, resourceGroupName, networkWatcherName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function connectionMonitorsList(_api::ConnectionMonitorsApi, response_stream::Channel, resourceGroupName::String, networkWatcherName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_connectionMonitorsList(_api, resourceGroupName, networkWatcherName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -102,7 +142,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ConnectionMonitorQueryResult
 """
-function connectionMonitorsQuery(_api::ConnectionMonitorsApi, resourceGroupName::String, networkWatcherName::String, connectionMonitorName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_connectionMonitorsQuery(_api::ConnectionMonitorsApi, resourceGroupName::String, networkWatcherName::String, connectionMonitorName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", ConnectionMonitorQueryResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}/query", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkWatcherName", networkWatcherName)  # type String
@@ -111,7 +151,17 @@ function connectionMonitorsQuery(_api::ConnectionMonitorsApi, resourceGroupName:
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function connectionMonitorsQuery(_api::ConnectionMonitorsApi, resourceGroupName::String, networkWatcherName::String, connectionMonitorName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_connectionMonitorsQuery(_api, resourceGroupName, networkWatcherName, connectionMonitorName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function connectionMonitorsQuery(_api::ConnectionMonitorsApi, response_stream::Channel, resourceGroupName::String, networkWatcherName::String, connectionMonitorName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_connectionMonitorsQuery(_api, resourceGroupName, networkWatcherName, connectionMonitorName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -124,7 +174,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function connectionMonitorsStart(_api::ConnectionMonitorsApi, resourceGroupName::String, networkWatcherName::String, connectionMonitorName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_connectionMonitorsStart(_api::ConnectionMonitorsApi, resourceGroupName::String, networkWatcherName::String, connectionMonitorName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}/start", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkWatcherName", networkWatcherName)  # type String
@@ -133,7 +183,17 @@ function connectionMonitorsStart(_api::ConnectionMonitorsApi, resourceGroupName:
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function connectionMonitorsStart(_api::ConnectionMonitorsApi, resourceGroupName::String, networkWatcherName::String, connectionMonitorName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_connectionMonitorsStart(_api, resourceGroupName, networkWatcherName, connectionMonitorName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function connectionMonitorsStart(_api::ConnectionMonitorsApi, response_stream::Channel, resourceGroupName::String, networkWatcherName::String, connectionMonitorName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_connectionMonitorsStart(_api, resourceGroupName, networkWatcherName, connectionMonitorName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -146,7 +206,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function connectionMonitorsStop(_api::ConnectionMonitorsApi, resourceGroupName::String, networkWatcherName::String, connectionMonitorName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_connectionMonitorsStop(_api::ConnectionMonitorsApi, resourceGroupName::String, networkWatcherName::String, connectionMonitorName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}/stop", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkWatcherName", networkWatcherName)  # type String
@@ -155,7 +215,17 @@ function connectionMonitorsStop(_api::ConnectionMonitorsApi, resourceGroupName::
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function connectionMonitorsStop(_api::ConnectionMonitorsApi, resourceGroupName::String, networkWatcherName::String, connectionMonitorName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_connectionMonitorsStop(_api, resourceGroupName, networkWatcherName, connectionMonitorName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function connectionMonitorsStop(_api::ConnectionMonitorsApi, response_stream::Channel, resourceGroupName::String, networkWatcherName::String, connectionMonitorName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_connectionMonitorsStop(_api, resourceGroupName, networkWatcherName, connectionMonitorName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -169,7 +239,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ConnectionMonitorResult
 """
-function connectionMonitorsUpdateTags(_api::ConnectionMonitorsApi, resourceGroupName::String, networkWatcherName::String, connectionMonitorName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_connectionMonitorsUpdateTags(_api::ConnectionMonitorsApi, resourceGroupName::String, networkWatcherName::String, connectionMonitorName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", ConnectionMonitorResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkWatcherName", networkWatcherName)  # type String
@@ -178,7 +248,17 @@ function connectionMonitorsUpdateTags(_api::ConnectionMonitorsApi, resourceGroup
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function connectionMonitorsUpdateTags(_api::ConnectionMonitorsApi, resourceGroupName::String, networkWatcherName::String, connectionMonitorName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_connectionMonitorsUpdateTags(_api, resourceGroupName, networkWatcherName, connectionMonitorName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function connectionMonitorsUpdateTags(_api::ConnectionMonitorsApi, response_stream::Channel, resourceGroupName::String, networkWatcherName::String, connectionMonitorName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_connectionMonitorsUpdateTags(_api, resourceGroupName, networkWatcherName, connectionMonitorName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export connectionMonitorsCreateOrUpdate, connectionMonitorsDelete, connectionMonitorsGet, connectionMonitorsList, connectionMonitorsQuery, connectionMonitorsStart, connectionMonitorsStop, connectionMonitorsUpdateTags

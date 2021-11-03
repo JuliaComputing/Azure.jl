@@ -5,7 +5,6 @@ module ContainerServiceClient
 
 using Random
 using Dates
-using HTTP
 using Swagger
 import Swagger: field_name, property_type, hasproperty, validate_property, SwaggerApi, SwaggerModel
 import Base: convert, propertynames
@@ -16,6 +15,7 @@ include("api_ContainerServiceApi.jl")
 include("api_ContainerServicesApi.jl")
 
 # export models
+export convert, ContainerService
 export convert, ContainerServiceAgentPoolProfile
 export convert, ContainerServiceCustomProfile
 export convert, ContainerServiceDiagnosticsProfile
@@ -30,7 +30,6 @@ export convert, ContainerServiceSshPublicKey
 export convert, ContainerServiceVMDiagnostics
 export convert, ContainerServiceWindowsProfile
 export convert, Resource
-export convert, ContainerService
 
 # export operations
 export convert, ContainerServiceApi, ContainerServicesApi

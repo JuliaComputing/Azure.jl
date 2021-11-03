@@ -5,7 +5,6 @@ module NetworkSecurityGroupClient
 
 using Random
 using Dates
-using HTTP
 using Swagger
 import Swagger: field_name, property_type, hasproperty, validate_property, SwaggerApi, SwaggerModel
 import Base: convert, propertynames
@@ -16,24 +15,92 @@ include("api_NetworkSecurityGroupsApi.jl")
 include("api_SecurityRulesApi.jl")
 
 # export models
+export convert, ApplicationGatewayBackendAddress
+export convert, ApplicationGatewayBackendAddressPool
+export convert, ApplicationGatewayBackendAddressPoolPropertiesFormat
+export convert, ApplicationSecurityGroup
+export convert, ApplicationSecurityGroupPropertiesFormat
+export convert, BackendAddressPool
+export convert, BackendAddressPoolPropertiesFormat
 export convert, CloudError
 export convert, CloudErrorBody
+export convert, CustomDnsConfigPropertiesFormat
+export convert, DdosSettings
+export convert, Delegation
+export convert, FlowLog
+export convert, FlowLogFormatParameters
+export convert, FlowLogPropertiesFormat
+export convert, FrontendIPConfiguration
+export convert, FrontendIPConfigurationPropertiesFormat
+export convert, IPAllocationMethod
+export convert, IPConfiguration
+export convert, IPConfigurationProfile
+export convert, IPConfigurationProfilePropertiesFormat
+export convert, IPConfigurationPropertiesFormat
+export convert, IPVersion
+export convert, InboundNatRule
+export convert, InboundNatRulePropertiesFormat
+export convert, IpTag
+export convert, LoadBalancerBackendAddress
+export convert, LoadBalancerBackendAddressPropertiesFormat
+export convert, NetworkInterface
+export convert, NetworkInterfaceDnsSettings
+export convert, NetworkInterfaceIPConfiguration
+export convert, NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties
+export convert, NetworkInterfaceIPConfigurationPropertiesFormat
+export convert, NetworkInterfacePropertiesFormat
+export convert, NetworkInterfaceTapConfiguration
+export convert, NetworkInterfaceTapConfigurationPropertiesFormat
+export convert, NetworkSecurityGroup
+export convert, NetworkSecurityGroup2
 export convert, NetworkSecurityGroupListResult
 export convert, NetworkSecurityGroupPropertiesFormat
+export convert, NetworkSecurityGroupPropertiesFormat2
+export convert, PrivateEndpoint
+export convert, PrivateEndpointProperties
+export convert, PrivateLinkServiceConnection
+export convert, PrivateLinkServiceConnectionProperties
+export convert, PrivateLinkServiceConnectionState
 export convert, ProvisioningState
+export convert, PublicIPAddress
+export convert, PublicIPAddressDnsSettings
+export convert, PublicIPAddressPropertiesFormat
+export convert, PublicIPAddressSku
 export convert, Resource
+export convert, ResourceNavigationLink
+export convert, ResourceNavigationLinkFormat
+export convert, RetentionPolicyParameters
+export convert, Route
+export convert, RouteNextHopType
+export convert, RoutePropertiesFormat
+export convert, RouteTable
+export convert, RouteTablePropertiesFormat
+export convert, SecurityRule
+export convert, SecurityRule2
 export convert, SecurityRuleAccess
+export convert, SecurityRuleAccess2
 export convert, SecurityRuleDirection
+export convert, SecurityRuleDirection2
 export convert, SecurityRuleListResult
 export convert, SecurityRulePropertiesFormat
+export convert, SecurityRulePropertiesFormat2
+export convert, ServiceAssociationLink
+export convert, ServiceAssociationLinkPropertiesFormat
+export convert, ServiceDelegationPropertiesFormat
+export convert, ServiceEndpointPolicy
+export convert, ServiceEndpointPolicyDefinition
+export convert, ServiceEndpointPolicyDefinitionPropertiesFormat
+export convert, ServiceEndpointPolicyPropertiesFormat
+export convert, ServiceEndpointPropertiesFormat
 export convert, SubResource
-export convert, TagsObject
-export convert, ApplicationSecurityGroup
-export convert, FlowLog
-export convert, NetworkInterface
-export convert, NetworkSecurityGroup
-export convert, SecurityRule
 export convert, Subnet
+export convert, SubnetPropertiesFormat
+export convert, TagsObject
+export convert, TrafficAnalyticsConfigurationProperties
+export convert, TrafficAnalyticsProperties
+export convert, TransportProtocol
+export convert, VirtualNetworkTap
+export convert, VirtualNetworkTapPropertiesFormat
 
 # export operations
 export convert, NetworkSecurityGroupsApi, SecurityRulesApi

@@ -18,7 +18,7 @@ Param: subscriptionId::String (required)
 Param: expand::String
 Return: NetworkInterfaceIPConfiguration
 """
-function networkInterfacesGetVirtualMachineScaleSetIpConfiguration(_api::NetworkInterfacesApi, resourceGroupName::String, virtualMachineScaleSetName::String, virtualmachineIndex::String, networkInterfaceName::String, ipConfigurationName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+function _swaggerinternal_networkInterfacesGetVirtualMachineScaleSetIpConfiguration(_api::NetworkInterfacesApi, resourceGroupName::String, virtualMachineScaleSetName::String, virtualmachineIndex::String, networkInterfaceName::String, ipConfigurationName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", NetworkInterfaceIPConfiguration, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipConfigurations/{ipConfigurationName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualMachineScaleSetName", virtualMachineScaleSetName)  # type String
@@ -30,7 +30,17 @@ function networkInterfacesGetVirtualMachineScaleSetIpConfiguration(_api::Network
     Swagger.set_param(_ctx.query, "\$expand", expand)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkInterfacesGetVirtualMachineScaleSetIpConfiguration(_api::NetworkInterfacesApi, resourceGroupName::String, virtualMachineScaleSetName::String, virtualmachineIndex::String, networkInterfaceName::String, ipConfigurationName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfacesGetVirtualMachineScaleSetIpConfiguration(_api, resourceGroupName, virtualMachineScaleSetName, virtualmachineIndex, networkInterfaceName, ipConfigurationName, api_version, subscriptionId; expand=expand, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkInterfacesGetVirtualMachineScaleSetIpConfiguration(_api::NetworkInterfacesApi, response_stream::Channel, resourceGroupName::String, virtualMachineScaleSetName::String, virtualmachineIndex::String, networkInterfaceName::String, ipConfigurationName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfacesGetVirtualMachineScaleSetIpConfiguration(_api, resourceGroupName, virtualMachineScaleSetName, virtualmachineIndex, networkInterfaceName, ipConfigurationName, api_version, subscriptionId; expand=expand, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -45,7 +55,7 @@ Param: subscriptionId::String (required)
 Param: expand::String
 Return: NetworkInterface
 """
-function networkInterfacesGetVirtualMachineScaleSetNetworkInterface(_api::NetworkInterfacesApi, resourceGroupName::String, virtualMachineScaleSetName::String, virtualmachineIndex::String, networkInterfaceName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+function _swaggerinternal_networkInterfacesGetVirtualMachineScaleSetNetworkInterface(_api::NetworkInterfacesApi, resourceGroupName::String, virtualMachineScaleSetName::String, virtualmachineIndex::String, networkInterfaceName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", NetworkInterface, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualMachineScaleSetName", virtualMachineScaleSetName)  # type String
@@ -56,7 +66,17 @@ function networkInterfacesGetVirtualMachineScaleSetNetworkInterface(_api::Networ
     Swagger.set_param(_ctx.query, "\$expand", expand)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkInterfacesGetVirtualMachineScaleSetNetworkInterface(_api::NetworkInterfacesApi, resourceGroupName::String, virtualMachineScaleSetName::String, virtualmachineIndex::String, networkInterfaceName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfacesGetVirtualMachineScaleSetNetworkInterface(_api, resourceGroupName, virtualMachineScaleSetName, virtualmachineIndex, networkInterfaceName, api_version, subscriptionId; expand=expand, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkInterfacesGetVirtualMachineScaleSetNetworkInterface(_api::NetworkInterfacesApi, response_stream::Channel, resourceGroupName::String, virtualMachineScaleSetName::String, virtualmachineIndex::String, networkInterfaceName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfacesGetVirtualMachineScaleSetNetworkInterface(_api, resourceGroupName, virtualMachineScaleSetName, virtualmachineIndex, networkInterfaceName, api_version, subscriptionId; expand=expand, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -71,7 +91,7 @@ Param: subscriptionId::String (required)
 Param: expand::String
 Return: NetworkInterfaceIPConfigurationListResult
 """
-function networkInterfacesListVirtualMachineScaleSetIpConfigurations(_api::NetworkInterfacesApi, resourceGroupName::String, virtualMachineScaleSetName::String, virtualmachineIndex::String, networkInterfaceName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+function _swaggerinternal_networkInterfacesListVirtualMachineScaleSetIpConfigurations(_api::NetworkInterfacesApi, resourceGroupName::String, virtualMachineScaleSetName::String, virtualmachineIndex::String, networkInterfaceName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", NetworkInterfaceIPConfigurationListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces/{networkInterfaceName}/ipConfigurations", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualMachineScaleSetName", virtualMachineScaleSetName)  # type String
@@ -82,7 +102,17 @@ function networkInterfacesListVirtualMachineScaleSetIpConfigurations(_api::Netwo
     Swagger.set_param(_ctx.query, "\$expand", expand)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkInterfacesListVirtualMachineScaleSetIpConfigurations(_api::NetworkInterfacesApi, resourceGroupName::String, virtualMachineScaleSetName::String, virtualmachineIndex::String, networkInterfaceName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfacesListVirtualMachineScaleSetIpConfigurations(_api, resourceGroupName, virtualMachineScaleSetName, virtualmachineIndex, networkInterfaceName, api_version, subscriptionId; expand=expand, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkInterfacesListVirtualMachineScaleSetIpConfigurations(_api::NetworkInterfacesApi, response_stream::Channel, resourceGroupName::String, virtualMachineScaleSetName::String, virtualmachineIndex::String, networkInterfaceName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfacesListVirtualMachineScaleSetIpConfigurations(_api, resourceGroupName, virtualMachineScaleSetName, virtualmachineIndex, networkInterfaceName, api_version, subscriptionId; expand=expand, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -94,7 +124,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: NetworkInterfaceListResult
 """
-function networkInterfacesListVirtualMachineScaleSetNetworkInterfaces(_api::NetworkInterfacesApi, resourceGroupName::String, virtualMachineScaleSetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkInterfacesListVirtualMachineScaleSetNetworkInterfaces(_api::NetworkInterfacesApi, resourceGroupName::String, virtualMachineScaleSetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", NetworkInterfaceListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/networkInterfaces", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualMachineScaleSetName", virtualMachineScaleSetName)  # type String
@@ -102,7 +132,17 @@ function networkInterfacesListVirtualMachineScaleSetNetworkInterfaces(_api::Netw
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkInterfacesListVirtualMachineScaleSetNetworkInterfaces(_api::NetworkInterfacesApi, resourceGroupName::String, virtualMachineScaleSetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfacesListVirtualMachineScaleSetNetworkInterfaces(_api, resourceGroupName, virtualMachineScaleSetName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkInterfacesListVirtualMachineScaleSetNetworkInterfaces(_api::NetworkInterfacesApi, response_stream::Channel, resourceGroupName::String, virtualMachineScaleSetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfacesListVirtualMachineScaleSetNetworkInterfaces(_api, resourceGroupName, virtualMachineScaleSetName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -115,7 +155,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: NetworkInterfaceListResult
 """
-function networkInterfacesListVirtualMachineScaleSetVMNetworkInterfaces(_api::NetworkInterfacesApi, resourceGroupName::String, virtualMachineScaleSetName::String, virtualmachineIndex::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkInterfacesListVirtualMachineScaleSetVMNetworkInterfaces(_api::NetworkInterfacesApi, resourceGroupName::String, virtualMachineScaleSetName::String, virtualmachineIndex::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", NetworkInterfaceListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.Compute/virtualMachineScaleSets/{virtualMachineScaleSetName}/virtualMachines/{virtualmachineIndex}/networkInterfaces", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualMachineScaleSetName", virtualMachineScaleSetName)  # type String
@@ -124,7 +164,17 @@ function networkInterfacesListVirtualMachineScaleSetVMNetworkInterfaces(_api::Ne
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkInterfacesListVirtualMachineScaleSetVMNetworkInterfaces(_api::NetworkInterfacesApi, resourceGroupName::String, virtualMachineScaleSetName::String, virtualmachineIndex::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfacesListVirtualMachineScaleSetVMNetworkInterfaces(_api, resourceGroupName, virtualMachineScaleSetName, virtualmachineIndex, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkInterfacesListVirtualMachineScaleSetVMNetworkInterfaces(_api::NetworkInterfacesApi, response_stream::Channel, resourceGroupName::String, virtualMachineScaleSetName::String, virtualmachineIndex::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkInterfacesListVirtualMachineScaleSetVMNetworkInterfaces(_api, resourceGroupName, virtualMachineScaleSetName, virtualmachineIndex, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export networkInterfacesGetVirtualMachineScaleSetIpConfiguration, networkInterfacesGetVirtualMachineScaleSetNetworkInterface, networkInterfacesListVirtualMachineScaleSetIpConfigurations, networkInterfacesListVirtualMachineScaleSetNetworkInterfaces, networkInterfacesListVirtualMachineScaleSetVMNetworkInterfaces

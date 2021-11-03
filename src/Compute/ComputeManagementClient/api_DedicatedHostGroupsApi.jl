@@ -15,7 +15,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: DedicatedHostGroup
 """
-function dedicatedHostGroupsCreateOrUpdate(_api::DedicatedHostGroupsApi, resourceGroupName::String, hostGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_dedicatedHostGroupsCreateOrUpdate(_api::DedicatedHostGroupsApi, resourceGroupName::String, hostGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", DedicatedHostGroup, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "hostGroupName", hostGroupName)  # type String
@@ -23,7 +23,17 @@ function dedicatedHostGroupsCreateOrUpdate(_api::DedicatedHostGroupsApi, resourc
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function dedicatedHostGroupsCreateOrUpdate(_api::DedicatedHostGroupsApi, resourceGroupName::String, hostGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_dedicatedHostGroupsCreateOrUpdate(_api, resourceGroupName, hostGroupName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function dedicatedHostGroupsCreateOrUpdate(_api::DedicatedHostGroupsApi, response_stream::Channel, resourceGroupName::String, hostGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_dedicatedHostGroupsCreateOrUpdate(_api, resourceGroupName, hostGroupName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -35,7 +45,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function dedicatedHostGroupsDelete(_api::DedicatedHostGroupsApi, resourceGroupName::String, hostGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_dedicatedHostGroupsDelete(_api::DedicatedHostGroupsApi, resourceGroupName::String, hostGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "hostGroupName", hostGroupName)  # type String
@@ -43,7 +53,17 @@ function dedicatedHostGroupsDelete(_api::DedicatedHostGroupsApi, resourceGroupNa
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function dedicatedHostGroupsDelete(_api::DedicatedHostGroupsApi, resourceGroupName::String, hostGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_dedicatedHostGroupsDelete(_api, resourceGroupName, hostGroupName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function dedicatedHostGroupsDelete(_api::DedicatedHostGroupsApi, response_stream::Channel, resourceGroupName::String, hostGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_dedicatedHostGroupsDelete(_api, resourceGroupName, hostGroupName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -56,7 +76,7 @@ Param: subscriptionId::String (required)
 Param: expand::String
 Return: DedicatedHostGroup
 """
-function dedicatedHostGroupsGet(_api::DedicatedHostGroupsApi, resourceGroupName::String, hostGroupName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+function _swaggerinternal_dedicatedHostGroupsGet(_api::DedicatedHostGroupsApi, resourceGroupName::String, hostGroupName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", DedicatedHostGroup, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "hostGroupName", hostGroupName)  # type String
@@ -65,7 +85,17 @@ function dedicatedHostGroupsGet(_api::DedicatedHostGroupsApi, resourceGroupName:
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function dedicatedHostGroupsGet(_api::DedicatedHostGroupsApi, resourceGroupName::String, hostGroupName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_dedicatedHostGroupsGet(_api, resourceGroupName, hostGroupName, api_version, subscriptionId; expand=expand, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function dedicatedHostGroupsGet(_api::DedicatedHostGroupsApi, response_stream::Channel, resourceGroupName::String, hostGroupName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_dedicatedHostGroupsGet(_api, resourceGroupName, hostGroupName, api_version, subscriptionId; expand=expand, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -76,14 +106,24 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: DedicatedHostGroupListResult
 """
-function dedicatedHostGroupsListByResourceGroup(_api::DedicatedHostGroupsApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_dedicatedHostGroupsListByResourceGroup(_api::DedicatedHostGroupsApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", DedicatedHostGroupListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function dedicatedHostGroupsListByResourceGroup(_api::DedicatedHostGroupsApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_dedicatedHostGroupsListByResourceGroup(_api, resourceGroupName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function dedicatedHostGroupsListByResourceGroup(_api::DedicatedHostGroupsApi, response_stream::Channel, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_dedicatedHostGroupsListByResourceGroup(_api, resourceGroupName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -93,13 +133,23 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: DedicatedHostGroupListResult
 """
-function dedicatedHostGroupsListBySubscription(_api::DedicatedHostGroupsApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_dedicatedHostGroupsListBySubscription(_api::DedicatedHostGroupsApi, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", DedicatedHostGroupListResult, "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/hostGroups", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function dedicatedHostGroupsListBySubscription(_api::DedicatedHostGroupsApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_dedicatedHostGroupsListBySubscription(_api, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function dedicatedHostGroupsListBySubscription(_api::DedicatedHostGroupsApi, response_stream::Channel, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_dedicatedHostGroupsListBySubscription(_api, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -112,7 +162,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: DedicatedHostGroup
 """
-function dedicatedHostGroupsUpdate(_api::DedicatedHostGroupsApi, resourceGroupName::String, hostGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_dedicatedHostGroupsUpdate(_api::DedicatedHostGroupsApi, resourceGroupName::String, hostGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", DedicatedHostGroup, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "hostGroupName", hostGroupName)  # type String
@@ -120,7 +170,17 @@ function dedicatedHostGroupsUpdate(_api::DedicatedHostGroupsApi, resourceGroupNa
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function dedicatedHostGroupsUpdate(_api::DedicatedHostGroupsApi, resourceGroupName::String, hostGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_dedicatedHostGroupsUpdate(_api, resourceGroupName, hostGroupName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function dedicatedHostGroupsUpdate(_api::DedicatedHostGroupsApi, response_stream::Channel, resourceGroupName::String, hostGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_dedicatedHostGroupsUpdate(_api, resourceGroupName, hostGroupName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export dedicatedHostGroupsCreateOrUpdate, dedicatedHostGroupsDelete, dedicatedHostGroupsGet, dedicatedHostGroupsListByResourceGroup, dedicatedHostGroupsListBySubscription, dedicatedHostGroupsUpdate

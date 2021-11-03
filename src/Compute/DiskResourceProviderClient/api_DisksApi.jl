@@ -15,7 +15,7 @@ Param: api_version::String (required)
 Param: disk::Disk (required)
 Return: Disk
 """
-function disksCreateOrUpdate(_api::DisksApi, subscriptionId::String, resourceGroupName::String, diskName::String, api_version::String, disk; _mediaType=nothing)
+function _swaggerinternal_disksCreateOrUpdate(_api::DisksApi, subscriptionId::String, resourceGroupName::String, diskName::String, api_version::String, disk; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", Disk, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}", ["azure_auth"], disk)
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
@@ -23,7 +23,17 @@ function disksCreateOrUpdate(_api::DisksApi, subscriptionId::String, resourceGro
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function disksCreateOrUpdate(_api::DisksApi, subscriptionId::String, resourceGroupName::String, diskName::String, api_version::String, disk; _mediaType=nothing)
+    _ctx = _swaggerinternal_disksCreateOrUpdate(_api, subscriptionId, resourceGroupName, diskName, api_version, disk; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function disksCreateOrUpdate(_api::DisksApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, diskName::String, api_version::String, disk; _mediaType=nothing)
+    _ctx = _swaggerinternal_disksCreateOrUpdate(_api, subscriptionId, resourceGroupName, diskName, api_version, disk; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -35,7 +45,7 @@ Param: diskName::String (required)
 Param: api_version::String (required)
 Return: Nothing
 """
-function disksDelete(_api::DisksApi, subscriptionId::String, resourceGroupName::String, diskName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_disksDelete(_api::DisksApi, subscriptionId::String, resourceGroupName::String, diskName::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
@@ -43,7 +53,17 @@ function disksDelete(_api::DisksApi, subscriptionId::String, resourceGroupName::
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function disksDelete(_api::DisksApi, subscriptionId::String, resourceGroupName::String, diskName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_disksDelete(_api, subscriptionId, resourceGroupName, diskName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function disksDelete(_api::DisksApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, diskName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_disksDelete(_api, subscriptionId, resourceGroupName, diskName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -55,7 +75,7 @@ Param: diskName::String (required)
 Param: api_version::String (required)
 Return: Disk
 """
-function disksGet(_api::DisksApi, subscriptionId::String, resourceGroupName::String, diskName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_disksGet(_api::DisksApi, subscriptionId::String, resourceGroupName::String, diskName::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", Disk, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
@@ -63,7 +83,17 @@ function disksGet(_api::DisksApi, subscriptionId::String, resourceGroupName::Str
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function disksGet(_api::DisksApi, subscriptionId::String, resourceGroupName::String, diskName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_disksGet(_api, subscriptionId, resourceGroupName, diskName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function disksGet(_api::DisksApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, diskName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_disksGet(_api, subscriptionId, resourceGroupName, diskName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -76,7 +106,7 @@ Param: api_version::String (required)
 Param: grantAccessData::GrantAccessData (required)
 Return: AccessUri
 """
-function disksGrantAccess(_api::DisksApi, subscriptionId::String, resourceGroupName::String, diskName::String, api_version::String, grantAccessData; _mediaType=nothing)
+function _swaggerinternal_disksGrantAccess(_api::DisksApi, subscriptionId::String, resourceGroupName::String, diskName::String, api_version::String, grantAccessData; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", AccessUri, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}/beginGetAccess", ["azure_auth"], grantAccessData)
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
@@ -84,7 +114,17 @@ function disksGrantAccess(_api::DisksApi, subscriptionId::String, resourceGroupN
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function disksGrantAccess(_api::DisksApi, subscriptionId::String, resourceGroupName::String, diskName::String, api_version::String, grantAccessData; _mediaType=nothing)
+    _ctx = _swaggerinternal_disksGrantAccess(_api, subscriptionId, resourceGroupName, diskName, api_version, grantAccessData; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function disksGrantAccess(_api::DisksApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, diskName::String, api_version::String, grantAccessData; _mediaType=nothing)
+    _ctx = _swaggerinternal_disksGrantAccess(_api, subscriptionId, resourceGroupName, diskName, api_version, grantAccessData; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -94,13 +134,23 @@ Param: subscriptionId::String (required)
 Param: api_version::String (required)
 Return: DiskList
 """
-function disksList(_api::DisksApi, subscriptionId::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_disksList(_api::DisksApi, subscriptionId::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", DiskList, "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/disks", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function disksList(_api::DisksApi, subscriptionId::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_disksList(_api, subscriptionId, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function disksList(_api::DisksApi, response_stream::Channel, subscriptionId::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_disksList(_api, subscriptionId, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -111,14 +161,24 @@ Param: resourceGroupName::String (required)
 Param: api_version::String (required)
 Return: DiskList
 """
-function disksListByResourceGroup(_api::DisksApi, subscriptionId::String, resourceGroupName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_disksListByResourceGroup(_api::DisksApi, subscriptionId::String, resourceGroupName::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", DiskList, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function disksListByResourceGroup(_api::DisksApi, subscriptionId::String, resourceGroupName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_disksListByResourceGroup(_api, subscriptionId, resourceGroupName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function disksListByResourceGroup(_api::DisksApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_disksListByResourceGroup(_api, subscriptionId, resourceGroupName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -130,7 +190,7 @@ Param: diskName::String (required)
 Param: api_version::String (required)
 Return: Nothing
 """
-function disksRevokeAccess(_api::DisksApi, subscriptionId::String, resourceGroupName::String, diskName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_disksRevokeAccess(_api::DisksApi, subscriptionId::String, resourceGroupName::String, diskName::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}/endGetAccess", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
@@ -138,7 +198,17 @@ function disksRevokeAccess(_api::DisksApi, subscriptionId::String, resourceGroup
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function disksRevokeAccess(_api::DisksApi, subscriptionId::String, resourceGroupName::String, diskName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_disksRevokeAccess(_api, subscriptionId, resourceGroupName, diskName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function disksRevokeAccess(_api::DisksApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, diskName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_disksRevokeAccess(_api, subscriptionId, resourceGroupName, diskName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -151,7 +221,7 @@ Param: api_version::String (required)
 Param: disk::DiskUpdate (required)
 Return: Disk
 """
-function disksUpdate(_api::DisksApi, subscriptionId::String, resourceGroupName::String, diskName::String, api_version::String, disk; _mediaType=nothing)
+function _swaggerinternal_disksUpdate(_api::DisksApi, subscriptionId::String, resourceGroupName::String, diskName::String, api_version::String, disk; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", Disk, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks/{diskName}", ["azure_auth"], disk)
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
@@ -159,7 +229,17 @@ function disksUpdate(_api::DisksApi, subscriptionId::String, resourceGroupName::
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function disksUpdate(_api::DisksApi, subscriptionId::String, resourceGroupName::String, diskName::String, api_version::String, disk; _mediaType=nothing)
+    _ctx = _swaggerinternal_disksUpdate(_api, subscriptionId, resourceGroupName, diskName, api_version, disk; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function disksUpdate(_api::DisksApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, diskName::String, api_version::String, disk; _mediaType=nothing)
+    _ctx = _swaggerinternal_disksUpdate(_api, subscriptionId, resourceGroupName, diskName, api_version, disk; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export disksCreateOrUpdate, disksDelete, disksGet, disksGrantAccess, disksList, disksListByResourceGroup, disksRevokeAccess, disksUpdate

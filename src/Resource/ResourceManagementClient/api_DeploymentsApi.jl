@@ -12,12 +12,22 @@ Param: api_version::String (required)
 Param: template::Any (required)
 Return: TemplateHashResult
 """
-function deploymentsCalculateTemplateHash(_api::DeploymentsApi, api_version::String, template; _mediaType=nothing)
+function _swaggerinternal_deploymentsCalculateTemplateHash(_api::DeploymentsApi, api_version::String, template; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", TemplateHashResult, "/providers/Microsoft.Resources/calculateTemplateHash", ["azure_auth"], template)
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsCalculateTemplateHash(_api::DeploymentsApi, api_version::String, template; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsCalculateTemplateHash(_api, api_version, template; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsCalculateTemplateHash(_api::DeploymentsApi, response_stream::Channel, api_version::String, template; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsCalculateTemplateHash(_api, api_version, template; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -29,7 +39,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function deploymentsCancel(_api::DeploymentsApi, resourceGroupName::String, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsCancel(_api::DeploymentsApi, resourceGroupName::String, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "deploymentsCancel", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "deploymentsCancel", :minLength, resourceGroupName, 1)
 
@@ -43,7 +53,17 @@ function deploymentsCancel(_api::DeploymentsApi, resourceGroupName::String, depl
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsCancel(_api::DeploymentsApi, resourceGroupName::String, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsCancel(_api, resourceGroupName, deploymentName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsCancel(_api::DeploymentsApi, response_stream::Channel, resourceGroupName::String, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsCancel(_api, resourceGroupName, deploymentName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -54,7 +74,7 @@ Param: deploymentName::String (required)
 Param: api_version::String (required)
 Return: Nothing
 """
-function deploymentsCancelAtManagementGroupScope(_api::DeploymentsApi, groupId::String, deploymentName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsCancelAtManagementGroupScope(_api::DeploymentsApi, groupId::String, deploymentName::String, api_version::String; _mediaType=nothing)
     Swagger.validate_param("groupId", "deploymentsCancelAtManagementGroupScope", :maxLength, groupId, 90)
     Swagger.validate_param("groupId", "deploymentsCancelAtManagementGroupScope", :minLength, groupId, 1)
 
@@ -67,7 +87,17 @@ function deploymentsCancelAtManagementGroupScope(_api::DeploymentsApi, groupId::
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsCancelAtManagementGroupScope(_api::DeploymentsApi, groupId::String, deploymentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsCancelAtManagementGroupScope(_api, groupId, deploymentName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsCancelAtManagementGroupScope(_api::DeploymentsApi, response_stream::Channel, groupId::String, deploymentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsCancelAtManagementGroupScope(_api, groupId, deploymentName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -78,7 +108,7 @@ Param: deploymentName::String (required)
 Param: api_version::String (required)
 Return: Nothing
 """
-function deploymentsCancelAtScope(_api::DeploymentsApi, scope::String, deploymentName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsCancelAtScope(_api::DeploymentsApi, scope::String, deploymentName::String, api_version::String; _mediaType=nothing)
     Swagger.validate_param("deploymentName", "deploymentsCancelAtScope", :maxLength, deploymentName, 64)
     Swagger.validate_param("deploymentName", "deploymentsCancelAtScope", :minLength, deploymentName, 1)
 
@@ -88,7 +118,17 @@ function deploymentsCancelAtScope(_api::DeploymentsApi, scope::String, deploymen
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsCancelAtScope(_api::DeploymentsApi, scope::String, deploymentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsCancelAtScope(_api, scope, deploymentName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsCancelAtScope(_api::DeploymentsApi, response_stream::Channel, scope::String, deploymentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsCancelAtScope(_api, scope, deploymentName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -99,7 +139,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function deploymentsCancelAtSubscriptionScope(_api::DeploymentsApi, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsCancelAtSubscriptionScope(_api::DeploymentsApi, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("deploymentName", "deploymentsCancelAtSubscriptionScope", :maxLength, deploymentName, 64)
     Swagger.validate_param("deploymentName", "deploymentsCancelAtSubscriptionScope", :minLength, deploymentName, 1)
 
@@ -109,7 +149,17 @@ function deploymentsCancelAtSubscriptionScope(_api::DeploymentsApi, deploymentNa
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsCancelAtSubscriptionScope(_api::DeploymentsApi, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsCancelAtSubscriptionScope(_api, deploymentName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsCancelAtSubscriptionScope(_api::DeploymentsApi, response_stream::Channel, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsCancelAtSubscriptionScope(_api, deploymentName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -119,7 +169,7 @@ Param: deploymentName::String (required)
 Param: api_version::String (required)
 Return: Nothing
 """
-function deploymentsCancelAtTenantScope(_api::DeploymentsApi, deploymentName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsCancelAtTenantScope(_api::DeploymentsApi, deploymentName::String, api_version::String; _mediaType=nothing)
     Swagger.validate_param("deploymentName", "deploymentsCancelAtTenantScope", :maxLength, deploymentName, 64)
     Swagger.validate_param("deploymentName", "deploymentsCancelAtTenantScope", :minLength, deploymentName, 1)
 
@@ -128,7 +178,17 @@ function deploymentsCancelAtTenantScope(_api::DeploymentsApi, deploymentName::St
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsCancelAtTenantScope(_api::DeploymentsApi, deploymentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsCancelAtTenantScope(_api, deploymentName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsCancelAtTenantScope(_api::DeploymentsApi, response_stream::Channel, deploymentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsCancelAtTenantScope(_api, deploymentName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -140,7 +200,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function deploymentsCheckExistence(_api::DeploymentsApi, resourceGroupName::String, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsCheckExistence(_api::DeploymentsApi, resourceGroupName::String, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "deploymentsCheckExistence", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "deploymentsCheckExistence", :minLength, resourceGroupName, 1)
 
@@ -154,7 +214,17 @@ function deploymentsCheckExistence(_api::DeploymentsApi, resourceGroupName::Stri
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsCheckExistence(_api::DeploymentsApi, resourceGroupName::String, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsCheckExistence(_api, resourceGroupName, deploymentName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsCheckExistence(_api::DeploymentsApi, response_stream::Channel, resourceGroupName::String, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsCheckExistence(_api, resourceGroupName, deploymentName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -165,7 +235,7 @@ Param: deploymentName::String (required)
 Param: api_version::String (required)
 Return: Nothing
 """
-function deploymentsCheckExistenceAtManagementGroupScope(_api::DeploymentsApi, groupId::String, deploymentName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsCheckExistenceAtManagementGroupScope(_api::DeploymentsApi, groupId::String, deploymentName::String, api_version::String; _mediaType=nothing)
     Swagger.validate_param("groupId", "deploymentsCheckExistenceAtManagementGroupScope", :maxLength, groupId, 90)
     Swagger.validate_param("groupId", "deploymentsCheckExistenceAtManagementGroupScope", :minLength, groupId, 1)
 
@@ -178,7 +248,17 @@ function deploymentsCheckExistenceAtManagementGroupScope(_api::DeploymentsApi, g
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsCheckExistenceAtManagementGroupScope(_api::DeploymentsApi, groupId::String, deploymentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsCheckExistenceAtManagementGroupScope(_api, groupId, deploymentName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsCheckExistenceAtManagementGroupScope(_api::DeploymentsApi, response_stream::Channel, groupId::String, deploymentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsCheckExistenceAtManagementGroupScope(_api, groupId, deploymentName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -189,7 +269,7 @@ Param: deploymentName::String (required)
 Param: api_version::String (required)
 Return: Nothing
 """
-function deploymentsCheckExistenceAtScope(_api::DeploymentsApi, scope::String, deploymentName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsCheckExistenceAtScope(_api::DeploymentsApi, scope::String, deploymentName::String, api_version::String; _mediaType=nothing)
     Swagger.validate_param("deploymentName", "deploymentsCheckExistenceAtScope", :maxLength, deploymentName, 64)
     Swagger.validate_param("deploymentName", "deploymentsCheckExistenceAtScope", :minLength, deploymentName, 1)
 
@@ -199,7 +279,17 @@ function deploymentsCheckExistenceAtScope(_api::DeploymentsApi, scope::String, d
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsCheckExistenceAtScope(_api::DeploymentsApi, scope::String, deploymentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsCheckExistenceAtScope(_api, scope, deploymentName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsCheckExistenceAtScope(_api::DeploymentsApi, response_stream::Channel, scope::String, deploymentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsCheckExistenceAtScope(_api, scope, deploymentName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -210,7 +300,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function deploymentsCheckExistenceAtSubscriptionScope(_api::DeploymentsApi, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsCheckExistenceAtSubscriptionScope(_api::DeploymentsApi, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("deploymentName", "deploymentsCheckExistenceAtSubscriptionScope", :maxLength, deploymentName, 64)
     Swagger.validate_param("deploymentName", "deploymentsCheckExistenceAtSubscriptionScope", :minLength, deploymentName, 1)
 
@@ -220,7 +310,17 @@ function deploymentsCheckExistenceAtSubscriptionScope(_api::DeploymentsApi, depl
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsCheckExistenceAtSubscriptionScope(_api::DeploymentsApi, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsCheckExistenceAtSubscriptionScope(_api, deploymentName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsCheckExistenceAtSubscriptionScope(_api::DeploymentsApi, response_stream::Channel, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsCheckExistenceAtSubscriptionScope(_api, deploymentName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -230,7 +330,7 @@ Param: deploymentName::String (required)
 Param: api_version::String (required)
 Return: Nothing
 """
-function deploymentsCheckExistenceAtTenantScope(_api::DeploymentsApi, deploymentName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsCheckExistenceAtTenantScope(_api::DeploymentsApi, deploymentName::String, api_version::String; _mediaType=nothing)
     Swagger.validate_param("deploymentName", "deploymentsCheckExistenceAtTenantScope", :maxLength, deploymentName, 64)
     Swagger.validate_param("deploymentName", "deploymentsCheckExistenceAtTenantScope", :minLength, deploymentName, 1)
 
@@ -239,7 +339,17 @@ function deploymentsCheckExistenceAtTenantScope(_api::DeploymentsApi, deployment
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsCheckExistenceAtTenantScope(_api::DeploymentsApi, deploymentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsCheckExistenceAtTenantScope(_api, deploymentName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsCheckExistenceAtTenantScope(_api::DeploymentsApi, response_stream::Channel, deploymentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsCheckExistenceAtTenantScope(_api, deploymentName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -252,7 +362,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: DeploymentExtended
 """
-function deploymentsCreateOrUpdate(_api::DeploymentsApi, resourceGroupName::String, deploymentName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsCreateOrUpdate(_api::DeploymentsApi, resourceGroupName::String, deploymentName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "deploymentsCreateOrUpdate", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "deploymentsCreateOrUpdate", :minLength, resourceGroupName, 1)
 
@@ -266,7 +376,17 @@ function deploymentsCreateOrUpdate(_api::DeploymentsApi, resourceGroupName::Stri
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsCreateOrUpdate(_api::DeploymentsApi, resourceGroupName::String, deploymentName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsCreateOrUpdate(_api, resourceGroupName, deploymentName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsCreateOrUpdate(_api::DeploymentsApi, response_stream::Channel, resourceGroupName::String, deploymentName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsCreateOrUpdate(_api, resourceGroupName, deploymentName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -278,7 +398,7 @@ Param: parameters::ScopedDeployment (required)
 Param: api_version::String (required)
 Return: DeploymentExtended
 """
-function deploymentsCreateOrUpdateAtManagementGroupScope(_api::DeploymentsApi, groupId::String, deploymentName::String, parameters, api_version::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsCreateOrUpdateAtManagementGroupScope(_api::DeploymentsApi, groupId::String, deploymentName::String, parameters, api_version::String; _mediaType=nothing)
     Swagger.validate_param("groupId", "deploymentsCreateOrUpdateAtManagementGroupScope", :maxLength, groupId, 90)
     Swagger.validate_param("groupId", "deploymentsCreateOrUpdateAtManagementGroupScope", :minLength, groupId, 1)
 
@@ -291,7 +411,17 @@ function deploymentsCreateOrUpdateAtManagementGroupScope(_api::DeploymentsApi, g
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsCreateOrUpdateAtManagementGroupScope(_api::DeploymentsApi, groupId::String, deploymentName::String, parameters, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsCreateOrUpdateAtManagementGroupScope(_api, groupId, deploymentName, parameters, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsCreateOrUpdateAtManagementGroupScope(_api::DeploymentsApi, response_stream::Channel, groupId::String, deploymentName::String, parameters, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsCreateOrUpdateAtManagementGroupScope(_api, groupId, deploymentName, parameters, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -303,7 +433,7 @@ Param: parameters::Deployment (required)
 Param: api_version::String (required)
 Return: DeploymentExtended
 """
-function deploymentsCreateOrUpdateAtScope(_api::DeploymentsApi, scope::String, deploymentName::String, parameters, api_version::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsCreateOrUpdateAtScope(_api::DeploymentsApi, scope::String, deploymentName::String, parameters, api_version::String; _mediaType=nothing)
     Swagger.validate_param("deploymentName", "deploymentsCreateOrUpdateAtScope", :maxLength, deploymentName, 64)
     Swagger.validate_param("deploymentName", "deploymentsCreateOrUpdateAtScope", :minLength, deploymentName, 1)
 
@@ -313,7 +443,17 @@ function deploymentsCreateOrUpdateAtScope(_api::DeploymentsApi, scope::String, d
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsCreateOrUpdateAtScope(_api::DeploymentsApi, scope::String, deploymentName::String, parameters, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsCreateOrUpdateAtScope(_api, scope, deploymentName, parameters, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsCreateOrUpdateAtScope(_api::DeploymentsApi, response_stream::Channel, scope::String, deploymentName::String, parameters, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsCreateOrUpdateAtScope(_api, scope, deploymentName, parameters, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -325,7 +465,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: DeploymentExtended
 """
-function deploymentsCreateOrUpdateAtSubscriptionScope(_api::DeploymentsApi, deploymentName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsCreateOrUpdateAtSubscriptionScope(_api::DeploymentsApi, deploymentName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("deploymentName", "deploymentsCreateOrUpdateAtSubscriptionScope", :maxLength, deploymentName, 64)
     Swagger.validate_param("deploymentName", "deploymentsCreateOrUpdateAtSubscriptionScope", :minLength, deploymentName, 1)
 
@@ -335,7 +475,17 @@ function deploymentsCreateOrUpdateAtSubscriptionScope(_api::DeploymentsApi, depl
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsCreateOrUpdateAtSubscriptionScope(_api::DeploymentsApi, deploymentName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsCreateOrUpdateAtSubscriptionScope(_api, deploymentName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsCreateOrUpdateAtSubscriptionScope(_api::DeploymentsApi, response_stream::Channel, deploymentName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsCreateOrUpdateAtSubscriptionScope(_api, deploymentName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -346,7 +496,7 @@ Param: parameters::ScopedDeployment (required)
 Param: api_version::String (required)
 Return: DeploymentExtended
 """
-function deploymentsCreateOrUpdateAtTenantScope(_api::DeploymentsApi, deploymentName::String, parameters, api_version::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsCreateOrUpdateAtTenantScope(_api::DeploymentsApi, deploymentName::String, parameters, api_version::String; _mediaType=nothing)
     Swagger.validate_param("deploymentName", "deploymentsCreateOrUpdateAtTenantScope", :maxLength, deploymentName, 64)
     Swagger.validate_param("deploymentName", "deploymentsCreateOrUpdateAtTenantScope", :minLength, deploymentName, 1)
 
@@ -355,7 +505,17 @@ function deploymentsCreateOrUpdateAtTenantScope(_api::DeploymentsApi, deployment
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsCreateOrUpdateAtTenantScope(_api::DeploymentsApi, deploymentName::String, parameters, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsCreateOrUpdateAtTenantScope(_api, deploymentName, parameters, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsCreateOrUpdateAtTenantScope(_api::DeploymentsApi, response_stream::Channel, deploymentName::String, parameters, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsCreateOrUpdateAtTenantScope(_api, deploymentName, parameters, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -367,7 +527,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function deploymentsDelete(_api::DeploymentsApi, resourceGroupName::String, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsDelete(_api::DeploymentsApi, resourceGroupName::String, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "deploymentsDelete", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "deploymentsDelete", :minLength, resourceGroupName, 1)
 
@@ -381,7 +541,17 @@ function deploymentsDelete(_api::DeploymentsApi, resourceGroupName::String, depl
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsDelete(_api::DeploymentsApi, resourceGroupName::String, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsDelete(_api, resourceGroupName, deploymentName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsDelete(_api::DeploymentsApi, response_stream::Channel, resourceGroupName::String, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsDelete(_api, resourceGroupName, deploymentName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -392,7 +562,7 @@ Param: deploymentName::String (required)
 Param: api_version::String (required)
 Return: Nothing
 """
-function deploymentsDeleteAtManagementGroupScope(_api::DeploymentsApi, groupId::String, deploymentName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsDeleteAtManagementGroupScope(_api::DeploymentsApi, groupId::String, deploymentName::String, api_version::String; _mediaType=nothing)
     Swagger.validate_param("groupId", "deploymentsDeleteAtManagementGroupScope", :maxLength, groupId, 90)
     Swagger.validate_param("groupId", "deploymentsDeleteAtManagementGroupScope", :minLength, groupId, 1)
 
@@ -405,7 +575,17 @@ function deploymentsDeleteAtManagementGroupScope(_api::DeploymentsApi, groupId::
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsDeleteAtManagementGroupScope(_api::DeploymentsApi, groupId::String, deploymentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsDeleteAtManagementGroupScope(_api, groupId, deploymentName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsDeleteAtManagementGroupScope(_api::DeploymentsApi, response_stream::Channel, groupId::String, deploymentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsDeleteAtManagementGroupScope(_api, groupId, deploymentName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -416,7 +596,7 @@ Param: deploymentName::String (required)
 Param: api_version::String (required)
 Return: Nothing
 """
-function deploymentsDeleteAtScope(_api::DeploymentsApi, scope::String, deploymentName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsDeleteAtScope(_api::DeploymentsApi, scope::String, deploymentName::String, api_version::String; _mediaType=nothing)
     Swagger.validate_param("deploymentName", "deploymentsDeleteAtScope", :maxLength, deploymentName, 64)
     Swagger.validate_param("deploymentName", "deploymentsDeleteAtScope", :minLength, deploymentName, 1)
 
@@ -426,7 +606,17 @@ function deploymentsDeleteAtScope(_api::DeploymentsApi, scope::String, deploymen
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsDeleteAtScope(_api::DeploymentsApi, scope::String, deploymentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsDeleteAtScope(_api, scope, deploymentName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsDeleteAtScope(_api::DeploymentsApi, response_stream::Channel, scope::String, deploymentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsDeleteAtScope(_api, scope, deploymentName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -437,7 +627,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function deploymentsDeleteAtSubscriptionScope(_api::DeploymentsApi, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsDeleteAtSubscriptionScope(_api::DeploymentsApi, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("deploymentName", "deploymentsDeleteAtSubscriptionScope", :maxLength, deploymentName, 64)
     Swagger.validate_param("deploymentName", "deploymentsDeleteAtSubscriptionScope", :minLength, deploymentName, 1)
 
@@ -447,7 +637,17 @@ function deploymentsDeleteAtSubscriptionScope(_api::DeploymentsApi, deploymentNa
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsDeleteAtSubscriptionScope(_api::DeploymentsApi, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsDeleteAtSubscriptionScope(_api, deploymentName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsDeleteAtSubscriptionScope(_api::DeploymentsApi, response_stream::Channel, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsDeleteAtSubscriptionScope(_api, deploymentName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -457,7 +657,7 @@ Param: deploymentName::String (required)
 Param: api_version::String (required)
 Return: Nothing
 """
-function deploymentsDeleteAtTenantScope(_api::DeploymentsApi, deploymentName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsDeleteAtTenantScope(_api::DeploymentsApi, deploymentName::String, api_version::String; _mediaType=nothing)
     Swagger.validate_param("deploymentName", "deploymentsDeleteAtTenantScope", :maxLength, deploymentName, 64)
     Swagger.validate_param("deploymentName", "deploymentsDeleteAtTenantScope", :minLength, deploymentName, 1)
 
@@ -466,7 +666,17 @@ function deploymentsDeleteAtTenantScope(_api::DeploymentsApi, deploymentName::St
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsDeleteAtTenantScope(_api::DeploymentsApi, deploymentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsDeleteAtTenantScope(_api, deploymentName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsDeleteAtTenantScope(_api::DeploymentsApi, response_stream::Channel, deploymentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsDeleteAtTenantScope(_api, deploymentName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -478,7 +688,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: DeploymentExportResult
 """
-function deploymentsExportTemplate(_api::DeploymentsApi, resourceGroupName::String, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsExportTemplate(_api::DeploymentsApi, resourceGroupName::String, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "deploymentsExportTemplate", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "deploymentsExportTemplate", :minLength, resourceGroupName, 1)
 
@@ -492,7 +702,17 @@ function deploymentsExportTemplate(_api::DeploymentsApi, resourceGroupName::Stri
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsExportTemplate(_api::DeploymentsApi, resourceGroupName::String, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsExportTemplate(_api, resourceGroupName, deploymentName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsExportTemplate(_api::DeploymentsApi, response_stream::Channel, resourceGroupName::String, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsExportTemplate(_api, resourceGroupName, deploymentName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -503,7 +723,7 @@ Param: deploymentName::String (required)
 Param: api_version::String (required)
 Return: DeploymentExportResult
 """
-function deploymentsExportTemplateAtManagementGroupScope(_api::DeploymentsApi, groupId::String, deploymentName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsExportTemplateAtManagementGroupScope(_api::DeploymentsApi, groupId::String, deploymentName::String, api_version::String; _mediaType=nothing)
     Swagger.validate_param("groupId", "deploymentsExportTemplateAtManagementGroupScope", :maxLength, groupId, 90)
     Swagger.validate_param("groupId", "deploymentsExportTemplateAtManagementGroupScope", :minLength, groupId, 1)
 
@@ -516,7 +736,17 @@ function deploymentsExportTemplateAtManagementGroupScope(_api::DeploymentsApi, g
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsExportTemplateAtManagementGroupScope(_api::DeploymentsApi, groupId::String, deploymentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsExportTemplateAtManagementGroupScope(_api, groupId, deploymentName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsExportTemplateAtManagementGroupScope(_api::DeploymentsApi, response_stream::Channel, groupId::String, deploymentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsExportTemplateAtManagementGroupScope(_api, groupId, deploymentName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -527,7 +757,7 @@ Param: deploymentName::String (required)
 Param: api_version::String (required)
 Return: DeploymentExportResult
 """
-function deploymentsExportTemplateAtScope(_api::DeploymentsApi, scope::String, deploymentName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsExportTemplateAtScope(_api::DeploymentsApi, scope::String, deploymentName::String, api_version::String; _mediaType=nothing)
     Swagger.validate_param("deploymentName", "deploymentsExportTemplateAtScope", :maxLength, deploymentName, 64)
     Swagger.validate_param("deploymentName", "deploymentsExportTemplateAtScope", :minLength, deploymentName, 1)
 
@@ -537,7 +767,17 @@ function deploymentsExportTemplateAtScope(_api::DeploymentsApi, scope::String, d
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsExportTemplateAtScope(_api::DeploymentsApi, scope::String, deploymentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsExportTemplateAtScope(_api, scope, deploymentName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsExportTemplateAtScope(_api::DeploymentsApi, response_stream::Channel, scope::String, deploymentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsExportTemplateAtScope(_api, scope, deploymentName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -548,7 +788,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: DeploymentExportResult
 """
-function deploymentsExportTemplateAtSubscriptionScope(_api::DeploymentsApi, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsExportTemplateAtSubscriptionScope(_api::DeploymentsApi, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("deploymentName", "deploymentsExportTemplateAtSubscriptionScope", :maxLength, deploymentName, 64)
     Swagger.validate_param("deploymentName", "deploymentsExportTemplateAtSubscriptionScope", :minLength, deploymentName, 1)
 
@@ -558,7 +798,17 @@ function deploymentsExportTemplateAtSubscriptionScope(_api::DeploymentsApi, depl
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsExportTemplateAtSubscriptionScope(_api::DeploymentsApi, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsExportTemplateAtSubscriptionScope(_api, deploymentName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsExportTemplateAtSubscriptionScope(_api::DeploymentsApi, response_stream::Channel, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsExportTemplateAtSubscriptionScope(_api, deploymentName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -568,7 +818,7 @@ Param: deploymentName::String (required)
 Param: api_version::String (required)
 Return: DeploymentExportResult
 """
-function deploymentsExportTemplateAtTenantScope(_api::DeploymentsApi, deploymentName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsExportTemplateAtTenantScope(_api::DeploymentsApi, deploymentName::String, api_version::String; _mediaType=nothing)
     Swagger.validate_param("deploymentName", "deploymentsExportTemplateAtTenantScope", :maxLength, deploymentName, 64)
     Swagger.validate_param("deploymentName", "deploymentsExportTemplateAtTenantScope", :minLength, deploymentName, 1)
 
@@ -577,7 +827,17 @@ function deploymentsExportTemplateAtTenantScope(_api::DeploymentsApi, deployment
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsExportTemplateAtTenantScope(_api::DeploymentsApi, deploymentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsExportTemplateAtTenantScope(_api, deploymentName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsExportTemplateAtTenantScope(_api::DeploymentsApi, response_stream::Channel, deploymentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsExportTemplateAtTenantScope(_api, deploymentName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -589,7 +849,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: DeploymentExtended
 """
-function deploymentsGet(_api::DeploymentsApi, resourceGroupName::String, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsGet(_api::DeploymentsApi, resourceGroupName::String, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "deploymentsGet", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "deploymentsGet", :minLength, resourceGroupName, 1)
 
@@ -603,7 +863,17 @@ function deploymentsGet(_api::DeploymentsApi, resourceGroupName::String, deploym
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsGet(_api::DeploymentsApi, resourceGroupName::String, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsGet(_api, resourceGroupName, deploymentName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsGet(_api::DeploymentsApi, response_stream::Channel, resourceGroupName::String, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsGet(_api, resourceGroupName, deploymentName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -614,7 +884,7 @@ Param: deploymentName::String (required)
 Param: api_version::String (required)
 Return: DeploymentExtended
 """
-function deploymentsGetAtManagementGroupScope(_api::DeploymentsApi, groupId::String, deploymentName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsGetAtManagementGroupScope(_api::DeploymentsApi, groupId::String, deploymentName::String, api_version::String; _mediaType=nothing)
     Swagger.validate_param("groupId", "deploymentsGetAtManagementGroupScope", :maxLength, groupId, 90)
     Swagger.validate_param("groupId", "deploymentsGetAtManagementGroupScope", :minLength, groupId, 1)
 
@@ -627,7 +897,17 @@ function deploymentsGetAtManagementGroupScope(_api::DeploymentsApi, groupId::Str
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsGetAtManagementGroupScope(_api::DeploymentsApi, groupId::String, deploymentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsGetAtManagementGroupScope(_api, groupId, deploymentName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsGetAtManagementGroupScope(_api::DeploymentsApi, response_stream::Channel, groupId::String, deploymentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsGetAtManagementGroupScope(_api, groupId, deploymentName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -638,7 +918,7 @@ Param: deploymentName::String (required)
 Param: api_version::String (required)
 Return: DeploymentExtended
 """
-function deploymentsGetAtScope(_api::DeploymentsApi, scope::String, deploymentName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsGetAtScope(_api::DeploymentsApi, scope::String, deploymentName::String, api_version::String; _mediaType=nothing)
     Swagger.validate_param("deploymentName", "deploymentsGetAtScope", :maxLength, deploymentName, 64)
     Swagger.validate_param("deploymentName", "deploymentsGetAtScope", :minLength, deploymentName, 1)
 
@@ -648,7 +928,17 @@ function deploymentsGetAtScope(_api::DeploymentsApi, scope::String, deploymentNa
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsGetAtScope(_api::DeploymentsApi, scope::String, deploymentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsGetAtScope(_api, scope, deploymentName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsGetAtScope(_api::DeploymentsApi, response_stream::Channel, scope::String, deploymentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsGetAtScope(_api, scope, deploymentName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -659,7 +949,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: DeploymentExtended
 """
-function deploymentsGetAtSubscriptionScope(_api::DeploymentsApi, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsGetAtSubscriptionScope(_api::DeploymentsApi, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("deploymentName", "deploymentsGetAtSubscriptionScope", :maxLength, deploymentName, 64)
     Swagger.validate_param("deploymentName", "deploymentsGetAtSubscriptionScope", :minLength, deploymentName, 1)
 
@@ -669,7 +959,17 @@ function deploymentsGetAtSubscriptionScope(_api::DeploymentsApi, deploymentName:
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsGetAtSubscriptionScope(_api::DeploymentsApi, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsGetAtSubscriptionScope(_api, deploymentName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsGetAtSubscriptionScope(_api::DeploymentsApi, response_stream::Channel, deploymentName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsGetAtSubscriptionScope(_api, deploymentName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -679,7 +979,7 @@ Param: deploymentName::String (required)
 Param: api_version::String (required)
 Return: DeploymentExtended
 """
-function deploymentsGetAtTenantScope(_api::DeploymentsApi, deploymentName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsGetAtTenantScope(_api::DeploymentsApi, deploymentName::String, api_version::String; _mediaType=nothing)
     Swagger.validate_param("deploymentName", "deploymentsGetAtTenantScope", :maxLength, deploymentName, 64)
     Swagger.validate_param("deploymentName", "deploymentsGetAtTenantScope", :minLength, deploymentName, 1)
 
@@ -688,7 +988,17 @@ function deploymentsGetAtTenantScope(_api::DeploymentsApi, deploymentName::Strin
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsGetAtTenantScope(_api::DeploymentsApi, deploymentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsGetAtTenantScope(_api, deploymentName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsGetAtTenantScope(_api::DeploymentsApi, response_stream::Channel, deploymentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsGetAtTenantScope(_api, deploymentName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -700,7 +1010,7 @@ Param: filter::String
 Param: top::Int32
 Return: DeploymentListResult
 """
-function deploymentsListAtManagementGroupScope(_api::DeploymentsApi, groupId::String, api_version::String; filter=nothing, top=nothing, _mediaType=nothing)
+function _swaggerinternal_deploymentsListAtManagementGroupScope(_api::DeploymentsApi, groupId::String, api_version::String; filter=nothing, top=nothing, _mediaType=nothing)
     Swagger.validate_param("groupId", "deploymentsListAtManagementGroupScope", :maxLength, groupId, 90)
     Swagger.validate_param("groupId", "deploymentsListAtManagementGroupScope", :minLength, groupId, 1)
 
@@ -711,7 +1021,17 @@ function deploymentsListAtManagementGroupScope(_api::DeploymentsApi, groupId::St
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsListAtManagementGroupScope(_api::DeploymentsApi, groupId::String, api_version::String; filter=nothing, top=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsListAtManagementGroupScope(_api, groupId, api_version; filter=filter, top=top, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsListAtManagementGroupScope(_api::DeploymentsApi, response_stream::Channel, groupId::String, api_version::String; filter=nothing, top=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsListAtManagementGroupScope(_api, groupId, api_version; filter=filter, top=top, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -723,7 +1043,7 @@ Param: filter::String
 Param: top::Int32
 Return: DeploymentListResult
 """
-function deploymentsListAtScope(_api::DeploymentsApi, scope::String, api_version::String; filter=nothing, top=nothing, _mediaType=nothing)
+function _swaggerinternal_deploymentsListAtScope(_api::DeploymentsApi, scope::String, api_version::String; filter=nothing, top=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", DeploymentListResult, "/{scope}/providers/Microsoft.Resources/deployments/", ["azure_auth"])
     Swagger.set_param(_ctx.path, "scope", scope)  # type String
     Swagger.set_param(_ctx.query, "\$filter", filter)  # type String
@@ -731,7 +1051,17 @@ function deploymentsListAtScope(_api::DeploymentsApi, scope::String, api_version
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsListAtScope(_api::DeploymentsApi, scope::String, api_version::String; filter=nothing, top=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsListAtScope(_api, scope, api_version; filter=filter, top=top, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsListAtScope(_api::DeploymentsApi, response_stream::Channel, scope::String, api_version::String; filter=nothing, top=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsListAtScope(_api, scope, api_version; filter=filter, top=top, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -743,7 +1073,7 @@ Param: filter::String
 Param: top::Int32
 Return: DeploymentListResult
 """
-function deploymentsListAtSubscriptionScope(_api::DeploymentsApi, api_version::String, subscriptionId::String; filter=nothing, top=nothing, _mediaType=nothing)
+function _swaggerinternal_deploymentsListAtSubscriptionScope(_api::DeploymentsApi, api_version::String, subscriptionId::String; filter=nothing, top=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", DeploymentListResult, "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "\$filter", filter)  # type String
@@ -751,7 +1081,17 @@ function deploymentsListAtSubscriptionScope(_api::DeploymentsApi, api_version::S
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsListAtSubscriptionScope(_api::DeploymentsApi, api_version::String, subscriptionId::String; filter=nothing, top=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsListAtSubscriptionScope(_api, api_version, subscriptionId; filter=filter, top=top, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsListAtSubscriptionScope(_api::DeploymentsApi, response_stream::Channel, api_version::String, subscriptionId::String; filter=nothing, top=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsListAtSubscriptionScope(_api, api_version, subscriptionId; filter=filter, top=top, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -762,14 +1102,24 @@ Param: filter::String
 Param: top::Int32
 Return: DeploymentListResult
 """
-function deploymentsListAtTenantScope(_api::DeploymentsApi, api_version::String; filter=nothing, top=nothing, _mediaType=nothing)
+function _swaggerinternal_deploymentsListAtTenantScope(_api::DeploymentsApi, api_version::String; filter=nothing, top=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", DeploymentListResult, "/providers/Microsoft.Resources/deployments/", ["azure_auth"])
     Swagger.set_param(_ctx.query, "\$filter", filter)  # type String
     Swagger.set_param(_ctx.query, "\$top", top)  # type Int32
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsListAtTenantScope(_api::DeploymentsApi, api_version::String; filter=nothing, top=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsListAtTenantScope(_api, api_version; filter=filter, top=top, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsListAtTenantScope(_api::DeploymentsApi, response_stream::Channel, api_version::String; filter=nothing, top=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsListAtTenantScope(_api, api_version; filter=filter, top=top, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -782,7 +1132,7 @@ Param: filter::String
 Param: top::Int32
 Return: DeploymentListResult
 """
-function deploymentsListByResourceGroup(_api::DeploymentsApi, resourceGroupName::String, api_version::String, subscriptionId::String; filter=nothing, top=nothing, _mediaType=nothing)
+function _swaggerinternal_deploymentsListByResourceGroup(_api::DeploymentsApi, resourceGroupName::String, api_version::String, subscriptionId::String; filter=nothing, top=nothing, _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "deploymentsListByResourceGroup", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "deploymentsListByResourceGroup", :minLength, resourceGroupName, 1)
 
@@ -794,7 +1144,17 @@ function deploymentsListByResourceGroup(_api::DeploymentsApi, resourceGroupName:
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsListByResourceGroup(_api::DeploymentsApi, resourceGroupName::String, api_version::String, subscriptionId::String; filter=nothing, top=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsListByResourceGroup(_api, resourceGroupName, api_version, subscriptionId; filter=filter, top=top, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsListByResourceGroup(_api::DeploymentsApi, response_stream::Channel, resourceGroupName::String, api_version::String, subscriptionId::String; filter=nothing, top=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsListByResourceGroup(_api, resourceGroupName, api_version, subscriptionId; filter=filter, top=top, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -807,7 +1167,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: DeploymentValidateResult
 """
-function deploymentsValidate(_api::DeploymentsApi, resourceGroupName::String, deploymentName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsValidate(_api::DeploymentsApi, resourceGroupName::String, deploymentName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "deploymentsValidate", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "deploymentsValidate", :minLength, resourceGroupName, 1)
 
@@ -821,7 +1181,17 @@ function deploymentsValidate(_api::DeploymentsApi, resourceGroupName::String, de
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsValidate(_api::DeploymentsApi, resourceGroupName::String, deploymentName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsValidate(_api, resourceGroupName, deploymentName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsValidate(_api::DeploymentsApi, response_stream::Channel, resourceGroupName::String, deploymentName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsValidate(_api, resourceGroupName, deploymentName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -833,7 +1203,7 @@ Param: parameters::ScopedDeployment (required)
 Param: api_version::String (required)
 Return: DeploymentValidateResult
 """
-function deploymentsValidateAtManagementGroupScope(_api::DeploymentsApi, groupId::String, deploymentName::String, parameters, api_version::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsValidateAtManagementGroupScope(_api::DeploymentsApi, groupId::String, deploymentName::String, parameters, api_version::String; _mediaType=nothing)
     Swagger.validate_param("groupId", "deploymentsValidateAtManagementGroupScope", :maxLength, groupId, 90)
     Swagger.validate_param("groupId", "deploymentsValidateAtManagementGroupScope", :minLength, groupId, 1)
 
@@ -846,7 +1216,17 @@ function deploymentsValidateAtManagementGroupScope(_api::DeploymentsApi, groupId
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsValidateAtManagementGroupScope(_api::DeploymentsApi, groupId::String, deploymentName::String, parameters, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsValidateAtManagementGroupScope(_api, groupId, deploymentName, parameters, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsValidateAtManagementGroupScope(_api::DeploymentsApi, response_stream::Channel, groupId::String, deploymentName::String, parameters, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsValidateAtManagementGroupScope(_api, groupId, deploymentName, parameters, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -858,7 +1238,7 @@ Param: parameters::Deployment (required)
 Param: api_version::String (required)
 Return: DeploymentValidateResult
 """
-function deploymentsValidateAtScope(_api::DeploymentsApi, scope::String, deploymentName::String, parameters, api_version::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsValidateAtScope(_api::DeploymentsApi, scope::String, deploymentName::String, parameters, api_version::String; _mediaType=nothing)
     Swagger.validate_param("deploymentName", "deploymentsValidateAtScope", :maxLength, deploymentName, 64)
     Swagger.validate_param("deploymentName", "deploymentsValidateAtScope", :minLength, deploymentName, 1)
 
@@ -868,7 +1248,17 @@ function deploymentsValidateAtScope(_api::DeploymentsApi, scope::String, deploym
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsValidateAtScope(_api::DeploymentsApi, scope::String, deploymentName::String, parameters, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsValidateAtScope(_api, scope, deploymentName, parameters, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsValidateAtScope(_api::DeploymentsApi, response_stream::Channel, scope::String, deploymentName::String, parameters, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsValidateAtScope(_api, scope, deploymentName, parameters, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -880,7 +1270,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: DeploymentValidateResult
 """
-function deploymentsValidateAtSubscriptionScope(_api::DeploymentsApi, deploymentName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsValidateAtSubscriptionScope(_api::DeploymentsApi, deploymentName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("deploymentName", "deploymentsValidateAtSubscriptionScope", :maxLength, deploymentName, 64)
     Swagger.validate_param("deploymentName", "deploymentsValidateAtSubscriptionScope", :minLength, deploymentName, 1)
 
@@ -890,7 +1280,17 @@ function deploymentsValidateAtSubscriptionScope(_api::DeploymentsApi, deployment
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsValidateAtSubscriptionScope(_api::DeploymentsApi, deploymentName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsValidateAtSubscriptionScope(_api, deploymentName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsValidateAtSubscriptionScope(_api::DeploymentsApi, response_stream::Channel, deploymentName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsValidateAtSubscriptionScope(_api, deploymentName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -901,7 +1301,7 @@ Param: parameters::ScopedDeployment (required)
 Param: api_version::String (required)
 Return: DeploymentValidateResult
 """
-function deploymentsValidateAtTenantScope(_api::DeploymentsApi, deploymentName::String, parameters, api_version::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsValidateAtTenantScope(_api::DeploymentsApi, deploymentName::String, parameters, api_version::String; _mediaType=nothing)
     Swagger.validate_param("deploymentName", "deploymentsValidateAtTenantScope", :maxLength, deploymentName, 64)
     Swagger.validate_param("deploymentName", "deploymentsValidateAtTenantScope", :minLength, deploymentName, 1)
 
@@ -910,7 +1310,17 @@ function deploymentsValidateAtTenantScope(_api::DeploymentsApi, deploymentName::
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsValidateAtTenantScope(_api::DeploymentsApi, deploymentName::String, parameters, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsValidateAtTenantScope(_api, deploymentName, parameters, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsValidateAtTenantScope(_api::DeploymentsApi, response_stream::Channel, deploymentName::String, parameters, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsValidateAtTenantScope(_api, deploymentName, parameters, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -923,7 +1333,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: WhatIfOperationResult
 """
-function deploymentsWhatIf(_api::DeploymentsApi, resourceGroupName::String, deploymentName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsWhatIf(_api::DeploymentsApi, resourceGroupName::String, deploymentName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "deploymentsWhatIf", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "deploymentsWhatIf", :minLength, resourceGroupName, 1)
 
@@ -937,7 +1347,17 @@ function deploymentsWhatIf(_api::DeploymentsApi, resourceGroupName::String, depl
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsWhatIf(_api::DeploymentsApi, resourceGroupName::String, deploymentName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsWhatIf(_api, resourceGroupName, deploymentName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsWhatIf(_api::DeploymentsApi, response_stream::Channel, resourceGroupName::String, deploymentName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsWhatIf(_api, resourceGroupName, deploymentName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -949,7 +1369,7 @@ Param: parameters::ScopedDeploymentWhatIf (required)
 Param: api_version::String (required)
 Return: WhatIfOperationResult
 """
-function deploymentsWhatIfAtManagementGroupScope(_api::DeploymentsApi, groupId::String, deploymentName::String, parameters, api_version::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsWhatIfAtManagementGroupScope(_api::DeploymentsApi, groupId::String, deploymentName::String, parameters, api_version::String; _mediaType=nothing)
     Swagger.validate_param("groupId", "deploymentsWhatIfAtManagementGroupScope", :maxLength, groupId, 90)
     Swagger.validate_param("groupId", "deploymentsWhatIfAtManagementGroupScope", :minLength, groupId, 1)
 
@@ -962,7 +1382,17 @@ function deploymentsWhatIfAtManagementGroupScope(_api::DeploymentsApi, groupId::
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsWhatIfAtManagementGroupScope(_api::DeploymentsApi, groupId::String, deploymentName::String, parameters, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsWhatIfAtManagementGroupScope(_api, groupId, deploymentName, parameters, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsWhatIfAtManagementGroupScope(_api::DeploymentsApi, response_stream::Channel, groupId::String, deploymentName::String, parameters, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsWhatIfAtManagementGroupScope(_api, groupId, deploymentName, parameters, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -974,7 +1404,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: WhatIfOperationResult
 """
-function deploymentsWhatIfAtSubscriptionScope(_api::DeploymentsApi, deploymentName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsWhatIfAtSubscriptionScope(_api::DeploymentsApi, deploymentName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("deploymentName", "deploymentsWhatIfAtSubscriptionScope", :maxLength, deploymentName, 64)
     Swagger.validate_param("deploymentName", "deploymentsWhatIfAtSubscriptionScope", :minLength, deploymentName, 1)
 
@@ -984,7 +1414,17 @@ function deploymentsWhatIfAtSubscriptionScope(_api::DeploymentsApi, deploymentNa
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsWhatIfAtSubscriptionScope(_api::DeploymentsApi, deploymentName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsWhatIfAtSubscriptionScope(_api, deploymentName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsWhatIfAtSubscriptionScope(_api::DeploymentsApi, response_stream::Channel, deploymentName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsWhatIfAtSubscriptionScope(_api, deploymentName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -995,7 +1435,7 @@ Param: parameters::ScopedDeploymentWhatIf (required)
 Param: api_version::String (required)
 Return: WhatIfOperationResult
 """
-function deploymentsWhatIfAtTenantScope(_api::DeploymentsApi, deploymentName::String, parameters, api_version::String; _mediaType=nothing)
+function _swaggerinternal_deploymentsWhatIfAtTenantScope(_api::DeploymentsApi, deploymentName::String, parameters, api_version::String; _mediaType=nothing)
     Swagger.validate_param("deploymentName", "deploymentsWhatIfAtTenantScope", :maxLength, deploymentName, 64)
     Swagger.validate_param("deploymentName", "deploymentsWhatIfAtTenantScope", :minLength, deploymentName, 1)
 
@@ -1004,7 +1444,17 @@ function deploymentsWhatIfAtTenantScope(_api::DeploymentsApi, deploymentName::St
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function deploymentsWhatIfAtTenantScope(_api::DeploymentsApi, deploymentName::String, parameters, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsWhatIfAtTenantScope(_api, deploymentName, parameters, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function deploymentsWhatIfAtTenantScope(_api::DeploymentsApi, response_stream::Channel, deploymentName::String, parameters, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_deploymentsWhatIfAtTenantScope(_api, deploymentName, parameters, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export deploymentsCalculateTemplateHash, deploymentsCancel, deploymentsCancelAtManagementGroupScope, deploymentsCancelAtScope, deploymentsCancelAtSubscriptionScope, deploymentsCancelAtTenantScope, deploymentsCheckExistence, deploymentsCheckExistenceAtManagementGroupScope, deploymentsCheckExistenceAtScope, deploymentsCheckExistenceAtSubscriptionScope, deploymentsCheckExistenceAtTenantScope, deploymentsCreateOrUpdate, deploymentsCreateOrUpdateAtManagementGroupScope, deploymentsCreateOrUpdateAtScope, deploymentsCreateOrUpdateAtSubscriptionScope, deploymentsCreateOrUpdateAtTenantScope, deploymentsDelete, deploymentsDeleteAtManagementGroupScope, deploymentsDeleteAtScope, deploymentsDeleteAtSubscriptionScope, deploymentsDeleteAtTenantScope, deploymentsExportTemplate, deploymentsExportTemplateAtManagementGroupScope, deploymentsExportTemplateAtScope, deploymentsExportTemplateAtSubscriptionScope, deploymentsExportTemplateAtTenantScope, deploymentsGet, deploymentsGetAtManagementGroupScope, deploymentsGetAtScope, deploymentsGetAtSubscriptionScope, deploymentsGetAtTenantScope, deploymentsListAtManagementGroupScope, deploymentsListAtScope, deploymentsListAtSubscriptionScope, deploymentsListAtTenantScope, deploymentsListByResourceGroup, deploymentsValidate, deploymentsValidateAtManagementGroupScope, deploymentsValidateAtScope, deploymentsValidateAtSubscriptionScope, deploymentsValidateAtTenantScope, deploymentsWhatIf, deploymentsWhatIfAtManagementGroupScope, deploymentsWhatIfAtSubscriptionScope, deploymentsWhatIfAtTenantScope

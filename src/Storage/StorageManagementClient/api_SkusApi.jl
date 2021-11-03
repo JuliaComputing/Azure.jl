@@ -12,7 +12,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: StorageSkuListResult
 """
-function skusList(_api::SkusApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_skusList(_api::SkusApi, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("api_version", "skusList", :minLength, api_version, 1)
 
     Swagger.validate_param("subscriptionId", "skusList", :minLength, subscriptionId, 1)
@@ -22,7 +22,17 @@ function skusList(_api::SkusApi, api_version::String, subscriptionId::String; _m
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function skusList(_api::SkusApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_skusList(_api, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function skusList(_api::SkusApi, response_stream::Channel, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_skusList(_api, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export skusList

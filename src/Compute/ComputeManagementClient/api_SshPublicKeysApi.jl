@@ -15,7 +15,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: SshPublicKeyResource
 """
-function sshPublicKeysCreate(_api::SshPublicKeysApi, resourceGroupName::String, sshPublicKeyName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_sshPublicKeysCreate(_api::SshPublicKeysApi, resourceGroupName::String, sshPublicKeyName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", SshPublicKeyResource, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/sshPublicKeys/{sshPublicKeyName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "sshPublicKeyName", sshPublicKeyName)  # type String
@@ -23,7 +23,17 @@ function sshPublicKeysCreate(_api::SshPublicKeysApi, resourceGroupName::String, 
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function sshPublicKeysCreate(_api::SshPublicKeysApi, resourceGroupName::String, sshPublicKeyName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_sshPublicKeysCreate(_api, resourceGroupName, sshPublicKeyName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function sshPublicKeysCreate(_api::SshPublicKeysApi, response_stream::Channel, resourceGroupName::String, sshPublicKeyName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_sshPublicKeysCreate(_api, resourceGroupName, sshPublicKeyName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -35,7 +45,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function sshPublicKeysDelete(_api::SshPublicKeysApi, resourceGroupName::String, sshPublicKeyName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_sshPublicKeysDelete(_api::SshPublicKeysApi, resourceGroupName::String, sshPublicKeyName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/sshPublicKeys/{sshPublicKeyName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "sshPublicKeyName", sshPublicKeyName)  # type String
@@ -43,7 +53,17 @@ function sshPublicKeysDelete(_api::SshPublicKeysApi, resourceGroupName::String, 
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function sshPublicKeysDelete(_api::SshPublicKeysApi, resourceGroupName::String, sshPublicKeyName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_sshPublicKeysDelete(_api, resourceGroupName, sshPublicKeyName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function sshPublicKeysDelete(_api::SshPublicKeysApi, response_stream::Channel, resourceGroupName::String, sshPublicKeyName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_sshPublicKeysDelete(_api, resourceGroupName, sshPublicKeyName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -55,7 +75,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: SshPublicKeyGenerateKeyPairResult
 """
-function sshPublicKeysGenerateKeyPair(_api::SshPublicKeysApi, resourceGroupName::String, sshPublicKeyName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_sshPublicKeysGenerateKeyPair(_api::SshPublicKeysApi, resourceGroupName::String, sshPublicKeyName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", SshPublicKeyGenerateKeyPairResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/sshPublicKeys/{sshPublicKeyName}/generateKeyPair", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "sshPublicKeyName", sshPublicKeyName)  # type String
@@ -63,7 +83,17 @@ function sshPublicKeysGenerateKeyPair(_api::SshPublicKeysApi, resourceGroupName:
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function sshPublicKeysGenerateKeyPair(_api::SshPublicKeysApi, resourceGroupName::String, sshPublicKeyName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_sshPublicKeysGenerateKeyPair(_api, resourceGroupName, sshPublicKeyName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function sshPublicKeysGenerateKeyPair(_api::SshPublicKeysApi, response_stream::Channel, resourceGroupName::String, sshPublicKeyName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_sshPublicKeysGenerateKeyPair(_api, resourceGroupName, sshPublicKeyName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -75,7 +105,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: SshPublicKeyResource
 """
-function sshPublicKeysGet(_api::SshPublicKeysApi, resourceGroupName::String, sshPublicKeyName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_sshPublicKeysGet(_api::SshPublicKeysApi, resourceGroupName::String, sshPublicKeyName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", SshPublicKeyResource, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/sshPublicKeys/{sshPublicKeyName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "sshPublicKeyName", sshPublicKeyName)  # type String
@@ -83,7 +113,17 @@ function sshPublicKeysGet(_api::SshPublicKeysApi, resourceGroupName::String, ssh
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function sshPublicKeysGet(_api::SshPublicKeysApi, resourceGroupName::String, sshPublicKeyName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_sshPublicKeysGet(_api, resourceGroupName, sshPublicKeyName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function sshPublicKeysGet(_api::SshPublicKeysApi, response_stream::Channel, resourceGroupName::String, sshPublicKeyName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_sshPublicKeysGet(_api, resourceGroupName, sshPublicKeyName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -94,14 +134,24 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: SshPublicKeysGroupListResult
 """
-function sshPublicKeysListByResourceGroup(_api::SshPublicKeysApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_sshPublicKeysListByResourceGroup(_api::SshPublicKeysApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", SshPublicKeysGroupListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/sshPublicKeys", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function sshPublicKeysListByResourceGroup(_api::SshPublicKeysApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_sshPublicKeysListByResourceGroup(_api, resourceGroupName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function sshPublicKeysListByResourceGroup(_api::SshPublicKeysApi, response_stream::Channel, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_sshPublicKeysListByResourceGroup(_api, resourceGroupName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -111,13 +161,23 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: SshPublicKeysGroupListResult
 """
-function sshPublicKeysListBySubscription(_api::SshPublicKeysApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_sshPublicKeysListBySubscription(_api::SshPublicKeysApi, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", SshPublicKeysGroupListResult, "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/sshPublicKeys", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function sshPublicKeysListBySubscription(_api::SshPublicKeysApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_sshPublicKeysListBySubscription(_api, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function sshPublicKeysListBySubscription(_api::SshPublicKeysApi, response_stream::Channel, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_sshPublicKeysListBySubscription(_api, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -130,7 +190,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: SshPublicKeyResource
 """
-function sshPublicKeysUpdate(_api::SshPublicKeysApi, resourceGroupName::String, sshPublicKeyName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_sshPublicKeysUpdate(_api::SshPublicKeysApi, resourceGroupName::String, sshPublicKeyName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", SshPublicKeyResource, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/sshPublicKeys/{sshPublicKeyName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "sshPublicKeyName", sshPublicKeyName)  # type String
@@ -138,7 +198,17 @@ function sshPublicKeysUpdate(_api::SshPublicKeysApi, resourceGroupName::String, 
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function sshPublicKeysUpdate(_api::SshPublicKeysApi, resourceGroupName::String, sshPublicKeyName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_sshPublicKeysUpdate(_api, resourceGroupName, sshPublicKeyName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function sshPublicKeysUpdate(_api::SshPublicKeysApi, response_stream::Channel, resourceGroupName::String, sshPublicKeyName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_sshPublicKeysUpdate(_api, resourceGroupName, sshPublicKeyName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export sshPublicKeysCreate, sshPublicKeysDelete, sshPublicKeysGenerateKeyPair, sshPublicKeysGet, sshPublicKeysListByResourceGroup, sshPublicKeysListBySubscription, sshPublicKeysUpdate

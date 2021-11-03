@@ -16,7 +16,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: PeerExpressRouteCircuitConnection
 """
-function peerExpressRouteCircuitConnectionsGet(_api::PeerExpressRouteCircuitConnectionsApi, resourceGroupName::String, circuitName::String, peeringName::String, connectionName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_peerExpressRouteCircuitConnectionsGet(_api::PeerExpressRouteCircuitConnectionsApi, resourceGroupName::String, circuitName::String, peeringName::String, connectionName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", PeerExpressRouteCircuitConnection, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/peerConnections/{connectionName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "circuitName", circuitName)  # type String
@@ -26,7 +26,17 @@ function peerExpressRouteCircuitConnectionsGet(_api::PeerExpressRouteCircuitConn
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function peerExpressRouteCircuitConnectionsGet(_api::PeerExpressRouteCircuitConnectionsApi, resourceGroupName::String, circuitName::String, peeringName::String, connectionName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_peerExpressRouteCircuitConnectionsGet(_api, resourceGroupName, circuitName, peeringName, connectionName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function peerExpressRouteCircuitConnectionsGet(_api::PeerExpressRouteCircuitConnectionsApi, response_stream::Channel, resourceGroupName::String, circuitName::String, peeringName::String, connectionName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_peerExpressRouteCircuitConnectionsGet(_api, resourceGroupName, circuitName, peeringName, connectionName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -39,7 +49,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: PeerExpressRouteCircuitConnectionListResult
 """
-function peerExpressRouteCircuitConnectionsList(_api::PeerExpressRouteCircuitConnectionsApi, resourceGroupName::String, circuitName::String, peeringName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_peerExpressRouteCircuitConnectionsList(_api::PeerExpressRouteCircuitConnectionsApi, resourceGroupName::String, circuitName::String, peeringName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", PeerExpressRouteCircuitConnectionListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/peerConnections", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "circuitName", circuitName)  # type String
@@ -48,7 +58,17 @@ function peerExpressRouteCircuitConnectionsList(_api::PeerExpressRouteCircuitCon
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function peerExpressRouteCircuitConnectionsList(_api::PeerExpressRouteCircuitConnectionsApi, resourceGroupName::String, circuitName::String, peeringName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_peerExpressRouteCircuitConnectionsList(_api, resourceGroupName, circuitName, peeringName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function peerExpressRouteCircuitConnectionsList(_api::PeerExpressRouteCircuitConnectionsApi, response_stream::Channel, resourceGroupName::String, circuitName::String, peeringName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_peerExpressRouteCircuitConnectionsList(_api, resourceGroupName, circuitName, peeringName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export peerExpressRouteCircuitConnectionsGet, peerExpressRouteCircuitConnectionsList

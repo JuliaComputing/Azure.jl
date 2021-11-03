@@ -5,7 +5,6 @@ module StorageManagementClient
 
 using Random
 using Dates
-using HTTP
 using Swagger
 import Swagger: field_name, property_type, hasproperty, validate_property, SwaggerApi, SwaggerModel
 import Base: convert, propertynames
@@ -35,6 +34,7 @@ export convert, DateAfterCreation
 export convert, DateAfterModification
 export convert, Dimension
 export convert, Encryption
+export convert, EncryptionScope
 export convert, EncryptionScopeKeyVaultProperties
 export convert, EncryptionScopeListResult
 export convert, EncryptionScopeProperties
@@ -48,6 +48,7 @@ export convert, Identity
 export convert, KeyVaultProperties
 export convert, ListAccountSasResponse
 export convert, ListServiceSasResponse
+export convert, ManagementPolicy
 export convert, ManagementPolicyAction
 export convert, ManagementPolicyBaseBlob
 export convert, ManagementPolicyDefinition
@@ -59,6 +60,7 @@ export convert, ManagementPolicySnapShot
 export convert, MetricSpecification
 export convert, NetworkRuleSet
 export convert, ObjectReplicationPolicies
+export convert, ObjectReplicationPolicy
 export convert, ObjectReplicationPolicyFilter
 export convert, ObjectReplicationPolicyProperties
 export convert, ObjectReplicationPolicyRule
@@ -66,8 +68,16 @@ export convert, Operation
 export convert, OperationDisplay
 export convert, OperationListResult
 export convert, OperationProperties
+export convert, PrivateEndpoint
+export convert, PrivateEndpointConnection
 export convert, PrivateEndpointConnectionListResult
+export convert, PrivateEndpointConnectionProperties
+export convert, PrivateEndpointConnectionProvisioningState
+export convert, PrivateEndpointServiceConnectionStatus
+export convert, PrivateLinkResource
 export convert, PrivateLinkResourceListResult
+export convert, PrivateLinkResourceProperties
+export convert, PrivateLinkServiceConnectionState
 export convert, Resource
 export convert, Restriction
 export convert, RoutingPreference
@@ -77,6 +87,7 @@ export convert, ServiceSpecification
 export convert, Sku
 export convert, SkuInformation
 export convert, SkuName
+export convert, StorageAccount
 export convert, StorageAccountCheckNameAvailabilityParameters
 export convert, StorageAccountCreateParameters
 export convert, StorageAccountInternetEndpoints
@@ -92,17 +103,11 @@ export convert, StorageAccountUpdateParameters
 export convert, StorageSkuListResult
 export convert, TagFilter
 export convert, Tier
+export convert, TrackedResource
 export convert, Usage
 export convert, UsageListResult
 export convert, UsageName
 export convert, VirtualNetworkRule
-export convert, EncryptionScope
-export convert, ManagementPolicy
-export convert, ObjectReplicationPolicy
-export convert, PrivateEndpointConnection
-export convert, PrivateLinkResource
-export convert, TrackedResource
-export convert, StorageAccount
 
 # export operations
 export convert, EncryptionScopesApi, LocationUsageApi, ManagementPoliciesApi, ObjectReplicationPoliciesApi, OperationsApi, PrivateEndpointConnectionsApi, PrivateLinkResourcesApi, SkusApi, StorageAccountsApi
