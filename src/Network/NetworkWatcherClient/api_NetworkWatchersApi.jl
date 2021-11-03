@@ -15,7 +15,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ConnectivityInformation
 """
-function networkWatchersCheckConnectivity(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkWatchersCheckConnectivity(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", ConnectivityInformation, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectivityCheck", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkWatcherName", networkWatcherName)  # type String
@@ -23,7 +23,17 @@ function networkWatchersCheckConnectivity(_api::NetworkWatchersApi, resourceGrou
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkWatchersCheckConnectivity(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersCheckConnectivity(_api, resourceGroupName, networkWatcherName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkWatchersCheckConnectivity(_api::NetworkWatchersApi, response_stream::Channel, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersCheckConnectivity(_api, resourceGroupName, networkWatcherName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -36,7 +46,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: NetworkWatcher
 """
-function networkWatchersCreateOrUpdate(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkWatchersCreateOrUpdate(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", NetworkWatcher, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkWatcherName", networkWatcherName)  # type String
@@ -44,7 +54,17 @@ function networkWatchersCreateOrUpdate(_api::NetworkWatchersApi, resourceGroupNa
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkWatchersCreateOrUpdate(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersCreateOrUpdate(_api, resourceGroupName, networkWatcherName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkWatchersCreateOrUpdate(_api::NetworkWatchersApi, response_stream::Channel, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersCreateOrUpdate(_api, resourceGroupName, networkWatcherName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -56,7 +76,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function networkWatchersDelete(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkWatchersDelete(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkWatcherName", networkWatcherName)  # type String
@@ -64,7 +84,17 @@ function networkWatchersDelete(_api::NetworkWatchersApi, resourceGroupName::Stri
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkWatchersDelete(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersDelete(_api, resourceGroupName, networkWatcherName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkWatchersDelete(_api::NetworkWatchersApi, response_stream::Channel, resourceGroupName::String, networkWatcherName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersDelete(_api, resourceGroupName, networkWatcherName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -76,7 +106,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: NetworkWatcher
 """
-function networkWatchersGet(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkWatchersGet(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", NetworkWatcher, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkWatcherName", networkWatcherName)  # type String
@@ -84,7 +114,17 @@ function networkWatchersGet(_api::NetworkWatchersApi, resourceGroupName::String,
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkWatchersGet(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersGet(_api, resourceGroupName, networkWatcherName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkWatchersGet(_api::NetworkWatchersApi, response_stream::Channel, resourceGroupName::String, networkWatcherName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersGet(_api, resourceGroupName, networkWatcherName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -97,7 +137,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: AzureReachabilityReport
 """
-function networkWatchersGetAzureReachabilityReport(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkWatchersGetAzureReachabilityReport(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", AzureReachabilityReport, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/azureReachabilityReport", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkWatcherName", networkWatcherName)  # type String
@@ -105,7 +145,17 @@ function networkWatchersGetAzureReachabilityReport(_api::NetworkWatchersApi, res
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkWatchersGetAzureReachabilityReport(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersGetAzureReachabilityReport(_api, resourceGroupName, networkWatcherName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkWatchersGetAzureReachabilityReport(_api::NetworkWatchersApi, response_stream::Channel, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersGetAzureReachabilityReport(_api, resourceGroupName, networkWatcherName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -118,7 +168,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: FlowLogInformation
 """
-function networkWatchersGetFlowLogStatus(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkWatchersGetFlowLogStatus(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", FlowLogInformation, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/queryFlowLogStatus", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkWatcherName", networkWatcherName)  # type String
@@ -126,7 +176,17 @@ function networkWatchersGetFlowLogStatus(_api::NetworkWatchersApi, resourceGroup
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkWatchersGetFlowLogStatus(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersGetFlowLogStatus(_api, resourceGroupName, networkWatcherName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkWatchersGetFlowLogStatus(_api::NetworkWatchersApi, response_stream::Channel, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersGetFlowLogStatus(_api, resourceGroupName, networkWatcherName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -139,7 +199,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: NetworkConfigurationDiagnosticResponse
 """
-function networkWatchersGetNetworkConfigurationDiagnostic(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkWatchersGetNetworkConfigurationDiagnostic(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", NetworkConfigurationDiagnosticResponse, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/networkConfigurationDiagnostic", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkWatcherName", networkWatcherName)  # type String
@@ -147,7 +207,17 @@ function networkWatchersGetNetworkConfigurationDiagnostic(_api::NetworkWatchersA
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkWatchersGetNetworkConfigurationDiagnostic(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersGetNetworkConfigurationDiagnostic(_api, resourceGroupName, networkWatcherName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkWatchersGetNetworkConfigurationDiagnostic(_api::NetworkWatchersApi, response_stream::Channel, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersGetNetworkConfigurationDiagnostic(_api, resourceGroupName, networkWatcherName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -160,7 +230,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: NextHopResult
 """
-function networkWatchersGetNextHop(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkWatchersGetNextHop(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", NextHopResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/nextHop", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkWatcherName", networkWatcherName)  # type String
@@ -168,7 +238,17 @@ function networkWatchersGetNextHop(_api::NetworkWatchersApi, resourceGroupName::
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkWatchersGetNextHop(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersGetNextHop(_api, resourceGroupName, networkWatcherName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkWatchersGetNextHop(_api::NetworkWatchersApi, response_stream::Channel, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersGetNextHop(_api, resourceGroupName, networkWatcherName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -181,7 +261,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Topology
 """
-function networkWatchersGetTopology(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkWatchersGetTopology(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", Topology, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/topology", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkWatcherName", networkWatcherName)  # type String
@@ -189,7 +269,17 @@ function networkWatchersGetTopology(_api::NetworkWatchersApi, resourceGroupName:
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkWatchersGetTopology(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersGetTopology(_api, resourceGroupName, networkWatcherName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkWatchersGetTopology(_api::NetworkWatchersApi, response_stream::Channel, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersGetTopology(_api, resourceGroupName, networkWatcherName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -202,7 +292,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: TroubleshootingResult
 """
-function networkWatchersGetTroubleshooting(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkWatchersGetTroubleshooting(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", TroubleshootingResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/troubleshoot", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkWatcherName", networkWatcherName)  # type String
@@ -210,7 +300,17 @@ function networkWatchersGetTroubleshooting(_api::NetworkWatchersApi, resourceGro
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkWatchersGetTroubleshooting(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersGetTroubleshooting(_api, resourceGroupName, networkWatcherName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkWatchersGetTroubleshooting(_api::NetworkWatchersApi, response_stream::Channel, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersGetTroubleshooting(_api, resourceGroupName, networkWatcherName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -223,7 +323,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: TroubleshootingResult
 """
-function networkWatchersGetTroubleshootingResult(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkWatchersGetTroubleshootingResult(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", TroubleshootingResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/queryTroubleshootResult", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkWatcherName", networkWatcherName)  # type String
@@ -231,7 +331,17 @@ function networkWatchersGetTroubleshootingResult(_api::NetworkWatchersApi, resou
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkWatchersGetTroubleshootingResult(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersGetTroubleshootingResult(_api, resourceGroupName, networkWatcherName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkWatchersGetTroubleshootingResult(_api::NetworkWatchersApi, response_stream::Channel, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersGetTroubleshootingResult(_api, resourceGroupName, networkWatcherName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -244,7 +354,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: SecurityGroupViewResult
 """
-function networkWatchersGetVMSecurityRules(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkWatchersGetVMSecurityRules(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", SecurityGroupViewResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/securityGroupView", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkWatcherName", networkWatcherName)  # type String
@@ -252,7 +362,17 @@ function networkWatchersGetVMSecurityRules(_api::NetworkWatchersApi, resourceGro
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkWatchersGetVMSecurityRules(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersGetVMSecurityRules(_api, resourceGroupName, networkWatcherName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkWatchersGetVMSecurityRules(_api::NetworkWatchersApi, response_stream::Channel, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersGetVMSecurityRules(_api, resourceGroupName, networkWatcherName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -263,14 +383,24 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: NetworkWatcherListResult
 """
-function networkWatchersList(_api::NetworkWatchersApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkWatchersList(_api::NetworkWatchersApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", NetworkWatcherListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkWatchersList(_api::NetworkWatchersApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersList(_api, resourceGroupName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkWatchersList(_api::NetworkWatchersApi, response_stream::Channel, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersList(_api, resourceGroupName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -280,13 +410,23 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: NetworkWatcherListResult
 """
-function networkWatchersListAll(_api::NetworkWatchersApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkWatchersListAll(_api::NetworkWatchersApi, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", NetworkWatcherListResult, "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkWatchers", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkWatchersListAll(_api::NetworkWatchersApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersListAll(_api, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkWatchersListAll(_api::NetworkWatchersApi, response_stream::Channel, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersListAll(_api, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -299,7 +439,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: AvailableProvidersList
 """
-function networkWatchersListAvailableProviders(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkWatchersListAvailableProviders(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", AvailableProvidersList, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/availableProvidersList", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkWatcherName", networkWatcherName)  # type String
@@ -307,7 +447,17 @@ function networkWatchersListAvailableProviders(_api::NetworkWatchersApi, resourc
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkWatchersListAvailableProviders(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersListAvailableProviders(_api, resourceGroupName, networkWatcherName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkWatchersListAvailableProviders(_api::NetworkWatchersApi, response_stream::Channel, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersListAvailableProviders(_api, resourceGroupName, networkWatcherName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -320,7 +470,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: FlowLogInformation
 """
-function networkWatchersSetFlowLogConfiguration(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkWatchersSetFlowLogConfiguration(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", FlowLogInformation, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/configureFlowLog", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkWatcherName", networkWatcherName)  # type String
@@ -328,7 +478,17 @@ function networkWatchersSetFlowLogConfiguration(_api::NetworkWatchersApi, resour
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkWatchersSetFlowLogConfiguration(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersSetFlowLogConfiguration(_api, resourceGroupName, networkWatcherName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkWatchersSetFlowLogConfiguration(_api::NetworkWatchersApi, response_stream::Channel, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersSetFlowLogConfiguration(_api, resourceGroupName, networkWatcherName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -341,7 +501,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: NetworkWatcher
 """
-function networkWatchersUpdateTags(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkWatchersUpdateTags(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", NetworkWatcher, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkWatcherName", networkWatcherName)  # type String
@@ -349,7 +509,17 @@ function networkWatchersUpdateTags(_api::NetworkWatchersApi, resourceGroupName::
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkWatchersUpdateTags(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersUpdateTags(_api, resourceGroupName, networkWatcherName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkWatchersUpdateTags(_api::NetworkWatchersApi, response_stream::Channel, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersUpdateTags(_api, resourceGroupName, networkWatcherName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -362,7 +532,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: VerificationIPFlowResult
 """
-function networkWatchersVerifyIPFlow(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkWatchersVerifyIPFlow(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", VerificationIPFlowResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/ipFlowVerify", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkWatcherName", networkWatcherName)  # type String
@@ -370,7 +540,17 @@ function networkWatchersVerifyIPFlow(_api::NetworkWatchersApi, resourceGroupName
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkWatchersVerifyIPFlow(_api::NetworkWatchersApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersVerifyIPFlow(_api, resourceGroupName, networkWatcherName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkWatchersVerifyIPFlow(_api::NetworkWatchersApi, response_stream::Channel, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersVerifyIPFlow(_api, resourceGroupName, networkWatcherName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export networkWatchersCheckConnectivity, networkWatchersCreateOrUpdate, networkWatchersDelete, networkWatchersGet, networkWatchersGetAzureReachabilityReport, networkWatchersGetFlowLogStatus, networkWatchersGetNetworkConfigurationDiagnostic, networkWatchersGetNextHop, networkWatchersGetTopology, networkWatchersGetTroubleshooting, networkWatchersGetTroubleshootingResult, networkWatchersGetVMSecurityRules, networkWatchersList, networkWatchersListAll, networkWatchersListAvailableProviders, networkWatchersSetFlowLogConfiguration, networkWatchersUpdateTags, networkWatchersVerifyIPFlow

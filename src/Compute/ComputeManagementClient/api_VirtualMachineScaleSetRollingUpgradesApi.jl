@@ -14,7 +14,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function virtualMachineScaleSetRollingUpgradesCancel(_api::VirtualMachineScaleSetRollingUpgradesApi, resourceGroupName::String, vmScaleSetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualMachineScaleSetRollingUpgradesCancel(_api::VirtualMachineScaleSetRollingUpgradesApi, resourceGroupName::String, vmScaleSetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/rollingUpgrades/cancel", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "vmScaleSetName", vmScaleSetName)  # type String
@@ -22,7 +22,17 @@ function virtualMachineScaleSetRollingUpgradesCancel(_api::VirtualMachineScaleSe
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualMachineScaleSetRollingUpgradesCancel(_api::VirtualMachineScaleSetRollingUpgradesApi, resourceGroupName::String, vmScaleSetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualMachineScaleSetRollingUpgradesCancel(_api, resourceGroupName, vmScaleSetName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualMachineScaleSetRollingUpgradesCancel(_api::VirtualMachineScaleSetRollingUpgradesApi, response_stream::Channel, resourceGroupName::String, vmScaleSetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualMachineScaleSetRollingUpgradesCancel(_api, resourceGroupName, vmScaleSetName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -34,7 +44,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: RollingUpgradeStatusInfo
 """
-function virtualMachineScaleSetRollingUpgradesGetLatest(_api::VirtualMachineScaleSetRollingUpgradesApi, resourceGroupName::String, vmScaleSetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualMachineScaleSetRollingUpgradesGetLatest(_api::VirtualMachineScaleSetRollingUpgradesApi, resourceGroupName::String, vmScaleSetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", RollingUpgradeStatusInfo, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/rollingUpgrades/latest", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "vmScaleSetName", vmScaleSetName)  # type String
@@ -42,7 +52,17 @@ function virtualMachineScaleSetRollingUpgradesGetLatest(_api::VirtualMachineScal
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualMachineScaleSetRollingUpgradesGetLatest(_api::VirtualMachineScaleSetRollingUpgradesApi, resourceGroupName::String, vmScaleSetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualMachineScaleSetRollingUpgradesGetLatest(_api, resourceGroupName, vmScaleSetName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualMachineScaleSetRollingUpgradesGetLatest(_api::VirtualMachineScaleSetRollingUpgradesApi, response_stream::Channel, resourceGroupName::String, vmScaleSetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualMachineScaleSetRollingUpgradesGetLatest(_api, resourceGroupName, vmScaleSetName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -54,7 +74,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function virtualMachineScaleSetRollingUpgradesStartExtensionUpgrade(_api::VirtualMachineScaleSetRollingUpgradesApi, resourceGroupName::String, vmScaleSetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualMachineScaleSetRollingUpgradesStartExtensionUpgrade(_api::VirtualMachineScaleSetRollingUpgradesApi, resourceGroupName::String, vmScaleSetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/extensionRollingUpgrade", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "vmScaleSetName", vmScaleSetName)  # type String
@@ -62,7 +82,17 @@ function virtualMachineScaleSetRollingUpgradesStartExtensionUpgrade(_api::Virtua
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualMachineScaleSetRollingUpgradesStartExtensionUpgrade(_api::VirtualMachineScaleSetRollingUpgradesApi, resourceGroupName::String, vmScaleSetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualMachineScaleSetRollingUpgradesStartExtensionUpgrade(_api, resourceGroupName, vmScaleSetName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualMachineScaleSetRollingUpgradesStartExtensionUpgrade(_api::VirtualMachineScaleSetRollingUpgradesApi, response_stream::Channel, resourceGroupName::String, vmScaleSetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualMachineScaleSetRollingUpgradesStartExtensionUpgrade(_api, resourceGroupName, vmScaleSetName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -74,7 +104,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function virtualMachineScaleSetRollingUpgradesStartOSUpgrade(_api::VirtualMachineScaleSetRollingUpgradesApi, resourceGroupName::String, vmScaleSetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualMachineScaleSetRollingUpgradesStartOSUpgrade(_api::VirtualMachineScaleSetRollingUpgradesApi, resourceGroupName::String, vmScaleSetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/osRollingUpgrade", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "vmScaleSetName", vmScaleSetName)  # type String
@@ -82,7 +112,17 @@ function virtualMachineScaleSetRollingUpgradesStartOSUpgrade(_api::VirtualMachin
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualMachineScaleSetRollingUpgradesStartOSUpgrade(_api::VirtualMachineScaleSetRollingUpgradesApi, resourceGroupName::String, vmScaleSetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualMachineScaleSetRollingUpgradesStartOSUpgrade(_api, resourceGroupName, vmScaleSetName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualMachineScaleSetRollingUpgradesStartOSUpgrade(_api::VirtualMachineScaleSetRollingUpgradesApi, response_stream::Channel, resourceGroupName::String, vmScaleSetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualMachineScaleSetRollingUpgradesStartOSUpgrade(_api, resourceGroupName, vmScaleSetName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export virtualMachineScaleSetRollingUpgradesCancel, virtualMachineScaleSetRollingUpgradesGetLatest, virtualMachineScaleSetRollingUpgradesStartExtensionUpgrade, virtualMachineScaleSetRollingUpgradesStartOSUpgrade

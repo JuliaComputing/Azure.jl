@@ -14,14 +14,24 @@ Param: parameters::PolicyAssignment (required)
 Param: api_version::String (required)
 Return: PolicyAssignment
 """
-function policyAssignmentsCreate(_api::PolicyAssignmentsApi, scope::String, policyAssignmentName::String, parameters, api_version::String; _mediaType=nothing)
+function _swaggerinternal_policyAssignmentsCreate(_api::PolicyAssignmentsApi, scope::String, policyAssignmentName::String, parameters, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", PolicyAssignment, "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "scope", scope)  # type String
     Swagger.set_param(_ctx.path, "policyAssignmentName", policyAssignmentName)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function policyAssignmentsCreate(_api::PolicyAssignmentsApi, scope::String, policyAssignmentName::String, parameters, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policyAssignmentsCreate(_api, scope, policyAssignmentName, parameters, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function policyAssignmentsCreate(_api::PolicyAssignmentsApi, response_stream::Channel, scope::String, policyAssignmentName::String, parameters, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policyAssignmentsCreate(_api, scope, policyAssignmentName, parameters, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -32,13 +42,23 @@ Param: parameters::PolicyAssignment (required)
 Param: api_version::String (required)
 Return: PolicyAssignment
 """
-function policyAssignmentsCreateById(_api::PolicyAssignmentsApi, policyAssignmentId::String, parameters, api_version::String; _mediaType=nothing)
+function _swaggerinternal_policyAssignmentsCreateById(_api::PolicyAssignmentsApi, policyAssignmentId::String, parameters, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", PolicyAssignment, "/{policyAssignmentId}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "policyAssignmentId", policyAssignmentId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function policyAssignmentsCreateById(_api::PolicyAssignmentsApi, policyAssignmentId::String, parameters, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policyAssignmentsCreateById(_api, policyAssignmentId, parameters, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function policyAssignmentsCreateById(_api::PolicyAssignmentsApi, response_stream::Channel, policyAssignmentId::String, parameters, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policyAssignmentsCreateById(_api, policyAssignmentId, parameters, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -49,14 +69,24 @@ Param: policyAssignmentName::String (required)
 Param: api_version::String (required)
 Return: PolicyAssignment
 """
-function policyAssignmentsDelete(_api::PolicyAssignmentsApi, scope::String, policyAssignmentName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_policyAssignmentsDelete(_api::PolicyAssignmentsApi, scope::String, policyAssignmentName::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", PolicyAssignment, "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "scope", scope)  # type String
     Swagger.set_param(_ctx.path, "policyAssignmentName", policyAssignmentName)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function policyAssignmentsDelete(_api::PolicyAssignmentsApi, scope::String, policyAssignmentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policyAssignmentsDelete(_api, scope, policyAssignmentName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function policyAssignmentsDelete(_api::PolicyAssignmentsApi, response_stream::Channel, scope::String, policyAssignmentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policyAssignmentsDelete(_api, scope, policyAssignmentName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -66,13 +96,23 @@ Param: policyAssignmentId::String (required)
 Param: api_version::String (required)
 Return: PolicyAssignment
 """
-function policyAssignmentsDeleteById(_api::PolicyAssignmentsApi, policyAssignmentId::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_policyAssignmentsDeleteById(_api::PolicyAssignmentsApi, policyAssignmentId::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", PolicyAssignment, "/{policyAssignmentId}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "policyAssignmentId", policyAssignmentId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function policyAssignmentsDeleteById(_api::PolicyAssignmentsApi, policyAssignmentId::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policyAssignmentsDeleteById(_api, policyAssignmentId, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function policyAssignmentsDeleteById(_api::PolicyAssignmentsApi, response_stream::Channel, policyAssignmentId::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policyAssignmentsDeleteById(_api, policyAssignmentId, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -83,14 +123,24 @@ Param: policyAssignmentName::String (required)
 Param: api_version::String (required)
 Return: PolicyAssignment
 """
-function policyAssignmentsGet(_api::PolicyAssignmentsApi, scope::String, policyAssignmentName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_policyAssignmentsGet(_api::PolicyAssignmentsApi, scope::String, policyAssignmentName::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", PolicyAssignment, "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "scope", scope)  # type String
     Swagger.set_param(_ctx.path, "policyAssignmentName", policyAssignmentName)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function policyAssignmentsGet(_api::PolicyAssignmentsApi, scope::String, policyAssignmentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policyAssignmentsGet(_api, scope, policyAssignmentName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function policyAssignmentsGet(_api::PolicyAssignmentsApi, response_stream::Channel, scope::String, policyAssignmentName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policyAssignmentsGet(_api, scope, policyAssignmentName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -100,13 +150,23 @@ Param: policyAssignmentId::String (required)
 Param: api_version::String (required)
 Return: PolicyAssignment
 """
-function policyAssignmentsGetById(_api::PolicyAssignmentsApi, policyAssignmentId::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_policyAssignmentsGetById(_api::PolicyAssignmentsApi, policyAssignmentId::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", PolicyAssignment, "/{policyAssignmentId}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "policyAssignmentId", policyAssignmentId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function policyAssignmentsGetById(_api::PolicyAssignmentsApi, policyAssignmentId::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policyAssignmentsGetById(_api, policyAssignmentId, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function policyAssignmentsGetById(_api::PolicyAssignmentsApi, response_stream::Channel, policyAssignmentId::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policyAssignmentsGetById(_api, policyAssignmentId, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -117,14 +177,24 @@ Param: subscriptionId::String (required)
 Param: filter::String
 Return: PolicyAssignmentListResult
 """
-function policyAssignmentsList(_api::PolicyAssignmentsApi, api_version::String, subscriptionId::String; filter=nothing, _mediaType=nothing)
+function _swaggerinternal_policyAssignmentsList(_api::PolicyAssignmentsApi, api_version::String, subscriptionId::String; filter=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", PolicyAssignmentListResult, "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "\$filter", filter)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function policyAssignmentsList(_api::PolicyAssignmentsApi, api_version::String, subscriptionId::String; filter=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_policyAssignmentsList(_api, api_version, subscriptionId; filter=filter, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function policyAssignmentsList(_api::PolicyAssignmentsApi, response_stream::Channel, api_version::String, subscriptionId::String; filter=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_policyAssignmentsList(_api, api_version, subscriptionId; filter=filter, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -135,14 +205,24 @@ Param: filter::String (required)
 Param: api_version::String (required)
 Return: PolicyAssignmentListResult
 """
-function policyAssignmentsListForManagementGroup(_api::PolicyAssignmentsApi, managementGroupId::String, filter::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_policyAssignmentsListForManagementGroup(_api::PolicyAssignmentsApi, managementGroupId::String, filter::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", PolicyAssignmentListResult, "/providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policyAssignments", ["azure_auth"])
     Swagger.set_param(_ctx.path, "managementGroupId", managementGroupId)  # type String
     Swagger.set_param(_ctx.query, "\$filter", filter)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function policyAssignmentsListForManagementGroup(_api::PolicyAssignmentsApi, managementGroupId::String, filter::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policyAssignmentsListForManagementGroup(_api, managementGroupId, filter, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function policyAssignmentsListForManagementGroup(_api::PolicyAssignmentsApi, response_stream::Channel, managementGroupId::String, filter::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_policyAssignmentsListForManagementGroup(_api, managementGroupId, filter, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -158,7 +238,7 @@ Param: subscriptionId::String (required)
 Param: filter::String
 Return: PolicyAssignmentListResult
 """
-function policyAssignmentsListForResource(_api::PolicyAssignmentsApi, resourceGroupName::String, resourceProviderNamespace::String, parentResourcePath::String, resourceType::String, resourceName::String, api_version::String, subscriptionId::String; filter=nothing, _mediaType=nothing)
+function _swaggerinternal_policyAssignmentsListForResource(_api::PolicyAssignmentsApi, resourceGroupName::String, resourceProviderNamespace::String, parentResourcePath::String, resourceType::String, resourceName::String, api_version::String, subscriptionId::String; filter=nothing, _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "policyAssignmentsListForResource", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "policyAssignmentsListForResource", :minLength, resourceGroupName, 1)
 
@@ -173,7 +253,17 @@ function policyAssignmentsListForResource(_api::PolicyAssignmentsApi, resourceGr
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function policyAssignmentsListForResource(_api::PolicyAssignmentsApi, resourceGroupName::String, resourceProviderNamespace::String, parentResourcePath::String, resourceType::String, resourceName::String, api_version::String, subscriptionId::String; filter=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_policyAssignmentsListForResource(_api, resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, api_version, subscriptionId; filter=filter, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function policyAssignmentsListForResource(_api::PolicyAssignmentsApi, response_stream::Channel, resourceGroupName::String, resourceProviderNamespace::String, parentResourcePath::String, resourceType::String, resourceName::String, api_version::String, subscriptionId::String; filter=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_policyAssignmentsListForResource(_api, resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, api_version, subscriptionId; filter=filter, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -185,7 +275,7 @@ Param: subscriptionId::String (required)
 Param: filter::String
 Return: PolicyAssignmentListResult
 """
-function policyAssignmentsListForResourceGroup(_api::PolicyAssignmentsApi, resourceGroupName::String, api_version::String, subscriptionId::String; filter=nothing, _mediaType=nothing)
+function _swaggerinternal_policyAssignmentsListForResourceGroup(_api::PolicyAssignmentsApi, resourceGroupName::String, api_version::String, subscriptionId::String; filter=nothing, _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "policyAssignmentsListForResourceGroup", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "policyAssignmentsListForResourceGroup", :minLength, resourceGroupName, 1)
 
@@ -196,7 +286,17 @@ function policyAssignmentsListForResourceGroup(_api::PolicyAssignmentsApi, resou
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function policyAssignmentsListForResourceGroup(_api::PolicyAssignmentsApi, resourceGroupName::String, api_version::String, subscriptionId::String; filter=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_policyAssignmentsListForResourceGroup(_api, resourceGroupName, api_version, subscriptionId; filter=filter, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function policyAssignmentsListForResourceGroup(_api::PolicyAssignmentsApi, response_stream::Channel, resourceGroupName::String, api_version::String, subscriptionId::String; filter=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_policyAssignmentsListForResourceGroup(_api, resourceGroupName, api_version, subscriptionId; filter=filter, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export policyAssignmentsCreate, policyAssignmentsCreateById, policyAssignmentsDelete, policyAssignmentsDeleteById, policyAssignmentsGet, policyAssignmentsGetById, policyAssignmentsList, policyAssignmentsListForManagementGroup, policyAssignmentsListForResource, policyAssignmentsListForResourceGroup

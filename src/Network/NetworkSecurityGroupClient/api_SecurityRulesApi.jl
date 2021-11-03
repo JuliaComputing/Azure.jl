@@ -15,7 +15,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: SecurityRule
 """
-function defaultSecurityRulesGet(_api::SecurityRulesApi, resourceGroupName::String, networkSecurityGroupName::String, defaultSecurityRuleName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_defaultSecurityRulesGet(_api::SecurityRulesApi, resourceGroupName::String, networkSecurityGroupName::String, defaultSecurityRuleName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", SecurityRule, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/defaultSecurityRules/{defaultSecurityRuleName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkSecurityGroupName", networkSecurityGroupName)  # type String
@@ -24,7 +24,17 @@ function defaultSecurityRulesGet(_api::SecurityRulesApi, resourceGroupName::Stri
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function defaultSecurityRulesGet(_api::SecurityRulesApi, resourceGroupName::String, networkSecurityGroupName::String, defaultSecurityRuleName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_defaultSecurityRulesGet(_api, resourceGroupName, networkSecurityGroupName, defaultSecurityRuleName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function defaultSecurityRulesGet(_api::SecurityRulesApi, response_stream::Channel, resourceGroupName::String, networkSecurityGroupName::String, defaultSecurityRuleName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_defaultSecurityRulesGet(_api, resourceGroupName, networkSecurityGroupName, defaultSecurityRuleName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -36,7 +46,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: SecurityRuleListResult
 """
-function defaultSecurityRulesList(_api::SecurityRulesApi, resourceGroupName::String, networkSecurityGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_defaultSecurityRulesList(_api::SecurityRulesApi, resourceGroupName::String, networkSecurityGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", SecurityRuleListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/defaultSecurityRules", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkSecurityGroupName", networkSecurityGroupName)  # type String
@@ -44,7 +54,17 @@ function defaultSecurityRulesList(_api::SecurityRulesApi, resourceGroupName::Str
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function defaultSecurityRulesList(_api::SecurityRulesApi, resourceGroupName::String, networkSecurityGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_defaultSecurityRulesList(_api, resourceGroupName, networkSecurityGroupName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function defaultSecurityRulesList(_api::SecurityRulesApi, response_stream::Channel, resourceGroupName::String, networkSecurityGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_defaultSecurityRulesList(_api, resourceGroupName, networkSecurityGroupName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -58,7 +78,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: SecurityRule
 """
-function securityRulesCreateOrUpdate(_api::SecurityRulesApi, resourceGroupName::String, networkSecurityGroupName::String, securityRuleName::String, securityRuleParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_securityRulesCreateOrUpdate(_api::SecurityRulesApi, resourceGroupName::String, networkSecurityGroupName::String, securityRuleName::String, securityRuleParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", SecurityRule, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/securityRules/{securityRuleName}", ["azure_auth"], securityRuleParameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkSecurityGroupName", networkSecurityGroupName)  # type String
@@ -67,7 +87,17 @@ function securityRulesCreateOrUpdate(_api::SecurityRulesApi, resourceGroupName::
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function securityRulesCreateOrUpdate(_api::SecurityRulesApi, resourceGroupName::String, networkSecurityGroupName::String, securityRuleName::String, securityRuleParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_securityRulesCreateOrUpdate(_api, resourceGroupName, networkSecurityGroupName, securityRuleName, securityRuleParameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function securityRulesCreateOrUpdate(_api::SecurityRulesApi, response_stream::Channel, resourceGroupName::String, networkSecurityGroupName::String, securityRuleName::String, securityRuleParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_securityRulesCreateOrUpdate(_api, resourceGroupName, networkSecurityGroupName, securityRuleName, securityRuleParameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -80,7 +110,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function securityRulesDelete(_api::SecurityRulesApi, resourceGroupName::String, networkSecurityGroupName::String, securityRuleName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_securityRulesDelete(_api::SecurityRulesApi, resourceGroupName::String, networkSecurityGroupName::String, securityRuleName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/securityRules/{securityRuleName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkSecurityGroupName", networkSecurityGroupName)  # type String
@@ -89,7 +119,17 @@ function securityRulesDelete(_api::SecurityRulesApi, resourceGroupName::String, 
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function securityRulesDelete(_api::SecurityRulesApi, resourceGroupName::String, networkSecurityGroupName::String, securityRuleName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_securityRulesDelete(_api, resourceGroupName, networkSecurityGroupName, securityRuleName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function securityRulesDelete(_api::SecurityRulesApi, response_stream::Channel, resourceGroupName::String, networkSecurityGroupName::String, securityRuleName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_securityRulesDelete(_api, resourceGroupName, networkSecurityGroupName, securityRuleName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -102,7 +142,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: SecurityRule
 """
-function securityRulesGet(_api::SecurityRulesApi, resourceGroupName::String, networkSecurityGroupName::String, securityRuleName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_securityRulesGet(_api::SecurityRulesApi, resourceGroupName::String, networkSecurityGroupName::String, securityRuleName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", SecurityRule, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/securityRules/{securityRuleName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkSecurityGroupName", networkSecurityGroupName)  # type String
@@ -111,7 +151,17 @@ function securityRulesGet(_api::SecurityRulesApi, resourceGroupName::String, net
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function securityRulesGet(_api::SecurityRulesApi, resourceGroupName::String, networkSecurityGroupName::String, securityRuleName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_securityRulesGet(_api, resourceGroupName, networkSecurityGroupName, securityRuleName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function securityRulesGet(_api::SecurityRulesApi, response_stream::Channel, resourceGroupName::String, networkSecurityGroupName::String, securityRuleName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_securityRulesGet(_api, resourceGroupName, networkSecurityGroupName, securityRuleName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -123,7 +173,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: SecurityRuleListResult
 """
-function securityRulesList(_api::SecurityRulesApi, resourceGroupName::String, networkSecurityGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_securityRulesList(_api::SecurityRulesApi, resourceGroupName::String, networkSecurityGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", SecurityRuleListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}/securityRules", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkSecurityGroupName", networkSecurityGroupName)  # type String
@@ -131,7 +181,17 @@ function securityRulesList(_api::SecurityRulesApi, resourceGroupName::String, ne
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function securityRulesList(_api::SecurityRulesApi, resourceGroupName::String, networkSecurityGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_securityRulesList(_api, resourceGroupName, networkSecurityGroupName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function securityRulesList(_api::SecurityRulesApi, response_stream::Channel, resourceGroupName::String, networkSecurityGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_securityRulesList(_api, resourceGroupName, networkSecurityGroupName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export defaultSecurityRulesGet, defaultSecurityRulesList, securityRulesCreateOrUpdate, securityRulesDelete, securityRulesGet, securityRulesList

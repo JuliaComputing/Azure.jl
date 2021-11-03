@@ -5,7 +5,6 @@ module NetworkWatcherClient
 
 using Random
 using Dates
-using HTTP
 using Swagger
 import Swagger: field_name, property_type, hasproperty, validate_property, SwaggerApi, SwaggerModel
 import Base: convert, propertynames
@@ -20,6 +19,8 @@ include("api_TrafficAnalyticsApi.jl")
 
 # export models
 export convert, Access
+export convert, ApplicationSecurityGroup
+export convert, ApplicationSecurityGroupPropertiesFormat
 export convert, AvailableProvidersList
 export convert, AvailableProvidersListCity
 export convert, AvailableProvidersListCountry
@@ -42,6 +43,7 @@ export convert, ConnectionMonitorOutput
 export convert, ConnectionMonitorParameters
 export convert, ConnectionMonitorQueryResult
 export convert, ConnectionMonitorResult
+export convert, ConnectionMonitorResultProperties
 export convert, ConnectionMonitorSource
 export convert, ConnectionMonitorSuccessThreshold
 export convert, ConnectionMonitorTcpConfiguration
@@ -63,6 +65,7 @@ export convert, ErrorDetails
 export convert, ErrorResponse
 export convert, ErrorResponse2
 export convert, EvaluatedNetworkSecurityGroup
+export convert, FlowLog
 export convert, FlowLogFormatParameters
 export convert, FlowLogInformation
 export convert, FlowLogListResult
@@ -86,6 +89,7 @@ export convert, NetworkConfigurationDiagnosticResult
 export convert, NetworkInterfaceAssociation
 export convert, NetworkSecurityGroupResult
 export convert, NetworkSecurityRulesEvaluationResult
+export convert, NetworkWatcher
 export convert, NetworkWatcherListResult
 export convert, NetworkWatcherPropertiesFormat
 export convert, NextHopParameters
@@ -96,6 +100,7 @@ export convert, PacketCaptureListResult
 export convert, PacketCaptureParameters
 export convert, PacketCaptureQueryStatusResult
 export convert, PacketCaptureResult
+export convert, PacketCaptureResultProperties
 export convert, PacketCaptureStorageLocation
 export convert, ProtocolConfiguration
 export convert, ProvisioningState
@@ -105,9 +110,11 @@ export convert, RetentionPolicyParameters
 export convert, SecurityGroupNetworkInterface
 export convert, SecurityGroupViewParameters
 export convert, SecurityGroupViewResult
+export convert, SecurityRule
 export convert, SecurityRuleAccess
 export convert, SecurityRuleAssociations
 export convert, SecurityRuleDirection
+export convert, SecurityRulePropertiesFormat
 export convert, SubResource
 export convert, SubnetAssociation
 export convert, TagsObject
@@ -124,11 +131,6 @@ export convert, TroubleshootingRecommendedActions
 export convert, TroubleshootingResult
 export convert, VerificationIPFlowParameters
 export convert, VerificationIPFlowResult
-export convert, ConnectionMonitorResultProperties
-export convert, FlowLog
-export convert, NetworkWatcher
-export convert, PacketCaptureResultProperties
-export convert, SecurityRule
 
 # export operations
 export convert, ConnectionMonitorsApi, FlowLogsApi, NetworkWatchersApi, PacketCapturesApi, TrafficAnalyticsApi

@@ -5,7 +5,6 @@ module SubscriptionClient
 
 using Random
 using Dates
-using HTTP
 using Swagger
 import Swagger: field_name, property_type, hasproperty, validate_property, SwaggerApi, SwaggerModel
 import Base: convert, propertynames

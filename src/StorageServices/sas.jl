@@ -16,8 +16,8 @@ const SAS_VERSION = "2017-11-09"
 
 sas_date_format(d::DateTime) = Dates.format(d, DateFormat("yyyy-mm-dd\\THH:MM:SS")) * "Z" #*"UTC"
 
-sas_canonicalize(raw_url::String) = sas_canonicalize(HTTP.URI(raw_url))
-function sas_canonicalize(url::HTTP.URI)
+sas_canonicalize(raw_url::String) = sas_canonicalize(URIs.URI(raw_url))
+function sas_canonicalize(url::URIs.URI)
     urlparts = split(url.host, ".")
     accountname = String(urlparts[1])
     restype = String(urlparts[2])
@@ -27,12 +27,12 @@ function sas_canonicalize(url::HTTP.URI)
     canonicalized_url, accountname, restype
 end
 
-sas_filename(raw_url::String) = basename(HTTP.URI(raw_url).path)
+sas_filename(raw_url::String) = basename(URIs.URI(raw_url).path)
 sas_content_disposition(raw_url::String) = "attachment; filename=" * sas_filename(raw_url)
 
 function appendSAS(ctx, subscription_id::String, resource_group_name::String, raw_url::String; kwargs...)
-    account, key = extract_account_and_key(ctx, subscription_id, resource_group_name, raw_url)
-    appendSAS(raw_url, key; kwargs...)
+    accountkey = extract_account_and_key(ctx, subscription_id, resource_group_name, raw_url)
+    appendSAS(raw_url, accountkey.key; kwargs...)
 end
 
 function appendSAS(raw_url::String, key::String; permissions::String=SASPermission.READ,
@@ -43,7 +43,7 @@ function appendSAS(raw_url::String, key::String; permissions::String=SASPermissi
         content_encoding::String="",
         content_language::String="",
         content_type::String="application/octet-stream")
-    url = HTTP.URI(raw_url)
+    url = URIs.URI(raw_url)
     canonicalized_url, accountname, restype = sas_canonicalize(url)
 
     if restype == "blob"
@@ -98,7 +98,7 @@ function appendSAS(raw_url::String, key::String; permissions::String=SASPermissi
                         "rsct"=>content_type
                     ]
     filter!(kv->!isempty(kv[2]), query_params)
-    query_string = join(map((kv)->kv[1]*"="*HTTP.URIs.escapeuri(kv[2]), query_params), "&")
+    query_string = join(map((kv)->kv[1]*"="*URIs.escapeuri(kv[2]), query_params), "&")
     raw_url * "?" * query_string
 end
 

@@ -1,6 +1,7 @@
 module REST
 
-using HTTP
+using URIs
+using Downloads
 using MbedTLS
 using Dates
 using Base64
@@ -8,7 +9,7 @@ using XMLDict
 
 const API_VER = "2016-05-31"
 
-const DEFAULT_KWARGS = Dict(:retries=>0, :readtimeout=>300, :status_exception=>false)
+const DEFAULT_KWARGS = Dict(:timeout=>300, :throw=>false)
 
 mutable struct StandardHeaders
     content_encoding::Union{String,Nothing}
@@ -32,9 +33,14 @@ function StandardHeaders(; kwargs...)
     obj
 end
 
+struct ServiceResponse
+    resp::Union{Downloads.Response,Downloads.RequestError}
+    data::IOBuffer
+end
+
 struct ServiceRequestError <: Exception
     code::Symbol
-    resp::HTTP.Response
+    resp::ServiceResponse
 end
 
 struct ServiceRequest
@@ -43,12 +49,20 @@ struct ServiceRequest
     resource::String
     standard_headers::StandardHeaders
     headers::Dict{String,String}
-    data::Any
+    data::Union{IO,Nothing}
 
-    function ServiceRequest(account::String, verb::String, resource::String, data=nothing; headers...)
+    function ServiceRequest(account::String, verb::String, resource::String, data::Vector{UInt8}; headers...)
+        ServiceRequest(account, verb, resource, IOBuffer(data); headers...)
+    end
+
+    function ServiceRequest(account::String, verb::String, resource::String, data::AbstractString; headers...)
+        ServiceRequest(account, verb, resource, convert(Vector{UInt8}, codeunits(data)); headers...)
+    end
+
+    function ServiceRequest(account::String, verb::String, resource::String, data::Union{IO,Nothing}=nothing; headers...)
         hdrdate = Dates.format(now(Dates.UTC), Dates.RFC1123Format)
         endswith(hdrdate, "GMT") || (hdrdate *= " GMT")
-    
+
         reqhdrs = Dict{String,String}("x-ms-date"=>hdrdate, "x-ms-version"=>API_VER)
         (verb == "PUT") && (data === nothing) && (reqhdrs["Content-Length"] = "0")
 
@@ -104,14 +118,14 @@ function sign_sharedkey(req::ServiceRequest, key::String)
 end
 
 function canonicalize_resource(resource_account::String, uri::String)
-    url = HTTP.URIs.URI(uri)
+    url = URIs.URI(uri)
     container = url.path
     query = url.query
 
     iob = IOBuffer()
     print(iob, "/", resource_account, container)
     if !isempty(query)
-        qparts = sort(map(sign_hdr, collect(HTTP.URIs.queryparams(url))))
+        qparts = sort(map(sign_hdr, collect(URIs.queryparams(url))))
         for q in qparts
             print(iob, "\n", q)
         end
@@ -121,35 +135,39 @@ end
 
 function execute(req::ServiceRequest, key::String; retry_count::Int=0, retry_interval::Int=60)
     success = false
-    resp = HTTP.Response()
+    svcresp = nothing
+    retry = true
     count = 0
     sign_sharedkey(req, key)
-    while !success && count <= retry_count
+    while !success && retry
         count += 1
         (count == 1) || sleep(retry_interval)
         verb = uppercase(req.verb)
-        uri = HTTP.URIs.URI(req.resource)
+        uri = string(URIs.URI(req.resource))
+        output = IOBuffer()
         if (verb in ("POST", "PUT")) && (req.data !== nothing)
             #@debug("HTTP request", verb, uri, req.headers, req.data, DEFAULT_KWARGS)
-            resp = HTTP.request(verb, uri, req.headers, req.data; DEFAULT_KWARGS...)
+            resp = Downloads.request(uri; method=verb, headers=req.headers, input=req.data, output=output, DEFAULT_KWARGS...)
         else
             #@debug("HTTP request", verb, uri, req.headers, DEFAULT_KWARGS)
-            resp = HTTP.request(verb, uri, req.headers; DEFAULT_KWARGS...)
+            resp = Downloads.request(uri; method=verb, headers=req.headers, output=output, DEFAULT_KWARGS...)
         end
-        success = (200 <= resp.status <= 206)
-        success && (return resp)
-        @warn("Storage service request failed. ", resp)
+        svcresp = ServiceResponse(resp, output)
+        retry = (count <= retry_count)
+        issuccess(svcresp) && return svcresp
+        @warn("Storage service request failed", resp, retry)
     end
-    resp
+
+    return svcresp
 end
 
-issuccess(resp::HTTP.Response) = (200 <= resp.status <= 206)
+issuccess(resp::ServiceResponse) = isa(resp.resp, Downloads.Response) && (200 <= resp.resp.status <= 206)
 
-parse_service_response(resp::HTTP.Response) = parse_xml(String(service_response(resp)))
+parse_service_response(resp::ServiceResponse) = parse_xml(String(service_response(resp)))
 
-function service_response(resp::HTTP.Response)
+function service_response(resp::ServiceResponse)
     issuccess(resp) || throw(ServiceRequestError(:http_error, resp))
-    resp.body
+    take!(resp.data)
 end
 
 end # module REST

@@ -15,7 +15,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ExpressRouteCircuitStats
 """
-function expressRouteCircuitsGetPeeringStats(_api::ExpressRouteCircuitStatsApi, resourceGroupName::String, circuitName::String, peeringName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_expressRouteCircuitsGetPeeringStats(_api::ExpressRouteCircuitStatsApi, resourceGroupName::String, circuitName::String, peeringName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", ExpressRouteCircuitStats, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/stats", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "circuitName", circuitName)  # type String
@@ -24,7 +24,17 @@ function expressRouteCircuitsGetPeeringStats(_api::ExpressRouteCircuitStatsApi, 
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function expressRouteCircuitsGetPeeringStats(_api::ExpressRouteCircuitStatsApi, resourceGroupName::String, circuitName::String, peeringName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_expressRouteCircuitsGetPeeringStats(_api, resourceGroupName, circuitName, peeringName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function expressRouteCircuitsGetPeeringStats(_api::ExpressRouteCircuitStatsApi, response_stream::Channel, resourceGroupName::String, circuitName::String, peeringName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_expressRouteCircuitsGetPeeringStats(_api, resourceGroupName, circuitName, peeringName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -36,7 +46,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ExpressRouteCircuitStats
 """
-function expressRouteCircuitsGetStats(_api::ExpressRouteCircuitStatsApi, resourceGroupName::String, circuitName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_expressRouteCircuitsGetStats(_api::ExpressRouteCircuitStatsApi, resourceGroupName::String, circuitName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", ExpressRouteCircuitStats, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/stats", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "circuitName", circuitName)  # type String
@@ -44,7 +54,17 @@ function expressRouteCircuitsGetStats(_api::ExpressRouteCircuitStatsApi, resourc
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function expressRouteCircuitsGetStats(_api::ExpressRouteCircuitStatsApi, resourceGroupName::String, circuitName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_expressRouteCircuitsGetStats(_api, resourceGroupName, circuitName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function expressRouteCircuitsGetStats(_api::ExpressRouteCircuitStatsApi, response_stream::Channel, resourceGroupName::String, circuitName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_expressRouteCircuitsGetStats(_api, resourceGroupName, circuitName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export expressRouteCircuitsGetPeeringStats, expressRouteCircuitsGetStats

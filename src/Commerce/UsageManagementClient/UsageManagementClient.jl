@@ -5,7 +5,6 @@ module UsageManagementClient
 
 using Random
 using Dates
-using HTTP
 using Swagger
 import Swagger: field_name, property_type, hasproperty, validate_property, SwaggerApi, SwaggerModel
 import Base: convert, propertynames
@@ -19,15 +18,15 @@ include("api_UsageAggregatesApi.jl")
 export convert, ErrorResponse
 export convert, InfoField
 export convert, MeterInfo
+export convert, MonetaryCommitment
+export convert, MonetaryCredit
 export convert, OfferTermInfo
 export convert, RateCardQueryParameters
+export convert, RecurringCharge
 export convert, ResourceRateCardInfo
 export convert, UsageAggregation
 export convert, UsageAggregationListResult
 export convert, UsageSample
-export convert, MonetaryCommitment
-export convert, MonetaryCredit
-export convert, RecurringCharge
 
 # export operations
 export convert, RateCardApi, UsageAggregatesApi

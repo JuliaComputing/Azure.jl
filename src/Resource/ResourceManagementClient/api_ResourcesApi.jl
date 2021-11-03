@@ -17,7 +17,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function resourcesCheckExistence(_api::ResourcesApi, resourceGroupName::String, resourceProviderNamespace::String, parentResourcePath::String, resourceType::String, resourceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_resourcesCheckExistence(_api::ResourcesApi, resourceGroupName::String, resourceProviderNamespace::String, parentResourcePath::String, resourceType::String, resourceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "resourcesCheckExistence", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "resourcesCheckExistence", :minLength, resourceGroupName, 1)
 
@@ -31,7 +31,17 @@ function resourcesCheckExistence(_api::ResourcesApi, resourceGroupName::String, 
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function resourcesCheckExistence(_api::ResourcesApi, resourceGroupName::String, resourceProviderNamespace::String, parentResourcePath::String, resourceType::String, resourceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourcesCheckExistence(_api, resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function resourcesCheckExistence(_api::ResourcesApi, response_stream::Channel, resourceGroupName::String, resourceProviderNamespace::String, parentResourcePath::String, resourceType::String, resourceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourcesCheckExistence(_api, resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -41,13 +51,23 @@ Param: resourceId::String (required)
 Param: api_version::String (required)
 Return: Nothing
 """
-function resourcesCheckExistenceById(_api::ResourcesApi, resourceId::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_resourcesCheckExistenceById(_api::ResourcesApi, resourceId::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "HEAD", Nothing, "/{resourceId}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceId", resourceId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function resourcesCheckExistenceById(_api::ResourcesApi, resourceId::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourcesCheckExistenceById(_api, resourceId, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function resourcesCheckExistenceById(_api::ResourcesApi, response_stream::Channel, resourceId::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourcesCheckExistenceById(_api, resourceId, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -63,7 +83,7 @@ Param: parameters::GenericResource (required)
 Param: subscriptionId::String (required)
 Return: GenericResource
 """
-function resourcesCreateOrUpdate(_api::ResourcesApi, resourceGroupName::String, resourceProviderNamespace::String, parentResourcePath::String, resourceType::String, resourceName::String, api_version::String, parameters, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_resourcesCreateOrUpdate(_api::ResourcesApi, resourceGroupName::String, resourceProviderNamespace::String, parentResourcePath::String, resourceType::String, resourceName::String, api_version::String, parameters, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "resourcesCreateOrUpdate", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "resourcesCreateOrUpdate", :minLength, resourceGroupName, 1)
 
@@ -77,7 +97,17 @@ function resourcesCreateOrUpdate(_api::ResourcesApi, resourceGroupName::String, 
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function resourcesCreateOrUpdate(_api::ResourcesApi, resourceGroupName::String, resourceProviderNamespace::String, parentResourcePath::String, resourceType::String, resourceName::String, api_version::String, parameters, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourcesCreateOrUpdate(_api, resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, api_version, parameters, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function resourcesCreateOrUpdate(_api::ResourcesApi, response_stream::Channel, resourceGroupName::String, resourceProviderNamespace::String, parentResourcePath::String, resourceType::String, resourceName::String, api_version::String, parameters, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourcesCreateOrUpdate(_api, resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, api_version, parameters, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -88,13 +118,23 @@ Param: api_version::String (required)
 Param: parameters::GenericResource (required)
 Return: GenericResource
 """
-function resourcesCreateOrUpdateById(_api::ResourcesApi, resourceId::String, api_version::String, parameters; _mediaType=nothing)
+function _swaggerinternal_resourcesCreateOrUpdateById(_api::ResourcesApi, resourceId::String, api_version::String, parameters; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", GenericResource, "/{resourceId}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceId", resourceId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function resourcesCreateOrUpdateById(_api::ResourcesApi, resourceId::String, api_version::String, parameters; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourcesCreateOrUpdateById(_api, resourceId, api_version, parameters; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function resourcesCreateOrUpdateById(_api::ResourcesApi, response_stream::Channel, resourceId::String, api_version::String, parameters; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourcesCreateOrUpdateById(_api, resourceId, api_version, parameters; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -109,7 +149,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function resourcesDelete(_api::ResourcesApi, resourceGroupName::String, resourceProviderNamespace::String, parentResourcePath::String, resourceType::String, resourceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_resourcesDelete(_api::ResourcesApi, resourceGroupName::String, resourceProviderNamespace::String, parentResourcePath::String, resourceType::String, resourceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "resourcesDelete", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "resourcesDelete", :minLength, resourceGroupName, 1)
 
@@ -123,7 +163,17 @@ function resourcesDelete(_api::ResourcesApi, resourceGroupName::String, resource
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function resourcesDelete(_api::ResourcesApi, resourceGroupName::String, resourceProviderNamespace::String, parentResourcePath::String, resourceType::String, resourceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourcesDelete(_api, resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function resourcesDelete(_api::ResourcesApi, response_stream::Channel, resourceGroupName::String, resourceProviderNamespace::String, parentResourcePath::String, resourceType::String, resourceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourcesDelete(_api, resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -133,13 +183,23 @@ Param: resourceId::String (required)
 Param: api_version::String (required)
 Return: Nothing
 """
-function resourcesDeleteById(_api::ResourcesApi, resourceId::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_resourcesDeleteById(_api::ResourcesApi, resourceId::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/{resourceId}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceId", resourceId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function resourcesDeleteById(_api::ResourcesApi, resourceId::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourcesDeleteById(_api, resourceId, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function resourcesDeleteById(_api::ResourcesApi, response_stream::Channel, resourceId::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourcesDeleteById(_api, resourceId, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -154,7 +214,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: GenericResource
 """
-function resourcesGet(_api::ResourcesApi, resourceGroupName::String, resourceProviderNamespace::String, parentResourcePath::String, resourceType::String, resourceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_resourcesGet(_api::ResourcesApi, resourceGroupName::String, resourceProviderNamespace::String, parentResourcePath::String, resourceType::String, resourceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "resourcesGet", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "resourcesGet", :minLength, resourceGroupName, 1)
 
@@ -168,7 +228,17 @@ function resourcesGet(_api::ResourcesApi, resourceGroupName::String, resourcePro
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function resourcesGet(_api::ResourcesApi, resourceGroupName::String, resourceProviderNamespace::String, parentResourcePath::String, resourceType::String, resourceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourcesGet(_api, resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function resourcesGet(_api::ResourcesApi, response_stream::Channel, resourceGroupName::String, resourceProviderNamespace::String, parentResourcePath::String, resourceType::String, resourceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourcesGet(_api, resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -178,13 +248,23 @@ Param: resourceId::String (required)
 Param: api_version::String (required)
 Return: GenericResource
 """
-function resourcesGetById(_api::ResourcesApi, resourceId::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_resourcesGetById(_api::ResourcesApi, resourceId::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", GenericResource, "/{resourceId}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceId", resourceId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function resourcesGetById(_api::ResourcesApi, resourceId::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourcesGetById(_api, resourceId, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function resourcesGetById(_api::ResourcesApi, response_stream::Channel, resourceId::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourcesGetById(_api, resourceId, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -197,7 +277,7 @@ Param: expand::String
 Param: top::Int32
 Return: ResourceListResult
 """
-function resourcesList(_api::ResourcesApi, api_version::String, subscriptionId::String; filter=nothing, expand=nothing, top=nothing, _mediaType=nothing)
+function _swaggerinternal_resourcesList(_api::ResourcesApi, api_version::String, subscriptionId::String; filter=nothing, expand=nothing, top=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", ResourceListResult, "/subscriptions/{subscriptionId}/resources", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "\$filter", filter)  # type String
@@ -206,7 +286,17 @@ function resourcesList(_api::ResourcesApi, api_version::String, subscriptionId::
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function resourcesList(_api::ResourcesApi, api_version::String, subscriptionId::String; filter=nothing, expand=nothing, top=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_resourcesList(_api, api_version, subscriptionId; filter=filter, expand=expand, top=top, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function resourcesList(_api::ResourcesApi, response_stream::Channel, api_version::String, subscriptionId::String; filter=nothing, expand=nothing, top=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_resourcesList(_api, api_version, subscriptionId; filter=filter, expand=expand, top=top, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -218,7 +308,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function resourcesMoveResources(_api::ResourcesApi, sourceResourceGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_resourcesMoveResources(_api::ResourcesApi, sourceResourceGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("sourceResourceGroupName", "resourcesMoveResources", :maxLength, sourceResourceGroupName, 90)
     Swagger.validate_param("sourceResourceGroupName", "resourcesMoveResources", :minLength, sourceResourceGroupName, 1)
 
@@ -228,7 +318,17 @@ function resourcesMoveResources(_api::ResourcesApi, sourceResourceGroupName::Str
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function resourcesMoveResources(_api::ResourcesApi, sourceResourceGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourcesMoveResources(_api, sourceResourceGroupName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function resourcesMoveResources(_api::ResourcesApi, response_stream::Channel, sourceResourceGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourcesMoveResources(_api, sourceResourceGroupName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -244,7 +344,7 @@ Param: parameters::GenericResource (required)
 Param: subscriptionId::String (required)
 Return: GenericResource
 """
-function resourcesUpdate(_api::ResourcesApi, resourceGroupName::String, resourceProviderNamespace::String, parentResourcePath::String, resourceType::String, resourceName::String, api_version::String, parameters, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_resourcesUpdate(_api::ResourcesApi, resourceGroupName::String, resourceProviderNamespace::String, parentResourcePath::String, resourceType::String, resourceName::String, api_version::String, parameters, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "resourcesUpdate", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "resourcesUpdate", :minLength, resourceGroupName, 1)
 
@@ -258,7 +358,17 @@ function resourcesUpdate(_api::ResourcesApi, resourceGroupName::String, resource
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function resourcesUpdate(_api::ResourcesApi, resourceGroupName::String, resourceProviderNamespace::String, parentResourcePath::String, resourceType::String, resourceName::String, api_version::String, parameters, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourcesUpdate(_api, resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, api_version, parameters, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function resourcesUpdate(_api::ResourcesApi, response_stream::Channel, resourceGroupName::String, resourceProviderNamespace::String, parentResourcePath::String, resourceType::String, resourceName::String, api_version::String, parameters, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourcesUpdate(_api, resourceGroupName, resourceProviderNamespace, parentResourcePath, resourceType, resourceName, api_version, parameters, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -269,13 +379,23 @@ Param: api_version::String (required)
 Param: parameters::GenericResource (required)
 Return: GenericResource
 """
-function resourcesUpdateById(_api::ResourcesApi, resourceId::String, api_version::String, parameters; _mediaType=nothing)
+function _swaggerinternal_resourcesUpdateById(_api::ResourcesApi, resourceId::String, api_version::String, parameters; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", GenericResource, "/{resourceId}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceId", resourceId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function resourcesUpdateById(_api::ResourcesApi, resourceId::String, api_version::String, parameters; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourcesUpdateById(_api, resourceId, api_version, parameters; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function resourcesUpdateById(_api::ResourcesApi, response_stream::Channel, resourceId::String, api_version::String, parameters; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourcesUpdateById(_api, resourceId, api_version, parameters; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -287,7 +407,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function resourcesValidateMoveResources(_api::ResourcesApi, sourceResourceGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_resourcesValidateMoveResources(_api::ResourcesApi, sourceResourceGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("sourceResourceGroupName", "resourcesValidateMoveResources", :maxLength, sourceResourceGroupName, 90)
     Swagger.validate_param("sourceResourceGroupName", "resourcesValidateMoveResources", :minLength, sourceResourceGroupName, 1)
 
@@ -297,7 +417,17 @@ function resourcesValidateMoveResources(_api::ResourcesApi, sourceResourceGroupN
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function resourcesValidateMoveResources(_api::ResourcesApi, sourceResourceGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourcesValidateMoveResources(_api, sourceResourceGroupName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function resourcesValidateMoveResources(_api::ResourcesApi, response_stream::Channel, sourceResourceGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_resourcesValidateMoveResources(_api, sourceResourceGroupName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export resourcesCheckExistence, resourcesCheckExistenceById, resourcesCreateOrUpdate, resourcesCreateOrUpdateById, resourcesDelete, resourcesDeleteById, resourcesGet, resourcesGetById, resourcesList, resourcesMoveResources, resourcesUpdate, resourcesUpdateById, resourcesValidateMoveResources

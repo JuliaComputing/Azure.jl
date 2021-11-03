@@ -16,7 +16,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Subnet
 """
-function subnetsCreateOrUpdate(_api::SubnetsApi, resourceGroupName::String, virtualNetworkName::String, subnetName::String, subnetParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_subnetsCreateOrUpdate(_api::SubnetsApi, resourceGroupName::String, virtualNetworkName::String, subnetName::String, subnetParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", Subnet, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}", ["azure_auth"], subnetParameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkName", virtualNetworkName)  # type String
@@ -25,7 +25,17 @@ function subnetsCreateOrUpdate(_api::SubnetsApi, resourceGroupName::String, virt
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function subnetsCreateOrUpdate(_api::SubnetsApi, resourceGroupName::String, virtualNetworkName::String, subnetName::String, subnetParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_subnetsCreateOrUpdate(_api, resourceGroupName, virtualNetworkName, subnetName, subnetParameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function subnetsCreateOrUpdate(_api::SubnetsApi, response_stream::Channel, resourceGroupName::String, virtualNetworkName::String, subnetName::String, subnetParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_subnetsCreateOrUpdate(_api, resourceGroupName, virtualNetworkName, subnetName, subnetParameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -38,7 +48,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function subnetsDelete(_api::SubnetsApi, resourceGroupName::String, virtualNetworkName::String, subnetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_subnetsDelete(_api::SubnetsApi, resourceGroupName::String, virtualNetworkName::String, subnetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkName", virtualNetworkName)  # type String
@@ -47,7 +57,17 @@ function subnetsDelete(_api::SubnetsApi, resourceGroupName::String, virtualNetwo
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function subnetsDelete(_api::SubnetsApi, resourceGroupName::String, virtualNetworkName::String, subnetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_subnetsDelete(_api, resourceGroupName, virtualNetworkName, subnetName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function subnetsDelete(_api::SubnetsApi, response_stream::Channel, resourceGroupName::String, virtualNetworkName::String, subnetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_subnetsDelete(_api, resourceGroupName, virtualNetworkName, subnetName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -61,7 +81,7 @@ Param: subscriptionId::String (required)
 Param: expand::String
 Return: Subnet
 """
-function subnetsGet(_api::SubnetsApi, resourceGroupName::String, virtualNetworkName::String, subnetName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+function _swaggerinternal_subnetsGet(_api::SubnetsApi, resourceGroupName::String, virtualNetworkName::String, subnetName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", Subnet, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkName", virtualNetworkName)  # type String
@@ -71,7 +91,17 @@ function subnetsGet(_api::SubnetsApi, resourceGroupName::String, virtualNetworkN
     Swagger.set_param(_ctx.query, "\$expand", expand)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function subnetsGet(_api::SubnetsApi, resourceGroupName::String, virtualNetworkName::String, subnetName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_subnetsGet(_api, resourceGroupName, virtualNetworkName, subnetName, api_version, subscriptionId; expand=expand, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function subnetsGet(_api::SubnetsApi, response_stream::Channel, resourceGroupName::String, virtualNetworkName::String, subnetName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_subnetsGet(_api, resourceGroupName, virtualNetworkName, subnetName, api_version, subscriptionId; expand=expand, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -83,7 +113,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: SubnetListResult
 """
-function subnetsList(_api::SubnetsApi, resourceGroupName::String, virtualNetworkName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_subnetsList(_api::SubnetsApi, resourceGroupName::String, virtualNetworkName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", SubnetListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkName", virtualNetworkName)  # type String
@@ -91,7 +121,17 @@ function subnetsList(_api::SubnetsApi, resourceGroupName::String, virtualNetwork
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function subnetsList(_api::SubnetsApi, resourceGroupName::String, virtualNetworkName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_subnetsList(_api, resourceGroupName, virtualNetworkName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function subnetsList(_api::SubnetsApi, response_stream::Channel, resourceGroupName::String, virtualNetworkName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_subnetsList(_api, resourceGroupName, virtualNetworkName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export subnetsCreateOrUpdate, subnetsDelete, subnetsGet, subnetsList

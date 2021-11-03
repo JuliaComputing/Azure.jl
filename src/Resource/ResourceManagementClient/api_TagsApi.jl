@@ -13,14 +13,24 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: TagDetails
 """
-function tagsCreateOrUpdate(_api::TagsApi, tagName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_tagsCreateOrUpdate(_api::TagsApi, tagName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", TagDetails, "/subscriptions/{subscriptionId}/tagNames/{tagName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "tagName", tagName)  # type String
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function tagsCreateOrUpdate(_api::TagsApi, tagName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_tagsCreateOrUpdate(_api, tagName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function tagsCreateOrUpdate(_api::TagsApi, response_stream::Channel, tagName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_tagsCreateOrUpdate(_api, tagName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -31,13 +41,23 @@ Param: api_version::String (required)
 Param: parameters::TagsResource (required)
 Return: TagsResource
 """
-function tagsCreateOrUpdateAtScope(_api::TagsApi, scope::String, api_version::String, parameters; _mediaType=nothing)
+function _swaggerinternal_tagsCreateOrUpdateAtScope(_api::TagsApi, scope::String, api_version::String, parameters; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", TagsResource, "/{scope}/providers/Microsoft.Resources/tags/default", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "scope", scope)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function tagsCreateOrUpdateAtScope(_api::TagsApi, scope::String, api_version::String, parameters; _mediaType=nothing)
+    _ctx = _swaggerinternal_tagsCreateOrUpdateAtScope(_api, scope, api_version, parameters; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function tagsCreateOrUpdateAtScope(_api::TagsApi, response_stream::Channel, scope::String, api_version::String, parameters; _mediaType=nothing)
+    _ctx = _swaggerinternal_tagsCreateOrUpdateAtScope(_api, scope, api_version, parameters; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -49,7 +69,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: TagValue
 """
-function tagsCreateOrUpdateValue(_api::TagsApi, tagName::String, tagValue::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_tagsCreateOrUpdateValue(_api::TagsApi, tagName::String, tagValue::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", TagValue, "/subscriptions/{subscriptionId}/tagNames/{tagName}/tagValues/{tagValue}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "tagName", tagName)  # type String
     Swagger.set_param(_ctx.path, "tagValue", tagValue)  # type String
@@ -57,7 +77,17 @@ function tagsCreateOrUpdateValue(_api::TagsApi, tagName::String, tagValue::Strin
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function tagsCreateOrUpdateValue(_api::TagsApi, tagName::String, tagValue::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_tagsCreateOrUpdateValue(_api, tagName, tagValue, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function tagsCreateOrUpdateValue(_api::TagsApi, response_stream::Channel, tagName::String, tagValue::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_tagsCreateOrUpdateValue(_api, tagName, tagValue, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -68,14 +98,24 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function tagsDelete(_api::TagsApi, tagName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_tagsDelete(_api::TagsApi, tagName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/tagNames/{tagName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "tagName", tagName)  # type String
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function tagsDelete(_api::TagsApi, tagName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_tagsDelete(_api, tagName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function tagsDelete(_api::TagsApi, response_stream::Channel, tagName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_tagsDelete(_api, tagName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -85,13 +125,23 @@ Param: scope::String (required)
 Param: api_version::String (required)
 Return: Nothing
 """
-function tagsDeleteAtScope(_api::TagsApi, scope::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_tagsDeleteAtScope(_api::TagsApi, scope::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/{scope}/providers/Microsoft.Resources/tags/default", ["azure_auth"])
     Swagger.set_param(_ctx.path, "scope", scope)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function tagsDeleteAtScope(_api::TagsApi, scope::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_tagsDeleteAtScope(_api, scope, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function tagsDeleteAtScope(_api::TagsApi, response_stream::Channel, scope::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_tagsDeleteAtScope(_api, scope, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -103,7 +153,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function tagsDeleteValue(_api::TagsApi, tagName::String, tagValue::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_tagsDeleteValue(_api::TagsApi, tagName::String, tagValue::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/tagNames/{tagName}/tagValues/{tagValue}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "tagName", tagName)  # type String
     Swagger.set_param(_ctx.path, "tagValue", tagValue)  # type String
@@ -111,7 +161,17 @@ function tagsDeleteValue(_api::TagsApi, tagName::String, tagValue::String, api_v
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function tagsDeleteValue(_api::TagsApi, tagName::String, tagValue::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_tagsDeleteValue(_api, tagName, tagValue, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function tagsDeleteValue(_api::TagsApi, response_stream::Channel, tagName::String, tagValue::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_tagsDeleteValue(_api, tagName, tagValue, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -121,13 +181,23 @@ Param: scope::String (required)
 Param: api_version::String (required)
 Return: TagsResource
 """
-function tagsGetAtScope(_api::TagsApi, scope::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_tagsGetAtScope(_api::TagsApi, scope::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", TagsResource, "/{scope}/providers/Microsoft.Resources/tags/default", ["azure_auth"])
     Swagger.set_param(_ctx.path, "scope", scope)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function tagsGetAtScope(_api::TagsApi, scope::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_tagsGetAtScope(_api, scope, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function tagsGetAtScope(_api::TagsApi, response_stream::Channel, scope::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_tagsGetAtScope(_api, scope, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -137,13 +207,23 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: TagsListResult
 """
-function tagsList(_api::TagsApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_tagsList(_api::TagsApi, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", TagsListResult, "/subscriptions/{subscriptionId}/tagNames", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function tagsList(_api::TagsApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_tagsList(_api, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function tagsList(_api::TagsApi, response_stream::Channel, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_tagsList(_api, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -154,13 +234,23 @@ Param: api_version::String (required)
 Param: parameters::TagsPatchResource (required)
 Return: TagsResource
 """
-function tagsUpdateAtScope(_api::TagsApi, scope::String, api_version::String, parameters; _mediaType=nothing)
+function _swaggerinternal_tagsUpdateAtScope(_api::TagsApi, scope::String, api_version::String, parameters; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", TagsResource, "/{scope}/providers/Microsoft.Resources/tags/default", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "scope", scope)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function tagsUpdateAtScope(_api::TagsApi, scope::String, api_version::String, parameters; _mediaType=nothing)
+    _ctx = _swaggerinternal_tagsUpdateAtScope(_api, scope, api_version, parameters; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function tagsUpdateAtScope(_api::TagsApi, response_stream::Channel, scope::String, api_version::String, parameters; _mediaType=nothing)
+    _ctx = _swaggerinternal_tagsUpdateAtScope(_api, scope, api_version, parameters; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export tagsCreateOrUpdate, tagsCreateOrUpdateAtScope, tagsCreateOrUpdateValue, tagsDelete, tagsDeleteAtScope, tagsDeleteValue, tagsGetAtScope, tagsList, tagsUpdateAtScope

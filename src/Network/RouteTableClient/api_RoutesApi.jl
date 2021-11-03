@@ -16,7 +16,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Route
 """
-function routesCreateOrUpdate(_api::RoutesApi, resourceGroupName::String, routeTableName::String, routeName::String, routeParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_routesCreateOrUpdate(_api::RoutesApi, resourceGroupName::String, routeTableName::String, routeName::String, routeParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", Route, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes/{routeName}", ["azure_auth"], routeParameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "routeTableName", routeTableName)  # type String
@@ -25,7 +25,17 @@ function routesCreateOrUpdate(_api::RoutesApi, resourceGroupName::String, routeT
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function routesCreateOrUpdate(_api::RoutesApi, resourceGroupName::String, routeTableName::String, routeName::String, routeParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_routesCreateOrUpdate(_api, resourceGroupName, routeTableName, routeName, routeParameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function routesCreateOrUpdate(_api::RoutesApi, response_stream::Channel, resourceGroupName::String, routeTableName::String, routeName::String, routeParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_routesCreateOrUpdate(_api, resourceGroupName, routeTableName, routeName, routeParameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -38,7 +48,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function routesDelete(_api::RoutesApi, resourceGroupName::String, routeTableName::String, routeName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_routesDelete(_api::RoutesApi, resourceGroupName::String, routeTableName::String, routeName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes/{routeName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "routeTableName", routeTableName)  # type String
@@ -47,7 +57,17 @@ function routesDelete(_api::RoutesApi, resourceGroupName::String, routeTableName
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function routesDelete(_api::RoutesApi, resourceGroupName::String, routeTableName::String, routeName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_routesDelete(_api, resourceGroupName, routeTableName, routeName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function routesDelete(_api::RoutesApi, response_stream::Channel, resourceGroupName::String, routeTableName::String, routeName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_routesDelete(_api, resourceGroupName, routeTableName, routeName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -60,7 +80,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Route
 """
-function routesGet(_api::RoutesApi, resourceGroupName::String, routeTableName::String, routeName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_routesGet(_api::RoutesApi, resourceGroupName::String, routeTableName::String, routeName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", Route, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes/{routeName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "routeTableName", routeTableName)  # type String
@@ -69,7 +89,17 @@ function routesGet(_api::RoutesApi, resourceGroupName::String, routeTableName::S
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function routesGet(_api::RoutesApi, resourceGroupName::String, routeTableName::String, routeName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_routesGet(_api, resourceGroupName, routeTableName, routeName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function routesGet(_api::RoutesApi, response_stream::Channel, resourceGroupName::String, routeTableName::String, routeName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_routesGet(_api, resourceGroupName, routeTableName, routeName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -81,7 +111,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: RouteListResult
 """
-function routesList(_api::RoutesApi, resourceGroupName::String, routeTableName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_routesList(_api::RoutesApi, resourceGroupName::String, routeTableName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", RouteListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeTables/{routeTableName}/routes", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "routeTableName", routeTableName)  # type String
@@ -89,7 +119,17 @@ function routesList(_api::RoutesApi, resourceGroupName::String, routeTableName::
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function routesList(_api::RoutesApi, resourceGroupName::String, routeTableName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_routesList(_api, resourceGroupName, routeTableName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function routesList(_api::RoutesApi, response_stream::Channel, resourceGroupName::String, routeTableName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_routesList(_api, resourceGroupName, routeTableName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export routesCreateOrUpdate, routesDelete, routesGet, routesList

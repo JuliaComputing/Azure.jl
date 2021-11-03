@@ -17,7 +17,7 @@ Param: aggregationGranularity::String
 Param: continuationToken::String
 Return: UsageAggregationListResult
 """
-function usageAggregatesList(_api::UsageAggregatesApi, reportedStartTime::DateTime, reportedEndTime::DateTime, api_version::String, subscriptionId::String; showDetails=nothing, aggregationGranularity=nothing, continuationToken=nothing, _mediaType=nothing)
+function _swaggerinternal_usageAggregatesList(_api::UsageAggregatesApi, reportedStartTime::DateTime, reportedEndTime::DateTime, api_version::String, subscriptionId::String; showDetails=nothing, aggregationGranularity=nothing, continuationToken=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", UsageAggregationListResult, "/subscriptions/{subscriptionId}/providers/Microsoft.Commerce/UsageAggregates", [])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "reportedStartTime", reportedStartTime)  # type DateTime
@@ -28,7 +28,17 @@ function usageAggregatesList(_api::UsageAggregatesApi, reportedStartTime::DateTi
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json", "text/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "text/json"] : [_mediaType])
+    return _ctx
+end
+
+function usageAggregatesList(_api::UsageAggregatesApi, reportedStartTime::DateTime, reportedEndTime::DateTime, api_version::String, subscriptionId::String; showDetails=nothing, aggregationGranularity=nothing, continuationToken=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_usageAggregatesList(_api, reportedStartTime, reportedEndTime, api_version, subscriptionId; showDetails=showDetails, aggregationGranularity=aggregationGranularity, continuationToken=continuationToken, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function usageAggregatesList(_api::UsageAggregatesApi, response_stream::Channel, reportedStartTime::DateTime, reportedEndTime::DateTime, api_version::String, subscriptionId::String; showDetails=nothing, aggregationGranularity=nothing, continuationToken=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_usageAggregatesList(_api, reportedStartTime, reportedEndTime, api_version, subscriptionId; showDetails=showDetails, aggregationGranularity=aggregationGranularity, continuationToken=continuationToken, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export usageAggregatesList

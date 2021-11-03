@@ -5,7 +5,6 @@ module ResourceManagementClient
 
 using Random
 using Dates
-using HTTP
 using Swagger
 import Swagger: field_name, property_type, hasproperty, validate_property, SwaggerApi, SwaggerModel
 import Base: convert, propertynames
@@ -40,10 +39,13 @@ export convert, DeploymentProperties
 export convert, DeploymentPropertiesExtended
 export convert, DeploymentValidateResult
 export convert, DeploymentWhatIf
+export convert, DeploymentWhatIfProperties
 export convert, DeploymentWhatIfSettings
 export convert, ErrorAdditionalInfo
 export convert, ErrorResponse
 export convert, ExportTemplateRequest
+export convert, GenericResource
+export convert, GenericResourceExpanded
 export convert, GenericResourceFilter
 export convert, HttpMessage
 export convert, Identity
@@ -88,9 +90,6 @@ export convert, WhatIfChange
 export convert, WhatIfOperationProperties
 export convert, WhatIfOperationResult
 export convert, WhatIfPropertyChange
-export convert, DeploymentWhatIfProperties
-export convert, GenericResource
-export convert, GenericResourceExpanded
 
 # export operations
 export convert, DeploymentOperationsApi, DeploymentsApi, OperationsApi, ProvidersApi, ResourceGroupsApi, ResourcesApi, TagsApi

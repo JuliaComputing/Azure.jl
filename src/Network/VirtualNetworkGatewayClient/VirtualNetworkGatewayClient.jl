@@ -5,7 +5,6 @@ module VirtualNetworkGatewayClient
 
 using Random
 using Dates
-using HTTP
 using Swagger
 import Swagger: field_name, property_type, hasproperty, validate_property, SwaggerApi, SwaggerModel
 import Base: convert, propertynames
@@ -26,6 +25,7 @@ export convert, CloudError
 export convert, CloudErrorBody
 export convert, ConnectionProtocol
 export convert, ConnectionResetSharedKey
+export convert, ConnectionSharedKey
 export convert, DhGroup
 export convert, Error
 export convert, ErrorDetails
@@ -38,6 +38,7 @@ export convert, IkeIntegrity
 export convert, IpsecEncryption
 export convert, IpsecIntegrity
 export convert, IpsecPolicy
+export convert, LocalNetworkGateway
 export convert, LocalNetworkGatewayListResult
 export convert, LocalNetworkGatewayPropertiesFormat
 export convert, P2SVpnConnectionRequest
@@ -50,11 +51,15 @@ export convert, TagsObject
 export convert, TrafficSelectorPolicy
 export convert, TunnelConnectionHealth
 export convert, VirtualNetworkConnectionGatewayReference
+export convert, VirtualNetworkGateway
+export convert, VirtualNetworkGatewayConnection
+export convert, VirtualNetworkGatewayConnectionListEntity
 export convert, VirtualNetworkGatewayConnectionListEntityPropertiesFormat
 export convert, VirtualNetworkGatewayConnectionListResult
 export convert, VirtualNetworkGatewayConnectionPropertiesFormat
 export convert, VirtualNetworkGatewayConnectionStatus
 export convert, VirtualNetworkGatewayConnectionType
+export convert, VirtualNetworkGatewayIPConfiguration
 export convert, VirtualNetworkGatewayIPConfigurationPropertiesFormat
 export convert, VirtualNetworkGatewayListConnectionsResult
 export convert, VirtualNetworkGatewayListResult
@@ -65,19 +70,13 @@ export convert, VpnClientConnectionHealthDetail
 export convert, VpnClientConnectionHealthDetailListResult
 export convert, VpnClientIPsecParameters
 export convert, VpnClientParameters
+export convert, VpnClientRevokedCertificate
 export convert, VpnClientRevokedCertificatePropertiesFormat
+export convert, VpnClientRootCertificate
 export convert, VpnClientRootCertificatePropertiesFormat
 export convert, VpnDeviceScriptParameters
 export convert, VpnPacketCaptureStartParameters
 export convert, VpnPacketCaptureStopParameters
-export convert, ConnectionSharedKey
-export convert, LocalNetworkGateway
-export convert, VirtualNetworkGateway
-export convert, VirtualNetworkGatewayConnection
-export convert, VirtualNetworkGatewayConnectionListEntity
-export convert, VirtualNetworkGatewayIPConfiguration
-export convert, VpnClientRevokedCertificate
-export convert, VpnClientRootCertificate
 
 # export operations
 export convert, LocalNetworkGatewaysApi, VirtualNetworkGatewayConnectionsApi, VirtualNetworkGatewaysApi

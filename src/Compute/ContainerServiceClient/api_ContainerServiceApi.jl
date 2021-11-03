@@ -14,7 +14,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function containerServicesDelete(_api::ContainerServiceApi, resourceGroupName::String, containerServiceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_containerServicesDelete(_api::ContainerServiceApi, resourceGroupName::String, containerServiceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{containerServiceName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "containerServiceName", containerServiceName)  # type String
@@ -22,7 +22,17 @@ function containerServicesDelete(_api::ContainerServiceApi, resourceGroupName::S
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function containerServicesDelete(_api::ContainerServiceApi, resourceGroupName::String, containerServiceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_containerServicesDelete(_api, resourceGroupName, containerServiceName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function containerServicesDelete(_api::ContainerServiceApi, response_stream::Channel, resourceGroupName::String, containerServiceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_containerServicesDelete(_api, resourceGroupName, containerServiceName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -34,7 +44,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ContainerService
 """
-function containerServicesGet(_api::ContainerServiceApi, resourceGroupName::String, containerServiceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_containerServicesGet(_api::ContainerServiceApi, resourceGroupName::String, containerServiceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", ContainerService, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices/{containerServiceName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "containerServiceName", containerServiceName)  # type String
@@ -42,7 +52,17 @@ function containerServicesGet(_api::ContainerServiceApi, resourceGroupName::Stri
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function containerServicesGet(_api::ContainerServiceApi, resourceGroupName::String, containerServiceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_containerServicesGet(_api, resourceGroupName, containerServiceName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function containerServicesGet(_api::ContainerServiceApi, response_stream::Channel, resourceGroupName::String, containerServiceName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_containerServicesGet(_api, resourceGroupName, containerServiceName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -53,14 +73,24 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ContainerServiceListResult
 """
-function containerServicesListByResourceGroup(_api::ContainerServiceApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_containerServicesListByResourceGroup(_api::ContainerServiceApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", ContainerServiceListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/containerServices", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function containerServicesListByResourceGroup(_api::ContainerServiceApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_containerServicesListByResourceGroup(_api, resourceGroupName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function containerServicesListByResourceGroup(_api::ContainerServiceApi, response_stream::Channel, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_containerServicesListByResourceGroup(_api, resourceGroupName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export containerServicesDelete, containerServicesGet, containerServicesListByResourceGroup

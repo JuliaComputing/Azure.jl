@@ -15,7 +15,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ProximityPlacementGroup
 """
-function proximityPlacementGroupsCreateOrUpdate(_api::ProximityPlacementGroupsApi, resourceGroupName::String, proximityPlacementGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_proximityPlacementGroupsCreateOrUpdate(_api::ProximityPlacementGroupsApi, resourceGroupName::String, proximityPlacementGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", ProximityPlacementGroup, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups/{proximityPlacementGroupName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "proximityPlacementGroupName", proximityPlacementGroupName)  # type String
@@ -23,7 +23,17 @@ function proximityPlacementGroupsCreateOrUpdate(_api::ProximityPlacementGroupsAp
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function proximityPlacementGroupsCreateOrUpdate(_api::ProximityPlacementGroupsApi, resourceGroupName::String, proximityPlacementGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_proximityPlacementGroupsCreateOrUpdate(_api, resourceGroupName, proximityPlacementGroupName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function proximityPlacementGroupsCreateOrUpdate(_api::ProximityPlacementGroupsApi, response_stream::Channel, resourceGroupName::String, proximityPlacementGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_proximityPlacementGroupsCreateOrUpdate(_api, resourceGroupName, proximityPlacementGroupName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -35,7 +45,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function proximityPlacementGroupsDelete(_api::ProximityPlacementGroupsApi, resourceGroupName::String, proximityPlacementGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_proximityPlacementGroupsDelete(_api::ProximityPlacementGroupsApi, resourceGroupName::String, proximityPlacementGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups/{proximityPlacementGroupName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "proximityPlacementGroupName", proximityPlacementGroupName)  # type String
@@ -43,7 +53,17 @@ function proximityPlacementGroupsDelete(_api::ProximityPlacementGroupsApi, resou
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function proximityPlacementGroupsDelete(_api::ProximityPlacementGroupsApi, resourceGroupName::String, proximityPlacementGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_proximityPlacementGroupsDelete(_api, resourceGroupName, proximityPlacementGroupName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function proximityPlacementGroupsDelete(_api::ProximityPlacementGroupsApi, response_stream::Channel, resourceGroupName::String, proximityPlacementGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_proximityPlacementGroupsDelete(_api, resourceGroupName, proximityPlacementGroupName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -56,7 +76,7 @@ Param: subscriptionId::String (required)
 Param: includeColocationStatus::String
 Return: ProximityPlacementGroup
 """
-function proximityPlacementGroupsGet(_api::ProximityPlacementGroupsApi, resourceGroupName::String, proximityPlacementGroupName::String, api_version::String, subscriptionId::String; includeColocationStatus=nothing, _mediaType=nothing)
+function _swaggerinternal_proximityPlacementGroupsGet(_api::ProximityPlacementGroupsApi, resourceGroupName::String, proximityPlacementGroupName::String, api_version::String, subscriptionId::String; includeColocationStatus=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", ProximityPlacementGroup, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups/{proximityPlacementGroupName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "proximityPlacementGroupName", proximityPlacementGroupName)  # type String
@@ -65,7 +85,17 @@ function proximityPlacementGroupsGet(_api::ProximityPlacementGroupsApi, resource
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function proximityPlacementGroupsGet(_api::ProximityPlacementGroupsApi, resourceGroupName::String, proximityPlacementGroupName::String, api_version::String, subscriptionId::String; includeColocationStatus=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_proximityPlacementGroupsGet(_api, resourceGroupName, proximityPlacementGroupName, api_version, subscriptionId; includeColocationStatus=includeColocationStatus, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function proximityPlacementGroupsGet(_api::ProximityPlacementGroupsApi, response_stream::Channel, resourceGroupName::String, proximityPlacementGroupName::String, api_version::String, subscriptionId::String; includeColocationStatus=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_proximityPlacementGroupsGet(_api, resourceGroupName, proximityPlacementGroupName, api_version, subscriptionId; includeColocationStatus=includeColocationStatus, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -76,14 +106,24 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ProximityPlacementGroupListResult
 """
-function proximityPlacementGroupsListByResourceGroup(_api::ProximityPlacementGroupsApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_proximityPlacementGroupsListByResourceGroup(_api::ProximityPlacementGroupsApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", ProximityPlacementGroupListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function proximityPlacementGroupsListByResourceGroup(_api::ProximityPlacementGroupsApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_proximityPlacementGroupsListByResourceGroup(_api, resourceGroupName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function proximityPlacementGroupsListByResourceGroup(_api::ProximityPlacementGroupsApi, response_stream::Channel, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_proximityPlacementGroupsListByResourceGroup(_api, resourceGroupName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -93,13 +133,23 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ProximityPlacementGroupListResult
 """
-function proximityPlacementGroupsListBySubscription(_api::ProximityPlacementGroupsApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_proximityPlacementGroupsListBySubscription(_api::ProximityPlacementGroupsApi, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", ProximityPlacementGroupListResult, "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/proximityPlacementGroups", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function proximityPlacementGroupsListBySubscription(_api::ProximityPlacementGroupsApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_proximityPlacementGroupsListBySubscription(_api, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function proximityPlacementGroupsListBySubscription(_api::ProximityPlacementGroupsApi, response_stream::Channel, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_proximityPlacementGroupsListBySubscription(_api, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -112,7 +162,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ProximityPlacementGroup
 """
-function proximityPlacementGroupsUpdate(_api::ProximityPlacementGroupsApi, resourceGroupName::String, proximityPlacementGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_proximityPlacementGroupsUpdate(_api::ProximityPlacementGroupsApi, resourceGroupName::String, proximityPlacementGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", ProximityPlacementGroup, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups/{proximityPlacementGroupName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "proximityPlacementGroupName", proximityPlacementGroupName)  # type String
@@ -120,7 +170,17 @@ function proximityPlacementGroupsUpdate(_api::ProximityPlacementGroupsApi, resou
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function proximityPlacementGroupsUpdate(_api::ProximityPlacementGroupsApi, resourceGroupName::String, proximityPlacementGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_proximityPlacementGroupsUpdate(_api, resourceGroupName, proximityPlacementGroupName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function proximityPlacementGroupsUpdate(_api::ProximityPlacementGroupsApi, response_stream::Channel, resourceGroupName::String, proximityPlacementGroupName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_proximityPlacementGroupsUpdate(_api, resourceGroupName, proximityPlacementGroupName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export proximityPlacementGroupsCreateOrUpdate, proximityPlacementGroupsDelete, proximityPlacementGroupsGet, proximityPlacementGroupsListByResourceGroup, proximityPlacementGroupsListBySubscription, proximityPlacementGroupsUpdate

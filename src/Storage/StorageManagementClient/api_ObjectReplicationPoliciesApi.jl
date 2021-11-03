@@ -16,7 +16,7 @@ Param: objectReplicationPolicyId::String (required)
 Param: properties::ObjectReplicationPolicy (required)
 Return: ObjectReplicationPolicy
 """
-function objectReplicationPoliciesCreateOrUpdate(_api::ObjectReplicationPoliciesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, objectReplicationPolicyId::String, properties; _mediaType=nothing)
+function _swaggerinternal_objectReplicationPoliciesCreateOrUpdate(_api::ObjectReplicationPoliciesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, objectReplicationPolicyId::String, properties; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "objectReplicationPoliciesCreateOrUpdate", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "objectReplicationPoliciesCreateOrUpdate", :minLength, resourceGroupName, 1)
 
@@ -37,7 +37,17 @@ function objectReplicationPoliciesCreateOrUpdate(_api::ObjectReplicationPolicies
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function objectReplicationPoliciesCreateOrUpdate(_api::ObjectReplicationPoliciesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, objectReplicationPolicyId::String, properties; _mediaType=nothing)
+    _ctx = _swaggerinternal_objectReplicationPoliciesCreateOrUpdate(_api, resourceGroupName, accountName, api_version, subscriptionId, objectReplicationPolicyId, properties; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function objectReplicationPoliciesCreateOrUpdate(_api::ObjectReplicationPoliciesApi, response_stream::Channel, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, objectReplicationPolicyId::String, properties; _mediaType=nothing)
+    _ctx = _swaggerinternal_objectReplicationPoliciesCreateOrUpdate(_api, resourceGroupName, accountName, api_version, subscriptionId, objectReplicationPolicyId, properties; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -50,7 +60,7 @@ Param: subscriptionId::String (required)
 Param: objectReplicationPolicyId::String (required)
 Return: Nothing
 """
-function objectReplicationPoliciesDelete(_api::ObjectReplicationPoliciesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, objectReplicationPolicyId::String; _mediaType=nothing)
+function _swaggerinternal_objectReplicationPoliciesDelete(_api::ObjectReplicationPoliciesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, objectReplicationPolicyId::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "objectReplicationPoliciesDelete", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "objectReplicationPoliciesDelete", :minLength, resourceGroupName, 1)
 
@@ -71,7 +81,17 @@ function objectReplicationPoliciesDelete(_api::ObjectReplicationPoliciesApi, res
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function objectReplicationPoliciesDelete(_api::ObjectReplicationPoliciesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, objectReplicationPolicyId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_objectReplicationPoliciesDelete(_api, resourceGroupName, accountName, api_version, subscriptionId, objectReplicationPolicyId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function objectReplicationPoliciesDelete(_api::ObjectReplicationPoliciesApi, response_stream::Channel, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, objectReplicationPolicyId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_objectReplicationPoliciesDelete(_api, resourceGroupName, accountName, api_version, subscriptionId, objectReplicationPolicyId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -84,7 +104,7 @@ Param: subscriptionId::String (required)
 Param: objectReplicationPolicyId::String (required)
 Return: ObjectReplicationPolicy
 """
-function objectReplicationPoliciesGet(_api::ObjectReplicationPoliciesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, objectReplicationPolicyId::String; _mediaType=nothing)
+function _swaggerinternal_objectReplicationPoliciesGet(_api::ObjectReplicationPoliciesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, objectReplicationPolicyId::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "objectReplicationPoliciesGet", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "objectReplicationPoliciesGet", :minLength, resourceGroupName, 1)
 
@@ -105,7 +125,17 @@ function objectReplicationPoliciesGet(_api::ObjectReplicationPoliciesApi, resour
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function objectReplicationPoliciesGet(_api::ObjectReplicationPoliciesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, objectReplicationPolicyId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_objectReplicationPoliciesGet(_api, resourceGroupName, accountName, api_version, subscriptionId, objectReplicationPolicyId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function objectReplicationPoliciesGet(_api::ObjectReplicationPoliciesApi, response_stream::Channel, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, objectReplicationPolicyId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_objectReplicationPoliciesGet(_api, resourceGroupName, accountName, api_version, subscriptionId, objectReplicationPolicyId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -117,7 +147,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ObjectReplicationPolicies
 """
-function objectReplicationPoliciesList(_api::ObjectReplicationPoliciesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_objectReplicationPoliciesList(_api::ObjectReplicationPoliciesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "objectReplicationPoliciesList", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "objectReplicationPoliciesList", :minLength, resourceGroupName, 1)
 
@@ -135,7 +165,17 @@ function objectReplicationPoliciesList(_api::ObjectReplicationPoliciesApi, resou
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function objectReplicationPoliciesList(_api::ObjectReplicationPoliciesApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_objectReplicationPoliciesList(_api, resourceGroupName, accountName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function objectReplicationPoliciesList(_api::ObjectReplicationPoliciesApi, response_stream::Channel, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_objectReplicationPoliciesList(_api, resourceGroupName, accountName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export objectReplicationPoliciesCreateOrUpdate, objectReplicationPoliciesDelete, objectReplicationPoliciesGet, objectReplicationPoliciesList

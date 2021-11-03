@@ -16,7 +16,7 @@ Param: parameters::CreateOrUpdateFirewallRuleParameters (required)
 Param: api_version::String (required)
 Return: FirewallRule
 """
-function firewallRulesCreateOrUpdate(_api::FirewallRulesApi, subscriptionId::String, resourceGroupName::String, accountName::String, firewallRuleName::String, parameters, api_version::String; _mediaType=nothing)
+function _swaggerinternal_firewallRulesCreateOrUpdate(_api::FirewallRulesApi, subscriptionId::String, resourceGroupName::String, accountName::String, firewallRuleName::String, parameters, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", FirewallRule, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/firewallRules/{firewallRuleName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
@@ -25,7 +25,17 @@ function firewallRulesCreateOrUpdate(_api::FirewallRulesApi, subscriptionId::Str
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function firewallRulesCreateOrUpdate(_api::FirewallRulesApi, subscriptionId::String, resourceGroupName::String, accountName::String, firewallRuleName::String, parameters, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_firewallRulesCreateOrUpdate(_api, subscriptionId, resourceGroupName, accountName, firewallRuleName, parameters, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function firewallRulesCreateOrUpdate(_api::FirewallRulesApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, accountName::String, firewallRuleName::String, parameters, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_firewallRulesCreateOrUpdate(_api, subscriptionId, resourceGroupName, accountName, firewallRuleName, parameters, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -38,7 +48,7 @@ Param: firewallRuleName::String (required)
 Param: api_version::String (required)
 Return: Nothing
 """
-function firewallRulesDelete(_api::FirewallRulesApi, subscriptionId::String, resourceGroupName::String, accountName::String, firewallRuleName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_firewallRulesDelete(_api::FirewallRulesApi, subscriptionId::String, resourceGroupName::String, accountName::String, firewallRuleName::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/firewallRules/{firewallRuleName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
@@ -47,7 +57,17 @@ function firewallRulesDelete(_api::FirewallRulesApi, subscriptionId::String, res
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function firewallRulesDelete(_api::FirewallRulesApi, subscriptionId::String, resourceGroupName::String, accountName::String, firewallRuleName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_firewallRulesDelete(_api, subscriptionId, resourceGroupName, accountName, firewallRuleName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function firewallRulesDelete(_api::FirewallRulesApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, accountName::String, firewallRuleName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_firewallRulesDelete(_api, subscriptionId, resourceGroupName, accountName, firewallRuleName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -60,7 +80,7 @@ Param: firewallRuleName::String (required)
 Param: api_version::String (required)
 Return: FirewallRule
 """
-function firewallRulesGet(_api::FirewallRulesApi, subscriptionId::String, resourceGroupName::String, accountName::String, firewallRuleName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_firewallRulesGet(_api::FirewallRulesApi, subscriptionId::String, resourceGroupName::String, accountName::String, firewallRuleName::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", FirewallRule, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/firewallRules/{firewallRuleName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
@@ -69,7 +89,17 @@ function firewallRulesGet(_api::FirewallRulesApi, subscriptionId::String, resour
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function firewallRulesGet(_api::FirewallRulesApi, subscriptionId::String, resourceGroupName::String, accountName::String, firewallRuleName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_firewallRulesGet(_api, subscriptionId, resourceGroupName, accountName, firewallRuleName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function firewallRulesGet(_api::FirewallRulesApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, accountName::String, firewallRuleName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_firewallRulesGet(_api, subscriptionId, resourceGroupName, accountName, firewallRuleName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -81,7 +111,7 @@ Param: accountName::String (required)
 Param: api_version::String (required)
 Return: FirewallRuleListResult
 """
-function firewallRulesListByAccount(_api::FirewallRulesApi, subscriptionId::String, resourceGroupName::String, accountName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_firewallRulesListByAccount(_api::FirewallRulesApi, subscriptionId::String, resourceGroupName::String, accountName::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", FirewallRuleListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/firewallRules", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
@@ -89,7 +119,17 @@ function firewallRulesListByAccount(_api::FirewallRulesApi, subscriptionId::Stri
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function firewallRulesListByAccount(_api::FirewallRulesApi, subscriptionId::String, resourceGroupName::String, accountName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_firewallRulesListByAccount(_api, subscriptionId, resourceGroupName, accountName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function firewallRulesListByAccount(_api::FirewallRulesApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, accountName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_firewallRulesListByAccount(_api, subscriptionId, resourceGroupName, accountName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -103,7 +143,7 @@ Param: api_version::String (required)
 Param: parameters::UpdateFirewallRuleParameters
 Return: FirewallRule
 """
-function firewallRulesUpdate(_api::FirewallRulesApi, subscriptionId::String, resourceGroupName::String, accountName::String, firewallRuleName::String, api_version::String; parameters=nothing, _mediaType=nothing)
+function _swaggerinternal_firewallRulesUpdate(_api::FirewallRulesApi, subscriptionId::String, resourceGroupName::String, accountName::String, firewallRuleName::String, api_version::String; parameters=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", FirewallRule, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/firewallRules/{firewallRuleName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
@@ -112,7 +152,17 @@ function firewallRulesUpdate(_api::FirewallRulesApi, subscriptionId::String, res
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function firewallRulesUpdate(_api::FirewallRulesApi, subscriptionId::String, resourceGroupName::String, accountName::String, firewallRuleName::String, api_version::String; parameters=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_firewallRulesUpdate(_api, subscriptionId, resourceGroupName, accountName, firewallRuleName, api_version; parameters=parameters, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function firewallRulesUpdate(_api::FirewallRulesApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, accountName::String, firewallRuleName::String, api_version::String; parameters=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_firewallRulesUpdate(_api, subscriptionId, resourceGroupName, accountName, firewallRuleName, api_version; parameters=parameters, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export firewallRulesCreateOrUpdate, firewallRulesDelete, firewallRulesGet, firewallRulesListByAccount, firewallRulesUpdate

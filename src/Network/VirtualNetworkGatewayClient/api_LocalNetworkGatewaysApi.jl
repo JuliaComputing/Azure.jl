@@ -15,7 +15,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: LocalNetworkGateway
 """
-function localNetworkGatewaysCreateOrUpdate(_api::LocalNetworkGatewaysApi, resourceGroupName::String, localNetworkGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_localNetworkGatewaysCreateOrUpdate(_api::LocalNetworkGatewaysApi, resourceGroupName::String, localNetworkGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("localNetworkGatewayName", "localNetworkGatewaysCreateOrUpdate", :minLength, localNetworkGatewayName, 1)
 
     _ctx = Swagger.Ctx(_api.client, "PUT", LocalNetworkGateway, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/localNetworkGateways/{localNetworkGatewayName}", ["azure_auth"], parameters)
@@ -25,7 +25,17 @@ function localNetworkGatewaysCreateOrUpdate(_api::LocalNetworkGatewaysApi, resou
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function localNetworkGatewaysCreateOrUpdate(_api::LocalNetworkGatewaysApi, resourceGroupName::String, localNetworkGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_localNetworkGatewaysCreateOrUpdate(_api, resourceGroupName, localNetworkGatewayName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function localNetworkGatewaysCreateOrUpdate(_api::LocalNetworkGatewaysApi, response_stream::Channel, resourceGroupName::String, localNetworkGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_localNetworkGatewaysCreateOrUpdate(_api, resourceGroupName, localNetworkGatewayName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -37,7 +47,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function localNetworkGatewaysDelete(_api::LocalNetworkGatewaysApi, resourceGroupName::String, localNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_localNetworkGatewaysDelete(_api::LocalNetworkGatewaysApi, resourceGroupName::String, localNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("localNetworkGatewayName", "localNetworkGatewaysDelete", :minLength, localNetworkGatewayName, 1)
 
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/localNetworkGateways/{localNetworkGatewayName}", ["azure_auth"])
@@ -47,7 +57,17 @@ function localNetworkGatewaysDelete(_api::LocalNetworkGatewaysApi, resourceGroup
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function localNetworkGatewaysDelete(_api::LocalNetworkGatewaysApi, resourceGroupName::String, localNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_localNetworkGatewaysDelete(_api, resourceGroupName, localNetworkGatewayName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function localNetworkGatewaysDelete(_api::LocalNetworkGatewaysApi, response_stream::Channel, resourceGroupName::String, localNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_localNetworkGatewaysDelete(_api, resourceGroupName, localNetworkGatewayName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -59,7 +79,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: LocalNetworkGateway
 """
-function localNetworkGatewaysGet(_api::LocalNetworkGatewaysApi, resourceGroupName::String, localNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_localNetworkGatewaysGet(_api::LocalNetworkGatewaysApi, resourceGroupName::String, localNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("localNetworkGatewayName", "localNetworkGatewaysGet", :minLength, localNetworkGatewayName, 1)
 
     _ctx = Swagger.Ctx(_api.client, "GET", LocalNetworkGateway, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/localNetworkGateways/{localNetworkGatewayName}", ["azure_auth"])
@@ -69,7 +89,17 @@ function localNetworkGatewaysGet(_api::LocalNetworkGatewaysApi, resourceGroupNam
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function localNetworkGatewaysGet(_api::LocalNetworkGatewaysApi, resourceGroupName::String, localNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_localNetworkGatewaysGet(_api, resourceGroupName, localNetworkGatewayName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function localNetworkGatewaysGet(_api::LocalNetworkGatewaysApi, response_stream::Channel, resourceGroupName::String, localNetworkGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_localNetworkGatewaysGet(_api, resourceGroupName, localNetworkGatewayName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -80,14 +110,24 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: LocalNetworkGatewayListResult
 """
-function localNetworkGatewaysList(_api::LocalNetworkGatewaysApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_localNetworkGatewaysList(_api::LocalNetworkGatewaysApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", LocalNetworkGatewayListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/localNetworkGateways", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function localNetworkGatewaysList(_api::LocalNetworkGatewaysApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_localNetworkGatewaysList(_api, resourceGroupName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function localNetworkGatewaysList(_api::LocalNetworkGatewaysApi, response_stream::Channel, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_localNetworkGatewaysList(_api, resourceGroupName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -100,7 +140,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: LocalNetworkGateway
 """
-function localNetworkGatewaysUpdateTags(_api::LocalNetworkGatewaysApi, resourceGroupName::String, localNetworkGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_localNetworkGatewaysUpdateTags(_api::LocalNetworkGatewaysApi, resourceGroupName::String, localNetworkGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("localNetworkGatewayName", "localNetworkGatewaysUpdateTags", :minLength, localNetworkGatewayName, 1)
 
     _ctx = Swagger.Ctx(_api.client, "PATCH", LocalNetworkGateway, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/localNetworkGateways/{localNetworkGatewayName}", ["azure_auth"], parameters)
@@ -110,7 +150,17 @@ function localNetworkGatewaysUpdateTags(_api::LocalNetworkGatewaysApi, resourceG
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function localNetworkGatewaysUpdateTags(_api::LocalNetworkGatewaysApi, resourceGroupName::String, localNetworkGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_localNetworkGatewaysUpdateTags(_api, resourceGroupName, localNetworkGatewayName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function localNetworkGatewaysUpdateTags(_api::LocalNetworkGatewaysApi, response_stream::Channel, resourceGroupName::String, localNetworkGatewayName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_localNetworkGatewaysUpdateTags(_api, resourceGroupName, localNetworkGatewayName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export localNetworkGatewaysCreateOrUpdate, localNetworkGatewaysDelete, localNetworkGatewaysGet, localNetworkGatewaysList, localNetworkGatewaysUpdateTags

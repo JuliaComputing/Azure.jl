@@ -16,7 +16,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: VirtualNetworkPeering
 """
-function virtualNetworkPeeringsCreateOrUpdate(_api::VirtualNetworkPeeringsApi, resourceGroupName::String, virtualNetworkName::String, virtualNetworkPeeringName::String, VirtualNetworkPeeringParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualNetworkPeeringsCreateOrUpdate(_api::VirtualNetworkPeeringsApi, resourceGroupName::String, virtualNetworkName::String, virtualNetworkPeeringName::String, VirtualNetworkPeeringParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", VirtualNetworkPeering, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/virtualNetworkPeerings/{virtualNetworkPeeringName}", ["azure_auth"], VirtualNetworkPeeringParameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkName", virtualNetworkName)  # type String
@@ -25,7 +25,17 @@ function virtualNetworkPeeringsCreateOrUpdate(_api::VirtualNetworkPeeringsApi, r
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworkPeeringsCreateOrUpdate(_api::VirtualNetworkPeeringsApi, resourceGroupName::String, virtualNetworkName::String, virtualNetworkPeeringName::String, VirtualNetworkPeeringParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkPeeringsCreateOrUpdate(_api, resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, VirtualNetworkPeeringParameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworkPeeringsCreateOrUpdate(_api::VirtualNetworkPeeringsApi, response_stream::Channel, resourceGroupName::String, virtualNetworkName::String, virtualNetworkPeeringName::String, VirtualNetworkPeeringParameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkPeeringsCreateOrUpdate(_api, resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, VirtualNetworkPeeringParameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -38,7 +48,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function virtualNetworkPeeringsDelete(_api::VirtualNetworkPeeringsApi, resourceGroupName::String, virtualNetworkName::String, virtualNetworkPeeringName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualNetworkPeeringsDelete(_api::VirtualNetworkPeeringsApi, resourceGroupName::String, virtualNetworkName::String, virtualNetworkPeeringName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/virtualNetworkPeerings/{virtualNetworkPeeringName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkName", virtualNetworkName)  # type String
@@ -47,7 +57,17 @@ function virtualNetworkPeeringsDelete(_api::VirtualNetworkPeeringsApi, resourceG
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworkPeeringsDelete(_api::VirtualNetworkPeeringsApi, resourceGroupName::String, virtualNetworkName::String, virtualNetworkPeeringName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkPeeringsDelete(_api, resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworkPeeringsDelete(_api::VirtualNetworkPeeringsApi, response_stream::Channel, resourceGroupName::String, virtualNetworkName::String, virtualNetworkPeeringName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkPeeringsDelete(_api, resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -60,7 +80,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: VirtualNetworkPeering
 """
-function virtualNetworkPeeringsGet(_api::VirtualNetworkPeeringsApi, resourceGroupName::String, virtualNetworkName::String, virtualNetworkPeeringName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualNetworkPeeringsGet(_api::VirtualNetworkPeeringsApi, resourceGroupName::String, virtualNetworkName::String, virtualNetworkPeeringName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VirtualNetworkPeering, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/virtualNetworkPeerings/{virtualNetworkPeeringName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkName", virtualNetworkName)  # type String
@@ -69,7 +89,17 @@ function virtualNetworkPeeringsGet(_api::VirtualNetworkPeeringsApi, resourceGrou
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworkPeeringsGet(_api::VirtualNetworkPeeringsApi, resourceGroupName::String, virtualNetworkName::String, virtualNetworkPeeringName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkPeeringsGet(_api, resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworkPeeringsGet(_api::VirtualNetworkPeeringsApi, response_stream::Channel, resourceGroupName::String, virtualNetworkName::String, virtualNetworkPeeringName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkPeeringsGet(_api, resourceGroupName, virtualNetworkName, virtualNetworkPeeringName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -81,7 +111,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: VirtualNetworkPeeringListResult
 """
-function virtualNetworkPeeringsList(_api::VirtualNetworkPeeringsApi, resourceGroupName::String, virtualNetworkName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_virtualNetworkPeeringsList(_api::VirtualNetworkPeeringsApi, resourceGroupName::String, virtualNetworkName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VirtualNetworkPeeringListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/virtualNetworkPeerings", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "virtualNetworkName", virtualNetworkName)  # type String
@@ -89,7 +119,17 @@ function virtualNetworkPeeringsList(_api::VirtualNetworkPeeringsApi, resourceGro
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function virtualNetworkPeeringsList(_api::VirtualNetworkPeeringsApi, resourceGroupName::String, virtualNetworkName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkPeeringsList(_api, resourceGroupName, virtualNetworkName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function virtualNetworkPeeringsList(_api::VirtualNetworkPeeringsApi, response_stream::Channel, resourceGroupName::String, virtualNetworkName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_virtualNetworkPeeringsList(_api, resourceGroupName, virtualNetworkName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export virtualNetworkPeeringsCreateOrUpdate, virtualNetworkPeeringsDelete, virtualNetworkPeeringsGet, virtualNetworkPeeringsList

@@ -5,7 +5,6 @@ module DataLakeStoreAccountManagementClient
 
 using Random
 using Dates
-using HTTP
 using Swagger
 import Swagger: field_name, property_type, hasproperty, validate_property, SwaggerApi, SwaggerModel
 import Base: convert, propertynames
@@ -34,10 +33,14 @@ export convert, CreateOrUpdateVirtualNetworkRuleParameters
 export convert, CreateOrUpdateVirtualNetworkRuleProperties
 export convert, CreateTrustedIdProviderWithAccountParameters
 export convert, CreateVirtualNetworkRuleWithAccountParameters
+export convert, DataLakeStoreAccount
+export convert, DataLakeStoreAccountBasic
 export convert, DataLakeStoreAccountListResult
+export convert, DataLakeStoreAccountProperties
 export convert, DataLakeStoreAccountPropertiesBasic
 export convert, EncryptionConfig
 export convert, EncryptionIdentity
+export convert, FirewallRule
 export convert, FirewallRuleListResult
 export convert, FirewallRuleProperties
 export convert, KeyVaultMetaInfo
@@ -47,6 +50,7 @@ export convert, OperationDisplay
 export convert, OperationListResult
 export convert, Resource
 export convert, SubResource
+export convert, TrustedIdProvider
 export convert, TrustedIdProviderListResult
 export convert, TrustedIdProviderProperties
 export convert, UpdateDataLakeStoreAccountParameters
@@ -65,14 +69,9 @@ export convert, UpdateVirtualNetworkRuleWithAccountParameters
 export convert, Usage
 export convert, UsageListResult
 export convert, UsageName
+export convert, VirtualNetworkRule
 export convert, VirtualNetworkRuleListResult
 export convert, VirtualNetworkRuleProperties
-export convert, DataLakeStoreAccount
-export convert, DataLakeStoreAccountBasic
-export convert, DataLakeStoreAccountProperties
-export convert, FirewallRule
-export convert, TrustedIdProvider
-export convert, VirtualNetworkRule
 
 # export operations
 export convert, AccountsApi, FirewallRulesApi, LocationUsageApi, LocationsApi, OperationsApi, TrustedIdProvidersApi, VirtualNetworkRulesApi

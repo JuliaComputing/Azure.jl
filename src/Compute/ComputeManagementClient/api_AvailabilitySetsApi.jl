@@ -15,7 +15,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: AvailabilitySet
 """
-function availabilitySetsCreateOrUpdate(_api::AvailabilitySetsApi, resourceGroupName::String, availabilitySetName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_availabilitySetsCreateOrUpdate(_api::AvailabilitySetsApi, resourceGroupName::String, availabilitySetName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", AvailabilitySet, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "availabilitySetName", availabilitySetName)  # type String
@@ -23,7 +23,17 @@ function availabilitySetsCreateOrUpdate(_api::AvailabilitySetsApi, resourceGroup
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function availabilitySetsCreateOrUpdate(_api::AvailabilitySetsApi, resourceGroupName::String, availabilitySetName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_availabilitySetsCreateOrUpdate(_api, resourceGroupName, availabilitySetName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function availabilitySetsCreateOrUpdate(_api::AvailabilitySetsApi, response_stream::Channel, resourceGroupName::String, availabilitySetName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_availabilitySetsCreateOrUpdate(_api, resourceGroupName, availabilitySetName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -35,7 +45,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function availabilitySetsDelete(_api::AvailabilitySetsApi, resourceGroupName::String, availabilitySetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_availabilitySetsDelete(_api::AvailabilitySetsApi, resourceGroupName::String, availabilitySetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "availabilitySetName", availabilitySetName)  # type String
@@ -43,7 +53,17 @@ function availabilitySetsDelete(_api::AvailabilitySetsApi, resourceGroupName::St
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function availabilitySetsDelete(_api::AvailabilitySetsApi, resourceGroupName::String, availabilitySetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_availabilitySetsDelete(_api, resourceGroupName, availabilitySetName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function availabilitySetsDelete(_api::AvailabilitySetsApi, response_stream::Channel, resourceGroupName::String, availabilitySetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_availabilitySetsDelete(_api, resourceGroupName, availabilitySetName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -55,7 +75,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: AvailabilitySet
 """
-function availabilitySetsGet(_api::AvailabilitySetsApi, resourceGroupName::String, availabilitySetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_availabilitySetsGet(_api::AvailabilitySetsApi, resourceGroupName::String, availabilitySetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", AvailabilitySet, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "availabilitySetName", availabilitySetName)  # type String
@@ -63,7 +83,17 @@ function availabilitySetsGet(_api::AvailabilitySetsApi, resourceGroupName::Strin
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function availabilitySetsGet(_api::AvailabilitySetsApi, resourceGroupName::String, availabilitySetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_availabilitySetsGet(_api, resourceGroupName, availabilitySetName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function availabilitySetsGet(_api::AvailabilitySetsApi, response_stream::Channel, resourceGroupName::String, availabilitySetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_availabilitySetsGet(_api, resourceGroupName, availabilitySetName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -74,14 +104,24 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: AvailabilitySetListResult
 """
-function availabilitySetsList(_api::AvailabilitySetsApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_availabilitySetsList(_api::AvailabilitySetsApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", AvailabilitySetListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function availabilitySetsList(_api::AvailabilitySetsApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_availabilitySetsList(_api, resourceGroupName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function availabilitySetsList(_api::AvailabilitySetsApi, response_stream::Channel, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_availabilitySetsList(_api, resourceGroupName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -93,7 +133,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: VirtualMachineSizeListResult
 """
-function availabilitySetsListAvailableSizes(_api::AvailabilitySetsApi, resourceGroupName::String, availabilitySetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_availabilitySetsListAvailableSizes(_api::AvailabilitySetsApi, resourceGroupName::String, availabilitySetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", VirtualMachineSizeListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}/vmSizes", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "availabilitySetName", availabilitySetName)  # type String
@@ -101,7 +141,17 @@ function availabilitySetsListAvailableSizes(_api::AvailabilitySetsApi, resourceG
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function availabilitySetsListAvailableSizes(_api::AvailabilitySetsApi, resourceGroupName::String, availabilitySetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_availabilitySetsListAvailableSizes(_api, resourceGroupName, availabilitySetName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function availabilitySetsListAvailableSizes(_api::AvailabilitySetsApi, response_stream::Channel, resourceGroupName::String, availabilitySetName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_availabilitySetsListAvailableSizes(_api, resourceGroupName, availabilitySetName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -112,14 +162,24 @@ Param: subscriptionId::String (required)
 Param: expand::String
 Return: AvailabilitySetListResult
 """
-function availabilitySetsListBySubscription(_api::AvailabilitySetsApi, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+function _swaggerinternal_availabilitySetsListBySubscription(_api::AvailabilitySetsApi, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", AvailabilitySetListResult, "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/availabilitySets", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_param(_ctx.query, "\$expand", expand)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function availabilitySetsListBySubscription(_api::AvailabilitySetsApi, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_availabilitySetsListBySubscription(_api, api_version, subscriptionId; expand=expand, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function availabilitySetsListBySubscription(_api::AvailabilitySetsApi, response_stream::Channel, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_availabilitySetsListBySubscription(_api, api_version, subscriptionId; expand=expand, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -132,7 +192,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: AvailabilitySet
 """
-function availabilitySetsUpdate(_api::AvailabilitySetsApi, resourceGroupName::String, availabilitySetName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_availabilitySetsUpdate(_api::AvailabilitySetsApi, resourceGroupName::String, availabilitySetName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", AvailabilitySet, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets/{availabilitySetName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "availabilitySetName", availabilitySetName)  # type String
@@ -140,7 +200,17 @@ function availabilitySetsUpdate(_api::AvailabilitySetsApi, resourceGroupName::St
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function availabilitySetsUpdate(_api::AvailabilitySetsApi, resourceGroupName::String, availabilitySetName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_availabilitySetsUpdate(_api, resourceGroupName, availabilitySetName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function availabilitySetsUpdate(_api::AvailabilitySetsApi, response_stream::Channel, resourceGroupName::String, availabilitySetName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_availabilitySetsUpdate(_api, resourceGroupName, availabilitySetName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export availabilitySetsCreateOrUpdate, availabilitySetsDelete, availabilitySetsGet, availabilitySetsList, availabilitySetsListAvailableSizes, availabilitySetsListBySubscription, availabilitySetsUpdate

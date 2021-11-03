@@ -13,7 +13,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: CheckNameAvailabilityResult
 """
-function storageAccountsCheckNameAvailability(_api::StorageAccountsApi, accountName, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_storageAccountsCheckNameAvailability(_api::StorageAccountsApi, accountName, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("api_version", "storageAccountsCheckNameAvailability", :minLength, api_version, 1)
 
     Swagger.validate_param("subscriptionId", "storageAccountsCheckNameAvailability", :minLength, subscriptionId, 1)
@@ -23,7 +23,17 @@ function storageAccountsCheckNameAvailability(_api::StorageAccountsApi, accountN
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function storageAccountsCheckNameAvailability(_api::StorageAccountsApi, accountName, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_storageAccountsCheckNameAvailability(_api, accountName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function storageAccountsCheckNameAvailability(_api::StorageAccountsApi, response_stream::Channel, accountName, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_storageAccountsCheckNameAvailability(_api, accountName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -36,7 +46,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: StorageAccount
 """
-function storageAccountsCreate(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_storageAccountsCreate(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "storageAccountsCreate", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "storageAccountsCreate", :minLength, resourceGroupName, 1)
 
@@ -54,7 +64,17 @@ function storageAccountsCreate(_api::StorageAccountsApi, resourceGroupName::Stri
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function storageAccountsCreate(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_storageAccountsCreate(_api, resourceGroupName, accountName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function storageAccountsCreate(_api::StorageAccountsApi, response_stream::Channel, resourceGroupName::String, accountName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_storageAccountsCreate(_api, resourceGroupName, accountName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -66,7 +86,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function storageAccountsDelete(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_storageAccountsDelete(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "storageAccountsDelete", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "storageAccountsDelete", :minLength, resourceGroupName, 1)
 
@@ -84,7 +104,17 @@ function storageAccountsDelete(_api::StorageAccountsApi, resourceGroupName::Stri
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function storageAccountsDelete(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_storageAccountsDelete(_api, resourceGroupName, accountName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function storageAccountsDelete(_api::StorageAccountsApi, response_stream::Channel, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_storageAccountsDelete(_api, resourceGroupName, accountName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -96,7 +126,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function storageAccountsFailover(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_storageAccountsFailover(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "storageAccountsFailover", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "storageAccountsFailover", :minLength, resourceGroupName, 1)
 
@@ -114,7 +144,17 @@ function storageAccountsFailover(_api::StorageAccountsApi, resourceGroupName::St
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function storageAccountsFailover(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_storageAccountsFailover(_api, resourceGroupName, accountName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function storageAccountsFailover(_api::StorageAccountsApi, response_stream::Channel, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_storageAccountsFailover(_api, resourceGroupName, accountName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -127,7 +167,7 @@ Param: subscriptionId::String (required)
 Param: expand::String
 Return: StorageAccount
 """
-function storageAccountsGetProperties(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+function _swaggerinternal_storageAccountsGetProperties(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "storageAccountsGetProperties", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "storageAccountsGetProperties", :minLength, resourceGroupName, 1)
 
@@ -146,7 +186,17 @@ function storageAccountsGetProperties(_api::StorageAccountsApi, resourceGroupNam
     Swagger.set_param(_ctx.query, "\$expand", expand)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function storageAccountsGetProperties(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_storageAccountsGetProperties(_api, resourceGroupName, accountName, api_version, subscriptionId; expand=expand, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function storageAccountsGetProperties(_api::StorageAccountsApi, response_stream::Channel, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_storageAccountsGetProperties(_api, resourceGroupName, accountName, api_version, subscriptionId; expand=expand, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -156,7 +206,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: StorageAccountListResult
 """
-function storageAccountsList(_api::StorageAccountsApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_storageAccountsList(_api::StorageAccountsApi, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("api_version", "storageAccountsList", :minLength, api_version, 1)
 
     Swagger.validate_param("subscriptionId", "storageAccountsList", :minLength, subscriptionId, 1)
@@ -166,7 +216,17 @@ function storageAccountsList(_api::StorageAccountsApi, api_version::String, subs
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function storageAccountsList(_api::StorageAccountsApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_storageAccountsList(_api, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function storageAccountsList(_api::StorageAccountsApi, response_stream::Channel, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_storageAccountsList(_api, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -179,7 +239,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ListAccountSasResponse
 """
-function storageAccountsListAccountSAS(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_storageAccountsListAccountSAS(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "storageAccountsListAccountSAS", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "storageAccountsListAccountSAS", :minLength, resourceGroupName, 1)
 
@@ -197,7 +257,17 @@ function storageAccountsListAccountSAS(_api::StorageAccountsApi, resourceGroupNa
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function storageAccountsListAccountSAS(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_storageAccountsListAccountSAS(_api, resourceGroupName, accountName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function storageAccountsListAccountSAS(_api::StorageAccountsApi, response_stream::Channel, resourceGroupName::String, accountName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_storageAccountsListAccountSAS(_api, resourceGroupName, accountName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -208,7 +278,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: StorageAccountListResult
 """
-function storageAccountsListByResourceGroup(_api::StorageAccountsApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_storageAccountsListByResourceGroup(_api::StorageAccountsApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "storageAccountsListByResourceGroup", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "storageAccountsListByResourceGroup", :minLength, resourceGroupName, 1)
 
@@ -222,7 +292,17 @@ function storageAccountsListByResourceGroup(_api::StorageAccountsApi, resourceGr
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function storageAccountsListByResourceGroup(_api::StorageAccountsApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_storageAccountsListByResourceGroup(_api, resourceGroupName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function storageAccountsListByResourceGroup(_api::StorageAccountsApi, response_stream::Channel, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_storageAccountsListByResourceGroup(_api, resourceGroupName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -235,7 +315,7 @@ Param: subscriptionId::String (required)
 Param: expand::String
 Return: StorageAccountListKeysResult
 """
-function storageAccountsListKeys(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+function _swaggerinternal_storageAccountsListKeys(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "storageAccountsListKeys", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "storageAccountsListKeys", :minLength, resourceGroupName, 1)
 
@@ -254,7 +334,17 @@ function storageAccountsListKeys(_api::StorageAccountsApi, resourceGroupName::St
     Swagger.set_param(_ctx.query, "\$expand", expand)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function storageAccountsListKeys(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_storageAccountsListKeys(_api, resourceGroupName, accountName, api_version, subscriptionId; expand=expand, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function storageAccountsListKeys(_api::StorageAccountsApi, response_stream::Channel, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_storageAccountsListKeys(_api, resourceGroupName, accountName, api_version, subscriptionId; expand=expand, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -267,7 +357,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ListServiceSasResponse
 """
-function storageAccountsListServiceSAS(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_storageAccountsListServiceSAS(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "storageAccountsListServiceSAS", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "storageAccountsListServiceSAS", :minLength, resourceGroupName, 1)
 
@@ -285,7 +375,17 @@ function storageAccountsListServiceSAS(_api::StorageAccountsApi, resourceGroupNa
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function storageAccountsListServiceSAS(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_storageAccountsListServiceSAS(_api, resourceGroupName, accountName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function storageAccountsListServiceSAS(_api::StorageAccountsApi, response_stream::Channel, resourceGroupName::String, accountName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_storageAccountsListServiceSAS(_api, resourceGroupName, accountName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -298,7 +398,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: StorageAccountListKeysResult
 """
-function storageAccountsRegenerateKey(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, regenerateKey, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_storageAccountsRegenerateKey(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, regenerateKey, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "storageAccountsRegenerateKey", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "storageAccountsRegenerateKey", :minLength, resourceGroupName, 1)
 
@@ -316,7 +416,17 @@ function storageAccountsRegenerateKey(_api::StorageAccountsApi, resourceGroupNam
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function storageAccountsRegenerateKey(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, regenerateKey, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_storageAccountsRegenerateKey(_api, resourceGroupName, accountName, regenerateKey, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function storageAccountsRegenerateKey(_api::StorageAccountsApi, response_stream::Channel, resourceGroupName::String, accountName::String, regenerateKey, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_storageAccountsRegenerateKey(_api, resourceGroupName, accountName, regenerateKey, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -329,7 +439,7 @@ Param: subscriptionId::String (required)
 Param: parameters::BlobRestoreParameters (required)
 Return: BlobRestoreStatus
 """
-function storageAccountsRestoreBlobRanges(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, parameters; _mediaType=nothing)
+function _swaggerinternal_storageAccountsRestoreBlobRanges(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, parameters; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "storageAccountsRestoreBlobRanges", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "storageAccountsRestoreBlobRanges", :minLength, resourceGroupName, 1)
 
@@ -347,7 +457,17 @@ function storageAccountsRestoreBlobRanges(_api::StorageAccountsApi, resourceGrou
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function storageAccountsRestoreBlobRanges(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, parameters; _mediaType=nothing)
+    _ctx = _swaggerinternal_storageAccountsRestoreBlobRanges(_api, resourceGroupName, accountName, api_version, subscriptionId, parameters; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function storageAccountsRestoreBlobRanges(_api::StorageAccountsApi, response_stream::Channel, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, parameters; _mediaType=nothing)
+    _ctx = _swaggerinternal_storageAccountsRestoreBlobRanges(_api, resourceGroupName, accountName, api_version, subscriptionId, parameters; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -359,7 +479,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function storageAccountsRevokeUserDelegationKeys(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_storageAccountsRevokeUserDelegationKeys(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "storageAccountsRevokeUserDelegationKeys", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "storageAccountsRevokeUserDelegationKeys", :minLength, resourceGroupName, 1)
 
@@ -377,7 +497,17 @@ function storageAccountsRevokeUserDelegationKeys(_api::StorageAccountsApi, resou
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function storageAccountsRevokeUserDelegationKeys(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_storageAccountsRevokeUserDelegationKeys(_api, resourceGroupName, accountName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function storageAccountsRevokeUserDelegationKeys(_api::StorageAccountsApi, response_stream::Channel, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_storageAccountsRevokeUserDelegationKeys(_api, resourceGroupName, accountName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -390,7 +520,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: StorageAccount
 """
-function storageAccountsUpdate(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_storageAccountsUpdate(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "storageAccountsUpdate", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "storageAccountsUpdate", :minLength, resourceGroupName, 1)
 
@@ -408,7 +538,17 @@ function storageAccountsUpdate(_api::StorageAccountsApi, resourceGroupName::Stri
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function storageAccountsUpdate(_api::StorageAccountsApi, resourceGroupName::String, accountName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_storageAccountsUpdate(_api, resourceGroupName, accountName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function storageAccountsUpdate(_api::StorageAccountsApi, response_stream::Channel, resourceGroupName::String, accountName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_storageAccountsUpdate(_api, resourceGroupName, accountName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export storageAccountsCheckNameAvailability, storageAccountsCreate, storageAccountsDelete, storageAccountsFailover, storageAccountsGetProperties, storageAccountsList, storageAccountsListAccountSAS, storageAccountsListByResourceGroup, storageAccountsListKeys, storageAccountsListServiceSAS, storageAccountsRegenerateKey, storageAccountsRestoreBlobRanges, storageAccountsRevokeUserDelegationKeys, storageAccountsUpdate

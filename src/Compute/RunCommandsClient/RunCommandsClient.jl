@@ -5,7 +5,6 @@ module RunCommandsClient
 
 using Random
 using Dates
-using HTTP
 using Swagger
 import Swagger: field_name, property_type, hasproperty, validate_property, SwaggerApi, SwaggerModel
 import Base: convert, propertynames
@@ -18,13 +17,13 @@ include("api_VirtualMachinesApi.jl")
 
 # export models
 export convert, InstanceViewStatus
+export convert, RunCommandDocument
 export convert, RunCommandDocumentBase
 export convert, RunCommandInput
 export convert, RunCommandInputParameter
 export convert, RunCommandListResult
 export convert, RunCommandParameterDefinition
 export convert, RunCommandResult
-export convert, RunCommandDocument
 
 # export operations
 export convert, VirtualMachineRunCommandsApi, VirtualMachineScaleSetVMsApi, VirtualMachinesApi

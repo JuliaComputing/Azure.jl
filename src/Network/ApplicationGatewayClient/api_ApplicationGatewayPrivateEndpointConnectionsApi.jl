@@ -15,7 +15,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function applicationGatewayPrivateEndpointConnectionsDelete(_api::ApplicationGatewayPrivateEndpointConnectionsApi, resourceGroupName::String, applicationGatewayName::String, connectionName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_applicationGatewayPrivateEndpointConnectionsDelete(_api::ApplicationGatewayPrivateEndpointConnectionsApi, resourceGroupName::String, applicationGatewayName::String, connectionName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/privateEndpointConnections/{connectionName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "applicationGatewayName", applicationGatewayName)  # type String
@@ -24,7 +24,17 @@ function applicationGatewayPrivateEndpointConnectionsDelete(_api::ApplicationGat
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function applicationGatewayPrivateEndpointConnectionsDelete(_api::ApplicationGatewayPrivateEndpointConnectionsApi, resourceGroupName::String, applicationGatewayName::String, connectionName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewayPrivateEndpointConnectionsDelete(_api, resourceGroupName, applicationGatewayName, connectionName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function applicationGatewayPrivateEndpointConnectionsDelete(_api::ApplicationGatewayPrivateEndpointConnectionsApi, response_stream::Channel, resourceGroupName::String, applicationGatewayName::String, connectionName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewayPrivateEndpointConnectionsDelete(_api, resourceGroupName, applicationGatewayName, connectionName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -37,7 +47,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ApplicationGatewayPrivateEndpointConnection
 """
-function applicationGatewayPrivateEndpointConnectionsGet(_api::ApplicationGatewayPrivateEndpointConnectionsApi, resourceGroupName::String, applicationGatewayName::String, connectionName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_applicationGatewayPrivateEndpointConnectionsGet(_api::ApplicationGatewayPrivateEndpointConnectionsApi, resourceGroupName::String, applicationGatewayName::String, connectionName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", ApplicationGatewayPrivateEndpointConnection, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/privateEndpointConnections/{connectionName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "applicationGatewayName", applicationGatewayName)  # type String
@@ -46,7 +56,17 @@ function applicationGatewayPrivateEndpointConnectionsGet(_api::ApplicationGatewa
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function applicationGatewayPrivateEndpointConnectionsGet(_api::ApplicationGatewayPrivateEndpointConnectionsApi, resourceGroupName::String, applicationGatewayName::String, connectionName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewayPrivateEndpointConnectionsGet(_api, resourceGroupName, applicationGatewayName, connectionName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function applicationGatewayPrivateEndpointConnectionsGet(_api::ApplicationGatewayPrivateEndpointConnectionsApi, response_stream::Channel, resourceGroupName::String, applicationGatewayName::String, connectionName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewayPrivateEndpointConnectionsGet(_api, resourceGroupName, applicationGatewayName, connectionName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -58,7 +78,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ApplicationGatewayPrivateEndpointConnectionListResult
 """
-function applicationGatewayPrivateEndpointConnectionsList(_api::ApplicationGatewayPrivateEndpointConnectionsApi, resourceGroupName::String, applicationGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_applicationGatewayPrivateEndpointConnectionsList(_api::ApplicationGatewayPrivateEndpointConnectionsApi, resourceGroupName::String, applicationGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", ApplicationGatewayPrivateEndpointConnectionListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/privateEndpointConnections", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "applicationGatewayName", applicationGatewayName)  # type String
@@ -66,7 +86,17 @@ function applicationGatewayPrivateEndpointConnectionsList(_api::ApplicationGatew
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function applicationGatewayPrivateEndpointConnectionsList(_api::ApplicationGatewayPrivateEndpointConnectionsApi, resourceGroupName::String, applicationGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewayPrivateEndpointConnectionsList(_api, resourceGroupName, applicationGatewayName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function applicationGatewayPrivateEndpointConnectionsList(_api::ApplicationGatewayPrivateEndpointConnectionsApi, response_stream::Channel, resourceGroupName::String, applicationGatewayName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewayPrivateEndpointConnectionsList(_api, resourceGroupName, applicationGatewayName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -80,7 +110,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ApplicationGatewayPrivateEndpointConnection
 """
-function applicationGatewayPrivateEndpointConnectionsUpdate(_api::ApplicationGatewayPrivateEndpointConnectionsApi, resourceGroupName::String, applicationGatewayName::String, connectionName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_applicationGatewayPrivateEndpointConnectionsUpdate(_api::ApplicationGatewayPrivateEndpointConnectionsApi, resourceGroupName::String, applicationGatewayName::String, connectionName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", ApplicationGatewayPrivateEndpointConnection, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/privateEndpointConnections/{connectionName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "applicationGatewayName", applicationGatewayName)  # type String
@@ -89,7 +119,17 @@ function applicationGatewayPrivateEndpointConnectionsUpdate(_api::ApplicationGat
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function applicationGatewayPrivateEndpointConnectionsUpdate(_api::ApplicationGatewayPrivateEndpointConnectionsApi, resourceGroupName::String, applicationGatewayName::String, connectionName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewayPrivateEndpointConnectionsUpdate(_api, resourceGroupName, applicationGatewayName, connectionName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function applicationGatewayPrivateEndpointConnectionsUpdate(_api::ApplicationGatewayPrivateEndpointConnectionsApi, response_stream::Channel, resourceGroupName::String, applicationGatewayName::String, connectionName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_applicationGatewayPrivateEndpointConnectionsUpdate(_api, resourceGroupName, applicationGatewayName, connectionName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export applicationGatewayPrivateEndpointConnectionsDelete, applicationGatewayPrivateEndpointConnectionsGet, applicationGatewayPrivateEndpointConnectionsList, applicationGatewayPrivateEndpointConnectionsUpdate

@@ -57,10 +57,14 @@ function authenticate(ctx::AzureContext)
 
     tenant = tenant_id(ctx.auth_provider)
     auth_url = AUTH_URI * "/" * tenant * "/oauth2/token"
-    resp = HTTP.request("POST", auth_url; body=HTTP.URIs.escapeuri(data), headers=headers)
-    (200 <= resp.status <= 206) || throw(Swagger.ApiException(resp))
 
-    ctx.token = JSON.parse(String(resp.body))
+    input = PipeBuffer()
+    write(input, URIs.escapeuri(data))
+    output = IOBuffer()
+    resp = Downloads.request(auth_url; method="POST", input=input, output=output, headers=headers)
+    (isa(resp, Downloads.Response) && (200 <= resp.status <= 206)) || throw(Swagger.ApiException(resp))
+
+    ctx.token = JSON.parse(String(take!(output)))
     if "expires_in" in keys(ctx.token)
         ctx.expires = time() + parse(Int, ctx.token["expires_in"])
     elseif "expires_on" in keys(ctx.token)

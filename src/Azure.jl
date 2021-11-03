@@ -1,7 +1,8 @@
 module Azure
 
 using Swagger
-using HTTP
+using Downloads
+using URIs
 using JSON
 
 # API versions

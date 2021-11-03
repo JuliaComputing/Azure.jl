@@ -15,7 +15,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: FlowLogInformation
 """
-function networkWatchersGetFlowLogStatus(_api::TrafficAnalyticsApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkWatchersGetFlowLogStatus(_api::TrafficAnalyticsApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", FlowLogInformation, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/queryFlowLogStatus", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkWatcherName", networkWatcherName)  # type String
@@ -23,7 +23,17 @@ function networkWatchersGetFlowLogStatus(_api::TrafficAnalyticsApi, resourceGrou
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkWatchersGetFlowLogStatus(_api::TrafficAnalyticsApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersGetFlowLogStatus(_api, resourceGroupName, networkWatcherName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkWatchersGetFlowLogStatus(_api::TrafficAnalyticsApi, response_stream::Channel, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersGetFlowLogStatus(_api, resourceGroupName, networkWatcherName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -36,7 +46,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: FlowLogInformation
 """
-function networkWatchersSetFlowLogConfiguration(_api::TrafficAnalyticsApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_networkWatchersSetFlowLogConfiguration(_api::TrafficAnalyticsApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", FlowLogInformation, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/configureFlowLog", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "networkWatcherName", networkWatcherName)  # type String
@@ -44,7 +54,17 @@ function networkWatchersSetFlowLogConfiguration(_api::TrafficAnalyticsApi, resou
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function networkWatchersSetFlowLogConfiguration(_api::TrafficAnalyticsApi, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersSetFlowLogConfiguration(_api, resourceGroupName, networkWatcherName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function networkWatchersSetFlowLogConfiguration(_api::TrafficAnalyticsApi, response_stream::Channel, resourceGroupName::String, networkWatcherName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_networkWatchersSetFlowLogConfiguration(_api, resourceGroupName, networkWatcherName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export networkWatchersGetFlowLogStatus, networkWatchersSetFlowLogConfiguration

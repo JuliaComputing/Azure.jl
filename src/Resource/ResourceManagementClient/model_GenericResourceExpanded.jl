@@ -3,14 +3,32 @@
 
 
 mutable struct GenericResourceExpanded <: SwaggerModel
+    plan::Any # spec type: Union{ Nothing, Plan } # spec name: plan
+    properties::Any # spec type: Union{ Nothing, Any } # spec name: properties
+    kind::Any # spec type: Union{ Nothing, String } # spec name: kind
+    managedBy::Any # spec type: Union{ Nothing, String } # spec name: managedBy
+    sku::Any # spec type: Union{ Nothing, Sku } # spec name: sku
+    identity::Any # spec type: Union{ Nothing, Identity } # spec name: identity
     id::Any # spec type: Union{ Nothing, String } # spec name: id
     name::Any # spec type: Union{ Nothing, String } # spec name: name
     type::Any # spec type: Union{ Nothing, String } # spec name: type
     location::Any # spec type: Union{ Nothing, String } # spec name: location
     tags::Any # spec type: Union{ Nothing, Dict{String, String} } # spec name: tags
 
-    function GenericResourceExpanded(;id=nothing, name=nothing, type=nothing, location=nothing, tags=nothing)
+    function GenericResourceExpanded(;plan=nothing, properties=nothing, kind=nothing, managedBy=nothing, sku=nothing, identity=nothing, id=nothing, name=nothing, type=nothing, location=nothing, tags=nothing)
         o = new()
+        validate_property(GenericResourceExpanded, Symbol("plan"), plan)
+        setfield!(o, Symbol("plan"), plan)
+        validate_property(GenericResourceExpanded, Symbol("properties"), properties)
+        setfield!(o, Symbol("properties"), properties)
+        validate_property(GenericResourceExpanded, Symbol("kind"), kind)
+        setfield!(o, Symbol("kind"), kind)
+        validate_property(GenericResourceExpanded, Symbol("managedBy"), managedBy)
+        setfield!(o, Symbol("managedBy"), managedBy)
+        validate_property(GenericResourceExpanded, Symbol("sku"), sku)
+        setfield!(o, Symbol("sku"), sku)
+        validate_property(GenericResourceExpanded, Symbol("identity"), identity)
+        setfield!(o, Symbol("identity"), identity)
         validate_property(GenericResourceExpanded, Symbol("id"), id)
         setfield!(o, Symbol("id"), id)
         validate_property(GenericResourceExpanded, Symbol("name"), name)
@@ -25,8 +43,8 @@ mutable struct GenericResourceExpanded <: SwaggerModel
     end
 end # type GenericResourceExpanded
 
-const _property_map_GenericResourceExpanded = Dict{Symbol,Symbol}(Symbol("id")=>Symbol("id"), Symbol("name")=>Symbol("name"), Symbol("type")=>Symbol("type"), Symbol("location")=>Symbol("location"), Symbol("tags")=>Symbol("tags"))
-const _property_types_GenericResourceExpanded = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}")
+const _property_map_GenericResourceExpanded = Dict{Symbol,Symbol}(Symbol("plan")=>Symbol("plan"), Symbol("properties")=>Symbol("properties"), Symbol("kind")=>Symbol("kind"), Symbol("managedBy")=>Symbol("managedBy"), Symbol("sku")=>Symbol("sku"), Symbol("identity")=>Symbol("identity"), Symbol("id")=>Symbol("id"), Symbol("name")=>Symbol("name"), Symbol("type")=>Symbol("type"), Symbol("location")=>Symbol("location"), Symbol("tags")=>Symbol("tags"))
+const _property_types_GenericResourceExpanded = Dict{Symbol,String}(Symbol("plan")=>"Plan", Symbol("properties")=>"Any", Symbol("kind")=>"String", Symbol("managedBy")=>"String", Symbol("sku")=>"Sku", Symbol("identity")=>"Identity", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}")
 Base.propertynames(::Type{ GenericResourceExpanded }) = collect(keys(_property_map_GenericResourceExpanded))
 Swagger.property_type(::Type{ GenericResourceExpanded }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_GenericResourceExpanded[name]))}
 Swagger.field_name(::Type{ GenericResourceExpanded }, property_name::Symbol) =  _property_map_GenericResourceExpanded[property_name]
@@ -36,4 +54,6 @@ function check_required(o::GenericResourceExpanded)
 end
 
 function validate_property(::Type{ GenericResourceExpanded }, name::Symbol, val)
+    if name === Symbol("kind")
+    end
 end

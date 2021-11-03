@@ -15,7 +15,7 @@ Param: subscriptionId::String (required)
 Param: privateEndpointConnectionName::String (required)
 Return: Nothing
 """
-function privateEndpointConnectionsDelete(_api::PrivateEndpointConnectionsApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, privateEndpointConnectionName::String; _mediaType=nothing)
+function _swaggerinternal_privateEndpointConnectionsDelete(_api::PrivateEndpointConnectionsApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, privateEndpointConnectionName::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "privateEndpointConnectionsDelete", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "privateEndpointConnectionsDelete", :minLength, resourceGroupName, 1)
 
@@ -34,7 +34,17 @@ function privateEndpointConnectionsDelete(_api::PrivateEndpointConnectionsApi, r
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function privateEndpointConnectionsDelete(_api::PrivateEndpointConnectionsApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, privateEndpointConnectionName::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_privateEndpointConnectionsDelete(_api, resourceGroupName, accountName, api_version, subscriptionId, privateEndpointConnectionName; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function privateEndpointConnectionsDelete(_api::PrivateEndpointConnectionsApi, response_stream::Channel, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, privateEndpointConnectionName::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_privateEndpointConnectionsDelete(_api, resourceGroupName, accountName, api_version, subscriptionId, privateEndpointConnectionName; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -47,7 +57,7 @@ Param: subscriptionId::String (required)
 Param: privateEndpointConnectionName::String (required)
 Return: PrivateEndpointConnection
 """
-function privateEndpointConnectionsGet(_api::PrivateEndpointConnectionsApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, privateEndpointConnectionName::String; _mediaType=nothing)
+function _swaggerinternal_privateEndpointConnectionsGet(_api::PrivateEndpointConnectionsApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, privateEndpointConnectionName::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "privateEndpointConnectionsGet", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "privateEndpointConnectionsGet", :minLength, resourceGroupName, 1)
 
@@ -66,7 +76,17 @@ function privateEndpointConnectionsGet(_api::PrivateEndpointConnectionsApi, reso
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function privateEndpointConnectionsGet(_api::PrivateEndpointConnectionsApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, privateEndpointConnectionName::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_privateEndpointConnectionsGet(_api, resourceGroupName, accountName, api_version, subscriptionId, privateEndpointConnectionName; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function privateEndpointConnectionsGet(_api::PrivateEndpointConnectionsApi, response_stream::Channel, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, privateEndpointConnectionName::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_privateEndpointConnectionsGet(_api, resourceGroupName, accountName, api_version, subscriptionId, privateEndpointConnectionName; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -78,7 +98,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: PrivateEndpointConnectionListResult
 """
-function privateEndpointConnectionsList(_api::PrivateEndpointConnectionsApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_privateEndpointConnectionsList(_api::PrivateEndpointConnectionsApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "privateEndpointConnectionsList", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "privateEndpointConnectionsList", :minLength, resourceGroupName, 1)
 
@@ -96,7 +116,17 @@ function privateEndpointConnectionsList(_api::PrivateEndpointConnectionsApi, res
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function privateEndpointConnectionsList(_api::PrivateEndpointConnectionsApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_privateEndpointConnectionsList(_api, resourceGroupName, accountName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function privateEndpointConnectionsList(_api::PrivateEndpointConnectionsApi, response_stream::Channel, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_privateEndpointConnectionsList(_api, resourceGroupName, accountName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -110,7 +140,7 @@ Param: privateEndpointConnectionName::String (required)
 Param: properties::PrivateEndpointConnection (required)
 Return: PrivateEndpointConnection
 """
-function privateEndpointConnectionsPut(_api::PrivateEndpointConnectionsApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, privateEndpointConnectionName::String, properties; _mediaType=nothing)
+function _swaggerinternal_privateEndpointConnectionsPut(_api::PrivateEndpointConnectionsApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, privateEndpointConnectionName::String, properties; _mediaType=nothing)
     Swagger.validate_param("resourceGroupName", "privateEndpointConnectionsPut", :maxLength, resourceGroupName, 90)
     Swagger.validate_param("resourceGroupName", "privateEndpointConnectionsPut", :minLength, resourceGroupName, 1)
 
@@ -129,7 +159,17 @@ function privateEndpointConnectionsPut(_api::PrivateEndpointConnectionsApi, reso
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function privateEndpointConnectionsPut(_api::PrivateEndpointConnectionsApi, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, privateEndpointConnectionName::String, properties; _mediaType=nothing)
+    _ctx = _swaggerinternal_privateEndpointConnectionsPut(_api, resourceGroupName, accountName, api_version, subscriptionId, privateEndpointConnectionName, properties; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function privateEndpointConnectionsPut(_api::PrivateEndpointConnectionsApi, response_stream::Channel, resourceGroupName::String, accountName::String, api_version::String, subscriptionId::String, privateEndpointConnectionName::String, properties; _mediaType=nothing)
+    _ctx = _swaggerinternal_privateEndpointConnectionsPut(_api, resourceGroupName, accountName, api_version, subscriptionId, privateEndpointConnectionName, properties; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export privateEndpointConnectionsDelete, privateEndpointConnectionsGet, privateEndpointConnectionsList, privateEndpointConnectionsPut

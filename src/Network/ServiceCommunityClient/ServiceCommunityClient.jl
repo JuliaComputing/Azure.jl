@@ -5,7 +5,6 @@ module ServiceCommunityClient
 
 using Random
 using Dates
-using HTTP
 using Swagger
 import Swagger: field_name, property_type, hasproperty, validate_property, SwaggerApi, SwaggerModel
 import Base: convert, propertynames
@@ -16,12 +15,12 @@ include("api_BgpServiceCommunitiesApi.jl")
 
 # export models
 export convert, BGPCommunity
+export convert, BgpServiceCommunity
 export convert, BgpServiceCommunityListResult
 export convert, BgpServiceCommunityPropertiesFormat
 export convert, CloudError
 export convert, CloudErrorBody
 export convert, Resource
-export convert, BgpServiceCommunity
 
 # export operations
 export convert, BgpServiceCommunitiesApi

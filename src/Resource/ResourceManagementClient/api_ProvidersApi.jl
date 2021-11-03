@@ -14,7 +14,7 @@ Param: subscriptionId::String (required)
 Param: expand::String
 Return: Provider
 """
-function providersGet(_api::ProvidersApi, resourceProviderNamespace::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+function _swaggerinternal_providersGet(_api::ProvidersApi, resourceProviderNamespace::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", Provider, "/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceProviderNamespace", resourceProviderNamespace)  # type String
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
@@ -22,7 +22,17 @@ function providersGet(_api::ProvidersApi, resourceProviderNamespace::String, api
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function providersGet(_api::ProvidersApi, resourceProviderNamespace::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_providersGet(_api, resourceProviderNamespace, api_version, subscriptionId; expand=expand, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function providersGet(_api::ProvidersApi, response_stream::Channel, resourceProviderNamespace::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_providersGet(_api, resourceProviderNamespace, api_version, subscriptionId; expand=expand, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -33,14 +43,24 @@ Param: api_version::String (required)
 Param: expand::String
 Return: Provider
 """
-function providersGetAtTenantScope(_api::ProvidersApi, resourceProviderNamespace::String, api_version::String; expand=nothing, _mediaType=nothing)
+function _swaggerinternal_providersGetAtTenantScope(_api::ProvidersApi, resourceProviderNamespace::String, api_version::String; expand=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", Provider, "/providers/{resourceProviderNamespace}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceProviderNamespace", resourceProviderNamespace)  # type String
     Swagger.set_param(_ctx.query, "\$expand", expand)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function providersGetAtTenantScope(_api::ProvidersApi, resourceProviderNamespace::String, api_version::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_providersGetAtTenantScope(_api, resourceProviderNamespace, api_version; expand=expand, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function providersGetAtTenantScope(_api::ProvidersApi, response_stream::Channel, resourceProviderNamespace::String, api_version::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_providersGetAtTenantScope(_api, resourceProviderNamespace, api_version; expand=expand, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -52,7 +72,7 @@ Param: top::Int32
 Param: expand::String
 Return: ProviderListResult
 """
-function providersList(_api::ProvidersApi, api_version::String, subscriptionId::String; top=nothing, expand=nothing, _mediaType=nothing)
+function _swaggerinternal_providersList(_api::ProvidersApi, api_version::String, subscriptionId::String; top=nothing, expand=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", ProviderListResult, "/subscriptions/{subscriptionId}/providers", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "\$top", top)  # type Int32
@@ -60,7 +80,17 @@ function providersList(_api::ProvidersApi, api_version::String, subscriptionId::
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function providersList(_api::ProvidersApi, api_version::String, subscriptionId::String; top=nothing, expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_providersList(_api, api_version, subscriptionId; top=top, expand=expand, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function providersList(_api::ProvidersApi, response_stream::Channel, api_version::String, subscriptionId::String; top=nothing, expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_providersList(_api, api_version, subscriptionId; top=top, expand=expand, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -71,14 +101,24 @@ Param: top::Int32
 Param: expand::String
 Return: ProviderListResult
 """
-function providersListAtTenantScope(_api::ProvidersApi, api_version::String; top=nothing, expand=nothing, _mediaType=nothing)
+function _swaggerinternal_providersListAtTenantScope(_api::ProvidersApi, api_version::String; top=nothing, expand=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", ProviderListResult, "/providers", ["azure_auth"])
     Swagger.set_param(_ctx.query, "\$top", top)  # type Int32
     Swagger.set_param(_ctx.query, "\$expand", expand)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function providersListAtTenantScope(_api::ProvidersApi, api_version::String; top=nothing, expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_providersListAtTenantScope(_api, api_version; top=top, expand=expand, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function providersListAtTenantScope(_api::ProvidersApi, response_stream::Channel, api_version::String; top=nothing, expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_providersListAtTenantScope(_api, api_version; top=top, expand=expand, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -89,14 +129,24 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Provider
 """
-function providersRegister(_api::ProvidersApi, resourceProviderNamespace::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_providersRegister(_api::ProvidersApi, resourceProviderNamespace::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", Provider, "/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/register", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceProviderNamespace", resourceProviderNamespace)  # type String
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function providersRegister(_api::ProvidersApi, resourceProviderNamespace::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_providersRegister(_api, resourceProviderNamespace, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function providersRegister(_api::ProvidersApi, response_stream::Channel, resourceProviderNamespace::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_providersRegister(_api, resourceProviderNamespace, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -107,14 +157,24 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Provider
 """
-function providersUnregister(_api::ProvidersApi, resourceProviderNamespace::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_providersUnregister(_api::ProvidersApi, resourceProviderNamespace::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", Provider, "/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/unregister", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceProviderNamespace", resourceProviderNamespace)  # type String
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function providersUnregister(_api::ProvidersApi, resourceProviderNamespace::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_providersUnregister(_api, resourceProviderNamespace, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function providersUnregister(_api::ProvidersApi, response_stream::Channel, resourceProviderNamespace::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_providersUnregister(_api, resourceProviderNamespace, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export providersGet, providersGetAtTenantScope, providersList, providersListAtTenantScope, providersRegister, providersUnregister

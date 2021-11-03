@@ -5,7 +5,6 @@ module RouteFilterClient
 
 using Random
 using Dates
-using HTTP
 using Swagger
 import Swagger: field_name, property_type, hasproperty, validate_property, SwaggerApi, SwaggerModel
 import Base: convert, propertynames
@@ -17,21 +16,34 @@ include("api_RouteFiltersApi.jl")
 
 # export models
 export convert, Access
+export convert, CircuitConnectionStatus
 export convert, CloudError
 export convert, CloudErrorBody
+export convert, ExpressRouteCircuitConnection
+export convert, ExpressRouteCircuitConnectionPropertiesFormat
+export convert, ExpressRouteCircuitPeering
+export convert, ExpressRouteCircuitPeeringConfig
+export convert, ExpressRouteCircuitPeeringPropertiesFormat
+export convert, ExpressRouteCircuitStats
+export convert, ExpressRouteConnectionId
+export convert, ExpressRoutePeeringState
+export convert, ExpressRoutePeeringType
+export convert, Ipv6CircuitConnectionConfig
+export convert, Ipv6ExpressRouteCircuitPeeringConfig
+export convert, PatchRouteFilter
+export convert, PatchRouteFilterRule
+export convert, PeerExpressRouteCircuitConnection
+export convert, PeerExpressRouteCircuitConnectionPropertiesFormat
 export convert, ProvisioningState
 export convert, Resource
+export convert, RouteFilter
 export convert, RouteFilterListResult
 export convert, RouteFilterPropertiesFormat
+export convert, RouteFilterRule
 export convert, RouteFilterRuleListResult
 export convert, RouteFilterRulePropertiesFormat
 export convert, SubResource
 export convert, TagsObject
-export convert, ExpressRouteCircuitPeering
-export convert, PatchRouteFilter
-export convert, PatchRouteFilterRule
-export convert, RouteFilter
-export convert, RouteFilterRule
 
 # export operations
 export convert, RouteFilterRulesApi, RouteFiltersApi

@@ -15,7 +15,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Image
 """
-function imagesCreateOrUpdate(_api::ImagesApi, resourceGroupName::String, imageName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_imagesCreateOrUpdate(_api::ImagesApi, resourceGroupName::String, imageName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", Image, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "imageName", imageName)  # type String
@@ -23,7 +23,17 @@ function imagesCreateOrUpdate(_api::ImagesApi, resourceGroupName::String, imageN
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function imagesCreateOrUpdate(_api::ImagesApi, resourceGroupName::String, imageName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_imagesCreateOrUpdate(_api, resourceGroupName, imageName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function imagesCreateOrUpdate(_api::ImagesApi, response_stream::Channel, resourceGroupName::String, imageName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_imagesCreateOrUpdate(_api, resourceGroupName, imageName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -35,7 +45,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function imagesDelete(_api::ImagesApi, resourceGroupName::String, imageName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_imagesDelete(_api::ImagesApi, resourceGroupName::String, imageName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "imageName", imageName)  # type String
@@ -43,7 +53,17 @@ function imagesDelete(_api::ImagesApi, resourceGroupName::String, imageName::Str
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function imagesDelete(_api::ImagesApi, resourceGroupName::String, imageName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_imagesDelete(_api, resourceGroupName, imageName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function imagesDelete(_api::ImagesApi, response_stream::Channel, resourceGroupName::String, imageName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_imagesDelete(_api, resourceGroupName, imageName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -56,7 +76,7 @@ Param: subscriptionId::String (required)
 Param: expand::String
 Return: Image
 """
-function imagesGet(_api::ImagesApi, resourceGroupName::String, imageName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+function _swaggerinternal_imagesGet(_api::ImagesApi, resourceGroupName::String, imageName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", Image, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "imageName", imageName)  # type String
@@ -65,7 +85,17 @@ function imagesGet(_api::ImagesApi, resourceGroupName::String, imageName::String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function imagesGet(_api::ImagesApi, resourceGroupName::String, imageName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_imagesGet(_api, resourceGroupName, imageName, api_version, subscriptionId; expand=expand, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function imagesGet(_api::ImagesApi, response_stream::Channel, resourceGroupName::String, imageName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_imagesGet(_api, resourceGroupName, imageName, api_version, subscriptionId; expand=expand, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -75,13 +105,23 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ImageListResult
 """
-function imagesList(_api::ImagesApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_imagesList(_api::ImagesApi, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", ImageListResult, "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/images", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function imagesList(_api::ImagesApi, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_imagesList(_api, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function imagesList(_api::ImagesApi, response_stream::Channel, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_imagesList(_api, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -92,14 +132,24 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: ImageListResult
 """
-function imagesListByResourceGroup(_api::ImagesApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_imagesListByResourceGroup(_api::ImagesApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", ImageListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function imagesListByResourceGroup(_api::ImagesApi, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_imagesListByResourceGroup(_api, resourceGroupName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function imagesListByResourceGroup(_api::ImagesApi, response_stream::Channel, resourceGroupName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_imagesListByResourceGroup(_api, resourceGroupName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -112,7 +162,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Image
 """
-function imagesUpdate(_api::ImagesApi, resourceGroupName::String, imageName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_imagesUpdate(_api::ImagesApi, resourceGroupName::String, imageName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", Image, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/images/{imageName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "imageName", imageName)  # type String
@@ -120,7 +170,17 @@ function imagesUpdate(_api::ImagesApi, resourceGroupName::String, imageName::Str
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function imagesUpdate(_api::ImagesApi, resourceGroupName::String, imageName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_imagesUpdate(_api, resourceGroupName, imageName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function imagesUpdate(_api::ImagesApi, response_stream::Channel, resourceGroupName::String, imageName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_imagesUpdate(_api, resourceGroupName, imageName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export imagesCreateOrUpdate, imagesDelete, imagesGet, imagesList, imagesListByResourceGroup, imagesUpdate

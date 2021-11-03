@@ -14,14 +14,24 @@ Param: parameters::CheckNameAvailabilityParameters (required)
 Param: api_version::String (required)
 Return: NameAvailabilityInformation
 """
-function accountsCheckNameAvailability(_api::AccountsApi, subscriptionId::String, location::String, parameters, api_version::String; _mediaType=nothing)
+function _swaggerinternal_accountsCheckNameAvailability(_api::AccountsApi, subscriptionId::String, location::String, parameters, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", NameAvailabilityInformation, "/subscriptions/{subscriptionId}/providers/Microsoft.DataLakeStore/locations/{location}/checkNameAvailability", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "location", location)  # type String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function accountsCheckNameAvailability(_api::AccountsApi, subscriptionId::String, location::String, parameters, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_accountsCheckNameAvailability(_api, subscriptionId, location, parameters, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function accountsCheckNameAvailability(_api::AccountsApi, response_stream::Channel, subscriptionId::String, location::String, parameters, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_accountsCheckNameAvailability(_api, subscriptionId, location, parameters, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -34,7 +44,7 @@ Param: parameters::CreateDataLakeStoreAccountParameters (required)
 Param: api_version::String (required)
 Return: DataLakeStoreAccount
 """
-function accountsCreate(_api::AccountsApi, subscriptionId::String, resourceGroupName::String, accountName::String, parameters, api_version::String; _mediaType=nothing)
+function _swaggerinternal_accountsCreate(_api::AccountsApi, subscriptionId::String, resourceGroupName::String, accountName::String, parameters, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", DataLakeStoreAccount, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
@@ -42,7 +52,17 @@ function accountsCreate(_api::AccountsApi, subscriptionId::String, resourceGroup
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function accountsCreate(_api::AccountsApi, subscriptionId::String, resourceGroupName::String, accountName::String, parameters, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_accountsCreate(_api, subscriptionId, resourceGroupName, accountName, parameters, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function accountsCreate(_api::AccountsApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, accountName::String, parameters, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_accountsCreate(_api, subscriptionId, resourceGroupName, accountName, parameters, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -54,7 +74,7 @@ Param: accountName::String (required)
 Param: api_version::String (required)
 Return: Nothing
 """
-function accountsDelete(_api::AccountsApi, subscriptionId::String, resourceGroupName::String, accountName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_accountsDelete(_api::AccountsApi, subscriptionId::String, resourceGroupName::String, accountName::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
@@ -62,7 +82,17 @@ function accountsDelete(_api::AccountsApi, subscriptionId::String, resourceGroup
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function accountsDelete(_api::AccountsApi, subscriptionId::String, resourceGroupName::String, accountName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_accountsDelete(_api, subscriptionId, resourceGroupName, accountName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function accountsDelete(_api::AccountsApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, accountName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_accountsDelete(_api, subscriptionId, resourceGroupName, accountName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -74,7 +104,7 @@ Param: accountName::String (required)
 Param: api_version::String (required)
 Return: Nothing
 """
-function accountsEnableKeyVault(_api::AccountsApi, subscriptionId::String, resourceGroupName::String, accountName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_accountsEnableKeyVault(_api::AccountsApi, subscriptionId::String, resourceGroupName::String, accountName::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "POST", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/enableKeyVault", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
@@ -82,7 +112,17 @@ function accountsEnableKeyVault(_api::AccountsApi, subscriptionId::String, resou
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function accountsEnableKeyVault(_api::AccountsApi, subscriptionId::String, resourceGroupName::String, accountName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_accountsEnableKeyVault(_api, subscriptionId, resourceGroupName, accountName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function accountsEnableKeyVault(_api::AccountsApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, accountName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_accountsEnableKeyVault(_api, subscriptionId, resourceGroupName, accountName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -94,7 +134,7 @@ Param: accountName::String (required)
 Param: api_version::String (required)
 Return: DataLakeStoreAccount
 """
-function accountsGet(_api::AccountsApi, subscriptionId::String, resourceGroupName::String, accountName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_accountsGet(_api::AccountsApi, subscriptionId::String, resourceGroupName::String, accountName::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", DataLakeStoreAccount, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
@@ -102,7 +142,17 @@ function accountsGet(_api::AccountsApi, subscriptionId::String, resourceGroupNam
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function accountsGet(_api::AccountsApi, subscriptionId::String, resourceGroupName::String, accountName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_accountsGet(_api, subscriptionId, resourceGroupName, accountName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function accountsGet(_api::AccountsApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, accountName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_accountsGet(_api, subscriptionId, resourceGroupName, accountName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -118,7 +168,7 @@ Param: orderby::String
 Param: count::Bool
 Return: DataLakeStoreAccountListResult
 """
-function accountsList(_api::AccountsApi, subscriptionId::String, api_version::String; filter=nothing, top=nothing, skip=nothing, select=nothing, orderby=nothing, count=nothing, _mediaType=nothing)
+function _swaggerinternal_accountsList(_api::AccountsApi, subscriptionId::String, api_version::String; filter=nothing, top=nothing, skip=nothing, select=nothing, orderby=nothing, count=nothing, _mediaType=nothing)
     Swagger.validate_param("top", "accountsList", :minimum, top, 1, false)
 
     Swagger.validate_param("skip", "accountsList", :minimum, skip, 1, false)
@@ -134,7 +184,17 @@ function accountsList(_api::AccountsApi, subscriptionId::String, api_version::St
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function accountsList(_api::AccountsApi, subscriptionId::String, api_version::String; filter=nothing, top=nothing, skip=nothing, select=nothing, orderby=nothing, count=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_accountsList(_api, subscriptionId, api_version; filter=filter, top=top, skip=skip, select=select, orderby=orderby, count=count, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function accountsList(_api::AccountsApi, response_stream::Channel, subscriptionId::String, api_version::String; filter=nothing, top=nothing, skip=nothing, select=nothing, orderby=nothing, count=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_accountsList(_api, subscriptionId, api_version; filter=filter, top=top, skip=skip, select=select, orderby=orderby, count=count, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -151,7 +211,7 @@ Param: orderby::String
 Param: count::Bool
 Return: DataLakeStoreAccountListResult
 """
-function accountsListByResourceGroup(_api::AccountsApi, subscriptionId::String, resourceGroupName::String, api_version::String; filter=nothing, top=nothing, skip=nothing, select=nothing, orderby=nothing, count=nothing, _mediaType=nothing)
+function _swaggerinternal_accountsListByResourceGroup(_api::AccountsApi, subscriptionId::String, resourceGroupName::String, api_version::String; filter=nothing, top=nothing, skip=nothing, select=nothing, orderby=nothing, count=nothing, _mediaType=nothing)
     Swagger.validate_param("top", "accountsListByResourceGroup", :minimum, top, 1, false)
 
     Swagger.validate_param("skip", "accountsListByResourceGroup", :minimum, skip, 1, false)
@@ -168,7 +228,17 @@ function accountsListByResourceGroup(_api::AccountsApi, subscriptionId::String, 
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function accountsListByResourceGroup(_api::AccountsApi, subscriptionId::String, resourceGroupName::String, api_version::String; filter=nothing, top=nothing, skip=nothing, select=nothing, orderby=nothing, count=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_accountsListByResourceGroup(_api, subscriptionId, resourceGroupName, api_version; filter=filter, top=top, skip=skip, select=select, orderby=orderby, count=count, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function accountsListByResourceGroup(_api::AccountsApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, api_version::String; filter=nothing, top=nothing, skip=nothing, select=nothing, orderby=nothing, count=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_accountsListByResourceGroup(_api, subscriptionId, resourceGroupName, api_version; filter=filter, top=top, skip=skip, select=select, orderby=orderby, count=count, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -181,7 +251,7 @@ Param: parameters::UpdateDataLakeStoreAccountParameters (required)
 Param: api_version::String (required)
 Return: DataLakeStoreAccount
 """
-function accountsUpdate(_api::AccountsApi, subscriptionId::String, resourceGroupName::String, accountName::String, parameters, api_version::String; _mediaType=nothing)
+function _swaggerinternal_accountsUpdate(_api::AccountsApi, subscriptionId::String, resourceGroupName::String, accountName::String, parameters, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", DataLakeStoreAccount, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
@@ -189,7 +259,17 @@ function accountsUpdate(_api::AccountsApi, subscriptionId::String, resourceGroup
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function accountsUpdate(_api::AccountsApi, subscriptionId::String, resourceGroupName::String, accountName::String, parameters, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_accountsUpdate(_api, subscriptionId, resourceGroupName, accountName, parameters, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function accountsUpdate(_api::AccountsApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, accountName::String, parameters, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_accountsUpdate(_api, subscriptionId, resourceGroupName, accountName, parameters, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export accountsCheckNameAvailability, accountsCreate, accountsDelete, accountsEnableKeyVault, accountsGet, accountsList, accountsListByResourceGroup, accountsUpdate

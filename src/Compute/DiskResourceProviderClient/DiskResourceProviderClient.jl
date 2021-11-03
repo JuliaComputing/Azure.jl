@@ -5,7 +5,6 @@ module DiskResourceProviderClient
 
 using Random
 using Dates
-using HTTP
 using Swagger
 import Swagger: field_name, property_type, hasproperty, validate_property, SwaggerApi, SwaggerModel
 import Base: convert, propertynames
@@ -23,9 +22,12 @@ export convert, ApiError
 export convert, ApiErrorBase
 export convert, CloudError
 export convert, CreationData
+export convert, Disk
+export convert, DiskAccess
 export convert, DiskAccessList
 export convert, DiskAccessProperties
 export convert, DiskAccessUpdate
+export convert, DiskEncryptionSet
 export convert, DiskEncryptionSetList
 export convert, DiskEncryptionSetUpdate
 export convert, DiskEncryptionSetUpdateProperties
@@ -57,16 +59,13 @@ export convert, PrivateLinkResourceProperties
 export convert, PrivateLinkServiceConnectionState
 export convert, Resource
 export convert, ShareInfoElement
+export convert, Snapshot
 export convert, SnapshotList
 export convert, SnapshotProperties
 export convert, SnapshotSku
 export convert, SnapshotUpdate
 export convert, SnapshotUpdateProperties
 export convert, SourceVault
-export convert, Disk
-export convert, DiskAccess
-export convert, DiskEncryptionSet
-export convert, Snapshot
 
 # export operations
 export convert, DiskAccessesApi, DiskEncryptionSetsApi, DisksApi, SnapshotsApi

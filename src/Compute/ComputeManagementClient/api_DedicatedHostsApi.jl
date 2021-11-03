@@ -16,7 +16,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: DedicatedHost
 """
-function dedicatedHostsCreateOrUpdate(_api::DedicatedHostsApi, resourceGroupName::String, hostGroupName::String, hostName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_dedicatedHostsCreateOrUpdate(_api::DedicatedHostsApi, resourceGroupName::String, hostGroupName::String, hostName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", DedicatedHost, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "hostGroupName", hostGroupName)  # type String
@@ -25,7 +25,17 @@ function dedicatedHostsCreateOrUpdate(_api::DedicatedHostsApi, resourceGroupName
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function dedicatedHostsCreateOrUpdate(_api::DedicatedHostsApi, resourceGroupName::String, hostGroupName::String, hostName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_dedicatedHostsCreateOrUpdate(_api, resourceGroupName, hostGroupName, hostName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function dedicatedHostsCreateOrUpdate(_api::DedicatedHostsApi, response_stream::Channel, resourceGroupName::String, hostGroupName::String, hostName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_dedicatedHostsCreateOrUpdate(_api, resourceGroupName, hostGroupName, hostName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -38,7 +48,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: Nothing
 """
-function dedicatedHostsDelete(_api::DedicatedHostsApi, resourceGroupName::String, hostGroupName::String, hostName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_dedicatedHostsDelete(_api::DedicatedHostsApi, resourceGroupName::String, hostGroupName::String, hostName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "hostGroupName", hostGroupName)  # type String
@@ -47,7 +57,17 @@ function dedicatedHostsDelete(_api::DedicatedHostsApi, resourceGroupName::String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function dedicatedHostsDelete(_api::DedicatedHostsApi, resourceGroupName::String, hostGroupName::String, hostName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_dedicatedHostsDelete(_api, resourceGroupName, hostGroupName, hostName, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function dedicatedHostsDelete(_api::DedicatedHostsApi, response_stream::Channel, resourceGroupName::String, hostGroupName::String, hostName::String, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_dedicatedHostsDelete(_api, resourceGroupName, hostGroupName, hostName, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -61,7 +81,7 @@ Param: subscriptionId::String (required)
 Param: expand::String
 Return: DedicatedHost
 """
-function dedicatedHostsGet(_api::DedicatedHostsApi, resourceGroupName::String, hostGroupName::String, hostName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+function _swaggerinternal_dedicatedHostsGet(_api::DedicatedHostsApi, resourceGroupName::String, hostGroupName::String, hostName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", DedicatedHost, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "hostGroupName", hostGroupName)  # type String
@@ -71,7 +91,17 @@ function dedicatedHostsGet(_api::DedicatedHostsApi, resourceGroupName::String, h
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function dedicatedHostsGet(_api::DedicatedHostsApi, resourceGroupName::String, hostGroupName::String, hostName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_dedicatedHostsGet(_api, resourceGroupName, hostGroupName, hostName, api_version, subscriptionId; expand=expand, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function dedicatedHostsGet(_api::DedicatedHostsApi, response_stream::Channel, resourceGroupName::String, hostGroupName::String, hostName::String, api_version::String, subscriptionId::String; expand=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_dedicatedHostsGet(_api, resourceGroupName, hostGroupName, hostName, api_version, subscriptionId; expand=expand, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -85,7 +115,7 @@ Param: api_version::String (required)
 Param: subscriptionId::String (required)
 Return: DedicatedHost
 """
-function dedicatedHostsUpdate(_api::DedicatedHostsApi, resourceGroupName::String, hostGroupName::String, hostName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+function _swaggerinternal_dedicatedHostsUpdate(_api::DedicatedHostsApi, resourceGroupName::String, hostGroupName::String, hostName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", DedicatedHost, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
     Swagger.set_param(_ctx.path, "hostGroupName", hostGroupName)  # type String
@@ -94,7 +124,17 @@ function dedicatedHostsUpdate(_api::DedicatedHostsApi, resourceGroupName::String
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function dedicatedHostsUpdate(_api::DedicatedHostsApi, resourceGroupName::String, hostGroupName::String, hostName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_dedicatedHostsUpdate(_api, resourceGroupName, hostGroupName, hostName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function dedicatedHostsUpdate(_api::DedicatedHostsApi, response_stream::Channel, resourceGroupName::String, hostGroupName::String, hostName::String, parameters, api_version::String, subscriptionId::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_dedicatedHostsUpdate(_api, resourceGroupName, hostGroupName, hostName, parameters, api_version, subscriptionId; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export dedicatedHostsCreateOrUpdate, dedicatedHostsDelete, dedicatedHostsGet, dedicatedHostsUpdate

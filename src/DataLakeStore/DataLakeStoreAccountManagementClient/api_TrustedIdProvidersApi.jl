@@ -16,7 +16,7 @@ Param: parameters::CreateOrUpdateTrustedIdProviderParameters (required)
 Param: api_version::String (required)
 Return: TrustedIdProvider
 """
-function trustedIdProvidersCreateOrUpdate(_api::TrustedIdProvidersApi, subscriptionId::String, resourceGroupName::String, accountName::String, trustedIdProviderName::String, parameters, api_version::String; _mediaType=nothing)
+function _swaggerinternal_trustedIdProvidersCreateOrUpdate(_api::TrustedIdProvidersApi, subscriptionId::String, resourceGroupName::String, accountName::String, trustedIdProviderName::String, parameters, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PUT", TrustedIdProvider, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
@@ -25,7 +25,17 @@ function trustedIdProvidersCreateOrUpdate(_api::TrustedIdProvidersApi, subscript
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function trustedIdProvidersCreateOrUpdate(_api::TrustedIdProvidersApi, subscriptionId::String, resourceGroupName::String, accountName::String, trustedIdProviderName::String, parameters, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_trustedIdProvidersCreateOrUpdate(_api, subscriptionId, resourceGroupName, accountName, trustedIdProviderName, parameters, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function trustedIdProvidersCreateOrUpdate(_api::TrustedIdProvidersApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, accountName::String, trustedIdProviderName::String, parameters, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_trustedIdProvidersCreateOrUpdate(_api, subscriptionId, resourceGroupName, accountName, trustedIdProviderName, parameters, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -38,7 +48,7 @@ Param: trustedIdProviderName::String (required)
 Param: api_version::String (required)
 Return: Nothing
 """
-function trustedIdProvidersDelete(_api::TrustedIdProvidersApi, subscriptionId::String, resourceGroupName::String, accountName::String, trustedIdProviderName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_trustedIdProvidersDelete(_api::TrustedIdProvidersApi, subscriptionId::String, resourceGroupName::String, accountName::String, trustedIdProviderName::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "DELETE", Nothing, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
@@ -47,7 +57,17 @@ function trustedIdProvidersDelete(_api::TrustedIdProvidersApi, subscriptionId::S
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function trustedIdProvidersDelete(_api::TrustedIdProvidersApi, subscriptionId::String, resourceGroupName::String, accountName::String, trustedIdProviderName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_trustedIdProvidersDelete(_api, subscriptionId, resourceGroupName, accountName, trustedIdProviderName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function trustedIdProvidersDelete(_api::TrustedIdProvidersApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, accountName::String, trustedIdProviderName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_trustedIdProvidersDelete(_api, subscriptionId, resourceGroupName, accountName, trustedIdProviderName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -60,7 +80,7 @@ Param: trustedIdProviderName::String (required)
 Param: api_version::String (required)
 Return: TrustedIdProvider
 """
-function trustedIdProvidersGet(_api::TrustedIdProvidersApi, subscriptionId::String, resourceGroupName::String, accountName::String, trustedIdProviderName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_trustedIdProvidersGet(_api::TrustedIdProvidersApi, subscriptionId::String, resourceGroupName::String, accountName::String, trustedIdProviderName::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", TrustedIdProvider, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
@@ -69,7 +89,17 @@ function trustedIdProvidersGet(_api::TrustedIdProvidersApi, subscriptionId::Stri
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function trustedIdProvidersGet(_api::TrustedIdProvidersApi, subscriptionId::String, resourceGroupName::String, accountName::String, trustedIdProviderName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_trustedIdProvidersGet(_api, subscriptionId, resourceGroupName, accountName, trustedIdProviderName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function trustedIdProvidersGet(_api::TrustedIdProvidersApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, accountName::String, trustedIdProviderName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_trustedIdProvidersGet(_api, subscriptionId, resourceGroupName, accountName, trustedIdProviderName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -81,7 +111,7 @@ Param: accountName::String (required)
 Param: api_version::String (required)
 Return: TrustedIdProviderListResult
 """
-function trustedIdProvidersListByAccount(_api::TrustedIdProvidersApi, subscriptionId::String, resourceGroupName::String, accountName::String, api_version::String; _mediaType=nothing)
+function _swaggerinternal_trustedIdProvidersListByAccount(_api::TrustedIdProvidersApi, subscriptionId::String, resourceGroupName::String, accountName::String, api_version::String; _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "GET", TrustedIdProviderListResult, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders", ["azure_auth"])
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
@@ -89,7 +119,17 @@ function trustedIdProvidersListByAccount(_api::TrustedIdProvidersApi, subscripti
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function trustedIdProvidersListByAccount(_api::TrustedIdProvidersApi, subscriptionId::String, resourceGroupName::String, accountName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_trustedIdProvidersListByAccount(_api, subscriptionId, resourceGroupName, accountName, api_version; _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function trustedIdProvidersListByAccount(_api::TrustedIdProvidersApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, accountName::String, api_version::String; _mediaType=nothing)
+    _ctx = _swaggerinternal_trustedIdProvidersListByAccount(_api, subscriptionId, resourceGroupName, accountName, api_version; _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 """
@@ -103,7 +143,7 @@ Param: api_version::String (required)
 Param: parameters::UpdateTrustedIdProviderParameters
 Return: TrustedIdProvider
 """
-function trustedIdProvidersUpdate(_api::TrustedIdProvidersApi, subscriptionId::String, resourceGroupName::String, accountName::String, trustedIdProviderName::String, api_version::String; parameters=nothing, _mediaType=nothing)
+function _swaggerinternal_trustedIdProvidersUpdate(_api::TrustedIdProvidersApi, subscriptionId::String, resourceGroupName::String, accountName::String, trustedIdProviderName::String, api_version::String; parameters=nothing, _mediaType=nothing)
     _ctx = Swagger.Ctx(_api.client, "PATCH", TrustedIdProvider, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts/{accountName}/trustedIdProviders/{trustedIdProviderName}", ["azure_auth"], parameters)
     Swagger.set_param(_ctx.path, "subscriptionId", subscriptionId)  # type String
     Swagger.set_param(_ctx.path, "resourceGroupName", resourceGroupName)  # type String
@@ -112,7 +152,17 @@ function trustedIdProvidersUpdate(_api::TrustedIdProvidersApi, subscriptionId::S
     Swagger.set_param(_ctx.query, "api-version", api_version)  # type String
     Swagger.set_header_accept(_ctx, ["application/json"])
     Swagger.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json"] : [_mediaType])
+    return _ctx
+end
+
+function trustedIdProvidersUpdate(_api::TrustedIdProvidersApi, subscriptionId::String, resourceGroupName::String, accountName::String, trustedIdProviderName::String, api_version::String; parameters=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_trustedIdProvidersUpdate(_api, subscriptionId, resourceGroupName, accountName, trustedIdProviderName, api_version; parameters=parameters, _mediaType=_mediaType)
     Swagger.exec(_ctx)
+end
+
+function trustedIdProvidersUpdate(_api::TrustedIdProvidersApi, response_stream::Channel, subscriptionId::String, resourceGroupName::String, accountName::String, trustedIdProviderName::String, api_version::String; parameters=nothing, _mediaType=nothing)
+    _ctx = _swaggerinternal_trustedIdProvidersUpdate(_api, subscriptionId, resourceGroupName, accountName, trustedIdProviderName, api_version; parameters=parameters, _mediaType=_mediaType)
+    Swagger.exec(_ctx, response_stream)
 end
 
 export trustedIdProvidersCreateOrUpdate, trustedIdProvidersDelete, trustedIdProvidersGet, trustedIdProvidersListByAccount, trustedIdProvidersUpdate
