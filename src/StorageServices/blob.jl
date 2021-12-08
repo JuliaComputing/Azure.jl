@@ -107,6 +107,19 @@ end
 
 const valid_blob_types = ("BlockBlob", "PageBlob", "AppendBlob")
 
+function check_mappable_file(io)
+    if isa(io, IOStream)
+        try
+            fsz = filesize(io)
+            data = Mmap.mmap(io, Vector{UInt8}, fsz)
+            return IOBuffer(data), fsz
+        catch
+            return io, nothing
+        end
+    end
+    return io, nothing
+end
+
 """
 Creates a new block, page, or append blob, or updates the content of an existing block blob.
 
@@ -164,8 +177,22 @@ function putBlob(ctx, subscription_id::String, resource_group_name::String, uri:
                     content_length = length(codeunits(block_blob_contents))
                 elseif isa(block_blob_contents, Vector{UInt8})
                     content_length = length(block_blob_contents)
+                elseif isa(block_blob_contents, IOBuffer)
+                    content_length = block_blob_contents.size
                 else
-                    error("content_length must be specified for blob contents of type $(typeof(block_blob_contents))")
+                    wrapped_contents, content_length = check_mappable_file(block_blob_contents)
+                    if content_length === nothing
+                        error("content_length must be specified for blob contents of type $(typeof(block_blob_contents))")
+                    else
+                        block_blob_contents = wrapped_contents
+                    end
+                end
+            elseif isa(block_blob_contents, IOStream)
+                wrapped_contents, wrapped_content_length = check_mappable_file(block_blob_contents)
+                if content_length !== wrapped_content_length
+                    error("content_length must match the length of the stream")
+                else
+                    block_blob_contents = wrapped_contents
                 end
             end
         end
