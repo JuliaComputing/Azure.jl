@@ -8,6 +8,7 @@ using URIs
 using MbedTLS
 using Dates
 using Base64
+using Mmap
 
 include("common.jl")
 include("blob.jl")
