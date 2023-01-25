@@ -1,1 +1,0 @@
-const StorageAccountType = String

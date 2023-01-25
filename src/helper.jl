@@ -21,16 +21,16 @@ client_id(creds::AzureCredentials) = creds.client_id
 client_secret(creds::AzureCredentials) = creds.client_secret
 
 """
-Holds a swagger client to make API calls with, an auth provider to authenticate to Azure with, and an authenticated token.
+Holds a OpenAPI client to make API calls with, an auth provider to authenticate to Azure with, and an authenticated token.
 """
 mutable struct AzureContext
-    client::Swagger.Client
+    client::OpenAPI.Clients.Client
     auth_provider::AzureAuthProvider
     token::Dict{String,Any}
     expires::Float64
     
     function AzureContext(auth::AzureAuthProvider)
-        new(Swagger.Client(DEFAULT_URI), auth, Dict{Symbol,Any}(), 0)
+        new(OpenAPI.Clients.Client(DEFAULT_URI), auth, Dict{Symbol,Any}(), 0)
     end
 end
 
@@ -62,7 +62,7 @@ function authenticate(ctx::AzureContext)
     write(input, URIs.escapeuri(data))
     output = IOBuffer()
     resp = Downloads.request(auth_url; method="POST", input=input, output=output, headers=headers)
-    (isa(resp, Downloads.Response) && (200 <= resp.status <= 206)) || throw(Swagger.ApiException(resp))
+    (isa(resp, Downloads.Response) && (200 <= resp.status <= 206)) || throw(OpenAPI.Clients.ApiException(resp))
 
     ctx.token = JSON.parse(String(take!(output)))
     if "expires_in" in keys(ctx.token)

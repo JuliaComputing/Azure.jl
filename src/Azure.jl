@@ -1,19 +1,18 @@
 module Azure
 
-using Swagger
+using OpenAPI
 using Downloads
-using URIs
 using JSON
 
 # API versions
 const _module_versions = Dict{Module,String}()
 const _api_versions = Dict{DataType,String}()
 
-# include Azure REST protocol (not Swagger)
+# include Azure REST protocol (not OpenAPI)
 include("rest_api_protocol.jl")
 
 # inlcude sub modules for individual API groups
-include("DataLakeStore/DataLakeStoreAccountManagementClient/DataLakeStoreAccountManagementClient.jl")
+include("DataLakeStore/DataLakeStoreAccountManagementClient/src/DataLakeStoreAccountManagementClient.jl")
 _module_versions[DataLakeStoreAccountManagementClient] = "2016-11-01"
 _api_versions[DataLakeStoreAccountManagementClient.AccountsApi] = "2016-11-01"
 _api_versions[DataLakeStoreAccountManagementClient.FirewallRulesApi] = "2016-11-01"
@@ -23,11 +22,11 @@ _api_versions[DataLakeStoreAccountManagementClient.OperationsApi] = "2016-11-01"
 _api_versions[DataLakeStoreAccountManagementClient.TrustedIdProvidersApi] = "2016-11-01"
 _api_versions[DataLakeStoreAccountManagementClient.VirtualNetworkRulesApi] = "2016-11-01"
 
-include("DataLakeStore/DataLakeStoreFileSystemManagementClient/DataLakeStoreFileSystemManagementClient.jl")
+include("DataLakeStore/DataLakeStoreFileSystemManagementClient/src/DataLakeStoreFileSystemManagementClient.jl")
 _module_versions[DataLakeStoreFileSystemManagementClient] = "2016-11-01"
 _api_versions[DataLakeStoreFileSystemManagementClient.FileSystemApi] = "2016-11-01"
 
-include("Storage/StorageManagementClient/StorageManagementClient.jl")
+include("Storage/StorageManagementClient/src/StorageManagementClient.jl")
 _module_versions[StorageManagementClient] = "2019-06-01"
 _api_versions[StorageManagementClient.EncryptionScopesApi] = "2019-06-01"
 _api_versions[StorageManagementClient.LocationUsageApi] = "2019-06-01"
@@ -39,7 +38,7 @@ _api_versions[StorageManagementClient.PrivateLinkResourcesApi] = "2019-06-01"
 _api_versions[StorageManagementClient.SkusApi] = "2019-06-01"
 _api_versions[StorageManagementClient.StorageAccountsApi] = "2019-06-01"
 
-include("Compute/ComputeManagementClient/ComputeManagementClient.jl")
+include("Compute/ComputeManagementClient/src/ComputeManagementClient.jl")
 _module_versions[ComputeManagementClient] = "2020-06-01"
 _api_versions[ComputeManagementClient.AvailabilitySetsApi] = "2020-06-01"
 _api_versions[ComputeManagementClient.ComputeOperationsApi] = "2020-06-01"
@@ -62,35 +61,35 @@ _api_versions[ComputeManagementClient.VirtualMachineScaleSetsApi] = "2020-06-01"
 _api_versions[ComputeManagementClient.VirtualMachineSizesApi] = "2020-06-01"
 _api_versions[ComputeManagementClient.VirtualMachinesApi] = "2020-06-01"
 
-include("Compute/DiskResourceProviderClient/DiskResourceProviderClient.jl")
+include("Compute/DiskResourceProviderClient/src/DiskResourceProviderClient.jl")
 _module_versions[DiskResourceProviderClient] = "2020-05-01"
 _api_versions[DiskResourceProviderClient.DiskAccessesApi] = "2020-05-01"
 _api_versions[DiskResourceProviderClient.DiskEncryptionSetsApi] = "2020-05-01"
 _api_versions[DiskResourceProviderClient.DisksApi] = "2020-05-01"
 _api_versions[DiskResourceProviderClient.SnapshotsApi] = "2020-05-01"
 
-include("Compute/RunCommandsClient/RunCommandsClient.jl")
+include("Compute/RunCommandsClient/src/RunCommandsClient.jl")
 _module_versions[RunCommandsClient] = "2020-06-01"
 _api_versions[RunCommandsClient.VirtualMachineRunCommandsApi] = "2020-06-01"
 _api_versions[RunCommandsClient.VirtualMachineScaleSetVMsApi] = "2020-06-01"
 _api_versions[RunCommandsClient.VirtualMachinesApi] = "2020-06-01"
 
-include("Compute/ContainerServiceClient/ContainerServiceClient.jl")
+include("Compute/ContainerServiceClient/src/ContainerServiceClient.jl")
 _module_versions[ContainerServiceClient] = "2017-01-31"
 _api_versions[ContainerServiceClient.ContainerServiceApi] = "2017-01-31"
 _api_versions[ContainerServiceClient.ContainerServicesApi] = "2017-01-31"
 
-include("Network/ApplicationGatewayClient/ApplicationGatewayClient.jl")
+include("Network/ApplicationGatewayClient/src/ApplicationGatewayClient.jl")
 _module_versions[ApplicationGatewayClient] = "2020-05-01"
 _api_versions[ApplicationGatewayClient.ApplicationGatewayPrivateEndpointConnectionsApi] = "2020-05-01"
 _api_versions[ApplicationGatewayClient.ApplicationGatewayPrivateLinkResourcesApi] = "2020-05-01"
 _api_versions[ApplicationGatewayClient.ApplicationGatewaysApi] = "2020-05-01"
 
-include("Network/CheckDnsAvailabilityClient/CheckDnsAvailabilityClient.jl")
+include("Network/CheckDnsAvailabilityClient/src/CheckDnsAvailabilityClient.jl")
 _module_versions[CheckDnsAvailabilityClient] = "2020-05-01"
 _api_versions[CheckDnsAvailabilityClient.DefaultApi] = "2020-05-01"
 
-include("Network/ExpressRouteCircuitClient/ExpressRouteCircuitClient.jl")
+include("Network/ExpressRouteCircuitClient/src/ExpressRouteCircuitClient.jl")
 _module_versions[ExpressRouteCircuitClient] = "2020-05-01"
 _api_versions[ExpressRouteCircuitClient.ExpressRouteCircuitArpTableApi] = "2020-05-01"
 _api_versions[ExpressRouteCircuitClient.ExpressRouteCircuitAuthorizationsApi] = "2020-05-01"
@@ -103,23 +102,23 @@ _api_versions[ExpressRouteCircuitClient.ExpressRouteCircuitsApi] = "2020-05-01"
 _api_versions[ExpressRouteCircuitClient.ExpressRouteServiceProvidersApi] = "2020-05-01"
 _api_versions[ExpressRouteCircuitClient.PeerExpressRouteCircuitConnectionsApi] = "2020-05-01"
 
-include("Network/LoadBalancerClient/LoadBalancerClient.jl")
+include("Network/LoadBalancerClient/src/LoadBalancerClient.jl")
 _module_versions[LoadBalancerClient] = "2020-05-01"
 _api_versions[LoadBalancerClient.LoadBalancersApi] = "2020-05-01"
 
-include("Network/NetworkManagementClient/NetworkManagementClient.jl")
+include("Network/NetworkManagementClient/src/NetworkManagementClient.jl")
 _module_versions[NetworkManagementClient] = "2020-05-01"
 
-include("Network/NetworkInterfaceClient/NetworkInterfaceClient.jl")
+include("Network/NetworkInterfaceClient/src/NetworkInterfaceClient.jl")
 _module_versions[NetworkInterfaceClient] = "2020-05-01"
 _api_versions[NetworkInterfaceClient.NetworkInterfacesApi] = "2020-05-01"
 
-include("Network/NetworkSecurityGroupClient/NetworkSecurityGroupClient.jl")
+include("Network/NetworkSecurityGroupClient/src/NetworkSecurityGroupClient.jl")
 _module_versions[NetworkSecurityGroupClient] = "2020-05-01"
 _api_versions[NetworkSecurityGroupClient.NetworkSecurityGroupsApi] = "2020-05-01"
 _api_versions[NetworkSecurityGroupClient.SecurityRulesApi] = "2020-05-01"
 
-include("Network/NetworkWatcherClient/NetworkWatcherClient.jl")
+include("Network/NetworkWatcherClient/src/NetworkWatcherClient.jl")
 _module_versions[NetworkWatcherClient] = "2020-05-01"
 _api_versions[NetworkWatcherClient.ConnectionMonitorsApi] = "2020-05-01"
 _api_versions[NetworkWatcherClient.FlowLogsApi] = "2020-05-01"
@@ -127,46 +126,46 @@ _api_versions[NetworkWatcherClient.NetworkWatchersApi] = "2020-05-01"
 _api_versions[NetworkWatcherClient.PacketCapturesApi] = "2020-05-01"
 _api_versions[NetworkWatcherClient.TrafficAnalyticsApi] = "2020-05-01"
 
-include("Network/PublicIpAddressClient/PublicIpAddressClient.jl")
+include("Network/PublicIpAddressClient/src/PublicIpAddressClient.jl")
 _module_versions[PublicIpAddressClient] = "2020-05-01"
 _api_versions[PublicIpAddressClient.PublicIPAddressesApi] = "2020-05-01"
 
-include("Network/RouteFilterClient/RouteFilterClient.jl")
+include("Network/RouteFilterClient/src/RouteFilterClient.jl")
 _module_versions[RouteFilterClient] = "2020-05-01"
 _api_versions[RouteFilterClient.RouteFilterRulesApi] = "2020-05-01"
 _api_versions[RouteFilterClient.RouteFiltersApi] = "2020-05-01"
 
-include("Network/RouteTableClient/RouteTableClient.jl")
+include("Network/RouteTableClient/src/RouteTableClient.jl")
 _module_versions[RouteTableClient] = "2020-05-01"
 _api_versions[RouteTableClient.RouteTablesApi] = "2020-05-01"
 _api_versions[RouteTableClient.RoutesApi] = "2020-05-01"
 
-include("Network/ServiceCommunityClient/ServiceCommunityClient.jl")
+include("Network/ServiceCommunityClient/src/ServiceCommunityClient.jl")
 _module_versions[ServiceCommunityClient] = "2020-05-01"
 _api_versions[ServiceCommunityClient.BgpServiceCommunitiesApi] = "2020-05-01"
 
-include("Network/UsageClient/UsageClient.jl")
+include("Network/UsageClient/src/UsageClient.jl")
 _module_versions[UsageClient] = "2020-05-01"
 _api_versions[UsageClient.UsagesApi] = "2020-05-01"
 
-include("Network/VirtualNetworkClient/VirtualNetworkClient.jl")
+include("Network/VirtualNetworkClient/src/VirtualNetworkClient.jl")
 _module_versions[VirtualNetworkClient] = "2020-05-01"
 _api_versions[VirtualNetworkClient.DefaultApi] = "2020-05-01"
 _api_versions[VirtualNetworkClient.SubnetsApi] = "2020-05-01"
 _api_versions[VirtualNetworkClient.VirtualNetworkPeeringsApi] = "2020-05-01"
 _api_versions[VirtualNetworkClient.VirtualNetworksApi] = "2020-05-01"
 
-include("Network/VirtualNetworkGatewayClient/VirtualNetworkGatewayClient.jl")
+include("Network/VirtualNetworkGatewayClient/src/VirtualNetworkGatewayClient.jl")
 _module_versions[VirtualNetworkGatewayClient] = "2020-05-01"
 _api_versions[VirtualNetworkGatewayClient.LocalNetworkGatewaysApi] = "2020-05-01"
 _api_versions[VirtualNetworkGatewayClient.VirtualNetworkGatewayConnectionsApi] = "2020-05-01"
 _api_versions[VirtualNetworkGatewayClient.VirtualNetworkGatewaysApi] = "2020-05-01"
 
-include("Network/VmssNetworkInterfaceClient/VmssNetworkInterfaceClient.jl")
+include("Network/VmssNetworkInterfaceClient/src/VmssNetworkInterfaceClient.jl")
 _module_versions[VmssNetworkInterfaceClient] = "2020-05-01"
 _api_versions[VmssNetworkInterfaceClient.NetworkInterfacesApi] = "2020-05-01"
 
-include("Resource/ResourceManagementClient/ResourceManagementClient.jl")
+include("Resource/ResourceManagementClient/src/ResourceManagementClient.jl")
 _module_versions[ResourceManagementClient] = "2020-06-01"
 _api_versions[ResourceManagementClient.DeploymentOperationsApi] = "2020-06-01"
 _api_versions[ResourceManagementClient.DeploymentsApi] = "2020-06-01"
@@ -176,25 +175,25 @@ _api_versions[ResourceManagementClient.ResourceGroupsApi] = "2020-06-01"
 _api_versions[ResourceManagementClient.ResourcesApi] = "2020-06-01"
 _api_versions[ResourceManagementClient.TagsApi] = "2020-06-01"
 
-include("Resource/SubscriptionClient/SubscriptionClient.jl")
+include("Resource/SubscriptionClient/src/SubscriptionClient.jl")
 _module_versions[SubscriptionClient] = "2020-01-01"
 _api_versions[SubscriptionClient.OperationsApi] = "2020-01-01"
 _api_versions[SubscriptionClient.SubscriptionsApi] = "2020-01-01"
 _api_versions[SubscriptionClient.TenantsApi] = "2020-01-01"
 
-include("Resource/PolicyAssignmentsClient/PolicyAssignmentsClient.jl")
+include("Resource/PolicyAssignmentsClient/src/PolicyAssignmentsClient.jl")
 _module_versions[PolicyAssignmentsClient] = "2019-09-01"
 _api_versions[PolicyAssignmentsClient.PolicyAssignmentsApi] = "2019-09-01"
 
-include("Resource/PolicyDefinitionsClient/PolicyDefinitionsClient.jl")
+include("Resource/PolicyDefinitionsClient/src/PolicyDefinitionsClient.jl")
 _module_versions[PolicyDefinitionsClient] = "2019-09-01"
 _api_versions[PolicyDefinitionsClient.PolicyDefinitionsApi] = "2019-09-01"
 
-include("Resource/PolicySetDefinitionsClient/PolicySetDefinitionsClient.jl")
+include("Resource/PolicySetDefinitionsClient/src/PolicySetDefinitionsClient.jl")
 _module_versions[PolicySetDefinitionsClient] = "2019-09-01"
 _api_versions[PolicySetDefinitionsClient.PolicySetDefinitionsApi] = "2019-09-01"
 
-include("Commerce/UsageManagementClient/UsageManagementClient.jl")
+include("Commerce/UsageManagementClient/src/UsageManagementClient.jl")
 _module_versions[UsageManagementClient] = "2015-06-01-preview"
 _api_versions[UsageManagementClient.RateCardApi] = "2015-06-01-preview"
 _api_versions[UsageManagementClient.UsageAggregatesApi] = "2015-06-01-preview"

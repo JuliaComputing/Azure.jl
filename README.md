@@ -1,12 +1,12 @@
 # Azure.jl
 
-A Julia library to access Microsoft Azure REST APIs. Most code in this file is generated automatically using [Swagger.jl](https://github.com/JuliaComputing/Swagger.jl)
+A Julia library to access Microsoft Azure REST APIs. Most code in this file is generated automatically using [OpenAPI.jl](https://github.com/JuliaComputing/OpenAPI.jl)
 
 [![Build Status](https://github.com/JuliaComputing/Azure.jl/workflows/CI/badge.svg)](https://github.com/JuliaComputing/Azure.jl/actions?query=workflow%3ACI+branch%3Amaster)
 
 ```
 using Azure
-using Swagger
+using OpenAPI
 using Azure.StorageManagementClient
 using Azure.StorageServices
 using Azure.ComputeManagementClient

@@ -1,0 +1,13 @@
+# DeploymentValidateResult
+
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**error** | [***ErrorResponse**](ErrorResponse.md) |  | [optional] [default to nothing]
+**properties** | [***DeploymentPropertiesExtended**](DeploymentPropertiesExtended.md) |  | [optional] [default to nothing]
+
+
+[[Back to Model list]](../README.md#models) [[Back to API list]](../README.md#api-endpoints) [[Back to README]](../README.md)
+
+
