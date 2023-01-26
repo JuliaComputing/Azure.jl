@@ -2,26 +2,8 @@
 # Do not modify this file directly. Modify the OpenAPI specification instead.
 
 
-@doc raw"""DiffDiskOption
-Specifies the ephemeral disk option for operating system disk.
-
-    DiffDiskOption(;
-    )
-
-"""
-Base.@kwdef mutable struct DiffDiskOption <: OpenAPI.APIModel
-
-    function DiffDiskOption()
-        return new()
-    end
-end # type DiffDiskOption
-
-const _property_types_DiffDiskOption = Dict{Symbol,String}()
-OpenAPI.property_type(::Type{ DiffDiskOption }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DiffDiskOption[name]))}
-
-function check_required(o::DiffDiskOption)
-    true
-end
-
-function OpenAPI.validate_property(::Type{ DiffDiskOption }, name::Symbol, val)
+if !isdefined(@__MODULE__, :DiffDiskOption)
+    const DiffDiskOption = String
+else
+    @warn("Skipping redefinition of DiffDiskOption to String")
 end

@@ -2,26 +2,8 @@
 # Do not modify this file directly. Modify the OpenAPI specification instead.
 
 
-@doc raw"""PrivateEndpointServiceConnectionStatus
-The private endpoint connection status.
-
-    PrivateEndpointServiceConnectionStatus(;
-    )
-
-"""
-Base.@kwdef mutable struct PrivateEndpointServiceConnectionStatus <: OpenAPI.APIModel
-
-    function PrivateEndpointServiceConnectionStatus()
-        return new()
-    end
-end # type PrivateEndpointServiceConnectionStatus
-
-const _property_types_PrivateEndpointServiceConnectionStatus = Dict{Symbol,String}()
-OpenAPI.property_type(::Type{ PrivateEndpointServiceConnectionStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PrivateEndpointServiceConnectionStatus[name]))}
-
-function check_required(o::PrivateEndpointServiceConnectionStatus)
-    true
-end
-
-function OpenAPI.validate_property(::Type{ PrivateEndpointServiceConnectionStatus }, name::Symbol, val)
+if !isdefined(@__MODULE__, :PrivateEndpointServiceConnectionStatus)
+    const PrivateEndpointServiceConnectionStatus = String
+else
+    @warn("Skipping redefinition of PrivateEndpointServiceConnectionStatus to String")
 end

@@ -2,26 +2,8 @@
 # Do not modify this file directly. Modify the OpenAPI specification instead.
 
 
-@doc raw"""Access
-Access to be allowed or denied.
-
-    Access(;
-    )
-
-"""
-Base.@kwdef mutable struct Access <: OpenAPI.APIModel
-
-    function Access()
-        return new()
-    end
-end # type Access
-
-const _property_types_Access = Dict{Symbol,String}()
-OpenAPI.property_type(::Type{ Access }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Access[name]))}
-
-function check_required(o::Access)
-    true
-end
-
-function OpenAPI.validate_property(::Type{ Access }, name::Symbol, val)
+if !isdefined(@__MODULE__, :Access)
+    const Access = String
+else
+    @warn("Skipping redefinition of Access to String")
 end

@@ -2,26 +2,8 @@
 # Do not modify this file directly. Modify the OpenAPI specification instead.
 
 
-@doc raw"""Caching
-Specifies the caching requirements. &lt;br&gt;&lt;br&gt; Possible values are: &lt;br&gt;&lt;br&gt; **None** &lt;br&gt;&lt;br&gt; **ReadOnly** &lt;br&gt;&lt;br&gt; **ReadWrite** &lt;br&gt;&lt;br&gt; Default: **None for Standard storage. ReadOnly for Premium storage**
-
-    Caching(;
-    )
-
-"""
-Base.@kwdef mutable struct Caching <: OpenAPI.APIModel
-
-    function Caching()
-        return new()
-    end
-end # type Caching
-
-const _property_types_Caching = Dict{Symbol,String}()
-OpenAPI.property_type(::Type{ Caching }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Caching[name]))}
-
-function check_required(o::Caching)
-    true
-end
-
-function OpenAPI.validate_property(::Type{ Caching }, name::Symbol, val)
+if !isdefined(@__MODULE__, :Caching)
+    const Caching = String
+else
+    @warn("Skipping redefinition of Caching to String")
 end

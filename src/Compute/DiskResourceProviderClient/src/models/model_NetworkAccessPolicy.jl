@@ -2,26 +2,8 @@
 # Do not modify this file directly. Modify the OpenAPI specification instead.
 
 
-@doc raw"""NetworkAccessPolicy
-Policy for accessing the disk via network.
-
-    NetworkAccessPolicy(;
-    )
-
-"""
-Base.@kwdef mutable struct NetworkAccessPolicy <: OpenAPI.APIModel
-
-    function NetworkAccessPolicy()
-        return new()
-    end
-end # type NetworkAccessPolicy
-
-const _property_types_NetworkAccessPolicy = Dict{Symbol,String}()
-OpenAPI.property_type(::Type{ NetworkAccessPolicy }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkAccessPolicy[name]))}
-
-function check_required(o::NetworkAccessPolicy)
-    true
-end
-
-function OpenAPI.validate_property(::Type{ NetworkAccessPolicy }, name::Symbol, val)
+if !isdefined(@__MODULE__, :NetworkAccessPolicy)
+    const NetworkAccessPolicy = String
+else
+    @warn("Skipping redefinition of NetworkAccessPolicy to String")
 end

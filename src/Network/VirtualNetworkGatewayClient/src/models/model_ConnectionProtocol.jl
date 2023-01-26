@@ -2,26 +2,8 @@
 # Do not modify this file directly. Modify the OpenAPI specification instead.
 
 
-@doc raw"""ConnectionProtocol
-Gateway connection protocol.
-
-    ConnectionProtocol(;
-    )
-
-"""
-Base.@kwdef mutable struct ConnectionProtocol <: OpenAPI.APIModel
-
-    function ConnectionProtocol()
-        return new()
-    end
-end # type ConnectionProtocol
-
-const _property_types_ConnectionProtocol = Dict{Symbol,String}()
-OpenAPI.property_type(::Type{ ConnectionProtocol }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ConnectionProtocol[name]))}
-
-function check_required(o::ConnectionProtocol)
-    true
-end
-
-function OpenAPI.validate_property(::Type{ ConnectionProtocol }, name::Symbol, val)
+if !isdefined(@__MODULE__, :ConnectionProtocol)
+    const ConnectionProtocol = String
+else
+    @warn("Skipping redefinition of ConnectionProtocol to String")
 end

@@ -2,26 +2,8 @@
 # Do not modify this file directly. Modify the OpenAPI specification instead.
 
 
-@doc raw"""IPVersion
-IP address version.
-
-    IPVersion(;
-    )
-
-"""
-Base.@kwdef mutable struct IPVersion <: OpenAPI.APIModel
-
-    function IPVersion()
-        return new()
-    end
-end # type IPVersion
-
-const _property_types_IPVersion = Dict{Symbol,String}()
-OpenAPI.property_type(::Type{ IPVersion }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IPVersion[name]))}
-
-function check_required(o::IPVersion)
-    true
-end
-
-function OpenAPI.validate_property(::Type{ IPVersion }, name::Symbol, val)
+if !isdefined(@__MODULE__, :IPVersion)
+    const IPVersion = String
+else
+    @warn("Skipping redefinition of IPVersion to String")
 end

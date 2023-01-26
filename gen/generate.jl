@@ -32,7 +32,7 @@ const SPECS = [
     ("PolicyAssignmentsClient",                 "Resource",         "2019-09-01",           "specification/resources/resource-manager/Microsoft.Authorization/stable/{VER}/policyAssignments.json"),
     ("PolicyDefinitionsClient",                 "Resource",         "2019-09-01",           "specification/resources/resource-manager/Microsoft.Authorization/stable/{VER}/policyDefinitions.json"),
     ("PolicySetDefinitionsClient",              "Resource",         "2019-09-01",           "specification/resources/resource-manager/Microsoft.Authorization/stable/{VER}/policySetDefinitions.json"),
-    ("UsageManagementClient",                   "Commerce",         "2015-06-01-preview",  "specification/commerce/resource-manager/Microsoft.Commerce/preview/{VER}/commerce.json")
+    ("UsageManagementClient",                   "Commerce",         "2015-06-01-preview",  "specification/commerce/resource-manager/Microsoft.Commerce/preview/{VER}/commerce.json"),
 ]
 
 const MODULE_HEAD = """module Azure
@@ -40,6 +40,7 @@ const MODULE_HEAD = """module Azure
 using OpenAPI
 using Downloads
 using JSON
+using URIs
 
 # API versions
 const _module_versions = Dict{Module,String}()
@@ -60,6 +61,7 @@ include("helper.jl")
 end # module Azure"""
 
 function commands(pkg, outpath, specfile)
+    # add --global-property debugModels=true to turn on model debug output
     gencmd = `java -jar openapi-generator-cli.jar generate -i $specfile -g julia-client -o $outpath --additional-properties=packageName=$pkg`
     cleancmd = `rm -rf $outpath`
 

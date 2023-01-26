@@ -3,6 +3,7 @@ module Azure
 using OpenAPI
 using Downloads
 using JSON
+using URIs
 
 # API versions
 const _module_versions = Dict{Module,String}()

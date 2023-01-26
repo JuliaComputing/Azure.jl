@@ -2,26 +2,8 @@
 # Do not modify this file directly. Modify the OpenAPI specification instead.
 
 
-@doc raw"""CipherSuitesEnum
-Ssl cipher suites enums.
-
-    CipherSuitesEnum(;
-    )
-
-"""
-Base.@kwdef mutable struct CipherSuitesEnum <: OpenAPI.APIModel
-
-    function CipherSuitesEnum()
-        return new()
-    end
-end # type CipherSuitesEnum
-
-const _property_types_CipherSuitesEnum = Dict{Symbol,String}()
-OpenAPI.property_type(::Type{ CipherSuitesEnum }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_CipherSuitesEnum[name]))}
-
-function check_required(o::CipherSuitesEnum)
-    true
-end
-
-function OpenAPI.validate_property(::Type{ CipherSuitesEnum }, name::Symbol, val)
+if !isdefined(@__MODULE__, :CipherSuitesEnum)
+    const CipherSuitesEnum = String
+else
+    @warn("Skipping redefinition of CipherSuitesEnum to String")
 end

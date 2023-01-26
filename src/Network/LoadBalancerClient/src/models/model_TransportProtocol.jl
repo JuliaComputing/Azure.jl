@@ -2,26 +2,8 @@
 # Do not modify this file directly. Modify the OpenAPI specification instead.
 
 
-@doc raw"""TransportProtocol
-The transport protocol for the endpoint.
-
-    TransportProtocol(;
-    )
-
-"""
-Base.@kwdef mutable struct TransportProtocol <: OpenAPI.APIModel
-
-    function TransportProtocol()
-        return new()
-    end
-end # type TransportProtocol
-
-const _property_types_TransportProtocol = Dict{Symbol,String}()
-OpenAPI.property_type(::Type{ TransportProtocol }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TransportProtocol[name]))}
-
-function check_required(o::TransportProtocol)
-    true
-end
-
-function OpenAPI.validate_property(::Type{ TransportProtocol }, name::Symbol, val)
+if !isdefined(@__MODULE__, :TransportProtocol)
+    const TransportProtocol = String
+else
+    @warn("Skipping redefinition of TransportProtocol to String")
 end

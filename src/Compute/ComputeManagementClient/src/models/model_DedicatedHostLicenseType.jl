@@ -2,26 +2,8 @@
 # Do not modify this file directly. Modify the OpenAPI specification instead.
 
 
-@doc raw"""DedicatedHostLicenseType
-Specifies the software license type that will be applied to the VMs deployed on the dedicated host. &lt;br&gt;&lt;br&gt; Possible values are: &lt;br&gt;&lt;br&gt; **None** &lt;br&gt;&lt;br&gt; **Windows_Server_Hybrid** &lt;br&gt;&lt;br&gt; **Windows_Server_Perpetual** &lt;br&gt;&lt;br&gt; Default: **None**
-
-    DedicatedHostLicenseType(;
-    )
-
-"""
-Base.@kwdef mutable struct DedicatedHostLicenseType <: OpenAPI.APIModel
-
-    function DedicatedHostLicenseType()
-        return new()
-    end
-end # type DedicatedHostLicenseType
-
-const _property_types_DedicatedHostLicenseType = Dict{Symbol,String}()
-OpenAPI.property_type(::Type{ DedicatedHostLicenseType }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DedicatedHostLicenseType[name]))}
-
-function check_required(o::DedicatedHostLicenseType)
-    true
-end
-
-function OpenAPI.validate_property(::Type{ DedicatedHostLicenseType }, name::Symbol, val)
+if !isdefined(@__MODULE__, :DedicatedHostLicenseType)
+    const DedicatedHostLicenseType = String
+else
+    @warn("Skipping redefinition of DedicatedHostLicenseType to String")
 end

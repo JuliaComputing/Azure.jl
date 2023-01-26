@@ -2,26 +2,8 @@
 # Do not modify this file directly. Modify the OpenAPI specification instead.
 
 
-@doc raw"""PfsGroup
-The Pfs Groups used in IKE Phase 2 for new child SA.
-
-    PfsGroup(;
-    )
-
-"""
-Base.@kwdef mutable struct PfsGroup <: OpenAPI.APIModel
-
-    function PfsGroup()
-        return new()
-    end
-end # type PfsGroup
-
-const _property_types_PfsGroup = Dict{Symbol,String}()
-OpenAPI.property_type(::Type{ PfsGroup }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PfsGroup[name]))}
-
-function check_required(o::PfsGroup)
-    true
-end
-
-function OpenAPI.validate_property(::Type{ PfsGroup }, name::Symbol, val)
+if !isdefined(@__MODULE__, :PfsGroup)
+    const PfsGroup = String
+else
+    @warn("Skipping redefinition of PfsGroup to String")
 end

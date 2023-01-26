@@ -2,26 +2,8 @@
 # Do not modify this file directly. Modify the OpenAPI specification instead.
 
 
-@doc raw"""SecurityRuleAccess
-Whether network traffic is allowed or denied.
-
-    SecurityRuleAccess(;
-    )
-
-"""
-Base.@kwdef mutable struct SecurityRuleAccess <: OpenAPI.APIModel
-
-    function SecurityRuleAccess()
-        return new()
-    end
-end # type SecurityRuleAccess
-
-const _property_types_SecurityRuleAccess = Dict{Symbol,String}()
-OpenAPI.property_type(::Type{ SecurityRuleAccess }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SecurityRuleAccess[name]))}
-
-function check_required(o::SecurityRuleAccess)
-    true
-end
-
-function OpenAPI.validate_property(::Type{ SecurityRuleAccess }, name::Symbol, val)
+if !isdefined(@__MODULE__, :SecurityRuleAccess)
+    const SecurityRuleAccess = String
+else
+    @warn("Skipping redefinition of SecurityRuleAccess to String")
 end

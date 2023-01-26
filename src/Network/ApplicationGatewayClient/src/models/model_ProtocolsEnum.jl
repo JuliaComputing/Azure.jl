@@ -2,26 +2,8 @@
 # Do not modify this file directly. Modify the OpenAPI specification instead.
 
 
-@doc raw"""ProtocolsEnum
-Ssl protocol enums.
-
-    ProtocolsEnum(;
-    )
-
-"""
-Base.@kwdef mutable struct ProtocolsEnum <: OpenAPI.APIModel
-
-    function ProtocolsEnum()
-        return new()
-    end
-end # type ProtocolsEnum
-
-const _property_types_ProtocolsEnum = Dict{Symbol,String}()
-OpenAPI.property_type(::Type{ ProtocolsEnum }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ProtocolsEnum[name]))}
-
-function check_required(o::ProtocolsEnum)
-    true
-end
-
-function OpenAPI.validate_property(::Type{ ProtocolsEnum }, name::Symbol, val)
+if !isdefined(@__MODULE__, :ProtocolsEnum)
+    const ProtocolsEnum = String
+else
+    @warn("Skipping redefinition of ProtocolsEnum to String")
 end

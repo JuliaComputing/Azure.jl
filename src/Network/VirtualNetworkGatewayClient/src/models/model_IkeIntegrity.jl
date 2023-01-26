@@ -2,26 +2,8 @@
 # Do not modify this file directly. Modify the OpenAPI specification instead.
 
 
-@doc raw"""IkeIntegrity
-The IKE integrity algorithm (IKE phase 2).
-
-    IkeIntegrity(;
-    )
-
-"""
-Base.@kwdef mutable struct IkeIntegrity <: OpenAPI.APIModel
-
-    function IkeIntegrity()
-        return new()
-    end
-end # type IkeIntegrity
-
-const _property_types_IkeIntegrity = Dict{Symbol,String}()
-OpenAPI.property_type(::Type{ IkeIntegrity }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IkeIntegrity[name]))}
-
-function check_required(o::IkeIntegrity)
-    true
-end
-
-function OpenAPI.validate_property(::Type{ IkeIntegrity }, name::Symbol, val)
+if !isdefined(@__MODULE__, :IkeIntegrity)
+    const IkeIntegrity = String
+else
+    @warn("Skipping redefinition of IkeIntegrity to String")
 end

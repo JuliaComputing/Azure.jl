@@ -2,26 +2,8 @@
 # Do not modify this file directly. Modify the OpenAPI specification instead.
 
 
-@doc raw"""PrivateEndpointConnectionProvisioningState
-The current provisioning state.
-
-    PrivateEndpointConnectionProvisioningState(;
-    )
-
-"""
-Base.@kwdef mutable struct PrivateEndpointConnectionProvisioningState <: OpenAPI.APIModel
-
-    function PrivateEndpointConnectionProvisioningState()
-        return new()
-    end
-end # type PrivateEndpointConnectionProvisioningState
-
-const _property_types_PrivateEndpointConnectionProvisioningState = Dict{Symbol,String}()
-OpenAPI.property_type(::Type{ PrivateEndpointConnectionProvisioningState }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PrivateEndpointConnectionProvisioningState[name]))}
-
-function check_required(o::PrivateEndpointConnectionProvisioningState)
-    true
-end
-
-function OpenAPI.validate_property(::Type{ PrivateEndpointConnectionProvisioningState }, name::Symbol, val)
+if !isdefined(@__MODULE__, :PrivateEndpointConnectionProvisioningState)
+    const PrivateEndpointConnectionProvisioningState = String
+else
+    @warn("Skipping redefinition of PrivateEndpointConnectionProvisioningState to String")
 end

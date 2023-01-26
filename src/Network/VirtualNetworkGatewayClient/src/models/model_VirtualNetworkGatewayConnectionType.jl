@@ -2,26 +2,8 @@
 # Do not modify this file directly. Modify the OpenAPI specification instead.
 
 
-@doc raw"""VirtualNetworkGatewayConnectionType
-Gateway connection type.
-
-    VirtualNetworkGatewayConnectionType(;
-    )
-
-"""
-Base.@kwdef mutable struct VirtualNetworkGatewayConnectionType <: OpenAPI.APIModel
-
-    function VirtualNetworkGatewayConnectionType()
-        return new()
-    end
-end # type VirtualNetworkGatewayConnectionType
-
-const _property_types_VirtualNetworkGatewayConnectionType = Dict{Symbol,String}()
-OpenAPI.property_type(::Type{ VirtualNetworkGatewayConnectionType }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualNetworkGatewayConnectionType[name]))}
-
-function check_required(o::VirtualNetworkGatewayConnectionType)
-    true
-end
-
-function OpenAPI.validate_property(::Type{ VirtualNetworkGatewayConnectionType }, name::Symbol, val)
+if !isdefined(@__MODULE__, :VirtualNetworkGatewayConnectionType)
+    const VirtualNetworkGatewayConnectionType = String
+else
+    @warn("Skipping redefinition of VirtualNetworkGatewayConnectionType to String")
 end

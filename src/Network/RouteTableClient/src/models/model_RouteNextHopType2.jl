@@ -2,26 +2,8 @@
 # Do not modify this file directly. Modify the OpenAPI specification instead.
 
 
-@doc raw"""RouteNextHopType_2
-The type of Azure hop the packet should be sent to.
-
-    RouteNextHopType2(;
-    )
-
-"""
-Base.@kwdef mutable struct RouteNextHopType2 <: OpenAPI.APIModel
-
-    function RouteNextHopType2()
-        return new()
-    end
-end # type RouteNextHopType2
-
-const _property_types_RouteNextHopType2 = Dict{Symbol,String}()
-OpenAPI.property_type(::Type{ RouteNextHopType2 }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RouteNextHopType2[name]))}
-
-function check_required(o::RouteNextHopType2)
-    true
-end
-
-function OpenAPI.validate_property(::Type{ RouteNextHopType2 }, name::Symbol, val)
+if !isdefined(@__MODULE__, :RouteNextHopType2)
+    const RouteNextHopType2 = String
+else
+    @warn("Skipping redefinition of RouteNextHopType2 to String")
 end

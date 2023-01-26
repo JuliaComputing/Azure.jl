@@ -2,26 +2,8 @@
 # Do not modify this file directly. Modify the OpenAPI specification instead.
 
 
-@doc raw"""RedirectTypeEnum
-Redirect type enum.
-
-    RedirectTypeEnum(;
-    )
-
-"""
-Base.@kwdef mutable struct RedirectTypeEnum <: OpenAPI.APIModel
-
-    function RedirectTypeEnum()
-        return new()
-    end
-end # type RedirectTypeEnum
-
-const _property_types_RedirectTypeEnum = Dict{Symbol,String}()
-OpenAPI.property_type(::Type{ RedirectTypeEnum }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RedirectTypeEnum[name]))}
-
-function check_required(o::RedirectTypeEnum)
-    true
-end
-
-function OpenAPI.validate_property(::Type{ RedirectTypeEnum }, name::Symbol, val)
+if !isdefined(@__MODULE__, :RedirectTypeEnum)
+    const RedirectTypeEnum = String
+else
+    @warn("Skipping redefinition of RedirectTypeEnum to String")
 end

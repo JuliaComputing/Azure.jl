@@ -2,26 +2,8 @@
 # Do not modify this file directly. Modify the OpenAPI specification instead.
 
 
-@doc raw"""ServiceProviderProvisioningState
-The ServiceProviderProvisioningState state of the resource.
-
-    ServiceProviderProvisioningState(;
-    )
-
-"""
-Base.@kwdef mutable struct ServiceProviderProvisioningState <: OpenAPI.APIModel
-
-    function ServiceProviderProvisioningState()
-        return new()
-    end
-end # type ServiceProviderProvisioningState
-
-const _property_types_ServiceProviderProvisioningState = Dict{Symbol,String}()
-OpenAPI.property_type(::Type{ ServiceProviderProvisioningState }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ServiceProviderProvisioningState[name]))}
-
-function check_required(o::ServiceProviderProvisioningState)
-    true
-end
-
-function OpenAPI.validate_property(::Type{ ServiceProviderProvisioningState }, name::Symbol, val)
+if !isdefined(@__MODULE__, :ServiceProviderProvisioningState)
+    const ServiceProviderProvisioningState = String
+else
+    @warn("Skipping redefinition of ServiceProviderProvisioningState to String")
 end

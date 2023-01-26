@@ -2,26 +2,8 @@
 # Do not modify this file directly. Modify the OpenAPI specification instead.
 
 
-@doc raw"""DhGroup
-The DH Groups used in IKE Phase 1 for initial SA.
-
-    DhGroup(;
-    )
-
-"""
-Base.@kwdef mutable struct DhGroup <: OpenAPI.APIModel
-
-    function DhGroup()
-        return new()
-    end
-end # type DhGroup
-
-const _property_types_DhGroup = Dict{Symbol,String}()
-OpenAPI.property_type(::Type{ DhGroup }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DhGroup[name]))}
-
-function check_required(o::DhGroup)
-    true
-end
-
-function OpenAPI.validate_property(::Type{ DhGroup }, name::Symbol, val)
+if !isdefined(@__MODULE__, :DhGroup)
+    const DhGroup = String
+else
+    @warn("Skipping redefinition of DhGroup to String")
 end

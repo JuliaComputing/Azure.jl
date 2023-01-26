@@ -2,26 +2,8 @@
 # Do not modify this file directly. Modify the OpenAPI specification instead.
 
 
-@doc raw"""evictionPolicy
-Specifies the eviction policy for the Azure Spot VM/VMSS
-
-    EvictionPolicy(;
-    )
-
-"""
-Base.@kwdef mutable struct EvictionPolicy <: OpenAPI.APIModel
-
-    function EvictionPolicy()
-        return new()
-    end
-end # type EvictionPolicy
-
-const _property_types_EvictionPolicy = Dict{Symbol,String}()
-OpenAPI.property_type(::Type{ EvictionPolicy }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_EvictionPolicy[name]))}
-
-function check_required(o::EvictionPolicy)
-    true
-end
-
-function OpenAPI.validate_property(::Type{ EvictionPolicy }, name::Symbol, val)
+if !isdefined(@__MODULE__, :EvictionPolicy)
+    const EvictionPolicy = String
+else
+    @warn("Skipping redefinition of EvictionPolicy to String")
 end

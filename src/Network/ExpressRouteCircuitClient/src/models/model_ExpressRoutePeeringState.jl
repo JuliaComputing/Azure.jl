@@ -2,26 +2,8 @@
 # Do not modify this file directly. Modify the OpenAPI specification instead.
 
 
-@doc raw"""ExpressRoutePeeringState
-The state of peering.
-
-    ExpressRoutePeeringState(;
-    )
-
-"""
-Base.@kwdef mutable struct ExpressRoutePeeringState <: OpenAPI.APIModel
-
-    function ExpressRoutePeeringState()
-        return new()
-    end
-end # type ExpressRoutePeeringState
-
-const _property_types_ExpressRoutePeeringState = Dict{Symbol,String}()
-OpenAPI.property_type(::Type{ ExpressRoutePeeringState }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExpressRoutePeeringState[name]))}
-
-function check_required(o::ExpressRoutePeeringState)
-    true
-end
-
-function OpenAPI.validate_property(::Type{ ExpressRoutePeeringState }, name::Symbol, val)
+if !isdefined(@__MODULE__, :ExpressRoutePeeringState)
+    const ExpressRoutePeeringState = String
+else
+    @warn("Skipping redefinition of ExpressRoutePeeringState to String")
 end

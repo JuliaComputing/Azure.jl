@@ -2,26 +2,8 @@
 # Do not modify this file directly. Modify the OpenAPI specification instead.
 
 
-@doc raw"""IkeEncryption
-The IKE encryption algorithm (IKE phase 2).
-
-    IkeEncryption(;
-    )
-
-"""
-Base.@kwdef mutable struct IkeEncryption <: OpenAPI.APIModel
-
-    function IkeEncryption()
-        return new()
-    end
-end # type IkeEncryption
-
-const _property_types_IkeEncryption = Dict{Symbol,String}()
-OpenAPI.property_type(::Type{ IkeEncryption }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IkeEncryption[name]))}
-
-function check_required(o::IkeEncryption)
-    true
-end
-
-function OpenAPI.validate_property(::Type{ IkeEncryption }, name::Symbol, val)
+if !isdefined(@__MODULE__, :IkeEncryption)
+    const IkeEncryption = String
+else
+    @warn("Skipping redefinition of IkeEncryption to String")
 end

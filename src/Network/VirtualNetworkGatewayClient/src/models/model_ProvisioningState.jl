@@ -2,26 +2,8 @@
 # Do not modify this file directly. Modify the OpenAPI specification instead.
 
 
-@doc raw"""ProvisioningState
-The current provisioning state.
-
-    ProvisioningState(;
-    )
-
-"""
-Base.@kwdef mutable struct ProvisioningState <: OpenAPI.APIModel
-
-    function ProvisioningState()
-        return new()
-    end
-end # type ProvisioningState
-
-const _property_types_ProvisioningState = Dict{Symbol,String}()
-OpenAPI.property_type(::Type{ ProvisioningState }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ProvisioningState[name]))}
-
-function check_required(o::ProvisioningState)
-    true
-end
-
-function OpenAPI.validate_property(::Type{ ProvisioningState }, name::Symbol, val)
+if !isdefined(@__MODULE__, :ProvisioningState)
+    const ProvisioningState = String
+else
+    @warn("Skipping redefinition of ProvisioningState to String")
 end

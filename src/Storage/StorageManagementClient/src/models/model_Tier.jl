@@ -2,26 +2,8 @@
 # Do not modify this file directly. Modify the OpenAPI specification instead.
 
 
-@doc raw"""Tier
-The SKU tier. This is based on the SKU name.
-
-    Tier(;
-    )
-
-"""
-Base.@kwdef mutable struct Tier <: OpenAPI.APIModel
-
-    function Tier()
-        return new()
-    end
-end # type Tier
-
-const _property_types_Tier = Dict{Symbol,String}()
-OpenAPI.property_type(::Type{ Tier }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Tier[name]))}
-
-function check_required(o::Tier)
-    true
-end
-
-function OpenAPI.validate_property(::Type{ Tier }, name::Symbol, val)
+if !isdefined(@__MODULE__, :Tier)
+    const Tier = String
+else
+    @warn("Skipping redefinition of Tier to String")
 end

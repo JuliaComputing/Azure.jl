@@ -2,26 +2,8 @@
 # Do not modify this file directly. Modify the OpenAPI specification instead.
 
 
-@doc raw"""SecurityRuleDirection_2
-The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
-
-    SecurityRuleDirection2(;
-    )
-
-"""
-Base.@kwdef mutable struct SecurityRuleDirection2 <: OpenAPI.APIModel
-
-    function SecurityRuleDirection2()
-        return new()
-    end
-end # type SecurityRuleDirection2
-
-const _property_types_SecurityRuleDirection2 = Dict{Symbol,String}()
-OpenAPI.property_type(::Type{ SecurityRuleDirection2 }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SecurityRuleDirection2[name]))}
-
-function check_required(o::SecurityRuleDirection2)
-    true
-end
-
-function OpenAPI.validate_property(::Type{ SecurityRuleDirection2 }, name::Symbol, val)
+if !isdefined(@__MODULE__, :SecurityRuleDirection2)
+    const SecurityRuleDirection2 = String
+else
+    @warn("Skipping redefinition of SecurityRuleDirection2 to String")
 end
