@@ -21,17 +21,53 @@ client_id(creds::AzureCredentials) = creds.client_id
 client_secret(creds::AzureCredentials) = creds.client_secret
 
 """
-Holds a swagger client to make API calls with, an auth provider to authenticate to Azure with, and an authenticated token.
+Holds a OpenAPI client to make API calls with, an auth provider to authenticate to Azure with, and an authenticated token.
 """
 mutable struct AzureContext
-    client::Swagger.Client
+    client::OpenAPI.Clients.Client
     auth_provider::AzureAuthProvider
     token::Dict{String,Any}
     expires::Float64
     
     function AzureContext(auth::AzureAuthProvider)
-        new(Swagger.Client(DEFAULT_URI), auth, Dict{Symbol,Any}(), 0)
+        new(OpenAPI.Clients.Client(DEFAULT_URI), auth, Dict{Symbol,Any}(), 0)
     end
+end
+
+struct AzureException <: Exception
+    code::Int
+    message::String
+    status::Union{Nothing,OpenAPI.APIModel}
+    response::Union{Nothing,OpenAPI.Clients.ApiResponse}
+end
+
+function AzureException(response::OpenAPI.Clients.ApiResponse, status::Union{Nothing,OpenAPI.APIModel})
+    http_response = response.raw
+    if !(200 <= http_response.status <= 299)
+        message = http_response.message
+        code = http_response.status
+    end
+
+    # if status is available, use it to override the message and code
+    if !isnothing(status)
+        if hasproperty(status, :message) && !isnothing(status.message) && !isempty(status.message)
+            message = status.message
+        end
+        if hasproperty(status, :code) && !isnothing(status.code) && (status.code != 0)
+            code = status.code
+        end
+    end
+
+    return AzureException(code, message, status, response)
+end
+
+check_api_response(resulttuple::Tuple) = check_api_response(resulttuple[1], resulttuple[2])
+function check_api_response(result, response::OpenAPI.Clients.ApiResponse)
+    if !(200 <= response.status <= 299)
+        status = isa(result, OpenAPI.APIModel) ? result : nothing
+        throw(AzureException(response, status))
+    end
+    return result
 end
 
 """
@@ -62,7 +98,7 @@ function authenticate(ctx::AzureContext)
     write(input, URIs.escapeuri(data))
     output = IOBuffer()
     resp = Downloads.request(auth_url; method="POST", input=input, output=output, headers=headers)
-    (isa(resp, Downloads.Response) && (200 <= resp.status <= 206)) || throw(Swagger.ApiException(resp))
+    (isa(resp, Downloads.Response) && (200 <= resp.status <= 206)) || throw(OpenAPI.Clients.ApiException(resp))
 
     ctx.token = JSON.parse(String(take!(output)))
     if "expires_in" in keys(ctx.token)

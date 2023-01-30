@@ -1,11 +1,7 @@
 using Logging
 
 const DIR = dirname(@__FILE__)
-const GENDIR = joinpath(DIR, "..")
-const TEMPCFGFILE = joinpath(GENDIR, "config.json")
-const SRCDIR = joinpath(GENDIR, "src")
-const SWAGGERDIR=read(`$(joinpath(Sys.BINDIR, "julia")) -e 'import Swagger; print(normpath(joinpath(dirname(pathof(Swagger)), "..")))'`, String)
-const SWAGGERGEN = joinpath(SWAGGERDIR, "plugin", "generate.sh")
+const SRCDIR = abspath(joinpath(DIR, "..", "src"))
 
 const SPECS = [
     ("DataLakeStoreAccountManagementClient",    "DataLakeStore",    "2016-11-01",           "specification/datalake-store/resource-manager/Microsoft.DataLakeStore/stable/{VER}/account.json"),
@@ -36,25 +32,21 @@ const SPECS = [
     ("PolicyAssignmentsClient",                 "Resource",         "2019-09-01",           "specification/resources/resource-manager/Microsoft.Authorization/stable/{VER}/policyAssignments.json"),
     ("PolicyDefinitionsClient",                 "Resource",         "2019-09-01",           "specification/resources/resource-manager/Microsoft.Authorization/stable/{VER}/policyDefinitions.json"),
     ("PolicySetDefinitionsClient",              "Resource",         "2019-09-01",           "specification/resources/resource-manager/Microsoft.Authorization/stable/{VER}/policySetDefinitions.json"),
-    ("UsageManagementClient",                   "Commerce",         "2015-06-01-preview",  "specification/commerce/resource-manager/Microsoft.Commerce/preview/{VER}/commerce.json")
+    ("UsageManagementClient",                   "Commerce",         "2015-06-01-preview",  "specification/commerce/resource-manager/Microsoft.Commerce/preview/{VER}/commerce.json"),
 ]
-
-const PATCHES = Dict(
-    ("ComputeManagementClient", "Compute") => ["model" => ("Caching", "CreateOption", "StorageAccountType")],
-    ("ResourceManagementClient", "Resource") => ["model" => ("DeploymentPropertiesExtended",)]
-)
 
 const MODULE_HEAD = """module Azure
 
-using Swagger
+using OpenAPI
 using Downloads
 using JSON
+using URIs
 
 # API versions
 const _module_versions = Dict{Module,String}()
 const _api_versions = Dict{DataType,String}()
 
-# include Azure REST protocol (not Swagger)
+# include Azure REST protocol (not OpenAPI)
 include("rest_api_protocol.jl")
 
 # inlcude sub modules for individual API groups"""
@@ -68,65 +60,51 @@ include("helper.jl")
 
 end # module Azure"""
 
-function genunit(pkg, grp, swg)
-    open(TEMPCFGFILE, "w") do f
-        println(f, """{ "packageName": "$pkg" } """)
-    end
-    outpath = joinpath(SRCDIR, grp)
+function commands(pkg, outpath, specfile)
+    # add --global-property debugModels=true to turn on model debug output
+    gencmd = `java -jar openapi-generator-cli.jar generate -i $specfile -g julia-client -o $outpath --additional-properties=packageName=$pkg`
+    cleancmd = `rm -rf $outpath`
+
+    return cleancmd, gencmd
+end
+
+function genunit(pkg, grp, specfile)
+    outpath = joinpath(SRCDIR, grp, pkg)
     pkgpath = joinpath(outpath, pkg)
-    mkpath(pkgpath)
-    run(`$SWAGGERGEN -i $swg -o $outpath -c $TEMPCFGFILE`)
-    for outfile in readdir(joinpath(outpath, "src"))
-        outfile_from = joinpath(outpath, "src", outfile)
-        outfile_to = joinpath(pkgpath, outfile)
-        @debug("moving $outfile from $outfile_from to $outfile_to")
-        mv(outfile_from, outfile_to)
-    end
-    rm(joinpath(outpath, "src"); force=true)
-    rm(joinpath(outpath, "REQUIRE"); force=true)
-    rm(joinpath(outpath, "LICENSE"); force=true)
-    rm(joinpath(outpath, ".swagger-codegen-ignore"); force=true)
-    rm(joinpath(outpath, ".swagger-codegen"); force=true, recursive=true)
-    rm(TEMPCFGFILE; force=true)
+    # mkpath(pkgpath)
+    cleancmd, gencmd = commands(pkg, outpath, specfile)
+    run(cleancmd)
+    run(gencmd)
 
-    # apply patches if any
-    patches = get(PATCHES, (pkg,grp), [])
-    for patch in patches
-        patch_type, names = patch
-        for name in names
-            patchfile = patch_type * "_" * name * ".jl"
-            cp(joinpath(DIR, patchfile), joinpath(pkgpath, patchfile); force=true)
-        end
-    end
-
-    # return the module file to include
-    module_file = joinpath(grp, pkg, pkg * ".jl")
+    #    # return the module file to include
+    module_file = joinpath(outpath, "src", pkg * ".jl")
+    apispath = joinpath(outpath, "src", "apis")
     apinames = String[]
-    for f in readdir(joinpath(outpath, pkg))
-        if startswith(f, "api_")
-            apiname = split(split(f, '_')[2], '.')[1]
-            push!(apinames, apiname)
+    if isdir(apispath)
+        for f in readdir(apispath)
+            if startswith(f, "api_")
+                apiname = split(split(f, '_')[2], '.')[1]
+                push!(apinames, apiname)
+            end
         end
     end
     module_file, apinames
 end
 
-function gen(swgroot)
+function gen(openapiroot)
     mkpath(SRCDIR)
-
-    for spec in SPECS
-        pkg, grp, ver, swg = spec
-        grppath = joinpath(SRCDIR, grp)
-        rm(grppath; recursive=true, force=true)
-    end
 
     open(joinpath(SRCDIR, "Azure.jl"), "w") do azf
         println(azf, MODULE_HEAD)
 
         for spec in SPECS
-            pkg, grp, ver, swg = spec
-            swg = replace(swg, "{VER}"=>ver)
-            mod, apinames = genunit(pkg, grp, joinpath(swgroot, swg))
+            pkg, grp, ver, openapispec = spec
+            openapispec = replace(openapispec, "{VER}"=>ver)
+            mod, apinames = genunit(pkg, grp, joinpath(openapiroot, openapispec))
+            # mod returned will be absolute path, so would be SRCDIR
+            # create relative path for inclusion in .jl file
+            mod = relpath(mod, SRCDIR)
+            
             println(azf, "include(\"", mod, "\")")
             println(azf, "_module_versions[$pkg] = \"$ver\"")
             for apiname in apinames
