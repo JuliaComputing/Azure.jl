@@ -19,13 +19,36 @@ jobs:
           - ubuntu-latest
         arch:
           - x64
+    
+    services:
+      azurite:
+        image: mcr.microsoft.com/azure-storage/azurite:latest
+        ports:
+          - 10000:10000  # Blob service
+          - 10001:10001  # Queue service
+          - 10002:10002  # Table service
+        options: >-
+          --health-cmd "nc -z localhost 10000"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      AZURE_TEST_MODE: local
+      AZURE_STORAGE_CONNECTION_STRING: UseDevelopmentStorage=true
+      AZURITE_BLOB_ENDPOINT: http://127.0.0.1:10000/devstoreaccount1
+      AZURITE_QUEUE_ENDPOINT: http://127.0.0.1:10001/devstoreaccount1
+      AZURITE_TABLE_ENDPOINT: http://127.0.0.1:10002/devstoreaccount1
+      AZURITE_ACCOUNT_NAME: devstoreaccount1
+      AZURITE_ACCOUNT_KEY: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
+
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: julia-actions/setup-julia@v1
         with:
           version: ${{ matrix.version }}
           arch: ${{ matrix.arch }}
-      - uses: actions/cache@v1
+      - uses: actions/cache@v3
         env:
           cache-name: cache-artifacts
         with:
@@ -35,9 +58,16 @@ jobs:
             ${{ runner.os }}-test-${{ env.cache-name }}-
             ${{ runner.os }}-test-
             ${{ runner.os }}-
+      
+      # Wait for Azurite to be ready
+      - name: Wait for Azurite
+        run: |
+          timeout 30 bash -c 'until nc -z 127.0.0.1 10000; do sleep 1; done'
+          echo "Azurite is ready"
+      
       - uses: julia-actions/julia-buildpkg@v1
       - uses: julia-actions/julia-runtest@v1
       - uses: julia-actions/julia-processcoverage@v1
-      - uses: codecov/codecov-action@v1
+      - uses: codecov/codecov-action@v3
         with:
           file: lcov.info
