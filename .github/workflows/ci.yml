@@ -22,16 +22,16 @@ jobs:
     
     services:
       azurite:
-        image: mcr.microsoft.com/azure-storage/azurite:latest
+        image: mcr.microsoft.com/azure-storage/azurite:3.35.0
         ports:
           - 10000:10000  # Blob service
           - 10001:10001  # Queue service
           - 10002:10002  # Table service
         options: >-
-          --health-cmd "nc -z localhost 10000"
+          --health-cmd "nc -z 127.0.0.1 10000"
           --health-interval 10s
           --health-timeout 5s
-          --health-retries 5
+          --health-retries 10
 
     env:
       AZURE_TEST_MODE: local
