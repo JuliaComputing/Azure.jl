@@ -27,7 +27,7 @@ function extract_account_and_key(ctx, subscription_id::String, resource_group_na
     account = String(split(split(uri, "/")[3], '.'; limit=2)[1])
 
     # get keys for it
-    allkeys = storageAccountsListKeys(Azure.api(ctx, StorageAccountsApi), resource_group_name, account, apiver(StorageAccountsApi), subscription_id)
+    allkeys = storageAccountsListKeys(Azure.api(ctx, StorageManagementClient.StorageAccountsApi), resource_group_name, account, apiver(StorageManagementClient.StorageAccountsApi), subscription_id)
     key = (allkeys.keys[1]).value
 
     AccountKey(account, key)
