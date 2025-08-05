@@ -9,6 +9,9 @@ The parameters used when creating a storage account.
         sku=nothing,
         kind=nothing,
         location=nothing,
+        extendedLocation=nothing,
+        zones=nothing,
+        placement=nothing,
         tags=nothing,
         identity=nothing,
         properties=nothing,
@@ -17,6 +20,9 @@ The parameters used when creating a storage account.
     - sku::Sku
     - kind::String : Required. Indicates the type of storage account.
     - location::String : Required. Gets or sets the location of the resource. This will be one of the supported and registered Azure Geo Regions (e.g. West US, East US, Southeast Asia, etc.). The geo region of a resource cannot be changed once it is created, but if an identical geo region is specified on update, the request will succeed.
+    - extendedLocation::ExtendedLocation
+    - zones::Vector{String} : Optional. Gets or sets the pinned logical availability zone for the storage account.
+    - placement::Placement
     - tags::Dict{String, String} : Gets or sets a list of key value pairs that describe the resource. These tags can be used for viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key with a length no greater than 128 characters and a value with a length no greater than 256 characters.
     - identity::Identity
     - properties::StorageAccountPropertiesCreateParameters
@@ -25,33 +31,54 @@ Base.@kwdef mutable struct StorageAccountCreateParameters <: OpenAPI.APIModel
     sku = nothing # spec type: Union{ Nothing, Sku }
     kind::Union{Nothing, String} = nothing
     location::Union{Nothing, String} = nothing
+    extendedLocation = nothing # spec type: Union{ Nothing, ExtendedLocation }
+    zones::Union{Nothing, Vector{String}} = nothing
+    placement = nothing # spec type: Union{ Nothing, Placement }
     tags::Union{Nothing, Dict{String, String}} = nothing
     identity = nothing # spec type: Union{ Nothing, Identity }
     properties = nothing # spec type: Union{ Nothing, StorageAccountPropertiesCreateParameters }
 
-    function StorageAccountCreateParameters(sku, kind, location, tags, identity, properties, )
-        OpenAPI.validate_property(StorageAccountCreateParameters, Symbol("sku"), sku)
-        OpenAPI.validate_property(StorageAccountCreateParameters, Symbol("kind"), kind)
-        OpenAPI.validate_property(StorageAccountCreateParameters, Symbol("location"), location)
-        OpenAPI.validate_property(StorageAccountCreateParameters, Symbol("tags"), tags)
-        OpenAPI.validate_property(StorageAccountCreateParameters, Symbol("identity"), identity)
-        OpenAPI.validate_property(StorageAccountCreateParameters, Symbol("properties"), properties)
-        return new(sku, kind, location, tags, identity, properties, )
+    function StorageAccountCreateParameters(sku, kind, location, extendedLocation, zones, placement, tags, identity, properties, )
+        o = new(sku, kind, location, extendedLocation, zones, placement, tags, identity, properties, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type StorageAccountCreateParameters
 
-const _property_types_StorageAccountCreateParameters = Dict{Symbol,String}(Symbol("sku")=>"Sku", Symbol("kind")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", Symbol("identity")=>"Identity", Symbol("properties")=>"StorageAccountPropertiesCreateParameters", )
+const _property_types_StorageAccountCreateParameters = Dict{Symbol,String}(Symbol("sku")=>"Sku", Symbol("kind")=>"String", Symbol("location")=>"String", Symbol("extendedLocation")=>"ExtendedLocation", Symbol("zones")=>"Vector{String}", Symbol("placement")=>"Placement", Symbol("tags")=>"Dict{String, String}", Symbol("identity")=>"Identity", Symbol("properties")=>"StorageAccountPropertiesCreateParameters", )
 OpenAPI.property_type(::Type{ StorageAccountCreateParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_StorageAccountCreateParameters[name]))}
 
-function check_required(o::StorageAccountCreateParameters)
+function OpenAPI.check_required(o::StorageAccountCreateParameters)
     o.sku === nothing && (return false)
     o.kind === nothing && (return false)
     o.location === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::StorageAccountCreateParameters)
+    OpenAPI.validate_property(StorageAccountCreateParameters, Symbol("sku"), o.sku)
+    OpenAPI.validate_property(StorageAccountCreateParameters, Symbol("kind"), o.kind)
+    OpenAPI.validate_property(StorageAccountCreateParameters, Symbol("location"), o.location)
+    OpenAPI.validate_property(StorageAccountCreateParameters, Symbol("extendedLocation"), o.extendedLocation)
+    OpenAPI.validate_property(StorageAccountCreateParameters, Symbol("zones"), o.zones)
+    OpenAPI.validate_property(StorageAccountCreateParameters, Symbol("placement"), o.placement)
+    OpenAPI.validate_property(StorageAccountCreateParameters, Symbol("tags"), o.tags)
+    OpenAPI.validate_property(StorageAccountCreateParameters, Symbol("identity"), o.identity)
+    OpenAPI.validate_property(StorageAccountCreateParameters, Symbol("properties"), o.properties)
+end
+
 function OpenAPI.validate_property(::Type{ StorageAccountCreateParameters }, name::Symbol, val)
+
+
     if name === Symbol("kind")
         OpenAPI.validate_param(name, "StorageAccountCreateParameters", :enum, val, ["Storage", "StorageV2", "BlobStorage", "FileStorage", "BlockBlobStorage"])
     end
+
+
+
+
+
+
+
+
 end

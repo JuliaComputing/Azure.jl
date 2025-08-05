@@ -18,18 +18,25 @@ Base.@kwdef mutable struct VerificationIPFlowResult <: OpenAPI.APIModel
     ruleName::Union{Nothing, String} = nothing
 
     function VerificationIPFlowResult(access, ruleName, )
-        OpenAPI.validate_property(VerificationIPFlowResult, Symbol("access"), access)
-        OpenAPI.validate_property(VerificationIPFlowResult, Symbol("ruleName"), ruleName)
-        return new(access, ruleName, )
+        o = new(access, ruleName, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VerificationIPFlowResult
 
 const _property_types_VerificationIPFlowResult = Dict{Symbol,String}(Symbol("access")=>"Access", Symbol("ruleName")=>"String", )
 OpenAPI.property_type(::Type{ VerificationIPFlowResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VerificationIPFlowResult[name]))}
 
-function check_required(o::VerificationIPFlowResult)
+function OpenAPI.check_required(o::VerificationIPFlowResult)
     true
 end
 
+function OpenAPI.validate_properties(o::VerificationIPFlowResult)
+    OpenAPI.validate_property(VerificationIPFlowResult, Symbol("access"), o.access)
+    OpenAPI.validate_property(VerificationIPFlowResult, Symbol("ruleName"), o.ruleName)
+end
+
 function OpenAPI.validate_property(::Type{ VerificationIPFlowResult }, name::Symbol, val)
+
+
 end

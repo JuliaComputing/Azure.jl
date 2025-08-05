@@ -36,27 +36,41 @@ Base.@kwdef mutable struct VirtualMachineScaleSetIPConfigurationProperties <: Op
     loadBalancerInboundNatPools::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{SubResource} }
 
     function VirtualMachineScaleSetIPConfigurationProperties(subnet, primary, publicIPAddressConfiguration, privateIPAddressVersion, applicationGatewayBackendAddressPools, applicationSecurityGroups, loadBalancerBackendAddressPools, loadBalancerInboundNatPools, )
-        OpenAPI.validate_property(VirtualMachineScaleSetIPConfigurationProperties, Symbol("subnet"), subnet)
-        OpenAPI.validate_property(VirtualMachineScaleSetIPConfigurationProperties, Symbol("primary"), primary)
-        OpenAPI.validate_property(VirtualMachineScaleSetIPConfigurationProperties, Symbol("publicIPAddressConfiguration"), publicIPAddressConfiguration)
-        OpenAPI.validate_property(VirtualMachineScaleSetIPConfigurationProperties, Symbol("privateIPAddressVersion"), privateIPAddressVersion)
-        OpenAPI.validate_property(VirtualMachineScaleSetIPConfigurationProperties, Symbol("applicationGatewayBackendAddressPools"), applicationGatewayBackendAddressPools)
-        OpenAPI.validate_property(VirtualMachineScaleSetIPConfigurationProperties, Symbol("applicationSecurityGroups"), applicationSecurityGroups)
-        OpenAPI.validate_property(VirtualMachineScaleSetIPConfigurationProperties, Symbol("loadBalancerBackendAddressPools"), loadBalancerBackendAddressPools)
-        OpenAPI.validate_property(VirtualMachineScaleSetIPConfigurationProperties, Symbol("loadBalancerInboundNatPools"), loadBalancerInboundNatPools)
-        return new(subnet, primary, publicIPAddressConfiguration, privateIPAddressVersion, applicationGatewayBackendAddressPools, applicationSecurityGroups, loadBalancerBackendAddressPools, loadBalancerInboundNatPools, )
+        o = new(subnet, primary, publicIPAddressConfiguration, privateIPAddressVersion, applicationGatewayBackendAddressPools, applicationSecurityGroups, loadBalancerBackendAddressPools, loadBalancerInboundNatPools, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetIPConfigurationProperties
 
 const _property_types_VirtualMachineScaleSetIPConfigurationProperties = Dict{Symbol,String}(Symbol("subnet")=>"ApiEntityReference", Symbol("primary")=>"Bool", Symbol("publicIPAddressConfiguration")=>"VirtualMachineScaleSetPublicIPAddressConfiguration", Symbol("privateIPAddressVersion")=>"String", Symbol("applicationGatewayBackendAddressPools")=>"Vector{SubResource}", Symbol("applicationSecurityGroups")=>"Vector{SubResource}", Symbol("loadBalancerBackendAddressPools")=>"Vector{SubResource}", Symbol("loadBalancerInboundNatPools")=>"Vector{SubResource}", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetIPConfigurationProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetIPConfigurationProperties[name]))}
 
-function check_required(o::VirtualMachineScaleSetIPConfigurationProperties)
+function OpenAPI.check_required(o::VirtualMachineScaleSetIPConfigurationProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetIPConfigurationProperties)
+    OpenAPI.validate_property(VirtualMachineScaleSetIPConfigurationProperties, Symbol("subnet"), o.subnet)
+    OpenAPI.validate_property(VirtualMachineScaleSetIPConfigurationProperties, Symbol("primary"), o.primary)
+    OpenAPI.validate_property(VirtualMachineScaleSetIPConfigurationProperties, Symbol("publicIPAddressConfiguration"), o.publicIPAddressConfiguration)
+    OpenAPI.validate_property(VirtualMachineScaleSetIPConfigurationProperties, Symbol("privateIPAddressVersion"), o.privateIPAddressVersion)
+    OpenAPI.validate_property(VirtualMachineScaleSetIPConfigurationProperties, Symbol("applicationGatewayBackendAddressPools"), o.applicationGatewayBackendAddressPools)
+    OpenAPI.validate_property(VirtualMachineScaleSetIPConfigurationProperties, Symbol("applicationSecurityGroups"), o.applicationSecurityGroups)
+    OpenAPI.validate_property(VirtualMachineScaleSetIPConfigurationProperties, Symbol("loadBalancerBackendAddressPools"), o.loadBalancerBackendAddressPools)
+    OpenAPI.validate_property(VirtualMachineScaleSetIPConfigurationProperties, Symbol("loadBalancerInboundNatPools"), o.loadBalancerInboundNatPools)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetIPConfigurationProperties }, name::Symbol, val)
+
+
+
+
     if name === Symbol("privateIPAddressVersion")
         OpenAPI.validate_param(name, "VirtualMachineScaleSetIPConfigurationProperties", :enum, val, ["IPv4", "IPv6"])
     end
+
+
+
+
+
 end

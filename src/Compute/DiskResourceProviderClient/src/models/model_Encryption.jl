@@ -18,18 +18,25 @@ Base.@kwdef mutable struct Encryption <: OpenAPI.APIModel
     type = nothing # spec type: Union{ Nothing, EncryptionType }
 
     function Encryption(diskEncryptionSetId, type, )
-        OpenAPI.validate_property(Encryption, Symbol("diskEncryptionSetId"), diskEncryptionSetId)
-        OpenAPI.validate_property(Encryption, Symbol("type"), type)
-        return new(diskEncryptionSetId, type, )
+        o = new(diskEncryptionSetId, type, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type Encryption
 
 const _property_types_Encryption = Dict{Symbol,String}(Symbol("diskEncryptionSetId")=>"String", Symbol("type")=>"EncryptionType", )
 OpenAPI.property_type(::Type{ Encryption }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Encryption[name]))}
 
-function check_required(o::Encryption)
+function OpenAPI.check_required(o::Encryption)
     true
 end
 
+function OpenAPI.validate_properties(o::Encryption)
+    OpenAPI.validate_property(Encryption, Symbol("diskEncryptionSetId"), o.diskEncryptionSetId)
+    OpenAPI.validate_property(Encryption, Symbol("type"), o.type)
+end
+
 function OpenAPI.validate_property(::Type{ Encryption }, name::Symbol, val)
+
+
 end

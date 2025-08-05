@@ -21,19 +21,27 @@ Base.@kwdef mutable struct NameAvailabilityInformation <: OpenAPI.APIModel
     message::Union{Nothing, String} = nothing
 
     function NameAvailabilityInformation(nameAvailable, reason, message, )
-        OpenAPI.validate_property(NameAvailabilityInformation, Symbol("nameAvailable"), nameAvailable)
-        OpenAPI.validate_property(NameAvailabilityInformation, Symbol("reason"), reason)
-        OpenAPI.validate_property(NameAvailabilityInformation, Symbol("message"), message)
-        return new(nameAvailable, reason, message, )
+        o = new(nameAvailable, reason, message, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type NameAvailabilityInformation
 
 const _property_types_NameAvailabilityInformation = Dict{Symbol,String}(Symbol("nameAvailable")=>"Bool", Symbol("reason")=>"String", Symbol("message")=>"String", )
 OpenAPI.property_type(::Type{ NameAvailabilityInformation }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NameAvailabilityInformation[name]))}
 
-function check_required(o::NameAvailabilityInformation)
+function OpenAPI.check_required(o::NameAvailabilityInformation)
     true
 end
 
+function OpenAPI.validate_properties(o::NameAvailabilityInformation)
+    OpenAPI.validate_property(NameAvailabilityInformation, Symbol("nameAvailable"), o.nameAvailable)
+    OpenAPI.validate_property(NameAvailabilityInformation, Symbol("reason"), o.reason)
+    OpenAPI.validate_property(NameAvailabilityInformation, Symbol("message"), o.message)
+end
+
 function OpenAPI.validate_property(::Type{ NameAvailabilityInformation }, name::Symbol, val)
+
+
+
 end

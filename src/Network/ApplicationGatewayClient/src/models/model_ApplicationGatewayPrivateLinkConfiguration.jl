@@ -27,21 +27,31 @@ Base.@kwdef mutable struct ApplicationGatewayPrivateLinkConfiguration <: OpenAPI
     id::Union{Nothing, String} = nothing
 
     function ApplicationGatewayPrivateLinkConfiguration(properties, name, etag, type, id, )
-        OpenAPI.validate_property(ApplicationGatewayPrivateLinkConfiguration, Symbol("properties"), properties)
-        OpenAPI.validate_property(ApplicationGatewayPrivateLinkConfiguration, Symbol("name"), name)
-        OpenAPI.validate_property(ApplicationGatewayPrivateLinkConfiguration, Symbol("etag"), etag)
-        OpenAPI.validate_property(ApplicationGatewayPrivateLinkConfiguration, Symbol("type"), type)
-        OpenAPI.validate_property(ApplicationGatewayPrivateLinkConfiguration, Symbol("id"), id)
-        return new(properties, name, etag, type, id, )
+        o = new(properties, name, etag, type, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayPrivateLinkConfiguration
 
 const _property_types_ApplicationGatewayPrivateLinkConfiguration = Dict{Symbol,String}(Symbol("properties")=>"ApplicationGatewayPrivateLinkConfigurationProperties", Symbol("name")=>"String", Symbol("etag")=>"String", Symbol("type")=>"String", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ ApplicationGatewayPrivateLinkConfiguration }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayPrivateLinkConfiguration[name]))}
 
-function check_required(o::ApplicationGatewayPrivateLinkConfiguration)
+function OpenAPI.check_required(o::ApplicationGatewayPrivateLinkConfiguration)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayPrivateLinkConfiguration)
+    OpenAPI.validate_property(ApplicationGatewayPrivateLinkConfiguration, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(ApplicationGatewayPrivateLinkConfiguration, Symbol("name"), o.name)
+    OpenAPI.validate_property(ApplicationGatewayPrivateLinkConfiguration, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(ApplicationGatewayPrivateLinkConfiguration, Symbol("type"), o.type)
+    OpenAPI.validate_property(ApplicationGatewayPrivateLinkConfiguration, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayPrivateLinkConfiguration }, name::Symbol, val)
+
+
+
+
+
 end

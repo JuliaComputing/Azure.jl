@@ -18,18 +18,25 @@ Base.@kwdef mutable struct ErrorAdditionalInfo <: OpenAPI.APIModel
     info::Union{Nothing, Any} = nothing
 
     function ErrorAdditionalInfo(type, info, )
-        OpenAPI.validate_property(ErrorAdditionalInfo, Symbol("type"), type)
-        OpenAPI.validate_property(ErrorAdditionalInfo, Symbol("info"), info)
-        return new(type, info, )
+        o = new(type, info, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ErrorAdditionalInfo
 
 const _property_types_ErrorAdditionalInfo = Dict{Symbol,String}(Symbol("type")=>"String", Symbol("info")=>"Any", )
 OpenAPI.property_type(::Type{ ErrorAdditionalInfo }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ErrorAdditionalInfo[name]))}
 
-function check_required(o::ErrorAdditionalInfo)
+function OpenAPI.check_required(o::ErrorAdditionalInfo)
     true
 end
 
+function OpenAPI.validate_properties(o::ErrorAdditionalInfo)
+    OpenAPI.validate_property(ErrorAdditionalInfo, Symbol("type"), o.type)
+    OpenAPI.validate_property(ErrorAdditionalInfo, Symbol("info"), o.info)
+end
+
 function OpenAPI.validate_property(::Type{ ErrorAdditionalInfo }, name::Symbol, val)
+
+
 end

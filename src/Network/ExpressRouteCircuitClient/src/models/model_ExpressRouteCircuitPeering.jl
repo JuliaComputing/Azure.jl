@@ -27,21 +27,31 @@ Base.@kwdef mutable struct ExpressRouteCircuitPeering <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
 
     function ExpressRouteCircuitPeering(properties, name, etag, type, id, )
-        OpenAPI.validate_property(ExpressRouteCircuitPeering, Symbol("properties"), properties)
-        OpenAPI.validate_property(ExpressRouteCircuitPeering, Symbol("name"), name)
-        OpenAPI.validate_property(ExpressRouteCircuitPeering, Symbol("etag"), etag)
-        OpenAPI.validate_property(ExpressRouteCircuitPeering, Symbol("type"), type)
-        OpenAPI.validate_property(ExpressRouteCircuitPeering, Symbol("id"), id)
-        return new(properties, name, etag, type, id, )
+        o = new(properties, name, etag, type, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ExpressRouteCircuitPeering
 
 const _property_types_ExpressRouteCircuitPeering = Dict{Symbol,String}(Symbol("properties")=>"ExpressRouteCircuitPeeringPropertiesFormat", Symbol("name")=>"String", Symbol("etag")=>"String", Symbol("type")=>"String", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ ExpressRouteCircuitPeering }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExpressRouteCircuitPeering[name]))}
 
-function check_required(o::ExpressRouteCircuitPeering)
+function OpenAPI.check_required(o::ExpressRouteCircuitPeering)
     true
 end
 
+function OpenAPI.validate_properties(o::ExpressRouteCircuitPeering)
+    OpenAPI.validate_property(ExpressRouteCircuitPeering, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(ExpressRouteCircuitPeering, Symbol("name"), o.name)
+    OpenAPI.validate_property(ExpressRouteCircuitPeering, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(ExpressRouteCircuitPeering, Symbol("type"), o.type)
+    OpenAPI.validate_property(ExpressRouteCircuitPeering, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ ExpressRouteCircuitPeering }, name::Symbol, val)
+
+
+
+
+
 end

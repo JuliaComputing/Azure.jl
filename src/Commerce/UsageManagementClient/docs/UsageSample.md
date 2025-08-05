@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **meterCategory** | **String** | Category of the consumed resource. | [optional] [default to nothing]
 **meterSubCategory** | **String** | Sub-category of the consumed resource. | [optional] [default to nothing]
 **meterRegion** | **String** | Region of the meterId used for billing purposes | [optional] [default to nothing]
-**infoFields** | [***InfoField**](InfoField.md) |  | [optional] [default to nothing]
+**infoFields** | **Any** | Key-value pairs of instance details in the legacy format. | [optional] [default to nothing]
 **instanceData** | **String** | Key-value pairs of instance details represented as a string. | [optional] [default to nothing]
 
 

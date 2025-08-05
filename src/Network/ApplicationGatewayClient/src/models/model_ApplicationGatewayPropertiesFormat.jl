@@ -12,15 +12,20 @@ Properties of the application gateway.
         gatewayIPConfigurations=nothing,
         authenticationCertificates=nothing,
         trustedRootCertificates=nothing,
+        trustedClientCertificates=nothing,
         sslCertificates=nothing,
         frontendIPConfigurations=nothing,
         frontendPorts=nothing,
         probes=nothing,
         backendAddressPools=nothing,
         backendHttpSettingsCollection=nothing,
+        backendSettingsCollection=nothing,
         httpListeners=nothing,
+        listeners=nothing,
+        sslProfiles=nothing,
         urlPathMaps=nothing,
         requestRoutingRules=nothing,
+        routingRules=nothing,
         rewriteRuleSets=nothing,
         redirectConfigurations=nothing,
         webApplicationFirewallConfiguration=nothing,
@@ -34,6 +39,9 @@ Properties of the application gateway.
         provisioningState=nothing,
         customErrorConfigurations=nothing,
         forceFirewallPolicyAssociation=nothing,
+        loadDistributionPolicies=nothing,
+        globalConfiguration=nothing,
+        defaultPredefinedSslPolicy=nothing,
     )
 
     - sku::ApplicationGatewaySku
@@ -42,15 +50,20 @@ Properties of the application gateway.
     - gatewayIPConfigurations::Vector{ApplicationGatewayIPConfiguration} : Subnets of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
     - authenticationCertificates::Vector{ApplicationGatewayAuthenticationCertificate} : Authentication certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
     - trustedRootCertificates::Vector{ApplicationGatewayTrustedRootCertificate} : Trusted Root certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+    - trustedClientCertificates::Vector{ApplicationGatewayTrustedClientCertificate} : Trusted client certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
     - sslCertificates::Vector{ApplicationGatewaySslCertificate} : SSL certificates of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
     - frontendIPConfigurations::Vector{ApplicationGatewayFrontendIPConfiguration} : Frontend IP addresses of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
     - frontendPorts::Vector{ApplicationGatewayFrontendPort} : Frontend ports of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
     - probes::Vector{ApplicationGatewayProbe} : Probes of the application gateway resource.
     - backendAddressPools::Vector{ApplicationGatewayBackendAddressPool} : Backend address pool of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
     - backendHttpSettingsCollection::Vector{ApplicationGatewayBackendHttpSettings} : Backend http settings of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+    - backendSettingsCollection::Vector{ApplicationGatewayBackendSettings} : Backend settings of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
     - httpListeners::Vector{ApplicationGatewayHttpListener} : Http listeners of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+    - listeners::Vector{ApplicationGatewayListener} : Listeners of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
+    - sslProfiles::Vector{ApplicationGatewaySslProfile} : SSL profiles of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
     - urlPathMaps::Vector{ApplicationGatewayUrlPathMap} : URL path map of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
     - requestRoutingRules::Vector{ApplicationGatewayRequestRoutingRule} : Request routing rules of the application gateway resource.
+    - routingRules::Vector{ApplicationGatewayRoutingRule} : Routing rules of the application gateway resource.
     - rewriteRuleSets::Vector{ApplicationGatewayRewriteRuleSet} : Rewrite rules for the application gateway resource.
     - redirectConfigurations::Vector{ApplicationGatewayRedirectConfiguration} : Redirect configurations of the application gateway resource. For default limits, see [Application Gateway limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits).
     - webApplicationFirewallConfiguration::ApplicationGatewayWebApplicationFirewallConfiguration
@@ -64,6 +77,9 @@ Properties of the application gateway.
     - provisioningState::ProvisioningState
     - customErrorConfigurations::Vector{ApplicationGatewayCustomError} : Custom error configurations of the application gateway resource.
     - forceFirewallPolicyAssociation::Bool : If true, associates a firewall policy with an application gateway regardless whether the policy differs from the WAF Config.
+    - loadDistributionPolicies::Vector{ApplicationGatewayLoadDistributionPolicy} : Load distribution policies of the application gateway resource.
+    - globalConfiguration::ApplicationGatewayGlobalConfiguration
+    - defaultPredefinedSslPolicy::PolicyNameEnum
 """
 Base.@kwdef mutable struct ApplicationGatewayPropertiesFormat <: OpenAPI.APIModel
     sku = nothing # spec type: Union{ Nothing, ApplicationGatewaySku }
@@ -72,15 +88,20 @@ Base.@kwdef mutable struct ApplicationGatewayPropertiesFormat <: OpenAPI.APIMode
     gatewayIPConfigurations::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ApplicationGatewayIPConfiguration} }
     authenticationCertificates::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ApplicationGatewayAuthenticationCertificate} }
     trustedRootCertificates::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ApplicationGatewayTrustedRootCertificate} }
+    trustedClientCertificates::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ApplicationGatewayTrustedClientCertificate} }
     sslCertificates::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ApplicationGatewaySslCertificate} }
     frontendIPConfigurations::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ApplicationGatewayFrontendIPConfiguration} }
     frontendPorts::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ApplicationGatewayFrontendPort} }
     probes::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ApplicationGatewayProbe} }
     backendAddressPools::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ApplicationGatewayBackendAddressPool} }
     backendHttpSettingsCollection::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ApplicationGatewayBackendHttpSettings} }
+    backendSettingsCollection::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ApplicationGatewayBackendSettings} }
     httpListeners::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ApplicationGatewayHttpListener} }
+    listeners::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ApplicationGatewayListener} }
+    sslProfiles::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ApplicationGatewaySslProfile} }
     urlPathMaps::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ApplicationGatewayUrlPathMap} }
     requestRoutingRules::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ApplicationGatewayRequestRoutingRule} }
+    routingRules::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ApplicationGatewayRoutingRule} }
     rewriteRuleSets::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ApplicationGatewayRewriteRuleSet} }
     redirectConfigurations::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ApplicationGatewayRedirectConfiguration} }
     webApplicationFirewallConfiguration = nothing # spec type: Union{ Nothing, ApplicationGatewayWebApplicationFirewallConfiguration }
@@ -94,49 +115,102 @@ Base.@kwdef mutable struct ApplicationGatewayPropertiesFormat <: OpenAPI.APIMode
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
     customErrorConfigurations::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ApplicationGatewayCustomError} }
     forceFirewallPolicyAssociation::Union{Nothing, Bool} = nothing
+    loadDistributionPolicies::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ApplicationGatewayLoadDistributionPolicy} }
+    globalConfiguration = nothing # spec type: Union{ Nothing, ApplicationGatewayGlobalConfiguration }
+    defaultPredefinedSslPolicy = nothing # spec type: Union{ Nothing, PolicyNameEnum }
 
-    function ApplicationGatewayPropertiesFormat(sku, sslPolicy, operationalState, gatewayIPConfigurations, authenticationCertificates, trustedRootCertificates, sslCertificates, frontendIPConfigurations, frontendPorts, probes, backendAddressPools, backendHttpSettingsCollection, httpListeners, urlPathMaps, requestRoutingRules, rewriteRuleSets, redirectConfigurations, webApplicationFirewallConfiguration, firewallPolicy, enableHttp2, enableFips, autoscaleConfiguration, privateLinkConfigurations, privateEndpointConnections, resourceGuid, provisioningState, customErrorConfigurations, forceFirewallPolicyAssociation, )
-        OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("sku"), sku)
-        OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("sslPolicy"), sslPolicy)
-        OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("operationalState"), operationalState)
-        OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("gatewayIPConfigurations"), gatewayIPConfigurations)
-        OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("authenticationCertificates"), authenticationCertificates)
-        OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("trustedRootCertificates"), trustedRootCertificates)
-        OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("sslCertificates"), sslCertificates)
-        OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("frontendIPConfigurations"), frontendIPConfigurations)
-        OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("frontendPorts"), frontendPorts)
-        OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("probes"), probes)
-        OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("backendAddressPools"), backendAddressPools)
-        OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("backendHttpSettingsCollection"), backendHttpSettingsCollection)
-        OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("httpListeners"), httpListeners)
-        OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("urlPathMaps"), urlPathMaps)
-        OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("requestRoutingRules"), requestRoutingRules)
-        OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("rewriteRuleSets"), rewriteRuleSets)
-        OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("redirectConfigurations"), redirectConfigurations)
-        OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("webApplicationFirewallConfiguration"), webApplicationFirewallConfiguration)
-        OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("firewallPolicy"), firewallPolicy)
-        OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("enableHttp2"), enableHttp2)
-        OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("enableFips"), enableFips)
-        OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("autoscaleConfiguration"), autoscaleConfiguration)
-        OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("privateLinkConfigurations"), privateLinkConfigurations)
-        OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("privateEndpointConnections"), privateEndpointConnections)
-        OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("resourceGuid"), resourceGuid)
-        OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("customErrorConfigurations"), customErrorConfigurations)
-        OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("forceFirewallPolicyAssociation"), forceFirewallPolicyAssociation)
-        return new(sku, sslPolicy, operationalState, gatewayIPConfigurations, authenticationCertificates, trustedRootCertificates, sslCertificates, frontendIPConfigurations, frontendPorts, probes, backendAddressPools, backendHttpSettingsCollection, httpListeners, urlPathMaps, requestRoutingRules, rewriteRuleSets, redirectConfigurations, webApplicationFirewallConfiguration, firewallPolicy, enableHttp2, enableFips, autoscaleConfiguration, privateLinkConfigurations, privateEndpointConnections, resourceGuid, provisioningState, customErrorConfigurations, forceFirewallPolicyAssociation, )
+    function ApplicationGatewayPropertiesFormat(sku, sslPolicy, operationalState, gatewayIPConfigurations, authenticationCertificates, trustedRootCertificates, trustedClientCertificates, sslCertificates, frontendIPConfigurations, frontendPorts, probes, backendAddressPools, backendHttpSettingsCollection, backendSettingsCollection, httpListeners, listeners, sslProfiles, urlPathMaps, requestRoutingRules, routingRules, rewriteRuleSets, redirectConfigurations, webApplicationFirewallConfiguration, firewallPolicy, enableHttp2, enableFips, autoscaleConfiguration, privateLinkConfigurations, privateEndpointConnections, resourceGuid, provisioningState, customErrorConfigurations, forceFirewallPolicyAssociation, loadDistributionPolicies, globalConfiguration, defaultPredefinedSslPolicy, )
+        o = new(sku, sslPolicy, operationalState, gatewayIPConfigurations, authenticationCertificates, trustedRootCertificates, trustedClientCertificates, sslCertificates, frontendIPConfigurations, frontendPorts, probes, backendAddressPools, backendHttpSettingsCollection, backendSettingsCollection, httpListeners, listeners, sslProfiles, urlPathMaps, requestRoutingRules, routingRules, rewriteRuleSets, redirectConfigurations, webApplicationFirewallConfiguration, firewallPolicy, enableHttp2, enableFips, autoscaleConfiguration, privateLinkConfigurations, privateEndpointConnections, resourceGuid, provisioningState, customErrorConfigurations, forceFirewallPolicyAssociation, loadDistributionPolicies, globalConfiguration, defaultPredefinedSslPolicy, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayPropertiesFormat
 
-const _property_types_ApplicationGatewayPropertiesFormat = Dict{Symbol,String}(Symbol("sku")=>"ApplicationGatewaySku", Symbol("sslPolicy")=>"ApplicationGatewaySslPolicy", Symbol("operationalState")=>"String", Symbol("gatewayIPConfigurations")=>"Vector{ApplicationGatewayIPConfiguration}", Symbol("authenticationCertificates")=>"Vector{ApplicationGatewayAuthenticationCertificate}", Symbol("trustedRootCertificates")=>"Vector{ApplicationGatewayTrustedRootCertificate}", Symbol("sslCertificates")=>"Vector{ApplicationGatewaySslCertificate}", Symbol("frontendIPConfigurations")=>"Vector{ApplicationGatewayFrontendIPConfiguration}", Symbol("frontendPorts")=>"Vector{ApplicationGatewayFrontendPort}", Symbol("probes")=>"Vector{ApplicationGatewayProbe}", Symbol("backendAddressPools")=>"Vector{ApplicationGatewayBackendAddressPool}", Symbol("backendHttpSettingsCollection")=>"Vector{ApplicationGatewayBackendHttpSettings}", Symbol("httpListeners")=>"Vector{ApplicationGatewayHttpListener}", Symbol("urlPathMaps")=>"Vector{ApplicationGatewayUrlPathMap}", Symbol("requestRoutingRules")=>"Vector{ApplicationGatewayRequestRoutingRule}", Symbol("rewriteRuleSets")=>"Vector{ApplicationGatewayRewriteRuleSet}", Symbol("redirectConfigurations")=>"Vector{ApplicationGatewayRedirectConfiguration}", Symbol("webApplicationFirewallConfiguration")=>"ApplicationGatewayWebApplicationFirewallConfiguration", Symbol("firewallPolicy")=>"SubResource", Symbol("enableHttp2")=>"Bool", Symbol("enableFips")=>"Bool", Symbol("autoscaleConfiguration")=>"ApplicationGatewayAutoscaleConfiguration", Symbol("privateLinkConfigurations")=>"Vector{ApplicationGatewayPrivateLinkConfiguration}", Symbol("privateEndpointConnections")=>"Vector{ApplicationGatewayPrivateEndpointConnection}", Symbol("resourceGuid")=>"String", Symbol("provisioningState")=>"ProvisioningState", Symbol("customErrorConfigurations")=>"Vector{ApplicationGatewayCustomError}", Symbol("forceFirewallPolicyAssociation")=>"Bool", )
+const _property_types_ApplicationGatewayPropertiesFormat = Dict{Symbol,String}(Symbol("sku")=>"ApplicationGatewaySku", Symbol("sslPolicy")=>"ApplicationGatewaySslPolicy", Symbol("operationalState")=>"String", Symbol("gatewayIPConfigurations")=>"Vector{ApplicationGatewayIPConfiguration}", Symbol("authenticationCertificates")=>"Vector{ApplicationGatewayAuthenticationCertificate}", Symbol("trustedRootCertificates")=>"Vector{ApplicationGatewayTrustedRootCertificate}", Symbol("trustedClientCertificates")=>"Vector{ApplicationGatewayTrustedClientCertificate}", Symbol("sslCertificates")=>"Vector{ApplicationGatewaySslCertificate}", Symbol("frontendIPConfigurations")=>"Vector{ApplicationGatewayFrontendIPConfiguration}", Symbol("frontendPorts")=>"Vector{ApplicationGatewayFrontendPort}", Symbol("probes")=>"Vector{ApplicationGatewayProbe}", Symbol("backendAddressPools")=>"Vector{ApplicationGatewayBackendAddressPool}", Symbol("backendHttpSettingsCollection")=>"Vector{ApplicationGatewayBackendHttpSettings}", Symbol("backendSettingsCollection")=>"Vector{ApplicationGatewayBackendSettings}", Symbol("httpListeners")=>"Vector{ApplicationGatewayHttpListener}", Symbol("listeners")=>"Vector{ApplicationGatewayListener}", Symbol("sslProfiles")=>"Vector{ApplicationGatewaySslProfile}", Symbol("urlPathMaps")=>"Vector{ApplicationGatewayUrlPathMap}", Symbol("requestRoutingRules")=>"Vector{ApplicationGatewayRequestRoutingRule}", Symbol("routingRules")=>"Vector{ApplicationGatewayRoutingRule}", Symbol("rewriteRuleSets")=>"Vector{ApplicationGatewayRewriteRuleSet}", Symbol("redirectConfigurations")=>"Vector{ApplicationGatewayRedirectConfiguration}", Symbol("webApplicationFirewallConfiguration")=>"ApplicationGatewayWebApplicationFirewallConfiguration", Symbol("firewallPolicy")=>"SubResource", Symbol("enableHttp2")=>"Bool", Symbol("enableFips")=>"Bool", Symbol("autoscaleConfiguration")=>"ApplicationGatewayAutoscaleConfiguration", Symbol("privateLinkConfigurations")=>"Vector{ApplicationGatewayPrivateLinkConfiguration}", Symbol("privateEndpointConnections")=>"Vector{ApplicationGatewayPrivateEndpointConnection}", Symbol("resourceGuid")=>"String", Symbol("provisioningState")=>"ProvisioningState", Symbol("customErrorConfigurations")=>"Vector{ApplicationGatewayCustomError}", Symbol("forceFirewallPolicyAssociation")=>"Bool", Symbol("loadDistributionPolicies")=>"Vector{ApplicationGatewayLoadDistributionPolicy}", Symbol("globalConfiguration")=>"ApplicationGatewayGlobalConfiguration", Symbol("defaultPredefinedSslPolicy")=>"PolicyNameEnum", )
 OpenAPI.property_type(::Type{ ApplicationGatewayPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayPropertiesFormat[name]))}
 
-function check_required(o::ApplicationGatewayPropertiesFormat)
+function OpenAPI.check_required(o::ApplicationGatewayPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayPropertiesFormat)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("sku"), o.sku)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("sslPolicy"), o.sslPolicy)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("operationalState"), o.operationalState)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("gatewayIPConfigurations"), o.gatewayIPConfigurations)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("authenticationCertificates"), o.authenticationCertificates)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("trustedRootCertificates"), o.trustedRootCertificates)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("trustedClientCertificates"), o.trustedClientCertificates)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("sslCertificates"), o.sslCertificates)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("frontendIPConfigurations"), o.frontendIPConfigurations)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("frontendPorts"), o.frontendPorts)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("probes"), o.probes)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("backendAddressPools"), o.backendAddressPools)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("backendHttpSettingsCollection"), o.backendHttpSettingsCollection)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("backendSettingsCollection"), o.backendSettingsCollection)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("httpListeners"), o.httpListeners)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("listeners"), o.listeners)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("sslProfiles"), o.sslProfiles)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("urlPathMaps"), o.urlPathMaps)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("requestRoutingRules"), o.requestRoutingRules)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("routingRules"), o.routingRules)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("rewriteRuleSets"), o.rewriteRuleSets)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("redirectConfigurations"), o.redirectConfigurations)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("webApplicationFirewallConfiguration"), o.webApplicationFirewallConfiguration)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("firewallPolicy"), o.firewallPolicy)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("enableHttp2"), o.enableHttp2)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("enableFips"), o.enableFips)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("autoscaleConfiguration"), o.autoscaleConfiguration)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("privateLinkConfigurations"), o.privateLinkConfigurations)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("privateEndpointConnections"), o.privateEndpointConnections)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("resourceGuid"), o.resourceGuid)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("customErrorConfigurations"), o.customErrorConfigurations)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("forceFirewallPolicyAssociation"), o.forceFirewallPolicyAssociation)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("loadDistributionPolicies"), o.loadDistributionPolicies)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("globalConfiguration"), o.globalConfiguration)
+    OpenAPI.validate_property(ApplicationGatewayPropertiesFormat, Symbol("defaultPredefinedSslPolicy"), o.defaultPredefinedSslPolicy)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayPropertiesFormat }, name::Symbol, val)
+
+
+
     if name === Symbol("operationalState")
         OpenAPI.validate_param(name, "ApplicationGatewayPropertiesFormat", :enum, val, ["Stopped", "Starting", "Running", "Stopping"])
     end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 end

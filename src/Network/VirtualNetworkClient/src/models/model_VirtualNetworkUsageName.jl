@@ -18,18 +18,25 @@ Base.@kwdef mutable struct VirtualNetworkUsageName <: OpenAPI.APIModel
     value::Union{Nothing, String} = nothing
 
     function VirtualNetworkUsageName(localizedValue, value, )
-        OpenAPI.validate_property(VirtualNetworkUsageName, Symbol("localizedValue"), localizedValue)
-        OpenAPI.validate_property(VirtualNetworkUsageName, Symbol("value"), value)
-        return new(localizedValue, value, )
+        o = new(localizedValue, value, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualNetworkUsageName
 
 const _property_types_VirtualNetworkUsageName = Dict{Symbol,String}(Symbol("localizedValue")=>"String", Symbol("value")=>"String", )
 OpenAPI.property_type(::Type{ VirtualNetworkUsageName }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualNetworkUsageName[name]))}
 
-function check_required(o::VirtualNetworkUsageName)
+function OpenAPI.check_required(o::VirtualNetworkUsageName)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualNetworkUsageName)
+    OpenAPI.validate_property(VirtualNetworkUsageName, Symbol("localizedValue"), o.localizedValue)
+    OpenAPI.validate_property(VirtualNetworkUsageName, Symbol("value"), o.value)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualNetworkUsageName }, name::Symbol, val)
+
+
 end

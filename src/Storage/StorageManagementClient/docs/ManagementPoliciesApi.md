@@ -22,12 +22,12 @@ Sets the managementpolicy to the specified storage account.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ManagementPoliciesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group within the user&#39;s subscription. The name is case insensitive. | [default to nothing]
-**account_name** | **String**| The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. | [default to nothing]
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
-**management_policy_name** | **String**| The name of the Storage Account Management Policy. It should always be &#39;default&#39; | [default to nothing]
-**properties** | [**ManagementPolicy**](ManagementPolicy.md)| The ManagementPolicy set to a storage account. | 
+**resource_group_name** | **String** | The name of the resource group within the user&#39;s subscription. The name is case insensitive. |
+**account_name** | **String** | The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. |
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The ID of the target subscription. |
+**management_policy_name** | **String** | The name of the Storage Account Management Policy. It should always be &#39;default&#39; |
+**properties** | [**ManagementPolicy**](ManagementPolicy.md) | The ManagementPolicy set to a storage account. |
 
 ### Return type
 
@@ -57,11 +57,11 @@ Deletes the managementpolicy associated with the specified storage account.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ManagementPoliciesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group within the user&#39;s subscription. The name is case insensitive. | [default to nothing]
-**account_name** | **String**| The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. | [default to nothing]
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
-**management_policy_name** | **String**| The name of the Storage Account Management Policy. It should always be &#39;default&#39; | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group within the user&#39;s subscription. The name is case insensitive. |
+**account_name** | **String** | The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. |
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The ID of the target subscription. |
+**management_policy_name** | **String** | The name of the Storage Account Management Policy. It should always be &#39;default&#39; |
 
 ### Return type
 
@@ -91,11 +91,11 @@ Gets the managementpolicy associated with the specified storage account.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ManagementPoliciesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group within the user&#39;s subscription. The name is case insensitive. | [default to nothing]
-**account_name** | **String**| The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. | [default to nothing]
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
-**management_policy_name** | **String**| The name of the Storage Account Management Policy. It should always be &#39;default&#39; | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group within the user&#39;s subscription. The name is case insensitive. |
+**account_name** | **String** | The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. |
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The ID of the target subscription. |
+**management_policy_name** | **String** | The name of the Storage Account Management Policy. It should always be &#39;default&#39; |
 
 ### Return type
 

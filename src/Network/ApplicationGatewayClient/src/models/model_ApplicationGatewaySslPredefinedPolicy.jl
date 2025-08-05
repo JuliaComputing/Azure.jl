@@ -21,19 +21,27 @@ Base.@kwdef mutable struct ApplicationGatewaySslPredefinedPolicy <: OpenAPI.APIM
     id::Union{Nothing, String} = nothing
 
     function ApplicationGatewaySslPredefinedPolicy(name, properties, id, )
-        OpenAPI.validate_property(ApplicationGatewaySslPredefinedPolicy, Symbol("name"), name)
-        OpenAPI.validate_property(ApplicationGatewaySslPredefinedPolicy, Symbol("properties"), properties)
-        OpenAPI.validate_property(ApplicationGatewaySslPredefinedPolicy, Symbol("id"), id)
-        return new(name, properties, id, )
+        o = new(name, properties, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewaySslPredefinedPolicy
 
 const _property_types_ApplicationGatewaySslPredefinedPolicy = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("properties")=>"ApplicationGatewaySslPredefinedPolicyPropertiesFormat", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ ApplicationGatewaySslPredefinedPolicy }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewaySslPredefinedPolicy[name]))}
 
-function check_required(o::ApplicationGatewaySslPredefinedPolicy)
+function OpenAPI.check_required(o::ApplicationGatewaySslPredefinedPolicy)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewaySslPredefinedPolicy)
+    OpenAPI.validate_property(ApplicationGatewaySslPredefinedPolicy, Symbol("name"), o.name)
+    OpenAPI.validate_property(ApplicationGatewaySslPredefinedPolicy, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(ApplicationGatewaySslPredefinedPolicy, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewaySslPredefinedPolicy }, name::Symbol, val)
+
+
+
 end

@@ -7,39 +7,53 @@ Parameters that define the configuration of flow log.
 
     FlowLogProperties(;
         storageId=nothing,
+        enabledFilteringCriteria=nothing,
         enabled=nothing,
         retentionPolicy=nothing,
         format=nothing,
     )
 
     - storageId::String : ID of the storage account which is used to store the flow log.
+    - enabledFilteringCriteria::String : Optional field to filter network traffic logs based on SrcIP, SrcPort, DstIP, DstPort, Protocol, Encryption, Direction and Action. If not specified, all network traffic will be logged.
     - enabled::Bool : Flag to enable/disable flow logging.
     - retentionPolicy::RetentionPolicyParameters
     - format::FlowLogFormatParameters
 """
 Base.@kwdef mutable struct FlowLogProperties <: OpenAPI.APIModel
     storageId::Union{Nothing, String} = nothing
+    enabledFilteringCriteria::Union{Nothing, String} = nothing
     enabled::Union{Nothing, Bool} = nothing
     retentionPolicy = nothing # spec type: Union{ Nothing, RetentionPolicyParameters }
     format = nothing # spec type: Union{ Nothing, FlowLogFormatParameters }
 
-    function FlowLogProperties(storageId, enabled, retentionPolicy, format, )
-        OpenAPI.validate_property(FlowLogProperties, Symbol("storageId"), storageId)
-        OpenAPI.validate_property(FlowLogProperties, Symbol("enabled"), enabled)
-        OpenAPI.validate_property(FlowLogProperties, Symbol("retentionPolicy"), retentionPolicy)
-        OpenAPI.validate_property(FlowLogProperties, Symbol("format"), format)
-        return new(storageId, enabled, retentionPolicy, format, )
+    function FlowLogProperties(storageId, enabledFilteringCriteria, enabled, retentionPolicy, format, )
+        o = new(storageId, enabledFilteringCriteria, enabled, retentionPolicy, format, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type FlowLogProperties
 
-const _property_types_FlowLogProperties = Dict{Symbol,String}(Symbol("storageId")=>"String", Symbol("enabled")=>"Bool", Symbol("retentionPolicy")=>"RetentionPolicyParameters", Symbol("format")=>"FlowLogFormatParameters", )
+const _property_types_FlowLogProperties = Dict{Symbol,String}(Symbol("storageId")=>"String", Symbol("enabledFilteringCriteria")=>"String", Symbol("enabled")=>"Bool", Symbol("retentionPolicy")=>"RetentionPolicyParameters", Symbol("format")=>"FlowLogFormatParameters", )
 OpenAPI.property_type(::Type{ FlowLogProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_FlowLogProperties[name]))}
 
-function check_required(o::FlowLogProperties)
+function OpenAPI.check_required(o::FlowLogProperties)
     o.storageId === nothing && (return false)
     o.enabled === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::FlowLogProperties)
+    OpenAPI.validate_property(FlowLogProperties, Symbol("storageId"), o.storageId)
+    OpenAPI.validate_property(FlowLogProperties, Symbol("enabledFilteringCriteria"), o.enabledFilteringCriteria)
+    OpenAPI.validate_property(FlowLogProperties, Symbol("enabled"), o.enabled)
+    OpenAPI.validate_property(FlowLogProperties, Symbol("retentionPolicy"), o.retentionPolicy)
+    OpenAPI.validate_property(FlowLogProperties, Symbol("format"), o.format)
+end
+
 function OpenAPI.validate_property(::Type{ FlowLogProperties }, name::Symbol, val)
+
+
+
+
+
 end

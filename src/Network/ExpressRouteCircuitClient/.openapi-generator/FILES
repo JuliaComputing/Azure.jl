@@ -1,5 +1,6 @@
 .openapi-generator-ignore
 README.md
+docs/AdvertisedPublicPrefixProperties.md
 docs/AuthorizationListResult.md
 docs/AuthorizationPropertiesFormat.md
 docs/CircuitConnectionStatus.md
@@ -64,6 +65,7 @@ src/apis/api_ExpressRouteCircuitsApi.jl
 src/apis/api_ExpressRouteServiceProvidersApi.jl
 src/apis/api_PeerExpressRouteCircuitConnectionsApi.jl
 src/modelincludes.jl
+src/models/model_AdvertisedPublicPrefixProperties.jl
 src/models/model_AuthorizationListResult.jl
 src/models/model_AuthorizationPropertiesFormat.jl
 src/models/model_CircuitConnectionStatus.jl

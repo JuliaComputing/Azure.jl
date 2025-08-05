@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **backendHttpSettings** | [***SubResource**](SubResource.md) |  | [optional] [default to nothing]
 **redirectConfiguration** | [***SubResource**](SubResource.md) |  | [optional] [default to nothing]
 **rewriteRuleSet** | [***SubResource**](SubResource.md) |  | [optional] [default to nothing]
+**loadDistributionPolicy** | [***SubResource**](SubResource.md) |  | [optional] [default to nothing]
 **provisioningState** | [***ProvisioningState**](ProvisioningState.md) |  | [optional] [default to nothing]
 **firewallPolicy** | [***SubResource**](SubResource.md) |  | [optional] [default to nothing]
 

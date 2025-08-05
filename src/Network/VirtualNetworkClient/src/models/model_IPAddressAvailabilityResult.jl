@@ -8,28 +8,40 @@ Response for CheckIPAddressAvailability API service call.
     IPAddressAvailabilityResult(;
         available=nothing,
         availableIPAddresses=nothing,
+        isPlatformReserved=nothing,
     )
 
     - available::Bool : Private IP address availability.
     - availableIPAddresses::Vector{String} : Contains other available private IP addresses if the asked for address is taken.
+    - isPlatformReserved::Bool : Private IP address platform reserved.
 """
 Base.@kwdef mutable struct IPAddressAvailabilityResult <: OpenAPI.APIModel
     available::Union{Nothing, Bool} = nothing
     availableIPAddresses::Union{Nothing, Vector{String}} = nothing
+    isPlatformReserved::Union{Nothing, Bool} = nothing
 
-    function IPAddressAvailabilityResult(available, availableIPAddresses, )
-        OpenAPI.validate_property(IPAddressAvailabilityResult, Symbol("available"), available)
-        OpenAPI.validate_property(IPAddressAvailabilityResult, Symbol("availableIPAddresses"), availableIPAddresses)
-        return new(available, availableIPAddresses, )
+    function IPAddressAvailabilityResult(available, availableIPAddresses, isPlatformReserved, )
+        o = new(available, availableIPAddresses, isPlatformReserved, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type IPAddressAvailabilityResult
 
-const _property_types_IPAddressAvailabilityResult = Dict{Symbol,String}(Symbol("available")=>"Bool", Symbol("availableIPAddresses")=>"Vector{String}", )
+const _property_types_IPAddressAvailabilityResult = Dict{Symbol,String}(Symbol("available")=>"Bool", Symbol("availableIPAddresses")=>"Vector{String}", Symbol("isPlatformReserved")=>"Bool", )
 OpenAPI.property_type(::Type{ IPAddressAvailabilityResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IPAddressAvailabilityResult[name]))}
 
-function check_required(o::IPAddressAvailabilityResult)
+function OpenAPI.check_required(o::IPAddressAvailabilityResult)
     true
 end
 
+function OpenAPI.validate_properties(o::IPAddressAvailabilityResult)
+    OpenAPI.validate_property(IPAddressAvailabilityResult, Symbol("available"), o.available)
+    OpenAPI.validate_property(IPAddressAvailabilityResult, Symbol("availableIPAddresses"), o.availableIPAddresses)
+    OpenAPI.validate_property(IPAddressAvailabilityResult, Symbol("isPlatformReserved"), o.isPlatformReserved)
+end
+
 function OpenAPI.validate_property(::Type{ IPAddressAvailabilityResult }, name::Symbol, val)
+
+
+
 end

@@ -27,21 +27,31 @@ Base.@kwdef mutable struct Plan <: OpenAPI.APIModel
     version::Union{Nothing, String} = nothing
 
     function Plan(name, publisher, product, promotionCode, version, )
-        OpenAPI.validate_property(Plan, Symbol("name"), name)
-        OpenAPI.validate_property(Plan, Symbol("publisher"), publisher)
-        OpenAPI.validate_property(Plan, Symbol("product"), product)
-        OpenAPI.validate_property(Plan, Symbol("promotionCode"), promotionCode)
-        OpenAPI.validate_property(Plan, Symbol("version"), version)
-        return new(name, publisher, product, promotionCode, version, )
+        o = new(name, publisher, product, promotionCode, version, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type Plan
 
 const _property_types_Plan = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("publisher")=>"String", Symbol("product")=>"String", Symbol("promotionCode")=>"String", Symbol("version")=>"String", )
 OpenAPI.property_type(::Type{ Plan }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Plan[name]))}
 
-function check_required(o::Plan)
+function OpenAPI.check_required(o::Plan)
     true
 end
 
+function OpenAPI.validate_properties(o::Plan)
+    OpenAPI.validate_property(Plan, Symbol("name"), o.name)
+    OpenAPI.validate_property(Plan, Symbol("publisher"), o.publisher)
+    OpenAPI.validate_property(Plan, Symbol("product"), o.product)
+    OpenAPI.validate_property(Plan, Symbol("promotionCode"), o.promotionCode)
+    OpenAPI.validate_property(Plan, Symbol("version"), o.version)
+end
+
 function OpenAPI.validate_property(::Type{ Plan }, name::Symbol, val)
+
+
+
+
+
 end

@@ -23,7 +23,7 @@ function _oacinternal_express_route_circuit_authorizations_create_or_update(_api
     OpenAPI.Clients.set_param(_ctx.path, "circuitName", circuit_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "authorizationName", authorization_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -64,7 +64,7 @@ function _oacinternal_express_route_circuit_authorizations_delete(_api::ExpressR
     OpenAPI.Clients.set_param(_ctx.path, "circuitName", circuit_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "authorizationName", authorization_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -102,7 +102,7 @@ function _oacinternal_express_route_circuit_authorizations_get(_api::ExpressRout
     OpenAPI.Clients.set_param(_ctx.path, "circuitName", circuit_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "authorizationName", authorization_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -139,7 +139,7 @@ function _oacinternal_express_route_circuit_authorizations_list(_api::ExpressRou
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "circuitName", circuit_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx

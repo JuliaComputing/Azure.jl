@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **source** | [***ConnectionMonitorSource**](ConnectionMonitorSource.md) |  | [optional] [default to nothing]
 **destination** | [***ConnectionMonitorDestination**](ConnectionMonitorDestination.md) |  | [optional] [default to nothing]
 **autoStart** | **Bool** | Determines if the connection monitor will start automatically once created. | [optional] [default to true]
-**monitoringIntervalInSeconds** | **Int64** | Monitoring interval in seconds. | [optional] [default to nothing]
+**monitoringIntervalInSeconds** | **Int64** | Monitoring interval in seconds. | [optional] [default to 60]
 **endpoints** | [**Vector{ConnectionMonitorEndpoint}**](ConnectionMonitorEndpoint.md) | List of connection monitor endpoints. | [optional] [default to nothing]
 **testConfigurations** | [**Vector{ConnectionMonitorTestConfiguration}**](ConnectionMonitorTestConfiguration.md) | List of connection monitor test configurations. | [optional] [default to nothing]
 **testGroups** | [**Vector{ConnectionMonitorTestGroup}**](ConnectionMonitorTestGroup.md) | List of connection monitor test groups. | [optional] [default to nothing]

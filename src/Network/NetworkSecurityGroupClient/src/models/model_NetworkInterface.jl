@@ -6,6 +6,7 @@
 A network interface in a resource group.
 
     NetworkInterface(;
+        extendedLocation=nothing,
         properties=nothing,
         etag=nothing,
         id=nothing,
@@ -15,6 +16,7 @@ A network interface in a resource group.
         tags=nothing,
     )
 
+    - extendedLocation::ExtendedLocation
     - properties::NetworkInterfacePropertiesFormat
     - etag::String : A unique read-only string that changes whenever the resource is updated.
     - id::String : Resource ID.
@@ -24,6 +26,7 @@ A network interface in a resource group.
     - tags::Dict{String, String} : Resource tags.
 """
 Base.@kwdef mutable struct NetworkInterface <: OpenAPI.APIModel
+    extendedLocation = nothing # spec type: Union{ Nothing, ExtendedLocation }
     properties = nothing # spec type: Union{ Nothing, NetworkInterfacePropertiesFormat }
     etag::Union{Nothing, String} = nothing
     id::Union{Nothing, String} = nothing
@@ -32,24 +35,38 @@ Base.@kwdef mutable struct NetworkInterface <: OpenAPI.APIModel
     location::Union{Nothing, String} = nothing
     tags::Union{Nothing, Dict{String, String}} = nothing
 
-    function NetworkInterface(properties, etag, id, name, type, location, tags, )
-        OpenAPI.validate_property(NetworkInterface, Symbol("properties"), properties)
-        OpenAPI.validate_property(NetworkInterface, Symbol("etag"), etag)
-        OpenAPI.validate_property(NetworkInterface, Symbol("id"), id)
-        OpenAPI.validate_property(NetworkInterface, Symbol("name"), name)
-        OpenAPI.validate_property(NetworkInterface, Symbol("type"), type)
-        OpenAPI.validate_property(NetworkInterface, Symbol("location"), location)
-        OpenAPI.validate_property(NetworkInterface, Symbol("tags"), tags)
-        return new(properties, etag, id, name, type, location, tags, )
+    function NetworkInterface(extendedLocation, properties, etag, id, name, type, location, tags, )
+        o = new(extendedLocation, properties, etag, id, name, type, location, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type NetworkInterface
 
-const _property_types_NetworkInterface = Dict{Symbol,String}(Symbol("properties")=>"NetworkInterfacePropertiesFormat", Symbol("etag")=>"String", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
+const _property_types_NetworkInterface = Dict{Symbol,String}(Symbol("extendedLocation")=>"ExtendedLocation", Symbol("properties")=>"NetworkInterfacePropertiesFormat", Symbol("etag")=>"String", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ NetworkInterface }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkInterface[name]))}
 
-function check_required(o::NetworkInterface)
+function OpenAPI.check_required(o::NetworkInterface)
     true
 end
 
+function OpenAPI.validate_properties(o::NetworkInterface)
+    OpenAPI.validate_property(NetworkInterface, Symbol("extendedLocation"), o.extendedLocation)
+    OpenAPI.validate_property(NetworkInterface, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(NetworkInterface, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(NetworkInterface, Symbol("id"), o.id)
+    OpenAPI.validate_property(NetworkInterface, Symbol("name"), o.name)
+    OpenAPI.validate_property(NetworkInterface, Symbol("type"), o.type)
+    OpenAPI.validate_property(NetworkInterface, Symbol("location"), o.location)
+    OpenAPI.validate_property(NetworkInterface, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ NetworkInterface }, name::Symbol, val)
+
+
+
+
+
+
+
+
 end

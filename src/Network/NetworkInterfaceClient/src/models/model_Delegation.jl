@@ -9,35 +9,49 @@ Details the service to which the subnet is delegated.
         properties=nothing,
         name=nothing,
         etag=nothing,
+        type=nothing,
         id=nothing,
     )
 
     - properties::ServiceDelegationPropertiesFormat
     - name::String : The name of the resource that is unique within a subnet. This name can be used to access the resource.
     - etag::String : A unique read-only string that changes whenever the resource is updated.
+    - type::String : Resource type.
     - id::String : Resource ID.
 """
 Base.@kwdef mutable struct Delegation <: OpenAPI.APIModel
     properties = nothing # spec type: Union{ Nothing, ServiceDelegationPropertiesFormat }
     name::Union{Nothing, String} = nothing
     etag::Union{Nothing, String} = nothing
+    type::Union{Nothing, String} = nothing
     id::Union{Nothing, String} = nothing
 
-    function Delegation(properties, name, etag, id, )
-        OpenAPI.validate_property(Delegation, Symbol("properties"), properties)
-        OpenAPI.validate_property(Delegation, Symbol("name"), name)
-        OpenAPI.validate_property(Delegation, Symbol("etag"), etag)
-        OpenAPI.validate_property(Delegation, Symbol("id"), id)
-        return new(properties, name, etag, id, )
+    function Delegation(properties, name, etag, type, id, )
+        o = new(properties, name, etag, type, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type Delegation
 
-const _property_types_Delegation = Dict{Symbol,String}(Symbol("properties")=>"ServiceDelegationPropertiesFormat", Symbol("name")=>"String", Symbol("etag")=>"String", Symbol("id")=>"String", )
+const _property_types_Delegation = Dict{Symbol,String}(Symbol("properties")=>"ServiceDelegationPropertiesFormat", Symbol("name")=>"String", Symbol("etag")=>"String", Symbol("type")=>"String", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ Delegation }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Delegation[name]))}
 
-function check_required(o::Delegation)
+function OpenAPI.check_required(o::Delegation)
     true
 end
 
+function OpenAPI.validate_properties(o::Delegation)
+    OpenAPI.validate_property(Delegation, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(Delegation, Symbol("name"), o.name)
+    OpenAPI.validate_property(Delegation, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(Delegation, Symbol("type"), o.type)
+    OpenAPI.validate_property(Delegation, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ Delegation }, name::Symbol, val)
+
+
+
+
+
 end

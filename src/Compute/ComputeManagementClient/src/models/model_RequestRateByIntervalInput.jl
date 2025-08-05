@@ -13,6 +13,8 @@ Api request input for LogAnalytics getRequestRateByInterval Api.
         groupByThrottlePolicy=nothing,
         groupByOperationName=nothing,
         groupByResourceName=nothing,
+        groupByClientApplicationId=nothing,
+        groupByUserAgent=nothing,
     )
 
     - intervalLength::String : Interval value in minutes used to create LogAnalytics call rate logs.
@@ -22,6 +24,8 @@ Api request input for LogAnalytics getRequestRateByInterval Api.
     - groupByThrottlePolicy::Bool : Group query result by Throttle Policy applied.
     - groupByOperationName::Bool : Group query result by Operation Name.
     - groupByResourceName::Bool : Group query result by Resource Name.
+    - groupByClientApplicationId::Bool : Group query result by Client Application ID.
+    - groupByUserAgent::Bool : Group query result by User Agent.
 """
 Base.@kwdef mutable struct RequestRateByIntervalInput <: OpenAPI.APIModel
     intervalLength::Union{Nothing, String} = nothing
@@ -31,23 +35,20 @@ Base.@kwdef mutable struct RequestRateByIntervalInput <: OpenAPI.APIModel
     groupByThrottlePolicy::Union{Nothing, Bool} = nothing
     groupByOperationName::Union{Nothing, Bool} = nothing
     groupByResourceName::Union{Nothing, Bool} = nothing
+    groupByClientApplicationId::Union{Nothing, Bool} = nothing
+    groupByUserAgent::Union{Nothing, Bool} = nothing
 
-    function RequestRateByIntervalInput(intervalLength, blobContainerSasUri, fromTime, toTime, groupByThrottlePolicy, groupByOperationName, groupByResourceName, )
-        OpenAPI.validate_property(RequestRateByIntervalInput, Symbol("intervalLength"), intervalLength)
-        OpenAPI.validate_property(RequestRateByIntervalInput, Symbol("blobContainerSasUri"), blobContainerSasUri)
-        OpenAPI.validate_property(RequestRateByIntervalInput, Symbol("fromTime"), fromTime)
-        OpenAPI.validate_property(RequestRateByIntervalInput, Symbol("toTime"), toTime)
-        OpenAPI.validate_property(RequestRateByIntervalInput, Symbol("groupByThrottlePolicy"), groupByThrottlePolicy)
-        OpenAPI.validate_property(RequestRateByIntervalInput, Symbol("groupByOperationName"), groupByOperationName)
-        OpenAPI.validate_property(RequestRateByIntervalInput, Symbol("groupByResourceName"), groupByResourceName)
-        return new(intervalLength, blobContainerSasUri, fromTime, toTime, groupByThrottlePolicy, groupByOperationName, groupByResourceName, )
+    function RequestRateByIntervalInput(intervalLength, blobContainerSasUri, fromTime, toTime, groupByThrottlePolicy, groupByOperationName, groupByResourceName, groupByClientApplicationId, groupByUserAgent, )
+        o = new(intervalLength, blobContainerSasUri, fromTime, toTime, groupByThrottlePolicy, groupByOperationName, groupByResourceName, groupByClientApplicationId, groupByUserAgent, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type RequestRateByIntervalInput
 
-const _property_types_RequestRateByIntervalInput = Dict{Symbol,String}(Symbol("intervalLength")=>"String", Symbol("blobContainerSasUri")=>"String", Symbol("fromTime")=>"ZonedDateTime", Symbol("toTime")=>"ZonedDateTime", Symbol("groupByThrottlePolicy")=>"Bool", Symbol("groupByOperationName")=>"Bool", Symbol("groupByResourceName")=>"Bool", )
+const _property_types_RequestRateByIntervalInput = Dict{Symbol,String}(Symbol("intervalLength")=>"String", Symbol("blobContainerSasUri")=>"String", Symbol("fromTime")=>"ZonedDateTime", Symbol("toTime")=>"ZonedDateTime", Symbol("groupByThrottlePolicy")=>"Bool", Symbol("groupByOperationName")=>"Bool", Symbol("groupByResourceName")=>"Bool", Symbol("groupByClientApplicationId")=>"Bool", Symbol("groupByUserAgent")=>"Bool", )
 OpenAPI.property_type(::Type{ RequestRateByIntervalInput }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RequestRateByIntervalInput[name]))}
 
-function check_required(o::RequestRateByIntervalInput)
+function OpenAPI.check_required(o::RequestRateByIntervalInput)
     o.intervalLength === nothing && (return false)
     o.blobContainerSasUri === nothing && (return false)
     o.fromTime === nothing && (return false)
@@ -55,14 +56,36 @@ function check_required(o::RequestRateByIntervalInput)
     true
 end
 
+function OpenAPI.validate_properties(o::RequestRateByIntervalInput)
+    OpenAPI.validate_property(RequestRateByIntervalInput, Symbol("intervalLength"), o.intervalLength)
+    OpenAPI.validate_property(RequestRateByIntervalInput, Symbol("blobContainerSasUri"), o.blobContainerSasUri)
+    OpenAPI.validate_property(RequestRateByIntervalInput, Symbol("fromTime"), o.fromTime)
+    OpenAPI.validate_property(RequestRateByIntervalInput, Symbol("toTime"), o.toTime)
+    OpenAPI.validate_property(RequestRateByIntervalInput, Symbol("groupByThrottlePolicy"), o.groupByThrottlePolicy)
+    OpenAPI.validate_property(RequestRateByIntervalInput, Symbol("groupByOperationName"), o.groupByOperationName)
+    OpenAPI.validate_property(RequestRateByIntervalInput, Symbol("groupByResourceName"), o.groupByResourceName)
+    OpenAPI.validate_property(RequestRateByIntervalInput, Symbol("groupByClientApplicationId"), o.groupByClientApplicationId)
+    OpenAPI.validate_property(RequestRateByIntervalInput, Symbol("groupByUserAgent"), o.groupByUserAgent)
+end
+
 function OpenAPI.validate_property(::Type{ RequestRateByIntervalInput }, name::Symbol, val)
+
     if name === Symbol("intervalLength")
         OpenAPI.validate_param(name, "RequestRateByIntervalInput", :enum, val, ["ThreeMins", "FiveMins", "ThirtyMins", "SixtyMins"])
     end
+
+
+
     if name === Symbol("fromTime")
         OpenAPI.validate_param(name, "RequestRateByIntervalInput", :format, val, "date-time")
     end
+
     if name === Symbol("toTime")
         OpenAPI.validate_param(name, "RequestRateByIntervalInput", :format, val, "date-time")
     end
+
+
+
+
+
 end

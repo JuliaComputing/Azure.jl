@@ -15,17 +15,23 @@ Base.@kwdef mutable struct ListServiceSasResponse <: OpenAPI.APIModel
     serviceSasToken::Union{Nothing, String} = nothing
 
     function ListServiceSasResponse(serviceSasToken, )
-        OpenAPI.validate_property(ListServiceSasResponse, Symbol("serviceSasToken"), serviceSasToken)
-        return new(serviceSasToken, )
+        o = new(serviceSasToken, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ListServiceSasResponse
 
 const _property_types_ListServiceSasResponse = Dict{Symbol,String}(Symbol("serviceSasToken")=>"String", )
 OpenAPI.property_type(::Type{ ListServiceSasResponse }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ListServiceSasResponse[name]))}
 
-function check_required(o::ListServiceSasResponse)
+function OpenAPI.check_required(o::ListServiceSasResponse)
     true
 end
 
+function OpenAPI.validate_properties(o::ListServiceSasResponse)
+    OpenAPI.validate_property(ListServiceSasResponse, Symbol("serviceSasToken"), o.serviceSasToken)
+end
+
 function OpenAPI.validate_property(::Type{ ListServiceSasResponse }, name::Symbol, val)
+
 end

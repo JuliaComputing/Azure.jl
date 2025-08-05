@@ -3,54 +3,66 @@
 
 
 @doc raw"""AvailabilitySet
-Specifies information about the availability set that the virtual machine should be assigned to. Virtual machines specified in the same availability set are allocated to different nodes to maximize availability. For more information about availability sets, see [Manage the availability of virtual machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc&#x3D;%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). &lt;br&gt;&lt;br&gt; For more information on Azure planned maintenance, see [Planned maintenance for virtual machines in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-planned-maintenance?toc&#x3D;%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) &lt;br&gt;&lt;br&gt; Currently, a VM can only be added to availability set at creation time. An existing VM cannot be added to an availability set.
+Specifies information about the availability set that the virtual machine should be assigned to. Virtual machines specified in the same availability set are allocated to different nodes to maximize availability. For more information about availability sets, see [Availability sets overview](https://docs.microsoft.com/azure/virtual-machines/availability-set-overview). &lt;br&gt;&lt;br&gt; For more information on Azure planned maintenance, see [Maintenance and updates for Virtual Machines in Azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates) &lt;br&gt;&lt;br&gt; Currently, a VM can only be added to availability set at creation time. An existing VM cannot be added to an availability set.
 
     AvailabilitySet(;
+        properties=nothing,
+        sku=nothing,
         id=nothing,
         name=nothing,
         type=nothing,
         location=nothing,
         tags=nothing,
-        properties=nothing,
-        sku=nothing,
     )
 
+    - properties::AvailabilitySetProperties
+    - sku::Sku
     - id::String : Resource Id
     - name::String : Resource name
     - type::String : Resource type
     - location::String : Resource location
     - tags::Dict{String, String} : Resource tags
-    - properties::AvailabilitySetProperties
-    - sku::Sku
 """
 Base.@kwdef mutable struct AvailabilitySet <: OpenAPI.APIModel
+    properties = nothing # spec type: Union{ Nothing, AvailabilitySetProperties }
+    sku = nothing # spec type: Union{ Nothing, Sku }
     id::Union{Nothing, String} = nothing
     name::Union{Nothing, String} = nothing
     type::Union{Nothing, String} = nothing
     location::Union{Nothing, String} = nothing
     tags::Union{Nothing, Dict{String, String}} = nothing
-    properties = nothing # spec type: Union{ Nothing, AvailabilitySetProperties }
-    sku = nothing # spec type: Union{ Nothing, Sku }
 
-    function AvailabilitySet(id, name, type, location, tags, properties, sku, )
-        OpenAPI.validate_property(AvailabilitySet, Symbol("id"), id)
-        OpenAPI.validate_property(AvailabilitySet, Symbol("name"), name)
-        OpenAPI.validate_property(AvailabilitySet, Symbol("type"), type)
-        OpenAPI.validate_property(AvailabilitySet, Symbol("location"), location)
-        OpenAPI.validate_property(AvailabilitySet, Symbol("tags"), tags)
-        OpenAPI.validate_property(AvailabilitySet, Symbol("properties"), properties)
-        OpenAPI.validate_property(AvailabilitySet, Symbol("sku"), sku)
-        return new(id, name, type, location, tags, properties, sku, )
+    function AvailabilitySet(properties, sku, id, name, type, location, tags, )
+        o = new(properties, sku, id, name, type, location, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AvailabilitySet
 
-const _property_types_AvailabilitySet = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", Symbol("properties")=>"AvailabilitySetProperties", Symbol("sku")=>"Sku", )
+const _property_types_AvailabilitySet = Dict{Symbol,String}(Symbol("properties")=>"AvailabilitySetProperties", Symbol("sku")=>"Sku", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ AvailabilitySet }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AvailabilitySet[name]))}
 
-function check_required(o::AvailabilitySet)
+function OpenAPI.check_required(o::AvailabilitySet)
     o.location === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::AvailabilitySet)
+    OpenAPI.validate_property(AvailabilitySet, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(AvailabilitySet, Symbol("sku"), o.sku)
+    OpenAPI.validate_property(AvailabilitySet, Symbol("id"), o.id)
+    OpenAPI.validate_property(AvailabilitySet, Symbol("name"), o.name)
+    OpenAPI.validate_property(AvailabilitySet, Symbol("type"), o.type)
+    OpenAPI.validate_property(AvailabilitySet, Symbol("location"), o.location)
+    OpenAPI.validate_property(AvailabilitySet, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ AvailabilitySet }, name::Symbol, val)
+
+
+
+
+
+
+
 end

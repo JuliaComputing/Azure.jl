@@ -6,6 +6,7 @@
 Public IP address resource.
 
     PublicIPAddress(;
+        extendedLocation=nothing,
         sku=nothing,
         properties=nothing,
         etag=nothing,
@@ -17,6 +18,7 @@ Public IP address resource.
         tags=nothing,
     )
 
+    - extendedLocation::ExtendedLocation
     - sku::PublicIPAddressSku
     - properties::PublicIPAddressPropertiesFormat
     - etag::String : A unique read-only string that changes whenever the resource is updated.
@@ -28,6 +30,7 @@ Public IP address resource.
     - tags::Dict{String, String} : Resource tags.
 """
 Base.@kwdef mutable struct PublicIPAddress <: OpenAPI.APIModel
+    extendedLocation = nothing # spec type: Union{ Nothing, ExtendedLocation }
     sku = nothing # spec type: Union{ Nothing, PublicIPAddressSku }
     properties = nothing # spec type: Union{ Nothing, PublicIPAddressPropertiesFormat }
     etag::Union{Nothing, String} = nothing
@@ -38,26 +41,42 @@ Base.@kwdef mutable struct PublicIPAddress <: OpenAPI.APIModel
     location::Union{Nothing, String} = nothing
     tags::Union{Nothing, Dict{String, String}} = nothing
 
-    function PublicIPAddress(sku, properties, etag, zones, id, name, type, location, tags, )
-        OpenAPI.validate_property(PublicIPAddress, Symbol("sku"), sku)
-        OpenAPI.validate_property(PublicIPAddress, Symbol("properties"), properties)
-        OpenAPI.validate_property(PublicIPAddress, Symbol("etag"), etag)
-        OpenAPI.validate_property(PublicIPAddress, Symbol("zones"), zones)
-        OpenAPI.validate_property(PublicIPAddress, Symbol("id"), id)
-        OpenAPI.validate_property(PublicIPAddress, Symbol("name"), name)
-        OpenAPI.validate_property(PublicIPAddress, Symbol("type"), type)
-        OpenAPI.validate_property(PublicIPAddress, Symbol("location"), location)
-        OpenAPI.validate_property(PublicIPAddress, Symbol("tags"), tags)
-        return new(sku, properties, etag, zones, id, name, type, location, tags, )
+    function PublicIPAddress(extendedLocation, sku, properties, etag, zones, id, name, type, location, tags, )
+        o = new(extendedLocation, sku, properties, etag, zones, id, name, type, location, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PublicIPAddress
 
-const _property_types_PublicIPAddress = Dict{Symbol,String}(Symbol("sku")=>"PublicIPAddressSku", Symbol("properties")=>"PublicIPAddressPropertiesFormat", Symbol("etag")=>"String", Symbol("zones")=>"Vector{String}", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
+const _property_types_PublicIPAddress = Dict{Symbol,String}(Symbol("extendedLocation")=>"ExtendedLocation", Symbol("sku")=>"PublicIPAddressSku", Symbol("properties")=>"PublicIPAddressPropertiesFormat", Symbol("etag")=>"String", Symbol("zones")=>"Vector{String}", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ PublicIPAddress }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PublicIPAddress[name]))}
 
-function check_required(o::PublicIPAddress)
+function OpenAPI.check_required(o::PublicIPAddress)
     true
 end
 
+function OpenAPI.validate_properties(o::PublicIPAddress)
+    OpenAPI.validate_property(PublicIPAddress, Symbol("extendedLocation"), o.extendedLocation)
+    OpenAPI.validate_property(PublicIPAddress, Symbol("sku"), o.sku)
+    OpenAPI.validate_property(PublicIPAddress, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(PublicIPAddress, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(PublicIPAddress, Symbol("zones"), o.zones)
+    OpenAPI.validate_property(PublicIPAddress, Symbol("id"), o.id)
+    OpenAPI.validate_property(PublicIPAddress, Symbol("name"), o.name)
+    OpenAPI.validate_property(PublicIPAddress, Symbol("type"), o.type)
+    OpenAPI.validate_property(PublicIPAddress, Symbol("location"), o.location)
+    OpenAPI.validate_property(PublicIPAddress, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ PublicIPAddress }, name::Symbol, val)
+
+
+
+
+
+
+
+
+
+
 end

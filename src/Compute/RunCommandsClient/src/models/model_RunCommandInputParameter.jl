@@ -18,20 +18,27 @@ Base.@kwdef mutable struct RunCommandInputParameter <: OpenAPI.APIModel
     value::Union{Nothing, String} = nothing
 
     function RunCommandInputParameter(name, value, )
-        OpenAPI.validate_property(RunCommandInputParameter, Symbol("name"), name)
-        OpenAPI.validate_property(RunCommandInputParameter, Symbol("value"), value)
-        return new(name, value, )
+        o = new(name, value, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type RunCommandInputParameter
 
 const _property_types_RunCommandInputParameter = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("value")=>"String", )
 OpenAPI.property_type(::Type{ RunCommandInputParameter }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RunCommandInputParameter[name]))}
 
-function check_required(o::RunCommandInputParameter)
+function OpenAPI.check_required(o::RunCommandInputParameter)
     o.name === nothing && (return false)
     o.value === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::RunCommandInputParameter)
+    OpenAPI.validate_property(RunCommandInputParameter, Symbol("name"), o.name)
+    OpenAPI.validate_property(RunCommandInputParameter, Symbol("value"), o.value)
+end
+
 function OpenAPI.validate_property(::Type{ RunCommandInputParameter }, name::Symbol, val)
+
+
 end

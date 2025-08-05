@@ -24,31 +24,40 @@ Base.@kwdef mutable struct RollingUpgradeProgressInfo <: OpenAPI.APIModel
     pendingInstanceCount::Union{Nothing, Int64} = nothing
 
     function RollingUpgradeProgressInfo(successfulInstanceCount, failedInstanceCount, inProgressInstanceCount, pendingInstanceCount, )
-        OpenAPI.validate_property(RollingUpgradeProgressInfo, Symbol("successfulInstanceCount"), successfulInstanceCount)
-        OpenAPI.validate_property(RollingUpgradeProgressInfo, Symbol("failedInstanceCount"), failedInstanceCount)
-        OpenAPI.validate_property(RollingUpgradeProgressInfo, Symbol("inProgressInstanceCount"), inProgressInstanceCount)
-        OpenAPI.validate_property(RollingUpgradeProgressInfo, Symbol("pendingInstanceCount"), pendingInstanceCount)
-        return new(successfulInstanceCount, failedInstanceCount, inProgressInstanceCount, pendingInstanceCount, )
+        o = new(successfulInstanceCount, failedInstanceCount, inProgressInstanceCount, pendingInstanceCount, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type RollingUpgradeProgressInfo
 
 const _property_types_RollingUpgradeProgressInfo = Dict{Symbol,String}(Symbol("successfulInstanceCount")=>"Int64", Symbol("failedInstanceCount")=>"Int64", Symbol("inProgressInstanceCount")=>"Int64", Symbol("pendingInstanceCount")=>"Int64", )
 OpenAPI.property_type(::Type{ RollingUpgradeProgressInfo }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RollingUpgradeProgressInfo[name]))}
 
-function check_required(o::RollingUpgradeProgressInfo)
+function OpenAPI.check_required(o::RollingUpgradeProgressInfo)
     true
 end
 
+function OpenAPI.validate_properties(o::RollingUpgradeProgressInfo)
+    OpenAPI.validate_property(RollingUpgradeProgressInfo, Symbol("successfulInstanceCount"), o.successfulInstanceCount)
+    OpenAPI.validate_property(RollingUpgradeProgressInfo, Symbol("failedInstanceCount"), o.failedInstanceCount)
+    OpenAPI.validate_property(RollingUpgradeProgressInfo, Symbol("inProgressInstanceCount"), o.inProgressInstanceCount)
+    OpenAPI.validate_property(RollingUpgradeProgressInfo, Symbol("pendingInstanceCount"), o.pendingInstanceCount)
+end
+
 function OpenAPI.validate_property(::Type{ RollingUpgradeProgressInfo }, name::Symbol, val)
+
     if name === Symbol("successfulInstanceCount")
         OpenAPI.validate_param(name, "RollingUpgradeProgressInfo", :format, val, "int32")
     end
+
     if name === Symbol("failedInstanceCount")
         OpenAPI.validate_param(name, "RollingUpgradeProgressInfo", :format, val, "int32")
     end
+
     if name === Symbol("inProgressInstanceCount")
         OpenAPI.validate_param(name, "RollingUpgradeProgressInfo", :format, val, "int32")
     end
+
     if name === Symbol("pendingInstanceCount")
         OpenAPI.validate_param(name, "RollingUpgradeProgressInfo", :format, val, "int32")
     end

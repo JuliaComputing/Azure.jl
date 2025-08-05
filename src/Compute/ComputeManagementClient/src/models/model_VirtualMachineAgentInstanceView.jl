@@ -21,19 +21,27 @@ Base.@kwdef mutable struct VirtualMachineAgentInstanceView <: OpenAPI.APIModel
     statuses::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{InstanceViewStatus} }
 
     function VirtualMachineAgentInstanceView(vmAgentVersion, extensionHandlers, statuses, )
-        OpenAPI.validate_property(VirtualMachineAgentInstanceView, Symbol("vmAgentVersion"), vmAgentVersion)
-        OpenAPI.validate_property(VirtualMachineAgentInstanceView, Symbol("extensionHandlers"), extensionHandlers)
-        OpenAPI.validate_property(VirtualMachineAgentInstanceView, Symbol("statuses"), statuses)
-        return new(vmAgentVersion, extensionHandlers, statuses, )
+        o = new(vmAgentVersion, extensionHandlers, statuses, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineAgentInstanceView
 
 const _property_types_VirtualMachineAgentInstanceView = Dict{Symbol,String}(Symbol("vmAgentVersion")=>"String", Symbol("extensionHandlers")=>"Vector{VirtualMachineExtensionHandlerInstanceView}", Symbol("statuses")=>"Vector{InstanceViewStatus}", )
 OpenAPI.property_type(::Type{ VirtualMachineAgentInstanceView }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineAgentInstanceView[name]))}
 
-function check_required(o::VirtualMachineAgentInstanceView)
+function OpenAPI.check_required(o::VirtualMachineAgentInstanceView)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineAgentInstanceView)
+    OpenAPI.validate_property(VirtualMachineAgentInstanceView, Symbol("vmAgentVersion"), o.vmAgentVersion)
+    OpenAPI.validate_property(VirtualMachineAgentInstanceView, Symbol("extensionHandlers"), o.extensionHandlers)
+    OpenAPI.validate_property(VirtualMachineAgentInstanceView, Symbol("statuses"), o.statuses)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineAgentInstanceView }, name::Symbol, val)
+
+
+
 end

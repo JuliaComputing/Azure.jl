@@ -34,11 +34,11 @@ Gets the specified network interface ip configuration.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkInterfacesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_interface_name** | **String**| The name of the network interface. | [default to nothing]
-**ip_configuration_name** | **String**| The name of the ip configuration name. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**network_interface_name** | **String** | The name of the network interface. |
+**ip_configuration_name** | **String** | The name of the ip configuration name. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -68,10 +68,10 @@ Get all ip configurations in a network interface.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkInterfacesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_interface_name** | **String**| The name of the network interface. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**network_interface_name** | **String** | The name of the network interface. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -101,10 +101,10 @@ List all load balancers in a network interface.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkInterfacesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_interface_name** | **String**| The name of the network interface. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**network_interface_name** | **String** | The name of the network interface. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -134,12 +134,12 @@ Creates or updates a Tap configuration in the specified NetworkInterface.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkInterfacesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_interface_name** | **String**| The name of the network interface. | [default to nothing]
-**tap_configuration_name** | **String**| The name of the tap configuration. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**tap_configuration_parameters** | [**NetworkInterfaceTapConfiguration**](NetworkInterfaceTapConfiguration.md)| Parameters supplied to the create or update tap configuration operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**network_interface_name** | **String** | The name of the network interface. |
+**tap_configuration_name** | **String** | The name of the tap configuration. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**tap_configuration_parameters** | [**NetworkInterfaceTapConfiguration**](NetworkInterfaceTapConfiguration.md) | Parameters supplied to the create or update tap configuration operation. |
 
 ### Return type
 
@@ -169,11 +169,11 @@ Deletes the specified tap configuration from the NetworkInterface.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkInterfacesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_interface_name** | **String**| The name of the network interface. | [default to nothing]
-**tap_configuration_name** | **String**| The name of the tap configuration. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**network_interface_name** | **String** | The name of the network interface. |
+**tap_configuration_name** | **String** | The name of the tap configuration. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -203,11 +203,11 @@ Get the specified tap configuration on a network interface.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkInterfacesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_interface_name** | **String**| The name of the network interface. | [default to nothing]
-**tap_configuration_name** | **String**| The name of the tap configuration. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**network_interface_name** | **String** | The name of the network interface. |
+**tap_configuration_name** | **String** | The name of the tap configuration. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -237,10 +237,10 @@ Get all Tap configurations in a network interface.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkInterfacesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_interface_name** | **String**| The name of the network interface. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**network_interface_name** | **String** | The name of the network interface. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -270,11 +270,11 @@ Creates or updates a network interface.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkInterfacesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_interface_name** | **String**| The name of the network interface. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**NetworkInterface**](NetworkInterface.md)| Parameters supplied to the create or update network interface operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**network_interface_name** | **String** | The name of the network interface. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**NetworkInterface**](NetworkInterface.md) | Parameters supplied to the create or update network interface operation. |
 
 ### Return type
 
@@ -304,10 +304,10 @@ Deletes the specified network interface.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkInterfacesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_interface_name** | **String**| The name of the network interface. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**network_interface_name** | **String** | The name of the network interface. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -337,16 +337,16 @@ Gets information about the specified network interface.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkInterfacesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_interface_name** | **String**| The name of the network interface. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**network_interface_name** | **String** | The name of the network interface. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expand** | **String**| Expands referenced resources. | [default to nothing]
+ **expand** | **String** | Expands referenced resources. | [default to nothing]
 
 ### Return type
 
@@ -376,10 +376,10 @@ Gets all route tables applied to a network interface.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkInterfacesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_interface_name** | **String**| The name of the network interface. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**network_interface_name** | **String** | The name of the network interface. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -409,9 +409,9 @@ Gets all network interfaces in a resource group.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkInterfacesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -441,8 +441,8 @@ Gets all network interfaces in a subscription.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkInterfacesApi** | API context | 
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -472,10 +472,10 @@ Gets all network security groups applied to a network interface.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkInterfacesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_interface_name** | **String**| The name of the network interface. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**network_interface_name** | **String** | The name of the network interface. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -505,11 +505,11 @@ Updates a network interface tags.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkInterfacesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_interface_name** | **String**| The name of the network interface. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**TagsObject**](TagsObject.md)| Parameters supplied to update network interface tags. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**network_interface_name** | **String** | The name of the network interface. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**TagsObject**](TagsObject.md) | Parameters supplied to update network interface tags. |
 
 ### Return type
 

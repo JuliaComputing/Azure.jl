@@ -20,7 +20,7 @@ Gets a list of compute operations.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ComputeOperationsApi** | API context | 
-**api_version** | **String**| Client Api Version. | [default to nothing]
+**api_version** | **String** | Client Api Version. |
 
 ### Return type
 

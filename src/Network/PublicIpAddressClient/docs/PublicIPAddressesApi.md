@@ -5,6 +5,7 @@ All URIs are relative to *https://management.azure.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**public_i_p_addresses_create_or_update**](PublicIPAddressesApi.md#public_i_p_addresses_create_or_update) | **PUT** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses/{publicIpAddressName} | 
+[**public_i_p_addresses_ddos_protection_status**](PublicIPAddressesApi.md#public_i_p_addresses_ddos_protection_status) | **POST** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses/{publicIpAddressName}/ddosProtectionStatus | 
 [**public_i_p_addresses_delete**](PublicIPAddressesApi.md#public_i_p_addresses_delete) | **DELETE** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses/{publicIpAddressName} | 
 [**public_i_p_addresses_get**](PublicIPAddressesApi.md#public_i_p_addresses_get) | **GET** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses/{publicIpAddressName} | 
 [**public_i_p_addresses_list**](PublicIPAddressesApi.md#public_i_p_addresses_list) | **GET** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses | 
@@ -25,11 +26,11 @@ Creates or updates a static or dynamic public IP address.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **PublicIPAddressesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**public_ip_address_name** | **String**| The name of the public IP address. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**PublicIPAddress**](PublicIPAddress.md)| Parameters supplied to the create or update public IP address operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**public_ip_address_name** | **String** | The name of the public IP address. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**PublicIPAddress**](PublicIPAddress.md) | Parameters supplied to the create or update public IP address operation. |
 
 ### Return type
 
@@ -42,6 +43,39 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+# **public_i_p_addresses_ddos_protection_status**
+> public_i_p_addresses_ddos_protection_status(_api::PublicIPAddressesApi, resource_group_name::String, public_ip_address_name::String, api_version::String, subscription_id::String; _mediaType=nothing) -> PublicIpDdosProtectionStatusResult, OpenAPI.Clients.ApiResponse <br/>
+> public_i_p_addresses_ddos_protection_status(_api::PublicIPAddressesApi, response_stream::Channel, resource_group_name::String, public_ip_address_name::String, api_version::String, subscription_id::String; _mediaType=nothing) -> Channel{ PublicIpDdosProtectionStatusResult }, OpenAPI.Clients.ApiResponse
+
+
+
+Gets the Ddos Protection Status of a Public IP Address
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **_api** | **PublicIPAddressesApi** | API context | 
+**resource_group_name** | **String** | The name of the resource group. |
+**public_ip_address_name** | **String** | The name of the public IP address. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+
+### Return type
+
+[**PublicIpDdosProtectionStatusResult**](PublicIpDdosProtectionStatusResult.md)
+
+### Authorization
+
+[azure_auth](../README.md#azure_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
@@ -59,10 +93,10 @@ Deletes the specified public IP address.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **PublicIPAddressesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**public_ip_address_name** | **String**| The name of the subnet. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**public_ip_address_name** | **String** | The name of the public IP address. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -92,16 +126,16 @@ Gets the specified public IP address in a specified resource group.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **PublicIPAddressesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**public_ip_address_name** | **String**| The name of the subnet. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**public_ip_address_name** | **String** | The name of the public IP address. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expand** | **String**| Expands referenced resources. | [default to nothing]
+ **expand** | **String** | Expands referenced resources. | [default to nothing]
 
 ### Return type
 
@@ -131,9 +165,9 @@ Gets all public IP addresses in a resource group.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **PublicIPAddressesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -163,8 +197,8 @@ Gets all the public IP addresses in a subscription.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **PublicIPAddressesApi** | API context | 
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -194,11 +228,11 @@ Updates public IP address tags.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **PublicIPAddressesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**public_ip_address_name** | **String**| The name of the public IP address. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**TagsObject**](TagsObject.md)| Parameters supplied to update public IP address tags. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**public_ip_address_name** | **String** | The name of the public IP address. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**TagsObject**](TagsObject.md) | Parameters supplied to update public IP address tags. |
 
 ### Return type
 

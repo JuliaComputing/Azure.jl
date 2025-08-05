@@ -22,7 +22,7 @@ Properties of the load balancer.
     - loadBalancingRules::Vector{LoadBalancingRule} : Object collection representing the load balancing rules Gets the provisioning.
     - probes::Vector{Probe} : Collection of probe objects used in the load balancer.
     - inboundNatRules::Vector{InboundNatRule} : Collection of inbound NAT Rules used by a load balancer. Defining inbound NAT rules on your load balancer is mutually exclusive with defining an inbound NAT pool. Inbound NAT pools are referenced from virtual machine scale sets. NICs that are associated with individual virtual machines cannot reference an Inbound NAT pool. They have to reference individual inbound NAT rules.
-    - inboundNatPools::Vector{InboundNatPool} : Defines an external port range for inbound NAT to a single backend port on NICs associated with a load balancer. Inbound NAT rules are created automatically for each NIC associated with the Load Balancer using an external port from this range. Defining an Inbound NAT pool on your Load Balancer is mutually exclusive with defining inbound Nat rules. Inbound NAT pools are referenced from virtual machine scale sets. NICs that are associated with individual virtual machines cannot reference an inbound NAT pool. They have to reference individual inbound NAT rules.
+    - inboundNatPools::Vector{InboundNatPool} : Defines an external port range for inbound NAT to a single backend port on NICs associated with a load balancer. Inbound NAT rules are created automatically for each NIC associated with the Load Balancer using an external port from this range. Defining an Inbound NAT pool on your Load Balancer is mutually exclusive with defining inbound NAT rules. Inbound NAT pools are referenced from virtual machine scale sets. NICs that are associated with individual virtual machines cannot reference an inbound NAT pool. They have to reference individual inbound NAT rules.
     - outboundRules::Vector{OutboundRule} : The outbound rules.
     - resourceGuid::String : The resource GUID property of the load balancer resource.
     - provisioningState::ProvisioningState
@@ -39,25 +39,39 @@ Base.@kwdef mutable struct LoadBalancerPropertiesFormat <: OpenAPI.APIModel
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
     function LoadBalancerPropertiesFormat(frontendIPConfigurations, backendAddressPools, loadBalancingRules, probes, inboundNatRules, inboundNatPools, outboundRules, resourceGuid, provisioningState, )
-        OpenAPI.validate_property(LoadBalancerPropertiesFormat, Symbol("frontendIPConfigurations"), frontendIPConfigurations)
-        OpenAPI.validate_property(LoadBalancerPropertiesFormat, Symbol("backendAddressPools"), backendAddressPools)
-        OpenAPI.validate_property(LoadBalancerPropertiesFormat, Symbol("loadBalancingRules"), loadBalancingRules)
-        OpenAPI.validate_property(LoadBalancerPropertiesFormat, Symbol("probes"), probes)
-        OpenAPI.validate_property(LoadBalancerPropertiesFormat, Symbol("inboundNatRules"), inboundNatRules)
-        OpenAPI.validate_property(LoadBalancerPropertiesFormat, Symbol("inboundNatPools"), inboundNatPools)
-        OpenAPI.validate_property(LoadBalancerPropertiesFormat, Symbol("outboundRules"), outboundRules)
-        OpenAPI.validate_property(LoadBalancerPropertiesFormat, Symbol("resourceGuid"), resourceGuid)
-        OpenAPI.validate_property(LoadBalancerPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(frontendIPConfigurations, backendAddressPools, loadBalancingRules, probes, inboundNatRules, inboundNatPools, outboundRules, resourceGuid, provisioningState, )
+        o = new(frontendIPConfigurations, backendAddressPools, loadBalancingRules, probes, inboundNatRules, inboundNatPools, outboundRules, resourceGuid, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type LoadBalancerPropertiesFormat
 
 const _property_types_LoadBalancerPropertiesFormat = Dict{Symbol,String}(Symbol("frontendIPConfigurations")=>"Vector{FrontendIPConfiguration}", Symbol("backendAddressPools")=>"Vector{BackendAddressPool}", Symbol("loadBalancingRules")=>"Vector{LoadBalancingRule}", Symbol("probes")=>"Vector{Probe}", Symbol("inboundNatRules")=>"Vector{InboundNatRule}", Symbol("inboundNatPools")=>"Vector{InboundNatPool}", Symbol("outboundRules")=>"Vector{OutboundRule}", Symbol("resourceGuid")=>"String", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ LoadBalancerPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_LoadBalancerPropertiesFormat[name]))}
 
-function check_required(o::LoadBalancerPropertiesFormat)
+function OpenAPI.check_required(o::LoadBalancerPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::LoadBalancerPropertiesFormat)
+    OpenAPI.validate_property(LoadBalancerPropertiesFormat, Symbol("frontendIPConfigurations"), o.frontendIPConfigurations)
+    OpenAPI.validate_property(LoadBalancerPropertiesFormat, Symbol("backendAddressPools"), o.backendAddressPools)
+    OpenAPI.validate_property(LoadBalancerPropertiesFormat, Symbol("loadBalancingRules"), o.loadBalancingRules)
+    OpenAPI.validate_property(LoadBalancerPropertiesFormat, Symbol("probes"), o.probes)
+    OpenAPI.validate_property(LoadBalancerPropertiesFormat, Symbol("inboundNatRules"), o.inboundNatRules)
+    OpenAPI.validate_property(LoadBalancerPropertiesFormat, Symbol("inboundNatPools"), o.inboundNatPools)
+    OpenAPI.validate_property(LoadBalancerPropertiesFormat, Symbol("outboundRules"), o.outboundRules)
+    OpenAPI.validate_property(LoadBalancerPropertiesFormat, Symbol("resourceGuid"), o.resourceGuid)
+    OpenAPI.validate_property(LoadBalancerPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ LoadBalancerPropertiesFormat }, name::Symbol, val)
+
+
+
+
+
+
+
+
+
 end

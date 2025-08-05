@@ -30,31 +30,44 @@ Base.@kwdef mutable struct PacketCaptureQueryStatusResult <: OpenAPI.APIModel
     packetCaptureError::Union{Nothing, Vector{String}} = nothing
 
     function PacketCaptureQueryStatusResult(name, id, captureStartTime, packetCaptureStatus, stopReason, packetCaptureError, )
-        OpenAPI.validate_property(PacketCaptureQueryStatusResult, Symbol("name"), name)
-        OpenAPI.validate_property(PacketCaptureQueryStatusResult, Symbol("id"), id)
-        OpenAPI.validate_property(PacketCaptureQueryStatusResult, Symbol("captureStartTime"), captureStartTime)
-        OpenAPI.validate_property(PacketCaptureQueryStatusResult, Symbol("packetCaptureStatus"), packetCaptureStatus)
-        OpenAPI.validate_property(PacketCaptureQueryStatusResult, Symbol("stopReason"), stopReason)
-        OpenAPI.validate_property(PacketCaptureQueryStatusResult, Symbol("packetCaptureError"), packetCaptureError)
-        return new(name, id, captureStartTime, packetCaptureStatus, stopReason, packetCaptureError, )
+        o = new(name, id, captureStartTime, packetCaptureStatus, stopReason, packetCaptureError, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PacketCaptureQueryStatusResult
 
 const _property_types_PacketCaptureQueryStatusResult = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("id")=>"String", Symbol("captureStartTime")=>"ZonedDateTime", Symbol("packetCaptureStatus")=>"String", Symbol("stopReason")=>"String", Symbol("packetCaptureError")=>"Vector{String}", )
 OpenAPI.property_type(::Type{ PacketCaptureQueryStatusResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PacketCaptureQueryStatusResult[name]))}
 
-function check_required(o::PacketCaptureQueryStatusResult)
+function OpenAPI.check_required(o::PacketCaptureQueryStatusResult)
     true
 end
 
+function OpenAPI.validate_properties(o::PacketCaptureQueryStatusResult)
+    OpenAPI.validate_property(PacketCaptureQueryStatusResult, Symbol("name"), o.name)
+    OpenAPI.validate_property(PacketCaptureQueryStatusResult, Symbol("id"), o.id)
+    OpenAPI.validate_property(PacketCaptureQueryStatusResult, Symbol("captureStartTime"), o.captureStartTime)
+    OpenAPI.validate_property(PacketCaptureQueryStatusResult, Symbol("packetCaptureStatus"), o.packetCaptureStatus)
+    OpenAPI.validate_property(PacketCaptureQueryStatusResult, Symbol("stopReason"), o.stopReason)
+    OpenAPI.validate_property(PacketCaptureQueryStatusResult, Symbol("packetCaptureError"), o.packetCaptureError)
+end
+
 function OpenAPI.validate_property(::Type{ PacketCaptureQueryStatusResult }, name::Symbol, val)
+
+
+
     if name === Symbol("captureStartTime")
         OpenAPI.validate_param(name, "PacketCaptureQueryStatusResult", :format, val, "date-time")
     end
+
     if name === Symbol("packetCaptureStatus")
         OpenAPI.validate_param(name, "PacketCaptureQueryStatusResult", :enum, val, ["NotStarted", "Running", "Stopped", "Error", "Unknown"])
     end
+
+
+
     if name === Symbol("packetCaptureError")
-        OpenAPI.validate_param(name, "PacketCaptureQueryStatusResult", :enum, val, [])
+        OpenAPI.validate_param(name, "PacketCaptureQueryStatusResult", :enum, val, ["InternalError", "AgentStopped", "CaptureFailed", "LocalFileFailed", "StorageFailed"])
     end
+
 end

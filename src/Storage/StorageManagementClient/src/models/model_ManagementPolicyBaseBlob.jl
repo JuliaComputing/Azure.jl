@@ -8,32 +8,55 @@ Management policy action for base blob.
     ManagementPolicyBaseBlob(;
         tierToCool=nothing,
         tierToArchive=nothing,
+        tierToCold=nothing,
+        tierToHot=nothing,
         delete=nothing,
+        enableAutoTierToHotFromCool=nothing,
     )
 
     - tierToCool::DateAfterModification
     - tierToArchive::DateAfterModification
+    - tierToCold::DateAfterModification
+    - tierToHot::DateAfterModification
     - delete::DateAfterModification
+    - enableAutoTierToHotFromCool::Bool : This property enables auto tiering of a blob from cool to hot on a blob access. This property requires tierToCool.daysAfterLastAccessTimeGreaterThan.
 """
 Base.@kwdef mutable struct ManagementPolicyBaseBlob <: OpenAPI.APIModel
     tierToCool = nothing # spec type: Union{ Nothing, DateAfterModification }
     tierToArchive = nothing # spec type: Union{ Nothing, DateAfterModification }
+    tierToCold = nothing # spec type: Union{ Nothing, DateAfterModification }
+    tierToHot = nothing # spec type: Union{ Nothing, DateAfterModification }
     delete = nothing # spec type: Union{ Nothing, DateAfterModification }
+    enableAutoTierToHotFromCool::Union{Nothing, Bool} = nothing
 
-    function ManagementPolicyBaseBlob(tierToCool, tierToArchive, delete, )
-        OpenAPI.validate_property(ManagementPolicyBaseBlob, Symbol("tierToCool"), tierToCool)
-        OpenAPI.validate_property(ManagementPolicyBaseBlob, Symbol("tierToArchive"), tierToArchive)
-        OpenAPI.validate_property(ManagementPolicyBaseBlob, Symbol("delete"), delete)
-        return new(tierToCool, tierToArchive, delete, )
+    function ManagementPolicyBaseBlob(tierToCool, tierToArchive, tierToCold, tierToHot, delete, enableAutoTierToHotFromCool, )
+        o = new(tierToCool, tierToArchive, tierToCold, tierToHot, delete, enableAutoTierToHotFromCool, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ManagementPolicyBaseBlob
 
-const _property_types_ManagementPolicyBaseBlob = Dict{Symbol,String}(Symbol("tierToCool")=>"DateAfterModification", Symbol("tierToArchive")=>"DateAfterModification", Symbol("delete")=>"DateAfterModification", )
+const _property_types_ManagementPolicyBaseBlob = Dict{Symbol,String}(Symbol("tierToCool")=>"DateAfterModification", Symbol("tierToArchive")=>"DateAfterModification", Symbol("tierToCold")=>"DateAfterModification", Symbol("tierToHot")=>"DateAfterModification", Symbol("delete")=>"DateAfterModification", Symbol("enableAutoTierToHotFromCool")=>"Bool", )
 OpenAPI.property_type(::Type{ ManagementPolicyBaseBlob }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ManagementPolicyBaseBlob[name]))}
 
-function check_required(o::ManagementPolicyBaseBlob)
+function OpenAPI.check_required(o::ManagementPolicyBaseBlob)
     true
 end
 
+function OpenAPI.validate_properties(o::ManagementPolicyBaseBlob)
+    OpenAPI.validate_property(ManagementPolicyBaseBlob, Symbol("tierToCool"), o.tierToCool)
+    OpenAPI.validate_property(ManagementPolicyBaseBlob, Symbol("tierToArchive"), o.tierToArchive)
+    OpenAPI.validate_property(ManagementPolicyBaseBlob, Symbol("tierToCold"), o.tierToCold)
+    OpenAPI.validate_property(ManagementPolicyBaseBlob, Symbol("tierToHot"), o.tierToHot)
+    OpenAPI.validate_property(ManagementPolicyBaseBlob, Symbol("delete"), o.delete)
+    OpenAPI.validate_property(ManagementPolicyBaseBlob, Symbol("enableAutoTierToHotFromCool"), o.enableAutoTierToHotFromCool)
+end
+
 function OpenAPI.validate_property(::Type{ ManagementPolicyBaseBlob }, name::Symbol, val)
+
+
+
+
+
+
 end

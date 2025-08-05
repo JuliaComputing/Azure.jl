@@ -4,10 +4,43 @@ All URIs are relative to *https://management.azure.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**subscriptions_check_zone_peers**](SubscriptionsApi.md#subscriptions_check_zone_peers) | **POST** /subscriptions/{subscriptionId}/providers/Microsoft.Resources/checkZonePeers/ | 
 [**subscriptions_get**](SubscriptionsApi.md#subscriptions_get) | **GET** /subscriptions/{subscriptionId} | 
 [**subscriptions_list**](SubscriptionsApi.md#subscriptions_list) | **GET** /subscriptions | 
 [**subscriptions_list_locations**](SubscriptionsApi.md#subscriptions_list_locations) | **GET** /subscriptions/{subscriptionId}/locations | Gets all available geo-locations.
 
+
+# **subscriptions_check_zone_peers**
+> subscriptions_check_zone_peers(_api::SubscriptionsApi, subscription_id::String, api_version::String, parameters::CheckZonePeersRequest; _mediaType=nothing) -> CheckZonePeersResult, OpenAPI.Clients.ApiResponse <br/>
+> subscriptions_check_zone_peers(_api::SubscriptionsApi, response_stream::Channel, subscription_id::String, api_version::String, parameters::CheckZonePeersRequest; _mediaType=nothing) -> Channel{ CheckZonePeersResult }, OpenAPI.Clients.ApiResponse
+
+
+
+Compares a subscriptions logical zone mapping
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **_api** | **SubscriptionsApi** | API context | 
+**subscription_id** | **String** | The ID of the target subscription. |
+**api_version** | **String** | The API version to use for this operation. |
+**parameters** | [**CheckZonePeersRequest**](CheckZonePeersRequest.md) | Parameters for checking zone peers. |
+
+### Return type
+
+[**CheckZonePeersResult**](CheckZonePeersResult.md)
+
+### Authorization
+
+[azure_auth](../README.md#azure_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 # **subscriptions_get**
 > subscriptions_get(_api::SubscriptionsApi, subscription_id::String, api_version::String; _mediaType=nothing) -> Subscription, OpenAPI.Clients.ApiResponse <br/>
@@ -22,8 +55,8 @@ Gets details about a specified subscription.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **SubscriptionsApi** | API context | 
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
-**api_version** | **String**| The API version to use for the operation. | [default to nothing]
+**subscription_id** | **String** | The ID of the target subscription. |
+**api_version** | **String** | The API version to use for this operation. |
 
 ### Return type
 
@@ -53,7 +86,7 @@ Gets all subscriptions for a tenant.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **SubscriptionsApi** | API context | 
-**api_version** | **String**| The API version to use for the operation. | [default to nothing]
+**api_version** | **String** | The API version to use for this operation. |
 
 ### Return type
 
@@ -71,8 +104,8 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 # **subscriptions_list_locations**
-> subscriptions_list_locations(_api::SubscriptionsApi, subscription_id::String, api_version::String; _mediaType=nothing) -> LocationListResult, OpenAPI.Clients.ApiResponse <br/>
-> subscriptions_list_locations(_api::SubscriptionsApi, response_stream::Channel, subscription_id::String, api_version::String; _mediaType=nothing) -> Channel{ LocationListResult }, OpenAPI.Clients.ApiResponse
+> subscriptions_list_locations(_api::SubscriptionsApi, subscription_id::String, api_version::String; include_extended_locations=nothing, _mediaType=nothing) -> LocationListResult, OpenAPI.Clients.ApiResponse <br/>
+> subscriptions_list_locations(_api::SubscriptionsApi, response_stream::Channel, subscription_id::String, api_version::String; include_extended_locations=nothing, _mediaType=nothing) -> Channel{ LocationListResult }, OpenAPI.Clients.ApiResponse
 
 Gets all available geo-locations.
 
@@ -83,8 +116,14 @@ This operation provides all the locations that are available for resource provid
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **SubscriptionsApi** | API context | 
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
-**api_version** | **String**| The API version to use for the operation. | [default to nothing]
+**subscription_id** | **String** | The ID of the target subscription. |
+**api_version** | **String** | The API version to use for this operation. |
+
+### Optional Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **include_extended_locations** | **Bool** | Whether to include extended locations. | [default to nothing]
 
 ### Return type
 

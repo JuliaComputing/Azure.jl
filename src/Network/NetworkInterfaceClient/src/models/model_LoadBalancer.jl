@@ -6,6 +6,7 @@
 LoadBalancer resource.
 
     LoadBalancer(;
+        extendedLocation=nothing,
         sku=nothing,
         properties=nothing,
         etag=nothing,
@@ -16,6 +17,7 @@ LoadBalancer resource.
         tags=nothing,
     )
 
+    - extendedLocation::ExtendedLocation
     - sku::LoadBalancerSku
     - properties::LoadBalancerPropertiesFormat
     - etag::String : A unique read-only string that changes whenever the resource is updated.
@@ -26,6 +28,7 @@ LoadBalancer resource.
     - tags::Dict{String, String} : Resource tags.
 """
 Base.@kwdef mutable struct LoadBalancer <: OpenAPI.APIModel
+    extendedLocation = nothing # spec type: Union{ Nothing, ExtendedLocation }
     sku = nothing # spec type: Union{ Nothing, LoadBalancerSku }
     properties = nothing # spec type: Union{ Nothing, LoadBalancerPropertiesFormat }
     etag::Union{Nothing, String} = nothing
@@ -35,25 +38,40 @@ Base.@kwdef mutable struct LoadBalancer <: OpenAPI.APIModel
     location::Union{Nothing, String} = nothing
     tags::Union{Nothing, Dict{String, String}} = nothing
 
-    function LoadBalancer(sku, properties, etag, id, name, type, location, tags, )
-        OpenAPI.validate_property(LoadBalancer, Symbol("sku"), sku)
-        OpenAPI.validate_property(LoadBalancer, Symbol("properties"), properties)
-        OpenAPI.validate_property(LoadBalancer, Symbol("etag"), etag)
-        OpenAPI.validate_property(LoadBalancer, Symbol("id"), id)
-        OpenAPI.validate_property(LoadBalancer, Symbol("name"), name)
-        OpenAPI.validate_property(LoadBalancer, Symbol("type"), type)
-        OpenAPI.validate_property(LoadBalancer, Symbol("location"), location)
-        OpenAPI.validate_property(LoadBalancer, Symbol("tags"), tags)
-        return new(sku, properties, etag, id, name, type, location, tags, )
+    function LoadBalancer(extendedLocation, sku, properties, etag, id, name, type, location, tags, )
+        o = new(extendedLocation, sku, properties, etag, id, name, type, location, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type LoadBalancer
 
-const _property_types_LoadBalancer = Dict{Symbol,String}(Symbol("sku")=>"LoadBalancerSku", Symbol("properties")=>"LoadBalancerPropertiesFormat", Symbol("etag")=>"String", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
+const _property_types_LoadBalancer = Dict{Symbol,String}(Symbol("extendedLocation")=>"ExtendedLocation", Symbol("sku")=>"LoadBalancerSku", Symbol("properties")=>"LoadBalancerPropertiesFormat", Symbol("etag")=>"String", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ LoadBalancer }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_LoadBalancer[name]))}
 
-function check_required(o::LoadBalancer)
+function OpenAPI.check_required(o::LoadBalancer)
     true
 end
 
+function OpenAPI.validate_properties(o::LoadBalancer)
+    OpenAPI.validate_property(LoadBalancer, Symbol("extendedLocation"), o.extendedLocation)
+    OpenAPI.validate_property(LoadBalancer, Symbol("sku"), o.sku)
+    OpenAPI.validate_property(LoadBalancer, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(LoadBalancer, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(LoadBalancer, Symbol("id"), o.id)
+    OpenAPI.validate_property(LoadBalancer, Symbol("name"), o.name)
+    OpenAPI.validate_property(LoadBalancer, Symbol("type"), o.type)
+    OpenAPI.validate_property(LoadBalancer, Symbol("location"), o.location)
+    OpenAPI.validate_property(LoadBalancer, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ LoadBalancer }, name::Symbol, val)
+
+
+
+
+
+
+
+
+
 end

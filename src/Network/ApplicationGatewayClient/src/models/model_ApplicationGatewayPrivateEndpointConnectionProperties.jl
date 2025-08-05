@@ -24,20 +24,29 @@ Base.@kwdef mutable struct ApplicationGatewayPrivateEndpointConnectionProperties
     linkIdentifier::Union{Nothing, String} = nothing
 
     function ApplicationGatewayPrivateEndpointConnectionProperties(privateEndpoint, privateLinkServiceConnectionState, provisioningState, linkIdentifier, )
-        OpenAPI.validate_property(ApplicationGatewayPrivateEndpointConnectionProperties, Symbol("privateEndpoint"), privateEndpoint)
-        OpenAPI.validate_property(ApplicationGatewayPrivateEndpointConnectionProperties, Symbol("privateLinkServiceConnectionState"), privateLinkServiceConnectionState)
-        OpenAPI.validate_property(ApplicationGatewayPrivateEndpointConnectionProperties, Symbol("provisioningState"), provisioningState)
-        OpenAPI.validate_property(ApplicationGatewayPrivateEndpointConnectionProperties, Symbol("linkIdentifier"), linkIdentifier)
-        return new(privateEndpoint, privateLinkServiceConnectionState, provisioningState, linkIdentifier, )
+        o = new(privateEndpoint, privateLinkServiceConnectionState, provisioningState, linkIdentifier, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayPrivateEndpointConnectionProperties
 
 const _property_types_ApplicationGatewayPrivateEndpointConnectionProperties = Dict{Symbol,String}(Symbol("privateEndpoint")=>"PrivateEndpoint", Symbol("privateLinkServiceConnectionState")=>"PrivateLinkServiceConnectionState", Symbol("provisioningState")=>"ProvisioningState", Symbol("linkIdentifier")=>"String", )
 OpenAPI.property_type(::Type{ ApplicationGatewayPrivateEndpointConnectionProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayPrivateEndpointConnectionProperties[name]))}
 
-function check_required(o::ApplicationGatewayPrivateEndpointConnectionProperties)
+function OpenAPI.check_required(o::ApplicationGatewayPrivateEndpointConnectionProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayPrivateEndpointConnectionProperties)
+    OpenAPI.validate_property(ApplicationGatewayPrivateEndpointConnectionProperties, Symbol("privateEndpoint"), o.privateEndpoint)
+    OpenAPI.validate_property(ApplicationGatewayPrivateEndpointConnectionProperties, Symbol("privateLinkServiceConnectionState"), o.privateLinkServiceConnectionState)
+    OpenAPI.validate_property(ApplicationGatewayPrivateEndpointConnectionProperties, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(ApplicationGatewayPrivateEndpointConnectionProperties, Symbol("linkIdentifier"), o.linkIdentifier)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayPrivateEndpointConnectionProperties }, name::Symbol, val)
+
+
+
+
 end

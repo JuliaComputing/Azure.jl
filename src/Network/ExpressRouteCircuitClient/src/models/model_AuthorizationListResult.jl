@@ -18,18 +18,25 @@ Base.@kwdef mutable struct AuthorizationListResult <: OpenAPI.APIModel
     nextLink::Union{Nothing, String} = nothing
 
     function AuthorizationListResult(value, nextLink, )
-        OpenAPI.validate_property(AuthorizationListResult, Symbol("value"), value)
-        OpenAPI.validate_property(AuthorizationListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AuthorizationListResult
 
 const _property_types_AuthorizationListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{ExpressRouteCircuitAuthorization}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ AuthorizationListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AuthorizationListResult[name]))}
 
-function check_required(o::AuthorizationListResult)
+function OpenAPI.check_required(o::AuthorizationListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::AuthorizationListResult)
+    OpenAPI.validate_property(AuthorizationListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(AuthorizationListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ AuthorizationListResult }, name::Symbol, val)
+
+
 end

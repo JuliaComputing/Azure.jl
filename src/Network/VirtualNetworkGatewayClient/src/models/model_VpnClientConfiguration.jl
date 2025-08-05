@@ -10,6 +10,7 @@ VpnClientConfiguration for P2S client.
         vpnClientRootCertificates=nothing,
         vpnClientRevokedCertificates=nothing,
         vpnClientProtocols=nothing,
+        vpnAuthenticationTypes=nothing,
         vpnClientIpsecPolicies=nothing,
         radiusServerAddress=nothing,
         radiusServerSecret=nothing,
@@ -17,12 +18,14 @@ VpnClientConfiguration for P2S client.
         aadTenant=nothing,
         aadAudience=nothing,
         aadIssuer=nothing,
+        vngClientConnectionConfigurations=nothing,
     )
 
     - vpnClientAddressPool::AddressSpace
     - vpnClientRootCertificates::Vector{VpnClientRootCertificate} : VpnClientRootCertificate for virtual network gateway.
     - vpnClientRevokedCertificates::Vector{VpnClientRevokedCertificate} : VpnClientRevokedCertificate for Virtual network gateway.
     - vpnClientProtocols::Vector{String} : VpnClientProtocols for Virtual network gateway.
+    - vpnAuthenticationTypes::Vector{String} : VPN authentication types for the virtual network gateway..
     - vpnClientIpsecPolicies::Vector{IpsecPolicy} : VpnClientIpsecPolicies for virtual network gateway P2S client.
     - radiusServerAddress::String : The radius server address property of the VirtualNetworkGateway resource for vpn client connection.
     - radiusServerSecret::String : The radius secret property of the VirtualNetworkGateway resource for vpn client connection.
@@ -30,12 +33,14 @@ VpnClientConfiguration for P2S client.
     - aadTenant::String : The AADTenant property of the VirtualNetworkGateway resource for vpn client connection used for AAD authentication.
     - aadAudience::String : The AADAudience property of the VirtualNetworkGateway resource for vpn client connection used for AAD authentication.
     - aadIssuer::String : The AADIssuer property of the VirtualNetworkGateway resource for vpn client connection used for AAD authentication.
+    - vngClientConnectionConfigurations::Vector{VngClientConnectionConfiguration} : per ip address pool connection policy for virtual network gateway P2S client.
 """
 Base.@kwdef mutable struct VpnClientConfiguration <: OpenAPI.APIModel
     vpnClientAddressPool = nothing # spec type: Union{ Nothing, AddressSpace }
     vpnClientRootCertificates::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{VpnClientRootCertificate} }
     vpnClientRevokedCertificates::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{VpnClientRevokedCertificate} }
     vpnClientProtocols::Union{Nothing, Vector{String}} = nothing
+    vpnAuthenticationTypes::Union{Nothing, Vector{String}} = nothing
     vpnClientIpsecPolicies::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{IpsecPolicy} }
     radiusServerAddress::Union{Nothing, String} = nothing
     radiusServerSecret::Union{Nothing, String} = nothing
@@ -43,32 +48,58 @@ Base.@kwdef mutable struct VpnClientConfiguration <: OpenAPI.APIModel
     aadTenant::Union{Nothing, String} = nothing
     aadAudience::Union{Nothing, String} = nothing
     aadIssuer::Union{Nothing, String} = nothing
+    vngClientConnectionConfigurations::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{VngClientConnectionConfiguration} }
 
-    function VpnClientConfiguration(vpnClientAddressPool, vpnClientRootCertificates, vpnClientRevokedCertificates, vpnClientProtocols, vpnClientIpsecPolicies, radiusServerAddress, radiusServerSecret, radiusServers, aadTenant, aadAudience, aadIssuer, )
-        OpenAPI.validate_property(VpnClientConfiguration, Symbol("vpnClientAddressPool"), vpnClientAddressPool)
-        OpenAPI.validate_property(VpnClientConfiguration, Symbol("vpnClientRootCertificates"), vpnClientRootCertificates)
-        OpenAPI.validate_property(VpnClientConfiguration, Symbol("vpnClientRevokedCertificates"), vpnClientRevokedCertificates)
-        OpenAPI.validate_property(VpnClientConfiguration, Symbol("vpnClientProtocols"), vpnClientProtocols)
-        OpenAPI.validate_property(VpnClientConfiguration, Symbol("vpnClientIpsecPolicies"), vpnClientIpsecPolicies)
-        OpenAPI.validate_property(VpnClientConfiguration, Symbol("radiusServerAddress"), radiusServerAddress)
-        OpenAPI.validate_property(VpnClientConfiguration, Symbol("radiusServerSecret"), radiusServerSecret)
-        OpenAPI.validate_property(VpnClientConfiguration, Symbol("radiusServers"), radiusServers)
-        OpenAPI.validate_property(VpnClientConfiguration, Symbol("aadTenant"), aadTenant)
-        OpenAPI.validate_property(VpnClientConfiguration, Symbol("aadAudience"), aadAudience)
-        OpenAPI.validate_property(VpnClientConfiguration, Symbol("aadIssuer"), aadIssuer)
-        return new(vpnClientAddressPool, vpnClientRootCertificates, vpnClientRevokedCertificates, vpnClientProtocols, vpnClientIpsecPolicies, radiusServerAddress, radiusServerSecret, radiusServers, aadTenant, aadAudience, aadIssuer, )
+    function VpnClientConfiguration(vpnClientAddressPool, vpnClientRootCertificates, vpnClientRevokedCertificates, vpnClientProtocols, vpnAuthenticationTypes, vpnClientIpsecPolicies, radiusServerAddress, radiusServerSecret, radiusServers, aadTenant, aadAudience, aadIssuer, vngClientConnectionConfigurations, )
+        o = new(vpnClientAddressPool, vpnClientRootCertificates, vpnClientRevokedCertificates, vpnClientProtocols, vpnAuthenticationTypes, vpnClientIpsecPolicies, radiusServerAddress, radiusServerSecret, radiusServers, aadTenant, aadAudience, aadIssuer, vngClientConnectionConfigurations, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VpnClientConfiguration
 
-const _property_types_VpnClientConfiguration = Dict{Symbol,String}(Symbol("vpnClientAddressPool")=>"AddressSpace", Symbol("vpnClientRootCertificates")=>"Vector{VpnClientRootCertificate}", Symbol("vpnClientRevokedCertificates")=>"Vector{VpnClientRevokedCertificate}", Symbol("vpnClientProtocols")=>"Vector{String}", Symbol("vpnClientIpsecPolicies")=>"Vector{IpsecPolicy}", Symbol("radiusServerAddress")=>"String", Symbol("radiusServerSecret")=>"String", Symbol("radiusServers")=>"Vector{RadiusServer}", Symbol("aadTenant")=>"String", Symbol("aadAudience")=>"String", Symbol("aadIssuer")=>"String", )
+const _property_types_VpnClientConfiguration = Dict{Symbol,String}(Symbol("vpnClientAddressPool")=>"AddressSpace", Symbol("vpnClientRootCertificates")=>"Vector{VpnClientRootCertificate}", Symbol("vpnClientRevokedCertificates")=>"Vector{VpnClientRevokedCertificate}", Symbol("vpnClientProtocols")=>"Vector{String}", Symbol("vpnAuthenticationTypes")=>"Vector{String}", Symbol("vpnClientIpsecPolicies")=>"Vector{IpsecPolicy}", Symbol("radiusServerAddress")=>"String", Symbol("radiusServerSecret")=>"String", Symbol("radiusServers")=>"Vector{RadiusServer}", Symbol("aadTenant")=>"String", Symbol("aadAudience")=>"String", Symbol("aadIssuer")=>"String", Symbol("vngClientConnectionConfigurations")=>"Vector{VngClientConnectionConfiguration}", )
 OpenAPI.property_type(::Type{ VpnClientConfiguration }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VpnClientConfiguration[name]))}
 
-function check_required(o::VpnClientConfiguration)
+function OpenAPI.check_required(o::VpnClientConfiguration)
     true
 end
 
+function OpenAPI.validate_properties(o::VpnClientConfiguration)
+    OpenAPI.validate_property(VpnClientConfiguration, Symbol("vpnClientAddressPool"), o.vpnClientAddressPool)
+    OpenAPI.validate_property(VpnClientConfiguration, Symbol("vpnClientRootCertificates"), o.vpnClientRootCertificates)
+    OpenAPI.validate_property(VpnClientConfiguration, Symbol("vpnClientRevokedCertificates"), o.vpnClientRevokedCertificates)
+    OpenAPI.validate_property(VpnClientConfiguration, Symbol("vpnClientProtocols"), o.vpnClientProtocols)
+    OpenAPI.validate_property(VpnClientConfiguration, Symbol("vpnAuthenticationTypes"), o.vpnAuthenticationTypes)
+    OpenAPI.validate_property(VpnClientConfiguration, Symbol("vpnClientIpsecPolicies"), o.vpnClientIpsecPolicies)
+    OpenAPI.validate_property(VpnClientConfiguration, Symbol("radiusServerAddress"), o.radiusServerAddress)
+    OpenAPI.validate_property(VpnClientConfiguration, Symbol("radiusServerSecret"), o.radiusServerSecret)
+    OpenAPI.validate_property(VpnClientConfiguration, Symbol("radiusServers"), o.radiusServers)
+    OpenAPI.validate_property(VpnClientConfiguration, Symbol("aadTenant"), o.aadTenant)
+    OpenAPI.validate_property(VpnClientConfiguration, Symbol("aadAudience"), o.aadAudience)
+    OpenAPI.validate_property(VpnClientConfiguration, Symbol("aadIssuer"), o.aadIssuer)
+    OpenAPI.validate_property(VpnClientConfiguration, Symbol("vngClientConnectionConfigurations"), o.vngClientConnectionConfigurations)
+end
+
 function OpenAPI.validate_property(::Type{ VpnClientConfiguration }, name::Symbol, val)
+
+
+
+
     if name === Symbol("vpnClientProtocols")
-        OpenAPI.validate_param(name, "VpnClientConfiguration", :enum, val, [])
+        OpenAPI.validate_param(name, "VpnClientConfiguration", :enum, val, ["IkeV2", "SSTP", "OpenVPN"])
     end
+
+
+    if name === Symbol("vpnAuthenticationTypes")
+        OpenAPI.validate_param(name, "VpnClientConfiguration", :enum, val, ["Certificate", "Radius", "AAD"])
+    end
+
+
+
+
+
+
+
+
+
 end

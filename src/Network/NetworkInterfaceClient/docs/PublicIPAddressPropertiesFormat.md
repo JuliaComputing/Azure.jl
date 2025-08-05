@@ -15,6 +15,11 @@ Name | Type | Description | Notes
 **idleTimeoutInMinutes** | **Int64** | The idle timeout of the public IP address. | [optional] [default to nothing]
 **resourceGuid** | **String** | The resource GUID property of the public IP address resource. | [optional] [readonly] [default to nothing]
 **provisioningState** | [***ProvisioningState**](ProvisioningState.md) |  | [optional] [default to nothing]
+**servicePublicIPAddress** | [***PublicIPAddress**](PublicIPAddress.md) |  | [optional] [default to nothing]
+**natGateway** | [***NatGateway**](NatGateway.md) |  | [optional] [default to nothing]
+**migrationPhase** | **String** | Migration phase of Public IP Address. | [optional] [default to nothing]
+**linkedPublicIPAddress** | [***PublicIPAddress**](PublicIPAddress.md) |  | [optional] [default to nothing]
+**deleteOption** | **String** | Specify what happens to the public IP address when the VM using it is deleted | [optional] [default to nothing]
 
 
 [[Back to Model list]](../README.md#models) [[Back to API list]](../README.md#api-endpoints) [[Back to README]](../README.md)

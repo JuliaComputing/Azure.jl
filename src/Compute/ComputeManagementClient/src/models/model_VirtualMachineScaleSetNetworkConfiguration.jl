@@ -6,35 +6,43 @@
 Describes a virtual machine scale set network profile&#39;s network configurations.
 
     VirtualMachineScaleSetNetworkConfiguration(;
-        id=nothing,
         name=nothing,
         properties=nothing,
+        id=nothing,
     )
 
-    - id::String : Resource Id
     - name::String : The network configuration name.
     - properties::VirtualMachineScaleSetNetworkConfigurationProperties
+    - id::String : Resource Id
 """
 Base.@kwdef mutable struct VirtualMachineScaleSetNetworkConfiguration <: OpenAPI.APIModel
-    id::Union{Nothing, String} = nothing
     name::Union{Nothing, String} = nothing
     properties = nothing # spec type: Union{ Nothing, VirtualMachineScaleSetNetworkConfigurationProperties }
+    id::Union{Nothing, String} = nothing
 
-    function VirtualMachineScaleSetNetworkConfiguration(id, name, properties, )
-        OpenAPI.validate_property(VirtualMachineScaleSetNetworkConfiguration, Symbol("id"), id)
-        OpenAPI.validate_property(VirtualMachineScaleSetNetworkConfiguration, Symbol("name"), name)
-        OpenAPI.validate_property(VirtualMachineScaleSetNetworkConfiguration, Symbol("properties"), properties)
-        return new(id, name, properties, )
+    function VirtualMachineScaleSetNetworkConfiguration(name, properties, id, )
+        o = new(name, properties, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetNetworkConfiguration
 
-const _property_types_VirtualMachineScaleSetNetworkConfiguration = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("properties")=>"VirtualMachineScaleSetNetworkConfigurationProperties", )
+const _property_types_VirtualMachineScaleSetNetworkConfiguration = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("properties")=>"VirtualMachineScaleSetNetworkConfigurationProperties", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetNetworkConfiguration }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetNetworkConfiguration[name]))}
 
-function check_required(o::VirtualMachineScaleSetNetworkConfiguration)
+function OpenAPI.check_required(o::VirtualMachineScaleSetNetworkConfiguration)
     o.name === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetNetworkConfiguration)
+    OpenAPI.validate_property(VirtualMachineScaleSetNetworkConfiguration, Symbol("name"), o.name)
+    OpenAPI.validate_property(VirtualMachineScaleSetNetworkConfiguration, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(VirtualMachineScaleSetNetworkConfiguration, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetNetworkConfiguration }, name::Symbol, val)
+
+
+
 end

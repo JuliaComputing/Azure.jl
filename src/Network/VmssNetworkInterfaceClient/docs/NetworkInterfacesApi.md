@@ -24,19 +24,19 @@ Get the specified network interface ip configuration in a virtual machine scale 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkInterfacesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**virtual_machine_scale_set_name** | **String**| The name of the virtual machine scale set. | [default to nothing]
-**virtualmachine_index** | **String**| The virtual machine index. | [default to nothing]
-**network_interface_name** | **String**| The name of the network interface. | [default to nothing]
-**ip_configuration_name** | **String**| The name of the ip configuration. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**virtual_machine_scale_set_name** | **String** | The name of the virtual machine scale set. |
+**virtualmachine_index** | **String** | The virtual machine index. |
+**network_interface_name** | **String** | The name of the network interface. |
+**ip_configuration_name** | **String** | The name of the ip configuration. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expand** | **String**| Expands referenced resources. | [default to nothing]
+ **expand** | **String** | Expands referenced resources. | [default to nothing]
 
 ### Return type
 
@@ -66,18 +66,18 @@ Get the specified network interface in a virtual machine scale set.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkInterfacesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**virtual_machine_scale_set_name** | **String**| The name of the virtual machine scale set. | [default to nothing]
-**virtualmachine_index** | **String**| The virtual machine index. | [default to nothing]
-**network_interface_name** | **String**| The name of the network interface. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**virtual_machine_scale_set_name** | **String** | The name of the virtual machine scale set. |
+**virtualmachine_index** | **String** | The virtual machine index. |
+**network_interface_name** | **String** | The name of the network interface. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expand** | **String**| Expands referenced resources. | [default to nothing]
+ **expand** | **String** | Expands referenced resources. | [default to nothing]
 
 ### Return type
 
@@ -107,18 +107,18 @@ Get the specified network interface ip configuration in a virtual machine scale 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkInterfacesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**virtual_machine_scale_set_name** | **String**| The name of the virtual machine scale set. | [default to nothing]
-**virtualmachine_index** | **String**| The virtual machine index. | [default to nothing]
-**network_interface_name** | **String**| The name of the network interface. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**virtual_machine_scale_set_name** | **String** | The name of the virtual machine scale set. |
+**virtualmachine_index** | **String** | The virtual machine index. |
+**network_interface_name** | **String** | The name of the network interface. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expand** | **String**| Expands referenced resources. | [default to nothing]
+ **expand** | **String** | Expands referenced resources. | [default to nothing]
 
 ### Return type
 
@@ -148,10 +148,10 @@ Gets all network interfaces in a virtual machine scale set.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkInterfacesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**virtual_machine_scale_set_name** | **String**| The name of the virtual machine scale set. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**virtual_machine_scale_set_name** | **String** | The name of the virtual machine scale set. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -181,11 +181,11 @@ Gets information about all network interfaces in a virtual machine in a virtual 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkInterfacesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**virtual_machine_scale_set_name** | **String**| The name of the virtual machine scale set. | [default to nothing]
-**virtualmachine_index** | **String**| The virtual machine index. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**virtual_machine_scale_set_name** | **String** | The name of the virtual machine scale set. |
+**virtualmachine_index** | **String** | The virtual machine index. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 

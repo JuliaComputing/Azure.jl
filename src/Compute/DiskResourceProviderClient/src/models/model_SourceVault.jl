@@ -15,17 +15,23 @@ Base.@kwdef mutable struct SourceVault <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
 
     function SourceVault(id, )
-        OpenAPI.validate_property(SourceVault, Symbol("id"), id)
-        return new(id, )
+        o = new(id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type SourceVault
 
 const _property_types_SourceVault = Dict{Symbol,String}(Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ SourceVault }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SourceVault[name]))}
 
-function check_required(o::SourceVault)
+function OpenAPI.check_required(o::SourceVault)
     true
 end
 
+function OpenAPI.validate_properties(o::SourceVault)
+    OpenAPI.validate_property(SourceVault, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ SourceVault }, name::Symbol, val)
+
 end

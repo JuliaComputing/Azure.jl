@@ -18,18 +18,25 @@ Base.@kwdef mutable struct NetworkInterfaceListResult <: OpenAPI.APIModel
     nextLink::Union{Nothing, String} = nothing
 
     function NetworkInterfaceListResult(value, nextLink, )
-        OpenAPI.validate_property(NetworkInterfaceListResult, Symbol("value"), value)
-        OpenAPI.validate_property(NetworkInterfaceListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type NetworkInterfaceListResult
 
 const _property_types_NetworkInterfaceListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{NetworkInterface}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ NetworkInterfaceListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkInterfaceListResult[name]))}
 
-function check_required(o::NetworkInterfaceListResult)
+function OpenAPI.check_required(o::NetworkInterfaceListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::NetworkInterfaceListResult)
+    OpenAPI.validate_property(NetworkInterfaceListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(NetworkInterfaceListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ NetworkInterfaceListResult }, name::Symbol, val)
+
+
 end

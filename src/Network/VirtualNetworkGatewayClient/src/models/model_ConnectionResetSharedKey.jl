@@ -15,20 +15,26 @@ Base.@kwdef mutable struct ConnectionResetSharedKey <: OpenAPI.APIModel
     keyLength::Union{Nothing, Int64} = nothing
 
     function ConnectionResetSharedKey(keyLength, )
-        OpenAPI.validate_property(ConnectionResetSharedKey, Symbol("keyLength"), keyLength)
-        return new(keyLength, )
+        o = new(keyLength, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ConnectionResetSharedKey
 
 const _property_types_ConnectionResetSharedKey = Dict{Symbol,String}(Symbol("keyLength")=>"Int64", )
 OpenAPI.property_type(::Type{ ConnectionResetSharedKey }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ConnectionResetSharedKey[name]))}
 
-function check_required(o::ConnectionResetSharedKey)
+function OpenAPI.check_required(o::ConnectionResetSharedKey)
     o.keyLength === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ConnectionResetSharedKey)
+    OpenAPI.validate_property(ConnectionResetSharedKey, Symbol("keyLength"), o.keyLength)
+end
+
 function OpenAPI.validate_property(::Type{ ConnectionResetSharedKey }, name::Symbol, val)
+
     if name === Symbol("keyLength")
         OpenAPI.validate_param(name, "ConnectionResetSharedKey", :format, val, "int32")
     end

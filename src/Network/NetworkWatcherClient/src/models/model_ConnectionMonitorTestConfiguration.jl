@@ -36,32 +36,50 @@ Base.@kwdef mutable struct ConnectionMonitorTestConfiguration <: OpenAPI.APIMode
     successThreshold = nothing # spec type: Union{ Nothing, ConnectionMonitorSuccessThreshold }
 
     function ConnectionMonitorTestConfiguration(name, testFrequencySec, protocol, preferredIPVersion, httpConfiguration, tcpConfiguration, icmpConfiguration, successThreshold, )
-        OpenAPI.validate_property(ConnectionMonitorTestConfiguration, Symbol("name"), name)
-        OpenAPI.validate_property(ConnectionMonitorTestConfiguration, Symbol("testFrequencySec"), testFrequencySec)
-        OpenAPI.validate_property(ConnectionMonitorTestConfiguration, Symbol("protocol"), protocol)
-        OpenAPI.validate_property(ConnectionMonitorTestConfiguration, Symbol("preferredIPVersion"), preferredIPVersion)
-        OpenAPI.validate_property(ConnectionMonitorTestConfiguration, Symbol("httpConfiguration"), httpConfiguration)
-        OpenAPI.validate_property(ConnectionMonitorTestConfiguration, Symbol("tcpConfiguration"), tcpConfiguration)
-        OpenAPI.validate_property(ConnectionMonitorTestConfiguration, Symbol("icmpConfiguration"), icmpConfiguration)
-        OpenAPI.validate_property(ConnectionMonitorTestConfiguration, Symbol("successThreshold"), successThreshold)
-        return new(name, testFrequencySec, protocol, preferredIPVersion, httpConfiguration, tcpConfiguration, icmpConfiguration, successThreshold, )
+        o = new(name, testFrequencySec, protocol, preferredIPVersion, httpConfiguration, tcpConfiguration, icmpConfiguration, successThreshold, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ConnectionMonitorTestConfiguration
 
 const _property_types_ConnectionMonitorTestConfiguration = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("testFrequencySec")=>"Int64", Symbol("protocol")=>"String", Symbol("preferredIPVersion")=>"String", Symbol("httpConfiguration")=>"ConnectionMonitorHttpConfiguration", Symbol("tcpConfiguration")=>"ConnectionMonitorTcpConfiguration", Symbol("icmpConfiguration")=>"ConnectionMonitorIcmpConfiguration", Symbol("successThreshold")=>"ConnectionMonitorSuccessThreshold", )
 OpenAPI.property_type(::Type{ ConnectionMonitorTestConfiguration }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ConnectionMonitorTestConfiguration[name]))}
 
-function check_required(o::ConnectionMonitorTestConfiguration)
+function OpenAPI.check_required(o::ConnectionMonitorTestConfiguration)
     o.name === nothing && (return false)
     o.protocol === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ConnectionMonitorTestConfiguration)
+    OpenAPI.validate_property(ConnectionMonitorTestConfiguration, Symbol("name"), o.name)
+    OpenAPI.validate_property(ConnectionMonitorTestConfiguration, Symbol("testFrequencySec"), o.testFrequencySec)
+    OpenAPI.validate_property(ConnectionMonitorTestConfiguration, Symbol("protocol"), o.protocol)
+    OpenAPI.validate_property(ConnectionMonitorTestConfiguration, Symbol("preferredIPVersion"), o.preferredIPVersion)
+    OpenAPI.validate_property(ConnectionMonitorTestConfiguration, Symbol("httpConfiguration"), o.httpConfiguration)
+    OpenAPI.validate_property(ConnectionMonitorTestConfiguration, Symbol("tcpConfiguration"), o.tcpConfiguration)
+    OpenAPI.validate_property(ConnectionMonitorTestConfiguration, Symbol("icmpConfiguration"), o.icmpConfiguration)
+    OpenAPI.validate_property(ConnectionMonitorTestConfiguration, Symbol("successThreshold"), o.successThreshold)
+end
+
 function OpenAPI.validate_property(::Type{ ConnectionMonitorTestConfiguration }, name::Symbol, val)
+
+
+    if name === Symbol("testFrequencySec")
+        OpenAPI.validate_param(name, "ConnectionMonitorTestConfiguration", :format, val, "int32")
+    end
+
     if name === Symbol("protocol")
         OpenAPI.validate_param(name, "ConnectionMonitorTestConfiguration", :enum, val, ["Tcp", "Http", "Icmp"])
     end
+
+
     if name === Symbol("preferredIPVersion")
         OpenAPI.validate_param(name, "ConnectionMonitorTestConfiguration", :enum, val, ["IPv4", "IPv6"])
     end
+
+
+
+
+
 end

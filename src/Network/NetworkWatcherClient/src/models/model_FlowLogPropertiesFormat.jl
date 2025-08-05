@@ -9,6 +9,7 @@ Parameters that define the configuration of flow log.
         targetResourceId=nothing,
         targetResourceGuid=nothing,
         storageId=nothing,
+        enabledFilteringCriteria=nothing,
         enabled=nothing,
         retentionPolicy=nothing,
         format=nothing,
@@ -19,6 +20,7 @@ Parameters that define the configuration of flow log.
     - targetResourceId::String : ID of network security group to which flow log will be applied.
     - targetResourceGuid::String : Guid of network security group to which flow log will be applied.
     - storageId::String : ID of the storage account which is used to store the flow log.
+    - enabledFilteringCriteria::String : Optional field to filter network traffic logs based on SrcIP, SrcPort, DstIP, DstPort, Protocol, Encryption, Direction and Action. If not specified, all network traffic will be logged.
     - enabled::Bool : Flag to enable/disable flow logging.
     - retentionPolicy::RetentionPolicyParameters
     - format::FlowLogFormatParameters
@@ -29,33 +31,49 @@ Base.@kwdef mutable struct FlowLogPropertiesFormat <: OpenAPI.APIModel
     targetResourceId::Union{Nothing, String} = nothing
     targetResourceGuid::Union{Nothing, String} = nothing
     storageId::Union{Nothing, String} = nothing
+    enabledFilteringCriteria::Union{Nothing, String} = nothing
     enabled::Union{Nothing, Bool} = nothing
     retentionPolicy = nothing # spec type: Union{ Nothing, RetentionPolicyParameters }
     format = nothing # spec type: Union{ Nothing, FlowLogFormatParameters }
     flowAnalyticsConfiguration = nothing # spec type: Union{ Nothing, TrafficAnalyticsProperties }
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
-    function FlowLogPropertiesFormat(targetResourceId, targetResourceGuid, storageId, enabled, retentionPolicy, format, flowAnalyticsConfiguration, provisioningState, )
-        OpenAPI.validate_property(FlowLogPropertiesFormat, Symbol("targetResourceId"), targetResourceId)
-        OpenAPI.validate_property(FlowLogPropertiesFormat, Symbol("targetResourceGuid"), targetResourceGuid)
-        OpenAPI.validate_property(FlowLogPropertiesFormat, Symbol("storageId"), storageId)
-        OpenAPI.validate_property(FlowLogPropertiesFormat, Symbol("enabled"), enabled)
-        OpenAPI.validate_property(FlowLogPropertiesFormat, Symbol("retentionPolicy"), retentionPolicy)
-        OpenAPI.validate_property(FlowLogPropertiesFormat, Symbol("format"), format)
-        OpenAPI.validate_property(FlowLogPropertiesFormat, Symbol("flowAnalyticsConfiguration"), flowAnalyticsConfiguration)
-        OpenAPI.validate_property(FlowLogPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(targetResourceId, targetResourceGuid, storageId, enabled, retentionPolicy, format, flowAnalyticsConfiguration, provisioningState, )
+    function FlowLogPropertiesFormat(targetResourceId, targetResourceGuid, storageId, enabledFilteringCriteria, enabled, retentionPolicy, format, flowAnalyticsConfiguration, provisioningState, )
+        o = new(targetResourceId, targetResourceGuid, storageId, enabledFilteringCriteria, enabled, retentionPolicy, format, flowAnalyticsConfiguration, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type FlowLogPropertiesFormat
 
-const _property_types_FlowLogPropertiesFormat = Dict{Symbol,String}(Symbol("targetResourceId")=>"String", Symbol("targetResourceGuid")=>"String", Symbol("storageId")=>"String", Symbol("enabled")=>"Bool", Symbol("retentionPolicy")=>"RetentionPolicyParameters", Symbol("format")=>"FlowLogFormatParameters", Symbol("flowAnalyticsConfiguration")=>"TrafficAnalyticsProperties", Symbol("provisioningState")=>"ProvisioningState", )
+const _property_types_FlowLogPropertiesFormat = Dict{Symbol,String}(Symbol("targetResourceId")=>"String", Symbol("targetResourceGuid")=>"String", Symbol("storageId")=>"String", Symbol("enabledFilteringCriteria")=>"String", Symbol("enabled")=>"Bool", Symbol("retentionPolicy")=>"RetentionPolicyParameters", Symbol("format")=>"FlowLogFormatParameters", Symbol("flowAnalyticsConfiguration")=>"TrafficAnalyticsProperties", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ FlowLogPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_FlowLogPropertiesFormat[name]))}
 
-function check_required(o::FlowLogPropertiesFormat)
+function OpenAPI.check_required(o::FlowLogPropertiesFormat)
     o.targetResourceId === nothing && (return false)
     o.storageId === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::FlowLogPropertiesFormat)
+    OpenAPI.validate_property(FlowLogPropertiesFormat, Symbol("targetResourceId"), o.targetResourceId)
+    OpenAPI.validate_property(FlowLogPropertiesFormat, Symbol("targetResourceGuid"), o.targetResourceGuid)
+    OpenAPI.validate_property(FlowLogPropertiesFormat, Symbol("storageId"), o.storageId)
+    OpenAPI.validate_property(FlowLogPropertiesFormat, Symbol("enabledFilteringCriteria"), o.enabledFilteringCriteria)
+    OpenAPI.validate_property(FlowLogPropertiesFormat, Symbol("enabled"), o.enabled)
+    OpenAPI.validate_property(FlowLogPropertiesFormat, Symbol("retentionPolicy"), o.retentionPolicy)
+    OpenAPI.validate_property(FlowLogPropertiesFormat, Symbol("format"), o.format)
+    OpenAPI.validate_property(FlowLogPropertiesFormat, Symbol("flowAnalyticsConfiguration"), o.flowAnalyticsConfiguration)
+    OpenAPI.validate_property(FlowLogPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ FlowLogPropertiesFormat }, name::Symbol, val)
+
+
+
+
+
+
+
+
+
 end

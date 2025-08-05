@@ -18,20 +18,27 @@ Base.@kwdef mutable struct CreateVirtualNetworkRuleWithAccountParameters <: Open
     properties = nothing # spec type: Union{ Nothing, CreateOrUpdateVirtualNetworkRuleProperties }
 
     function CreateVirtualNetworkRuleWithAccountParameters(name, properties, )
-        OpenAPI.validate_property(CreateVirtualNetworkRuleWithAccountParameters, Symbol("name"), name)
-        OpenAPI.validate_property(CreateVirtualNetworkRuleWithAccountParameters, Symbol("properties"), properties)
-        return new(name, properties, )
+        o = new(name, properties, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type CreateVirtualNetworkRuleWithAccountParameters
 
 const _property_types_CreateVirtualNetworkRuleWithAccountParameters = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("properties")=>"CreateOrUpdateVirtualNetworkRuleProperties", )
 OpenAPI.property_type(::Type{ CreateVirtualNetworkRuleWithAccountParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_CreateVirtualNetworkRuleWithAccountParameters[name]))}
 
-function check_required(o::CreateVirtualNetworkRuleWithAccountParameters)
+function OpenAPI.check_required(o::CreateVirtualNetworkRuleWithAccountParameters)
     o.name === nothing && (return false)
     o.properties === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::CreateVirtualNetworkRuleWithAccountParameters)
+    OpenAPI.validate_property(CreateVirtualNetworkRuleWithAccountParameters, Symbol("name"), o.name)
+    OpenAPI.validate_property(CreateVirtualNetworkRuleWithAccountParameters, Symbol("properties"), o.properties)
+end
+
 function OpenAPI.validate_property(::Type{ CreateVirtualNetworkRuleWithAccountParameters }, name::Symbol, val)
+
+
 end

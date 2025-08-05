@@ -42,24 +42,16 @@ Base.@kwdef mutable struct ApplicationGatewayWebApplicationFirewallConfiguration
     exclusions::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ApplicationGatewayFirewallExclusion} }
 
     function ApplicationGatewayWebApplicationFirewallConfiguration(enabled, firewallMode, ruleSetType, ruleSetVersion, disabledRuleGroups, requestBodyCheck, maxRequestBodySize, maxRequestBodySizeInKb, fileUploadLimitInMb, exclusions, )
-        OpenAPI.validate_property(ApplicationGatewayWebApplicationFirewallConfiguration, Symbol("enabled"), enabled)
-        OpenAPI.validate_property(ApplicationGatewayWebApplicationFirewallConfiguration, Symbol("firewallMode"), firewallMode)
-        OpenAPI.validate_property(ApplicationGatewayWebApplicationFirewallConfiguration, Symbol("ruleSetType"), ruleSetType)
-        OpenAPI.validate_property(ApplicationGatewayWebApplicationFirewallConfiguration, Symbol("ruleSetVersion"), ruleSetVersion)
-        OpenAPI.validate_property(ApplicationGatewayWebApplicationFirewallConfiguration, Symbol("disabledRuleGroups"), disabledRuleGroups)
-        OpenAPI.validate_property(ApplicationGatewayWebApplicationFirewallConfiguration, Symbol("requestBodyCheck"), requestBodyCheck)
-        OpenAPI.validate_property(ApplicationGatewayWebApplicationFirewallConfiguration, Symbol("maxRequestBodySize"), maxRequestBodySize)
-        OpenAPI.validate_property(ApplicationGatewayWebApplicationFirewallConfiguration, Symbol("maxRequestBodySizeInKb"), maxRequestBodySizeInKb)
-        OpenAPI.validate_property(ApplicationGatewayWebApplicationFirewallConfiguration, Symbol("fileUploadLimitInMb"), fileUploadLimitInMb)
-        OpenAPI.validate_property(ApplicationGatewayWebApplicationFirewallConfiguration, Symbol("exclusions"), exclusions)
-        return new(enabled, firewallMode, ruleSetType, ruleSetVersion, disabledRuleGroups, requestBodyCheck, maxRequestBodySize, maxRequestBodySizeInKb, fileUploadLimitInMb, exclusions, )
+        o = new(enabled, firewallMode, ruleSetType, ruleSetVersion, disabledRuleGroups, requestBodyCheck, maxRequestBodySize, maxRequestBodySizeInKb, fileUploadLimitInMb, exclusions, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayWebApplicationFirewallConfiguration
 
 const _property_types_ApplicationGatewayWebApplicationFirewallConfiguration = Dict{Symbol,String}(Symbol("enabled")=>"Bool", Symbol("firewallMode")=>"String", Symbol("ruleSetType")=>"String", Symbol("ruleSetVersion")=>"String", Symbol("disabledRuleGroups")=>"Vector{ApplicationGatewayFirewallDisabledRuleGroup}", Symbol("requestBodyCheck")=>"Bool", Symbol("maxRequestBodySize")=>"Int64", Symbol("maxRequestBodySizeInKb")=>"Int64", Symbol("fileUploadLimitInMb")=>"Int64", Symbol("exclusions")=>"Vector{ApplicationGatewayFirewallExclusion}", )
 OpenAPI.property_type(::Type{ ApplicationGatewayWebApplicationFirewallConfiguration }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayWebApplicationFirewallConfiguration[name]))}
 
-function check_required(o::ApplicationGatewayWebApplicationFirewallConfiguration)
+function OpenAPI.check_required(o::ApplicationGatewayWebApplicationFirewallConfiguration)
     o.enabled === nothing && (return false)
     o.firewallMode === nothing && (return false)
     o.ruleSetType === nothing && (return false)
@@ -67,10 +59,31 @@ function check_required(o::ApplicationGatewayWebApplicationFirewallConfiguration
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayWebApplicationFirewallConfiguration)
+    OpenAPI.validate_property(ApplicationGatewayWebApplicationFirewallConfiguration, Symbol("enabled"), o.enabled)
+    OpenAPI.validate_property(ApplicationGatewayWebApplicationFirewallConfiguration, Symbol("firewallMode"), o.firewallMode)
+    OpenAPI.validate_property(ApplicationGatewayWebApplicationFirewallConfiguration, Symbol("ruleSetType"), o.ruleSetType)
+    OpenAPI.validate_property(ApplicationGatewayWebApplicationFirewallConfiguration, Symbol("ruleSetVersion"), o.ruleSetVersion)
+    OpenAPI.validate_property(ApplicationGatewayWebApplicationFirewallConfiguration, Symbol("disabledRuleGroups"), o.disabledRuleGroups)
+    OpenAPI.validate_property(ApplicationGatewayWebApplicationFirewallConfiguration, Symbol("requestBodyCheck"), o.requestBodyCheck)
+    OpenAPI.validate_property(ApplicationGatewayWebApplicationFirewallConfiguration, Symbol("maxRequestBodySize"), o.maxRequestBodySize)
+    OpenAPI.validate_property(ApplicationGatewayWebApplicationFirewallConfiguration, Symbol("maxRequestBodySizeInKb"), o.maxRequestBodySizeInKb)
+    OpenAPI.validate_property(ApplicationGatewayWebApplicationFirewallConfiguration, Symbol("fileUploadLimitInMb"), o.fileUploadLimitInMb)
+    OpenAPI.validate_property(ApplicationGatewayWebApplicationFirewallConfiguration, Symbol("exclusions"), o.exclusions)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayWebApplicationFirewallConfiguration }, name::Symbol, val)
+
+
     if name === Symbol("firewallMode")
         OpenAPI.validate_param(name, "ApplicationGatewayWebApplicationFirewallConfiguration", :enum, val, ["Detection", "Prevention"])
     end
+
+
+
+
+
+
     if name === Symbol("maxRequestBodySize")
         OpenAPI.validate_param(name, "ApplicationGatewayWebApplicationFirewallConfiguration", :format, val, "int32")
     end
@@ -78,6 +91,7 @@ function OpenAPI.validate_property(::Type{ ApplicationGatewayWebApplicationFirew
         OpenAPI.validate_param(name, "ApplicationGatewayWebApplicationFirewallConfiguration", :maximum, val, 128, false)
         OpenAPI.validate_param(name, "ApplicationGatewayWebApplicationFirewallConfiguration", :minimum, val, 8, false)
     end
+
     if name === Symbol("maxRequestBodySizeInKb")
         OpenAPI.validate_param(name, "ApplicationGatewayWebApplicationFirewallConfiguration", :format, val, "int32")
     end
@@ -85,10 +99,12 @@ function OpenAPI.validate_property(::Type{ ApplicationGatewayWebApplicationFirew
         OpenAPI.validate_param(name, "ApplicationGatewayWebApplicationFirewallConfiguration", :maximum, val, 128, false)
         OpenAPI.validate_param(name, "ApplicationGatewayWebApplicationFirewallConfiguration", :minimum, val, 8, false)
     end
+
     if name === Symbol("fileUploadLimitInMb")
         OpenAPI.validate_param(name, "ApplicationGatewayWebApplicationFirewallConfiguration", :format, val, "int32")
     end
     if name === Symbol("fileUploadLimitInMb")
         OpenAPI.validate_param(name, "ApplicationGatewayWebApplicationFirewallConfiguration", :minimum, val, 0, false)
     end
+
 end

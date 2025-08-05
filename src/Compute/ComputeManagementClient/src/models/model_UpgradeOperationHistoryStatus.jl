@@ -21,27 +21,36 @@ Base.@kwdef mutable struct UpgradeOperationHistoryStatus <: OpenAPI.APIModel
     endTime::Union{Nothing, ZonedDateTime} = nothing
 
     function UpgradeOperationHistoryStatus(code, startTime, endTime, )
-        OpenAPI.validate_property(UpgradeOperationHistoryStatus, Symbol("code"), code)
-        OpenAPI.validate_property(UpgradeOperationHistoryStatus, Symbol("startTime"), startTime)
-        OpenAPI.validate_property(UpgradeOperationHistoryStatus, Symbol("endTime"), endTime)
-        return new(code, startTime, endTime, )
+        o = new(code, startTime, endTime, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type UpgradeOperationHistoryStatus
 
 const _property_types_UpgradeOperationHistoryStatus = Dict{Symbol,String}(Symbol("code")=>"String", Symbol("startTime")=>"ZonedDateTime", Symbol("endTime")=>"ZonedDateTime", )
 OpenAPI.property_type(::Type{ UpgradeOperationHistoryStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_UpgradeOperationHistoryStatus[name]))}
 
-function check_required(o::UpgradeOperationHistoryStatus)
+function OpenAPI.check_required(o::UpgradeOperationHistoryStatus)
     true
 end
 
+function OpenAPI.validate_properties(o::UpgradeOperationHistoryStatus)
+    OpenAPI.validate_property(UpgradeOperationHistoryStatus, Symbol("code"), o.code)
+    OpenAPI.validate_property(UpgradeOperationHistoryStatus, Symbol("startTime"), o.startTime)
+    OpenAPI.validate_property(UpgradeOperationHistoryStatus, Symbol("endTime"), o.endTime)
+end
+
 function OpenAPI.validate_property(::Type{ UpgradeOperationHistoryStatus }, name::Symbol, val)
+
     if name === Symbol("code")
         OpenAPI.validate_param(name, "UpgradeOperationHistoryStatus", :enum, val, ["RollingForward", "Cancelled", "Completed", "Faulted"])
     end
+
+
     if name === Symbol("startTime")
         OpenAPI.validate_param(name, "UpgradeOperationHistoryStatus", :format, val, "date-time")
     end
+
     if name === Symbol("endTime")
         OpenAPI.validate_param(name, "UpgradeOperationHistoryStatus", :format, val, "date-time")
     end

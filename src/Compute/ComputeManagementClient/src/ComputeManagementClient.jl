@@ -7,18 +7,23 @@ using Dates, TimeZones
 using OpenAPI
 using OpenAPI.Clients
 
-const API_VERSION = "2020-06-01"
+const API_VERSION = "2021-11-01"
 
 include("modelincludes.jl")
 
 include("apis/api_AvailabilitySetsApi.jl")
+include("apis/api_CapacityReservationApi.jl")
+include("apis/api_CapacityReservationGroupsApi.jl")
+include("apis/api_CapacityReservationsApi.jl")
 include("apis/api_ComputeOperationsApi.jl")
 include("apis/api_DedicatedHostApi.jl")
 include("apis/api_DedicatedHostGroupsApi.jl")
 include("apis/api_DedicatedHostsApi.jl")
+include("apis/api_DefaultApi.jl")
 include("apis/api_ImagesApi.jl")
 include("apis/api_LogAnalyticsApi.jl")
 include("apis/api_ProximityPlacementGroupsApi.jl")
+include("apis/api_RestorePointCollectionsApi.jl")
 include("apis/api_SshPublicKeysApi.jl")
 include("apis/api_UsageApi.jl")
 include("apis/api_VirtualMachineExtensionImagesApi.jl")

@@ -21,20 +21,28 @@ Base.@kwdef mutable struct RunCommandInput <: OpenAPI.APIModel
     parameters::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{RunCommandInputParameter} }
 
     function RunCommandInput(commandId, script, parameters, )
-        OpenAPI.validate_property(RunCommandInput, Symbol("commandId"), commandId)
-        OpenAPI.validate_property(RunCommandInput, Symbol("script"), script)
-        OpenAPI.validate_property(RunCommandInput, Symbol("parameters"), parameters)
-        return new(commandId, script, parameters, )
+        o = new(commandId, script, parameters, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type RunCommandInput
 
 const _property_types_RunCommandInput = Dict{Symbol,String}(Symbol("commandId")=>"String", Symbol("script")=>"Vector{String}", Symbol("parameters")=>"Vector{RunCommandInputParameter}", )
 OpenAPI.property_type(::Type{ RunCommandInput }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RunCommandInput[name]))}
 
-function check_required(o::RunCommandInput)
+function OpenAPI.check_required(o::RunCommandInput)
     o.commandId === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::RunCommandInput)
+    OpenAPI.validate_property(RunCommandInput, Symbol("commandId"), o.commandId)
+    OpenAPI.validate_property(RunCommandInput, Symbol("script"), o.script)
+    OpenAPI.validate_property(RunCommandInput, Symbol("parameters"), o.parameters)
+end
+
 function OpenAPI.validate_property(::Type{ RunCommandInput }, name::Symbol, val)
+
+
+
 end

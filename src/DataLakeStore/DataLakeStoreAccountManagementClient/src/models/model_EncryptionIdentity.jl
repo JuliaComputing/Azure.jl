@@ -21,28 +21,37 @@ Base.@kwdef mutable struct EncryptionIdentity <: OpenAPI.APIModel
     tenantId::Union{Nothing, String} = nothing
 
     function EncryptionIdentity(type, principalId, tenantId, )
-        OpenAPI.validate_property(EncryptionIdentity, Symbol("type"), type)
-        OpenAPI.validate_property(EncryptionIdentity, Symbol("principalId"), principalId)
-        OpenAPI.validate_property(EncryptionIdentity, Symbol("tenantId"), tenantId)
-        return new(type, principalId, tenantId, )
+        o = new(type, principalId, tenantId, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type EncryptionIdentity
 
 const _property_types_EncryptionIdentity = Dict{Symbol,String}(Symbol("type")=>"String", Symbol("principalId")=>"String", Symbol("tenantId")=>"String", )
 OpenAPI.property_type(::Type{ EncryptionIdentity }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_EncryptionIdentity[name]))}
 
-function check_required(o::EncryptionIdentity)
+function OpenAPI.check_required(o::EncryptionIdentity)
     o.type === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::EncryptionIdentity)
+    OpenAPI.validate_property(EncryptionIdentity, Symbol("type"), o.type)
+    OpenAPI.validate_property(EncryptionIdentity, Symbol("principalId"), o.principalId)
+    OpenAPI.validate_property(EncryptionIdentity, Symbol("tenantId"), o.tenantId)
+end
+
 function OpenAPI.validate_property(::Type{ EncryptionIdentity }, name::Symbol, val)
+
     if name === Symbol("type")
         OpenAPI.validate_param(name, "EncryptionIdentity", :enum, val, ["SystemAssigned"])
     end
+
+
     if name === Symbol("principalId")
         OpenAPI.validate_param(name, "EncryptionIdentity", :format, val, "uuid")
     end
+
     if name === Symbol("tenantId")
         OpenAPI.validate_param(name, "EncryptionIdentity", :format, val, "uuid")
     end

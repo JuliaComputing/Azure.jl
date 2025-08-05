@@ -11,17 +11,98 @@ This can be used to construct the `OpenAPI.Clients.Client` instance.
 """
 basepath(::Type{ VirtualMachineRunCommandsApi }) = "https://management.azure.com"
 
+const _returntypes_virtual_machine_run_commands_create_or_update_VirtualMachineRunCommandsApi = Dict{Regex,Type}(
+    Regex("^" * replace("200", "x"=>".") * "\$") => VirtualMachineRunCommand,
+    Regex("^" * replace("201", "x"=>".") * "\$") => VirtualMachineRunCommand,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+)
+
+function _oacinternal_virtual_machine_run_commands_create_or_update(_api::VirtualMachineRunCommandsApi, resource_group_name::String, vm_name::String, run_command_name::String, api_version::String, subscription_id::String, run_command::VirtualMachineRunCommand; _mediaType=nothing)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_virtual_machine_run_commands_create_or_update_VirtualMachineRunCommandsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}", ["azure_auth", ], run_command)
+    OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "vmName", vm_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "runCommandName", run_command_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "text/json", ])
+    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "text/json", ] : [_mediaType])
+    return _ctx
+end
+
+@doc raw"""The operation to create or update the run command.
+
+Params:
+- resource_group_name::String (required)
+- vm_name::String (required)
+- run_command_name::String (required)
+- api_version::String (required)
+- subscription_id::String (required)
+- run_command::VirtualMachineRunCommand (required)
+
+Return: VirtualMachineRunCommand, OpenAPI.Clients.ApiResponse
+"""
+function virtual_machine_run_commands_create_or_update(_api::VirtualMachineRunCommandsApi, resource_group_name::String, vm_name::String, run_command_name::String, api_version::String, subscription_id::String, run_command::VirtualMachineRunCommand; _mediaType=nothing)
+    _ctx = _oacinternal_virtual_machine_run_commands_create_or_update(_api, resource_group_name, vm_name, run_command_name, api_version, subscription_id, run_command; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx)
+end
+
+function virtual_machine_run_commands_create_or_update(_api::VirtualMachineRunCommandsApi, response_stream::Channel, resource_group_name::String, vm_name::String, run_command_name::String, api_version::String, subscription_id::String, run_command::VirtualMachineRunCommand; _mediaType=nothing)
+    _ctx = _oacinternal_virtual_machine_run_commands_create_or_update(_api, resource_group_name, vm_name, run_command_name, api_version, subscription_id, run_command; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx, response_stream)
+end
+
+const _returntypes_virtual_machine_run_commands_delete_VirtualMachineRunCommandsApi = Dict{Regex,Type}(
+    Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("204", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+)
+
+function _oacinternal_virtual_machine_run_commands_delete(_api::VirtualMachineRunCommandsApi, resource_group_name::String, vm_name::String, run_command_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_virtual_machine_run_commands_delete_VirtualMachineRunCommandsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}", ["azure_auth", ])
+    OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "vmName", vm_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "runCommandName", run_command_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "text/json", ])
+    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
+    return _ctx
+end
+
+@doc raw"""The operation to delete the run command.
+
+Params:
+- resource_group_name::String (required)
+- vm_name::String (required)
+- run_command_name::String (required)
+- api_version::String (required)
+- subscription_id::String (required)
+
+Return: Nothing, OpenAPI.Clients.ApiResponse
+"""
+function virtual_machine_run_commands_delete(_api::VirtualMachineRunCommandsApi, resource_group_name::String, vm_name::String, run_command_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
+    _ctx = _oacinternal_virtual_machine_run_commands_delete(_api, resource_group_name, vm_name, run_command_name, api_version, subscription_id; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx)
+end
+
+function virtual_machine_run_commands_delete(_api::VirtualMachineRunCommandsApi, response_stream::Channel, resource_group_name::String, vm_name::String, run_command_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
+    _ctx = _oacinternal_virtual_machine_run_commands_delete(_api, resource_group_name, vm_name, run_command_name, api_version, subscription_id; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx, response_stream)
+end
+
 const _returntypes_virtual_machine_run_commands_get_VirtualMachineRunCommandsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => RunCommandDocument,
 )
 
 function _oacinternal_virtual_machine_run_commands_get(_api::VirtualMachineRunCommandsApi, location::String, command_id::String, api_version::String, subscription_id::String; _mediaType=nothing)
+        OpenAPI.validate_param("location", "virtual_machine_run_commands_get", :pattern, location, r"^[-\w\._]+$")
 
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_virtual_machine_run_commands_get_VirtualMachineRunCommandsApi, "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/runCommands/{commandId}", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "location", location)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "commandId", command_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "text/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -47,16 +128,57 @@ function virtual_machine_run_commands_get(_api::VirtualMachineRunCommandsApi, re
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
+const _returntypes_virtual_machine_run_commands_get_by_virtual_machine_VirtualMachineRunCommandsApi = Dict{Regex,Type}(
+    Regex("^" * replace("200", "x"=>".") * "\$") => VirtualMachineRunCommand,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+)
+
+function _oacinternal_virtual_machine_run_commands_get_by_virtual_machine(_api::VirtualMachineRunCommandsApi, resource_group_name::String, vm_name::String, run_command_name::String, api_version::String, subscription_id::String; expand=nothing, _mediaType=nothing)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_virtual_machine_run_commands_get_by_virtual_machine_VirtualMachineRunCommandsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}", ["azure_auth", ])
+    OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "vmName", vm_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "runCommandName", run_command_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "text/json", ])
+    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
+    return _ctx
+end
+
+@doc raw"""The operation to get the run command.
+
+Params:
+- resource_group_name::String (required)
+- vm_name::String (required)
+- run_command_name::String (required)
+- api_version::String (required)
+- subscription_id::String (required)
+- expand::String
+
+Return: VirtualMachineRunCommand, OpenAPI.Clients.ApiResponse
+"""
+function virtual_machine_run_commands_get_by_virtual_machine(_api::VirtualMachineRunCommandsApi, resource_group_name::String, vm_name::String, run_command_name::String, api_version::String, subscription_id::String; expand=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_virtual_machine_run_commands_get_by_virtual_machine(_api, resource_group_name, vm_name, run_command_name, api_version, subscription_id; expand=expand, _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx)
+end
+
+function virtual_machine_run_commands_get_by_virtual_machine(_api::VirtualMachineRunCommandsApi, response_stream::Channel, resource_group_name::String, vm_name::String, run_command_name::String, api_version::String, subscription_id::String; expand=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_virtual_machine_run_commands_get_by_virtual_machine(_api, resource_group_name, vm_name, run_command_name, api_version, subscription_id; expand=expand, _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx, response_stream)
+end
+
 const _returntypes_virtual_machine_run_commands_list_VirtualMachineRunCommandsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => RunCommandListResult,
 )
 
 function _oacinternal_virtual_machine_run_commands_list(_api::VirtualMachineRunCommandsApi, location::String, api_version::String, subscription_id::String; _mediaType=nothing)
+        OpenAPI.validate_param("location", "virtual_machine_run_commands_list", :pattern, location, r"^[-\w\._]+$")
 
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_virtual_machine_run_commands_list_VirtualMachineRunCommandsApi, "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/runCommands", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "location", location)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "text/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -81,5 +203,87 @@ function virtual_machine_run_commands_list(_api::VirtualMachineRunCommandsApi, r
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
+const _returntypes_virtual_machine_run_commands_list_by_virtual_machine_VirtualMachineRunCommandsApi = Dict{Regex,Type}(
+    Regex("^" * replace("200", "x"=>".") * "\$") => VirtualMachineRunCommandsListResult,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+)
+
+function _oacinternal_virtual_machine_run_commands_list_by_virtual_machine(_api::VirtualMachineRunCommandsApi, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; expand=nothing, _mediaType=nothing)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_virtual_machine_run_commands_list_by_virtual_machine_VirtualMachineRunCommandsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands", ["azure_auth", ])
+    OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "vmName", vm_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "text/json", ])
+    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
+    return _ctx
+end
+
+@doc raw"""The operation to get all run commands of a Virtual Machine.
+
+Params:
+- resource_group_name::String (required)
+- vm_name::String (required)
+- api_version::String (required)
+- subscription_id::String (required)
+- expand::String
+
+Return: VirtualMachineRunCommandsListResult, OpenAPI.Clients.ApiResponse
+"""
+function virtual_machine_run_commands_list_by_virtual_machine(_api::VirtualMachineRunCommandsApi, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; expand=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_virtual_machine_run_commands_list_by_virtual_machine(_api, resource_group_name, vm_name, api_version, subscription_id; expand=expand, _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx)
+end
+
+function virtual_machine_run_commands_list_by_virtual_machine(_api::VirtualMachineRunCommandsApi, response_stream::Channel, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; expand=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_virtual_machine_run_commands_list_by_virtual_machine(_api, resource_group_name, vm_name, api_version, subscription_id; expand=expand, _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx, response_stream)
+end
+
+const _returntypes_virtual_machine_run_commands_update_VirtualMachineRunCommandsApi = Dict{Regex,Type}(
+    Regex("^" * replace("200", "x"=>".") * "\$") => VirtualMachineRunCommand,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+)
+
+function _oacinternal_virtual_machine_run_commands_update(_api::VirtualMachineRunCommandsApi, resource_group_name::String, vm_name::String, run_command_name::String, api_version::String, subscription_id::String, run_command::VirtualMachineRunCommandUpdate; _mediaType=nothing)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_virtual_machine_run_commands_update_VirtualMachineRunCommandsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/runCommands/{runCommandName}", ["azure_auth", ], run_command)
+    OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "vmName", vm_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "runCommandName", run_command_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "text/json", ])
+    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "text/json", ] : [_mediaType])
+    return _ctx
+end
+
+@doc raw"""The operation to update the run command.
+
+Params:
+- resource_group_name::String (required)
+- vm_name::String (required)
+- run_command_name::String (required)
+- api_version::String (required)
+- subscription_id::String (required)
+- run_command::VirtualMachineRunCommandUpdate (required)
+
+Return: VirtualMachineRunCommand, OpenAPI.Clients.ApiResponse
+"""
+function virtual_machine_run_commands_update(_api::VirtualMachineRunCommandsApi, resource_group_name::String, vm_name::String, run_command_name::String, api_version::String, subscription_id::String, run_command::VirtualMachineRunCommandUpdate; _mediaType=nothing)
+    _ctx = _oacinternal_virtual_machine_run_commands_update(_api, resource_group_name, vm_name, run_command_name, api_version, subscription_id, run_command; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx)
+end
+
+function virtual_machine_run_commands_update(_api::VirtualMachineRunCommandsApi, response_stream::Channel, resource_group_name::String, vm_name::String, run_command_name::String, api_version::String, subscription_id::String, run_command::VirtualMachineRunCommandUpdate; _mediaType=nothing)
+    _ctx = _oacinternal_virtual_machine_run_commands_update(_api, resource_group_name, vm_name, run_command_name, api_version, subscription_id, run_command; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx, response_stream)
+end
+
+export virtual_machine_run_commands_create_or_update
+export virtual_machine_run_commands_delete
 export virtual_machine_run_commands_get
+export virtual_machine_run_commands_get_by_virtual_machine
 export virtual_machine_run_commands_list
+export virtual_machine_run_commands_list_by_virtual_machine
+export virtual_machine_run_commands_update

@@ -8,6 +8,7 @@ Properties of the load balancer.
     LoadBalancingRulePropertiesFormat(;
         frontendIPConfiguration=nothing,
         backendAddressPool=nothing,
+        backendAddressPools=nothing,
         probe=nothing,
         protocol=nothing,
         loadDistribution=nothing,
@@ -17,11 +18,13 @@ Properties of the load balancer.
         enableFloatingIP=nothing,
         enableTcpReset=nothing,
         disableOutboundSnat=nothing,
+        enableConnectionTracking=nothing,
         provisioningState=nothing,
     )
 
     - frontendIPConfiguration::SubResource
     - backendAddressPool::SubResource
+    - backendAddressPools::Vector{SubResource} : An array of references to pool of DIPs.
     - probe::SubResource
     - protocol::TransportProtocol
     - loadDistribution::String : The load distribution policy for this rule.
@@ -31,11 +34,13 @@ Properties of the load balancer.
     - enableFloatingIP::Bool : Configures a virtual machine&#39;s endpoint for the floating IP capability required to configure a SQL AlwaysOn Availability Group. This setting is required when using the SQL AlwaysOn Availability Groups in SQL server. This setting can&#39;t be changed after you create the endpoint.
     - enableTcpReset::Bool : Receive bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination. This element is only used when the protocol is set to TCP.
     - disableOutboundSnat::Bool : Configures SNAT for the VMs in the backend pool to use the publicIP address specified in the frontend of the load balancing rule.
+    - enableConnectionTracking::Bool : Defines whether connections between 2 communicating endpoints can be tracked and associated to the same backend VM over its lifetime when using UDP protocol.
     - provisioningState::ProvisioningState
 """
 Base.@kwdef mutable struct LoadBalancingRulePropertiesFormat <: OpenAPI.APIModel
     frontendIPConfiguration = nothing # spec type: Union{ Nothing, SubResource }
     backendAddressPool = nothing # spec type: Union{ Nothing, SubResource }
+    backendAddressPools::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{SubResource} }
     probe = nothing # spec type: Union{ Nothing, SubResource }
     protocol = nothing # spec type: Union{ Nothing, TransportProtocol }
     loadDistribution::Union{Nothing, String} = nothing
@@ -45,45 +50,68 @@ Base.@kwdef mutable struct LoadBalancingRulePropertiesFormat <: OpenAPI.APIModel
     enableFloatingIP::Union{Nothing, Bool} = nothing
     enableTcpReset::Union{Nothing, Bool} = nothing
     disableOutboundSnat::Union{Nothing, Bool} = nothing
+    enableConnectionTracking::Union{Nothing, Bool} = nothing
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
-    function LoadBalancingRulePropertiesFormat(frontendIPConfiguration, backendAddressPool, probe, protocol, loadDistribution, frontendPort, backendPort, idleTimeoutInMinutes, enableFloatingIP, enableTcpReset, disableOutboundSnat, provisioningState, )
-        OpenAPI.validate_property(LoadBalancingRulePropertiesFormat, Symbol("frontendIPConfiguration"), frontendIPConfiguration)
-        OpenAPI.validate_property(LoadBalancingRulePropertiesFormat, Symbol("backendAddressPool"), backendAddressPool)
-        OpenAPI.validate_property(LoadBalancingRulePropertiesFormat, Symbol("probe"), probe)
-        OpenAPI.validate_property(LoadBalancingRulePropertiesFormat, Symbol("protocol"), protocol)
-        OpenAPI.validate_property(LoadBalancingRulePropertiesFormat, Symbol("loadDistribution"), loadDistribution)
-        OpenAPI.validate_property(LoadBalancingRulePropertiesFormat, Symbol("frontendPort"), frontendPort)
-        OpenAPI.validate_property(LoadBalancingRulePropertiesFormat, Symbol("backendPort"), backendPort)
-        OpenAPI.validate_property(LoadBalancingRulePropertiesFormat, Symbol("idleTimeoutInMinutes"), idleTimeoutInMinutes)
-        OpenAPI.validate_property(LoadBalancingRulePropertiesFormat, Symbol("enableFloatingIP"), enableFloatingIP)
-        OpenAPI.validate_property(LoadBalancingRulePropertiesFormat, Symbol("enableTcpReset"), enableTcpReset)
-        OpenAPI.validate_property(LoadBalancingRulePropertiesFormat, Symbol("disableOutboundSnat"), disableOutboundSnat)
-        OpenAPI.validate_property(LoadBalancingRulePropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(frontendIPConfiguration, backendAddressPool, probe, protocol, loadDistribution, frontendPort, backendPort, idleTimeoutInMinutes, enableFloatingIP, enableTcpReset, disableOutboundSnat, provisioningState, )
+    function LoadBalancingRulePropertiesFormat(frontendIPConfiguration, backendAddressPool, backendAddressPools, probe, protocol, loadDistribution, frontendPort, backendPort, idleTimeoutInMinutes, enableFloatingIP, enableTcpReset, disableOutboundSnat, enableConnectionTracking, provisioningState, )
+        o = new(frontendIPConfiguration, backendAddressPool, backendAddressPools, probe, protocol, loadDistribution, frontendPort, backendPort, idleTimeoutInMinutes, enableFloatingIP, enableTcpReset, disableOutboundSnat, enableConnectionTracking, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type LoadBalancingRulePropertiesFormat
 
-const _property_types_LoadBalancingRulePropertiesFormat = Dict{Symbol,String}(Symbol("frontendIPConfiguration")=>"SubResource", Symbol("backendAddressPool")=>"SubResource", Symbol("probe")=>"SubResource", Symbol("protocol")=>"TransportProtocol", Symbol("loadDistribution")=>"String", Symbol("frontendPort")=>"Int64", Symbol("backendPort")=>"Int64", Symbol("idleTimeoutInMinutes")=>"Int64", Symbol("enableFloatingIP")=>"Bool", Symbol("enableTcpReset")=>"Bool", Symbol("disableOutboundSnat")=>"Bool", Symbol("provisioningState")=>"ProvisioningState", )
+const _property_types_LoadBalancingRulePropertiesFormat = Dict{Symbol,String}(Symbol("frontendIPConfiguration")=>"SubResource", Symbol("backendAddressPool")=>"SubResource", Symbol("backendAddressPools")=>"Vector{SubResource}", Symbol("probe")=>"SubResource", Symbol("protocol")=>"TransportProtocol", Symbol("loadDistribution")=>"String", Symbol("frontendPort")=>"Int64", Symbol("backendPort")=>"Int64", Symbol("idleTimeoutInMinutes")=>"Int64", Symbol("enableFloatingIP")=>"Bool", Symbol("enableTcpReset")=>"Bool", Symbol("disableOutboundSnat")=>"Bool", Symbol("enableConnectionTracking")=>"Bool", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ LoadBalancingRulePropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_LoadBalancingRulePropertiesFormat[name]))}
 
-function check_required(o::LoadBalancingRulePropertiesFormat)
+function OpenAPI.check_required(o::LoadBalancingRulePropertiesFormat)
     o.protocol === nothing && (return false)
     o.frontendPort === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::LoadBalancingRulePropertiesFormat)
+    OpenAPI.validate_property(LoadBalancingRulePropertiesFormat, Symbol("frontendIPConfiguration"), o.frontendIPConfiguration)
+    OpenAPI.validate_property(LoadBalancingRulePropertiesFormat, Symbol("backendAddressPool"), o.backendAddressPool)
+    OpenAPI.validate_property(LoadBalancingRulePropertiesFormat, Symbol("backendAddressPools"), o.backendAddressPools)
+    OpenAPI.validate_property(LoadBalancingRulePropertiesFormat, Symbol("probe"), o.probe)
+    OpenAPI.validate_property(LoadBalancingRulePropertiesFormat, Symbol("protocol"), o.protocol)
+    OpenAPI.validate_property(LoadBalancingRulePropertiesFormat, Symbol("loadDistribution"), o.loadDistribution)
+    OpenAPI.validate_property(LoadBalancingRulePropertiesFormat, Symbol("frontendPort"), o.frontendPort)
+    OpenAPI.validate_property(LoadBalancingRulePropertiesFormat, Symbol("backendPort"), o.backendPort)
+    OpenAPI.validate_property(LoadBalancingRulePropertiesFormat, Symbol("idleTimeoutInMinutes"), o.idleTimeoutInMinutes)
+    OpenAPI.validate_property(LoadBalancingRulePropertiesFormat, Symbol("enableFloatingIP"), o.enableFloatingIP)
+    OpenAPI.validate_property(LoadBalancingRulePropertiesFormat, Symbol("enableTcpReset"), o.enableTcpReset)
+    OpenAPI.validate_property(LoadBalancingRulePropertiesFormat, Symbol("disableOutboundSnat"), o.disableOutboundSnat)
+    OpenAPI.validate_property(LoadBalancingRulePropertiesFormat, Symbol("enableConnectionTracking"), o.enableConnectionTracking)
+    OpenAPI.validate_property(LoadBalancingRulePropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ LoadBalancingRulePropertiesFormat }, name::Symbol, val)
+
+
+
+
+
+
     if name === Symbol("loadDistribution")
         OpenAPI.validate_param(name, "LoadBalancingRulePropertiesFormat", :enum, val, ["Default", "SourceIP", "SourceIPProtocol"])
     end
+
+
     if name === Symbol("frontendPort")
         OpenAPI.validate_param(name, "LoadBalancingRulePropertiesFormat", :format, val, "int32")
     end
+
     if name === Symbol("backendPort")
         OpenAPI.validate_param(name, "LoadBalancingRulePropertiesFormat", :format, val, "int32")
     end
+
     if name === Symbol("idleTimeoutInMinutes")
         OpenAPI.validate_param(name, "LoadBalancingRulePropertiesFormat", :format, val, "int32")
     end
+
+
+
+
+
 end

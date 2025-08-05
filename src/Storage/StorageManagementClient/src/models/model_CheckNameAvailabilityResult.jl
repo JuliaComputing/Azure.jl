@@ -21,22 +21,31 @@ Base.@kwdef mutable struct CheckNameAvailabilityResult <: OpenAPI.APIModel
     message::Union{Nothing, String} = nothing
 
     function CheckNameAvailabilityResult(nameAvailable, reason, message, )
-        OpenAPI.validate_property(CheckNameAvailabilityResult, Symbol("nameAvailable"), nameAvailable)
-        OpenAPI.validate_property(CheckNameAvailabilityResult, Symbol("reason"), reason)
-        OpenAPI.validate_property(CheckNameAvailabilityResult, Symbol("message"), message)
-        return new(nameAvailable, reason, message, )
+        o = new(nameAvailable, reason, message, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type CheckNameAvailabilityResult
 
 const _property_types_CheckNameAvailabilityResult = Dict{Symbol,String}(Symbol("nameAvailable")=>"Bool", Symbol("reason")=>"String", Symbol("message")=>"String", )
 OpenAPI.property_type(::Type{ CheckNameAvailabilityResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_CheckNameAvailabilityResult[name]))}
 
-function check_required(o::CheckNameAvailabilityResult)
+function OpenAPI.check_required(o::CheckNameAvailabilityResult)
     true
 end
 
+function OpenAPI.validate_properties(o::CheckNameAvailabilityResult)
+    OpenAPI.validate_property(CheckNameAvailabilityResult, Symbol("nameAvailable"), o.nameAvailable)
+    OpenAPI.validate_property(CheckNameAvailabilityResult, Symbol("reason"), o.reason)
+    OpenAPI.validate_property(CheckNameAvailabilityResult, Symbol("message"), o.message)
+end
+
 function OpenAPI.validate_property(::Type{ CheckNameAvailabilityResult }, name::Symbol, val)
+
+
     if name === Symbol("reason")
         OpenAPI.validate_param(name, "CheckNameAvailabilityResult", :enum, val, ["AccountNameInvalid", "AlreadyExists"])
     end
+
+
 end

@@ -24,29 +24,41 @@ Base.@kwdef mutable struct ConnectivityIssue2 <: OpenAPI.APIModel
     context::Union{Nothing, Vector{Dict}} = nothing
 
     function ConnectivityIssue2(origin, severity, type, context, )
-        OpenAPI.validate_property(ConnectivityIssue2, Symbol("origin"), origin)
-        OpenAPI.validate_property(ConnectivityIssue2, Symbol("severity"), severity)
-        OpenAPI.validate_property(ConnectivityIssue2, Symbol("type"), type)
-        OpenAPI.validate_property(ConnectivityIssue2, Symbol("context"), context)
-        return new(origin, severity, type, context, )
+        o = new(origin, severity, type, context, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ConnectivityIssue2
 
 const _property_types_ConnectivityIssue2 = Dict{Symbol,String}(Symbol("origin")=>"String", Symbol("severity")=>"String", Symbol("type")=>"String", Symbol("context")=>"Vector{Dict}", )
 OpenAPI.property_type(::Type{ ConnectivityIssue2 }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ConnectivityIssue2[name]))}
 
-function check_required(o::ConnectivityIssue2)
+function OpenAPI.check_required(o::ConnectivityIssue2)
     true
 end
 
+function OpenAPI.validate_properties(o::ConnectivityIssue2)
+    OpenAPI.validate_property(ConnectivityIssue2, Symbol("origin"), o.origin)
+    OpenAPI.validate_property(ConnectivityIssue2, Symbol("severity"), o.severity)
+    OpenAPI.validate_property(ConnectivityIssue2, Symbol("type"), o.type)
+    OpenAPI.validate_property(ConnectivityIssue2, Symbol("context"), o.context)
+end
+
 function OpenAPI.validate_property(::Type{ ConnectivityIssue2 }, name::Symbol, val)
+
     if name === Symbol("origin")
         OpenAPI.validate_param(name, "ConnectivityIssue2", :enum, val, ["Local", "Inbound", "Outbound"])
     end
+
+
     if name === Symbol("severity")
         OpenAPI.validate_param(name, "ConnectivityIssue2", :enum, val, ["Error", "Warning"])
     end
+
+
     if name === Symbol("type")
         OpenAPI.validate_param(name, "ConnectivityIssue2", :enum, val, ["Unknown", "AgentStopped", "GuestFirewall", "DnsResolution", "SocketBind", "NetworkSecurityRule", "UserDefinedRoute", "PortThrottled", "Platform"])
     end
+
+
 end

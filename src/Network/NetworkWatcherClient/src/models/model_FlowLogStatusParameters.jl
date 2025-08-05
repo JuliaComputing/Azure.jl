@@ -15,18 +15,24 @@ Base.@kwdef mutable struct FlowLogStatusParameters <: OpenAPI.APIModel
     targetResourceId::Union{Nothing, String} = nothing
 
     function FlowLogStatusParameters(targetResourceId, )
-        OpenAPI.validate_property(FlowLogStatusParameters, Symbol("targetResourceId"), targetResourceId)
-        return new(targetResourceId, )
+        o = new(targetResourceId, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type FlowLogStatusParameters
 
 const _property_types_FlowLogStatusParameters = Dict{Symbol,String}(Symbol("targetResourceId")=>"String", )
 OpenAPI.property_type(::Type{ FlowLogStatusParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_FlowLogStatusParameters[name]))}
 
-function check_required(o::FlowLogStatusParameters)
+function OpenAPI.check_required(o::FlowLogStatusParameters)
     o.targetResourceId === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::FlowLogStatusParameters)
+    OpenAPI.validate_property(FlowLogStatusParameters, Symbol("targetResourceId"), o.targetResourceId)
+end
+
 function OpenAPI.validate_property(::Type{ FlowLogStatusParameters }, name::Symbol, val)
+
 end

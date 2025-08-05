@@ -18,18 +18,25 @@ Base.@kwdef mutable struct ApplicationSecurityGroupPropertiesFormat <: OpenAPI.A
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
     function ApplicationSecurityGroupPropertiesFormat(resourceGuid, provisioningState, )
-        OpenAPI.validate_property(ApplicationSecurityGroupPropertiesFormat, Symbol("resourceGuid"), resourceGuid)
-        OpenAPI.validate_property(ApplicationSecurityGroupPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(resourceGuid, provisioningState, )
+        o = new(resourceGuid, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationSecurityGroupPropertiesFormat
 
 const _property_types_ApplicationSecurityGroupPropertiesFormat = Dict{Symbol,String}(Symbol("resourceGuid")=>"String", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ ApplicationSecurityGroupPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationSecurityGroupPropertiesFormat[name]))}
 
-function check_required(o::ApplicationSecurityGroupPropertiesFormat)
+function OpenAPI.check_required(o::ApplicationSecurityGroupPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationSecurityGroupPropertiesFormat)
+    OpenAPI.validate_property(ApplicationSecurityGroupPropertiesFormat, Symbol("resourceGuid"), o.resourceGuid)
+    OpenAPI.validate_property(ApplicationSecurityGroupPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationSecurityGroupPropertiesFormat }, name::Symbol, val)
+
+
 end

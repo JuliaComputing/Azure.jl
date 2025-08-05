@@ -18,18 +18,25 @@ Base.@kwdef mutable struct NetworkInterfaceTapConfigurationListResult <: OpenAPI
     nextLink::Union{Nothing, String} = nothing
 
     function NetworkInterfaceTapConfigurationListResult(value, nextLink, )
-        OpenAPI.validate_property(NetworkInterfaceTapConfigurationListResult, Symbol("value"), value)
-        OpenAPI.validate_property(NetworkInterfaceTapConfigurationListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type NetworkInterfaceTapConfigurationListResult
 
 const _property_types_NetworkInterfaceTapConfigurationListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{NetworkInterfaceTapConfiguration}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ NetworkInterfaceTapConfigurationListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkInterfaceTapConfigurationListResult[name]))}
 
-function check_required(o::NetworkInterfaceTapConfigurationListResult)
+function OpenAPI.check_required(o::NetworkInterfaceTapConfigurationListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::NetworkInterfaceTapConfigurationListResult)
+    OpenAPI.validate_property(NetworkInterfaceTapConfigurationListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(NetworkInterfaceTapConfigurationListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ NetworkInterfaceTapConfigurationListResult }, name::Symbol, val)
+
+
 end

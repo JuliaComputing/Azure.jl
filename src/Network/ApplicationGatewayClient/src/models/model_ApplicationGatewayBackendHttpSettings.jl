@@ -27,21 +27,31 @@ Base.@kwdef mutable struct ApplicationGatewayBackendHttpSettings <: OpenAPI.APIM
     id::Union{Nothing, String} = nothing
 
     function ApplicationGatewayBackendHttpSettings(properties, name, etag, type, id, )
-        OpenAPI.validate_property(ApplicationGatewayBackendHttpSettings, Symbol("properties"), properties)
-        OpenAPI.validate_property(ApplicationGatewayBackendHttpSettings, Symbol("name"), name)
-        OpenAPI.validate_property(ApplicationGatewayBackendHttpSettings, Symbol("etag"), etag)
-        OpenAPI.validate_property(ApplicationGatewayBackendHttpSettings, Symbol("type"), type)
-        OpenAPI.validate_property(ApplicationGatewayBackendHttpSettings, Symbol("id"), id)
-        return new(properties, name, etag, type, id, )
+        o = new(properties, name, etag, type, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayBackendHttpSettings
 
 const _property_types_ApplicationGatewayBackendHttpSettings = Dict{Symbol,String}(Symbol("properties")=>"ApplicationGatewayBackendHttpSettingsPropertiesFormat", Symbol("name")=>"String", Symbol("etag")=>"String", Symbol("type")=>"String", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ ApplicationGatewayBackendHttpSettings }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayBackendHttpSettings[name]))}
 
-function check_required(o::ApplicationGatewayBackendHttpSettings)
+function OpenAPI.check_required(o::ApplicationGatewayBackendHttpSettings)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayBackendHttpSettings)
+    OpenAPI.validate_property(ApplicationGatewayBackendHttpSettings, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(ApplicationGatewayBackendHttpSettings, Symbol("name"), o.name)
+    OpenAPI.validate_property(ApplicationGatewayBackendHttpSettings, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(ApplicationGatewayBackendHttpSettings, Symbol("type"), o.type)
+    OpenAPI.validate_property(ApplicationGatewayBackendHttpSettings, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayBackendHttpSettings }, name::Symbol, val)
+
+
+
+
+
 end

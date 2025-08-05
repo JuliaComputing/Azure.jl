@@ -24,20 +24,29 @@ Base.@kwdef mutable struct TrustedIdProvider <: OpenAPI.APIModel
     type::Union{Nothing, String} = nothing
 
     function TrustedIdProvider(properties, id, name, type, )
-        OpenAPI.validate_property(TrustedIdProvider, Symbol("properties"), properties)
-        OpenAPI.validate_property(TrustedIdProvider, Symbol("id"), id)
-        OpenAPI.validate_property(TrustedIdProvider, Symbol("name"), name)
-        OpenAPI.validate_property(TrustedIdProvider, Symbol("type"), type)
-        return new(properties, id, name, type, )
+        o = new(properties, id, name, type, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type TrustedIdProvider
 
 const _property_types_TrustedIdProvider = Dict{Symbol,String}(Symbol("properties")=>"TrustedIdProviderProperties", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", )
 OpenAPI.property_type(::Type{ TrustedIdProvider }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TrustedIdProvider[name]))}
 
-function check_required(o::TrustedIdProvider)
+function OpenAPI.check_required(o::TrustedIdProvider)
     true
 end
 
+function OpenAPI.validate_properties(o::TrustedIdProvider)
+    OpenAPI.validate_property(TrustedIdProvider, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(TrustedIdProvider, Symbol("id"), o.id)
+    OpenAPI.validate_property(TrustedIdProvider, Symbol("name"), o.name)
+    OpenAPI.validate_property(TrustedIdProvider, Symbol("type"), o.type)
+end
+
 function OpenAPI.validate_property(::Type{ TrustedIdProvider }, name::Symbol, val)
+
+
+
+
 end

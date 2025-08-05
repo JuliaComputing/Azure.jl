@@ -17,11 +17,12 @@ const _returntypes_usages_list_UsagesApi = Dict{Regex,Type}(
 )
 
 function _oacinternal_usages_list(_api::UsagesApi, location::String, api_version::String, subscription_id::String; _mediaType=nothing)
+        OpenAPI.validate_param("location", "usages_list", :pattern, location, r"^[-\w\._ ]+$")
 
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_usages_list_UsagesApi, "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/usages", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "location", location)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx

@@ -18,21 +18,29 @@ Base.@kwdef mutable struct ConnectionMonitorOutput <: OpenAPI.APIModel
     workspaceSettings = nothing # spec type: Union{ Nothing, ConnectionMonitorWorkspaceSettings }
 
     function ConnectionMonitorOutput(type, workspaceSettings, )
-        OpenAPI.validate_property(ConnectionMonitorOutput, Symbol("type"), type)
-        OpenAPI.validate_property(ConnectionMonitorOutput, Symbol("workspaceSettings"), workspaceSettings)
-        return new(type, workspaceSettings, )
+        o = new(type, workspaceSettings, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ConnectionMonitorOutput
 
 const _property_types_ConnectionMonitorOutput = Dict{Symbol,String}(Symbol("type")=>"String", Symbol("workspaceSettings")=>"ConnectionMonitorWorkspaceSettings", )
 OpenAPI.property_type(::Type{ ConnectionMonitorOutput }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ConnectionMonitorOutput[name]))}
 
-function check_required(o::ConnectionMonitorOutput)
+function OpenAPI.check_required(o::ConnectionMonitorOutput)
     true
 end
 
+function OpenAPI.validate_properties(o::ConnectionMonitorOutput)
+    OpenAPI.validate_property(ConnectionMonitorOutput, Symbol("type"), o.type)
+    OpenAPI.validate_property(ConnectionMonitorOutput, Symbol("workspaceSettings"), o.workspaceSettings)
+end
+
 function OpenAPI.validate_property(::Type{ ConnectionMonitorOutput }, name::Symbol, val)
+
     if name === Symbol("type")
         OpenAPI.validate_param(name, "ConnectionMonitorOutput", :enum, val, ["Workspace"])
     end
+
+
 end

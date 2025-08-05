@@ -18,18 +18,25 @@ Base.@kwdef mutable struct ResourceGroupFilter <: OpenAPI.APIModel
     tagValue::Union{Nothing, String} = nothing
 
     function ResourceGroupFilter(tagName, tagValue, )
-        OpenAPI.validate_property(ResourceGroupFilter, Symbol("tagName"), tagName)
-        OpenAPI.validate_property(ResourceGroupFilter, Symbol("tagValue"), tagValue)
-        return new(tagName, tagValue, )
+        o = new(tagName, tagValue, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ResourceGroupFilter
 
 const _property_types_ResourceGroupFilter = Dict{Symbol,String}(Symbol("tagName")=>"String", Symbol("tagValue")=>"String", )
 OpenAPI.property_type(::Type{ ResourceGroupFilter }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ResourceGroupFilter[name]))}
 
-function check_required(o::ResourceGroupFilter)
+function OpenAPI.check_required(o::ResourceGroupFilter)
     true
 end
 
+function OpenAPI.validate_properties(o::ResourceGroupFilter)
+    OpenAPI.validate_property(ResourceGroupFilter, Symbol("tagName"), o.tagName)
+    OpenAPI.validate_property(ResourceGroupFilter, Symbol("tagValue"), o.tagValue)
+end
+
 function OpenAPI.validate_property(::Type{ ResourceGroupFilter }, name::Symbol, val)
+
+
 end

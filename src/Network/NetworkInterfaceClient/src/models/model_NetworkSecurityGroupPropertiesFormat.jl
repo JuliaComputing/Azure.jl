@@ -6,6 +6,7 @@
 Network Security Group resource.
 
     NetworkSecurityGroupPropertiesFormat(;
+        flushConnection=nothing,
         securityRules=nothing,
         defaultSecurityRules=nothing,
         networkInterfaces=nothing,
@@ -15,6 +16,7 @@ Network Security Group resource.
         provisioningState=nothing,
     )
 
+    - flushConnection::Bool : When enabled, flows created from Network Security Group connections will be re-evaluated when rules are updates. Initial enablement will trigger re-evaluation.
     - securityRules::Vector{SecurityRule} : A collection of security rules of the network security group.
     - defaultSecurityRules::Vector{SecurityRule} : The default security rules of network security group.
     - networkInterfaces::Vector{NetworkInterface2} : A collection of references to network interfaces.
@@ -24,6 +26,7 @@ Network Security Group resource.
     - provisioningState::ProvisioningState
 """
 Base.@kwdef mutable struct NetworkSecurityGroupPropertiesFormat <: OpenAPI.APIModel
+    flushConnection::Union{Nothing, Bool} = nothing
     securityRules::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{SecurityRule} }
     defaultSecurityRules::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{SecurityRule} }
     networkInterfaces::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{NetworkInterface2} }
@@ -32,24 +35,38 @@ Base.@kwdef mutable struct NetworkSecurityGroupPropertiesFormat <: OpenAPI.APIMo
     resourceGuid::Union{Nothing, String} = nothing
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
-    function NetworkSecurityGroupPropertiesFormat(securityRules, defaultSecurityRules, networkInterfaces, subnets, flowLogs, resourceGuid, provisioningState, )
-        OpenAPI.validate_property(NetworkSecurityGroupPropertiesFormat, Symbol("securityRules"), securityRules)
-        OpenAPI.validate_property(NetworkSecurityGroupPropertiesFormat, Symbol("defaultSecurityRules"), defaultSecurityRules)
-        OpenAPI.validate_property(NetworkSecurityGroupPropertiesFormat, Symbol("networkInterfaces"), networkInterfaces)
-        OpenAPI.validate_property(NetworkSecurityGroupPropertiesFormat, Symbol("subnets"), subnets)
-        OpenAPI.validate_property(NetworkSecurityGroupPropertiesFormat, Symbol("flowLogs"), flowLogs)
-        OpenAPI.validate_property(NetworkSecurityGroupPropertiesFormat, Symbol("resourceGuid"), resourceGuid)
-        OpenAPI.validate_property(NetworkSecurityGroupPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(securityRules, defaultSecurityRules, networkInterfaces, subnets, flowLogs, resourceGuid, provisioningState, )
+    function NetworkSecurityGroupPropertiesFormat(flushConnection, securityRules, defaultSecurityRules, networkInterfaces, subnets, flowLogs, resourceGuid, provisioningState, )
+        o = new(flushConnection, securityRules, defaultSecurityRules, networkInterfaces, subnets, flowLogs, resourceGuid, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type NetworkSecurityGroupPropertiesFormat
 
-const _property_types_NetworkSecurityGroupPropertiesFormat = Dict{Symbol,String}(Symbol("securityRules")=>"Vector{SecurityRule}", Symbol("defaultSecurityRules")=>"Vector{SecurityRule}", Symbol("networkInterfaces")=>"Vector{NetworkInterface2}", Symbol("subnets")=>"Vector{Subnet}", Symbol("flowLogs")=>"Vector{FlowLog}", Symbol("resourceGuid")=>"String", Symbol("provisioningState")=>"ProvisioningState", )
+const _property_types_NetworkSecurityGroupPropertiesFormat = Dict{Symbol,String}(Symbol("flushConnection")=>"Bool", Symbol("securityRules")=>"Vector{SecurityRule}", Symbol("defaultSecurityRules")=>"Vector{SecurityRule}", Symbol("networkInterfaces")=>"Vector{NetworkInterface2}", Symbol("subnets")=>"Vector{Subnet}", Symbol("flowLogs")=>"Vector{FlowLog}", Symbol("resourceGuid")=>"String", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ NetworkSecurityGroupPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkSecurityGroupPropertiesFormat[name]))}
 
-function check_required(o::NetworkSecurityGroupPropertiesFormat)
+function OpenAPI.check_required(o::NetworkSecurityGroupPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::NetworkSecurityGroupPropertiesFormat)
+    OpenAPI.validate_property(NetworkSecurityGroupPropertiesFormat, Symbol("flushConnection"), o.flushConnection)
+    OpenAPI.validate_property(NetworkSecurityGroupPropertiesFormat, Symbol("securityRules"), o.securityRules)
+    OpenAPI.validate_property(NetworkSecurityGroupPropertiesFormat, Symbol("defaultSecurityRules"), o.defaultSecurityRules)
+    OpenAPI.validate_property(NetworkSecurityGroupPropertiesFormat, Symbol("networkInterfaces"), o.networkInterfaces)
+    OpenAPI.validate_property(NetworkSecurityGroupPropertiesFormat, Symbol("subnets"), o.subnets)
+    OpenAPI.validate_property(NetworkSecurityGroupPropertiesFormat, Symbol("flowLogs"), o.flowLogs)
+    OpenAPI.validate_property(NetworkSecurityGroupPropertiesFormat, Symbol("resourceGuid"), o.resourceGuid)
+    OpenAPI.validate_property(NetworkSecurityGroupPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ NetworkSecurityGroupPropertiesFormat }, name::Symbol, val)
+
+
+
+
+
+
+
+
 end

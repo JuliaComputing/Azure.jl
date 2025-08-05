@@ -18,18 +18,25 @@ Base.@kwdef mutable struct VirtualNetworkGatewayListResult <: OpenAPI.APIModel
     nextLink::Union{Nothing, String} = nothing
 
     function VirtualNetworkGatewayListResult(value, nextLink, )
-        OpenAPI.validate_property(VirtualNetworkGatewayListResult, Symbol("value"), value)
-        OpenAPI.validate_property(VirtualNetworkGatewayListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualNetworkGatewayListResult
 
 const _property_types_VirtualNetworkGatewayListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{VirtualNetworkGateway}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ VirtualNetworkGatewayListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualNetworkGatewayListResult[name]))}
 
-function check_required(o::VirtualNetworkGatewayListResult)
+function OpenAPI.check_required(o::VirtualNetworkGatewayListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualNetworkGatewayListResult)
+    OpenAPI.validate_property(VirtualNetworkGatewayListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(VirtualNetworkGatewayListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualNetworkGatewayListResult }, name::Symbol, val)
+
+
 end

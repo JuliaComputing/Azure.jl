@@ -24,23 +24,33 @@ Base.@kwdef mutable struct Identity <: OpenAPI.APIModel
     userAssignedIdentities::Union{Nothing, Dict} = nothing # spec type: Union{ Nothing, Dict{String, IdentityUserAssignedIdentitiesValue} }
 
     function Identity(principalId, tenantId, type, userAssignedIdentities, )
-        OpenAPI.validate_property(Identity, Symbol("principalId"), principalId)
-        OpenAPI.validate_property(Identity, Symbol("tenantId"), tenantId)
-        OpenAPI.validate_property(Identity, Symbol("type"), type)
-        OpenAPI.validate_property(Identity, Symbol("userAssignedIdentities"), userAssignedIdentities)
-        return new(principalId, tenantId, type, userAssignedIdentities, )
+        o = new(principalId, tenantId, type, userAssignedIdentities, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type Identity
 
 const _property_types_Identity = Dict{Symbol,String}(Symbol("principalId")=>"String", Symbol("tenantId")=>"String", Symbol("type")=>"String", Symbol("userAssignedIdentities")=>"Dict{String, IdentityUserAssignedIdentitiesValue}", )
 OpenAPI.property_type(::Type{ Identity }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Identity[name]))}
 
-function check_required(o::Identity)
+function OpenAPI.check_required(o::Identity)
     true
 end
 
+function OpenAPI.validate_properties(o::Identity)
+    OpenAPI.validate_property(Identity, Symbol("principalId"), o.principalId)
+    OpenAPI.validate_property(Identity, Symbol("tenantId"), o.tenantId)
+    OpenAPI.validate_property(Identity, Symbol("type"), o.type)
+    OpenAPI.validate_property(Identity, Symbol("userAssignedIdentities"), o.userAssignedIdentities)
+end
+
 function OpenAPI.validate_property(::Type{ Identity }, name::Symbol, val)
+
+
+
     if name === Symbol("type")
         OpenAPI.validate_param(name, "Identity", :enum, val, ["SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned", "None"])
     end
+
+
 end

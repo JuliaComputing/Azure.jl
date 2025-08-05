@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**virtual_machines_delete**](VirtualMachinesApi.md#virtual_machines_delete) | **DELETE** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName} | 
 [**virtual_machines_generalize**](VirtualMachinesApi.md#virtual_machines_generalize) | **POST** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/generalize | 
 [**virtual_machines_get**](VirtualMachinesApi.md#virtual_machines_get) | **GET** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName} | 
+[**virtual_machines_install_patches**](VirtualMachinesApi.md#virtual_machines_install_patches) | **POST** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/installPatches | 
 [**virtual_machines_instance_view**](VirtualMachinesApi.md#virtual_machines_instance_view) | **GET** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/instanceView | 
 [**virtual_machines_list**](VirtualMachinesApi.md#virtual_machines_list) | **GET** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines | 
 [**virtual_machines_list_all**](VirtualMachinesApi.md#virtual_machines_list_all) | **GET** /subscriptions/{subscriptionId}/providers/Microsoft.Compute/virtualMachines | 
@@ -42,10 +43,10 @@ Assess patches on the VM.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachinesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_name** | **String**| The name of the virtual machine. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_name** | **String** | The name of the virtual machine. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -75,11 +76,11 @@ Captures the VM by copying virtual hard disks of the VM and outputs a template t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachinesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_name** | **String**| The name of the virtual machine. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**VirtualMachineCaptureParameters**](VirtualMachineCaptureParameters.md)| Parameters supplied to the Capture Virtual Machine operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_name** | **String** | The name of the virtual machine. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**VirtualMachineCaptureParameters**](VirtualMachineCaptureParameters.md) | Parameters supplied to the Capture Virtual Machine operation. |
 
 ### Return type
 
@@ -109,10 +110,10 @@ Converts virtual machine disks from blob-based to managed disks. Virtual machine
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachinesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_name** | **String**| The name of the virtual machine. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_name** | **String** | The name of the virtual machine. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -125,7 +126,7 @@ Nothing
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -142,11 +143,11 @@ The operation to create or update a virtual machine. Please note some properties
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachinesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_name** | **String**| The name of the virtual machine. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**VirtualMachine**](VirtualMachine.md)| Parameters supplied to the Create Virtual Machine operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_name** | **String** | The name of the virtual machine. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**VirtualMachine**](VirtualMachine.md) | Parameters supplied to the Create Virtual Machine operation. |
 
 ### Return type
 
@@ -164,8 +165,8 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 # **virtual_machines_deallocate**
-> virtual_machines_deallocate(_api::VirtualMachinesApi, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; _mediaType=nothing) -> Nothing, OpenAPI.Clients.ApiResponse <br/>
-> virtual_machines_deallocate(_api::VirtualMachinesApi, response_stream::Channel, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; _mediaType=nothing) -> Channel{ Nothing }, OpenAPI.Clients.ApiResponse
+> virtual_machines_deallocate(_api::VirtualMachinesApi, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; hibernate=nothing, _mediaType=nothing) -> Nothing, OpenAPI.Clients.ApiResponse <br/>
+> virtual_machines_deallocate(_api::VirtualMachinesApi, response_stream::Channel, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; hibernate=nothing, _mediaType=nothing) -> Channel{ Nothing }, OpenAPI.Clients.ApiResponse
 
 
 
@@ -176,10 +177,16 @@ Shuts down the virtual machine and releases the compute resources. You are not b
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachinesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_name** | **String**| The name of the virtual machine. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_name** | **String** | The name of the virtual machine. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+
+### Optional Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **hibernate** | **Bool** | Optional parameter to hibernate a virtual machine. (Feature in Preview) | [default to nothing]
 
 ### Return type
 
@@ -192,13 +199,13 @@ Nothing
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 # **virtual_machines_delete**
-> virtual_machines_delete(_api::VirtualMachinesApi, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; _mediaType=nothing) -> Nothing, OpenAPI.Clients.ApiResponse <br/>
-> virtual_machines_delete(_api::VirtualMachinesApi, response_stream::Channel, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; _mediaType=nothing) -> Channel{ Nothing }, OpenAPI.Clients.ApiResponse
+> virtual_machines_delete(_api::VirtualMachinesApi, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; force_deletion=nothing, _mediaType=nothing) -> Nothing, OpenAPI.Clients.ApiResponse <br/>
+> virtual_machines_delete(_api::VirtualMachinesApi, response_stream::Channel, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; force_deletion=nothing, _mediaType=nothing) -> Channel{ Nothing }, OpenAPI.Clients.ApiResponse
 
 
 
@@ -209,10 +216,16 @@ The operation to delete a virtual machine.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachinesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_name** | **String**| The name of the virtual machine. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_name** | **String** | The name of the virtual machine. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+
+### Optional Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **force_deletion** | **Bool** | Optional parameter to force delete virtual machines. | [default to nothing]
 
 ### Return type
 
@@ -225,7 +238,7 @@ Nothing
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -235,17 +248,17 @@ Nothing
 
 
 
-Sets the OS state of the virtual machine to generalized. It is recommended to sysprep the virtual machine before performing this operation. <br>For Windows, please refer to [Create a managed image of a generalized VM in Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/capture-image-resource).<br>For Linux, please refer to [How to create an image of a virtual machine or VHD](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/capture-image).
+Sets the OS state of the virtual machine to generalized. It is recommended to sysprep the virtual machine before performing this operation. <br>For Windows, please refer to [Create a managed image of a generalized VM in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource).<br>For Linux, please refer to [How to create an image of a virtual machine or VHD](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image).
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachinesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_name** | **String**| The name of the virtual machine. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_name** | **String** | The name of the virtual machine. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -258,7 +271,7 @@ Nothing
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -275,16 +288,16 @@ Retrieves information about the model view or the instance view of a virtual mac
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachinesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_name** | **String**| The name of the virtual machine. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_name** | **String** | The name of the virtual machine. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expand** | **String**| The expand expression to apply on the operation. | [default to nothing]
+ **expand** | **String** | The expand expression to apply on the operation. &#39;InstanceView&#39; retrieves a snapshot of the runtime properties of the virtual machine that is managed by the platform and can change outside of control plane operations. &#39;UserData&#39; retrieves the UserData property as part of the VM model view that was provided by the user during the VM Create/Update operation. | [default to nothing]
 
 ### Return type
 
@@ -297,6 +310,40 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+# **virtual_machines_install_patches**
+> virtual_machines_install_patches(_api::VirtualMachinesApi, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String, install_patches_input::VirtualMachineInstallPatchesParameters; _mediaType=nothing) -> VirtualMachineInstallPatchesResult, OpenAPI.Clients.ApiResponse <br/>
+> virtual_machines_install_patches(_api::VirtualMachinesApi, response_stream::Channel, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String, install_patches_input::VirtualMachineInstallPatchesParameters; _mediaType=nothing) -> Channel{ VirtualMachineInstallPatchesResult }, OpenAPI.Clients.ApiResponse
+
+
+
+Installs patches on the VM.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **_api** | **VirtualMachinesApi** | API context | 
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_name** | **String** | The name of the virtual machine. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**install_patches_input** | [**VirtualMachineInstallPatchesParameters**](VirtualMachineInstallPatchesParameters.md) | Input for InstallPatches as directly received by the API |
+
+### Return type
+
+[**VirtualMachineInstallPatchesResult**](VirtualMachineInstallPatchesResult.md)
+
+### Authorization
+
+[azure_auth](../README.md#azure_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
@@ -314,10 +361,10 @@ Retrieves information about the run-time state of a virtual machine.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachinesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_name** | **String**| The name of the virtual machine. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_name** | **String** | The name of the virtual machine. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -335,8 +382,8 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 # **virtual_machines_list**
-> virtual_machines_list(_api::VirtualMachinesApi, resource_group_name::String, api_version::String, subscription_id::String; _mediaType=nothing) -> VirtualMachineListResult, OpenAPI.Clients.ApiResponse <br/>
-> virtual_machines_list(_api::VirtualMachinesApi, response_stream::Channel, resource_group_name::String, api_version::String, subscription_id::String; _mediaType=nothing) -> Channel{ VirtualMachineListResult }, OpenAPI.Clients.ApiResponse
+> virtual_machines_list(_api::VirtualMachinesApi, resource_group_name::String, api_version::String, subscription_id::String; filter=nothing, _mediaType=nothing) -> VirtualMachineListResult, OpenAPI.Clients.ApiResponse <br/>
+> virtual_machines_list(_api::VirtualMachinesApi, response_stream::Channel, resource_group_name::String, api_version::String, subscription_id::String; filter=nothing, _mediaType=nothing) -> Channel{ VirtualMachineListResult }, OpenAPI.Clients.ApiResponse
 
 
 
@@ -347,9 +394,15 @@ Lists all of the virtual machines in the specified resource group. Use the nextL
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachinesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+
+### Optional Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **filter** | **String** | The system query option to filter VMs returned in the response. Allowed value is &#39;virtualMachineScaleSet/id&#39; eq /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}&#39; | [default to nothing]
 
 ### Return type
 
@@ -367,8 +420,8 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 # **virtual_machines_list_all**
-> virtual_machines_list_all(_api::VirtualMachinesApi, api_version::String, subscription_id::String; status_only=nothing, _mediaType=nothing) -> VirtualMachineListResult, OpenAPI.Clients.ApiResponse <br/>
-> virtual_machines_list_all(_api::VirtualMachinesApi, response_stream::Channel, api_version::String, subscription_id::String; status_only=nothing, _mediaType=nothing) -> Channel{ VirtualMachineListResult }, OpenAPI.Clients.ApiResponse
+> virtual_machines_list_all(_api::VirtualMachinesApi, api_version::String, subscription_id::String; status_only=nothing, filter=nothing, _mediaType=nothing) -> VirtualMachineListResult, OpenAPI.Clients.ApiResponse <br/>
+> virtual_machines_list_all(_api::VirtualMachinesApi, response_stream::Channel, api_version::String, subscription_id::String; status_only=nothing, filter=nothing, _mediaType=nothing) -> Channel{ VirtualMachineListResult }, OpenAPI.Clients.ApiResponse
 
 
 
@@ -379,14 +432,15 @@ Lists all of the virtual machines in the specified subscription. Use the nextLin
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachinesApi** | API context | 
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **status_only** | **String**| statusOnly&#x3D;true enables fetching run time status of all Virtual Machines in the subscription. | [default to nothing]
+ **status_only** | **String** | statusOnly&#x3D;true enables fetching run time status of all Virtual Machines in the subscription. | [default to nothing]
+ **filter** | **String** | The system query option to filter VMs returned in the response. Allowed value is &#39;virtualMachineScaleSet/id&#39; eq /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmssName}&#39; | [default to nothing]
 
 ### Return type
 
@@ -416,10 +470,10 @@ Lists all available virtual machine sizes to which the specified virtual machine
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachinesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_name** | **String**| The name of the virtual machine. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_name** | **String** | The name of the virtual machine. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -449,9 +503,9 @@ Gets all the virtual machines under the specified subscription for the specified
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachinesApi** | API context | 
-**location** | **String**| The location for which virtual machines under the subscription are queried. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**location** | **String** | The location for which virtual machines under the subscription are queried. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -481,10 +535,10 @@ The operation to perform maintenance on a virtual machine.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachinesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_name** | **String**| The name of the virtual machine. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_name** | **String** | The name of the virtual machine. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -497,7 +551,7 @@ Nothing
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -514,16 +568,16 @@ The operation to power off (stop) a virtual machine. The virtual machine can be 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachinesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_name** | **String**| The name of the virtual machine. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_name** | **String** | The name of the virtual machine. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **skip_shutdown** | **Bool**| The parameter to request non-graceful VM shutdown. True value for this flag indicates non-graceful shutdown whereas false indicates otherwise. Default value for this flag is false if not specified | [default to false]
+ **skip_shutdown** | **Bool** | The parameter to request non-graceful VM shutdown. True value for this flag indicates non-graceful shutdown whereas false indicates otherwise. Default value for this flag is false if not specified | [default to false]
 
 ### Return type
 
@@ -536,7 +590,7 @@ Nothing
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -553,10 +607,10 @@ The operation to reapply a virtual machine's state.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachinesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_name** | **String**| The name of the virtual machine. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_name** | **String** | The name of the virtual machine. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -586,10 +640,10 @@ Shuts down the virtual machine, moves it to a new node, and powers it back on.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachinesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_name** | **String**| The name of the virtual machine. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_name** | **String** | The name of the virtual machine. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -602,7 +656,7 @@ Nothing
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -619,16 +673,16 @@ Reimages the virtual machine which has an ephemeral OS disk back to its initial 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachinesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_name** | **String**| The name of the virtual machine. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_name** | **String** | The name of the virtual machine. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **parameters** | [**VirtualMachineReimageParameters**](VirtualMachineReimageParameters.md)| Parameters supplied to the Reimage Virtual Machine operation. | 
+ **parameters** | [**VirtualMachineReimageParameters**](VirtualMachineReimageParameters.md) | Parameters supplied to the Reimage Virtual Machine operation. | 
 
 ### Return type
 
@@ -641,7 +695,7 @@ Nothing
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -658,10 +712,10 @@ The operation to restart a virtual machine.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachinesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_name** | **String**| The name of the virtual machine. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_name** | **String** | The name of the virtual machine. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -674,7 +728,7 @@ Nothing
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -691,16 +745,16 @@ The operation to retrieve SAS URIs for a virtual machine's boot diagnostic logs.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachinesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_name** | **String**| The name of the virtual machine. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_name** | **String** | The name of the virtual machine. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sas_uri_expiration_time_in_minutes** | **Int64**| Expiration duration in minutes for the SAS URIs with a value between 1 to 1440 minutes. &lt;br&gt;&lt;br&gt;NOTE: If not specified, SAS URIs will be generated with a default expiration duration of 120 minutes. | [default to nothing]
+ **sas_uri_expiration_time_in_minutes** | **Int64** | Expiration duration in minutes for the SAS URIs with a value between 1 to 1440 minutes. &lt;br&gt;&lt;br&gt;NOTE: If not specified, SAS URIs will be generated with a default expiration duration of 120 minutes. | [default to nothing]
 
 ### Return type
 
@@ -723,17 +777,17 @@ Name | Type | Description  | Notes
 
 
 
-The operation to simulate the eviction of spot virtual machine. The eviction will occur within 30 minutes of calling the API
+The operation to simulate the eviction of spot virtual machine.
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachinesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_name** | **String**| The name of the virtual machine. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_name** | **String** | The name of the virtual machine. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -746,7 +800,7 @@ Nothing
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -763,10 +817,10 @@ The operation to start a virtual machine.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachinesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_name** | **String**| The name of the virtual machine. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_name** | **String** | The name of the virtual machine. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -779,7 +833,7 @@ Nothing
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -796,11 +850,11 @@ The operation to update a virtual machine.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachinesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_name** | **String**| The name of the virtual machine. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**VirtualMachineUpdate**](VirtualMachineUpdate.md)| Parameters supplied to the Update Virtual Machine operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_name** | **String** | The name of the virtual machine. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**VirtualMachineUpdate**](VirtualMachineUpdate.md) | Parameters supplied to the Update Virtual Machine operation. |
 
 ### Return type
 

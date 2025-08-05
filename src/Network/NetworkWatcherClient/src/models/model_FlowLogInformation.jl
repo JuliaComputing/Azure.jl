@@ -9,33 +9,46 @@ Information on the configuration of flow log and traffic analytics (optional) .
         targetResourceId=nothing,
         properties=nothing,
         flowAnalyticsConfiguration=nothing,
+        identity=nothing,
     )
 
     - targetResourceId::String : The ID of the resource to configure for flow log and traffic analytics (optional) .
     - properties::FlowLogProperties
     - flowAnalyticsConfiguration::TrafficAnalyticsProperties
+    - identity::ManagedServiceIdentity
 """
 Base.@kwdef mutable struct FlowLogInformation <: OpenAPI.APIModel
     targetResourceId::Union{Nothing, String} = nothing
     properties = nothing # spec type: Union{ Nothing, FlowLogProperties }
     flowAnalyticsConfiguration = nothing # spec type: Union{ Nothing, TrafficAnalyticsProperties }
+    identity = nothing # spec type: Union{ Nothing, ManagedServiceIdentity }
 
-    function FlowLogInformation(targetResourceId, properties, flowAnalyticsConfiguration, )
-        OpenAPI.validate_property(FlowLogInformation, Symbol("targetResourceId"), targetResourceId)
-        OpenAPI.validate_property(FlowLogInformation, Symbol("properties"), properties)
-        OpenAPI.validate_property(FlowLogInformation, Symbol("flowAnalyticsConfiguration"), flowAnalyticsConfiguration)
-        return new(targetResourceId, properties, flowAnalyticsConfiguration, )
+    function FlowLogInformation(targetResourceId, properties, flowAnalyticsConfiguration, identity, )
+        o = new(targetResourceId, properties, flowAnalyticsConfiguration, identity, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type FlowLogInformation
 
-const _property_types_FlowLogInformation = Dict{Symbol,String}(Symbol("targetResourceId")=>"String", Symbol("properties")=>"FlowLogProperties", Symbol("flowAnalyticsConfiguration")=>"TrafficAnalyticsProperties", )
+const _property_types_FlowLogInformation = Dict{Symbol,String}(Symbol("targetResourceId")=>"String", Symbol("properties")=>"FlowLogProperties", Symbol("flowAnalyticsConfiguration")=>"TrafficAnalyticsProperties", Symbol("identity")=>"ManagedServiceIdentity", )
 OpenAPI.property_type(::Type{ FlowLogInformation }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_FlowLogInformation[name]))}
 
-function check_required(o::FlowLogInformation)
+function OpenAPI.check_required(o::FlowLogInformation)
     o.targetResourceId === nothing && (return false)
     o.properties === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::FlowLogInformation)
+    OpenAPI.validate_property(FlowLogInformation, Symbol("targetResourceId"), o.targetResourceId)
+    OpenAPI.validate_property(FlowLogInformation, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(FlowLogInformation, Symbol("flowAnalyticsConfiguration"), o.flowAnalyticsConfiguration)
+    OpenAPI.validate_property(FlowLogInformation, Symbol("identity"), o.identity)
+end
+
 function OpenAPI.validate_property(::Type{ FlowLogInformation }, name::Symbol, val)
+
+
+
+
 end

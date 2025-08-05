@@ -21,19 +21,27 @@ Base.@kwdef mutable struct DiskEncryptionSettings <: OpenAPI.APIModel
     enabled::Union{Nothing, Bool} = nothing
 
     function DiskEncryptionSettings(diskEncryptionKey, keyEncryptionKey, enabled, )
-        OpenAPI.validate_property(DiskEncryptionSettings, Symbol("diskEncryptionKey"), diskEncryptionKey)
-        OpenAPI.validate_property(DiskEncryptionSettings, Symbol("keyEncryptionKey"), keyEncryptionKey)
-        OpenAPI.validate_property(DiskEncryptionSettings, Symbol("enabled"), enabled)
-        return new(diskEncryptionKey, keyEncryptionKey, enabled, )
+        o = new(diskEncryptionKey, keyEncryptionKey, enabled, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type DiskEncryptionSettings
 
 const _property_types_DiskEncryptionSettings = Dict{Symbol,String}(Symbol("diskEncryptionKey")=>"KeyVaultSecretReference", Symbol("keyEncryptionKey")=>"KeyVaultKeyReference", Symbol("enabled")=>"Bool", )
 OpenAPI.property_type(::Type{ DiskEncryptionSettings }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DiskEncryptionSettings[name]))}
 
-function check_required(o::DiskEncryptionSettings)
+function OpenAPI.check_required(o::DiskEncryptionSettings)
     true
 end
 
+function OpenAPI.validate_properties(o::DiskEncryptionSettings)
+    OpenAPI.validate_property(DiskEncryptionSettings, Symbol("diskEncryptionKey"), o.diskEncryptionKey)
+    OpenAPI.validate_property(DiskEncryptionSettings, Symbol("keyEncryptionKey"), o.keyEncryptionKey)
+    OpenAPI.validate_property(DiskEncryptionSettings, Symbol("enabled"), o.enabled)
+end
+
 function OpenAPI.validate_property(::Type{ DiskEncryptionSettings }, name::Symbol, val)
+
+
+
 end

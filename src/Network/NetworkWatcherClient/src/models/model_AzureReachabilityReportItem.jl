@@ -21,19 +21,27 @@ Base.@kwdef mutable struct AzureReachabilityReportItem <: OpenAPI.APIModel
     latencies::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{AzureReachabilityReportLatencyInfo} }
 
     function AzureReachabilityReportItem(provider, azureLocation, latencies, )
-        OpenAPI.validate_property(AzureReachabilityReportItem, Symbol("provider"), provider)
-        OpenAPI.validate_property(AzureReachabilityReportItem, Symbol("azureLocation"), azureLocation)
-        OpenAPI.validate_property(AzureReachabilityReportItem, Symbol("latencies"), latencies)
-        return new(provider, azureLocation, latencies, )
+        o = new(provider, azureLocation, latencies, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AzureReachabilityReportItem
 
 const _property_types_AzureReachabilityReportItem = Dict{Symbol,String}(Symbol("provider")=>"String", Symbol("azureLocation")=>"String", Symbol("latencies")=>"Vector{AzureReachabilityReportLatencyInfo}", )
 OpenAPI.property_type(::Type{ AzureReachabilityReportItem }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AzureReachabilityReportItem[name]))}
 
-function check_required(o::AzureReachabilityReportItem)
+function OpenAPI.check_required(o::AzureReachabilityReportItem)
     true
 end
 
+function OpenAPI.validate_properties(o::AzureReachabilityReportItem)
+    OpenAPI.validate_property(AzureReachabilityReportItem, Symbol("provider"), o.provider)
+    OpenAPI.validate_property(AzureReachabilityReportItem, Symbol("azureLocation"), o.azureLocation)
+    OpenAPI.validate_property(AzureReachabilityReportItem, Symbol("latencies"), o.latencies)
+end
+
 function OpenAPI.validate_property(::Type{ AzureReachabilityReportItem }, name::Symbol, val)
+
+
+
 end

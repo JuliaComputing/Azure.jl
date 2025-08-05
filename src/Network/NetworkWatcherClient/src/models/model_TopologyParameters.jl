@@ -21,19 +21,27 @@ Base.@kwdef mutable struct TopologyParameters <: OpenAPI.APIModel
     targetSubnet = nothing # spec type: Union{ Nothing, SubResource }
 
     function TopologyParameters(targetResourceGroupName, targetVirtualNetwork, targetSubnet, )
-        OpenAPI.validate_property(TopologyParameters, Symbol("targetResourceGroupName"), targetResourceGroupName)
-        OpenAPI.validate_property(TopologyParameters, Symbol("targetVirtualNetwork"), targetVirtualNetwork)
-        OpenAPI.validate_property(TopologyParameters, Symbol("targetSubnet"), targetSubnet)
-        return new(targetResourceGroupName, targetVirtualNetwork, targetSubnet, )
+        o = new(targetResourceGroupName, targetVirtualNetwork, targetSubnet, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type TopologyParameters
 
 const _property_types_TopologyParameters = Dict{Symbol,String}(Symbol("targetResourceGroupName")=>"String", Symbol("targetVirtualNetwork")=>"SubResource", Symbol("targetSubnet")=>"SubResource", )
 OpenAPI.property_type(::Type{ TopologyParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TopologyParameters[name]))}
 
-function check_required(o::TopologyParameters)
+function OpenAPI.check_required(o::TopologyParameters)
     true
 end
 
+function OpenAPI.validate_properties(o::TopologyParameters)
+    OpenAPI.validate_property(TopologyParameters, Symbol("targetResourceGroupName"), o.targetResourceGroupName)
+    OpenAPI.validate_property(TopologyParameters, Symbol("targetVirtualNetwork"), o.targetVirtualNetwork)
+    OpenAPI.validate_property(TopologyParameters, Symbol("targetSubnet"), o.targetSubnet)
+end
+
 function OpenAPI.validate_property(::Type{ TopologyParameters }, name::Symbol, val)
+
+
+
 end

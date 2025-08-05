@@ -27,21 +27,31 @@ Base.@kwdef mutable struct InboundNatRule <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
 
     function InboundNatRule(properties, name, etag, type, id, )
-        OpenAPI.validate_property(InboundNatRule, Symbol("properties"), properties)
-        OpenAPI.validate_property(InboundNatRule, Symbol("name"), name)
-        OpenAPI.validate_property(InboundNatRule, Symbol("etag"), etag)
-        OpenAPI.validate_property(InboundNatRule, Symbol("type"), type)
-        OpenAPI.validate_property(InboundNatRule, Symbol("id"), id)
-        return new(properties, name, etag, type, id, )
+        o = new(properties, name, etag, type, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type InboundNatRule
 
 const _property_types_InboundNatRule = Dict{Symbol,String}(Symbol("properties")=>"InboundNatRulePropertiesFormat", Symbol("name")=>"String", Symbol("etag")=>"String", Symbol("type")=>"String", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ InboundNatRule }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_InboundNatRule[name]))}
 
-function check_required(o::InboundNatRule)
+function OpenAPI.check_required(o::InboundNatRule)
     true
 end
 
+function OpenAPI.validate_properties(o::InboundNatRule)
+    OpenAPI.validate_property(InboundNatRule, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(InboundNatRule, Symbol("name"), o.name)
+    OpenAPI.validate_property(InboundNatRule, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(InboundNatRule, Symbol("type"), o.type)
+    OpenAPI.validate_property(InboundNatRule, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ InboundNatRule }, name::Symbol, val)
+
+
+
+
+
 end

@@ -11,10 +11,13 @@ Describes the properties of a Virtual Machine Scale Set Extension.
         type=nothing,
         typeHandlerVersion=nothing,
         autoUpgradeMinorVersion=nothing,
+        enableAutomaticUpgrade=nothing,
         settings=nothing,
         protectedSettings=nothing,
         provisioningState=nothing,
         provisionAfterExtensions=nothing,
+        suppressFailures=nothing,
+        protectedSettingsFromKeyVault=nothing,
     )
 
     - forceUpdateTag::String : If a value is provided and is different from the previous value, the extension handler will be forced to update even if the extension configuration has not changed.
@@ -22,10 +25,13 @@ Describes the properties of a Virtual Machine Scale Set Extension.
     - type::String : Specifies the type of the extension; an example is \&quot;CustomScriptExtension\&quot;.
     - typeHandlerVersion::String : Specifies the version of the script handler.
     - autoUpgradeMinorVersion::Bool : Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
+    - enableAutomaticUpgrade::Bool : Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
     - settings::Any : Json formatted public settings for the extension.
     - protectedSettings::Any : The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
     - provisioningState::String : The provisioning state, which only appears in the response.
     - provisionAfterExtensions::Vector{String} : Collection of extension names after which this extension needs to be provisioned.
+    - suppressFailures::Bool : Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
+    - protectedSettingsFromKeyVault::Any : The extensions protected settings that are passed by reference, and consumed from key vault
 """
 Base.@kwdef mutable struct VirtualMachineScaleSetExtensionProperties <: OpenAPI.APIModel
     forceUpdateTag::Union{Nothing, String} = nothing
@@ -33,31 +39,54 @@ Base.@kwdef mutable struct VirtualMachineScaleSetExtensionProperties <: OpenAPI.
     type::Union{Nothing, String} = nothing
     typeHandlerVersion::Union{Nothing, String} = nothing
     autoUpgradeMinorVersion::Union{Nothing, Bool} = nothing
+    enableAutomaticUpgrade::Union{Nothing, Bool} = nothing
     settings::Union{Nothing, Any} = nothing
     protectedSettings::Union{Nothing, Any} = nothing
     provisioningState::Union{Nothing, String} = nothing
     provisionAfterExtensions::Union{Nothing, Vector{String}} = nothing
+    suppressFailures::Union{Nothing, Bool} = nothing
+    protectedSettingsFromKeyVault::Union{Nothing, Any} = nothing
 
-    function VirtualMachineScaleSetExtensionProperties(forceUpdateTag, publisher, type, typeHandlerVersion, autoUpgradeMinorVersion, settings, protectedSettings, provisioningState, provisionAfterExtensions, )
-        OpenAPI.validate_property(VirtualMachineScaleSetExtensionProperties, Symbol("forceUpdateTag"), forceUpdateTag)
-        OpenAPI.validate_property(VirtualMachineScaleSetExtensionProperties, Symbol("publisher"), publisher)
-        OpenAPI.validate_property(VirtualMachineScaleSetExtensionProperties, Symbol("type"), type)
-        OpenAPI.validate_property(VirtualMachineScaleSetExtensionProperties, Symbol("typeHandlerVersion"), typeHandlerVersion)
-        OpenAPI.validate_property(VirtualMachineScaleSetExtensionProperties, Symbol("autoUpgradeMinorVersion"), autoUpgradeMinorVersion)
-        OpenAPI.validate_property(VirtualMachineScaleSetExtensionProperties, Symbol("settings"), settings)
-        OpenAPI.validate_property(VirtualMachineScaleSetExtensionProperties, Symbol("protectedSettings"), protectedSettings)
-        OpenAPI.validate_property(VirtualMachineScaleSetExtensionProperties, Symbol("provisioningState"), provisioningState)
-        OpenAPI.validate_property(VirtualMachineScaleSetExtensionProperties, Symbol("provisionAfterExtensions"), provisionAfterExtensions)
-        return new(forceUpdateTag, publisher, type, typeHandlerVersion, autoUpgradeMinorVersion, settings, protectedSettings, provisioningState, provisionAfterExtensions, )
+    function VirtualMachineScaleSetExtensionProperties(forceUpdateTag, publisher, type, typeHandlerVersion, autoUpgradeMinorVersion, enableAutomaticUpgrade, settings, protectedSettings, provisioningState, provisionAfterExtensions, suppressFailures, protectedSettingsFromKeyVault, )
+        o = new(forceUpdateTag, publisher, type, typeHandlerVersion, autoUpgradeMinorVersion, enableAutomaticUpgrade, settings, protectedSettings, provisioningState, provisionAfterExtensions, suppressFailures, protectedSettingsFromKeyVault, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetExtensionProperties
 
-const _property_types_VirtualMachineScaleSetExtensionProperties = Dict{Symbol,String}(Symbol("forceUpdateTag")=>"String", Symbol("publisher")=>"String", Symbol("type")=>"String", Symbol("typeHandlerVersion")=>"String", Symbol("autoUpgradeMinorVersion")=>"Bool", Symbol("settings")=>"Any", Symbol("protectedSettings")=>"Any", Symbol("provisioningState")=>"String", Symbol("provisionAfterExtensions")=>"Vector{String}", )
+const _property_types_VirtualMachineScaleSetExtensionProperties = Dict{Symbol,String}(Symbol("forceUpdateTag")=>"String", Symbol("publisher")=>"String", Symbol("type")=>"String", Symbol("typeHandlerVersion")=>"String", Symbol("autoUpgradeMinorVersion")=>"Bool", Symbol("enableAutomaticUpgrade")=>"Bool", Symbol("settings")=>"Any", Symbol("protectedSettings")=>"Any", Symbol("provisioningState")=>"String", Symbol("provisionAfterExtensions")=>"Vector{String}", Symbol("suppressFailures")=>"Bool", Symbol("protectedSettingsFromKeyVault")=>"Any", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetExtensionProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetExtensionProperties[name]))}
 
-function check_required(o::VirtualMachineScaleSetExtensionProperties)
+function OpenAPI.check_required(o::VirtualMachineScaleSetExtensionProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetExtensionProperties)
+    OpenAPI.validate_property(VirtualMachineScaleSetExtensionProperties, Symbol("forceUpdateTag"), o.forceUpdateTag)
+    OpenAPI.validate_property(VirtualMachineScaleSetExtensionProperties, Symbol("publisher"), o.publisher)
+    OpenAPI.validate_property(VirtualMachineScaleSetExtensionProperties, Symbol("type"), o.type)
+    OpenAPI.validate_property(VirtualMachineScaleSetExtensionProperties, Symbol("typeHandlerVersion"), o.typeHandlerVersion)
+    OpenAPI.validate_property(VirtualMachineScaleSetExtensionProperties, Symbol("autoUpgradeMinorVersion"), o.autoUpgradeMinorVersion)
+    OpenAPI.validate_property(VirtualMachineScaleSetExtensionProperties, Symbol("enableAutomaticUpgrade"), o.enableAutomaticUpgrade)
+    OpenAPI.validate_property(VirtualMachineScaleSetExtensionProperties, Symbol("settings"), o.settings)
+    OpenAPI.validate_property(VirtualMachineScaleSetExtensionProperties, Symbol("protectedSettings"), o.protectedSettings)
+    OpenAPI.validate_property(VirtualMachineScaleSetExtensionProperties, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(VirtualMachineScaleSetExtensionProperties, Symbol("provisionAfterExtensions"), o.provisionAfterExtensions)
+    OpenAPI.validate_property(VirtualMachineScaleSetExtensionProperties, Symbol("suppressFailures"), o.suppressFailures)
+    OpenAPI.validate_property(VirtualMachineScaleSetExtensionProperties, Symbol("protectedSettingsFromKeyVault"), o.protectedSettingsFromKeyVault)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetExtensionProperties }, name::Symbol, val)
+
+
+
+
+
+
+
+
+
+
+
+
 end

@@ -9,43 +9,68 @@ Location information.
         id=nothing,
         subscriptionId=nothing,
         name=nothing,
+        type=nothing,
         displayName=nothing,
         regionalDisplayName=nothing,
         metadata=nothing,
+        availabilityZoneMappings=nothing,
     )
 
-    - id::String : The fully qualified ID of the location. For example, /subscriptions/00000000-0000-0000-0000-000000000000/locations/westus.
+    - id::String : The fully qualified ID of the location. For example, /subscriptions/8d65815f-a5b6-402f-9298-045155da7d74/locations/westus.
     - subscriptionId::String : The subscription ID.
     - name::String : The location name.
+    - type::String : The location type.
     - displayName::String : The display name of the location.
     - regionalDisplayName::String : The display name of the location and its region.
     - metadata::LocationMetadata
+    - availabilityZoneMappings::Vector{AvailabilityZoneMappings} : The availability zone mappings for this region.
 """
 Base.@kwdef mutable struct Location <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
     subscriptionId::Union{Nothing, String} = nothing
     name::Union{Nothing, String} = nothing
+    type::Union{Nothing, String} = nothing
     displayName::Union{Nothing, String} = nothing
     regionalDisplayName::Union{Nothing, String} = nothing
     metadata = nothing # spec type: Union{ Nothing, LocationMetadata }
+    availabilityZoneMappings::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{AvailabilityZoneMappings} }
 
-    function Location(id, subscriptionId, name, displayName, regionalDisplayName, metadata, )
-        OpenAPI.validate_property(Location, Symbol("id"), id)
-        OpenAPI.validate_property(Location, Symbol("subscriptionId"), subscriptionId)
-        OpenAPI.validate_property(Location, Symbol("name"), name)
-        OpenAPI.validate_property(Location, Symbol("displayName"), displayName)
-        OpenAPI.validate_property(Location, Symbol("regionalDisplayName"), regionalDisplayName)
-        OpenAPI.validate_property(Location, Symbol("metadata"), metadata)
-        return new(id, subscriptionId, name, displayName, regionalDisplayName, metadata, )
+    function Location(id, subscriptionId, name, type, displayName, regionalDisplayName, metadata, availabilityZoneMappings, )
+        o = new(id, subscriptionId, name, type, displayName, regionalDisplayName, metadata, availabilityZoneMappings, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type Location
 
-const _property_types_Location = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("subscriptionId")=>"String", Symbol("name")=>"String", Symbol("displayName")=>"String", Symbol("regionalDisplayName")=>"String", Symbol("metadata")=>"LocationMetadata", )
+const _property_types_Location = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("subscriptionId")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("displayName")=>"String", Symbol("regionalDisplayName")=>"String", Symbol("metadata")=>"LocationMetadata", Symbol("availabilityZoneMappings")=>"Vector{AvailabilityZoneMappings}", )
 OpenAPI.property_type(::Type{ Location }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Location[name]))}
 
-function check_required(o::Location)
+function OpenAPI.check_required(o::Location)
     true
 end
 
+function OpenAPI.validate_properties(o::Location)
+    OpenAPI.validate_property(Location, Symbol("id"), o.id)
+    OpenAPI.validate_property(Location, Symbol("subscriptionId"), o.subscriptionId)
+    OpenAPI.validate_property(Location, Symbol("name"), o.name)
+    OpenAPI.validate_property(Location, Symbol("type"), o.type)
+    OpenAPI.validate_property(Location, Symbol("displayName"), o.displayName)
+    OpenAPI.validate_property(Location, Symbol("regionalDisplayName"), o.regionalDisplayName)
+    OpenAPI.validate_property(Location, Symbol("metadata"), o.metadata)
+    OpenAPI.validate_property(Location, Symbol("availabilityZoneMappings"), o.availabilityZoneMappings)
+end
+
 function OpenAPI.validate_property(::Type{ Location }, name::Symbol, val)
+
+
+
+
+    if name === Symbol("type")
+        OpenAPI.validate_param(name, "Location", :enum, val, ["Region", "EdgeZone"])
+    end
+
+
+
+
+
 end

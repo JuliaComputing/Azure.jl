@@ -3,29 +3,49 @@
 
 
 @doc raw"""NetworkProfile
-Specifies the network interfaces of the virtual machine.
+Specifies the network interfaces or the networking configuration of the virtual machine.
 
     NetworkProfile(;
         networkInterfaces=nothing,
+        networkApiVersion=nothing,
+        networkInterfaceConfigurations=nothing,
     )
 
     - networkInterfaces::Vector{NetworkInterfaceReference} : Specifies the list of resource Ids for the network interfaces associated with the virtual machine.
+    - networkApiVersion::String : specifies the Microsoft.Network API version used when creating networking resources in the Network Interface Configurations
+    - networkInterfaceConfigurations::Vector{VirtualMachineNetworkInterfaceConfiguration} : Specifies the networking configurations that will be used to create the virtual machine networking resources.
 """
 Base.@kwdef mutable struct NetworkProfile <: OpenAPI.APIModel
     networkInterfaces::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{NetworkInterfaceReference} }
+    networkApiVersion::Union{Nothing, String} = nothing
+    networkInterfaceConfigurations::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{VirtualMachineNetworkInterfaceConfiguration} }
 
-    function NetworkProfile(networkInterfaces, )
-        OpenAPI.validate_property(NetworkProfile, Symbol("networkInterfaces"), networkInterfaces)
-        return new(networkInterfaces, )
+    function NetworkProfile(networkInterfaces, networkApiVersion, networkInterfaceConfigurations, )
+        o = new(networkInterfaces, networkApiVersion, networkInterfaceConfigurations, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type NetworkProfile
 
-const _property_types_NetworkProfile = Dict{Symbol,String}(Symbol("networkInterfaces")=>"Vector{NetworkInterfaceReference}", )
+const _property_types_NetworkProfile = Dict{Symbol,String}(Symbol("networkInterfaces")=>"Vector{NetworkInterfaceReference}", Symbol("networkApiVersion")=>"String", Symbol("networkInterfaceConfigurations")=>"Vector{VirtualMachineNetworkInterfaceConfiguration}", )
 OpenAPI.property_type(::Type{ NetworkProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkProfile[name]))}
 
-function check_required(o::NetworkProfile)
+function OpenAPI.check_required(o::NetworkProfile)
     true
 end
 
+function OpenAPI.validate_properties(o::NetworkProfile)
+    OpenAPI.validate_property(NetworkProfile, Symbol("networkInterfaces"), o.networkInterfaces)
+    OpenAPI.validate_property(NetworkProfile, Symbol("networkApiVersion"), o.networkApiVersion)
+    OpenAPI.validate_property(NetworkProfile, Symbol("networkInterfaceConfigurations"), o.networkInterfaceConfigurations)
+end
+
 function OpenAPI.validate_property(::Type{ NetworkProfile }, name::Symbol, val)
+
+
+    if name === Symbol("networkApiVersion")
+        OpenAPI.validate_param(name, "NetworkProfile", :enum, val, ["2020-11-01"])
+    end
+
+
 end

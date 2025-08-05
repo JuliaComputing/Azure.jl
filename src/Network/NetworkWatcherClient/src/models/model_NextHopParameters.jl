@@ -24,23 +24,32 @@ Base.@kwdef mutable struct NextHopParameters <: OpenAPI.APIModel
     targetNicResourceId::Union{Nothing, String} = nothing
 
     function NextHopParameters(targetResourceId, sourceIPAddress, destinationIPAddress, targetNicResourceId, )
-        OpenAPI.validate_property(NextHopParameters, Symbol("targetResourceId"), targetResourceId)
-        OpenAPI.validate_property(NextHopParameters, Symbol("sourceIPAddress"), sourceIPAddress)
-        OpenAPI.validate_property(NextHopParameters, Symbol("destinationIPAddress"), destinationIPAddress)
-        OpenAPI.validate_property(NextHopParameters, Symbol("targetNicResourceId"), targetNicResourceId)
-        return new(targetResourceId, sourceIPAddress, destinationIPAddress, targetNicResourceId, )
+        o = new(targetResourceId, sourceIPAddress, destinationIPAddress, targetNicResourceId, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type NextHopParameters
 
 const _property_types_NextHopParameters = Dict{Symbol,String}(Symbol("targetResourceId")=>"String", Symbol("sourceIPAddress")=>"String", Symbol("destinationIPAddress")=>"String", Symbol("targetNicResourceId")=>"String", )
 OpenAPI.property_type(::Type{ NextHopParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NextHopParameters[name]))}
 
-function check_required(o::NextHopParameters)
+function OpenAPI.check_required(o::NextHopParameters)
     o.targetResourceId === nothing && (return false)
     o.sourceIPAddress === nothing && (return false)
     o.destinationIPAddress === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::NextHopParameters)
+    OpenAPI.validate_property(NextHopParameters, Symbol("targetResourceId"), o.targetResourceId)
+    OpenAPI.validate_property(NextHopParameters, Symbol("sourceIPAddress"), o.sourceIPAddress)
+    OpenAPI.validate_property(NextHopParameters, Symbol("destinationIPAddress"), o.destinationIPAddress)
+    OpenAPI.validate_property(NextHopParameters, Symbol("targetNicResourceId"), o.targetNicResourceId)
+end
+
 function OpenAPI.validate_property(::Type{ NextHopParameters }, name::Symbol, val)
+
+
+
+
 end

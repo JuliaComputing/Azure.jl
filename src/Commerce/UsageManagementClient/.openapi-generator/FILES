@@ -1,7 +1,7 @@
 .openapi-generator-ignore
 README.md
+docs/ErrorObjectResponse.md
 docs/ErrorResponse.md
-docs/InfoField.md
 docs/MeterInfo.md
 docs/MonetaryCommitment.md
 docs/MonetaryCredit.md
@@ -18,8 +18,8 @@ src/UsageManagementClient.jl
 src/apis/api_RateCardApi.jl
 src/apis/api_UsageAggregatesApi.jl
 src/modelincludes.jl
+src/models/model_ErrorObjectResponse.jl
 src/models/model_ErrorResponse.jl
-src/models/model_InfoField.jl
 src/models/model_MeterInfo.jl
 src/models/model_MonetaryCommitment.jl
 src/models/model_MonetaryCredit.jl

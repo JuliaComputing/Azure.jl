@@ -14,6 +14,7 @@ Properties of the dedicated host.
         provisioningTime=nothing,
         provisioningState=nothing,
         instanceView=nothing,
+        timeCreated=nothing,
     )
 
     - platformFaultDomain::Int64 : Fault domain of the dedicated host within a dedicated host group.
@@ -24,6 +25,7 @@ Properties of the dedicated host.
     - provisioningTime::ZonedDateTime : The date when the host was first provisioned.
     - provisioningState::String : The provisioning state, which only appears in the response.
     - instanceView::DedicatedHostInstanceView
+    - timeCreated::ZonedDateTime : Specifies the time at which the Dedicated Host resource was created.&lt;br&gt;&lt;br&gt;Minimum api-version: 2021-11-01.
 """
 Base.@kwdef mutable struct DedicatedHostProperties <: OpenAPI.APIModel
     platformFaultDomain::Union{Nothing, Int64} = nothing
@@ -34,36 +36,54 @@ Base.@kwdef mutable struct DedicatedHostProperties <: OpenAPI.APIModel
     provisioningTime::Union{Nothing, ZonedDateTime} = nothing
     provisioningState::Union{Nothing, String} = nothing
     instanceView = nothing # spec type: Union{ Nothing, DedicatedHostInstanceView }
+    timeCreated::Union{Nothing, ZonedDateTime} = nothing
 
-    function DedicatedHostProperties(platformFaultDomain, autoReplaceOnFailure, hostId, virtualMachines, licenseType, provisioningTime, provisioningState, instanceView, )
-        OpenAPI.validate_property(DedicatedHostProperties, Symbol("platformFaultDomain"), platformFaultDomain)
-        OpenAPI.validate_property(DedicatedHostProperties, Symbol("autoReplaceOnFailure"), autoReplaceOnFailure)
-        OpenAPI.validate_property(DedicatedHostProperties, Symbol("hostId"), hostId)
-        OpenAPI.validate_property(DedicatedHostProperties, Symbol("virtualMachines"), virtualMachines)
-        OpenAPI.validate_property(DedicatedHostProperties, Symbol("licenseType"), licenseType)
-        OpenAPI.validate_property(DedicatedHostProperties, Symbol("provisioningTime"), provisioningTime)
-        OpenAPI.validate_property(DedicatedHostProperties, Symbol("provisioningState"), provisioningState)
-        OpenAPI.validate_property(DedicatedHostProperties, Symbol("instanceView"), instanceView)
-        return new(platformFaultDomain, autoReplaceOnFailure, hostId, virtualMachines, licenseType, provisioningTime, provisioningState, instanceView, )
+    function DedicatedHostProperties(platformFaultDomain, autoReplaceOnFailure, hostId, virtualMachines, licenseType, provisioningTime, provisioningState, instanceView, timeCreated, )
+        o = new(platformFaultDomain, autoReplaceOnFailure, hostId, virtualMachines, licenseType, provisioningTime, provisioningState, instanceView, timeCreated, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type DedicatedHostProperties
 
-const _property_types_DedicatedHostProperties = Dict{Symbol,String}(Symbol("platformFaultDomain")=>"Int64", Symbol("autoReplaceOnFailure")=>"Bool", Symbol("hostId")=>"String", Symbol("virtualMachines")=>"Vector{SubResourceReadOnly}", Symbol("licenseType")=>"DedicatedHostLicenseType", Symbol("provisioningTime")=>"ZonedDateTime", Symbol("provisioningState")=>"String", Symbol("instanceView")=>"DedicatedHostInstanceView", )
+const _property_types_DedicatedHostProperties = Dict{Symbol,String}(Symbol("platformFaultDomain")=>"Int64", Symbol("autoReplaceOnFailure")=>"Bool", Symbol("hostId")=>"String", Symbol("virtualMachines")=>"Vector{SubResourceReadOnly}", Symbol("licenseType")=>"DedicatedHostLicenseType", Symbol("provisioningTime")=>"ZonedDateTime", Symbol("provisioningState")=>"String", Symbol("instanceView")=>"DedicatedHostInstanceView", Symbol("timeCreated")=>"ZonedDateTime", )
 OpenAPI.property_type(::Type{ DedicatedHostProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DedicatedHostProperties[name]))}
 
-function check_required(o::DedicatedHostProperties)
+function OpenAPI.check_required(o::DedicatedHostProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::DedicatedHostProperties)
+    OpenAPI.validate_property(DedicatedHostProperties, Symbol("platformFaultDomain"), o.platformFaultDomain)
+    OpenAPI.validate_property(DedicatedHostProperties, Symbol("autoReplaceOnFailure"), o.autoReplaceOnFailure)
+    OpenAPI.validate_property(DedicatedHostProperties, Symbol("hostId"), o.hostId)
+    OpenAPI.validate_property(DedicatedHostProperties, Symbol("virtualMachines"), o.virtualMachines)
+    OpenAPI.validate_property(DedicatedHostProperties, Symbol("licenseType"), o.licenseType)
+    OpenAPI.validate_property(DedicatedHostProperties, Symbol("provisioningTime"), o.provisioningTime)
+    OpenAPI.validate_property(DedicatedHostProperties, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(DedicatedHostProperties, Symbol("instanceView"), o.instanceView)
+    OpenAPI.validate_property(DedicatedHostProperties, Symbol("timeCreated"), o.timeCreated)
+end
+
 function OpenAPI.validate_property(::Type{ DedicatedHostProperties }, name::Symbol, val)
+
     if name === Symbol("platformFaultDomain")
         OpenAPI.validate_param(name, "DedicatedHostProperties", :format, val, "int32")
     end
     if name === Symbol("platformFaultDomain")
-        OpenAPI.validate_param(name, "DedicatedHostProperties", :maximum, val, 2, false)
         OpenAPI.validate_param(name, "DedicatedHostProperties", :minimum, val, 0, false)
     end
+
+
+
+
+
     if name === Symbol("provisioningTime")
+        OpenAPI.validate_param(name, "DedicatedHostProperties", :format, val, "date-time")
+    end
+
+
+
+    if name === Symbol("timeCreated")
         OpenAPI.validate_param(name, "DedicatedHostProperties", :format, val, "date-time")
     end
 end

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **type** | **String** | The type of the alias. | [optional] [default to nothing]
 **defaultPath** | **String** | The default path for an alias. | [optional] [default to nothing]
 **defaultPattern** | [***AliasPattern**](AliasPattern.md) |  | [optional] [default to nothing]
+**defaultMetadata** | [***AliasPathMetadata**](AliasPathMetadata.md) |  | [optional] [default to nothing]
 
 
 [[Back to Model list]](../README.md#models) [[Back to API list]](../README.md#api-endpoints) [[Back to README]](../README.md)

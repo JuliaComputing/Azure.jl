@@ -18,19 +18,26 @@ Base.@kwdef mutable struct VirtualMachineScaleSetListSkusResult <: OpenAPI.APIMo
     nextLink::Union{Nothing, String} = nothing
 
     function VirtualMachineScaleSetListSkusResult(value, nextLink, )
-        OpenAPI.validate_property(VirtualMachineScaleSetListSkusResult, Symbol("value"), value)
-        OpenAPI.validate_property(VirtualMachineScaleSetListSkusResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetListSkusResult
 
 const _property_types_VirtualMachineScaleSetListSkusResult = Dict{Symbol,String}(Symbol("value")=>"Vector{VirtualMachineScaleSetSku}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetListSkusResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetListSkusResult[name]))}
 
-function check_required(o::VirtualMachineScaleSetListSkusResult)
+function OpenAPI.check_required(o::VirtualMachineScaleSetListSkusResult)
     o.value === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetListSkusResult)
+    OpenAPI.validate_property(VirtualMachineScaleSetListSkusResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(VirtualMachineScaleSetListSkusResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetListSkusResult }, name::Symbol, val)
+
+
 end

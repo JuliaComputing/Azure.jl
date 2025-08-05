@@ -24,31 +24,40 @@ Base.@kwdef mutable struct ContentSummary <: OpenAPI.APIModel
     spaceConsumed::Union{Nothing, Int64} = nothing
 
     function ContentSummary(directoryCount, fileCount, length, spaceConsumed, )
-        OpenAPI.validate_property(ContentSummary, Symbol("directoryCount"), directoryCount)
-        OpenAPI.validate_property(ContentSummary, Symbol("fileCount"), fileCount)
-        OpenAPI.validate_property(ContentSummary, Symbol("length"), length)
-        OpenAPI.validate_property(ContentSummary, Symbol("spaceConsumed"), spaceConsumed)
-        return new(directoryCount, fileCount, length, spaceConsumed, )
+        o = new(directoryCount, fileCount, length, spaceConsumed, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ContentSummary
 
 const _property_types_ContentSummary = Dict{Symbol,String}(Symbol("directoryCount")=>"Int64", Symbol("fileCount")=>"Int64", Symbol("length")=>"Int64", Symbol("spaceConsumed")=>"Int64", )
 OpenAPI.property_type(::Type{ ContentSummary }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ContentSummary[name]))}
 
-function check_required(o::ContentSummary)
+function OpenAPI.check_required(o::ContentSummary)
     true
 end
 
+function OpenAPI.validate_properties(o::ContentSummary)
+    OpenAPI.validate_property(ContentSummary, Symbol("directoryCount"), o.directoryCount)
+    OpenAPI.validate_property(ContentSummary, Symbol("fileCount"), o.fileCount)
+    OpenAPI.validate_property(ContentSummary, Symbol("length"), o.length)
+    OpenAPI.validate_property(ContentSummary, Symbol("spaceConsumed"), o.spaceConsumed)
+end
+
 function OpenAPI.validate_property(::Type{ ContentSummary }, name::Symbol, val)
+
     if name === Symbol("directoryCount")
         OpenAPI.validate_param(name, "ContentSummary", :format, val, "int64")
     end
+
     if name === Symbol("fileCount")
         OpenAPI.validate_param(name, "ContentSummary", :format, val, "int64")
     end
+
     if name === Symbol("length")
         OpenAPI.validate_param(name, "ContentSummary", :format, val, "int64")
     end
+
     if name === Symbol("spaceConsumed")
         OpenAPI.validate_param(name, "ContentSummary", :format, val, "int64")
     end

@@ -27,27 +27,37 @@ Base.@kwdef mutable struct TunnelConnectionHealth <: OpenAPI.APIModel
     lastConnectionEstablishedUtcTime::Union{Nothing, String} = nothing
 
     function TunnelConnectionHealth(tunnel, connectionStatus, ingressBytesTransferred, egressBytesTransferred, lastConnectionEstablishedUtcTime, )
-        OpenAPI.validate_property(TunnelConnectionHealth, Symbol("tunnel"), tunnel)
-        OpenAPI.validate_property(TunnelConnectionHealth, Symbol("connectionStatus"), connectionStatus)
-        OpenAPI.validate_property(TunnelConnectionHealth, Symbol("ingressBytesTransferred"), ingressBytesTransferred)
-        OpenAPI.validate_property(TunnelConnectionHealth, Symbol("egressBytesTransferred"), egressBytesTransferred)
-        OpenAPI.validate_property(TunnelConnectionHealth, Symbol("lastConnectionEstablishedUtcTime"), lastConnectionEstablishedUtcTime)
-        return new(tunnel, connectionStatus, ingressBytesTransferred, egressBytesTransferred, lastConnectionEstablishedUtcTime, )
+        o = new(tunnel, connectionStatus, ingressBytesTransferred, egressBytesTransferred, lastConnectionEstablishedUtcTime, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type TunnelConnectionHealth
 
 const _property_types_TunnelConnectionHealth = Dict{Symbol,String}(Symbol("tunnel")=>"String", Symbol("connectionStatus")=>"VirtualNetworkGatewayConnectionStatus", Symbol("ingressBytesTransferred")=>"Int64", Symbol("egressBytesTransferred")=>"Int64", Symbol("lastConnectionEstablishedUtcTime")=>"String", )
 OpenAPI.property_type(::Type{ TunnelConnectionHealth }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TunnelConnectionHealth[name]))}
 
-function check_required(o::TunnelConnectionHealth)
+function OpenAPI.check_required(o::TunnelConnectionHealth)
     true
 end
 
+function OpenAPI.validate_properties(o::TunnelConnectionHealth)
+    OpenAPI.validate_property(TunnelConnectionHealth, Symbol("tunnel"), o.tunnel)
+    OpenAPI.validate_property(TunnelConnectionHealth, Symbol("connectionStatus"), o.connectionStatus)
+    OpenAPI.validate_property(TunnelConnectionHealth, Symbol("ingressBytesTransferred"), o.ingressBytesTransferred)
+    OpenAPI.validate_property(TunnelConnectionHealth, Symbol("egressBytesTransferred"), o.egressBytesTransferred)
+    OpenAPI.validate_property(TunnelConnectionHealth, Symbol("lastConnectionEstablishedUtcTime"), o.lastConnectionEstablishedUtcTime)
+end
+
 function OpenAPI.validate_property(::Type{ TunnelConnectionHealth }, name::Symbol, val)
+
+
+
     if name === Symbol("ingressBytesTransferred")
         OpenAPI.validate_param(name, "TunnelConnectionHealth", :format, val, "int64")
     end
+
     if name === Symbol("egressBytesTransferred")
         OpenAPI.validate_param(name, "TunnelConnectionHealth", :format, val, "int64")
     end
+
 end

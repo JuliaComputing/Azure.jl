@@ -18,18 +18,25 @@ Base.@kwdef mutable struct PeerExpressRouteCircuitConnectionListResult <: OpenAP
     nextLink::Union{Nothing, String} = nothing
 
     function PeerExpressRouteCircuitConnectionListResult(value, nextLink, )
-        OpenAPI.validate_property(PeerExpressRouteCircuitConnectionListResult, Symbol("value"), value)
-        OpenAPI.validate_property(PeerExpressRouteCircuitConnectionListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PeerExpressRouteCircuitConnectionListResult
 
 const _property_types_PeerExpressRouteCircuitConnectionListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{PeerExpressRouteCircuitConnection}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ PeerExpressRouteCircuitConnectionListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PeerExpressRouteCircuitConnectionListResult[name]))}
 
-function check_required(o::PeerExpressRouteCircuitConnectionListResult)
+function OpenAPI.check_required(o::PeerExpressRouteCircuitConnectionListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::PeerExpressRouteCircuitConnectionListResult)
+    OpenAPI.validate_property(PeerExpressRouteCircuitConnectionListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(PeerExpressRouteCircuitConnectionListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ PeerExpressRouteCircuitConnectionListResult }, name::Symbol, val)
+
+
 end

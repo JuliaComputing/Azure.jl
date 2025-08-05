@@ -17,18 +17,25 @@ Base.@kwdef mutable struct VirtualMachineIdentityUserAssignedIdentitiesValue <: 
     clientId::Union{Nothing, String} = nothing
 
     function VirtualMachineIdentityUserAssignedIdentitiesValue(principalId, clientId, )
-        OpenAPI.validate_property(VirtualMachineIdentityUserAssignedIdentitiesValue, Symbol("principalId"), principalId)
-        OpenAPI.validate_property(VirtualMachineIdentityUserAssignedIdentitiesValue, Symbol("clientId"), clientId)
-        return new(principalId, clientId, )
+        o = new(principalId, clientId, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineIdentityUserAssignedIdentitiesValue
 
 const _property_types_VirtualMachineIdentityUserAssignedIdentitiesValue = Dict{Symbol,String}(Symbol("principalId")=>"String", Symbol("clientId")=>"String", )
 OpenAPI.property_type(::Type{ VirtualMachineIdentityUserAssignedIdentitiesValue }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineIdentityUserAssignedIdentitiesValue[name]))}
 
-function check_required(o::VirtualMachineIdentityUserAssignedIdentitiesValue)
+function OpenAPI.check_required(o::VirtualMachineIdentityUserAssignedIdentitiesValue)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineIdentityUserAssignedIdentitiesValue)
+    OpenAPI.validate_property(VirtualMachineIdentityUserAssignedIdentitiesValue, Symbol("principalId"), o.principalId)
+    OpenAPI.validate_property(VirtualMachineIdentityUserAssignedIdentitiesValue, Symbol("clientId"), o.clientId)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineIdentityUserAssignedIdentitiesValue }, name::Symbol, val)
+
+
 end

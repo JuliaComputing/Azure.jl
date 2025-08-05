@@ -14,14 +14,18 @@ basepath(::Type{ PolicySetDefinitionsApi }) = "https://management.azure.com"
 const _returntypes_policy_set_definitions_create_or_update_PolicySetDefinitionsApi = Dict{Regex,Type}(
     Regex("^" * replace("201", "x"=>".") * "\$") => PolicySetDefinition,
     Regex("^" * replace("200", "x"=>".") * "\$") => PolicySetDefinition,
-    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+    Regex("^" * replace("0", "x"=>".") * "\$") => ErrorResponse,
 )
 
-function _oacinternal_policy_set_definitions_create_or_update(_api::PolicySetDefinitionsApi, policy_set_definition_name::String, api_version::String, subscription_id::String, parameters::PolicySetDefinition; _mediaType=nothing)
+function _oacinternal_policy_set_definitions_create_or_update(_api::PolicySetDefinitionsApi, subscription_id::String, policy_set_definition_name::String, api_version::String, parameters::PolicySetDefinition; _mediaType=nothing)
+        OpenAPI.validate_param("policy_set_definition_name", "policy_set_definitions_create_or_update", :pattern, policy_set_definition_name, r"^[^<>*%&:\?.+/]*[^<>*%&:\?.+/ ]+$")
+
+    OpenAPI.validate_param("api_version", "policy_set_definitions_create_or_update", :minLength, api_version, 1)
+
     _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_policy_set_definitions_create_or_update_PolicySetDefinitionsApi, "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}", ["azure_auth", ], parameters)
-    OpenAPI.Clients.set_param(_ctx.path, "policySetDefinitionName", policy_set_definition_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "policySetDefinitionName", policy_set_definition_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -32,34 +36,38 @@ end
 This operation creates or updates a policy set definition in the given subscription with the given name.
 
 Params:
+- subscription_id::String (required)
 - policy_set_definition_name::String (required)
 - api_version::String (required)
-- subscription_id::String (required)
 - parameters::PolicySetDefinition (required)
 
 Return: PolicySetDefinition, OpenAPI.Clients.ApiResponse
 """
-function policy_set_definitions_create_or_update(_api::PolicySetDefinitionsApi, policy_set_definition_name::String, api_version::String, subscription_id::String, parameters::PolicySetDefinition; _mediaType=nothing)
-    _ctx = _oacinternal_policy_set_definitions_create_or_update(_api, policy_set_definition_name, api_version, subscription_id, parameters; _mediaType=_mediaType)
+function policy_set_definitions_create_or_update(_api::PolicySetDefinitionsApi, subscription_id::String, policy_set_definition_name::String, api_version::String, parameters::PolicySetDefinition; _mediaType=nothing)
+    _ctx = _oacinternal_policy_set_definitions_create_or_update(_api, subscription_id, policy_set_definition_name, api_version, parameters; _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx)
 end
 
-function policy_set_definitions_create_or_update(_api::PolicySetDefinitionsApi, response_stream::Channel, policy_set_definition_name::String, api_version::String, subscription_id::String, parameters::PolicySetDefinition; _mediaType=nothing)
-    _ctx = _oacinternal_policy_set_definitions_create_or_update(_api, policy_set_definition_name, api_version, subscription_id, parameters; _mediaType=_mediaType)
+function policy_set_definitions_create_or_update(_api::PolicySetDefinitionsApi, response_stream::Channel, subscription_id::String, policy_set_definition_name::String, api_version::String, parameters::PolicySetDefinition; _mediaType=nothing)
+    _ctx = _oacinternal_policy_set_definitions_create_or_update(_api, subscription_id, policy_set_definition_name, api_version, parameters; _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
 const _returntypes_policy_set_definitions_create_or_update_at_management_group_PolicySetDefinitionsApi = Dict{Regex,Type}(
     Regex("^" * replace("201", "x"=>".") * "\$") => PolicySetDefinition,
     Regex("^" * replace("200", "x"=>".") * "\$") => PolicySetDefinition,
-    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+    Regex("^" * replace("0", "x"=>".") * "\$") => ErrorResponse,
 )
 
-function _oacinternal_policy_set_definitions_create_or_update_at_management_group(_api::PolicySetDefinitionsApi, policy_set_definition_name::String, api_version::String, management_group_id::String, parameters::PolicySetDefinition; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_policy_set_definitions_create_or_update_at_management_group_PolicySetDefinitionsApi, "/providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}", ["azure_auth", ], parameters)
-    OpenAPI.Clients.set_param(_ctx.path, "policySetDefinitionName", policy_set_definition_name)  # type String
+function _oacinternal_policy_set_definitions_create_or_update_at_management_group(_api::PolicySetDefinitionsApi, management_group_id::String, policy_set_definition_name::String, api_version::String, parameters::PolicySetDefinition; _mediaType=nothing)
+        OpenAPI.validate_param("policy_set_definition_name", "policy_set_definitions_create_or_update_at_management_group", :pattern, policy_set_definition_name, r"^[^<>*%&:\?.+/]*[^<>*%&:\?.+/ ]+$")
+
+    OpenAPI.validate_param("api_version", "policy_set_definitions_create_or_update_at_management_group", :minLength, api_version, 1)
+
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_policy_set_definitions_create_or_update_at_management_group_PolicySetDefinitionsApi, "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}", ["azure_auth", ], parameters)
     OpenAPI.Clients.set_param(_ctx.path, "managementGroupId", management_group_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "policySetDefinitionName", policy_set_definition_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -70,34 +78,38 @@ end
 This operation creates or updates a policy set definition in the given management group with the given name.
 
 Params:
+- management_group_id::String (required)
 - policy_set_definition_name::String (required)
 - api_version::String (required)
-- management_group_id::String (required)
 - parameters::PolicySetDefinition (required)
 
 Return: PolicySetDefinition, OpenAPI.Clients.ApiResponse
 """
-function policy_set_definitions_create_or_update_at_management_group(_api::PolicySetDefinitionsApi, policy_set_definition_name::String, api_version::String, management_group_id::String, parameters::PolicySetDefinition; _mediaType=nothing)
-    _ctx = _oacinternal_policy_set_definitions_create_or_update_at_management_group(_api, policy_set_definition_name, api_version, management_group_id, parameters; _mediaType=_mediaType)
+function policy_set_definitions_create_or_update_at_management_group(_api::PolicySetDefinitionsApi, management_group_id::String, policy_set_definition_name::String, api_version::String, parameters::PolicySetDefinition; _mediaType=nothing)
+    _ctx = _oacinternal_policy_set_definitions_create_or_update_at_management_group(_api, management_group_id, policy_set_definition_name, api_version, parameters; _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx)
 end
 
-function policy_set_definitions_create_or_update_at_management_group(_api::PolicySetDefinitionsApi, response_stream::Channel, policy_set_definition_name::String, api_version::String, management_group_id::String, parameters::PolicySetDefinition; _mediaType=nothing)
-    _ctx = _oacinternal_policy_set_definitions_create_or_update_at_management_group(_api, policy_set_definition_name, api_version, management_group_id, parameters; _mediaType=_mediaType)
+function policy_set_definitions_create_or_update_at_management_group(_api::PolicySetDefinitionsApi, response_stream::Channel, management_group_id::String, policy_set_definition_name::String, api_version::String, parameters::PolicySetDefinition; _mediaType=nothing)
+    _ctx = _oacinternal_policy_set_definitions_create_or_update_at_management_group(_api, management_group_id, policy_set_definition_name, api_version, parameters; _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
 const _returntypes_policy_set_definitions_delete_PolicySetDefinitionsApi = Dict{Regex,Type}(
     Regex("^" * replace("204", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
-    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+    Regex("^" * replace("0", "x"=>".") * "\$") => ErrorResponse,
 )
 
-function _oacinternal_policy_set_definitions_delete(_api::PolicySetDefinitionsApi, policy_set_definition_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
+function _oacinternal_policy_set_definitions_delete(_api::PolicySetDefinitionsApi, subscription_id::String, policy_set_definition_name::String, api_version::String; _mediaType=nothing)
+        OpenAPI.validate_param("policy_set_definition_name", "policy_set_definitions_delete", :pattern, policy_set_definition_name, r"^[^<>*%&:\?.+/]*[^<>*%&:\?.+/ ]+$")
+
+    OpenAPI.validate_param("api_version", "policy_set_definitions_delete", :minLength, api_version, 1)
+
     _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_policy_set_definitions_delete_PolicySetDefinitionsApi, "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}", ["azure_auth", ])
-    OpenAPI.Clients.set_param(_ctx.path, "policySetDefinitionName", policy_set_definition_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "policySetDefinitionName", policy_set_definition_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -108,33 +120,37 @@ end
 This operation deletes the policy set definition in the given subscription with the given name.
 
 Params:
+- subscription_id::String (required)
 - policy_set_definition_name::String (required)
 - api_version::String (required)
-- subscription_id::String (required)
 
 Return: Nothing, OpenAPI.Clients.ApiResponse
 """
-function policy_set_definitions_delete(_api::PolicySetDefinitionsApi, policy_set_definition_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = _oacinternal_policy_set_definitions_delete(_api, policy_set_definition_name, api_version, subscription_id; _mediaType=_mediaType)
+function policy_set_definitions_delete(_api::PolicySetDefinitionsApi, subscription_id::String, policy_set_definition_name::String, api_version::String; _mediaType=nothing)
+    _ctx = _oacinternal_policy_set_definitions_delete(_api, subscription_id, policy_set_definition_name, api_version; _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx)
 end
 
-function policy_set_definitions_delete(_api::PolicySetDefinitionsApi, response_stream::Channel, policy_set_definition_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = _oacinternal_policy_set_definitions_delete(_api, policy_set_definition_name, api_version, subscription_id; _mediaType=_mediaType)
+function policy_set_definitions_delete(_api::PolicySetDefinitionsApi, response_stream::Channel, subscription_id::String, policy_set_definition_name::String, api_version::String; _mediaType=nothing)
+    _ctx = _oacinternal_policy_set_definitions_delete(_api, subscription_id, policy_set_definition_name, api_version; _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
 const _returntypes_policy_set_definitions_delete_at_management_group_PolicySetDefinitionsApi = Dict{Regex,Type}(
     Regex("^" * replace("204", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
-    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+    Regex("^" * replace("0", "x"=>".") * "\$") => ErrorResponse,
 )
 
-function _oacinternal_policy_set_definitions_delete_at_management_group(_api::PolicySetDefinitionsApi, policy_set_definition_name::String, api_version::String, management_group_id::String; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_policy_set_definitions_delete_at_management_group_PolicySetDefinitionsApi, "/providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}", ["azure_auth", ])
-    OpenAPI.Clients.set_param(_ctx.path, "policySetDefinitionName", policy_set_definition_name)  # type String
+function _oacinternal_policy_set_definitions_delete_at_management_group(_api::PolicySetDefinitionsApi, management_group_id::String, policy_set_definition_name::String, api_version::String; _mediaType=nothing)
+        OpenAPI.validate_param("policy_set_definition_name", "policy_set_definitions_delete_at_management_group", :pattern, policy_set_definition_name, r"^[^<>*%&:\?.+/]*[^<>*%&:\?.+/ ]+$")
+
+    OpenAPI.validate_param("api_version", "policy_set_definitions_delete_at_management_group", :minLength, api_version, 1)
+
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_policy_set_definitions_delete_at_management_group_PolicySetDefinitionsApi, "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "managementGroupId", management_group_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "policySetDefinitionName", policy_set_definition_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -145,32 +161,37 @@ end
 This operation deletes the policy set definition in the given management group with the given name.
 
 Params:
+- management_group_id::String (required)
 - policy_set_definition_name::String (required)
 - api_version::String (required)
-- management_group_id::String (required)
 
 Return: Nothing, OpenAPI.Clients.ApiResponse
 """
-function policy_set_definitions_delete_at_management_group(_api::PolicySetDefinitionsApi, policy_set_definition_name::String, api_version::String, management_group_id::String; _mediaType=nothing)
-    _ctx = _oacinternal_policy_set_definitions_delete_at_management_group(_api, policy_set_definition_name, api_version, management_group_id; _mediaType=_mediaType)
+function policy_set_definitions_delete_at_management_group(_api::PolicySetDefinitionsApi, management_group_id::String, policy_set_definition_name::String, api_version::String; _mediaType=nothing)
+    _ctx = _oacinternal_policy_set_definitions_delete_at_management_group(_api, management_group_id, policy_set_definition_name, api_version; _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx)
 end
 
-function policy_set_definitions_delete_at_management_group(_api::PolicySetDefinitionsApi, response_stream::Channel, policy_set_definition_name::String, api_version::String, management_group_id::String; _mediaType=nothing)
-    _ctx = _oacinternal_policy_set_definitions_delete_at_management_group(_api, policy_set_definition_name, api_version, management_group_id; _mediaType=_mediaType)
+function policy_set_definitions_delete_at_management_group(_api::PolicySetDefinitionsApi, response_stream::Channel, management_group_id::String, policy_set_definition_name::String, api_version::String; _mediaType=nothing)
+    _ctx = _oacinternal_policy_set_definitions_delete_at_management_group(_api, management_group_id, policy_set_definition_name, api_version; _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
 const _returntypes_policy_set_definitions_get_PolicySetDefinitionsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => PolicySetDefinition,
-    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+    Regex("^" * replace("0", "x"=>".") * "\$") => ErrorResponse,
 )
 
-function _oacinternal_policy_set_definitions_get(_api::PolicySetDefinitionsApi, policy_set_definition_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
+function _oacinternal_policy_set_definitions_get(_api::PolicySetDefinitionsApi, subscription_id::String, policy_set_definition_name::String, api_version::String; expand=nothing, _mediaType=nothing)
+        OpenAPI.validate_param("policy_set_definition_name", "policy_set_definitions_get", :pattern, policy_set_definition_name, r"^[^<>*%&:\?.+/]*[^<>*%&:\?.+/ ]+$")
+
+    OpenAPI.validate_param("api_version", "policy_set_definitions_get", :minLength, api_version, 1)
+
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_policy_set_definitions_get_PolicySetDefinitionsApi, "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}", ["azure_auth", ])
-    OpenAPI.Clients.set_param(_ctx.path, "policySetDefinitionName", policy_set_definition_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "policySetDefinitionName", policy_set_definition_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -181,32 +202,38 @@ end
 This operation retrieves the policy set definition in the given subscription with the given name.
 
 Params:
+- subscription_id::String (required)
 - policy_set_definition_name::String (required)
 - api_version::String (required)
-- subscription_id::String (required)
+- expand::String
 
 Return: PolicySetDefinition, OpenAPI.Clients.ApiResponse
 """
-function policy_set_definitions_get(_api::PolicySetDefinitionsApi, policy_set_definition_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = _oacinternal_policy_set_definitions_get(_api, policy_set_definition_name, api_version, subscription_id; _mediaType=_mediaType)
+function policy_set_definitions_get(_api::PolicySetDefinitionsApi, subscription_id::String, policy_set_definition_name::String, api_version::String; expand=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_policy_set_definitions_get(_api, subscription_id, policy_set_definition_name, api_version; expand=expand, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx)
 end
 
-function policy_set_definitions_get(_api::PolicySetDefinitionsApi, response_stream::Channel, policy_set_definition_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = _oacinternal_policy_set_definitions_get(_api, policy_set_definition_name, api_version, subscription_id; _mediaType=_mediaType)
+function policy_set_definitions_get(_api::PolicySetDefinitionsApi, response_stream::Channel, subscription_id::String, policy_set_definition_name::String, api_version::String; expand=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_policy_set_definitions_get(_api, subscription_id, policy_set_definition_name, api_version; expand=expand, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
 const _returntypes_policy_set_definitions_get_at_management_group_PolicySetDefinitionsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => PolicySetDefinition,
-    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+    Regex("^" * replace("0", "x"=>".") * "\$") => ErrorResponse,
 )
 
-function _oacinternal_policy_set_definitions_get_at_management_group(_api::PolicySetDefinitionsApi, policy_set_definition_name::String, api_version::String, management_group_id::String; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_policy_set_definitions_get_at_management_group_PolicySetDefinitionsApi, "/providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}", ["azure_auth", ])
-    OpenAPI.Clients.set_param(_ctx.path, "policySetDefinitionName", policy_set_definition_name)  # type String
+function _oacinternal_policy_set_definitions_get_at_management_group(_api::PolicySetDefinitionsApi, management_group_id::String, policy_set_definition_name::String, api_version::String; expand=nothing, _mediaType=nothing)
+        OpenAPI.validate_param("policy_set_definition_name", "policy_set_definitions_get_at_management_group", :pattern, policy_set_definition_name, r"^[^<>*%&:\?.+/]*[^<>*%&:\?.+/ ]+$")
+
+    OpenAPI.validate_param("api_version", "policy_set_definitions_get_at_management_group", :minLength, api_version, 1)
+
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_policy_set_definitions_get_at_management_group_PolicySetDefinitionsApi, "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "managementGroupId", management_group_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "policySetDefinitionName", policy_set_definition_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -217,31 +244,37 @@ end
 This operation retrieves the policy set definition in the given management group with the given name.
 
 Params:
+- management_group_id::String (required)
 - policy_set_definition_name::String (required)
 - api_version::String (required)
-- management_group_id::String (required)
+- expand::String
 
 Return: PolicySetDefinition, OpenAPI.Clients.ApiResponse
 """
-function policy_set_definitions_get_at_management_group(_api::PolicySetDefinitionsApi, policy_set_definition_name::String, api_version::String, management_group_id::String; _mediaType=nothing)
-    _ctx = _oacinternal_policy_set_definitions_get_at_management_group(_api, policy_set_definition_name, api_version, management_group_id; _mediaType=_mediaType)
+function policy_set_definitions_get_at_management_group(_api::PolicySetDefinitionsApi, management_group_id::String, policy_set_definition_name::String, api_version::String; expand=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_policy_set_definitions_get_at_management_group(_api, management_group_id, policy_set_definition_name, api_version; expand=expand, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx)
 end
 
-function policy_set_definitions_get_at_management_group(_api::PolicySetDefinitionsApi, response_stream::Channel, policy_set_definition_name::String, api_version::String, management_group_id::String; _mediaType=nothing)
-    _ctx = _oacinternal_policy_set_definitions_get_at_management_group(_api, policy_set_definition_name, api_version, management_group_id; _mediaType=_mediaType)
+function policy_set_definitions_get_at_management_group(_api::PolicySetDefinitionsApi, response_stream::Channel, management_group_id::String, policy_set_definition_name::String, api_version::String; expand=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_policy_set_definitions_get_at_management_group(_api, management_group_id, policy_set_definition_name, api_version; expand=expand, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
 const _returntypes_policy_set_definitions_get_built_in_PolicySetDefinitionsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => PolicySetDefinition,
-    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+    Regex("^" * replace("0", "x"=>".") * "\$") => ErrorResponse,
 )
 
-function _oacinternal_policy_set_definitions_get_built_in(_api::PolicySetDefinitionsApi, policy_set_definition_name::String, api_version::String; _mediaType=nothing)
+function _oacinternal_policy_set_definitions_get_built_in(_api::PolicySetDefinitionsApi, policy_set_definition_name::String, api_version::String; expand=nothing, _mediaType=nothing)
+        OpenAPI.validate_param("policy_set_definition_name", "policy_set_definitions_get_built_in", :pattern, policy_set_definition_name, r"^[^<>*%&:\?.+/]*[^<>*%&:\?.+/ ]+$")
+
+    OpenAPI.validate_param("api_version", "policy_set_definitions_get_built_in", :minLength, api_version, 1)
+
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_policy_set_definitions_get_built_in_PolicySetDefinitionsApi, "/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "policySetDefinitionName", policy_set_definition_name)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -254,28 +287,37 @@ This operation retrieves the built-in policy set definition with the given name.
 Params:
 - policy_set_definition_name::String (required)
 - api_version::String (required)
+- expand::String
 
 Return: PolicySetDefinition, OpenAPI.Clients.ApiResponse
 """
-function policy_set_definitions_get_built_in(_api::PolicySetDefinitionsApi, policy_set_definition_name::String, api_version::String; _mediaType=nothing)
-    _ctx = _oacinternal_policy_set_definitions_get_built_in(_api, policy_set_definition_name, api_version; _mediaType=_mediaType)
+function policy_set_definitions_get_built_in(_api::PolicySetDefinitionsApi, policy_set_definition_name::String, api_version::String; expand=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_policy_set_definitions_get_built_in(_api, policy_set_definition_name, api_version; expand=expand, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx)
 end
 
-function policy_set_definitions_get_built_in(_api::PolicySetDefinitionsApi, response_stream::Channel, policy_set_definition_name::String, api_version::String; _mediaType=nothing)
-    _ctx = _oacinternal_policy_set_definitions_get_built_in(_api, policy_set_definition_name, api_version; _mediaType=_mediaType)
+function policy_set_definitions_get_built_in(_api::PolicySetDefinitionsApi, response_stream::Channel, policy_set_definition_name::String, api_version::String; expand=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_policy_set_definitions_get_built_in(_api, policy_set_definition_name, api_version; expand=expand, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
 const _returntypes_policy_set_definitions_list_PolicySetDefinitionsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => PolicySetDefinitionListResult,
-    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+    Regex("^" * replace("0", "x"=>".") * "\$") => ErrorResponse,
 )
 
-function _oacinternal_policy_set_definitions_list(_api::PolicySetDefinitionsApi, api_version::String, subscription_id::String; _mediaType=nothing)
+function _oacinternal_policy_set_definitions_list(_api::PolicySetDefinitionsApi, subscription_id::String, api_version::String; filter=nothing, expand=nothing, top=nothing, _mediaType=nothing)
+    OpenAPI.validate_param("api_version", "policy_set_definitions_list", :minLength, api_version, 1)
+
+    OpenAPI.validate_param("top", "policy_set_definitions_list", :maximum, top, 1000, false)
+    OpenAPI.validate_param("top", "policy_set_definitions_list", :minimum, top, 1, false)
+
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_policy_set_definitions_list_PolicySetDefinitionsApi, "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policySetDefinitions", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$filter", filter; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$top", top; style="", is_explode=false)  # type Int64
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -283,32 +325,43 @@ end
 
 @doc raw"""Retrieves the policy set definitions for a subscription.
 
-This operation retrieves a list of all the policy set definitions in the given subscription.
+This operation retrieves a list of all the policy set definitions in a given subscription that match the optional given $filter. Valid values for $filter are: 'atExactScope()', 'policyType -eq {value}' or 'category eq '{value}''. If $filter is not provided, the unfiltered list includes all policy set definitions associated with the subscription, including those that apply directly or from management groups that contain the given subscription. If $filter=atExactScope() is provided, the returned list only includes all policy set definitions that at the given subscription. If $filter='policyType -eq {value}' is provided, the returned list only includes all policy set definitions whose type match the {value}. Possible policyType values are NotSpecified, BuiltIn and Custom. If $filter='category -eq {value}' is provided, the returned list only includes all policy set definitions whose category match the {value}.
 
 Params:
-- api_version::String (required)
 - subscription_id::String (required)
+- api_version::String (required)
+- filter::String
+- expand::String
+- top::Int64
 
 Return: PolicySetDefinitionListResult, OpenAPI.Clients.ApiResponse
 """
-function policy_set_definitions_list(_api::PolicySetDefinitionsApi, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = _oacinternal_policy_set_definitions_list(_api, api_version, subscription_id; _mediaType=_mediaType)
+function policy_set_definitions_list(_api::PolicySetDefinitionsApi, subscription_id::String, api_version::String; filter=nothing, expand=nothing, top=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_policy_set_definitions_list(_api, subscription_id, api_version; filter=filter, expand=expand, top=top, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx)
 end
 
-function policy_set_definitions_list(_api::PolicySetDefinitionsApi, response_stream::Channel, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = _oacinternal_policy_set_definitions_list(_api, api_version, subscription_id; _mediaType=_mediaType)
+function policy_set_definitions_list(_api::PolicySetDefinitionsApi, response_stream::Channel, subscription_id::String, api_version::String; filter=nothing, expand=nothing, top=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_policy_set_definitions_list(_api, subscription_id, api_version; filter=filter, expand=expand, top=top, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
 const _returntypes_policy_set_definitions_list_built_in_PolicySetDefinitionsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => PolicySetDefinitionListResult,
-    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+    Regex("^" * replace("0", "x"=>".") * "\$") => ErrorResponse,
 )
 
-function _oacinternal_policy_set_definitions_list_built_in(_api::PolicySetDefinitionsApi, api_version::String; _mediaType=nothing)
+function _oacinternal_policy_set_definitions_list_built_in(_api::PolicySetDefinitionsApi, api_version::String; filter=nothing, expand=nothing, top=nothing, _mediaType=nothing)
+    OpenAPI.validate_param("api_version", "policy_set_definitions_list_built_in", :minLength, api_version, 1)
+
+    OpenAPI.validate_param("top", "policy_set_definitions_list_built_in", :maximum, top, 1000, false)
+    OpenAPI.validate_param("top", "policy_set_definitions_list_built_in", :minimum, top, 1, false)
+
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_policy_set_definitions_list_built_in_PolicySetDefinitionsApi, "/providers/Microsoft.Authorization/policySetDefinitions", ["azure_auth", ])
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$filter", filter; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$top", top; style="", is_explode=false)  # type Int64
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -316,32 +369,43 @@ end
 
 @doc raw"""Retrieves built-in policy set definitions.
 
-This operation retrieves a list of all the built-in policy set definitions.
+This operation retrieves a list of all the built-in policy set definitions that match the optional given $filter. If $filter='category -eq {value}' is provided, the returned list only includes all built-in policy set definitions whose category match the {value}.
 
 Params:
 - api_version::String (required)
+- filter::String
+- expand::String
+- top::Int64
 
 Return: PolicySetDefinitionListResult, OpenAPI.Clients.ApiResponse
 """
-function policy_set_definitions_list_built_in(_api::PolicySetDefinitionsApi, api_version::String; _mediaType=nothing)
-    _ctx = _oacinternal_policy_set_definitions_list_built_in(_api, api_version; _mediaType=_mediaType)
+function policy_set_definitions_list_built_in(_api::PolicySetDefinitionsApi, api_version::String; filter=nothing, expand=nothing, top=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_policy_set_definitions_list_built_in(_api, api_version; filter=filter, expand=expand, top=top, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx)
 end
 
-function policy_set_definitions_list_built_in(_api::PolicySetDefinitionsApi, response_stream::Channel, api_version::String; _mediaType=nothing)
-    _ctx = _oacinternal_policy_set_definitions_list_built_in(_api, api_version; _mediaType=_mediaType)
+function policy_set_definitions_list_built_in(_api::PolicySetDefinitionsApi, response_stream::Channel, api_version::String; filter=nothing, expand=nothing, top=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_policy_set_definitions_list_built_in(_api, api_version; filter=filter, expand=expand, top=top, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
 const _returntypes_policy_set_definitions_list_by_management_group_PolicySetDefinitionsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => PolicySetDefinitionListResult,
-    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+    Regex("^" * replace("0", "x"=>".") * "\$") => ErrorResponse,
 )
 
-function _oacinternal_policy_set_definitions_list_by_management_group(_api::PolicySetDefinitionsApi, api_version::String, management_group_id::String; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_policy_set_definitions_list_by_management_group_PolicySetDefinitionsApi, "/providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions", ["azure_auth", ])
+function _oacinternal_policy_set_definitions_list_by_management_group(_api::PolicySetDefinitionsApi, management_group_id::String, api_version::String; filter=nothing, expand=nothing, top=nothing, _mediaType=nothing)
+    OpenAPI.validate_param("api_version", "policy_set_definitions_list_by_management_group", :minLength, api_version, 1)
+
+    OpenAPI.validate_param("top", "policy_set_definitions_list_by_management_group", :maximum, top, 1000, false)
+    OpenAPI.validate_param("top", "policy_set_definitions_list_by_management_group", :minimum, top, 1, false)
+
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_policy_set_definitions_list_by_management_group_PolicySetDefinitionsApi, "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "managementGroupId", management_group_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$filter", filter; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$top", top; style="", is_explode=false)  # type Int64
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -349,21 +413,24 @@ end
 
 @doc raw"""Retrieves all policy set definitions in management group.
 
-This operation retrieves a list of all the a policy set definition in the given management group.
+This operation retrieves a list of all the policy set definitions in a given management group that match the optional given $filter. Valid values for $filter are: 'atExactScope()', 'policyType -eq {value}' or 'category eq '{value}''. If $filter is not provided, the unfiltered list includes all policy set definitions associated with the management group, including those that apply directly or from management groups that contain the given management group. If $filter=atExactScope() is provided, the returned list only includes all policy set definitions that at the given management group. If $filter='policyType -eq {value}' is provided, the returned list only includes all policy set definitions whose type match the {value}. Possible policyType values are NotSpecified, BuiltIn and Custom. If $filter='category -eq {value}' is provided, the returned list only includes all policy set definitions whose category match the {value}.
 
 Params:
-- api_version::String (required)
 - management_group_id::String (required)
+- api_version::String (required)
+- filter::String
+- expand::String
+- top::Int64
 
 Return: PolicySetDefinitionListResult, OpenAPI.Clients.ApiResponse
 """
-function policy_set_definitions_list_by_management_group(_api::PolicySetDefinitionsApi, api_version::String, management_group_id::String; _mediaType=nothing)
-    _ctx = _oacinternal_policy_set_definitions_list_by_management_group(_api, api_version, management_group_id; _mediaType=_mediaType)
+function policy_set_definitions_list_by_management_group(_api::PolicySetDefinitionsApi, management_group_id::String, api_version::String; filter=nothing, expand=nothing, top=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_policy_set_definitions_list_by_management_group(_api, management_group_id, api_version; filter=filter, expand=expand, top=top, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx)
 end
 
-function policy_set_definitions_list_by_management_group(_api::PolicySetDefinitionsApi, response_stream::Channel, api_version::String, management_group_id::String; _mediaType=nothing)
-    _ctx = _oacinternal_policy_set_definitions_list_by_management_group(_api, api_version, management_group_id; _mediaType=_mediaType)
+function policy_set_definitions_list_by_management_group(_api::PolicySetDefinitionsApi, response_stream::Channel, management_group_id::String, api_version::String; filter=nothing, expand=nothing, top=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_policy_set_definitions_list_by_management_group(_api, management_group_id, api_version; filter=filter, expand=expand, top=top, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 

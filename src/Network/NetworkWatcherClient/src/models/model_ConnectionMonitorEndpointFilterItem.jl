@@ -18,21 +18,29 @@ Base.@kwdef mutable struct ConnectionMonitorEndpointFilterItem <: OpenAPI.APIMod
     address::Union{Nothing, String} = nothing
 
     function ConnectionMonitorEndpointFilterItem(type, address, )
-        OpenAPI.validate_property(ConnectionMonitorEndpointFilterItem, Symbol("type"), type)
-        OpenAPI.validate_property(ConnectionMonitorEndpointFilterItem, Symbol("address"), address)
-        return new(type, address, )
+        o = new(type, address, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ConnectionMonitorEndpointFilterItem
 
 const _property_types_ConnectionMonitorEndpointFilterItem = Dict{Symbol,String}(Symbol("type")=>"String", Symbol("address")=>"String", )
 OpenAPI.property_type(::Type{ ConnectionMonitorEndpointFilterItem }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ConnectionMonitorEndpointFilterItem[name]))}
 
-function check_required(o::ConnectionMonitorEndpointFilterItem)
+function OpenAPI.check_required(o::ConnectionMonitorEndpointFilterItem)
     true
 end
 
+function OpenAPI.validate_properties(o::ConnectionMonitorEndpointFilterItem)
+    OpenAPI.validate_property(ConnectionMonitorEndpointFilterItem, Symbol("type"), o.type)
+    OpenAPI.validate_property(ConnectionMonitorEndpointFilterItem, Symbol("address"), o.address)
+end
+
 function OpenAPI.validate_property(::Type{ ConnectionMonitorEndpointFilterItem }, name::Symbol, val)
+
     if name === Symbol("type")
         OpenAPI.validate_param(name, "ConnectionMonitorEndpointFilterItem", :enum, val, ["AgentAddress"])
     end
+
+
 end

@@ -7,25 +7,40 @@ Describes a network interface reference properties.
 
     NetworkInterfaceReferenceProperties(;
         primary=nothing,
+        deleteOption=nothing,
     )
 
     - primary::Bool : Specifies the primary network interface in case the virtual machine has more than 1 network interface.
+    - deleteOption::String : Specify what happens to the network interface when the VM is deleted
 """
 Base.@kwdef mutable struct NetworkInterfaceReferenceProperties <: OpenAPI.APIModel
     primary::Union{Nothing, Bool} = nothing
+    deleteOption::Union{Nothing, String} = nothing
 
-    function NetworkInterfaceReferenceProperties(primary, )
-        OpenAPI.validate_property(NetworkInterfaceReferenceProperties, Symbol("primary"), primary)
-        return new(primary, )
+    function NetworkInterfaceReferenceProperties(primary, deleteOption, )
+        o = new(primary, deleteOption, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type NetworkInterfaceReferenceProperties
 
-const _property_types_NetworkInterfaceReferenceProperties = Dict{Symbol,String}(Symbol("primary")=>"Bool", )
+const _property_types_NetworkInterfaceReferenceProperties = Dict{Symbol,String}(Symbol("primary")=>"Bool", Symbol("deleteOption")=>"String", )
 OpenAPI.property_type(::Type{ NetworkInterfaceReferenceProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkInterfaceReferenceProperties[name]))}
 
-function check_required(o::NetworkInterfaceReferenceProperties)
+function OpenAPI.check_required(o::NetworkInterfaceReferenceProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::NetworkInterfaceReferenceProperties)
+    OpenAPI.validate_property(NetworkInterfaceReferenceProperties, Symbol("primary"), o.primary)
+    OpenAPI.validate_property(NetworkInterfaceReferenceProperties, Symbol("deleteOption"), o.deleteOption)
+end
+
 function OpenAPI.validate_property(::Type{ NetworkInterfaceReferenceProperties }, name::Symbol, val)
+
+
+    if name === Symbol("deleteOption")
+        OpenAPI.validate_param(name, "NetworkInterfaceReferenceProperties", :enum, val, ["Delete", "Detach"])
+    end
+
 end

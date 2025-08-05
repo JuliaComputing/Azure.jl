@@ -27,24 +27,34 @@ Base.@kwdef mutable struct VirtualMachineExtensionImageProperties <: OpenAPI.API
     supportsMultipleExtensions::Union{Nothing, Bool} = nothing
 
     function VirtualMachineExtensionImageProperties(operatingSystem, computeRole, handlerSchema, vmScaleSetEnabled, supportsMultipleExtensions, )
-        OpenAPI.validate_property(VirtualMachineExtensionImageProperties, Symbol("operatingSystem"), operatingSystem)
-        OpenAPI.validate_property(VirtualMachineExtensionImageProperties, Symbol("computeRole"), computeRole)
-        OpenAPI.validate_property(VirtualMachineExtensionImageProperties, Symbol("handlerSchema"), handlerSchema)
-        OpenAPI.validate_property(VirtualMachineExtensionImageProperties, Symbol("vmScaleSetEnabled"), vmScaleSetEnabled)
-        OpenAPI.validate_property(VirtualMachineExtensionImageProperties, Symbol("supportsMultipleExtensions"), supportsMultipleExtensions)
-        return new(operatingSystem, computeRole, handlerSchema, vmScaleSetEnabled, supportsMultipleExtensions, )
+        o = new(operatingSystem, computeRole, handlerSchema, vmScaleSetEnabled, supportsMultipleExtensions, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineExtensionImageProperties
 
 const _property_types_VirtualMachineExtensionImageProperties = Dict{Symbol,String}(Symbol("operatingSystem")=>"String", Symbol("computeRole")=>"String", Symbol("handlerSchema")=>"String", Symbol("vmScaleSetEnabled")=>"Bool", Symbol("supportsMultipleExtensions")=>"Bool", )
 OpenAPI.property_type(::Type{ VirtualMachineExtensionImageProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineExtensionImageProperties[name]))}
 
-function check_required(o::VirtualMachineExtensionImageProperties)
+function OpenAPI.check_required(o::VirtualMachineExtensionImageProperties)
     o.operatingSystem === nothing && (return false)
     o.computeRole === nothing && (return false)
     o.handlerSchema === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineExtensionImageProperties)
+    OpenAPI.validate_property(VirtualMachineExtensionImageProperties, Symbol("operatingSystem"), o.operatingSystem)
+    OpenAPI.validate_property(VirtualMachineExtensionImageProperties, Symbol("computeRole"), o.computeRole)
+    OpenAPI.validate_property(VirtualMachineExtensionImageProperties, Symbol("handlerSchema"), o.handlerSchema)
+    OpenAPI.validate_property(VirtualMachineExtensionImageProperties, Symbol("vmScaleSetEnabled"), o.vmScaleSetEnabled)
+    OpenAPI.validate_property(VirtualMachineExtensionImageProperties, Symbol("supportsMultipleExtensions"), o.supportsMultipleExtensions)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineExtensionImageProperties }, name::Symbol, val)
+
+
+
+
+
 end

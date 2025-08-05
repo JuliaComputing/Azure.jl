@@ -18,20 +18,27 @@ Base.@kwdef mutable struct TroubleshootingParameters <: OpenAPI.APIModel
     properties = nothing # spec type: Union{ Nothing, TroubleshootingProperties }
 
     function TroubleshootingParameters(targetResourceId, properties, )
-        OpenAPI.validate_property(TroubleshootingParameters, Symbol("targetResourceId"), targetResourceId)
-        OpenAPI.validate_property(TroubleshootingParameters, Symbol("properties"), properties)
-        return new(targetResourceId, properties, )
+        o = new(targetResourceId, properties, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type TroubleshootingParameters
 
 const _property_types_TroubleshootingParameters = Dict{Symbol,String}(Symbol("targetResourceId")=>"String", Symbol("properties")=>"TroubleshootingProperties", )
 OpenAPI.property_type(::Type{ TroubleshootingParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TroubleshootingParameters[name]))}
 
-function check_required(o::TroubleshootingParameters)
+function OpenAPI.check_required(o::TroubleshootingParameters)
     o.targetResourceId === nothing && (return false)
     o.properties === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::TroubleshootingParameters)
+    OpenAPI.validate_property(TroubleshootingParameters, Symbol("targetResourceId"), o.targetResourceId)
+    OpenAPI.validate_property(TroubleshootingParameters, Symbol("properties"), o.properties)
+end
+
 function OpenAPI.validate_property(::Type{ TroubleshootingParameters }, name::Symbol, val)
+
+
 end

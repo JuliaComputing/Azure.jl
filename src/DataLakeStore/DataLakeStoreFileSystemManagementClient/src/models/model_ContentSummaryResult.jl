@@ -15,17 +15,23 @@ Base.@kwdef mutable struct ContentSummaryResult <: OpenAPI.APIModel
     contentSummary = nothing # spec type: Union{ Nothing, ContentSummary }
 
     function ContentSummaryResult(contentSummary, )
-        OpenAPI.validate_property(ContentSummaryResult, Symbol("contentSummary"), contentSummary)
-        return new(contentSummary, )
+        o = new(contentSummary, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ContentSummaryResult
 
 const _property_types_ContentSummaryResult = Dict{Symbol,String}(Symbol("contentSummary")=>"ContentSummary", )
 OpenAPI.property_type(::Type{ ContentSummaryResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ContentSummaryResult[name]))}
 
-function check_required(o::ContentSummaryResult)
+function OpenAPI.check_required(o::ContentSummaryResult)
     true
 end
 
+function OpenAPI.validate_properties(o::ContentSummaryResult)
+    OpenAPI.validate_property(ContentSummaryResult, Symbol("contentSummary"), o.contentSummary)
+end
+
 function OpenAPI.validate_property(::Type{ ContentSummaryResult }, name::Symbol, val)
+
 end

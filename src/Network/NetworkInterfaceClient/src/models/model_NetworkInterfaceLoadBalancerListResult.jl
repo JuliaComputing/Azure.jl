@@ -18,18 +18,25 @@ Base.@kwdef mutable struct NetworkInterfaceLoadBalancerListResult <: OpenAPI.API
     nextLink::Union{Nothing, String} = nothing
 
     function NetworkInterfaceLoadBalancerListResult(value, nextLink, )
-        OpenAPI.validate_property(NetworkInterfaceLoadBalancerListResult, Symbol("value"), value)
-        OpenAPI.validate_property(NetworkInterfaceLoadBalancerListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type NetworkInterfaceLoadBalancerListResult
 
 const _property_types_NetworkInterfaceLoadBalancerListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{LoadBalancer}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ NetworkInterfaceLoadBalancerListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkInterfaceLoadBalancerListResult[name]))}
 
-function check_required(o::NetworkInterfaceLoadBalancerListResult)
+function OpenAPI.check_required(o::NetworkInterfaceLoadBalancerListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::NetworkInterfaceLoadBalancerListResult)
+    OpenAPI.validate_property(NetworkInterfaceLoadBalancerListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(NetworkInterfaceLoadBalancerListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ NetworkInterfaceLoadBalancerListResult }, name::Symbol, val)
+
+
 end

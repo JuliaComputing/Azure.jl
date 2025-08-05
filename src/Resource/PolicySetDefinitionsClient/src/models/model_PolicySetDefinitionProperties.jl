@@ -13,15 +13,19 @@ The policy set definition properties.
         parameters=nothing,
         policyDefinitions=nothing,
         policyDefinitionGroups=nothing,
+        version=nothing,
+        versions=nothing,
     )
 
-    - policyType::String : The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
+    - policyType::String : The type of policy set definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
     - displayName::String : The display name of the policy set definition.
     - description::String : The policy set definition description.
     - metadata::Any : The policy set definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.
     - parameters::Dict{String, ParameterDefinitionsValue} : The parameter definitions for parameters used in the policy. The keys are the parameter names.
     - policyDefinitions::Vector{PolicyDefinitionReference} : An array of policy definition references.
     - policyDefinitionGroups::Vector{PolicyDefinitionGroup} : The metadata describing groups of policy definition references within the policy set definition.
+    - version::String : The policy set definition version in #.#.# format.
+    - versions::Vector{String} : A list of available versions for this policy set definition.
 """
 Base.@kwdef mutable struct PolicySetDefinitionProperties <: OpenAPI.APIModel
     policyType::Union{Nothing, String} = nothing
@@ -31,29 +35,48 @@ Base.@kwdef mutable struct PolicySetDefinitionProperties <: OpenAPI.APIModel
     parameters::Union{Nothing, Dict} = nothing # spec type: Union{ Nothing, Dict{String, ParameterDefinitionsValue} }
     policyDefinitions::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{PolicyDefinitionReference} }
     policyDefinitionGroups::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{PolicyDefinitionGroup} }
+    version::Union{Nothing, String} = nothing
+    versions::Union{Nothing, Vector{String}} = nothing
 
-    function PolicySetDefinitionProperties(policyType, displayName, description, metadata, parameters, policyDefinitions, policyDefinitionGroups, )
-        OpenAPI.validate_property(PolicySetDefinitionProperties, Symbol("policyType"), policyType)
-        OpenAPI.validate_property(PolicySetDefinitionProperties, Symbol("displayName"), displayName)
-        OpenAPI.validate_property(PolicySetDefinitionProperties, Symbol("description"), description)
-        OpenAPI.validate_property(PolicySetDefinitionProperties, Symbol("metadata"), metadata)
-        OpenAPI.validate_property(PolicySetDefinitionProperties, Symbol("parameters"), parameters)
-        OpenAPI.validate_property(PolicySetDefinitionProperties, Symbol("policyDefinitions"), policyDefinitions)
-        OpenAPI.validate_property(PolicySetDefinitionProperties, Symbol("policyDefinitionGroups"), policyDefinitionGroups)
-        return new(policyType, displayName, description, metadata, parameters, policyDefinitions, policyDefinitionGroups, )
+    function PolicySetDefinitionProperties(policyType, displayName, description, metadata, parameters, policyDefinitions, policyDefinitionGroups, version, versions, )
+        o = new(policyType, displayName, description, metadata, parameters, policyDefinitions, policyDefinitionGroups, version, versions, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PolicySetDefinitionProperties
 
-const _property_types_PolicySetDefinitionProperties = Dict{Symbol,String}(Symbol("policyType")=>"String", Symbol("displayName")=>"String", Symbol("description")=>"String", Symbol("metadata")=>"Any", Symbol("parameters")=>"Dict{String, ParameterDefinitionsValue}", Symbol("policyDefinitions")=>"Vector{PolicyDefinitionReference}", Symbol("policyDefinitionGroups")=>"Vector{PolicyDefinitionGroup}", )
+const _property_types_PolicySetDefinitionProperties = Dict{Symbol,String}(Symbol("policyType")=>"String", Symbol("displayName")=>"String", Symbol("description")=>"String", Symbol("metadata")=>"Any", Symbol("parameters")=>"Dict{String, ParameterDefinitionsValue}", Symbol("policyDefinitions")=>"Vector{PolicyDefinitionReference}", Symbol("policyDefinitionGroups")=>"Vector{PolicyDefinitionGroup}", Symbol("version")=>"String", Symbol("versions")=>"Vector{String}", )
 OpenAPI.property_type(::Type{ PolicySetDefinitionProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PolicySetDefinitionProperties[name]))}
 
-function check_required(o::PolicySetDefinitionProperties)
+function OpenAPI.check_required(o::PolicySetDefinitionProperties)
     o.policyDefinitions === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::PolicySetDefinitionProperties)
+    OpenAPI.validate_property(PolicySetDefinitionProperties, Symbol("policyType"), o.policyType)
+    OpenAPI.validate_property(PolicySetDefinitionProperties, Symbol("displayName"), o.displayName)
+    OpenAPI.validate_property(PolicySetDefinitionProperties, Symbol("description"), o.description)
+    OpenAPI.validate_property(PolicySetDefinitionProperties, Symbol("metadata"), o.metadata)
+    OpenAPI.validate_property(PolicySetDefinitionProperties, Symbol("parameters"), o.parameters)
+    OpenAPI.validate_property(PolicySetDefinitionProperties, Symbol("policyDefinitions"), o.policyDefinitions)
+    OpenAPI.validate_property(PolicySetDefinitionProperties, Symbol("policyDefinitionGroups"), o.policyDefinitionGroups)
+    OpenAPI.validate_property(PolicySetDefinitionProperties, Symbol("version"), o.version)
+    OpenAPI.validate_property(PolicySetDefinitionProperties, Symbol("versions"), o.versions)
+end
+
 function OpenAPI.validate_property(::Type{ PolicySetDefinitionProperties }, name::Symbol, val)
+
     if name === Symbol("policyType")
         OpenAPI.validate_param(name, "PolicySetDefinitionProperties", :enum, val, ["NotSpecified", "BuiltIn", "Custom", "Static"])
     end
+
+
+
+
+
+
+
+
+
 end

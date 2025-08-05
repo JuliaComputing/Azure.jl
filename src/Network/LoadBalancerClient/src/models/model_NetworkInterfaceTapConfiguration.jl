@@ -27,21 +27,31 @@ Base.@kwdef mutable struct NetworkInterfaceTapConfiguration <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
 
     function NetworkInterfaceTapConfiguration(properties, name, etag, type, id, )
-        OpenAPI.validate_property(NetworkInterfaceTapConfiguration, Symbol("properties"), properties)
-        OpenAPI.validate_property(NetworkInterfaceTapConfiguration, Symbol("name"), name)
-        OpenAPI.validate_property(NetworkInterfaceTapConfiguration, Symbol("etag"), etag)
-        OpenAPI.validate_property(NetworkInterfaceTapConfiguration, Symbol("type"), type)
-        OpenAPI.validate_property(NetworkInterfaceTapConfiguration, Symbol("id"), id)
-        return new(properties, name, etag, type, id, )
+        o = new(properties, name, etag, type, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type NetworkInterfaceTapConfiguration
 
 const _property_types_NetworkInterfaceTapConfiguration = Dict{Symbol,String}(Symbol("properties")=>"NetworkInterfaceTapConfigurationPropertiesFormat", Symbol("name")=>"String", Symbol("etag")=>"String", Symbol("type")=>"String", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ NetworkInterfaceTapConfiguration }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkInterfaceTapConfiguration[name]))}
 
-function check_required(o::NetworkInterfaceTapConfiguration)
+function OpenAPI.check_required(o::NetworkInterfaceTapConfiguration)
     true
 end
 
+function OpenAPI.validate_properties(o::NetworkInterfaceTapConfiguration)
+    OpenAPI.validate_property(NetworkInterfaceTapConfiguration, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(NetworkInterfaceTapConfiguration, Symbol("name"), o.name)
+    OpenAPI.validate_property(NetworkInterfaceTapConfiguration, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(NetworkInterfaceTapConfiguration, Symbol("type"), o.type)
+    OpenAPI.validate_property(NetworkInterfaceTapConfiguration, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ NetworkInterfaceTapConfiguration }, name::Symbol, val)
+
+
+
+
+
 end

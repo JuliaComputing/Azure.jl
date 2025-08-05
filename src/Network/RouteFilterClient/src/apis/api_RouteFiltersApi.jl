@@ -22,7 +22,7 @@ function _oacinternal_route_filters_create_or_update(_api::RouteFiltersApi, reso
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "routeFilterName", route_filter_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -61,7 +61,7 @@ function _oacinternal_route_filters_delete(_api::RouteFiltersApi, resource_group
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "routeFilterName", route_filter_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -97,8 +97,8 @@ function _oacinternal_route_filters_get(_api::RouteFiltersApi, resource_group_na
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "routeFilterName", route_filter_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -133,7 +133,7 @@ const _returntypes_route_filters_list_RouteFiltersApi = Dict{Regex,Type}(
 function _oacinternal_route_filters_list(_api::RouteFiltersApi, api_version::String, subscription_id::String; _mediaType=nothing)
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_route_filters_list_RouteFiltersApi, "/subscriptions/{subscriptionId}/providers/Microsoft.Network/routeFilters", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -166,7 +166,7 @@ function _oacinternal_route_filters_list_by_resource_group(_api::RouteFiltersApi
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_route_filters_list_by_resource_group_RouteFiltersApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/routeFilters", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -201,7 +201,7 @@ function _oacinternal_route_filters_update_tags(_api::RouteFiltersApi, resource_
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "routeFilterName", route_filter_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx

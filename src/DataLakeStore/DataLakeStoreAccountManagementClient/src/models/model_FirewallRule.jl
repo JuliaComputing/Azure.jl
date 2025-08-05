@@ -24,20 +24,29 @@ Base.@kwdef mutable struct FirewallRule <: OpenAPI.APIModel
     type::Union{Nothing, String} = nothing
 
     function FirewallRule(properties, id, name, type, )
-        OpenAPI.validate_property(FirewallRule, Symbol("properties"), properties)
-        OpenAPI.validate_property(FirewallRule, Symbol("id"), id)
-        OpenAPI.validate_property(FirewallRule, Symbol("name"), name)
-        OpenAPI.validate_property(FirewallRule, Symbol("type"), type)
-        return new(properties, id, name, type, )
+        o = new(properties, id, name, type, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type FirewallRule
 
 const _property_types_FirewallRule = Dict{Symbol,String}(Symbol("properties")=>"FirewallRuleProperties", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", )
 OpenAPI.property_type(::Type{ FirewallRule }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_FirewallRule[name]))}
 
-function check_required(o::FirewallRule)
+function OpenAPI.check_required(o::FirewallRule)
     true
 end
 
+function OpenAPI.validate_properties(o::FirewallRule)
+    OpenAPI.validate_property(FirewallRule, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(FirewallRule, Symbol("id"), o.id)
+    OpenAPI.validate_property(FirewallRule, Symbol("name"), o.name)
+    OpenAPI.validate_property(FirewallRule, Symbol("type"), o.type)
+end
+
 function OpenAPI.validate_property(::Type{ FirewallRule }, name::Symbol, val)
+
+
+
+
 end

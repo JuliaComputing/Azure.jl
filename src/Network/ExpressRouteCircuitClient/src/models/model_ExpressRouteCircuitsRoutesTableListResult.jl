@@ -18,18 +18,25 @@ Base.@kwdef mutable struct ExpressRouteCircuitsRoutesTableListResult <: OpenAPI.
     nextLink::Union{Nothing, String} = nothing
 
     function ExpressRouteCircuitsRoutesTableListResult(value, nextLink, )
-        OpenAPI.validate_property(ExpressRouteCircuitsRoutesTableListResult, Symbol("value"), value)
-        OpenAPI.validate_property(ExpressRouteCircuitsRoutesTableListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ExpressRouteCircuitsRoutesTableListResult
 
 const _property_types_ExpressRouteCircuitsRoutesTableListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{ExpressRouteCircuitRoutesTable}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ ExpressRouteCircuitsRoutesTableListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExpressRouteCircuitsRoutesTableListResult[name]))}
 
-function check_required(o::ExpressRouteCircuitsRoutesTableListResult)
+function OpenAPI.check_required(o::ExpressRouteCircuitsRoutesTableListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::ExpressRouteCircuitsRoutesTableListResult)
+    OpenAPI.validate_property(ExpressRouteCircuitsRoutesTableListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(ExpressRouteCircuitsRoutesTableListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ ExpressRouteCircuitsRoutesTableListResult }, name::Symbol, val)
+
+
 end

@@ -7,41 +7,55 @@ The encryption settings on the storage account.
 
     Encryption(;
         services=nothing,
-        keySource=Microsoft.Storage,
+        keySource="Microsoft.Storage",
         requireInfrastructureEncryption=nothing,
         keyvaultproperties=nothing,
+        identity=nothing,
     )
 
     - services::EncryptionServices
     - keySource::String : The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Storage, Microsoft.Keyvault
     - requireInfrastructureEncryption::Bool : A boolean indicating whether or not the service applies a secondary layer of encryption with platform managed keys for data at rest.
     - keyvaultproperties::KeyVaultProperties
+    - identity::EncryptionIdentity
 """
 Base.@kwdef mutable struct Encryption <: OpenAPI.APIModel
     services = nothing # spec type: Union{ Nothing, EncryptionServices }
-    keySource::Union{Nothing, String} = Microsoft.Storage
+    keySource::Union{Nothing, String} = "Microsoft.Storage"
     requireInfrastructureEncryption::Union{Nothing, Bool} = nothing
     keyvaultproperties = nothing # spec type: Union{ Nothing, KeyVaultProperties }
+    identity = nothing # spec type: Union{ Nothing, EncryptionIdentity }
 
-    function Encryption(services, keySource, requireInfrastructureEncryption, keyvaultproperties, )
-        OpenAPI.validate_property(Encryption, Symbol("services"), services)
-        OpenAPI.validate_property(Encryption, Symbol("keySource"), keySource)
-        OpenAPI.validate_property(Encryption, Symbol("requireInfrastructureEncryption"), requireInfrastructureEncryption)
-        OpenAPI.validate_property(Encryption, Symbol("keyvaultproperties"), keyvaultproperties)
-        return new(services, keySource, requireInfrastructureEncryption, keyvaultproperties, )
+    function Encryption(services, keySource, requireInfrastructureEncryption, keyvaultproperties, identity, )
+        o = new(services, keySource, requireInfrastructureEncryption, keyvaultproperties, identity, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type Encryption
 
-const _property_types_Encryption = Dict{Symbol,String}(Symbol("services")=>"EncryptionServices", Symbol("keySource")=>"String", Symbol("requireInfrastructureEncryption")=>"Bool", Symbol("keyvaultproperties")=>"KeyVaultProperties", )
+const _property_types_Encryption = Dict{Symbol,String}(Symbol("services")=>"EncryptionServices", Symbol("keySource")=>"String", Symbol("requireInfrastructureEncryption")=>"Bool", Symbol("keyvaultproperties")=>"KeyVaultProperties", Symbol("identity")=>"EncryptionIdentity", )
 OpenAPI.property_type(::Type{ Encryption }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Encryption[name]))}
 
-function check_required(o::Encryption)
-    o.keySource === nothing && (return false)
+function OpenAPI.check_required(o::Encryption)
     true
 end
 
+function OpenAPI.validate_properties(o::Encryption)
+    OpenAPI.validate_property(Encryption, Symbol("services"), o.services)
+    OpenAPI.validate_property(Encryption, Symbol("keySource"), o.keySource)
+    OpenAPI.validate_property(Encryption, Symbol("requireInfrastructureEncryption"), o.requireInfrastructureEncryption)
+    OpenAPI.validate_property(Encryption, Symbol("keyvaultproperties"), o.keyvaultproperties)
+    OpenAPI.validate_property(Encryption, Symbol("identity"), o.identity)
+end
+
 function OpenAPI.validate_property(::Type{ Encryption }, name::Symbol, val)
+
+
     if name === Symbol("keySource")
         OpenAPI.validate_param(name, "Encryption", :enum, val, ["Microsoft.Storage", "Microsoft.Keyvault"])
     end
+
+
+
+
 end

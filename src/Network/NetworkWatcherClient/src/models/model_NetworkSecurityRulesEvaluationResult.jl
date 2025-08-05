@@ -30,22 +30,33 @@ Base.@kwdef mutable struct NetworkSecurityRulesEvaluationResult <: OpenAPI.APIMo
     destinationPortMatched::Union{Nothing, Bool} = nothing
 
     function NetworkSecurityRulesEvaluationResult(name, protocolMatched, sourceMatched, sourcePortMatched, destinationMatched, destinationPortMatched, )
-        OpenAPI.validate_property(NetworkSecurityRulesEvaluationResult, Symbol("name"), name)
-        OpenAPI.validate_property(NetworkSecurityRulesEvaluationResult, Symbol("protocolMatched"), protocolMatched)
-        OpenAPI.validate_property(NetworkSecurityRulesEvaluationResult, Symbol("sourceMatched"), sourceMatched)
-        OpenAPI.validate_property(NetworkSecurityRulesEvaluationResult, Symbol("sourcePortMatched"), sourcePortMatched)
-        OpenAPI.validate_property(NetworkSecurityRulesEvaluationResult, Symbol("destinationMatched"), destinationMatched)
-        OpenAPI.validate_property(NetworkSecurityRulesEvaluationResult, Symbol("destinationPortMatched"), destinationPortMatched)
-        return new(name, protocolMatched, sourceMatched, sourcePortMatched, destinationMatched, destinationPortMatched, )
+        o = new(name, protocolMatched, sourceMatched, sourcePortMatched, destinationMatched, destinationPortMatched, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type NetworkSecurityRulesEvaluationResult
 
 const _property_types_NetworkSecurityRulesEvaluationResult = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("protocolMatched")=>"Bool", Symbol("sourceMatched")=>"Bool", Symbol("sourcePortMatched")=>"Bool", Symbol("destinationMatched")=>"Bool", Symbol("destinationPortMatched")=>"Bool", )
 OpenAPI.property_type(::Type{ NetworkSecurityRulesEvaluationResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkSecurityRulesEvaluationResult[name]))}
 
-function check_required(o::NetworkSecurityRulesEvaluationResult)
+function OpenAPI.check_required(o::NetworkSecurityRulesEvaluationResult)
     true
 end
 
+function OpenAPI.validate_properties(o::NetworkSecurityRulesEvaluationResult)
+    OpenAPI.validate_property(NetworkSecurityRulesEvaluationResult, Symbol("name"), o.name)
+    OpenAPI.validate_property(NetworkSecurityRulesEvaluationResult, Symbol("protocolMatched"), o.protocolMatched)
+    OpenAPI.validate_property(NetworkSecurityRulesEvaluationResult, Symbol("sourceMatched"), o.sourceMatched)
+    OpenAPI.validate_property(NetworkSecurityRulesEvaluationResult, Symbol("sourcePortMatched"), o.sourcePortMatched)
+    OpenAPI.validate_property(NetworkSecurityRulesEvaluationResult, Symbol("destinationMatched"), o.destinationMatched)
+    OpenAPI.validate_property(NetworkSecurityRulesEvaluationResult, Symbol("destinationPortMatched"), o.destinationPortMatched)
+end
+
 function OpenAPI.validate_property(::Type{ NetworkSecurityRulesEvaluationResult }, name::Symbol, val)
+
+
+
+
+
+
 end

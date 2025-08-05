@@ -33,38 +33,51 @@ Base.@kwdef mutable struct MaintenanceRedeployStatus <: OpenAPI.APIModel
     lastOperationMessage::Union{Nothing, String} = nothing
 
     function MaintenanceRedeployStatus(isCustomerInitiatedMaintenanceAllowed, preMaintenanceWindowStartTime, preMaintenanceWindowEndTime, maintenanceWindowStartTime, maintenanceWindowEndTime, lastOperationResultCode, lastOperationMessage, )
-        OpenAPI.validate_property(MaintenanceRedeployStatus, Symbol("isCustomerInitiatedMaintenanceAllowed"), isCustomerInitiatedMaintenanceAllowed)
-        OpenAPI.validate_property(MaintenanceRedeployStatus, Symbol("preMaintenanceWindowStartTime"), preMaintenanceWindowStartTime)
-        OpenAPI.validate_property(MaintenanceRedeployStatus, Symbol("preMaintenanceWindowEndTime"), preMaintenanceWindowEndTime)
-        OpenAPI.validate_property(MaintenanceRedeployStatus, Symbol("maintenanceWindowStartTime"), maintenanceWindowStartTime)
-        OpenAPI.validate_property(MaintenanceRedeployStatus, Symbol("maintenanceWindowEndTime"), maintenanceWindowEndTime)
-        OpenAPI.validate_property(MaintenanceRedeployStatus, Symbol("lastOperationResultCode"), lastOperationResultCode)
-        OpenAPI.validate_property(MaintenanceRedeployStatus, Symbol("lastOperationMessage"), lastOperationMessage)
-        return new(isCustomerInitiatedMaintenanceAllowed, preMaintenanceWindowStartTime, preMaintenanceWindowEndTime, maintenanceWindowStartTime, maintenanceWindowEndTime, lastOperationResultCode, lastOperationMessage, )
+        o = new(isCustomerInitiatedMaintenanceAllowed, preMaintenanceWindowStartTime, preMaintenanceWindowEndTime, maintenanceWindowStartTime, maintenanceWindowEndTime, lastOperationResultCode, lastOperationMessage, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type MaintenanceRedeployStatus
 
 const _property_types_MaintenanceRedeployStatus = Dict{Symbol,String}(Symbol("isCustomerInitiatedMaintenanceAllowed")=>"Bool", Symbol("preMaintenanceWindowStartTime")=>"ZonedDateTime", Symbol("preMaintenanceWindowEndTime")=>"ZonedDateTime", Symbol("maintenanceWindowStartTime")=>"ZonedDateTime", Symbol("maintenanceWindowEndTime")=>"ZonedDateTime", Symbol("lastOperationResultCode")=>"String", Symbol("lastOperationMessage")=>"String", )
 OpenAPI.property_type(::Type{ MaintenanceRedeployStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_MaintenanceRedeployStatus[name]))}
 
-function check_required(o::MaintenanceRedeployStatus)
+function OpenAPI.check_required(o::MaintenanceRedeployStatus)
     true
 end
 
+function OpenAPI.validate_properties(o::MaintenanceRedeployStatus)
+    OpenAPI.validate_property(MaintenanceRedeployStatus, Symbol("isCustomerInitiatedMaintenanceAllowed"), o.isCustomerInitiatedMaintenanceAllowed)
+    OpenAPI.validate_property(MaintenanceRedeployStatus, Symbol("preMaintenanceWindowStartTime"), o.preMaintenanceWindowStartTime)
+    OpenAPI.validate_property(MaintenanceRedeployStatus, Symbol("preMaintenanceWindowEndTime"), o.preMaintenanceWindowEndTime)
+    OpenAPI.validate_property(MaintenanceRedeployStatus, Symbol("maintenanceWindowStartTime"), o.maintenanceWindowStartTime)
+    OpenAPI.validate_property(MaintenanceRedeployStatus, Symbol("maintenanceWindowEndTime"), o.maintenanceWindowEndTime)
+    OpenAPI.validate_property(MaintenanceRedeployStatus, Symbol("lastOperationResultCode"), o.lastOperationResultCode)
+    OpenAPI.validate_property(MaintenanceRedeployStatus, Symbol("lastOperationMessage"), o.lastOperationMessage)
+end
+
 function OpenAPI.validate_property(::Type{ MaintenanceRedeployStatus }, name::Symbol, val)
+
+
     if name === Symbol("preMaintenanceWindowStartTime")
         OpenAPI.validate_param(name, "MaintenanceRedeployStatus", :format, val, "date-time")
     end
+
     if name === Symbol("preMaintenanceWindowEndTime")
         OpenAPI.validate_param(name, "MaintenanceRedeployStatus", :format, val, "date-time")
     end
+
     if name === Symbol("maintenanceWindowStartTime")
         OpenAPI.validate_param(name, "MaintenanceRedeployStatus", :format, val, "date-time")
     end
+
     if name === Symbol("maintenanceWindowEndTime")
         OpenAPI.validate_param(name, "MaintenanceRedeployStatus", :format, val, "date-time")
     end
+
     if name === Symbol("lastOperationResultCode")
         OpenAPI.validate_param(name, "MaintenanceRedeployStatus", :enum, val, ["None", "RetryLater", "MaintenanceAborted", "MaintenanceCompleted"])
     end
+
+
 end

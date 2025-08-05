@@ -23,12 +23,12 @@ Creates or updates a route in the specified route filter.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **RouteFilterRulesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**route_filter_name** | **String**| The name of the route filter. | [default to nothing]
-**rule_name** | **String**| The name of the route filter rule. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**route_filter_rule_parameters** | [**RouteFilterRule**](RouteFilterRule.md)| Parameters supplied to the create or update route filter rule operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**route_filter_name** | **String** | The name of the route filter. |
+**rule_name** | **String** | The name of the route filter rule. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**route_filter_rule_parameters** | [**RouteFilterRule**](RouteFilterRule.md) | Parameters supplied to the create or update route filter rule operation. |
 
 ### Return type
 
@@ -58,11 +58,11 @@ Deletes the specified rule from a route filter.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **RouteFilterRulesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**route_filter_name** | **String**| The name of the route filter. | [default to nothing]
-**rule_name** | **String**| The name of the rule. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**route_filter_name** | **String** | The name of the route filter. |
+**rule_name** | **String** | The name of the rule. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -92,11 +92,11 @@ Gets the specified rule from a route filter.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **RouteFilterRulesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**route_filter_name** | **String**| The name of the route filter. | [default to nothing]
-**rule_name** | **String**| The name of the rule. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**route_filter_name** | **String** | The name of the route filter. |
+**rule_name** | **String** | The name of the rule. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -126,10 +126,10 @@ Gets all RouteFilterRules in a route filter.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **RouteFilterRulesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**route_filter_name** | **String**| The name of the route filter. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**route_filter_name** | **String** | The name of the route filter. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 

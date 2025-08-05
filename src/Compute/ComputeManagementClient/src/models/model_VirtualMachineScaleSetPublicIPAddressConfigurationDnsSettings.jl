@@ -15,18 +15,24 @@ Base.@kwdef mutable struct VirtualMachineScaleSetPublicIPAddressConfigurationDns
     domainNameLabel::Union{Nothing, String} = nothing
 
     function VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings(domainNameLabel, )
-        OpenAPI.validate_property(VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings, Symbol("domainNameLabel"), domainNameLabel)
-        return new(domainNameLabel, )
+        o = new(domainNameLabel, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings
 
 const _property_types_VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings = Dict{Symbol,String}(Symbol("domainNameLabel")=>"String", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings[name]))}
 
-function check_required(o::VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings)
+function OpenAPI.check_required(o::VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings)
     o.domainNameLabel === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings)
+    OpenAPI.validate_property(VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings, Symbol("domainNameLabel"), o.domainNameLabel)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings }, name::Symbol, val)
+
 end

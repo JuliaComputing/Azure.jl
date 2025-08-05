@@ -19,9 +19,11 @@ const _returntypes_encryption_scopes_get_EncryptionScopesApi = Dict{Regex,Type}(
 function _oacinternal_encryption_scopes_get(_api::EncryptionScopesApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String, encryption_scope_name::String; _mediaType=nothing)
     OpenAPI.validate_param("resource_group_name", "encryption_scopes_get", :maxLength, resource_group_name, 90)
     OpenAPI.validate_param("resource_group_name", "encryption_scopes_get", :minLength, resource_group_name, 1)
+        OpenAPI.validate_param("resource_group_name", "encryption_scopes_get", :pattern, resource_group_name, r"^[-\w\._\(\)]+$")
 
     OpenAPI.validate_param("account_name", "encryption_scopes_get", :maxLength, account_name, 24)
     OpenAPI.validate_param("account_name", "encryption_scopes_get", :minLength, account_name, 3)
+        OpenAPI.validate_param("account_name", "encryption_scopes_get", :pattern, account_name, r"^[a-z0-9]+$")
 
     OpenAPI.validate_param("api_version", "encryption_scopes_get", :minLength, api_version, 1)
 
@@ -35,7 +37,7 @@ function _oacinternal_encryption_scopes_get(_api::EncryptionScopesApi, resource_
     OpenAPI.Clients.set_param(_ctx.path, "accountName", account_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "encryptionScopeName", encryption_scope_name)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -66,22 +68,30 @@ const _returntypes_encryption_scopes_list_EncryptionScopesApi = Dict{Regex,Type}
     Regex("^" * replace("200", "x"=>".") * "\$") => EncryptionScopeListResult,
 )
 
-function _oacinternal_encryption_scopes_list(_api::EncryptionScopesApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
+function _oacinternal_encryption_scopes_list(_api::EncryptionScopesApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String; maxpagesize=nothing, filter=nothing, include=nothing, _mediaType=nothing)
     OpenAPI.validate_param("resource_group_name", "encryption_scopes_list", :maxLength, resource_group_name, 90)
     OpenAPI.validate_param("resource_group_name", "encryption_scopes_list", :minLength, resource_group_name, 1)
+        OpenAPI.validate_param("resource_group_name", "encryption_scopes_list", :pattern, resource_group_name, r"^[-\w\._\(\)]+$")
 
     OpenAPI.validate_param("account_name", "encryption_scopes_list", :maxLength, account_name, 24)
     OpenAPI.validate_param("account_name", "encryption_scopes_list", :minLength, account_name, 3)
+        OpenAPI.validate_param("account_name", "encryption_scopes_list", :pattern, account_name, r"^[a-z0-9]+$")
 
     OpenAPI.validate_param("api_version", "encryption_scopes_list", :minLength, api_version, 1)
 
     OpenAPI.validate_param("subscription_id", "encryption_scopes_list", :minLength, subscription_id, 1)
 
+    OpenAPI.validate_param("maxpagesize", "encryption_scopes_list", :maximum, maxpagesize, 5000, false)
+    OpenAPI.validate_param("maxpagesize", "encryption_scopes_list", :minimum, maxpagesize, 1, false)
+
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_encryption_scopes_list_EncryptionScopesApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/encryptionScopes", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "accountName", account_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$maxpagesize", maxpagesize; style="", is_explode=false)  # type Int64
+    OpenAPI.Clients.set_param(_ctx.query, "\$filter", filter; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$include", include; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -94,16 +104,19 @@ Params:
 - account_name::String (required)
 - api_version::String (required)
 - subscription_id::String (required)
+- maxpagesize::Int64
+- filter::String
+- include::String
 
 Return: EncryptionScopeListResult, OpenAPI.Clients.ApiResponse
 """
-function encryption_scopes_list(_api::EncryptionScopesApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = _oacinternal_encryption_scopes_list(_api, resource_group_name, account_name, api_version, subscription_id; _mediaType=_mediaType)
+function encryption_scopes_list(_api::EncryptionScopesApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String; maxpagesize=nothing, filter=nothing, include=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_encryption_scopes_list(_api, resource_group_name, account_name, api_version, subscription_id; maxpagesize=maxpagesize, filter=filter, include=include, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx)
 end
 
-function encryption_scopes_list(_api::EncryptionScopesApi, response_stream::Channel, resource_group_name::String, account_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = _oacinternal_encryption_scopes_list(_api, resource_group_name, account_name, api_version, subscription_id; _mediaType=_mediaType)
+function encryption_scopes_list(_api::EncryptionScopesApi, response_stream::Channel, resource_group_name::String, account_name::String, api_version::String, subscription_id::String; maxpagesize=nothing, filter=nothing, include=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_encryption_scopes_list(_api, resource_group_name, account_name, api_version, subscription_id; maxpagesize=maxpagesize, filter=filter, include=include, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
@@ -115,9 +128,11 @@ const _returntypes_encryption_scopes_patch_EncryptionScopesApi = Dict{Regex,Type
 function _oacinternal_encryption_scopes_patch(_api::EncryptionScopesApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String, encryption_scope_name::String, encryption_scope::EncryptionScope; _mediaType=nothing)
     OpenAPI.validate_param("resource_group_name", "encryption_scopes_patch", :maxLength, resource_group_name, 90)
     OpenAPI.validate_param("resource_group_name", "encryption_scopes_patch", :minLength, resource_group_name, 1)
+        OpenAPI.validate_param("resource_group_name", "encryption_scopes_patch", :pattern, resource_group_name, r"^[-\w\._\(\)]+$")
 
     OpenAPI.validate_param("account_name", "encryption_scopes_patch", :maxLength, account_name, 24)
     OpenAPI.validate_param("account_name", "encryption_scopes_patch", :minLength, account_name, 3)
+        OpenAPI.validate_param("account_name", "encryption_scopes_patch", :pattern, account_name, r"^[a-z0-9]+$")
 
     OpenAPI.validate_param("api_version", "encryption_scopes_patch", :minLength, api_version, 1)
 
@@ -131,7 +146,7 @@ function _oacinternal_encryption_scopes_patch(_api::EncryptionScopesApi, resourc
     OpenAPI.Clients.set_param(_ctx.path, "accountName", account_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "encryptionScopeName", encryption_scope_name)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -168,9 +183,11 @@ const _returntypes_encryption_scopes_put_EncryptionScopesApi = Dict{Regex,Type}(
 function _oacinternal_encryption_scopes_put(_api::EncryptionScopesApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String, encryption_scope_name::String, encryption_scope::EncryptionScope; _mediaType=nothing)
     OpenAPI.validate_param("resource_group_name", "encryption_scopes_put", :maxLength, resource_group_name, 90)
     OpenAPI.validate_param("resource_group_name", "encryption_scopes_put", :minLength, resource_group_name, 1)
+        OpenAPI.validate_param("resource_group_name", "encryption_scopes_put", :pattern, resource_group_name, r"^[-\w\._\(\)]+$")
 
     OpenAPI.validate_param("account_name", "encryption_scopes_put", :maxLength, account_name, 24)
     OpenAPI.validate_param("account_name", "encryption_scopes_put", :minLength, account_name, 3)
+        OpenAPI.validate_param("account_name", "encryption_scopes_put", :pattern, account_name, r"^[a-z0-9]+$")
 
     OpenAPI.validate_param("api_version", "encryption_scopes_put", :minLength, api_version, 1)
 
@@ -184,7 +201,7 @@ function _oacinternal_encryption_scopes_put(_api::EncryptionScopesApi, resource_
     OpenAPI.Clients.set_param(_ctx.path, "accountName", account_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "encryptionScopeName", encryption_scope_name)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx

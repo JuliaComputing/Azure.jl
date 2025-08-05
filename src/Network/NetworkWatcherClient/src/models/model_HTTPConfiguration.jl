@@ -21,22 +21,31 @@ Base.@kwdef mutable struct HTTPConfiguration <: OpenAPI.APIModel
     validStatusCodes::Union{Nothing, Vector{Int64}} = nothing
 
     function HTTPConfiguration(method, headers, validStatusCodes, )
-        OpenAPI.validate_property(HTTPConfiguration, Symbol("method"), method)
-        OpenAPI.validate_property(HTTPConfiguration, Symbol("headers"), headers)
-        OpenAPI.validate_property(HTTPConfiguration, Symbol("validStatusCodes"), validStatusCodes)
-        return new(method, headers, validStatusCodes, )
+        o = new(method, headers, validStatusCodes, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type HTTPConfiguration
 
 const _property_types_HTTPConfiguration = Dict{Symbol,String}(Symbol("method")=>"String", Symbol("headers")=>"Vector{HTTPHeader}", Symbol("validStatusCodes")=>"Vector{Int64}", )
 OpenAPI.property_type(::Type{ HTTPConfiguration }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_HTTPConfiguration[name]))}
 
-function check_required(o::HTTPConfiguration)
+function OpenAPI.check_required(o::HTTPConfiguration)
     true
 end
 
+function OpenAPI.validate_properties(o::HTTPConfiguration)
+    OpenAPI.validate_property(HTTPConfiguration, Symbol("method"), o.method)
+    OpenAPI.validate_property(HTTPConfiguration, Symbol("headers"), o.headers)
+    OpenAPI.validate_property(HTTPConfiguration, Symbol("validStatusCodes"), o.validStatusCodes)
+end
+
 function OpenAPI.validate_property(::Type{ HTTPConfiguration }, name::Symbol, val)
+
     if name === Symbol("method")
         OpenAPI.validate_param(name, "HTTPConfiguration", :enum, val, ["Get"])
     end
+
+
+
 end

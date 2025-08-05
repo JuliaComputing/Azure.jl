@@ -21,20 +21,28 @@ Base.@kwdef mutable struct AdlsRuntimeException <: OpenAPI.APIModel
     message::Union{Nothing, String} = nothing
 
     function AdlsRuntimeException(exception, javaClassName, message, )
-        OpenAPI.validate_property(AdlsRuntimeException, Symbol("exception"), exception)
-        OpenAPI.validate_property(AdlsRuntimeException, Symbol("javaClassName"), javaClassName)
-        OpenAPI.validate_property(AdlsRuntimeException, Symbol("message"), message)
-        return new(exception, javaClassName, message, )
+        o = new(exception, javaClassName, message, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AdlsRuntimeException
 
 const _property_types_AdlsRuntimeException = Dict{Symbol,String}(Symbol("exception")=>"String", Symbol("javaClassName")=>"String", Symbol("message")=>"String", )
 OpenAPI.property_type(::Type{ AdlsRuntimeException }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AdlsRuntimeException[name]))}
 
-function check_required(o::AdlsRuntimeException)
+function OpenAPI.check_required(o::AdlsRuntimeException)
     o.exception === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::AdlsRuntimeException)
+    OpenAPI.validate_property(AdlsRuntimeException, Symbol("exception"), o.exception)
+    OpenAPI.validate_property(AdlsRuntimeException, Symbol("javaClassName"), o.javaClassName)
+    OpenAPI.validate_property(AdlsRuntimeException, Symbol("message"), o.message)
+end
+
 function OpenAPI.validate_property(::Type{ AdlsRuntimeException }, name::Symbol, val)
+
+
+
 end

@@ -42,38 +42,90 @@ Base.@kwdef mutable struct ConnectionStateSnapshot <: OpenAPI.APIModel
     hops::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ConnectivityHop2} }
 
     function ConnectionStateSnapshot(connectionState, startTime, endTime, evaluationState, avgLatencyInMs, minLatencyInMs, maxLatencyInMs, probesSent, probesFailed, hops, )
-        OpenAPI.validate_property(ConnectionStateSnapshot, Symbol("connectionState"), connectionState)
-        OpenAPI.validate_property(ConnectionStateSnapshot, Symbol("startTime"), startTime)
-        OpenAPI.validate_property(ConnectionStateSnapshot, Symbol("endTime"), endTime)
-        OpenAPI.validate_property(ConnectionStateSnapshot, Symbol("evaluationState"), evaluationState)
-        OpenAPI.validate_property(ConnectionStateSnapshot, Symbol("avgLatencyInMs"), avgLatencyInMs)
-        OpenAPI.validate_property(ConnectionStateSnapshot, Symbol("minLatencyInMs"), minLatencyInMs)
-        OpenAPI.validate_property(ConnectionStateSnapshot, Symbol("maxLatencyInMs"), maxLatencyInMs)
-        OpenAPI.validate_property(ConnectionStateSnapshot, Symbol("probesSent"), probesSent)
-        OpenAPI.validate_property(ConnectionStateSnapshot, Symbol("probesFailed"), probesFailed)
-        OpenAPI.validate_property(ConnectionStateSnapshot, Symbol("hops"), hops)
-        return new(connectionState, startTime, endTime, evaluationState, avgLatencyInMs, minLatencyInMs, maxLatencyInMs, probesSent, probesFailed, hops, )
+        o = new(connectionState, startTime, endTime, evaluationState, avgLatencyInMs, minLatencyInMs, maxLatencyInMs, probesSent, probesFailed, hops, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ConnectionStateSnapshot
 
 const _property_types_ConnectionStateSnapshot = Dict{Symbol,String}(Symbol("connectionState")=>"String", Symbol("startTime")=>"ZonedDateTime", Symbol("endTime")=>"ZonedDateTime", Symbol("evaluationState")=>"String", Symbol("avgLatencyInMs")=>"Int64", Symbol("minLatencyInMs")=>"Int64", Symbol("maxLatencyInMs")=>"Int64", Symbol("probesSent")=>"Int64", Symbol("probesFailed")=>"Int64", Symbol("hops")=>"Vector{ConnectivityHop2}", )
 OpenAPI.property_type(::Type{ ConnectionStateSnapshot }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ConnectionStateSnapshot[name]))}
 
-function check_required(o::ConnectionStateSnapshot)
+function OpenAPI.check_required(o::ConnectionStateSnapshot)
     true
 end
 
+function OpenAPI.validate_properties(o::ConnectionStateSnapshot)
+    OpenAPI.validate_property(ConnectionStateSnapshot, Symbol("connectionState"), o.connectionState)
+    OpenAPI.validate_property(ConnectionStateSnapshot, Symbol("startTime"), o.startTime)
+    OpenAPI.validate_property(ConnectionStateSnapshot, Symbol("endTime"), o.endTime)
+    OpenAPI.validate_property(ConnectionStateSnapshot, Symbol("evaluationState"), o.evaluationState)
+    OpenAPI.validate_property(ConnectionStateSnapshot, Symbol("avgLatencyInMs"), o.avgLatencyInMs)
+    OpenAPI.validate_property(ConnectionStateSnapshot, Symbol("minLatencyInMs"), o.minLatencyInMs)
+    OpenAPI.validate_property(ConnectionStateSnapshot, Symbol("maxLatencyInMs"), o.maxLatencyInMs)
+    OpenAPI.validate_property(ConnectionStateSnapshot, Symbol("probesSent"), o.probesSent)
+    OpenAPI.validate_property(ConnectionStateSnapshot, Symbol("probesFailed"), o.probesFailed)
+    OpenAPI.validate_property(ConnectionStateSnapshot, Symbol("hops"), o.hops)
+end
+
 function OpenAPI.validate_property(::Type{ ConnectionStateSnapshot }, name::Symbol, val)
+
     if name === Symbol("connectionState")
         OpenAPI.validate_param(name, "ConnectionStateSnapshot", :enum, val, ["Reachable", "Unreachable", "Unknown"])
     end
+
+
     if name === Symbol("startTime")
         OpenAPI.validate_param(name, "ConnectionStateSnapshot", :format, val, "date-time")
     end
+
     if name === Symbol("endTime")
         OpenAPI.validate_param(name, "ConnectionStateSnapshot", :format, val, "date-time")
     end
+
     if name === Symbol("evaluationState")
         OpenAPI.validate_param(name, "ConnectionStateSnapshot", :enum, val, ["NotStarted", "InProgress", "Completed"])
     end
+
+
+    if name === Symbol("avgLatencyInMs")
+        OpenAPI.validate_param(name, "ConnectionStateSnapshot", :format, val, "int64")
+    end
+    if name === Symbol("avgLatencyInMs")
+        OpenAPI.validate_param(name, "ConnectionStateSnapshot", :maximum, val, 4294967295, false)
+        OpenAPI.validate_param(name, "ConnectionStateSnapshot", :minimum, val, 0, false)
+    end
+
+    if name === Symbol("minLatencyInMs")
+        OpenAPI.validate_param(name, "ConnectionStateSnapshot", :format, val, "int64")
+    end
+    if name === Symbol("minLatencyInMs")
+        OpenAPI.validate_param(name, "ConnectionStateSnapshot", :maximum, val, 4294967295, false)
+        OpenAPI.validate_param(name, "ConnectionStateSnapshot", :minimum, val, 0, false)
+    end
+
+    if name === Symbol("maxLatencyInMs")
+        OpenAPI.validate_param(name, "ConnectionStateSnapshot", :format, val, "int64")
+    end
+    if name === Symbol("maxLatencyInMs")
+        OpenAPI.validate_param(name, "ConnectionStateSnapshot", :maximum, val, 4294967295, false)
+        OpenAPI.validate_param(name, "ConnectionStateSnapshot", :minimum, val, 0, false)
+    end
+
+    if name === Symbol("probesSent")
+        OpenAPI.validate_param(name, "ConnectionStateSnapshot", :format, val, "int64")
+    end
+    if name === Symbol("probesSent")
+        OpenAPI.validate_param(name, "ConnectionStateSnapshot", :maximum, val, 4294967295, false)
+        OpenAPI.validate_param(name, "ConnectionStateSnapshot", :minimum, val, 0, false)
+    end
+
+    if name === Symbol("probesFailed")
+        OpenAPI.validate_param(name, "ConnectionStateSnapshot", :format, val, "int64")
+    end
+    if name === Symbol("probesFailed")
+        OpenAPI.validate_param(name, "ConnectionStateSnapshot", :maximum, val, 4294967295, false)
+        OpenAPI.validate_param(name, "ConnectionStateSnapshot", :minimum, val, 0, false)
+    end
+
 end

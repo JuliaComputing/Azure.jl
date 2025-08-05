@@ -36,24 +36,37 @@ Base.@kwdef mutable struct ApplicationGatewayRedirectConfigurationPropertiesForm
     pathRules::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{SubResource} }
 
     function ApplicationGatewayRedirectConfigurationPropertiesFormat(redirectType, targetListener, targetUrl, includePath, includeQueryString, requestRoutingRules, urlPathMaps, pathRules, )
-        OpenAPI.validate_property(ApplicationGatewayRedirectConfigurationPropertiesFormat, Symbol("redirectType"), redirectType)
-        OpenAPI.validate_property(ApplicationGatewayRedirectConfigurationPropertiesFormat, Symbol("targetListener"), targetListener)
-        OpenAPI.validate_property(ApplicationGatewayRedirectConfigurationPropertiesFormat, Symbol("targetUrl"), targetUrl)
-        OpenAPI.validate_property(ApplicationGatewayRedirectConfigurationPropertiesFormat, Symbol("includePath"), includePath)
-        OpenAPI.validate_property(ApplicationGatewayRedirectConfigurationPropertiesFormat, Symbol("includeQueryString"), includeQueryString)
-        OpenAPI.validate_property(ApplicationGatewayRedirectConfigurationPropertiesFormat, Symbol("requestRoutingRules"), requestRoutingRules)
-        OpenAPI.validate_property(ApplicationGatewayRedirectConfigurationPropertiesFormat, Symbol("urlPathMaps"), urlPathMaps)
-        OpenAPI.validate_property(ApplicationGatewayRedirectConfigurationPropertiesFormat, Symbol("pathRules"), pathRules)
-        return new(redirectType, targetListener, targetUrl, includePath, includeQueryString, requestRoutingRules, urlPathMaps, pathRules, )
+        o = new(redirectType, targetListener, targetUrl, includePath, includeQueryString, requestRoutingRules, urlPathMaps, pathRules, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayRedirectConfigurationPropertiesFormat
 
 const _property_types_ApplicationGatewayRedirectConfigurationPropertiesFormat = Dict{Symbol,String}(Symbol("redirectType")=>"RedirectTypeEnum", Symbol("targetListener")=>"SubResource", Symbol("targetUrl")=>"String", Symbol("includePath")=>"Bool", Symbol("includeQueryString")=>"Bool", Symbol("requestRoutingRules")=>"Vector{SubResource}", Symbol("urlPathMaps")=>"Vector{SubResource}", Symbol("pathRules")=>"Vector{SubResource}", )
 OpenAPI.property_type(::Type{ ApplicationGatewayRedirectConfigurationPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayRedirectConfigurationPropertiesFormat[name]))}
 
-function check_required(o::ApplicationGatewayRedirectConfigurationPropertiesFormat)
+function OpenAPI.check_required(o::ApplicationGatewayRedirectConfigurationPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayRedirectConfigurationPropertiesFormat)
+    OpenAPI.validate_property(ApplicationGatewayRedirectConfigurationPropertiesFormat, Symbol("redirectType"), o.redirectType)
+    OpenAPI.validate_property(ApplicationGatewayRedirectConfigurationPropertiesFormat, Symbol("targetListener"), o.targetListener)
+    OpenAPI.validate_property(ApplicationGatewayRedirectConfigurationPropertiesFormat, Symbol("targetUrl"), o.targetUrl)
+    OpenAPI.validate_property(ApplicationGatewayRedirectConfigurationPropertiesFormat, Symbol("includePath"), o.includePath)
+    OpenAPI.validate_property(ApplicationGatewayRedirectConfigurationPropertiesFormat, Symbol("includeQueryString"), o.includeQueryString)
+    OpenAPI.validate_property(ApplicationGatewayRedirectConfigurationPropertiesFormat, Symbol("requestRoutingRules"), o.requestRoutingRules)
+    OpenAPI.validate_property(ApplicationGatewayRedirectConfigurationPropertiesFormat, Symbol("urlPathMaps"), o.urlPathMaps)
+    OpenAPI.validate_property(ApplicationGatewayRedirectConfigurationPropertiesFormat, Symbol("pathRules"), o.pathRules)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayRedirectConfigurationPropertiesFormat }, name::Symbol, val)
+
+
+
+
+
+
+
+
 end

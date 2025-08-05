@@ -13,7 +13,7 @@ Specifies the storage settings for the virtual machine disks.
 
     - imageReference::ImageReference
     - osDisk::OSDisk
-    - dataDisks::Vector{DataDisk} : Specifies the parameters that are used to add a data disk to a virtual machine. &lt;br&gt;&lt;br&gt; For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc&#x3D;%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+    - dataDisks::Vector{DataDisk} : Specifies the parameters that are used to add a data disk to a virtual machine. &lt;br&gt;&lt;br&gt; For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
 """
 Base.@kwdef mutable struct StorageProfile <: OpenAPI.APIModel
     imageReference = nothing # spec type: Union{ Nothing, ImageReference }
@@ -21,19 +21,27 @@ Base.@kwdef mutable struct StorageProfile <: OpenAPI.APIModel
     dataDisks::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{DataDisk} }
 
     function StorageProfile(imageReference, osDisk, dataDisks, )
-        OpenAPI.validate_property(StorageProfile, Symbol("imageReference"), imageReference)
-        OpenAPI.validate_property(StorageProfile, Symbol("osDisk"), osDisk)
-        OpenAPI.validate_property(StorageProfile, Symbol("dataDisks"), dataDisks)
-        return new(imageReference, osDisk, dataDisks, )
+        o = new(imageReference, osDisk, dataDisks, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type StorageProfile
 
 const _property_types_StorageProfile = Dict{Symbol,String}(Symbol("imageReference")=>"ImageReference", Symbol("osDisk")=>"OSDisk", Symbol("dataDisks")=>"Vector{DataDisk}", )
 OpenAPI.property_type(::Type{ StorageProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_StorageProfile[name]))}
 
-function check_required(o::StorageProfile)
+function OpenAPI.check_required(o::StorageProfile)
     true
 end
 
+function OpenAPI.validate_properties(o::StorageProfile)
+    OpenAPI.validate_property(StorageProfile, Symbol("imageReference"), o.imageReference)
+    OpenAPI.validate_property(StorageProfile, Symbol("osDisk"), o.osDisk)
+    OpenAPI.validate_property(StorageProfile, Symbol("dataDisks"), o.dataDisks)
+end
+
 function OpenAPI.validate_property(::Type{ StorageProfile }, name::Symbol, val)
+
+
+
 end

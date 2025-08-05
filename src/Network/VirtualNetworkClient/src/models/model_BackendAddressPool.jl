@@ -27,21 +27,31 @@ Base.@kwdef mutable struct BackendAddressPool <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
 
     function BackendAddressPool(properties, name, etag, type, id, )
-        OpenAPI.validate_property(BackendAddressPool, Symbol("properties"), properties)
-        OpenAPI.validate_property(BackendAddressPool, Symbol("name"), name)
-        OpenAPI.validate_property(BackendAddressPool, Symbol("etag"), etag)
-        OpenAPI.validate_property(BackendAddressPool, Symbol("type"), type)
-        OpenAPI.validate_property(BackendAddressPool, Symbol("id"), id)
-        return new(properties, name, etag, type, id, )
+        o = new(properties, name, etag, type, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type BackendAddressPool
 
 const _property_types_BackendAddressPool = Dict{Symbol,String}(Symbol("properties")=>"BackendAddressPoolPropertiesFormat", Symbol("name")=>"String", Symbol("etag")=>"String", Symbol("type")=>"String", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ BackendAddressPool }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_BackendAddressPool[name]))}
 
-function check_required(o::BackendAddressPool)
+function OpenAPI.check_required(o::BackendAddressPool)
     true
 end
 
+function OpenAPI.validate_properties(o::BackendAddressPool)
+    OpenAPI.validate_property(BackendAddressPool, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(BackendAddressPool, Symbol("name"), o.name)
+    OpenAPI.validate_property(BackendAddressPool, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(BackendAddressPool, Symbol("type"), o.type)
+    OpenAPI.validate_property(BackendAddressPool, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ BackendAddressPool }, name::Symbol, val)
+
+
+
+
+
 end

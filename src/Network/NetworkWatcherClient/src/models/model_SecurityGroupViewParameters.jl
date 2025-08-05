@@ -15,18 +15,24 @@ Base.@kwdef mutable struct SecurityGroupViewParameters <: OpenAPI.APIModel
     targetResourceId::Union{Nothing, String} = nothing
 
     function SecurityGroupViewParameters(targetResourceId, )
-        OpenAPI.validate_property(SecurityGroupViewParameters, Symbol("targetResourceId"), targetResourceId)
-        return new(targetResourceId, )
+        o = new(targetResourceId, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type SecurityGroupViewParameters
 
 const _property_types_SecurityGroupViewParameters = Dict{Symbol,String}(Symbol("targetResourceId")=>"String", )
 OpenAPI.property_type(::Type{ SecurityGroupViewParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SecurityGroupViewParameters[name]))}
 
-function check_required(o::SecurityGroupViewParameters)
+function OpenAPI.check_required(o::SecurityGroupViewParameters)
     o.targetResourceId === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::SecurityGroupViewParameters)
+    OpenAPI.validate_property(SecurityGroupViewParameters, Symbol("targetResourceId"), o.targetResourceId)
+end
+
 function OpenAPI.validate_property(::Type{ SecurityGroupViewParameters }, name::Symbol, val)
+
 end

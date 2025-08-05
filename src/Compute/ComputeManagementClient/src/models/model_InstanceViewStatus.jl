@@ -27,26 +27,37 @@ Base.@kwdef mutable struct InstanceViewStatus <: OpenAPI.APIModel
     time::Union{Nothing, ZonedDateTime} = nothing
 
     function InstanceViewStatus(code, level, displayStatus, message, time, )
-        OpenAPI.validate_property(InstanceViewStatus, Symbol("code"), code)
-        OpenAPI.validate_property(InstanceViewStatus, Symbol("level"), level)
-        OpenAPI.validate_property(InstanceViewStatus, Symbol("displayStatus"), displayStatus)
-        OpenAPI.validate_property(InstanceViewStatus, Symbol("message"), message)
-        OpenAPI.validate_property(InstanceViewStatus, Symbol("time"), time)
-        return new(code, level, displayStatus, message, time, )
+        o = new(code, level, displayStatus, message, time, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type InstanceViewStatus
 
 const _property_types_InstanceViewStatus = Dict{Symbol,String}(Symbol("code")=>"String", Symbol("level")=>"String", Symbol("displayStatus")=>"String", Symbol("message")=>"String", Symbol("time")=>"ZonedDateTime", )
 OpenAPI.property_type(::Type{ InstanceViewStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_InstanceViewStatus[name]))}
 
-function check_required(o::InstanceViewStatus)
+function OpenAPI.check_required(o::InstanceViewStatus)
     true
 end
 
+function OpenAPI.validate_properties(o::InstanceViewStatus)
+    OpenAPI.validate_property(InstanceViewStatus, Symbol("code"), o.code)
+    OpenAPI.validate_property(InstanceViewStatus, Symbol("level"), o.level)
+    OpenAPI.validate_property(InstanceViewStatus, Symbol("displayStatus"), o.displayStatus)
+    OpenAPI.validate_property(InstanceViewStatus, Symbol("message"), o.message)
+    OpenAPI.validate_property(InstanceViewStatus, Symbol("time"), o.time)
+end
+
 function OpenAPI.validate_property(::Type{ InstanceViewStatus }, name::Symbol, val)
+
+
     if name === Symbol("level")
         OpenAPI.validate_param(name, "InstanceViewStatus", :enum, val, ["Info", "Warning", "Error"])
     end
+
+
+
+
     if name === Symbol("time")
         OpenAPI.validate_param(name, "InstanceViewStatus", :format, val, "date-time")
     end

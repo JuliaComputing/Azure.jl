@@ -6,37 +6,41 @@
 Contains the DDoS protection settings of the public IP.
 
     DdosSettings2(;
-        ddosCustomPolicy=nothing,
-        protectionCoverage=nothing,
-        protectedIP=nothing,
+        protectionMode=nothing,
+        ddosProtectionPlan=nothing,
     )
 
-    - ddosCustomPolicy::SubResource
-    - protectionCoverage::String : The DDoS protection policy customizability of the public IP. Only standard coverage will have the ability to be customized.
-    - protectedIP::Bool : Enables DDoS protection on the public IP.
+    - protectionMode::String : The DDoS protection mode of the public IP
+    - ddosProtectionPlan::SubResource
 """
 Base.@kwdef mutable struct DdosSettings2 <: OpenAPI.APIModel
-    ddosCustomPolicy = nothing # spec type: Union{ Nothing, SubResource }
-    protectionCoverage::Union{Nothing, String} = nothing
-    protectedIP::Union{Nothing, Bool} = nothing
+    protectionMode::Union{Nothing, String} = nothing
+    ddosProtectionPlan = nothing # spec type: Union{ Nothing, SubResource }
 
-    function DdosSettings2(ddosCustomPolicy, protectionCoverage, protectedIP, )
-        OpenAPI.validate_property(DdosSettings2, Symbol("ddosCustomPolicy"), ddosCustomPolicy)
-        OpenAPI.validate_property(DdosSettings2, Symbol("protectionCoverage"), protectionCoverage)
-        OpenAPI.validate_property(DdosSettings2, Symbol("protectedIP"), protectedIP)
-        return new(ddosCustomPolicy, protectionCoverage, protectedIP, )
+    function DdosSettings2(protectionMode, ddosProtectionPlan, )
+        o = new(protectionMode, ddosProtectionPlan, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type DdosSettings2
 
-const _property_types_DdosSettings2 = Dict{Symbol,String}(Symbol("ddosCustomPolicy")=>"SubResource", Symbol("protectionCoverage")=>"String", Symbol("protectedIP")=>"Bool", )
+const _property_types_DdosSettings2 = Dict{Symbol,String}(Symbol("protectionMode")=>"String", Symbol("ddosProtectionPlan")=>"SubResource", )
 OpenAPI.property_type(::Type{ DdosSettings2 }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DdosSettings2[name]))}
 
-function check_required(o::DdosSettings2)
+function OpenAPI.check_required(o::DdosSettings2)
     true
 end
 
+function OpenAPI.validate_properties(o::DdosSettings2)
+    OpenAPI.validate_property(DdosSettings2, Symbol("protectionMode"), o.protectionMode)
+    OpenAPI.validate_property(DdosSettings2, Symbol("ddosProtectionPlan"), o.ddosProtectionPlan)
+end
+
 function OpenAPI.validate_property(::Type{ DdosSettings2 }, name::Symbol, val)
-    if name === Symbol("protectionCoverage")
-        OpenAPI.validate_param(name, "DdosSettings2", :enum, val, ["Basic", "Standard"])
+
+    if name === Symbol("protectionMode")
+        OpenAPI.validate_param(name, "DdosSettings2", :enum, val, ["VirtualNetworkInherited", "Enabled", "Disabled"])
     end
+
+
 end

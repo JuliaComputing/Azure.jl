@@ -15,18 +15,24 @@ Base.@kwdef mutable struct VirtualNetworkConnectionGatewayReference <: OpenAPI.A
     id::Union{Nothing, String} = nothing
 
     function VirtualNetworkConnectionGatewayReference(id, )
-        OpenAPI.validate_property(VirtualNetworkConnectionGatewayReference, Symbol("id"), id)
-        return new(id, )
+        o = new(id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualNetworkConnectionGatewayReference
 
 const _property_types_VirtualNetworkConnectionGatewayReference = Dict{Symbol,String}(Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ VirtualNetworkConnectionGatewayReference }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualNetworkConnectionGatewayReference[name]))}
 
-function check_required(o::VirtualNetworkConnectionGatewayReference)
+function OpenAPI.check_required(o::VirtualNetworkConnectionGatewayReference)
     o.id === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualNetworkConnectionGatewayReference)
+    OpenAPI.validate_property(VirtualNetworkConnectionGatewayReference, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualNetworkConnectionGatewayReference }, name::Symbol, val)
+
 end

@@ -22,10 +22,10 @@ Deletes the specified container service in the specified subscription and resour
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ContainerServiceApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**container_service_name** | **String**| The name of the container service in the specified subscription and resource group. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**container_service_name** | **String** | The name of the container service in the specified subscription and resource group. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -55,10 +55,10 @@ Gets the properties of the specified container service in the specified subscrip
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ContainerServiceApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**container_service_name** | **String**| The name of the container service in the specified subscription and resource group. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**container_service_name** | **String** | The name of the container service in the specified subscription and resource group. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -88,9 +88,9 @@ Gets a list of container services in the specified subscription and resource gro
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ContainerServiceApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 

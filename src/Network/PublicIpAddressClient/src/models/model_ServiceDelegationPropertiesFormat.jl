@@ -21,19 +21,27 @@ Base.@kwdef mutable struct ServiceDelegationPropertiesFormat <: OpenAPI.APIModel
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
     function ServiceDelegationPropertiesFormat(serviceName, actions, provisioningState, )
-        OpenAPI.validate_property(ServiceDelegationPropertiesFormat, Symbol("serviceName"), serviceName)
-        OpenAPI.validate_property(ServiceDelegationPropertiesFormat, Symbol("actions"), actions)
-        OpenAPI.validate_property(ServiceDelegationPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(serviceName, actions, provisioningState, )
+        o = new(serviceName, actions, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ServiceDelegationPropertiesFormat
 
 const _property_types_ServiceDelegationPropertiesFormat = Dict{Symbol,String}(Symbol("serviceName")=>"String", Symbol("actions")=>"Vector{String}", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ ServiceDelegationPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ServiceDelegationPropertiesFormat[name]))}
 
-function check_required(o::ServiceDelegationPropertiesFormat)
+function OpenAPI.check_required(o::ServiceDelegationPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::ServiceDelegationPropertiesFormat)
+    OpenAPI.validate_property(ServiceDelegationPropertiesFormat, Symbol("serviceName"), o.serviceName)
+    OpenAPI.validate_property(ServiceDelegationPropertiesFormat, Symbol("actions"), o.actions)
+    OpenAPI.validate_property(ServiceDelegationPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ ServiceDelegationPropertiesFormat }, name::Symbol, val)
+
+
+
 end

@@ -21,22 +21,30 @@ Base.@kwdef mutable struct PurchasePlan <: OpenAPI.APIModel
     product::Union{Nothing, String} = nothing
 
     function PurchasePlan(publisher, name, product, )
-        OpenAPI.validate_property(PurchasePlan, Symbol("publisher"), publisher)
-        OpenAPI.validate_property(PurchasePlan, Symbol("name"), name)
-        OpenAPI.validate_property(PurchasePlan, Symbol("product"), product)
-        return new(publisher, name, product, )
+        o = new(publisher, name, product, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PurchasePlan
 
 const _property_types_PurchasePlan = Dict{Symbol,String}(Symbol("publisher")=>"String", Symbol("name")=>"String", Symbol("product")=>"String", )
 OpenAPI.property_type(::Type{ PurchasePlan }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PurchasePlan[name]))}
 
-function check_required(o::PurchasePlan)
+function OpenAPI.check_required(o::PurchasePlan)
     o.publisher === nothing && (return false)
     o.name === nothing && (return false)
     o.product === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::PurchasePlan)
+    OpenAPI.validate_property(PurchasePlan, Symbol("publisher"), o.publisher)
+    OpenAPI.validate_property(PurchasePlan, Symbol("name"), o.name)
+    OpenAPI.validate_property(PurchasePlan, Symbol("product"), o.product)
+end
+
 function OpenAPI.validate_property(::Type{ PurchasePlan }, name::Symbol, val)
+
+
+
 end

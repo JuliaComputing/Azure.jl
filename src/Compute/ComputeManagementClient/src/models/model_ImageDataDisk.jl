@@ -36,34 +36,48 @@ Base.@kwdef mutable struct ImageDataDisk <: OpenAPI.APIModel
     diskEncryptionSet = nothing # spec type: Union{ Nothing, DiskEncryptionSetParameters }
 
     function ImageDataDisk(lun, snapshot, managedDisk, blobUri, caching, diskSizeGB, storageAccountType, diskEncryptionSet, )
-        OpenAPI.validate_property(ImageDataDisk, Symbol("lun"), lun)
-        OpenAPI.validate_property(ImageDataDisk, Symbol("snapshot"), snapshot)
-        OpenAPI.validate_property(ImageDataDisk, Symbol("managedDisk"), managedDisk)
-        OpenAPI.validate_property(ImageDataDisk, Symbol("blobUri"), blobUri)
-        OpenAPI.validate_property(ImageDataDisk, Symbol("caching"), caching)
-        OpenAPI.validate_property(ImageDataDisk, Symbol("diskSizeGB"), diskSizeGB)
-        OpenAPI.validate_property(ImageDataDisk, Symbol("storageAccountType"), storageAccountType)
-        OpenAPI.validate_property(ImageDataDisk, Symbol("diskEncryptionSet"), diskEncryptionSet)
-        return new(lun, snapshot, managedDisk, blobUri, caching, diskSizeGB, storageAccountType, diskEncryptionSet, )
+        o = new(lun, snapshot, managedDisk, blobUri, caching, diskSizeGB, storageAccountType, diskEncryptionSet, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ImageDataDisk
 
 const _property_types_ImageDataDisk = Dict{Symbol,String}(Symbol("lun")=>"Int64", Symbol("snapshot")=>"SubResource", Symbol("managedDisk")=>"SubResource", Symbol("blobUri")=>"String", Symbol("caching")=>"String", Symbol("diskSizeGB")=>"Int64", Symbol("storageAccountType")=>"StorageAccountType", Symbol("diskEncryptionSet")=>"DiskEncryptionSetParameters", )
 OpenAPI.property_type(::Type{ ImageDataDisk }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ImageDataDisk[name]))}
 
-function check_required(o::ImageDataDisk)
+function OpenAPI.check_required(o::ImageDataDisk)
     o.lun === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ImageDataDisk)
+    OpenAPI.validate_property(ImageDataDisk, Symbol("lun"), o.lun)
+    OpenAPI.validate_property(ImageDataDisk, Symbol("snapshot"), o.snapshot)
+    OpenAPI.validate_property(ImageDataDisk, Symbol("managedDisk"), o.managedDisk)
+    OpenAPI.validate_property(ImageDataDisk, Symbol("blobUri"), o.blobUri)
+    OpenAPI.validate_property(ImageDataDisk, Symbol("caching"), o.caching)
+    OpenAPI.validate_property(ImageDataDisk, Symbol("diskSizeGB"), o.diskSizeGB)
+    OpenAPI.validate_property(ImageDataDisk, Symbol("storageAccountType"), o.storageAccountType)
+    OpenAPI.validate_property(ImageDataDisk, Symbol("diskEncryptionSet"), o.diskEncryptionSet)
+end
+
 function OpenAPI.validate_property(::Type{ ImageDataDisk }, name::Symbol, val)
+
     if name === Symbol("lun")
         OpenAPI.validate_param(name, "ImageDataDisk", :format, val, "int32")
     end
+
+
+
+
     if name === Symbol("caching")
         OpenAPI.validate_param(name, "ImageDataDisk", :enum, val, ["None", "ReadOnly", "ReadWrite"])
     end
+
+
     if name === Symbol("diskSizeGB")
         OpenAPI.validate_param(name, "ImageDataDisk", :format, val, "int32")
     end
+
+
 end

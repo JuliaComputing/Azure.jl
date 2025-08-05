@@ -36,22 +36,16 @@ Base.@kwdef mutable struct IpsecPolicy <: OpenAPI.APIModel
     pfsGroup = nothing # spec type: Union{ Nothing, PfsGroup }
 
     function IpsecPolicy(saLifeTimeSeconds, saDataSizeKilobytes, ipsecEncryption, ipsecIntegrity, ikeEncryption, ikeIntegrity, dhGroup, pfsGroup, )
-        OpenAPI.validate_property(IpsecPolicy, Symbol("saLifeTimeSeconds"), saLifeTimeSeconds)
-        OpenAPI.validate_property(IpsecPolicy, Symbol("saDataSizeKilobytes"), saDataSizeKilobytes)
-        OpenAPI.validate_property(IpsecPolicy, Symbol("ipsecEncryption"), ipsecEncryption)
-        OpenAPI.validate_property(IpsecPolicy, Symbol("ipsecIntegrity"), ipsecIntegrity)
-        OpenAPI.validate_property(IpsecPolicy, Symbol("ikeEncryption"), ikeEncryption)
-        OpenAPI.validate_property(IpsecPolicy, Symbol("ikeIntegrity"), ikeIntegrity)
-        OpenAPI.validate_property(IpsecPolicy, Symbol("dhGroup"), dhGroup)
-        OpenAPI.validate_property(IpsecPolicy, Symbol("pfsGroup"), pfsGroup)
-        return new(saLifeTimeSeconds, saDataSizeKilobytes, ipsecEncryption, ipsecIntegrity, ikeEncryption, ikeIntegrity, dhGroup, pfsGroup, )
+        o = new(saLifeTimeSeconds, saDataSizeKilobytes, ipsecEncryption, ipsecIntegrity, ikeEncryption, ikeIntegrity, dhGroup, pfsGroup, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type IpsecPolicy
 
 const _property_types_IpsecPolicy = Dict{Symbol,String}(Symbol("saLifeTimeSeconds")=>"Int64", Symbol("saDataSizeKilobytes")=>"Int64", Symbol("ipsecEncryption")=>"IpsecEncryption", Symbol("ipsecIntegrity")=>"IpsecIntegrity", Symbol("ikeEncryption")=>"IkeEncryption", Symbol("ikeIntegrity")=>"IkeIntegrity", Symbol("dhGroup")=>"DhGroup", Symbol("pfsGroup")=>"PfsGroup", )
 OpenAPI.property_type(::Type{ IpsecPolicy }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IpsecPolicy[name]))}
 
-function check_required(o::IpsecPolicy)
+function OpenAPI.check_required(o::IpsecPolicy)
     o.saLifeTimeSeconds === nothing && (return false)
     o.saDataSizeKilobytes === nothing && (return false)
     o.ipsecEncryption === nothing && (return false)
@@ -63,11 +57,30 @@ function check_required(o::IpsecPolicy)
     true
 end
 
+function OpenAPI.validate_properties(o::IpsecPolicy)
+    OpenAPI.validate_property(IpsecPolicy, Symbol("saLifeTimeSeconds"), o.saLifeTimeSeconds)
+    OpenAPI.validate_property(IpsecPolicy, Symbol("saDataSizeKilobytes"), o.saDataSizeKilobytes)
+    OpenAPI.validate_property(IpsecPolicy, Symbol("ipsecEncryption"), o.ipsecEncryption)
+    OpenAPI.validate_property(IpsecPolicy, Symbol("ipsecIntegrity"), o.ipsecIntegrity)
+    OpenAPI.validate_property(IpsecPolicy, Symbol("ikeEncryption"), o.ikeEncryption)
+    OpenAPI.validate_property(IpsecPolicy, Symbol("ikeIntegrity"), o.ikeIntegrity)
+    OpenAPI.validate_property(IpsecPolicy, Symbol("dhGroup"), o.dhGroup)
+    OpenAPI.validate_property(IpsecPolicy, Symbol("pfsGroup"), o.pfsGroup)
+end
+
 function OpenAPI.validate_property(::Type{ IpsecPolicy }, name::Symbol, val)
+
     if name === Symbol("saLifeTimeSeconds")
         OpenAPI.validate_param(name, "IpsecPolicy", :format, val, "int32")
     end
+
     if name === Symbol("saDataSizeKilobytes")
         OpenAPI.validate_param(name, "IpsecPolicy", :format, val, "int32")
     end
+
+
+
+
+
+
 end

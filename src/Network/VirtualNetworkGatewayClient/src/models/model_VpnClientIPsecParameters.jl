@@ -36,22 +36,16 @@ Base.@kwdef mutable struct VpnClientIPsecParameters <: OpenAPI.APIModel
     pfsGroup = nothing # spec type: Union{ Nothing, PfsGroup }
 
     function VpnClientIPsecParameters(saLifeTimeSeconds, saDataSizeKilobytes, ipsecEncryption, ipsecIntegrity, ikeEncryption, ikeIntegrity, dhGroup, pfsGroup, )
-        OpenAPI.validate_property(VpnClientIPsecParameters, Symbol("saLifeTimeSeconds"), saLifeTimeSeconds)
-        OpenAPI.validate_property(VpnClientIPsecParameters, Symbol("saDataSizeKilobytes"), saDataSizeKilobytes)
-        OpenAPI.validate_property(VpnClientIPsecParameters, Symbol("ipsecEncryption"), ipsecEncryption)
-        OpenAPI.validate_property(VpnClientIPsecParameters, Symbol("ipsecIntegrity"), ipsecIntegrity)
-        OpenAPI.validate_property(VpnClientIPsecParameters, Symbol("ikeEncryption"), ikeEncryption)
-        OpenAPI.validate_property(VpnClientIPsecParameters, Symbol("ikeIntegrity"), ikeIntegrity)
-        OpenAPI.validate_property(VpnClientIPsecParameters, Symbol("dhGroup"), dhGroup)
-        OpenAPI.validate_property(VpnClientIPsecParameters, Symbol("pfsGroup"), pfsGroup)
-        return new(saLifeTimeSeconds, saDataSizeKilobytes, ipsecEncryption, ipsecIntegrity, ikeEncryption, ikeIntegrity, dhGroup, pfsGroup, )
+        o = new(saLifeTimeSeconds, saDataSizeKilobytes, ipsecEncryption, ipsecIntegrity, ikeEncryption, ikeIntegrity, dhGroup, pfsGroup, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VpnClientIPsecParameters
 
 const _property_types_VpnClientIPsecParameters = Dict{Symbol,String}(Symbol("saLifeTimeSeconds")=>"Int64", Symbol("saDataSizeKilobytes")=>"Int64", Symbol("ipsecEncryption")=>"IpsecEncryption", Symbol("ipsecIntegrity")=>"IpsecIntegrity", Symbol("ikeEncryption")=>"IkeEncryption", Symbol("ikeIntegrity")=>"IkeIntegrity", Symbol("dhGroup")=>"DhGroup", Symbol("pfsGroup")=>"PfsGroup", )
 OpenAPI.property_type(::Type{ VpnClientIPsecParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VpnClientIPsecParameters[name]))}
 
-function check_required(o::VpnClientIPsecParameters)
+function OpenAPI.check_required(o::VpnClientIPsecParameters)
     o.saLifeTimeSeconds === nothing && (return false)
     o.saDataSizeKilobytes === nothing && (return false)
     o.ipsecEncryption === nothing && (return false)
@@ -63,11 +57,30 @@ function check_required(o::VpnClientIPsecParameters)
     true
 end
 
+function OpenAPI.validate_properties(o::VpnClientIPsecParameters)
+    OpenAPI.validate_property(VpnClientIPsecParameters, Symbol("saLifeTimeSeconds"), o.saLifeTimeSeconds)
+    OpenAPI.validate_property(VpnClientIPsecParameters, Symbol("saDataSizeKilobytes"), o.saDataSizeKilobytes)
+    OpenAPI.validate_property(VpnClientIPsecParameters, Symbol("ipsecEncryption"), o.ipsecEncryption)
+    OpenAPI.validate_property(VpnClientIPsecParameters, Symbol("ipsecIntegrity"), o.ipsecIntegrity)
+    OpenAPI.validate_property(VpnClientIPsecParameters, Symbol("ikeEncryption"), o.ikeEncryption)
+    OpenAPI.validate_property(VpnClientIPsecParameters, Symbol("ikeIntegrity"), o.ikeIntegrity)
+    OpenAPI.validate_property(VpnClientIPsecParameters, Symbol("dhGroup"), o.dhGroup)
+    OpenAPI.validate_property(VpnClientIPsecParameters, Symbol("pfsGroup"), o.pfsGroup)
+end
+
 function OpenAPI.validate_property(::Type{ VpnClientIPsecParameters }, name::Symbol, val)
+
     if name === Symbol("saLifeTimeSeconds")
         OpenAPI.validate_param(name, "VpnClientIPsecParameters", :format, val, "int32")
     end
+
     if name === Symbol("saDataSizeKilobytes")
         OpenAPI.validate_param(name, "VpnClientIPsecParameters", :format, val, "int32")
     end
+
+
+
+
+
+
 end

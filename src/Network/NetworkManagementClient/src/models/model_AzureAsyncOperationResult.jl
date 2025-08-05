@@ -18,21 +18,29 @@ Base.@kwdef mutable struct AzureAsyncOperationResult <: OpenAPI.APIModel
     error = nothing # spec type: Union{ Nothing, Error }
 
     function AzureAsyncOperationResult(status, error, )
-        OpenAPI.validate_property(AzureAsyncOperationResult, Symbol("status"), status)
-        OpenAPI.validate_property(AzureAsyncOperationResult, Symbol("error"), error)
-        return new(status, error, )
+        o = new(status, error, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AzureAsyncOperationResult
 
 const _property_types_AzureAsyncOperationResult = Dict{Symbol,String}(Symbol("status")=>"String", Symbol("error")=>"Error", )
 OpenAPI.property_type(::Type{ AzureAsyncOperationResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AzureAsyncOperationResult[name]))}
 
-function check_required(o::AzureAsyncOperationResult)
+function OpenAPI.check_required(o::AzureAsyncOperationResult)
     true
 end
 
+function OpenAPI.validate_properties(o::AzureAsyncOperationResult)
+    OpenAPI.validate_property(AzureAsyncOperationResult, Symbol("status"), o.status)
+    OpenAPI.validate_property(AzureAsyncOperationResult, Symbol("error"), o.error)
+end
+
 function OpenAPI.validate_property(::Type{ AzureAsyncOperationResult }, name::Symbol, val)
+
     if name === Symbol("status")
         OpenAPI.validate_param(name, "AzureAsyncOperationResult", :enum, val, ["InProgress", "Succeeded", "Failed"])
     end
+
+
 end

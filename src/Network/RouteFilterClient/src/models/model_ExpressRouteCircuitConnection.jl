@@ -27,21 +27,31 @@ Base.@kwdef mutable struct ExpressRouteCircuitConnection <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
 
     function ExpressRouteCircuitConnection(properties, name, etag, type, id, )
-        OpenAPI.validate_property(ExpressRouteCircuitConnection, Symbol("properties"), properties)
-        OpenAPI.validate_property(ExpressRouteCircuitConnection, Symbol("name"), name)
-        OpenAPI.validate_property(ExpressRouteCircuitConnection, Symbol("etag"), etag)
-        OpenAPI.validate_property(ExpressRouteCircuitConnection, Symbol("type"), type)
-        OpenAPI.validate_property(ExpressRouteCircuitConnection, Symbol("id"), id)
-        return new(properties, name, etag, type, id, )
+        o = new(properties, name, etag, type, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ExpressRouteCircuitConnection
 
 const _property_types_ExpressRouteCircuitConnection = Dict{Symbol,String}(Symbol("properties")=>"ExpressRouteCircuitConnectionPropertiesFormat", Symbol("name")=>"String", Symbol("etag")=>"String", Symbol("type")=>"String", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ ExpressRouteCircuitConnection }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExpressRouteCircuitConnection[name]))}
 
-function check_required(o::ExpressRouteCircuitConnection)
+function OpenAPI.check_required(o::ExpressRouteCircuitConnection)
     true
 end
 
+function OpenAPI.validate_properties(o::ExpressRouteCircuitConnection)
+    OpenAPI.validate_property(ExpressRouteCircuitConnection, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(ExpressRouteCircuitConnection, Symbol("name"), o.name)
+    OpenAPI.validate_property(ExpressRouteCircuitConnection, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(ExpressRouteCircuitConnection, Symbol("type"), o.type)
+    OpenAPI.validate_property(ExpressRouteCircuitConnection, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ ExpressRouteCircuitConnection }, name::Symbol, val)
+
+
+
+
+
 end

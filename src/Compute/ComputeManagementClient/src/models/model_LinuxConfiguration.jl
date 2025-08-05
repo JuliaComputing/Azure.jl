@@ -3,37 +3,50 @@
 
 
 @doc raw"""LinuxConfiguration
-Specifies the Linux operating system settings on the virtual machine. &lt;br&gt;&lt;br&gt;For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-endorsed-distros?toc&#x3D;%2fazure%2fvirtual-machines%2flinux%2ftoc.json) &lt;br&gt;&lt;br&gt; For running non-endorsed distributions, see [Information for Non-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-create-upload-generic?toc&#x3D;%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Specifies the Linux operating system settings on the virtual machine. &lt;br&gt;&lt;br&gt;For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 
     LinuxConfiguration(;
         disablePasswordAuthentication=nothing,
         ssh=nothing,
         provisionVMAgent=nothing,
+        patchSettings=nothing,
     )
 
     - disablePasswordAuthentication::Bool : Specifies whether password authentication should be disabled.
     - ssh::SshConfiguration
     - provisionVMAgent::Bool : Indicates whether virtual machine agent should be provisioned on the virtual machine. &lt;br&gt;&lt;br&gt; When this property is not specified in the request body, default behavior is to set it to true.  This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later.
+    - patchSettings::LinuxPatchSettings
 """
 Base.@kwdef mutable struct LinuxConfiguration <: OpenAPI.APIModel
     disablePasswordAuthentication::Union{Nothing, Bool} = nothing
     ssh = nothing # spec type: Union{ Nothing, SshConfiguration }
     provisionVMAgent::Union{Nothing, Bool} = nothing
+    patchSettings = nothing # spec type: Union{ Nothing, LinuxPatchSettings }
 
-    function LinuxConfiguration(disablePasswordAuthentication, ssh, provisionVMAgent, )
-        OpenAPI.validate_property(LinuxConfiguration, Symbol("disablePasswordAuthentication"), disablePasswordAuthentication)
-        OpenAPI.validate_property(LinuxConfiguration, Symbol("ssh"), ssh)
-        OpenAPI.validate_property(LinuxConfiguration, Symbol("provisionVMAgent"), provisionVMAgent)
-        return new(disablePasswordAuthentication, ssh, provisionVMAgent, )
+    function LinuxConfiguration(disablePasswordAuthentication, ssh, provisionVMAgent, patchSettings, )
+        o = new(disablePasswordAuthentication, ssh, provisionVMAgent, patchSettings, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type LinuxConfiguration
 
-const _property_types_LinuxConfiguration = Dict{Symbol,String}(Symbol("disablePasswordAuthentication")=>"Bool", Symbol("ssh")=>"SshConfiguration", Symbol("provisionVMAgent")=>"Bool", )
+const _property_types_LinuxConfiguration = Dict{Symbol,String}(Symbol("disablePasswordAuthentication")=>"Bool", Symbol("ssh")=>"SshConfiguration", Symbol("provisionVMAgent")=>"Bool", Symbol("patchSettings")=>"LinuxPatchSettings", )
 OpenAPI.property_type(::Type{ LinuxConfiguration }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_LinuxConfiguration[name]))}
 
-function check_required(o::LinuxConfiguration)
+function OpenAPI.check_required(o::LinuxConfiguration)
     true
 end
 
+function OpenAPI.validate_properties(o::LinuxConfiguration)
+    OpenAPI.validate_property(LinuxConfiguration, Symbol("disablePasswordAuthentication"), o.disablePasswordAuthentication)
+    OpenAPI.validate_property(LinuxConfiguration, Symbol("ssh"), o.ssh)
+    OpenAPI.validate_property(LinuxConfiguration, Symbol("provisionVMAgent"), o.provisionVMAgent)
+    OpenAPI.validate_property(LinuxConfiguration, Symbol("patchSettings"), o.patchSettings)
+end
+
 function OpenAPI.validate_property(::Type{ LinuxConfiguration }, name::Symbol, val)
+
+
+
+
 end

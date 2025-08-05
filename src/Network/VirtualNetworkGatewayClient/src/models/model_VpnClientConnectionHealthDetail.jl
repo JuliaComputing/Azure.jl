@@ -48,48 +48,65 @@ Base.@kwdef mutable struct VpnClientConnectionHealthDetail <: OpenAPI.APIModel
     maxPacketsPerSecond::Union{Nothing, Int64} = nothing
 
     function VpnClientConnectionHealthDetail(vpnConnectionId, vpnConnectionDuration, vpnConnectionTime, publicIpAddress, privateIpAddress, vpnUserName, maxBandwidth, egressPacketsTransferred, egressBytesTransferred, ingressPacketsTransferred, ingressBytesTransferred, maxPacketsPerSecond, )
-        OpenAPI.validate_property(VpnClientConnectionHealthDetail, Symbol("vpnConnectionId"), vpnConnectionId)
-        OpenAPI.validate_property(VpnClientConnectionHealthDetail, Symbol("vpnConnectionDuration"), vpnConnectionDuration)
-        OpenAPI.validate_property(VpnClientConnectionHealthDetail, Symbol("vpnConnectionTime"), vpnConnectionTime)
-        OpenAPI.validate_property(VpnClientConnectionHealthDetail, Symbol("publicIpAddress"), publicIpAddress)
-        OpenAPI.validate_property(VpnClientConnectionHealthDetail, Symbol("privateIpAddress"), privateIpAddress)
-        OpenAPI.validate_property(VpnClientConnectionHealthDetail, Symbol("vpnUserName"), vpnUserName)
-        OpenAPI.validate_property(VpnClientConnectionHealthDetail, Symbol("maxBandwidth"), maxBandwidth)
-        OpenAPI.validate_property(VpnClientConnectionHealthDetail, Symbol("egressPacketsTransferred"), egressPacketsTransferred)
-        OpenAPI.validate_property(VpnClientConnectionHealthDetail, Symbol("egressBytesTransferred"), egressBytesTransferred)
-        OpenAPI.validate_property(VpnClientConnectionHealthDetail, Symbol("ingressPacketsTransferred"), ingressPacketsTransferred)
-        OpenAPI.validate_property(VpnClientConnectionHealthDetail, Symbol("ingressBytesTransferred"), ingressBytesTransferred)
-        OpenAPI.validate_property(VpnClientConnectionHealthDetail, Symbol("maxPacketsPerSecond"), maxPacketsPerSecond)
-        return new(vpnConnectionId, vpnConnectionDuration, vpnConnectionTime, publicIpAddress, privateIpAddress, vpnUserName, maxBandwidth, egressPacketsTransferred, egressBytesTransferred, ingressPacketsTransferred, ingressBytesTransferred, maxPacketsPerSecond, )
+        o = new(vpnConnectionId, vpnConnectionDuration, vpnConnectionTime, publicIpAddress, privateIpAddress, vpnUserName, maxBandwidth, egressPacketsTransferred, egressBytesTransferred, ingressPacketsTransferred, ingressBytesTransferred, maxPacketsPerSecond, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VpnClientConnectionHealthDetail
 
 const _property_types_VpnClientConnectionHealthDetail = Dict{Symbol,String}(Symbol("vpnConnectionId")=>"String", Symbol("vpnConnectionDuration")=>"Int64", Symbol("vpnConnectionTime")=>"String", Symbol("publicIpAddress")=>"String", Symbol("privateIpAddress")=>"String", Symbol("vpnUserName")=>"String", Symbol("maxBandwidth")=>"Int64", Symbol("egressPacketsTransferred")=>"Int64", Symbol("egressBytesTransferred")=>"Int64", Symbol("ingressPacketsTransferred")=>"Int64", Symbol("ingressBytesTransferred")=>"Int64", Symbol("maxPacketsPerSecond")=>"Int64", )
 OpenAPI.property_type(::Type{ VpnClientConnectionHealthDetail }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VpnClientConnectionHealthDetail[name]))}
 
-function check_required(o::VpnClientConnectionHealthDetail)
+function OpenAPI.check_required(o::VpnClientConnectionHealthDetail)
     true
 end
 
+function OpenAPI.validate_properties(o::VpnClientConnectionHealthDetail)
+    OpenAPI.validate_property(VpnClientConnectionHealthDetail, Symbol("vpnConnectionId"), o.vpnConnectionId)
+    OpenAPI.validate_property(VpnClientConnectionHealthDetail, Symbol("vpnConnectionDuration"), o.vpnConnectionDuration)
+    OpenAPI.validate_property(VpnClientConnectionHealthDetail, Symbol("vpnConnectionTime"), o.vpnConnectionTime)
+    OpenAPI.validate_property(VpnClientConnectionHealthDetail, Symbol("publicIpAddress"), o.publicIpAddress)
+    OpenAPI.validate_property(VpnClientConnectionHealthDetail, Symbol("privateIpAddress"), o.privateIpAddress)
+    OpenAPI.validate_property(VpnClientConnectionHealthDetail, Symbol("vpnUserName"), o.vpnUserName)
+    OpenAPI.validate_property(VpnClientConnectionHealthDetail, Symbol("maxBandwidth"), o.maxBandwidth)
+    OpenAPI.validate_property(VpnClientConnectionHealthDetail, Symbol("egressPacketsTransferred"), o.egressPacketsTransferred)
+    OpenAPI.validate_property(VpnClientConnectionHealthDetail, Symbol("egressBytesTransferred"), o.egressBytesTransferred)
+    OpenAPI.validate_property(VpnClientConnectionHealthDetail, Symbol("ingressPacketsTransferred"), o.ingressPacketsTransferred)
+    OpenAPI.validate_property(VpnClientConnectionHealthDetail, Symbol("ingressBytesTransferred"), o.ingressBytesTransferred)
+    OpenAPI.validate_property(VpnClientConnectionHealthDetail, Symbol("maxPacketsPerSecond"), o.maxPacketsPerSecond)
+end
+
 function OpenAPI.validate_property(::Type{ VpnClientConnectionHealthDetail }, name::Symbol, val)
+
+
     if name === Symbol("vpnConnectionDuration")
         OpenAPI.validate_param(name, "VpnClientConnectionHealthDetail", :format, val, "int64")
     end
+
+
+
+
+
     if name === Symbol("maxBandwidth")
         OpenAPI.validate_param(name, "VpnClientConnectionHealthDetail", :format, val, "int64")
     end
+
     if name === Symbol("egressPacketsTransferred")
         OpenAPI.validate_param(name, "VpnClientConnectionHealthDetail", :format, val, "int64")
     end
+
     if name === Symbol("egressBytesTransferred")
         OpenAPI.validate_param(name, "VpnClientConnectionHealthDetail", :format, val, "int64")
     end
+
     if name === Symbol("ingressPacketsTransferred")
         OpenAPI.validate_param(name, "VpnClientConnectionHealthDetail", :format, val, "int64")
     end
+
     if name === Symbol("ingressBytesTransferred")
         OpenAPI.validate_param(name, "VpnClientConnectionHealthDetail", :format, val, "int64")
     end
+
     if name === Symbol("maxPacketsPerSecond")
         OpenAPI.validate_param(name, "VpnClientConnectionHealthDetail", :format, val, "int64")
     end

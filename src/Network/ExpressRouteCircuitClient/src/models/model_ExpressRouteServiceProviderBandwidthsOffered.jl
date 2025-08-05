@@ -18,20 +18,27 @@ Base.@kwdef mutable struct ExpressRouteServiceProviderBandwidthsOffered <: OpenA
     valueInMbps::Union{Nothing, Int64} = nothing
 
     function ExpressRouteServiceProviderBandwidthsOffered(offerName, valueInMbps, )
-        OpenAPI.validate_property(ExpressRouteServiceProviderBandwidthsOffered, Symbol("offerName"), offerName)
-        OpenAPI.validate_property(ExpressRouteServiceProviderBandwidthsOffered, Symbol("valueInMbps"), valueInMbps)
-        return new(offerName, valueInMbps, )
+        o = new(offerName, valueInMbps, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ExpressRouteServiceProviderBandwidthsOffered
 
 const _property_types_ExpressRouteServiceProviderBandwidthsOffered = Dict{Symbol,String}(Symbol("offerName")=>"String", Symbol("valueInMbps")=>"Int64", )
 OpenAPI.property_type(::Type{ ExpressRouteServiceProviderBandwidthsOffered }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExpressRouteServiceProviderBandwidthsOffered[name]))}
 
-function check_required(o::ExpressRouteServiceProviderBandwidthsOffered)
+function OpenAPI.check_required(o::ExpressRouteServiceProviderBandwidthsOffered)
     true
 end
 
+function OpenAPI.validate_properties(o::ExpressRouteServiceProviderBandwidthsOffered)
+    OpenAPI.validate_property(ExpressRouteServiceProviderBandwidthsOffered, Symbol("offerName"), o.offerName)
+    OpenAPI.validate_property(ExpressRouteServiceProviderBandwidthsOffered, Symbol("valueInMbps"), o.valueInMbps)
+end
+
 function OpenAPI.validate_property(::Type{ ExpressRouteServiceProviderBandwidthsOffered }, name::Symbol, val)
+
+
     if name === Symbol("valueInMbps")
         OpenAPI.validate_param(name, "ExpressRouteServiceProviderBandwidthsOffered", :format, val, "int32")
     end

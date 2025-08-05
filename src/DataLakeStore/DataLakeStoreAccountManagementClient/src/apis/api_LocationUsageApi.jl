@@ -19,7 +19,7 @@ function _oacinternal_locations_get_usage(_api::LocationUsageApi, api_version::S
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_locations_get_usage_LocationUsageApi, "/subscriptions/{subscriptionId}/providers/Microsoft.DataLakeStore/locations/{location}/usages", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "location", location)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx

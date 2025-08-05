@@ -21,22 +21,30 @@ Base.@kwdef mutable struct SshPublicKeyGenerateKeyPairResult <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
 
     function SshPublicKeyGenerateKeyPairResult(privateKey, publicKey, id, )
-        OpenAPI.validate_property(SshPublicKeyGenerateKeyPairResult, Symbol("privateKey"), privateKey)
-        OpenAPI.validate_property(SshPublicKeyGenerateKeyPairResult, Symbol("publicKey"), publicKey)
-        OpenAPI.validate_property(SshPublicKeyGenerateKeyPairResult, Symbol("id"), id)
-        return new(privateKey, publicKey, id, )
+        o = new(privateKey, publicKey, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type SshPublicKeyGenerateKeyPairResult
 
 const _property_types_SshPublicKeyGenerateKeyPairResult = Dict{Symbol,String}(Symbol("privateKey")=>"String", Symbol("publicKey")=>"String", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ SshPublicKeyGenerateKeyPairResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SshPublicKeyGenerateKeyPairResult[name]))}
 
-function check_required(o::SshPublicKeyGenerateKeyPairResult)
+function OpenAPI.check_required(o::SshPublicKeyGenerateKeyPairResult)
     o.privateKey === nothing && (return false)
     o.publicKey === nothing && (return false)
     o.id === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::SshPublicKeyGenerateKeyPairResult)
+    OpenAPI.validate_property(SshPublicKeyGenerateKeyPairResult, Symbol("privateKey"), o.privateKey)
+    OpenAPI.validate_property(SshPublicKeyGenerateKeyPairResult, Symbol("publicKey"), o.publicKey)
+    OpenAPI.validate_property(SshPublicKeyGenerateKeyPairResult, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ SshPublicKeyGenerateKeyPairResult }, name::Symbol, val)
+
+
+
 end

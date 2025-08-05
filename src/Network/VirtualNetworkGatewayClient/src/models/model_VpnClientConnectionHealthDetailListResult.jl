@@ -15,17 +15,23 @@ Base.@kwdef mutable struct VpnClientConnectionHealthDetailListResult <: OpenAPI.
     value::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{VpnClientConnectionHealthDetail} }
 
     function VpnClientConnectionHealthDetailListResult(value, )
-        OpenAPI.validate_property(VpnClientConnectionHealthDetailListResult, Symbol("value"), value)
-        return new(value, )
+        o = new(value, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VpnClientConnectionHealthDetailListResult
 
 const _property_types_VpnClientConnectionHealthDetailListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{VpnClientConnectionHealthDetail}", )
 OpenAPI.property_type(::Type{ VpnClientConnectionHealthDetailListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VpnClientConnectionHealthDetailListResult[name]))}
 
-function check_required(o::VpnClientConnectionHealthDetailListResult)
+function OpenAPI.check_required(o::VpnClientConnectionHealthDetailListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::VpnClientConnectionHealthDetailListResult)
+    OpenAPI.validate_property(VpnClientConnectionHealthDetailListResult, Symbol("value"), o.value)
+end
+
 function OpenAPI.validate_property(::Type{ VpnClientConnectionHealthDetailListResult }, name::Symbol, val)
+
 end

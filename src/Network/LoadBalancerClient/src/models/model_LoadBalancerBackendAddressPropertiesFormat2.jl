@@ -7,33 +7,65 @@ Properties of the load balancer backend addresses.
 
     LoadBalancerBackendAddressPropertiesFormat2(;
         virtualNetwork=nothing,
+        subnet=nothing,
         ipAddress=nothing,
         networkInterfaceIPConfiguration=nothing,
+        loadBalancerFrontendIPConfiguration=nothing,
+        inboundNatRulesPortMapping=nothing,
+        adminState=nothing,
     )
 
     - virtualNetwork::SubResource
+    - subnet::SubResource
     - ipAddress::String : IP Address belonging to the referenced virtual network.
     - networkInterfaceIPConfiguration::SubResource
+    - loadBalancerFrontendIPConfiguration::SubResource
+    - inboundNatRulesPortMapping::Vector{NatRulePortMapping2} : Collection of inbound NAT rule port mappings.
+    - adminState::String : A list of administrative states which once set can override health probe so that Load Balancer will always forward new connections to backend, or deny new connections and reset existing connections.
 """
 Base.@kwdef mutable struct LoadBalancerBackendAddressPropertiesFormat2 <: OpenAPI.APIModel
     virtualNetwork = nothing # spec type: Union{ Nothing, SubResource }
+    subnet = nothing # spec type: Union{ Nothing, SubResource }
     ipAddress::Union{Nothing, String} = nothing
     networkInterfaceIPConfiguration = nothing # spec type: Union{ Nothing, SubResource }
+    loadBalancerFrontendIPConfiguration = nothing # spec type: Union{ Nothing, SubResource }
+    inboundNatRulesPortMapping::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{NatRulePortMapping2} }
+    adminState::Union{Nothing, String} = nothing
 
-    function LoadBalancerBackendAddressPropertiesFormat2(virtualNetwork, ipAddress, networkInterfaceIPConfiguration, )
-        OpenAPI.validate_property(LoadBalancerBackendAddressPropertiesFormat2, Symbol("virtualNetwork"), virtualNetwork)
-        OpenAPI.validate_property(LoadBalancerBackendAddressPropertiesFormat2, Symbol("ipAddress"), ipAddress)
-        OpenAPI.validate_property(LoadBalancerBackendAddressPropertiesFormat2, Symbol("networkInterfaceIPConfiguration"), networkInterfaceIPConfiguration)
-        return new(virtualNetwork, ipAddress, networkInterfaceIPConfiguration, )
+    function LoadBalancerBackendAddressPropertiesFormat2(virtualNetwork, subnet, ipAddress, networkInterfaceIPConfiguration, loadBalancerFrontendIPConfiguration, inboundNatRulesPortMapping, adminState, )
+        o = new(virtualNetwork, subnet, ipAddress, networkInterfaceIPConfiguration, loadBalancerFrontendIPConfiguration, inboundNatRulesPortMapping, adminState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type LoadBalancerBackendAddressPropertiesFormat2
 
-const _property_types_LoadBalancerBackendAddressPropertiesFormat2 = Dict{Symbol,String}(Symbol("virtualNetwork")=>"SubResource", Symbol("ipAddress")=>"String", Symbol("networkInterfaceIPConfiguration")=>"SubResource", )
+const _property_types_LoadBalancerBackendAddressPropertiesFormat2 = Dict{Symbol,String}(Symbol("virtualNetwork")=>"SubResource", Symbol("subnet")=>"SubResource", Symbol("ipAddress")=>"String", Symbol("networkInterfaceIPConfiguration")=>"SubResource", Symbol("loadBalancerFrontendIPConfiguration")=>"SubResource", Symbol("inboundNatRulesPortMapping")=>"Vector{NatRulePortMapping2}", Symbol("adminState")=>"String", )
 OpenAPI.property_type(::Type{ LoadBalancerBackendAddressPropertiesFormat2 }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_LoadBalancerBackendAddressPropertiesFormat2[name]))}
 
-function check_required(o::LoadBalancerBackendAddressPropertiesFormat2)
+function OpenAPI.check_required(o::LoadBalancerBackendAddressPropertiesFormat2)
     true
 end
 
+function OpenAPI.validate_properties(o::LoadBalancerBackendAddressPropertiesFormat2)
+    OpenAPI.validate_property(LoadBalancerBackendAddressPropertiesFormat2, Symbol("virtualNetwork"), o.virtualNetwork)
+    OpenAPI.validate_property(LoadBalancerBackendAddressPropertiesFormat2, Symbol("subnet"), o.subnet)
+    OpenAPI.validate_property(LoadBalancerBackendAddressPropertiesFormat2, Symbol("ipAddress"), o.ipAddress)
+    OpenAPI.validate_property(LoadBalancerBackendAddressPropertiesFormat2, Symbol("networkInterfaceIPConfiguration"), o.networkInterfaceIPConfiguration)
+    OpenAPI.validate_property(LoadBalancerBackendAddressPropertiesFormat2, Symbol("loadBalancerFrontendIPConfiguration"), o.loadBalancerFrontendIPConfiguration)
+    OpenAPI.validate_property(LoadBalancerBackendAddressPropertiesFormat2, Symbol("inboundNatRulesPortMapping"), o.inboundNatRulesPortMapping)
+    OpenAPI.validate_property(LoadBalancerBackendAddressPropertiesFormat2, Symbol("adminState"), o.adminState)
+end
+
 function OpenAPI.validate_property(::Type{ LoadBalancerBackendAddressPropertiesFormat2 }, name::Symbol, val)
+
+
+
+
+
+
+
+    if name === Symbol("adminState")
+        OpenAPI.validate_param(name, "LoadBalancerBackendAddressPropertiesFormat2", :enum, val, ["None", "Up", "Down"])
+    end
+
 end

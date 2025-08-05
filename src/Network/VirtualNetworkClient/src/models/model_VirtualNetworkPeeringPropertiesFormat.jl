@@ -11,9 +11,21 @@ Properties of the virtual network peering.
         allowGatewayTransit=nothing,
         useRemoteGateways=nothing,
         remoteVirtualNetwork=nothing,
+        localAddressSpace=nothing,
+        localVirtualNetworkAddressSpace=nothing,
         remoteAddressSpace=nothing,
+        remoteVirtualNetworkAddressSpace=nothing,
+        remoteBgpCommunities=nothing,
+        remoteVirtualNetworkEncryption=nothing,
         peeringState=nothing,
+        peeringSyncLevel=nothing,
         provisioningState=nothing,
+        doNotVerifyRemoteGateways=nothing,
+        resourceGuid=nothing,
+        peerCompleteVnets=nothing,
+        enableOnlyIPv6Peering=nothing,
+        localSubnetNames=nothing,
+        remoteSubnetNames=nothing,
     )
 
     - allowVirtualNetworkAccess::Bool : Whether the VMs in the local virtual network space would be able to access the VMs in remote virtual network space.
@@ -21,9 +33,21 @@ Properties of the virtual network peering.
     - allowGatewayTransit::Bool : If gateway links can be used in remote virtual networking to link to this virtual network.
     - useRemoteGateways::Bool : If remote gateways can be used on this virtual network. If the flag is set to true, and allowGatewayTransit on remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway.
     - remoteVirtualNetwork::SubResource
+    - localAddressSpace::AddressSpace
+    - localVirtualNetworkAddressSpace::AddressSpace
     - remoteAddressSpace::AddressSpace
+    - remoteVirtualNetworkAddressSpace::AddressSpace
+    - remoteBgpCommunities::VirtualNetworkBgpCommunities
+    - remoteVirtualNetworkEncryption::VirtualNetworkEncryption
     - peeringState::String : The status of the virtual network peering.
+    - peeringSyncLevel::String : The peering sync status of the virtual network peering.
     - provisioningState::ProvisioningState
+    - doNotVerifyRemoteGateways::Bool : If we need to verify the provisioning state of the remote gateway.
+    - resourceGuid::String : The resourceGuid property of the Virtual Network peering resource.
+    - peerCompleteVnets::Bool : Whether complete virtual network address space is peered.
+    - enableOnlyIPv6Peering::Bool : Whether only Ipv6 address space is peered for subnet peering.
+    - localSubnetNames::Vector{String} : List of local subnet names that are subnet peered with remote virtual network.
+    - remoteSubnetNames::Vector{String} : List of remote subnet names from remote virtual network that are subnet peered.
 """
 Base.@kwdef mutable struct VirtualNetworkPeeringPropertiesFormat <: OpenAPI.APIModel
     allowVirtualNetworkAccess::Union{Nothing, Bool} = nothing
@@ -31,32 +55,86 @@ Base.@kwdef mutable struct VirtualNetworkPeeringPropertiesFormat <: OpenAPI.APIM
     allowGatewayTransit::Union{Nothing, Bool} = nothing
     useRemoteGateways::Union{Nothing, Bool} = nothing
     remoteVirtualNetwork = nothing # spec type: Union{ Nothing, SubResource }
+    localAddressSpace = nothing # spec type: Union{ Nothing, AddressSpace }
+    localVirtualNetworkAddressSpace = nothing # spec type: Union{ Nothing, AddressSpace }
     remoteAddressSpace = nothing # spec type: Union{ Nothing, AddressSpace }
+    remoteVirtualNetworkAddressSpace = nothing # spec type: Union{ Nothing, AddressSpace }
+    remoteBgpCommunities = nothing # spec type: Union{ Nothing, VirtualNetworkBgpCommunities }
+    remoteVirtualNetworkEncryption = nothing # spec type: Union{ Nothing, VirtualNetworkEncryption }
     peeringState::Union{Nothing, String} = nothing
+    peeringSyncLevel::Union{Nothing, String} = nothing
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
+    doNotVerifyRemoteGateways::Union{Nothing, Bool} = nothing
+    resourceGuid::Union{Nothing, String} = nothing
+    peerCompleteVnets::Union{Nothing, Bool} = nothing
+    enableOnlyIPv6Peering::Union{Nothing, Bool} = nothing
+    localSubnetNames::Union{Nothing, Vector{String}} = nothing
+    remoteSubnetNames::Union{Nothing, Vector{String}} = nothing
 
-    function VirtualNetworkPeeringPropertiesFormat(allowVirtualNetworkAccess, allowForwardedTraffic, allowGatewayTransit, useRemoteGateways, remoteVirtualNetwork, remoteAddressSpace, peeringState, provisioningState, )
-        OpenAPI.validate_property(VirtualNetworkPeeringPropertiesFormat, Symbol("allowVirtualNetworkAccess"), allowVirtualNetworkAccess)
-        OpenAPI.validate_property(VirtualNetworkPeeringPropertiesFormat, Symbol("allowForwardedTraffic"), allowForwardedTraffic)
-        OpenAPI.validate_property(VirtualNetworkPeeringPropertiesFormat, Symbol("allowGatewayTransit"), allowGatewayTransit)
-        OpenAPI.validate_property(VirtualNetworkPeeringPropertiesFormat, Symbol("useRemoteGateways"), useRemoteGateways)
-        OpenAPI.validate_property(VirtualNetworkPeeringPropertiesFormat, Symbol("remoteVirtualNetwork"), remoteVirtualNetwork)
-        OpenAPI.validate_property(VirtualNetworkPeeringPropertiesFormat, Symbol("remoteAddressSpace"), remoteAddressSpace)
-        OpenAPI.validate_property(VirtualNetworkPeeringPropertiesFormat, Symbol("peeringState"), peeringState)
-        OpenAPI.validate_property(VirtualNetworkPeeringPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(allowVirtualNetworkAccess, allowForwardedTraffic, allowGatewayTransit, useRemoteGateways, remoteVirtualNetwork, remoteAddressSpace, peeringState, provisioningState, )
+    function VirtualNetworkPeeringPropertiesFormat(allowVirtualNetworkAccess, allowForwardedTraffic, allowGatewayTransit, useRemoteGateways, remoteVirtualNetwork, localAddressSpace, localVirtualNetworkAddressSpace, remoteAddressSpace, remoteVirtualNetworkAddressSpace, remoteBgpCommunities, remoteVirtualNetworkEncryption, peeringState, peeringSyncLevel, provisioningState, doNotVerifyRemoteGateways, resourceGuid, peerCompleteVnets, enableOnlyIPv6Peering, localSubnetNames, remoteSubnetNames, )
+        o = new(allowVirtualNetworkAccess, allowForwardedTraffic, allowGatewayTransit, useRemoteGateways, remoteVirtualNetwork, localAddressSpace, localVirtualNetworkAddressSpace, remoteAddressSpace, remoteVirtualNetworkAddressSpace, remoteBgpCommunities, remoteVirtualNetworkEncryption, peeringState, peeringSyncLevel, provisioningState, doNotVerifyRemoteGateways, resourceGuid, peerCompleteVnets, enableOnlyIPv6Peering, localSubnetNames, remoteSubnetNames, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualNetworkPeeringPropertiesFormat
 
-const _property_types_VirtualNetworkPeeringPropertiesFormat = Dict{Symbol,String}(Symbol("allowVirtualNetworkAccess")=>"Bool", Symbol("allowForwardedTraffic")=>"Bool", Symbol("allowGatewayTransit")=>"Bool", Symbol("useRemoteGateways")=>"Bool", Symbol("remoteVirtualNetwork")=>"SubResource", Symbol("remoteAddressSpace")=>"AddressSpace", Symbol("peeringState")=>"String", Symbol("provisioningState")=>"ProvisioningState", )
+const _property_types_VirtualNetworkPeeringPropertiesFormat = Dict{Symbol,String}(Symbol("allowVirtualNetworkAccess")=>"Bool", Symbol("allowForwardedTraffic")=>"Bool", Symbol("allowGatewayTransit")=>"Bool", Symbol("useRemoteGateways")=>"Bool", Symbol("remoteVirtualNetwork")=>"SubResource", Symbol("localAddressSpace")=>"AddressSpace", Symbol("localVirtualNetworkAddressSpace")=>"AddressSpace", Symbol("remoteAddressSpace")=>"AddressSpace", Symbol("remoteVirtualNetworkAddressSpace")=>"AddressSpace", Symbol("remoteBgpCommunities")=>"VirtualNetworkBgpCommunities", Symbol("remoteVirtualNetworkEncryption")=>"VirtualNetworkEncryption", Symbol("peeringState")=>"String", Symbol("peeringSyncLevel")=>"String", Symbol("provisioningState")=>"ProvisioningState", Symbol("doNotVerifyRemoteGateways")=>"Bool", Symbol("resourceGuid")=>"String", Symbol("peerCompleteVnets")=>"Bool", Symbol("enableOnlyIPv6Peering")=>"Bool", Symbol("localSubnetNames")=>"Vector{String}", Symbol("remoteSubnetNames")=>"Vector{String}", )
 OpenAPI.property_type(::Type{ VirtualNetworkPeeringPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualNetworkPeeringPropertiesFormat[name]))}
 
-function check_required(o::VirtualNetworkPeeringPropertiesFormat)
+function OpenAPI.check_required(o::VirtualNetworkPeeringPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualNetworkPeeringPropertiesFormat)
+    OpenAPI.validate_property(VirtualNetworkPeeringPropertiesFormat, Symbol("allowVirtualNetworkAccess"), o.allowVirtualNetworkAccess)
+    OpenAPI.validate_property(VirtualNetworkPeeringPropertiesFormat, Symbol("allowForwardedTraffic"), o.allowForwardedTraffic)
+    OpenAPI.validate_property(VirtualNetworkPeeringPropertiesFormat, Symbol("allowGatewayTransit"), o.allowGatewayTransit)
+    OpenAPI.validate_property(VirtualNetworkPeeringPropertiesFormat, Symbol("useRemoteGateways"), o.useRemoteGateways)
+    OpenAPI.validate_property(VirtualNetworkPeeringPropertiesFormat, Symbol("remoteVirtualNetwork"), o.remoteVirtualNetwork)
+    OpenAPI.validate_property(VirtualNetworkPeeringPropertiesFormat, Symbol("localAddressSpace"), o.localAddressSpace)
+    OpenAPI.validate_property(VirtualNetworkPeeringPropertiesFormat, Symbol("localVirtualNetworkAddressSpace"), o.localVirtualNetworkAddressSpace)
+    OpenAPI.validate_property(VirtualNetworkPeeringPropertiesFormat, Symbol("remoteAddressSpace"), o.remoteAddressSpace)
+    OpenAPI.validate_property(VirtualNetworkPeeringPropertiesFormat, Symbol("remoteVirtualNetworkAddressSpace"), o.remoteVirtualNetworkAddressSpace)
+    OpenAPI.validate_property(VirtualNetworkPeeringPropertiesFormat, Symbol("remoteBgpCommunities"), o.remoteBgpCommunities)
+    OpenAPI.validate_property(VirtualNetworkPeeringPropertiesFormat, Symbol("remoteVirtualNetworkEncryption"), o.remoteVirtualNetworkEncryption)
+    OpenAPI.validate_property(VirtualNetworkPeeringPropertiesFormat, Symbol("peeringState"), o.peeringState)
+    OpenAPI.validate_property(VirtualNetworkPeeringPropertiesFormat, Symbol("peeringSyncLevel"), o.peeringSyncLevel)
+    OpenAPI.validate_property(VirtualNetworkPeeringPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(VirtualNetworkPeeringPropertiesFormat, Symbol("doNotVerifyRemoteGateways"), o.doNotVerifyRemoteGateways)
+    OpenAPI.validate_property(VirtualNetworkPeeringPropertiesFormat, Symbol("resourceGuid"), o.resourceGuid)
+    OpenAPI.validate_property(VirtualNetworkPeeringPropertiesFormat, Symbol("peerCompleteVnets"), o.peerCompleteVnets)
+    OpenAPI.validate_property(VirtualNetworkPeeringPropertiesFormat, Symbol("enableOnlyIPv6Peering"), o.enableOnlyIPv6Peering)
+    OpenAPI.validate_property(VirtualNetworkPeeringPropertiesFormat, Symbol("localSubnetNames"), o.localSubnetNames)
+    OpenAPI.validate_property(VirtualNetworkPeeringPropertiesFormat, Symbol("remoteSubnetNames"), o.remoteSubnetNames)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualNetworkPeeringPropertiesFormat }, name::Symbol, val)
+
+
+
+
+
+
+
+
+
+
+
+
     if name === Symbol("peeringState")
         OpenAPI.validate_param(name, "VirtualNetworkPeeringPropertiesFormat", :enum, val, ["Initiated", "Connected", "Disconnected"])
     end
+
+
+    if name === Symbol("peeringSyncLevel")
+        OpenAPI.validate_param(name, "VirtualNetworkPeeringPropertiesFormat", :enum, val, ["FullyInSync", "RemoteNotInSync", "LocalNotInSync", "LocalAndRemoteNotInSync"])
+    end
+
+
+
+
+
+
+
+
 end

@@ -20,7 +20,7 @@ Lists all of the available Data Lake Store REST API operations.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **OperationsApi** | API context | 
-**api_version** | **String**| Client Api Version. | [default to nothing]
+**api_version** | **String** | Client Api Version. |
 
 ### Return type
 

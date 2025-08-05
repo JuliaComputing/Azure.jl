@@ -14,17 +14,23 @@ Base.@kwdef mutable struct VMScaleSetConvertToSinglePlacementGroupInput <: OpenA
     activePlacementGroupId::Union{Nothing, String} = nothing
 
     function VMScaleSetConvertToSinglePlacementGroupInput(activePlacementGroupId, )
-        OpenAPI.validate_property(VMScaleSetConvertToSinglePlacementGroupInput, Symbol("activePlacementGroupId"), activePlacementGroupId)
-        return new(activePlacementGroupId, )
+        o = new(activePlacementGroupId, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VMScaleSetConvertToSinglePlacementGroupInput
 
 const _property_types_VMScaleSetConvertToSinglePlacementGroupInput = Dict{Symbol,String}(Symbol("activePlacementGroupId")=>"String", )
 OpenAPI.property_type(::Type{ VMScaleSetConvertToSinglePlacementGroupInput }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VMScaleSetConvertToSinglePlacementGroupInput[name]))}
 
-function check_required(o::VMScaleSetConvertToSinglePlacementGroupInput)
+function OpenAPI.check_required(o::VMScaleSetConvertToSinglePlacementGroupInput)
     true
 end
 
+function OpenAPI.validate_properties(o::VMScaleSetConvertToSinglePlacementGroupInput)
+    OpenAPI.validate_property(VMScaleSetConvertToSinglePlacementGroupInput, Symbol("activePlacementGroupId"), o.activePlacementGroupId)
+end
+
 function OpenAPI.validate_property(::Type{ VMScaleSetConvertToSinglePlacementGroupInput }, name::Symbol, val)
+
 end

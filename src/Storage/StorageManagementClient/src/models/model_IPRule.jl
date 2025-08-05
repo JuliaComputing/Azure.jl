@@ -7,33 +7,41 @@ IP rule with specific IP or IP range in CIDR format.
 
     IPRule(;
         value=nothing,
-        action=Allow,
+        action="Allow",
     )
 
-    - value::String : Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed.
+    - value::String : Specifies the IP or IP range in CIDR format.
     - action::String : The action of IP ACL rule.
 """
 Base.@kwdef mutable struct IPRule <: OpenAPI.APIModel
     value::Union{Nothing, String} = nothing
-    action::Union{Nothing, String} = Allow
+    action::Union{Nothing, String} = "Allow"
 
     function IPRule(value, action, )
-        OpenAPI.validate_property(IPRule, Symbol("value"), value)
-        OpenAPI.validate_property(IPRule, Symbol("action"), action)
-        return new(value, action, )
+        o = new(value, action, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type IPRule
 
 const _property_types_IPRule = Dict{Symbol,String}(Symbol("value")=>"String", Symbol("action")=>"String", )
 OpenAPI.property_type(::Type{ IPRule }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IPRule[name]))}
 
-function check_required(o::IPRule)
+function OpenAPI.check_required(o::IPRule)
     o.value === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::IPRule)
+    OpenAPI.validate_property(IPRule, Symbol("value"), o.value)
+    OpenAPI.validate_property(IPRule, Symbol("action"), o.action)
+end
+
 function OpenAPI.validate_property(::Type{ IPRule }, name::Symbol, val)
+
+
     if name === Symbol("action")
         OpenAPI.validate_param(name, "IPRule", :enum, val, ["Allow"])
     end
+
 end

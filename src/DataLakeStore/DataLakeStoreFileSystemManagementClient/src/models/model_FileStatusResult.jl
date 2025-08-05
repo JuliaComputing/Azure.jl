@@ -15,17 +15,23 @@ Base.@kwdef mutable struct FileStatusResult <: OpenAPI.APIModel
     fileStatus = nothing # spec type: Union{ Nothing, FileStatusProperties }
 
     function FileStatusResult(fileStatus, )
-        OpenAPI.validate_property(FileStatusResult, Symbol("fileStatus"), fileStatus)
-        return new(fileStatus, )
+        o = new(fileStatus, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type FileStatusResult
 
 const _property_types_FileStatusResult = Dict{Symbol,String}(Symbol("fileStatus")=>"FileStatusProperties", )
 OpenAPI.property_type(::Type{ FileStatusResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_FileStatusResult[name]))}
 
-function check_required(o::FileStatusResult)
+function OpenAPI.check_required(o::FileStatusResult)
     true
 end
 
+function OpenAPI.validate_properties(o::FileStatusResult)
+    OpenAPI.validate_property(FileStatusResult, Symbol("fileStatus"), o.fileStatus)
+end
+
 function OpenAPI.validate_property(::Type{ FileStatusResult }, name::Symbol, val)
+
 end

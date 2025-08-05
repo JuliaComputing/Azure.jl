@@ -15,18 +15,24 @@ Base.@kwdef mutable struct AutomaticOSUpgradeProperties <: OpenAPI.APIModel
     automaticOSUpgradeSupported::Union{Nothing, Bool} = nothing
 
     function AutomaticOSUpgradeProperties(automaticOSUpgradeSupported, )
-        OpenAPI.validate_property(AutomaticOSUpgradeProperties, Symbol("automaticOSUpgradeSupported"), automaticOSUpgradeSupported)
-        return new(automaticOSUpgradeSupported, )
+        o = new(automaticOSUpgradeSupported, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AutomaticOSUpgradeProperties
 
 const _property_types_AutomaticOSUpgradeProperties = Dict{Symbol,String}(Symbol("automaticOSUpgradeSupported")=>"Bool", )
 OpenAPI.property_type(::Type{ AutomaticOSUpgradeProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AutomaticOSUpgradeProperties[name]))}
 
-function check_required(o::AutomaticOSUpgradeProperties)
+function OpenAPI.check_required(o::AutomaticOSUpgradeProperties)
     o.automaticOSUpgradeSupported === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::AutomaticOSUpgradeProperties)
+    OpenAPI.validate_property(AutomaticOSUpgradeProperties, Symbol("automaticOSUpgradeSupported"), o.automaticOSUpgradeSupported)
+end
+
 function OpenAPI.validate_property(::Type{ AutomaticOSUpgradeProperties }, name::Symbol, val)
+
 end

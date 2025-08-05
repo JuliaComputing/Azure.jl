@@ -27,21 +27,31 @@ Base.@kwdef mutable struct VirtualMachineUpdate <: OpenAPI.APIModel
     tags::Union{Nothing, Dict{String, String}} = nothing
 
     function VirtualMachineUpdate(plan, properties, identity, zones, tags, )
-        OpenAPI.validate_property(VirtualMachineUpdate, Symbol("plan"), plan)
-        OpenAPI.validate_property(VirtualMachineUpdate, Symbol("properties"), properties)
-        OpenAPI.validate_property(VirtualMachineUpdate, Symbol("identity"), identity)
-        OpenAPI.validate_property(VirtualMachineUpdate, Symbol("zones"), zones)
-        OpenAPI.validate_property(VirtualMachineUpdate, Symbol("tags"), tags)
-        return new(plan, properties, identity, zones, tags, )
+        o = new(plan, properties, identity, zones, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineUpdate
 
 const _property_types_VirtualMachineUpdate = Dict{Symbol,String}(Symbol("plan")=>"Plan", Symbol("properties")=>"VirtualMachineProperties", Symbol("identity")=>"VirtualMachineIdentity", Symbol("zones")=>"Vector{String}", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ VirtualMachineUpdate }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineUpdate[name]))}
 
-function check_required(o::VirtualMachineUpdate)
+function OpenAPI.check_required(o::VirtualMachineUpdate)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineUpdate)
+    OpenAPI.validate_property(VirtualMachineUpdate, Symbol("plan"), o.plan)
+    OpenAPI.validate_property(VirtualMachineUpdate, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(VirtualMachineUpdate, Symbol("identity"), o.identity)
+    OpenAPI.validate_property(VirtualMachineUpdate, Symbol("zones"), o.zones)
+    OpenAPI.validate_property(VirtualMachineUpdate, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineUpdate }, name::Symbol, val)
+
+
+
+
+
 end

@@ -15,17 +15,23 @@ Base.@kwdef mutable struct ParameterValuesValue <: OpenAPI.APIModel
     value::Union{Nothing, Any} = nothing
 
     function ParameterValuesValue(value, )
-        OpenAPI.validate_property(ParameterValuesValue, Symbol("value"), value)
-        return new(value, )
+        o = new(value, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ParameterValuesValue
 
 const _property_types_ParameterValuesValue = Dict{Symbol,String}(Symbol("value")=>"Any", )
 OpenAPI.property_type(::Type{ ParameterValuesValue }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ParameterValuesValue[name]))}
 
-function check_required(o::ParameterValuesValue)
+function OpenAPI.check_required(o::ParameterValuesValue)
     true
 end
 
+function OpenAPI.validate_properties(o::ParameterValuesValue)
+    OpenAPI.validate_property(ParameterValuesValue, Symbol("value"), o.value)
+end
+
 function OpenAPI.validate_property(::Type{ ParameterValuesValue }, name::Symbol, val)
+
 end

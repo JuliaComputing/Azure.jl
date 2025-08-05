@@ -18,9 +18,11 @@ const _returntypes_management_policies_create_or_update_ManagementPoliciesApi = 
 function _oacinternal_management_policies_create_or_update(_api::ManagementPoliciesApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String, management_policy_name::String, properties::ManagementPolicy; _mediaType=nothing)
     OpenAPI.validate_param("resource_group_name", "management_policies_create_or_update", :maxLength, resource_group_name, 90)
     OpenAPI.validate_param("resource_group_name", "management_policies_create_or_update", :minLength, resource_group_name, 1)
+        OpenAPI.validate_param("resource_group_name", "management_policies_create_or_update", :pattern, resource_group_name, r"^[-\w\._\(\)]+$")
 
     OpenAPI.validate_param("account_name", "management_policies_create_or_update", :maxLength, account_name, 24)
     OpenAPI.validate_param("account_name", "management_policies_create_or_update", :minLength, account_name, 3)
+        OpenAPI.validate_param("account_name", "management_policies_create_or_update", :pattern, account_name, r"^[a-z0-9]+$")
 
     OpenAPI.validate_param("api_version", "management_policies_create_or_update", :minLength, api_version, 1)
 
@@ -31,7 +33,7 @@ function _oacinternal_management_policies_create_or_update(_api::ManagementPolic
     OpenAPI.Clients.set_param(_ctx.path, "accountName", account_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "managementPolicyName", management_policy_name)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -67,9 +69,11 @@ const _returntypes_management_policies_delete_ManagementPoliciesApi = Dict{Regex
 function _oacinternal_management_policies_delete(_api::ManagementPoliciesApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String, management_policy_name::String; _mediaType=nothing)
     OpenAPI.validate_param("resource_group_name", "management_policies_delete", :maxLength, resource_group_name, 90)
     OpenAPI.validate_param("resource_group_name", "management_policies_delete", :minLength, resource_group_name, 1)
+        OpenAPI.validate_param("resource_group_name", "management_policies_delete", :pattern, resource_group_name, r"^[-\w\._\(\)]+$")
 
     OpenAPI.validate_param("account_name", "management_policies_delete", :maxLength, account_name, 24)
     OpenAPI.validate_param("account_name", "management_policies_delete", :minLength, account_name, 3)
+        OpenAPI.validate_param("account_name", "management_policies_delete", :pattern, account_name, r"^[a-z0-9]+$")
 
     OpenAPI.validate_param("api_version", "management_policies_delete", :minLength, api_version, 1)
 
@@ -80,7 +84,7 @@ function _oacinternal_management_policies_delete(_api::ManagementPoliciesApi, re
     OpenAPI.Clients.set_param(_ctx.path, "accountName", account_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "managementPolicyName", management_policy_name)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, [])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -114,9 +118,11 @@ const _returntypes_management_policies_get_ManagementPoliciesApi = Dict{Regex,Ty
 function _oacinternal_management_policies_get(_api::ManagementPoliciesApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String, management_policy_name::String; _mediaType=nothing)
     OpenAPI.validate_param("resource_group_name", "management_policies_get", :maxLength, resource_group_name, 90)
     OpenAPI.validate_param("resource_group_name", "management_policies_get", :minLength, resource_group_name, 1)
+        OpenAPI.validate_param("resource_group_name", "management_policies_get", :pattern, resource_group_name, r"^[-\w\._\(\)]+$")
 
     OpenAPI.validate_param("account_name", "management_policies_get", :maxLength, account_name, 24)
     OpenAPI.validate_param("account_name", "management_policies_get", :minLength, account_name, 3)
+        OpenAPI.validate_param("account_name", "management_policies_get", :pattern, account_name, r"^[a-z0-9]+$")
 
     OpenAPI.validate_param("api_version", "management_policies_get", :minLength, api_version, 1)
 
@@ -127,7 +133,7 @@ function _oacinternal_management_policies_get(_api::ManagementPoliciesApi, resou
     OpenAPI.Clients.set_param(_ctx.path, "accountName", account_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "managementPolicyName", management_policy_name)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx

@@ -30,37 +30,50 @@ Base.@kwdef mutable struct DataLakeStoreAccountPropertiesBasic <: OpenAPI.APIMod
     endpoint::Union{Nothing, String} = nothing
 
     function DataLakeStoreAccountPropertiesBasic(accountId, provisioningState, state, creationTime, lastModifiedTime, endpoint, )
-        OpenAPI.validate_property(DataLakeStoreAccountPropertiesBasic, Symbol("accountId"), accountId)
-        OpenAPI.validate_property(DataLakeStoreAccountPropertiesBasic, Symbol("provisioningState"), provisioningState)
-        OpenAPI.validate_property(DataLakeStoreAccountPropertiesBasic, Symbol("state"), state)
-        OpenAPI.validate_property(DataLakeStoreAccountPropertiesBasic, Symbol("creationTime"), creationTime)
-        OpenAPI.validate_property(DataLakeStoreAccountPropertiesBasic, Symbol("lastModifiedTime"), lastModifiedTime)
-        OpenAPI.validate_property(DataLakeStoreAccountPropertiesBasic, Symbol("endpoint"), endpoint)
-        return new(accountId, provisioningState, state, creationTime, lastModifiedTime, endpoint, )
+        o = new(accountId, provisioningState, state, creationTime, lastModifiedTime, endpoint, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type DataLakeStoreAccountPropertiesBasic
 
 const _property_types_DataLakeStoreAccountPropertiesBasic = Dict{Symbol,String}(Symbol("accountId")=>"String", Symbol("provisioningState")=>"String", Symbol("state")=>"String", Symbol("creationTime")=>"ZonedDateTime", Symbol("lastModifiedTime")=>"ZonedDateTime", Symbol("endpoint")=>"String", )
 OpenAPI.property_type(::Type{ DataLakeStoreAccountPropertiesBasic }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DataLakeStoreAccountPropertiesBasic[name]))}
 
-function check_required(o::DataLakeStoreAccountPropertiesBasic)
+function OpenAPI.check_required(o::DataLakeStoreAccountPropertiesBasic)
     true
 end
 
+function OpenAPI.validate_properties(o::DataLakeStoreAccountPropertiesBasic)
+    OpenAPI.validate_property(DataLakeStoreAccountPropertiesBasic, Symbol("accountId"), o.accountId)
+    OpenAPI.validate_property(DataLakeStoreAccountPropertiesBasic, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(DataLakeStoreAccountPropertiesBasic, Symbol("state"), o.state)
+    OpenAPI.validate_property(DataLakeStoreAccountPropertiesBasic, Symbol("creationTime"), o.creationTime)
+    OpenAPI.validate_property(DataLakeStoreAccountPropertiesBasic, Symbol("lastModifiedTime"), o.lastModifiedTime)
+    OpenAPI.validate_property(DataLakeStoreAccountPropertiesBasic, Symbol("endpoint"), o.endpoint)
+end
+
 function OpenAPI.validate_property(::Type{ DataLakeStoreAccountPropertiesBasic }, name::Symbol, val)
+
     if name === Symbol("accountId")
         OpenAPI.validate_param(name, "DataLakeStoreAccountPropertiesBasic", :format, val, "uuid")
     end
+
     if name === Symbol("provisioningState")
         OpenAPI.validate_param(name, "DataLakeStoreAccountPropertiesBasic", :enum, val, ["Failed", "Creating", "Running", "Succeeded", "Patching", "Suspending", "Resuming", "Deleting", "Deleted", "Undeleting", "Canceled"])
     end
+
+
     if name === Symbol("state")
         OpenAPI.validate_param(name, "DataLakeStoreAccountPropertiesBasic", :enum, val, ["Active", "Suspended"])
     end
+
+
     if name === Symbol("creationTime")
         OpenAPI.validate_param(name, "DataLakeStoreAccountPropertiesBasic", :format, val, "date-time")
     end
+
     if name === Symbol("lastModifiedTime")
         OpenAPI.validate_param(name, "DataLakeStoreAccountPropertiesBasic", :format, val, "date-time")
     end
+
 end

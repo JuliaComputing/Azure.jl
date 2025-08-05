@@ -18,19 +18,26 @@ Base.@kwdef mutable struct UpdateFirewallRuleWithAccountParameters <: OpenAPI.AP
     properties = nothing # spec type: Union{ Nothing, UpdateFirewallRuleProperties }
 
     function UpdateFirewallRuleWithAccountParameters(name, properties, )
-        OpenAPI.validate_property(UpdateFirewallRuleWithAccountParameters, Symbol("name"), name)
-        OpenAPI.validate_property(UpdateFirewallRuleWithAccountParameters, Symbol("properties"), properties)
-        return new(name, properties, )
+        o = new(name, properties, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type UpdateFirewallRuleWithAccountParameters
 
 const _property_types_UpdateFirewallRuleWithAccountParameters = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("properties")=>"UpdateFirewallRuleProperties", )
 OpenAPI.property_type(::Type{ UpdateFirewallRuleWithAccountParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_UpdateFirewallRuleWithAccountParameters[name]))}
 
-function check_required(o::UpdateFirewallRuleWithAccountParameters)
+function OpenAPI.check_required(o::UpdateFirewallRuleWithAccountParameters)
     o.name === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::UpdateFirewallRuleWithAccountParameters)
+    OpenAPI.validate_property(UpdateFirewallRuleWithAccountParameters, Symbol("name"), o.name)
+    OpenAPI.validate_property(UpdateFirewallRuleWithAccountParameters, Symbol("properties"), o.properties)
+end
+
 function OpenAPI.validate_property(::Type{ UpdateFirewallRuleWithAccountParameters }, name::Symbol, val)
+
+
 end

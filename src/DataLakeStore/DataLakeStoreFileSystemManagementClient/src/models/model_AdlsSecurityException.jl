@@ -21,20 +21,28 @@ Base.@kwdef mutable struct AdlsSecurityException <: OpenAPI.APIModel
     message::Union{Nothing, String} = nothing
 
     function AdlsSecurityException(exception, javaClassName, message, )
-        OpenAPI.validate_property(AdlsSecurityException, Symbol("exception"), exception)
-        OpenAPI.validate_property(AdlsSecurityException, Symbol("javaClassName"), javaClassName)
-        OpenAPI.validate_property(AdlsSecurityException, Symbol("message"), message)
-        return new(exception, javaClassName, message, )
+        o = new(exception, javaClassName, message, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AdlsSecurityException
 
 const _property_types_AdlsSecurityException = Dict{Symbol,String}(Symbol("exception")=>"String", Symbol("javaClassName")=>"String", Symbol("message")=>"String", )
 OpenAPI.property_type(::Type{ AdlsSecurityException }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AdlsSecurityException[name]))}
 
-function check_required(o::AdlsSecurityException)
+function OpenAPI.check_required(o::AdlsSecurityException)
     o.exception === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::AdlsSecurityException)
+    OpenAPI.validate_property(AdlsSecurityException, Symbol("exception"), o.exception)
+    OpenAPI.validate_property(AdlsSecurityException, Symbol("javaClassName"), o.javaClassName)
+    OpenAPI.validate_property(AdlsSecurityException, Symbol("message"), o.message)
+end
+
 function OpenAPI.validate_property(::Type{ AdlsSecurityException }, name::Symbol, val)
+
+
+
 end

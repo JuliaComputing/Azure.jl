@@ -11,6 +11,42 @@ This can be used to construct the `OpenAPI.Clients.Client` instance.
 """
 basepath(::Type{ ProvidersApi }) = "https://management.azure.com"
 
+const _returntypes_provider_resource_types_list_ProvidersApi = Dict{Regex,Type}(
+    Regex("^" * replace("200", "x"=>".") * "\$") => ProviderResourceTypeListResult,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+)
+
+function _oacinternal_provider_resource_types_list(_api::ProvidersApi, resource_provider_namespace::String, api_version::String, subscription_id::String; expand=nothing, _mediaType=nothing)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_provider_resource_types_list_ProvidersApi, "/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/resourceTypes", ["azure_auth", ])
+    OpenAPI.Clients.set_param(_ctx.path, "resourceProviderNamespace", resource_provider_namespace)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
+    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
+    return _ctx
+end
+
+@doc raw"""List the resource types for a specified resource provider.
+
+Params:
+- resource_provider_namespace::String (required)
+- api_version::String (required)
+- subscription_id::String (required)
+- expand::String
+
+Return: ProviderResourceTypeListResult, OpenAPI.Clients.ApiResponse
+"""
+function provider_resource_types_list(_api::ProvidersApi, resource_provider_namespace::String, api_version::String, subscription_id::String; expand=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_provider_resource_types_list(_api, resource_provider_namespace, api_version, subscription_id; expand=expand, _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx)
+end
+
+function provider_resource_types_list(_api::ProvidersApi, response_stream::Channel, resource_provider_namespace::String, api_version::String, subscription_id::String; expand=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_provider_resource_types_list(_api, resource_provider_namespace, api_version, subscription_id; expand=expand, _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx, response_stream)
+end
+
 const _returntypes_providers_get_ProvidersApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => Provider,
     Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
@@ -20,8 +56,8 @@ function _oacinternal_providers_get(_api::ProvidersApi, resource_provider_namesp
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_providers_get_ProvidersApi, "/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "resourceProviderNamespace", resource_provider_namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -55,8 +91,8 @@ const _returntypes_providers_get_at_tenant_scope_ProvidersApi = Dict{Regex,Type}
 function _oacinternal_providers_get_at_tenant_scope(_api::ProvidersApi, resource_provider_namespace::String, api_version::String; expand=nothing, _mediaType=nothing)
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_providers_get_at_tenant_scope_ProvidersApi, "/providers/{resourceProviderNamespace}", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "resourceProviderNamespace", resource_provider_namespace)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -86,12 +122,11 @@ const _returntypes_providers_list_ProvidersApi = Dict{Regex,Type}(
     Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
-function _oacinternal_providers_list(_api::ProvidersApi, api_version::String, subscription_id::String; top=nothing, expand=nothing, _mediaType=nothing)
+function _oacinternal_providers_list(_api::ProvidersApi, api_version::String, subscription_id::String; expand=nothing, _mediaType=nothing)
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_providers_list_ProvidersApi, "/subscriptions/{subscriptionId}/providers", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$top", top)  # type Int64
-    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -102,18 +137,17 @@ end
 Params:
 - api_version::String (required)
 - subscription_id::String (required)
-- top::Int64
 - expand::String
 
 Return: ProviderListResult, OpenAPI.Clients.ApiResponse
 """
-function providers_list(_api::ProvidersApi, api_version::String, subscription_id::String; top=nothing, expand=nothing, _mediaType=nothing)
-    _ctx = _oacinternal_providers_list(_api, api_version, subscription_id; top=top, expand=expand, _mediaType=_mediaType)
+function providers_list(_api::ProvidersApi, api_version::String, subscription_id::String; expand=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_providers_list(_api, api_version, subscription_id; expand=expand, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx)
 end
 
-function providers_list(_api::ProvidersApi, response_stream::Channel, api_version::String, subscription_id::String; top=nothing, expand=nothing, _mediaType=nothing)
-    _ctx = _oacinternal_providers_list(_api, api_version, subscription_id; top=top, expand=expand, _mediaType=_mediaType)
+function providers_list(_api::ProvidersApi, response_stream::Channel, api_version::String, subscription_id::String; expand=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_providers_list(_api, api_version, subscription_id; expand=expand, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
@@ -122,11 +156,10 @@ const _returntypes_providers_list_at_tenant_scope_ProvidersApi = Dict{Regex,Type
     Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
-function _oacinternal_providers_list_at_tenant_scope(_api::ProvidersApi, api_version::String; top=nothing, expand=nothing, _mediaType=nothing)
+function _oacinternal_providers_list_at_tenant_scope(_api::ProvidersApi, api_version::String; expand=nothing, _mediaType=nothing)
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_providers_list_at_tenant_scope_ProvidersApi, "/providers", ["azure_auth", ])
-    OpenAPI.Clients.set_param(_ctx.query, "\$top", top)  # type Int64
-    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -136,18 +169,51 @@ end
 
 Params:
 - api_version::String (required)
-- top::Int64
 - expand::String
 
 Return: ProviderListResult, OpenAPI.Clients.ApiResponse
 """
-function providers_list_at_tenant_scope(_api::ProvidersApi, api_version::String; top=nothing, expand=nothing, _mediaType=nothing)
-    _ctx = _oacinternal_providers_list_at_tenant_scope(_api, api_version; top=top, expand=expand, _mediaType=_mediaType)
+function providers_list_at_tenant_scope(_api::ProvidersApi, api_version::String; expand=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_providers_list_at_tenant_scope(_api, api_version; expand=expand, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx)
 end
 
-function providers_list_at_tenant_scope(_api::ProvidersApi, response_stream::Channel, api_version::String; top=nothing, expand=nothing, _mediaType=nothing)
-    _ctx = _oacinternal_providers_list_at_tenant_scope(_api, api_version; top=top, expand=expand, _mediaType=_mediaType)
+function providers_list_at_tenant_scope(_api::ProvidersApi, response_stream::Channel, api_version::String; expand=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_providers_list_at_tenant_scope(_api, api_version; expand=expand, _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx, response_stream)
+end
+
+const _returntypes_providers_provider_permissions_ProvidersApi = Dict{Regex,Type}(
+    Regex("^" * replace("200", "x"=>".") * "\$") => ProviderPermissionListResult,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+)
+
+function _oacinternal_providers_provider_permissions(_api::ProvidersApi, resource_provider_namespace::String, api_version::String, subscription_id::String; _mediaType=nothing)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_providers_provider_permissions_ProvidersApi, "/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/providerPermissions", ["azure_auth", ])
+    OpenAPI.Clients.set_param(_ctx.path, "resourceProviderNamespace", resource_provider_namespace)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
+    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
+    return _ctx
+end
+
+@doc raw"""Get the provider permissions.
+
+Params:
+- resource_provider_namespace::String (required)
+- api_version::String (required)
+- subscription_id::String (required)
+
+Return: ProviderPermissionListResult, OpenAPI.Clients.ApiResponse
+"""
+function providers_provider_permissions(_api::ProvidersApi, resource_provider_namespace::String, api_version::String, subscription_id::String; _mediaType=nothing)
+    _ctx = _oacinternal_providers_provider_permissions(_api, resource_provider_namespace, api_version, subscription_id; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx)
+end
+
+function providers_provider_permissions(_api::ProvidersApi, response_stream::Channel, resource_provider_namespace::String, api_version::String, subscription_id::String; _mediaType=nothing)
+    _ctx = _oacinternal_providers_provider_permissions(_api, resource_provider_namespace, api_version, subscription_id; _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
@@ -156,13 +222,13 @@ const _returntypes_providers_register_ProvidersApi = Dict{Regex,Type}(
     Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
-function _oacinternal_providers_register(_api::ProvidersApi, resource_provider_namespace::String, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_providers_register_ProvidersApi, "/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/register", ["azure_auth", ])
+function _oacinternal_providers_register(_api::ProvidersApi, resource_provider_namespace::String, api_version::String, subscription_id::String; properties=nothing, _mediaType=nothing)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_providers_register_ProvidersApi, "/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/register", ["azure_auth", ], properties)
     OpenAPI.Clients.set_param(_ctx.path, "resourceProviderNamespace", resource_provider_namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
-    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
+    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
 end
 
@@ -172,16 +238,54 @@ Params:
 - resource_provider_namespace::String (required)
 - api_version::String (required)
 - subscription_id::String (required)
+- properties::ProviderRegistrationRequest
 
 Return: Provider, OpenAPI.Clients.ApiResponse
 """
-function providers_register(_api::ProvidersApi, resource_provider_namespace::String, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = _oacinternal_providers_register(_api, resource_provider_namespace, api_version, subscription_id; _mediaType=_mediaType)
+function providers_register(_api::ProvidersApi, resource_provider_namespace::String, api_version::String, subscription_id::String; properties=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_providers_register(_api, resource_provider_namespace, api_version, subscription_id; properties=properties, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx)
 end
 
-function providers_register(_api::ProvidersApi, response_stream::Channel, resource_provider_namespace::String, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = _oacinternal_providers_register(_api, resource_provider_namespace, api_version, subscription_id; _mediaType=_mediaType)
+function providers_register(_api::ProvidersApi, response_stream::Channel, resource_provider_namespace::String, api_version::String, subscription_id::String; properties=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_providers_register(_api, resource_provider_namespace, api_version, subscription_id; properties=properties, _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx, response_stream)
+end
+
+const _returntypes_providers_register_at_management_group_scope_ProvidersApi = Dict{Regex,Type}(
+    Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+)
+
+function _oacinternal_providers_register_at_management_group_scope(_api::ProvidersApi, resource_provider_namespace::String, api_version::String, group_id::String; _mediaType=nothing)
+    OpenAPI.validate_param("group_id", "providers_register_at_management_group_scope", :maxLength, group_id, 90)
+    OpenAPI.validate_param("group_id", "providers_register_at_management_group_scope", :minLength, group_id, 1)
+
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_providers_register_at_management_group_scope_ProvidersApi, "/providers/Microsoft.Management/managementGroups/{groupId}/providers/{resourceProviderNamespace}/register", ["azure_auth", ])
+    OpenAPI.Clients.set_param(_ctx.path, "resourceProviderNamespace", resource_provider_namespace)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "groupId", group_id)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
+    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
+    return _ctx
+end
+
+@doc raw"""Registers a management group with a resource provider. Use this operation to register a resource provider with resource types that can be deployed at the management group scope. It does not recursively register subscriptions within the management group. Instead, you must register subscriptions individually.
+
+Params:
+- resource_provider_namespace::String (required)
+- api_version::String (required)
+- group_id::String (required)
+
+Return: Nothing, OpenAPI.Clients.ApiResponse
+"""
+function providers_register_at_management_group_scope(_api::ProvidersApi, resource_provider_namespace::String, api_version::String, group_id::String; _mediaType=nothing)
+    _ctx = _oacinternal_providers_register_at_management_group_scope(_api, resource_provider_namespace, api_version, group_id; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx)
+end
+
+function providers_register_at_management_group_scope(_api::ProvidersApi, response_stream::Channel, resource_provider_namespace::String, api_version::String, group_id::String; _mediaType=nothing)
+    _ctx = _oacinternal_providers_register_at_management_group_scope(_api, resource_provider_namespace, api_version, group_id; _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
@@ -194,7 +298,7 @@ function _oacinternal_providers_unregister(_api::ProvidersApi, resource_provider
     _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_providers_unregister_ProvidersApi, "/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/unregister", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "resourceProviderNamespace", resource_provider_namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -219,9 +323,12 @@ function providers_unregister(_api::ProvidersApi, response_stream::Channel, reso
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
+export provider_resource_types_list
 export providers_get
 export providers_get_at_tenant_scope
 export providers_list
 export providers_list_at_tenant_scope
+export providers_provider_permissions
 export providers_register
+export providers_register_at_management_group_scope
 export providers_unregister

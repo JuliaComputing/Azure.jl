@@ -8,6 +8,7 @@ Properties of the virtual network.
     VirtualNetworkPropertiesFormat(;
         addressSpace=nothing,
         dhcpOptions=nothing,
+        flowTimeoutInMinutes=nothing,
         subnets=nothing,
         virtualNetworkPeerings=nothing,
         resourceGuid=nothing,
@@ -16,11 +17,16 @@ Properties of the virtual network.
         enableVmProtection=false,
         ddosProtectionPlan=nothing,
         bgpCommunities=nothing,
+        encryption=nothing,
         ipAllocations=nothing,
+        flowLogs=nothing,
+        privateEndpointVNetPolicies=nothing,
+        defaultPublicNatGateway=nothing,
     )
 
     - addressSpace::AddressSpace
     - dhcpOptions::DhcpOptions
+    - flowTimeoutInMinutes::Int64 : The FlowTimeout value (in minutes) for the Virtual Network
     - subnets::Vector{Subnet} : A list of subnets in a Virtual Network.
     - virtualNetworkPeerings::Vector{VirtualNetworkPeering} : A list of peerings in a Virtual Network.
     - resourceGuid::String : The resourceGuid property of the Virtual Network resource.
@@ -29,11 +35,16 @@ Properties of the virtual network.
     - enableVmProtection::Bool : Indicates if VM protection is enabled for all the subnets in the virtual network.
     - ddosProtectionPlan::SubResource
     - bgpCommunities::VirtualNetworkBgpCommunities
+    - encryption::VirtualNetworkEncryption
     - ipAllocations::Vector{SubResource} : Array of IpAllocation which reference this VNET.
+    - flowLogs::Vector{FlowLog} : A collection of references to flow log resources.
+    - privateEndpointVNetPolicies::PrivateEndpointVNetPolicies
+    - defaultPublicNatGateway::SubResource
 """
 Base.@kwdef mutable struct VirtualNetworkPropertiesFormat <: OpenAPI.APIModel
     addressSpace = nothing # spec type: Union{ Nothing, AddressSpace }
     dhcpOptions = nothing # spec type: Union{ Nothing, DhcpOptions }
+    flowTimeoutInMinutes::Union{Nothing, Int64} = nothing
     subnets::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{Subnet} }
     virtualNetworkPeerings::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{VirtualNetworkPeering} }
     resourceGuid::Union{Nothing, String} = nothing
@@ -42,30 +53,63 @@ Base.@kwdef mutable struct VirtualNetworkPropertiesFormat <: OpenAPI.APIModel
     enableVmProtection::Union{Nothing, Bool} = false
     ddosProtectionPlan = nothing # spec type: Union{ Nothing, SubResource }
     bgpCommunities = nothing # spec type: Union{ Nothing, VirtualNetworkBgpCommunities }
+    encryption = nothing # spec type: Union{ Nothing, VirtualNetworkEncryption }
     ipAllocations::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{SubResource} }
+    flowLogs::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{FlowLog} }
+    privateEndpointVNetPolicies = nothing # spec type: Union{ Nothing, PrivateEndpointVNetPolicies }
+    defaultPublicNatGateway = nothing # spec type: Union{ Nothing, SubResource }
 
-    function VirtualNetworkPropertiesFormat(addressSpace, dhcpOptions, subnets, virtualNetworkPeerings, resourceGuid, provisioningState, enableDdosProtection, enableVmProtection, ddosProtectionPlan, bgpCommunities, ipAllocations, )
-        OpenAPI.validate_property(VirtualNetworkPropertiesFormat, Symbol("addressSpace"), addressSpace)
-        OpenAPI.validate_property(VirtualNetworkPropertiesFormat, Symbol("dhcpOptions"), dhcpOptions)
-        OpenAPI.validate_property(VirtualNetworkPropertiesFormat, Symbol("subnets"), subnets)
-        OpenAPI.validate_property(VirtualNetworkPropertiesFormat, Symbol("virtualNetworkPeerings"), virtualNetworkPeerings)
-        OpenAPI.validate_property(VirtualNetworkPropertiesFormat, Symbol("resourceGuid"), resourceGuid)
-        OpenAPI.validate_property(VirtualNetworkPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        OpenAPI.validate_property(VirtualNetworkPropertiesFormat, Symbol("enableDdosProtection"), enableDdosProtection)
-        OpenAPI.validate_property(VirtualNetworkPropertiesFormat, Symbol("enableVmProtection"), enableVmProtection)
-        OpenAPI.validate_property(VirtualNetworkPropertiesFormat, Symbol("ddosProtectionPlan"), ddosProtectionPlan)
-        OpenAPI.validate_property(VirtualNetworkPropertiesFormat, Symbol("bgpCommunities"), bgpCommunities)
-        OpenAPI.validate_property(VirtualNetworkPropertiesFormat, Symbol("ipAllocations"), ipAllocations)
-        return new(addressSpace, dhcpOptions, subnets, virtualNetworkPeerings, resourceGuid, provisioningState, enableDdosProtection, enableVmProtection, ddosProtectionPlan, bgpCommunities, ipAllocations, )
+    function VirtualNetworkPropertiesFormat(addressSpace, dhcpOptions, flowTimeoutInMinutes, subnets, virtualNetworkPeerings, resourceGuid, provisioningState, enableDdosProtection, enableVmProtection, ddosProtectionPlan, bgpCommunities, encryption, ipAllocations, flowLogs, privateEndpointVNetPolicies, defaultPublicNatGateway, )
+        o = new(addressSpace, dhcpOptions, flowTimeoutInMinutes, subnets, virtualNetworkPeerings, resourceGuid, provisioningState, enableDdosProtection, enableVmProtection, ddosProtectionPlan, bgpCommunities, encryption, ipAllocations, flowLogs, privateEndpointVNetPolicies, defaultPublicNatGateway, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualNetworkPropertiesFormat
 
-const _property_types_VirtualNetworkPropertiesFormat = Dict{Symbol,String}(Symbol("addressSpace")=>"AddressSpace", Symbol("dhcpOptions")=>"DhcpOptions", Symbol("subnets")=>"Vector{Subnet}", Symbol("virtualNetworkPeerings")=>"Vector{VirtualNetworkPeering}", Symbol("resourceGuid")=>"String", Symbol("provisioningState")=>"ProvisioningState", Symbol("enableDdosProtection")=>"Bool", Symbol("enableVmProtection")=>"Bool", Symbol("ddosProtectionPlan")=>"SubResource", Symbol("bgpCommunities")=>"VirtualNetworkBgpCommunities", Symbol("ipAllocations")=>"Vector{SubResource}", )
+const _property_types_VirtualNetworkPropertiesFormat = Dict{Symbol,String}(Symbol("addressSpace")=>"AddressSpace", Symbol("dhcpOptions")=>"DhcpOptions", Symbol("flowTimeoutInMinutes")=>"Int64", Symbol("subnets")=>"Vector{Subnet}", Symbol("virtualNetworkPeerings")=>"Vector{VirtualNetworkPeering}", Symbol("resourceGuid")=>"String", Symbol("provisioningState")=>"ProvisioningState", Symbol("enableDdosProtection")=>"Bool", Symbol("enableVmProtection")=>"Bool", Symbol("ddosProtectionPlan")=>"SubResource", Symbol("bgpCommunities")=>"VirtualNetworkBgpCommunities", Symbol("encryption")=>"VirtualNetworkEncryption", Symbol("ipAllocations")=>"Vector{SubResource}", Symbol("flowLogs")=>"Vector{FlowLog}", Symbol("privateEndpointVNetPolicies")=>"PrivateEndpointVNetPolicies", Symbol("defaultPublicNatGateway")=>"SubResource", )
 OpenAPI.property_type(::Type{ VirtualNetworkPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualNetworkPropertiesFormat[name]))}
 
-function check_required(o::VirtualNetworkPropertiesFormat)
+function OpenAPI.check_required(o::VirtualNetworkPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualNetworkPropertiesFormat)
+    OpenAPI.validate_property(VirtualNetworkPropertiesFormat, Symbol("addressSpace"), o.addressSpace)
+    OpenAPI.validate_property(VirtualNetworkPropertiesFormat, Symbol("dhcpOptions"), o.dhcpOptions)
+    OpenAPI.validate_property(VirtualNetworkPropertiesFormat, Symbol("flowTimeoutInMinutes"), o.flowTimeoutInMinutes)
+    OpenAPI.validate_property(VirtualNetworkPropertiesFormat, Symbol("subnets"), o.subnets)
+    OpenAPI.validate_property(VirtualNetworkPropertiesFormat, Symbol("virtualNetworkPeerings"), o.virtualNetworkPeerings)
+    OpenAPI.validate_property(VirtualNetworkPropertiesFormat, Symbol("resourceGuid"), o.resourceGuid)
+    OpenAPI.validate_property(VirtualNetworkPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(VirtualNetworkPropertiesFormat, Symbol("enableDdosProtection"), o.enableDdosProtection)
+    OpenAPI.validate_property(VirtualNetworkPropertiesFormat, Symbol("enableVmProtection"), o.enableVmProtection)
+    OpenAPI.validate_property(VirtualNetworkPropertiesFormat, Symbol("ddosProtectionPlan"), o.ddosProtectionPlan)
+    OpenAPI.validate_property(VirtualNetworkPropertiesFormat, Symbol("bgpCommunities"), o.bgpCommunities)
+    OpenAPI.validate_property(VirtualNetworkPropertiesFormat, Symbol("encryption"), o.encryption)
+    OpenAPI.validate_property(VirtualNetworkPropertiesFormat, Symbol("ipAllocations"), o.ipAllocations)
+    OpenAPI.validate_property(VirtualNetworkPropertiesFormat, Symbol("flowLogs"), o.flowLogs)
+    OpenAPI.validate_property(VirtualNetworkPropertiesFormat, Symbol("privateEndpointVNetPolicies"), o.privateEndpointVNetPolicies)
+    OpenAPI.validate_property(VirtualNetworkPropertiesFormat, Symbol("defaultPublicNatGateway"), o.defaultPublicNatGateway)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualNetworkPropertiesFormat }, name::Symbol, val)
+
+
+
+    if name === Symbol("flowTimeoutInMinutes")
+        OpenAPI.validate_param(name, "VirtualNetworkPropertiesFormat", :format, val, "int32")
+    end
+
+
+
+
+
+
+
+
+
+
+
+
+
 end

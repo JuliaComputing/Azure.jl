@@ -10,36 +10,50 @@ The configuration parameters used while performing a rolling upgrade.
         maxUnhealthyInstancePercent=nothing,
         maxUnhealthyUpgradedInstancePercent=nothing,
         pauseTimeBetweenBatches=nothing,
+        enableCrossZoneUpgrade=nothing,
+        prioritizeUnhealthyInstances=nothing,
     )
 
     - maxBatchInstancePercent::Int64 : The maximum percent of total virtual machine instances that will be upgraded simultaneously by the rolling upgrade in one batch. As this is a maximum, unhealthy instances in previous or future batches can cause the percentage of instances in a batch to decrease to ensure higher reliability. The default value for this parameter is 20%.
     - maxUnhealthyInstancePercent::Int64 : The maximum percentage of the total virtual machine instances in the scale set that can be simultaneously unhealthy, either as a result of being upgraded, or by being found in an unhealthy state by the virtual machine health checks before the rolling upgrade aborts. This constraint will be checked prior to starting any batch. The default value for this parameter is 20%.
     - maxUnhealthyUpgradedInstancePercent::Int64 : The maximum percentage of upgraded virtual machine instances that can be found to be in an unhealthy state. This check will happen after each batch is upgraded. If this percentage is ever exceeded, the rolling update aborts. The default value for this parameter is 20%.
     - pauseTimeBetweenBatches::String : The wait time between completing the update for all virtual machines in one batch and starting the next batch. The time duration should be specified in ISO 8601 format. The default value is 0 seconds (PT0S).
+    - enableCrossZoneUpgrade::Bool : Allow VMSS to ignore AZ boundaries when constructing upgrade batches. Take into consideration the Update Domain and maxBatchInstancePercent to determine the batch size.
+    - prioritizeUnhealthyInstances::Bool : Upgrade all unhealthy instances in a scale set before any healthy instances.
 """
 Base.@kwdef mutable struct RollingUpgradePolicy <: OpenAPI.APIModel
     maxBatchInstancePercent::Union{Nothing, Int64} = nothing
     maxUnhealthyInstancePercent::Union{Nothing, Int64} = nothing
     maxUnhealthyUpgradedInstancePercent::Union{Nothing, Int64} = nothing
     pauseTimeBetweenBatches::Union{Nothing, String} = nothing
+    enableCrossZoneUpgrade::Union{Nothing, Bool} = nothing
+    prioritizeUnhealthyInstances::Union{Nothing, Bool} = nothing
 
-    function RollingUpgradePolicy(maxBatchInstancePercent, maxUnhealthyInstancePercent, maxUnhealthyUpgradedInstancePercent, pauseTimeBetweenBatches, )
-        OpenAPI.validate_property(RollingUpgradePolicy, Symbol("maxBatchInstancePercent"), maxBatchInstancePercent)
-        OpenAPI.validate_property(RollingUpgradePolicy, Symbol("maxUnhealthyInstancePercent"), maxUnhealthyInstancePercent)
-        OpenAPI.validate_property(RollingUpgradePolicy, Symbol("maxUnhealthyUpgradedInstancePercent"), maxUnhealthyUpgradedInstancePercent)
-        OpenAPI.validate_property(RollingUpgradePolicy, Symbol("pauseTimeBetweenBatches"), pauseTimeBetweenBatches)
-        return new(maxBatchInstancePercent, maxUnhealthyInstancePercent, maxUnhealthyUpgradedInstancePercent, pauseTimeBetweenBatches, )
+    function RollingUpgradePolicy(maxBatchInstancePercent, maxUnhealthyInstancePercent, maxUnhealthyUpgradedInstancePercent, pauseTimeBetweenBatches, enableCrossZoneUpgrade, prioritizeUnhealthyInstances, )
+        o = new(maxBatchInstancePercent, maxUnhealthyInstancePercent, maxUnhealthyUpgradedInstancePercent, pauseTimeBetweenBatches, enableCrossZoneUpgrade, prioritizeUnhealthyInstances, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type RollingUpgradePolicy
 
-const _property_types_RollingUpgradePolicy = Dict{Symbol,String}(Symbol("maxBatchInstancePercent")=>"Int64", Symbol("maxUnhealthyInstancePercent")=>"Int64", Symbol("maxUnhealthyUpgradedInstancePercent")=>"Int64", Symbol("pauseTimeBetweenBatches")=>"String", )
+const _property_types_RollingUpgradePolicy = Dict{Symbol,String}(Symbol("maxBatchInstancePercent")=>"Int64", Symbol("maxUnhealthyInstancePercent")=>"Int64", Symbol("maxUnhealthyUpgradedInstancePercent")=>"Int64", Symbol("pauseTimeBetweenBatches")=>"String", Symbol("enableCrossZoneUpgrade")=>"Bool", Symbol("prioritizeUnhealthyInstances")=>"Bool", )
 OpenAPI.property_type(::Type{ RollingUpgradePolicy }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RollingUpgradePolicy[name]))}
 
-function check_required(o::RollingUpgradePolicy)
+function OpenAPI.check_required(o::RollingUpgradePolicy)
     true
 end
 
+function OpenAPI.validate_properties(o::RollingUpgradePolicy)
+    OpenAPI.validate_property(RollingUpgradePolicy, Symbol("maxBatchInstancePercent"), o.maxBatchInstancePercent)
+    OpenAPI.validate_property(RollingUpgradePolicy, Symbol("maxUnhealthyInstancePercent"), o.maxUnhealthyInstancePercent)
+    OpenAPI.validate_property(RollingUpgradePolicy, Symbol("maxUnhealthyUpgradedInstancePercent"), o.maxUnhealthyUpgradedInstancePercent)
+    OpenAPI.validate_property(RollingUpgradePolicy, Symbol("pauseTimeBetweenBatches"), o.pauseTimeBetweenBatches)
+    OpenAPI.validate_property(RollingUpgradePolicy, Symbol("enableCrossZoneUpgrade"), o.enableCrossZoneUpgrade)
+    OpenAPI.validate_property(RollingUpgradePolicy, Symbol("prioritizeUnhealthyInstances"), o.prioritizeUnhealthyInstances)
+end
+
 function OpenAPI.validate_property(::Type{ RollingUpgradePolicy }, name::Symbol, val)
+
     if name === Symbol("maxBatchInstancePercent")
         OpenAPI.validate_param(name, "RollingUpgradePolicy", :format, val, "int32")
     end
@@ -47,6 +61,7 @@ function OpenAPI.validate_property(::Type{ RollingUpgradePolicy }, name::Symbol,
         OpenAPI.validate_param(name, "RollingUpgradePolicy", :maximum, val, 100, false)
         OpenAPI.validate_param(name, "RollingUpgradePolicy", :minimum, val, 5, false)
     end
+
     if name === Symbol("maxUnhealthyInstancePercent")
         OpenAPI.validate_param(name, "RollingUpgradePolicy", :format, val, "int32")
     end
@@ -54,6 +69,7 @@ function OpenAPI.validate_property(::Type{ RollingUpgradePolicy }, name::Symbol,
         OpenAPI.validate_param(name, "RollingUpgradePolicy", :maximum, val, 100, false)
         OpenAPI.validate_param(name, "RollingUpgradePolicy", :minimum, val, 5, false)
     end
+
     if name === Symbol("maxUnhealthyUpgradedInstancePercent")
         OpenAPI.validate_param(name, "RollingUpgradePolicy", :format, val, "int32")
     end
@@ -61,4 +77,7 @@ function OpenAPI.validate_property(::Type{ RollingUpgradePolicy }, name::Symbol,
         OpenAPI.validate_param(name, "RollingUpgradePolicy", :maximum, val, 100, false)
         OpenAPI.validate_param(name, "RollingUpgradePolicy", :minimum, val, 0, false)
     end
+
+
+
 end

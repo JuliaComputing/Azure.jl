@@ -10,46 +10,58 @@ The policy assignment.
         id=nothing,
         type=nothing,
         name=nothing,
-        sku=nothing,
         location=nothing,
         identity=nothing,
+        systemData=nothing,
     )
 
     - properties::PolicyAssignmentProperties
     - id::String : The ID of the policy assignment.
     - type::String : The type of the policy assignment.
     - name::String : The name of the policy assignment.
-    - sku::PolicySku
     - location::String : The location of the policy assignment. Only required when utilizing managed identity.
     - identity::Identity
+    - systemData::SystemData
 """
 Base.@kwdef mutable struct PolicyAssignment <: OpenAPI.APIModel
     properties = nothing # spec type: Union{ Nothing, PolicyAssignmentProperties }
     id::Union{Nothing, String} = nothing
     type::Union{Nothing, String} = nothing
     name::Union{Nothing, String} = nothing
-    sku = nothing # spec type: Union{ Nothing, PolicySku }
     location::Union{Nothing, String} = nothing
     identity = nothing # spec type: Union{ Nothing, Identity }
+    systemData = nothing # spec type: Union{ Nothing, SystemData }
 
-    function PolicyAssignment(properties, id, type, name, sku, location, identity, )
-        OpenAPI.validate_property(PolicyAssignment, Symbol("properties"), properties)
-        OpenAPI.validate_property(PolicyAssignment, Symbol("id"), id)
-        OpenAPI.validate_property(PolicyAssignment, Symbol("type"), type)
-        OpenAPI.validate_property(PolicyAssignment, Symbol("name"), name)
-        OpenAPI.validate_property(PolicyAssignment, Symbol("sku"), sku)
-        OpenAPI.validate_property(PolicyAssignment, Symbol("location"), location)
-        OpenAPI.validate_property(PolicyAssignment, Symbol("identity"), identity)
-        return new(properties, id, type, name, sku, location, identity, )
+    function PolicyAssignment(properties, id, type, name, location, identity, systemData, )
+        o = new(properties, id, type, name, location, identity, systemData, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PolicyAssignment
 
-const _property_types_PolicyAssignment = Dict{Symbol,String}(Symbol("properties")=>"PolicyAssignmentProperties", Symbol("id")=>"String", Symbol("type")=>"String", Symbol("name")=>"String", Symbol("sku")=>"PolicySku", Symbol("location")=>"String", Symbol("identity")=>"Identity", )
+const _property_types_PolicyAssignment = Dict{Symbol,String}(Symbol("properties")=>"PolicyAssignmentProperties", Symbol("id")=>"String", Symbol("type")=>"String", Symbol("name")=>"String", Symbol("location")=>"String", Symbol("identity")=>"Identity", Symbol("systemData")=>"SystemData", )
 OpenAPI.property_type(::Type{ PolicyAssignment }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PolicyAssignment[name]))}
 
-function check_required(o::PolicyAssignment)
+function OpenAPI.check_required(o::PolicyAssignment)
     true
 end
 
+function OpenAPI.validate_properties(o::PolicyAssignment)
+    OpenAPI.validate_property(PolicyAssignment, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(PolicyAssignment, Symbol("id"), o.id)
+    OpenAPI.validate_property(PolicyAssignment, Symbol("type"), o.type)
+    OpenAPI.validate_property(PolicyAssignment, Symbol("name"), o.name)
+    OpenAPI.validate_property(PolicyAssignment, Symbol("location"), o.location)
+    OpenAPI.validate_property(PolicyAssignment, Symbol("identity"), o.identity)
+    OpenAPI.validate_property(PolicyAssignment, Symbol("systemData"), o.systemData)
+end
+
 function OpenAPI.validate_property(::Type{ PolicyAssignment }, name::Symbol, val)
+
+
+
+
+
+
+
 end

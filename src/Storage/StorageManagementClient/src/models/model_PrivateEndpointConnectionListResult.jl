@@ -15,17 +15,23 @@ Base.@kwdef mutable struct PrivateEndpointConnectionListResult <: OpenAPI.APIMod
     value::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{PrivateEndpointConnection} }
 
     function PrivateEndpointConnectionListResult(value, )
-        OpenAPI.validate_property(PrivateEndpointConnectionListResult, Symbol("value"), value)
-        return new(value, )
+        o = new(value, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PrivateEndpointConnectionListResult
 
 const _property_types_PrivateEndpointConnectionListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{PrivateEndpointConnection}", )
 OpenAPI.property_type(::Type{ PrivateEndpointConnectionListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PrivateEndpointConnectionListResult[name]))}
 
-function check_required(o::PrivateEndpointConnectionListResult)
+function OpenAPI.check_required(o::PrivateEndpointConnectionListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::PrivateEndpointConnectionListResult)
+    OpenAPI.validate_property(PrivateEndpointConnectionListResult, Symbol("value"), o.value)
+end
+
 function OpenAPI.validate_property(::Type{ PrivateEndpointConnectionListResult }, name::Symbol, val)
+
 end

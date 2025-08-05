@@ -18,18 +18,25 @@ Base.@kwdef mutable struct UpdateDataLakeStoreAccountParameters <: OpenAPI.APIMo
     properties = nothing # spec type: Union{ Nothing, UpdateDataLakeStoreAccountProperties }
 
     function UpdateDataLakeStoreAccountParameters(tags, properties, )
-        OpenAPI.validate_property(UpdateDataLakeStoreAccountParameters, Symbol("tags"), tags)
-        OpenAPI.validate_property(UpdateDataLakeStoreAccountParameters, Symbol("properties"), properties)
-        return new(tags, properties, )
+        o = new(tags, properties, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type UpdateDataLakeStoreAccountParameters
 
 const _property_types_UpdateDataLakeStoreAccountParameters = Dict{Symbol,String}(Symbol("tags")=>"Dict{String, String}", Symbol("properties")=>"UpdateDataLakeStoreAccountProperties", )
 OpenAPI.property_type(::Type{ UpdateDataLakeStoreAccountParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_UpdateDataLakeStoreAccountParameters[name]))}
 
-function check_required(o::UpdateDataLakeStoreAccountParameters)
+function OpenAPI.check_required(o::UpdateDataLakeStoreAccountParameters)
     true
 end
 
+function OpenAPI.validate_properties(o::UpdateDataLakeStoreAccountParameters)
+    OpenAPI.validate_property(UpdateDataLakeStoreAccountParameters, Symbol("tags"), o.tags)
+    OpenAPI.validate_property(UpdateDataLakeStoreAccountParameters, Symbol("properties"), o.properties)
+end
+
 function OpenAPI.validate_property(::Type{ UpdateDataLakeStoreAccountParameters }, name::Symbol, val)
+
+
 end

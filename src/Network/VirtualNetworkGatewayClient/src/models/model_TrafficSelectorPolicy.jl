@@ -18,20 +18,27 @@ Base.@kwdef mutable struct TrafficSelectorPolicy <: OpenAPI.APIModel
     remoteAddressRanges::Union{Nothing, Vector{String}} = nothing
 
     function TrafficSelectorPolicy(localAddressRanges, remoteAddressRanges, )
-        OpenAPI.validate_property(TrafficSelectorPolicy, Symbol("localAddressRanges"), localAddressRanges)
-        OpenAPI.validate_property(TrafficSelectorPolicy, Symbol("remoteAddressRanges"), remoteAddressRanges)
-        return new(localAddressRanges, remoteAddressRanges, )
+        o = new(localAddressRanges, remoteAddressRanges, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type TrafficSelectorPolicy
 
 const _property_types_TrafficSelectorPolicy = Dict{Symbol,String}(Symbol("localAddressRanges")=>"Vector{String}", Symbol("remoteAddressRanges")=>"Vector{String}", )
 OpenAPI.property_type(::Type{ TrafficSelectorPolicy }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TrafficSelectorPolicy[name]))}
 
-function check_required(o::TrafficSelectorPolicy)
+function OpenAPI.check_required(o::TrafficSelectorPolicy)
     o.localAddressRanges === nothing && (return false)
     o.remoteAddressRanges === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::TrafficSelectorPolicy)
+    OpenAPI.validate_property(TrafficSelectorPolicy, Symbol("localAddressRanges"), o.localAddressRanges)
+    OpenAPI.validate_property(TrafficSelectorPolicy, Symbol("remoteAddressRanges"), o.remoteAddressRanges)
+end
+
 function OpenAPI.validate_property(::Type{ TrafficSelectorPolicy }, name::Symbol, val)
+
+
 end

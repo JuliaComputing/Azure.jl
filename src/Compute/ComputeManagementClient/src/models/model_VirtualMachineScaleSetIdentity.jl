@@ -15,32 +15,42 @@ Identity for the virtual machine scale set.
     - principalId::String : The principal id of virtual machine scale set identity. This property will only be provided for a system assigned identity.
     - tenantId::String : The tenant id associated with the virtual machine scale set. This property will only be provided for a system assigned identity.
     - type::String : The type of identity used for the virtual machine scale set. The type &#39;SystemAssigned, UserAssigned&#39; includes both an implicitly created identity and a set of user assigned identities. The type &#39;None&#39; will remove any identities from the virtual machine scale set.
-    - userAssignedIdentities::Dict{String, VirtualMachineIdentityUserAssignedIdentitiesValue} : The list of user identities associated with the virtual machine scale set. The user identity dictionary key references will be ARM resource ids in the form: &#39;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}&#39;.
+    - userAssignedIdentities::Dict{String, VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue} : The list of user identities associated with the virtual machine scale set. The user identity dictionary key references will be ARM resource ids in the form: &#39;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}&#39;.
 """
 Base.@kwdef mutable struct VirtualMachineScaleSetIdentity <: OpenAPI.APIModel
     principalId::Union{Nothing, String} = nothing
     tenantId::Union{Nothing, String} = nothing
     type::Union{Nothing, String} = nothing
-    userAssignedIdentities::Union{Nothing, Dict} = nothing # spec type: Union{ Nothing, Dict{String, VirtualMachineIdentityUserAssignedIdentitiesValue} }
+    userAssignedIdentities::Union{Nothing, Dict} = nothing # spec type: Union{ Nothing, Dict{String, VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue} }
 
     function VirtualMachineScaleSetIdentity(principalId, tenantId, type, userAssignedIdentities, )
-        OpenAPI.validate_property(VirtualMachineScaleSetIdentity, Symbol("principalId"), principalId)
-        OpenAPI.validate_property(VirtualMachineScaleSetIdentity, Symbol("tenantId"), tenantId)
-        OpenAPI.validate_property(VirtualMachineScaleSetIdentity, Symbol("type"), type)
-        OpenAPI.validate_property(VirtualMachineScaleSetIdentity, Symbol("userAssignedIdentities"), userAssignedIdentities)
-        return new(principalId, tenantId, type, userAssignedIdentities, )
+        o = new(principalId, tenantId, type, userAssignedIdentities, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetIdentity
 
-const _property_types_VirtualMachineScaleSetIdentity = Dict{Symbol,String}(Symbol("principalId")=>"String", Symbol("tenantId")=>"String", Symbol("type")=>"String", Symbol("userAssignedIdentities")=>"Dict{String, VirtualMachineIdentityUserAssignedIdentitiesValue}", )
+const _property_types_VirtualMachineScaleSetIdentity = Dict{Symbol,String}(Symbol("principalId")=>"String", Symbol("tenantId")=>"String", Symbol("type")=>"String", Symbol("userAssignedIdentities")=>"Dict{String, VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue}", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetIdentity }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetIdentity[name]))}
 
-function check_required(o::VirtualMachineScaleSetIdentity)
+function OpenAPI.check_required(o::VirtualMachineScaleSetIdentity)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetIdentity)
+    OpenAPI.validate_property(VirtualMachineScaleSetIdentity, Symbol("principalId"), o.principalId)
+    OpenAPI.validate_property(VirtualMachineScaleSetIdentity, Symbol("tenantId"), o.tenantId)
+    OpenAPI.validate_property(VirtualMachineScaleSetIdentity, Symbol("type"), o.type)
+    OpenAPI.validate_property(VirtualMachineScaleSetIdentity, Symbol("userAssignedIdentities"), o.userAssignedIdentities)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetIdentity }, name::Symbol, val)
+
+
+
     if name === Symbol("type")
         OpenAPI.validate_param(name, "VirtualMachineScaleSetIdentity", :enum, val, ["SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned", "None"])
     end
+
+
 end

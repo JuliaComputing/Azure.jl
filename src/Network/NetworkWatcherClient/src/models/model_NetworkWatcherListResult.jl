@@ -15,17 +15,23 @@ Base.@kwdef mutable struct NetworkWatcherListResult <: OpenAPI.APIModel
     value::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{NetworkWatcher} }
 
     function NetworkWatcherListResult(value, )
-        OpenAPI.validate_property(NetworkWatcherListResult, Symbol("value"), value)
-        return new(value, )
+        o = new(value, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type NetworkWatcherListResult
 
 const _property_types_NetworkWatcherListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{NetworkWatcher}", )
 OpenAPI.property_type(::Type{ NetworkWatcherListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkWatcherListResult[name]))}
 
-function check_required(o::NetworkWatcherListResult)
+function OpenAPI.check_required(o::NetworkWatcherListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::NetworkWatcherListResult)
+    OpenAPI.validate_property(NetworkWatcherListResult, Symbol("value"), o.value)
+end
+
 function OpenAPI.validate_property(::Type{ NetworkWatcherListResult }, name::Symbol, val)
+
 end

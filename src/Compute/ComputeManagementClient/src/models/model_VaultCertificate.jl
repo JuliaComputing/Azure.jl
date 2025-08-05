@@ -10,7 +10,7 @@ Describes a single certificate reference in a Key Vault, and where the certifica
         certificateStore=nothing,
     )
 
-    - certificateUrl::String : This is the URL of a certificate that has been uploaded to Key Vault as a secret. For adding a secret to the Key Vault, see [Add a key or secret to the key vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add). In this case, your certificate needs to be It is the Base64 encoding of the following JSON Object which is encoded in UTF-8: &lt;br&gt;&lt;br&gt; {&lt;br&gt;  \&quot;data\&quot;:\&quot;&lt;Base64-encoded-certificate&gt;\&quot;,&lt;br&gt;  \&quot;dataType\&quot;:\&quot;pfx\&quot;,&lt;br&gt;  \&quot;password\&quot;:\&quot;&lt;pfx-file-password&gt;\&quot;&lt;br&gt;}
+    - certificateUrl::String : This is the URL of a certificate that has been uploaded to Key Vault as a secret. For adding a secret to the Key Vault, see [Add a key or secret to the key vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add). In this case, your certificate needs to be It is the Base64 encoding of the following JSON Object which is encoded in UTF-8: &lt;br&gt;&lt;br&gt; {&lt;br&gt;  \&quot;data\&quot;:\&quot;&lt;Base64-encoded-certificate&gt;\&quot;,&lt;br&gt;  \&quot;dataType\&quot;:\&quot;pfx\&quot;,&lt;br&gt;  \&quot;password\&quot;:\&quot;&lt;pfx-file-password&gt;\&quot;&lt;br&gt;} &lt;br&gt; To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
     - certificateStore::String : For Windows VMs, specifies the certificate store on the Virtual Machine to which the certificate should be added. The specified certificate store is implicitly in the LocalMachine account. &lt;br&gt;&lt;br&gt;For Linux VMs, the certificate file is placed under the /var/lib/waagent directory, with the file name &amp;lt;UppercaseThumbprint&amp;gt;.crt for the X509 certificate file and &amp;lt;UppercaseThumbprint&amp;gt;.prv for private key. Both of these files are .pem formatted.
 """
 Base.@kwdef mutable struct VaultCertificate <: OpenAPI.APIModel
@@ -18,18 +18,25 @@ Base.@kwdef mutable struct VaultCertificate <: OpenAPI.APIModel
     certificateStore::Union{Nothing, String} = nothing
 
     function VaultCertificate(certificateUrl, certificateStore, )
-        OpenAPI.validate_property(VaultCertificate, Symbol("certificateUrl"), certificateUrl)
-        OpenAPI.validate_property(VaultCertificate, Symbol("certificateStore"), certificateStore)
-        return new(certificateUrl, certificateStore, )
+        o = new(certificateUrl, certificateStore, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VaultCertificate
 
 const _property_types_VaultCertificate = Dict{Symbol,String}(Symbol("certificateUrl")=>"String", Symbol("certificateStore")=>"String", )
 OpenAPI.property_type(::Type{ VaultCertificate }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VaultCertificate[name]))}
 
-function check_required(o::VaultCertificate)
+function OpenAPI.check_required(o::VaultCertificate)
     true
 end
 
+function OpenAPI.validate_properties(o::VaultCertificate)
+    OpenAPI.validate_property(VaultCertificate, Symbol("certificateUrl"), o.certificateUrl)
+    OpenAPI.validate_property(VaultCertificate, Symbol("certificateStore"), o.certificateStore)
+end
+
 function OpenAPI.validate_property(::Type{ VaultCertificate }, name::Symbol, val)
+
+
 end

@@ -39,25 +39,39 @@ Base.@kwdef mutable struct MetricSpecification <: OpenAPI.APIModel
     resourceIdDimensionNameOverride::Union{Nothing, String} = nothing
 
     function MetricSpecification(name, displayName, displayDescription, unit, dimensions, aggregationType, fillGapWithZero, category, resourceIdDimensionNameOverride, )
-        OpenAPI.validate_property(MetricSpecification, Symbol("name"), name)
-        OpenAPI.validate_property(MetricSpecification, Symbol("displayName"), displayName)
-        OpenAPI.validate_property(MetricSpecification, Symbol("displayDescription"), displayDescription)
-        OpenAPI.validate_property(MetricSpecification, Symbol("unit"), unit)
-        OpenAPI.validate_property(MetricSpecification, Symbol("dimensions"), dimensions)
-        OpenAPI.validate_property(MetricSpecification, Symbol("aggregationType"), aggregationType)
-        OpenAPI.validate_property(MetricSpecification, Symbol("fillGapWithZero"), fillGapWithZero)
-        OpenAPI.validate_property(MetricSpecification, Symbol("category"), category)
-        OpenAPI.validate_property(MetricSpecification, Symbol("resourceIdDimensionNameOverride"), resourceIdDimensionNameOverride)
-        return new(name, displayName, displayDescription, unit, dimensions, aggregationType, fillGapWithZero, category, resourceIdDimensionNameOverride, )
+        o = new(name, displayName, displayDescription, unit, dimensions, aggregationType, fillGapWithZero, category, resourceIdDimensionNameOverride, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type MetricSpecification
 
 const _property_types_MetricSpecification = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("displayName")=>"String", Symbol("displayDescription")=>"String", Symbol("unit")=>"String", Symbol("dimensions")=>"Vector{Dimension}", Symbol("aggregationType")=>"String", Symbol("fillGapWithZero")=>"Bool", Symbol("category")=>"String", Symbol("resourceIdDimensionNameOverride")=>"String", )
 OpenAPI.property_type(::Type{ MetricSpecification }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_MetricSpecification[name]))}
 
-function check_required(o::MetricSpecification)
+function OpenAPI.check_required(o::MetricSpecification)
     true
 end
 
+function OpenAPI.validate_properties(o::MetricSpecification)
+    OpenAPI.validate_property(MetricSpecification, Symbol("name"), o.name)
+    OpenAPI.validate_property(MetricSpecification, Symbol("displayName"), o.displayName)
+    OpenAPI.validate_property(MetricSpecification, Symbol("displayDescription"), o.displayDescription)
+    OpenAPI.validate_property(MetricSpecification, Symbol("unit"), o.unit)
+    OpenAPI.validate_property(MetricSpecification, Symbol("dimensions"), o.dimensions)
+    OpenAPI.validate_property(MetricSpecification, Symbol("aggregationType"), o.aggregationType)
+    OpenAPI.validate_property(MetricSpecification, Symbol("fillGapWithZero"), o.fillGapWithZero)
+    OpenAPI.validate_property(MetricSpecification, Symbol("category"), o.category)
+    OpenAPI.validate_property(MetricSpecification, Symbol("resourceIdDimensionNameOverride"), o.resourceIdDimensionNameOverride)
+end
+
 function OpenAPI.validate_property(::Type{ MetricSpecification }, name::Symbol, val)
+
+
+
+
+
+
+
+
+
 end

@@ -15,17 +15,23 @@ Base.@kwdef mutable struct UpdateKeyVaultMetaInfo <: OpenAPI.APIModel
     encryptionKeyVersion::Union{Nothing, String} = nothing
 
     function UpdateKeyVaultMetaInfo(encryptionKeyVersion, )
-        OpenAPI.validate_property(UpdateKeyVaultMetaInfo, Symbol("encryptionKeyVersion"), encryptionKeyVersion)
-        return new(encryptionKeyVersion, )
+        o = new(encryptionKeyVersion, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type UpdateKeyVaultMetaInfo
 
 const _property_types_UpdateKeyVaultMetaInfo = Dict{Symbol,String}(Symbol("encryptionKeyVersion")=>"String", )
 OpenAPI.property_type(::Type{ UpdateKeyVaultMetaInfo }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_UpdateKeyVaultMetaInfo[name]))}
 
-function check_required(o::UpdateKeyVaultMetaInfo)
+function OpenAPI.check_required(o::UpdateKeyVaultMetaInfo)
     true
 end
 
+function OpenAPI.validate_properties(o::UpdateKeyVaultMetaInfo)
+    OpenAPI.validate_property(UpdateKeyVaultMetaInfo, Symbol("encryptionKeyVersion"), o.encryptionKeyVersion)
+end
+
 function OpenAPI.validate_property(::Type{ UpdateKeyVaultMetaInfo }, name::Symbol, val)
+
 end

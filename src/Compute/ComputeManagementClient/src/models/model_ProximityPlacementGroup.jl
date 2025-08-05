@@ -30,23 +30,34 @@ Base.@kwdef mutable struct ProximityPlacementGroup <: OpenAPI.APIModel
     tags::Union{Nothing, Dict{String, String}} = nothing
 
     function ProximityPlacementGroup(properties, id, name, type, location, tags, )
-        OpenAPI.validate_property(ProximityPlacementGroup, Symbol("properties"), properties)
-        OpenAPI.validate_property(ProximityPlacementGroup, Symbol("id"), id)
-        OpenAPI.validate_property(ProximityPlacementGroup, Symbol("name"), name)
-        OpenAPI.validate_property(ProximityPlacementGroup, Symbol("type"), type)
-        OpenAPI.validate_property(ProximityPlacementGroup, Symbol("location"), location)
-        OpenAPI.validate_property(ProximityPlacementGroup, Symbol("tags"), tags)
-        return new(properties, id, name, type, location, tags, )
+        o = new(properties, id, name, type, location, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ProximityPlacementGroup
 
 const _property_types_ProximityPlacementGroup = Dict{Symbol,String}(Symbol("properties")=>"ProximityPlacementGroupProperties", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ ProximityPlacementGroup }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ProximityPlacementGroup[name]))}
 
-function check_required(o::ProximityPlacementGroup)
+function OpenAPI.check_required(o::ProximityPlacementGroup)
     o.location === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ProximityPlacementGroup)
+    OpenAPI.validate_property(ProximityPlacementGroup, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(ProximityPlacementGroup, Symbol("id"), o.id)
+    OpenAPI.validate_property(ProximityPlacementGroup, Symbol("name"), o.name)
+    OpenAPI.validate_property(ProximityPlacementGroup, Symbol("type"), o.type)
+    OpenAPI.validate_property(ProximityPlacementGroup, Symbol("location"), o.location)
+    OpenAPI.validate_property(ProximityPlacementGroup, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ ProximityPlacementGroup }, name::Symbol, val)
+
+
+
+
+
+
 end

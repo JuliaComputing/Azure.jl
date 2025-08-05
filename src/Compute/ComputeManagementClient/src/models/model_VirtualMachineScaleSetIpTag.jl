@@ -18,18 +18,25 @@ Base.@kwdef mutable struct VirtualMachineScaleSetIpTag <: OpenAPI.APIModel
     tag::Union{Nothing, String} = nothing
 
     function VirtualMachineScaleSetIpTag(ipTagType, tag, )
-        OpenAPI.validate_property(VirtualMachineScaleSetIpTag, Symbol("ipTagType"), ipTagType)
-        OpenAPI.validate_property(VirtualMachineScaleSetIpTag, Symbol("tag"), tag)
-        return new(ipTagType, tag, )
+        o = new(ipTagType, tag, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetIpTag
 
 const _property_types_VirtualMachineScaleSetIpTag = Dict{Symbol,String}(Symbol("ipTagType")=>"String", Symbol("tag")=>"String", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetIpTag }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetIpTag[name]))}
 
-function check_required(o::VirtualMachineScaleSetIpTag)
+function OpenAPI.check_required(o::VirtualMachineScaleSetIpTag)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetIpTag)
+    OpenAPI.validate_property(VirtualMachineScaleSetIpTag, Symbol("ipTagType"), o.ipTagType)
+    OpenAPI.validate_property(VirtualMachineScaleSetIpTag, Symbol("tag"), o.tag)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetIpTag }, name::Symbol, val)
+
+
 end

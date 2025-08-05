@@ -3,33 +3,65 @@
 
 
 @doc raw"""DateAfterModification
-Object to define the number of days after last modification.
+Object to define the base blob action conditions. Properties daysAfterModificationGreaterThan, daysAfterLastAccessTimeGreaterThan and daysAfterCreationGreaterThan are mutually exclusive. The daysAfterLastTierChangeGreaterThan property is only applicable for tierToArchive actions which requires daysAfterModificationGreaterThan to be set, also it cannot be used in conjunction with daysAfterLastAccessTimeGreaterThan or daysAfterCreationGreaterThan.
 
     DateAfterModification(;
         daysAfterModificationGreaterThan=nothing,
+        daysAfterLastAccessTimeGreaterThan=nothing,
+        daysAfterLastTierChangeGreaterThan=nothing,
+        daysAfterCreationGreaterThan=nothing,
     )
 
     - daysAfterModificationGreaterThan::Float64 : Value indicating the age in days after last modification
+    - daysAfterLastAccessTimeGreaterThan::Float64 : Value indicating the age in days after last blob access. This property can only be used in conjunction with last access time tracking policy
+    - daysAfterLastTierChangeGreaterThan::Float64 : Value indicating the age in days after last blob tier change time. This property is only applicable for tierToArchive actions and requires daysAfterModificationGreaterThan to be set for baseBlobs based actions. The blob will be archived if both the conditions are satisfied.
+    - daysAfterCreationGreaterThan::Float64 : Value indicating the age in days after blob creation.
 """
 Base.@kwdef mutable struct DateAfterModification <: OpenAPI.APIModel
     daysAfterModificationGreaterThan::Union{Nothing, Float64} = nothing
+    daysAfterLastAccessTimeGreaterThan::Union{Nothing, Float64} = nothing
+    daysAfterLastTierChangeGreaterThan::Union{Nothing, Float64} = nothing
+    daysAfterCreationGreaterThan::Union{Nothing, Float64} = nothing
 
-    function DateAfterModification(daysAfterModificationGreaterThan, )
-        OpenAPI.validate_property(DateAfterModification, Symbol("daysAfterModificationGreaterThan"), daysAfterModificationGreaterThan)
-        return new(daysAfterModificationGreaterThan, )
+    function DateAfterModification(daysAfterModificationGreaterThan, daysAfterLastAccessTimeGreaterThan, daysAfterLastTierChangeGreaterThan, daysAfterCreationGreaterThan, )
+        o = new(daysAfterModificationGreaterThan, daysAfterLastAccessTimeGreaterThan, daysAfterLastTierChangeGreaterThan, daysAfterCreationGreaterThan, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type DateAfterModification
 
-const _property_types_DateAfterModification = Dict{Symbol,String}(Symbol("daysAfterModificationGreaterThan")=>"Float64", )
+const _property_types_DateAfterModification = Dict{Symbol,String}(Symbol("daysAfterModificationGreaterThan")=>"Float64", Symbol("daysAfterLastAccessTimeGreaterThan")=>"Float64", Symbol("daysAfterLastTierChangeGreaterThan")=>"Float64", Symbol("daysAfterCreationGreaterThan")=>"Float64", )
 OpenAPI.property_type(::Type{ DateAfterModification }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DateAfterModification[name]))}
 
-function check_required(o::DateAfterModification)
-    o.daysAfterModificationGreaterThan === nothing && (return false)
+function OpenAPI.check_required(o::DateAfterModification)
     true
 end
 
+function OpenAPI.validate_properties(o::DateAfterModification)
+    OpenAPI.validate_property(DateAfterModification, Symbol("daysAfterModificationGreaterThan"), o.daysAfterModificationGreaterThan)
+    OpenAPI.validate_property(DateAfterModification, Symbol("daysAfterLastAccessTimeGreaterThan"), o.daysAfterLastAccessTimeGreaterThan)
+    OpenAPI.validate_property(DateAfterModification, Symbol("daysAfterLastTierChangeGreaterThan"), o.daysAfterLastTierChangeGreaterThan)
+    OpenAPI.validate_property(DateAfterModification, Symbol("daysAfterCreationGreaterThan"), o.daysAfterCreationGreaterThan)
+end
+
 function OpenAPI.validate_property(::Type{ DateAfterModification }, name::Symbol, val)
+
     if name === Symbol("daysAfterModificationGreaterThan")
+        OpenAPI.validate_param(name, "DateAfterModification", :minimum, val, 0, false)
+        OpenAPI.validate_param(name, "DateAfterModification", :multipleOf, val, 1)
+    end
+
+    if name === Symbol("daysAfterLastAccessTimeGreaterThan")
+        OpenAPI.validate_param(name, "DateAfterModification", :minimum, val, 0, false)
+        OpenAPI.validate_param(name, "DateAfterModification", :multipleOf, val, 1)
+    end
+
+    if name === Symbol("daysAfterLastTierChangeGreaterThan")
+        OpenAPI.validate_param(name, "DateAfterModification", :minimum, val, 0, false)
+        OpenAPI.validate_param(name, "DateAfterModification", :multipleOf, val, 1)
+    end
+
+    if name === Symbol("daysAfterCreationGreaterThan")
         OpenAPI.validate_param(name, "DateAfterModification", :minimum, val, 0, false)
         OpenAPI.validate_param(name, "DateAfterModification", :multipleOf, val, 1)
     end

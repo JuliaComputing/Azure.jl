@@ -39,28 +39,42 @@ Base.@kwdef mutable struct ContainerServiceProperties <: OpenAPI.APIModel
     diagnosticsProfile = nothing # spec type: Union{ Nothing, ContainerServiceDiagnosticsProfile }
 
     function ContainerServiceProperties(provisioningState, orchestratorProfile, customProfile, servicePrincipalProfile, masterProfile, agentPoolProfiles, windowsProfile, linuxProfile, diagnosticsProfile, )
-        OpenAPI.validate_property(ContainerServiceProperties, Symbol("provisioningState"), provisioningState)
-        OpenAPI.validate_property(ContainerServiceProperties, Symbol("orchestratorProfile"), orchestratorProfile)
-        OpenAPI.validate_property(ContainerServiceProperties, Symbol("customProfile"), customProfile)
-        OpenAPI.validate_property(ContainerServiceProperties, Symbol("servicePrincipalProfile"), servicePrincipalProfile)
-        OpenAPI.validate_property(ContainerServiceProperties, Symbol("masterProfile"), masterProfile)
-        OpenAPI.validate_property(ContainerServiceProperties, Symbol("agentPoolProfiles"), agentPoolProfiles)
-        OpenAPI.validate_property(ContainerServiceProperties, Symbol("windowsProfile"), windowsProfile)
-        OpenAPI.validate_property(ContainerServiceProperties, Symbol("linuxProfile"), linuxProfile)
-        OpenAPI.validate_property(ContainerServiceProperties, Symbol("diagnosticsProfile"), diagnosticsProfile)
-        return new(provisioningState, orchestratorProfile, customProfile, servicePrincipalProfile, masterProfile, agentPoolProfiles, windowsProfile, linuxProfile, diagnosticsProfile, )
+        o = new(provisioningState, orchestratorProfile, customProfile, servicePrincipalProfile, masterProfile, agentPoolProfiles, windowsProfile, linuxProfile, diagnosticsProfile, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ContainerServiceProperties
 
 const _property_types_ContainerServiceProperties = Dict{Symbol,String}(Symbol("provisioningState")=>"String", Symbol("orchestratorProfile")=>"ContainerServiceOrchestratorProfile", Symbol("customProfile")=>"ContainerServiceCustomProfile", Symbol("servicePrincipalProfile")=>"ContainerServiceServicePrincipalProfile", Symbol("masterProfile")=>"ContainerServiceMasterProfile", Symbol("agentPoolProfiles")=>"Vector{ContainerServiceAgentPoolProfile}", Symbol("windowsProfile")=>"ContainerServiceWindowsProfile", Symbol("linuxProfile")=>"ContainerServiceLinuxProfile", Symbol("diagnosticsProfile")=>"ContainerServiceDiagnosticsProfile", )
 OpenAPI.property_type(::Type{ ContainerServiceProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ContainerServiceProperties[name]))}
 
-function check_required(o::ContainerServiceProperties)
+function OpenAPI.check_required(o::ContainerServiceProperties)
     o.masterProfile === nothing && (return false)
     o.agentPoolProfiles === nothing && (return false)
     o.linuxProfile === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ContainerServiceProperties)
+    OpenAPI.validate_property(ContainerServiceProperties, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(ContainerServiceProperties, Symbol("orchestratorProfile"), o.orchestratorProfile)
+    OpenAPI.validate_property(ContainerServiceProperties, Symbol("customProfile"), o.customProfile)
+    OpenAPI.validate_property(ContainerServiceProperties, Symbol("servicePrincipalProfile"), o.servicePrincipalProfile)
+    OpenAPI.validate_property(ContainerServiceProperties, Symbol("masterProfile"), o.masterProfile)
+    OpenAPI.validate_property(ContainerServiceProperties, Symbol("agentPoolProfiles"), o.agentPoolProfiles)
+    OpenAPI.validate_property(ContainerServiceProperties, Symbol("windowsProfile"), o.windowsProfile)
+    OpenAPI.validate_property(ContainerServiceProperties, Symbol("linuxProfile"), o.linuxProfile)
+    OpenAPI.validate_property(ContainerServiceProperties, Symbol("diagnosticsProfile"), o.diagnosticsProfile)
+end
+
 function OpenAPI.validate_property(::Type{ ContainerServiceProperties }, name::Symbol, val)
+
+
+
+
+
+
+
+
+
 end

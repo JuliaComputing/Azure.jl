@@ -18,18 +18,25 @@ Base.@kwdef mutable struct EncryptionScopeListResult <: OpenAPI.APIModel
     nextLink::Union{Nothing, String} = nothing
 
     function EncryptionScopeListResult(value, nextLink, )
-        OpenAPI.validate_property(EncryptionScopeListResult, Symbol("value"), value)
-        OpenAPI.validate_property(EncryptionScopeListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type EncryptionScopeListResult
 
 const _property_types_EncryptionScopeListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{EncryptionScope}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ EncryptionScopeListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_EncryptionScopeListResult[name]))}
 
-function check_required(o::EncryptionScopeListResult)
+function OpenAPI.check_required(o::EncryptionScopeListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::EncryptionScopeListResult)
+    OpenAPI.validate_property(EncryptionScopeListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(EncryptionScopeListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ EncryptionScopeListResult }, name::Symbol, val)
+
+
 end

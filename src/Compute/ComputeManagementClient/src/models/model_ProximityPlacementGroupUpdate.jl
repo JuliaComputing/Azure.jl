@@ -15,17 +15,23 @@ Base.@kwdef mutable struct ProximityPlacementGroupUpdate <: OpenAPI.APIModel
     tags::Union{Nothing, Dict{String, String}} = nothing
 
     function ProximityPlacementGroupUpdate(tags, )
-        OpenAPI.validate_property(ProximityPlacementGroupUpdate, Symbol("tags"), tags)
-        return new(tags, )
+        o = new(tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ProximityPlacementGroupUpdate
 
 const _property_types_ProximityPlacementGroupUpdate = Dict{Symbol,String}(Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ ProximityPlacementGroupUpdate }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ProximityPlacementGroupUpdate[name]))}
 
-function check_required(o::ProximityPlacementGroupUpdate)
+function OpenAPI.check_required(o::ProximityPlacementGroupUpdate)
     true
 end
 
+function OpenAPI.validate_properties(o::ProximityPlacementGroupUpdate)
+    OpenAPI.validate_property(ProximityPlacementGroupUpdate, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ ProximityPlacementGroupUpdate }, name::Symbol, val)
+
 end

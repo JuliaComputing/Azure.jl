@@ -15,20 +15,27 @@ Base.@kwdef mutable struct DisallowedConfiguration <: OpenAPI.APIModel
     vmDiskType::Union{Nothing, String} = nothing
 
     function DisallowedConfiguration(vmDiskType, )
-        OpenAPI.validate_property(DisallowedConfiguration, Symbol("vmDiskType"), vmDiskType)
-        return new(vmDiskType, )
+        o = new(vmDiskType, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type DisallowedConfiguration
 
 const _property_types_DisallowedConfiguration = Dict{Symbol,String}(Symbol("vmDiskType")=>"String", )
 OpenAPI.property_type(::Type{ DisallowedConfiguration }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DisallowedConfiguration[name]))}
 
-function check_required(o::DisallowedConfiguration)
+function OpenAPI.check_required(o::DisallowedConfiguration)
     true
 end
 
+function OpenAPI.validate_properties(o::DisallowedConfiguration)
+    OpenAPI.validate_property(DisallowedConfiguration, Symbol("vmDiskType"), o.vmDiskType)
+end
+
 function OpenAPI.validate_property(::Type{ DisallowedConfiguration }, name::Symbol, val)
+
     if name === Symbol("vmDiskType")
         OpenAPI.validate_param(name, "DisallowedConfiguration", :enum, val, ["None", "Unmanaged"])
     end
+
 end

@@ -13,14 +13,18 @@ basepath(::Type{ PolicyAssignmentsApi }) = "https://management.azure.com"
 
 const _returntypes_policy_assignments_create_PolicyAssignmentsApi = Dict{Regex,Type}(
     Regex("^" * replace("201", "x"=>".") * "\$") => PolicyAssignment,
-    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+    Regex("^" * replace("0", "x"=>".") * "\$") => ErrorResponse,
 )
 
 function _oacinternal_policy_assignments_create(_api::PolicyAssignmentsApi, scope::String, policy_assignment_name::String, api_version::String, parameters::PolicyAssignment; _mediaType=nothing)
+        OpenAPI.validate_param("policy_assignment_name", "policy_assignments_create", :pattern, policy_assignment_name, r"^[^<>*%&:\?.+/]*[^<>*%&:\?.+/ ]+$")
+
+    OpenAPI.validate_param("api_version", "policy_assignments_create", :minLength, api_version, 1)
+
     _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_policy_assignments_create_PolicyAssignmentsApi, "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}", ["azure_auth", ], parameters)
     OpenAPI.Clients.set_param(_ctx.path, "scope", scope)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "policyAssignmentName", policy_assignment_name)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -50,13 +54,15 @@ end
 
 const _returntypes_policy_assignments_create_by_id_PolicyAssignmentsApi = Dict{Regex,Type}(
     Regex("^" * replace("201", "x"=>".") * "\$") => PolicyAssignment,
-    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+    Regex("^" * replace("0", "x"=>".") * "\$") => ErrorResponse,
 )
 
 function _oacinternal_policy_assignments_create_by_id(_api::PolicyAssignmentsApi, policy_assignment_id::String, api_version::String, parameters::PolicyAssignment; _mediaType=nothing)
+    OpenAPI.validate_param("api_version", "policy_assignments_create_by_id", :minLength, api_version, 1)
+
     _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_policy_assignments_create_by_id_PolicyAssignmentsApi, "/{policyAssignmentId}", ["azure_auth", ], parameters)
     OpenAPI.Clients.set_param(_ctx.path, "policyAssignmentId", policy_assignment_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -86,14 +92,18 @@ end
 const _returntypes_policy_assignments_delete_PolicyAssignmentsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => PolicyAssignment,
     Regex("^" * replace("204", "x"=>".") * "\$") => Nothing,
-    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+    Regex("^" * replace("0", "x"=>".") * "\$") => ErrorResponse,
 )
 
 function _oacinternal_policy_assignments_delete(_api::PolicyAssignmentsApi, scope::String, policy_assignment_name::String, api_version::String; _mediaType=nothing)
+        OpenAPI.validate_param("policy_assignment_name", "policy_assignments_delete", :pattern, policy_assignment_name, r"^[^<>*%&:\?.+/]*[^<>*%&:\?.+/ ]+$")
+
+    OpenAPI.validate_param("api_version", "policy_assignments_delete", :minLength, api_version, 1)
+
     _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_policy_assignments_delete_PolicyAssignmentsApi, "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "scope", scope)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "policyAssignmentName", policy_assignment_name)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -123,13 +133,15 @@ end
 const _returntypes_policy_assignments_delete_by_id_PolicyAssignmentsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => PolicyAssignment,
     Regex("^" * replace("204", "x"=>".") * "\$") => Nothing,
-    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+    Regex("^" * replace("0", "x"=>".") * "\$") => ErrorResponse,
 )
 
 function _oacinternal_policy_assignments_delete_by_id(_api::PolicyAssignmentsApi, policy_assignment_id::String, api_version::String; _mediaType=nothing)
+    OpenAPI.validate_param("api_version", "policy_assignments_delete_by_id", :minLength, api_version, 1)
+
     _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_policy_assignments_delete_by_id_PolicyAssignmentsApi, "/{policyAssignmentId}", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "policyAssignmentId", policy_assignment_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -157,14 +169,19 @@ end
 
 const _returntypes_policy_assignments_get_PolicyAssignmentsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => PolicyAssignment,
-    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+    Regex("^" * replace("0", "x"=>".") * "\$") => ErrorResponse,
 )
 
-function _oacinternal_policy_assignments_get(_api::PolicyAssignmentsApi, scope::String, policy_assignment_name::String, api_version::String; _mediaType=nothing)
+function _oacinternal_policy_assignments_get(_api::PolicyAssignmentsApi, scope::String, policy_assignment_name::String, api_version::String; expand=nothing, _mediaType=nothing)
+        OpenAPI.validate_param("policy_assignment_name", "policy_assignments_get", :pattern, policy_assignment_name, r"^[^<>*%&:\?.+/]*[^<>*%&:\?.+/ ]+$")
+
+    OpenAPI.validate_param("api_version", "policy_assignments_get", :minLength, api_version, 1)
+
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_policy_assignments_get_PolicyAssignmentsApi, "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "scope", scope)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "policyAssignmentName", policy_assignment_name)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -178,28 +195,31 @@ Params:
 - scope::String (required)
 - policy_assignment_name::String (required)
 - api_version::String (required)
+- expand::String
 
 Return: PolicyAssignment, OpenAPI.Clients.ApiResponse
 """
-function policy_assignments_get(_api::PolicyAssignmentsApi, scope::String, policy_assignment_name::String, api_version::String; _mediaType=nothing)
-    _ctx = _oacinternal_policy_assignments_get(_api, scope, policy_assignment_name, api_version; _mediaType=_mediaType)
+function policy_assignments_get(_api::PolicyAssignmentsApi, scope::String, policy_assignment_name::String, api_version::String; expand=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_policy_assignments_get(_api, scope, policy_assignment_name, api_version; expand=expand, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx)
 end
 
-function policy_assignments_get(_api::PolicyAssignmentsApi, response_stream::Channel, scope::String, policy_assignment_name::String, api_version::String; _mediaType=nothing)
-    _ctx = _oacinternal_policy_assignments_get(_api, scope, policy_assignment_name, api_version; _mediaType=_mediaType)
+function policy_assignments_get(_api::PolicyAssignmentsApi, response_stream::Channel, scope::String, policy_assignment_name::String, api_version::String; expand=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_policy_assignments_get(_api, scope, policy_assignment_name, api_version; expand=expand, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
 const _returntypes_policy_assignments_get_by_id_PolicyAssignmentsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => PolicyAssignment,
-    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+    Regex("^" * replace("0", "x"=>".") * "\$") => ErrorResponse,
 )
 
 function _oacinternal_policy_assignments_get_by_id(_api::PolicyAssignmentsApi, policy_assignment_id::String, api_version::String; _mediaType=nothing)
+    OpenAPI.validate_param("api_version", "policy_assignments_get_by_id", :minLength, api_version, 1)
+
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_policy_assignments_get_by_id_PolicyAssignmentsApi, "/{policyAssignmentId}", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "policyAssignmentId", policy_assignment_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -227,14 +247,21 @@ end
 
 const _returntypes_policy_assignments_list_PolicyAssignmentsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => PolicyAssignmentListResult,
-    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+    Regex("^" * replace("0", "x"=>".") * "\$") => ErrorResponse,
 )
 
-function _oacinternal_policy_assignments_list(_api::PolicyAssignmentsApi, api_version::String, subscription_id::String; filter=nothing, _mediaType=nothing)
+function _oacinternal_policy_assignments_list(_api::PolicyAssignmentsApi, api_version::String, subscription_id::String; filter=nothing, expand=nothing, top=nothing, _mediaType=nothing)
+    OpenAPI.validate_param("api_version", "policy_assignments_list", :minLength, api_version, 1)
+
+    OpenAPI.validate_param("top", "policy_assignments_list", :maximum, top, 1000, false)
+    OpenAPI.validate_param("top", "policy_assignments_list", :minimum, top, 1, false)
+
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_policy_assignments_list_PolicyAssignmentsApi, "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$filter", filter)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$filter", filter; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$top", top; style="", is_explode=false)  # type Int64
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -242,35 +269,44 @@ end
 
 @doc raw"""Retrieves all policy assignments that apply to a subscription.
 
-This operation retrieves the list of all policy assignments associated with the given subscription that match the optional given $filter. Valid values for $filter are: 'atScope()' or 'policyDefinitionId eq '{value}''. If $filter is not provided, the unfiltered list includes all policy assignments associated with the subscription, including those that apply directly or from management groups that contain the given subscription, as well as any applied to objects contained within the subscription. If $filter=atScope() is provided, the returned list includes all policy assignments that apply to the subscription, which is everything in the unfiltered list except those applied to objects contained within the subscription. If $filter=policyDefinitionId eq '{value}' is provided, the returned list includes all policy assignments of the policy definition whose id is {value}.
+This operation retrieves the list of all policy assignments associated with the given subscription that match the optional given $filter. Valid values for $filter are: 'atScope()', 'atExactScope()' or 'policyDefinitionId eq '{value}''. If $filter is not provided, the unfiltered list includes all policy assignments associated with the subscription, including those that apply directly or from management groups that contain the given subscription, as well as any applied to objects contained within the subscription. If $filter=atScope() is provided, the returned list includes all policy assignments that apply to the subscription, which is everything in the unfiltered list except those applied to objects contained within the subscription. If $filter=atExactScope() is provided, the returned list only includes all policy assignments that at the subscription. If $filter=policyDefinitionId eq '{value}' is provided, the returned list includes all policy assignments of the policy definition whose id is {value}.
 
 Params:
 - api_version::String (required)
 - subscription_id::String (required)
 - filter::String
+- expand::String
+- top::Int64
 
 Return: PolicyAssignmentListResult, OpenAPI.Clients.ApiResponse
 """
-function policy_assignments_list(_api::PolicyAssignmentsApi, api_version::String, subscription_id::String; filter=nothing, _mediaType=nothing)
-    _ctx = _oacinternal_policy_assignments_list(_api, api_version, subscription_id; filter=filter, _mediaType=_mediaType)
+function policy_assignments_list(_api::PolicyAssignmentsApi, api_version::String, subscription_id::String; filter=nothing, expand=nothing, top=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_policy_assignments_list(_api, api_version, subscription_id; filter=filter, expand=expand, top=top, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx)
 end
 
-function policy_assignments_list(_api::PolicyAssignmentsApi, response_stream::Channel, api_version::String, subscription_id::String; filter=nothing, _mediaType=nothing)
-    _ctx = _oacinternal_policy_assignments_list(_api, api_version, subscription_id; filter=filter, _mediaType=_mediaType)
+function policy_assignments_list(_api::PolicyAssignmentsApi, response_stream::Channel, api_version::String, subscription_id::String; filter=nothing, expand=nothing, top=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_policy_assignments_list(_api, api_version, subscription_id; filter=filter, expand=expand, top=top, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
 const _returntypes_policy_assignments_list_for_management_group_PolicyAssignmentsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => PolicyAssignmentListResult,
-    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+    Regex("^" * replace("0", "x"=>".") * "\$") => ErrorResponse,
 )
 
-function _oacinternal_policy_assignments_list_for_management_group(_api::PolicyAssignmentsApi, management_group_id::String, filter::String, api_version::String; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_policy_assignments_list_for_management_group_PolicyAssignmentsApi, "/providers/Microsoft.Management/managementgroups/{managementGroupId}/providers/Microsoft.Authorization/policyAssignments", ["azure_auth", ])
+function _oacinternal_policy_assignments_list_for_management_group(_api::PolicyAssignmentsApi, management_group_id::String, api_version::String; filter=nothing, expand=nothing, top=nothing, _mediaType=nothing)
+    OpenAPI.validate_param("api_version", "policy_assignments_list_for_management_group", :minLength, api_version, 1)
+
+    OpenAPI.validate_param("top", "policy_assignments_list_for_management_group", :maximum, top, 1000, false)
+    OpenAPI.validate_param("top", "policy_assignments_list_for_management_group", :minimum, top, 1, false)
+
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_policy_assignments_list_for_management_group_PolicyAssignmentsApi, "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyAssignments", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "managementGroupId", management_group_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$filter", filter)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$filter", filter; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$top", top; style="", is_explode=false)  # type Int64
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -278,43 +314,55 @@ end
 
 @doc raw"""Retrieves all policy assignments that apply to a management group.
 
-This operation retrieves the list of all policy assignments applicable to the management group that match the given $filter. Valid values for $filter are: 'atScope()' or 'policyDefinitionId eq '{value}''. If $filter=atScope() is provided, the returned list includes all policy assignments that are assigned to the management group or the management group's ancestors. If $filter=policyDefinitionId eq '{value}' is provided, the returned list includes all policy assignments of the policy definition whose id is {value} that apply to the management group.
+This operation retrieves the list of all policy assignments applicable to the management group that match the given $filter. Valid values for $filter are: 'atScope()', 'atExactScope()' or 'policyDefinitionId eq '{value}''. If $filter=atScope() is provided, the returned list includes all policy assignments that are assigned to the management group or the management group's ancestors. If $filter=atExactScope() is provided, the returned list only includes all policy assignments that at the management group. If $filter=policyDefinitionId eq '{value}' is provided, the returned list includes all policy assignments of the policy definition whose id is {value} that apply to the management group.
 
 Params:
 - management_group_id::String (required)
-- filter::String (required)
 - api_version::String (required)
+- filter::String
+- expand::String
+- top::Int64
 
 Return: PolicyAssignmentListResult, OpenAPI.Clients.ApiResponse
 """
-function policy_assignments_list_for_management_group(_api::PolicyAssignmentsApi, management_group_id::String, filter::String, api_version::String; _mediaType=nothing)
-    _ctx = _oacinternal_policy_assignments_list_for_management_group(_api, management_group_id, filter, api_version; _mediaType=_mediaType)
+function policy_assignments_list_for_management_group(_api::PolicyAssignmentsApi, management_group_id::String, api_version::String; filter=nothing, expand=nothing, top=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_policy_assignments_list_for_management_group(_api, management_group_id, api_version; filter=filter, expand=expand, top=top, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx)
 end
 
-function policy_assignments_list_for_management_group(_api::PolicyAssignmentsApi, response_stream::Channel, management_group_id::String, filter::String, api_version::String; _mediaType=nothing)
-    _ctx = _oacinternal_policy_assignments_list_for_management_group(_api, management_group_id, filter, api_version; _mediaType=_mediaType)
+function policy_assignments_list_for_management_group(_api::PolicyAssignmentsApi, response_stream::Channel, management_group_id::String, api_version::String; filter=nothing, expand=nothing, top=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_policy_assignments_list_for_management_group(_api, management_group_id, api_version; filter=filter, expand=expand, top=top, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
 const _returntypes_policy_assignments_list_for_resource_PolicyAssignmentsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => PolicyAssignmentListResult,
-    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+    Regex("^" * replace("0", "x"=>".") * "\$") => ErrorResponse,
 )
 
-function _oacinternal_policy_assignments_list_for_resource(_api::PolicyAssignmentsApi, resource_group_name::String, resource_provider_namespace::String, parent_resource_path::String, resource_type::String, resource_name::String, api_version::String, subscription_id::String; filter=nothing, _mediaType=nothing)
+function _oacinternal_policy_assignments_list_for_resource(_api::PolicyAssignmentsApi, subscription_id::String, resource_group_name::String, resource_provider_namespace::String, parent_resource_path::String, resource_type::String, resource_name::String, api_version::String; filter=nothing, expand=nothing, top=nothing, _mediaType=nothing)
     OpenAPI.validate_param("resource_group_name", "policy_assignments_list_for_resource", :maxLength, resource_group_name, 90)
     OpenAPI.validate_param("resource_group_name", "policy_assignments_list_for_resource", :minLength, resource_group_name, 1)
+        OpenAPI.validate_param("resource_group_name", "policy_assignments_list_for_resource", :pattern, resource_group_name, r"^[-\w\._\(\)]+$")
 
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_policy_assignments_list_for_resource_PolicyAssignmentsApi, "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/policyAssignments", ["azure_auth", ])
+        OpenAPI.validate_param("resource_name", "policy_assignments_list_for_resource", :pattern, resource_name, r"^.+$")
+
+    OpenAPI.validate_param("api_version", "policy_assignments_list_for_resource", :minLength, api_version, 1)
+
+    OpenAPI.validate_param("top", "policy_assignments_list_for_resource", :maximum, top, 1000, false)
+    OpenAPI.validate_param("top", "policy_assignments_list_for_resource", :minimum, top, 1, false)
+
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_policy_assignments_list_for_resource_PolicyAssignmentsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePath}/{resourceType}/{resourceName}/providers/Microsoft.Authorization/policyAssignments", ["azure_auth", ])
+    OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "resourceProviderNamespace", resource_provider_namespace)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "parentResourcePath", parent_resource_path)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "resourceType", resource_type)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "resourceName", resource_name)  # type String
-    OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$filter", filter)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$filter", filter; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$top", top; style="", is_explode=false)  # type Int64
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -322,44 +370,54 @@ end
 
 @doc raw"""Retrieves all policy assignments that apply to a resource.
 
-This operation retrieves the list of all policy assignments associated with the specified resource in the given resource group and subscription that match the optional given $filter. Valid values for $filter are: 'atScope()' or 'policyDefinitionId eq '{value}''. If $filter is not provided, the unfiltered list includes all policy assignments associated with the resource, including those that apply directly or from all containing scopes, as well as any applied to resources contained within the resource. If $filter=atScope() is provided, the returned list includes all policy assignments that apply to the resource, which is everything in the unfiltered list except those applied to resources contained within the resource. If $filter=policyDefinitionId eq '{value}' is provided, the returned list includes all policy assignments of the policy definition whose id is {value} that apply to the resource. Three parameters plus the resource name are used to identify a specific resource. If the resource is not part of a parent resource (the more common case), the parent resource path should not be provided (or provided as ''). For example a web app could be specified as ({resourceProviderNamespace} == 'Microsoft.Web', {parentResourcePath} == '', {resourceType} == 'sites', {resourceName} == 'MyWebApp'). If the resource is part of a parent resource, then all parameters should be provided. For example a virtual machine DNS name could be specified as ({resourceProviderNamespace} == 'Microsoft.Compute', {parentResourcePath} == 'virtualMachines/MyVirtualMachine', {resourceType} == 'domainNames', {resourceName} == 'MyComputerName'). A convenient alternative to providing the namespace and type name separately is to provide both in the {resourceType} parameter, format: ({resourceProviderNamespace} == '', {parentResourcePath} == '', {resourceType} == 'Microsoft.Web/sites', {resourceName} == 'MyWebApp').
+This operation retrieves the list of all policy assignments associated with the specified resource in the given resource group and subscription that match the optional given $filter. Valid values for $filter are: 'atScope()', 'atExactScope()' or 'policyDefinitionId eq '{value}''. If $filter is not provided, the unfiltered list includes all policy assignments associated with the resource, including those that apply directly or from all containing scopes, as well as any applied to resources contained within the resource. If $filter=atScope() is provided, the returned list includes all policy assignments that apply to the resource, which is everything in the unfiltered list except those applied to resources contained within the resource. If $filter=atExactScope() is provided, the returned list only includes all policy assignments that at the resource level. If $filter=policyDefinitionId eq '{value}' is provided, the returned list includes all policy assignments of the policy definition whose id is {value} that apply to the resource. Three parameters plus the resource name are used to identify a specific resource. If the resource is not part of a parent resource (the more common case), the parent resource path should not be provided (or provided as ''). For example a web app could be specified as ({resourceProviderNamespace} == 'Microsoft.Web', {parentResourcePath} == '', {resourceType} == 'sites', {resourceName} == 'MyWebApp'). If the resource is part of a parent resource, then all parameters should be provided. For example a virtual machine DNS name could be specified as ({resourceProviderNamespace} == 'Microsoft.Compute', {parentResourcePath} == 'virtualMachines/MyVirtualMachine', {resourceType} == 'domainNames', {resourceName} == 'MyComputerName'). A convenient alternative to providing the namespace and type name separately is to provide both in the {resourceType} parameter, format: ({resourceProviderNamespace} == '', {parentResourcePath} == '', {resourceType} == 'Microsoft.Web/sites', {resourceName} == 'MyWebApp').
 
 Params:
+- subscription_id::String (required)
 - resource_group_name::String (required)
 - resource_provider_namespace::String (required)
 - parent_resource_path::String (required)
 - resource_type::String (required)
 - resource_name::String (required)
 - api_version::String (required)
-- subscription_id::String (required)
 - filter::String
+- expand::String
+- top::Int64
 
 Return: PolicyAssignmentListResult, OpenAPI.Clients.ApiResponse
 """
-function policy_assignments_list_for_resource(_api::PolicyAssignmentsApi, resource_group_name::String, resource_provider_namespace::String, parent_resource_path::String, resource_type::String, resource_name::String, api_version::String, subscription_id::String; filter=nothing, _mediaType=nothing)
-    _ctx = _oacinternal_policy_assignments_list_for_resource(_api, resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, subscription_id; filter=filter, _mediaType=_mediaType)
+function policy_assignments_list_for_resource(_api::PolicyAssignmentsApi, subscription_id::String, resource_group_name::String, resource_provider_namespace::String, parent_resource_path::String, resource_type::String, resource_name::String, api_version::String; filter=nothing, expand=nothing, top=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_policy_assignments_list_for_resource(_api, subscription_id, resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version; filter=filter, expand=expand, top=top, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx)
 end
 
-function policy_assignments_list_for_resource(_api::PolicyAssignmentsApi, response_stream::Channel, resource_group_name::String, resource_provider_namespace::String, parent_resource_path::String, resource_type::String, resource_name::String, api_version::String, subscription_id::String; filter=nothing, _mediaType=nothing)
-    _ctx = _oacinternal_policy_assignments_list_for_resource(_api, resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version, subscription_id; filter=filter, _mediaType=_mediaType)
+function policy_assignments_list_for_resource(_api::PolicyAssignmentsApi, response_stream::Channel, subscription_id::String, resource_group_name::String, resource_provider_namespace::String, parent_resource_path::String, resource_type::String, resource_name::String, api_version::String; filter=nothing, expand=nothing, top=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_policy_assignments_list_for_resource(_api, subscription_id, resource_group_name, resource_provider_namespace, parent_resource_path, resource_type, resource_name, api_version; filter=filter, expand=expand, top=top, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
 const _returntypes_policy_assignments_list_for_resource_group_PolicyAssignmentsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => PolicyAssignmentListResult,
-    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+    Regex("^" * replace("0", "x"=>".") * "\$") => ErrorResponse,
 )
 
-function _oacinternal_policy_assignments_list_for_resource_group(_api::PolicyAssignmentsApi, resource_group_name::String, api_version::String, subscription_id::String; filter=nothing, _mediaType=nothing)
+function _oacinternal_policy_assignments_list_for_resource_group(_api::PolicyAssignmentsApi, subscription_id::String, resource_group_name::String, api_version::String; filter=nothing, expand=nothing, top=nothing, _mediaType=nothing)
     OpenAPI.validate_param("resource_group_name", "policy_assignments_list_for_resource_group", :maxLength, resource_group_name, 90)
     OpenAPI.validate_param("resource_group_name", "policy_assignments_list_for_resource_group", :minLength, resource_group_name, 1)
+        OpenAPI.validate_param("resource_group_name", "policy_assignments_list_for_resource_group", :pattern, resource_group_name, r"^[-\w\._\(\)]+$")
+
+    OpenAPI.validate_param("api_version", "policy_assignments_list_for_resource_group", :minLength, api_version, 1)
+
+    OpenAPI.validate_param("top", "policy_assignments_list_for_resource_group", :maximum, top, 1000, false)
+    OpenAPI.validate_param("top", "policy_assignments_list_for_resource_group", :minimum, top, 1, false)
 
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_policy_assignments_list_for_resource_group_PolicyAssignmentsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/policyAssignments", ["azure_auth", ])
-    OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$filter", filter)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$filter", filter; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$top", top; style="", is_explode=false)  # type Int64
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -367,23 +425,103 @@ end
 
 @doc raw"""Retrieves all policy assignments that apply to a resource group.
 
-This operation retrieves the list of all policy assignments associated with the given resource group in the given subscription that match the optional given $filter. Valid values for $filter are: 'atScope()' or 'policyDefinitionId eq '{value}''. If $filter is not provided, the unfiltered list includes all policy assignments associated with the resource group, including those that apply directly or apply from containing scopes, as well as any applied to resources contained within the resource group. If $filter=atScope() is provided, the returned list includes all policy assignments that apply to the resource group, which is everything in the unfiltered list except those applied to resources contained within the resource group. If $filter=policyDefinitionId eq '{value}' is provided, the returned list includes all policy assignments of the policy definition whose id is {value} that apply to the resource group.
+This operation retrieves the list of all policy assignments associated with the given resource group in the given subscription that match the optional given $filter. Valid values for $filter are: 'atScope()', 'atExactScope()' or 'policyDefinitionId eq '{value}''. If $filter is not provided, the unfiltered list includes all policy assignments associated with the resource group, including those that apply directly or apply from containing scopes, as well as any applied to resources contained within the resource group. If $filter=atScope() is provided, the returned list includes all policy assignments that apply to the resource group, which is everything in the unfiltered list except those applied to resources contained within the resource group. If $filter=atExactScope() is provided, the returned list only includes all policy assignments that at the resource group. If $filter=policyDefinitionId eq '{value}' is provided, the returned list includes all policy assignments of the policy definition whose id is {value} that apply to the resource group.
 
 Params:
+- subscription_id::String (required)
 - resource_group_name::String (required)
 - api_version::String (required)
-- subscription_id::String (required)
 - filter::String
+- expand::String
+- top::Int64
 
 Return: PolicyAssignmentListResult, OpenAPI.Clients.ApiResponse
 """
-function policy_assignments_list_for_resource_group(_api::PolicyAssignmentsApi, resource_group_name::String, api_version::String, subscription_id::String; filter=nothing, _mediaType=nothing)
-    _ctx = _oacinternal_policy_assignments_list_for_resource_group(_api, resource_group_name, api_version, subscription_id; filter=filter, _mediaType=_mediaType)
+function policy_assignments_list_for_resource_group(_api::PolicyAssignmentsApi, subscription_id::String, resource_group_name::String, api_version::String; filter=nothing, expand=nothing, top=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_policy_assignments_list_for_resource_group(_api, subscription_id, resource_group_name, api_version; filter=filter, expand=expand, top=top, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx)
 end
 
-function policy_assignments_list_for_resource_group(_api::PolicyAssignmentsApi, response_stream::Channel, resource_group_name::String, api_version::String, subscription_id::String; filter=nothing, _mediaType=nothing)
-    _ctx = _oacinternal_policy_assignments_list_for_resource_group(_api, resource_group_name, api_version, subscription_id; filter=filter, _mediaType=_mediaType)
+function policy_assignments_list_for_resource_group(_api::PolicyAssignmentsApi, response_stream::Channel, subscription_id::String, resource_group_name::String, api_version::String; filter=nothing, expand=nothing, top=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_policy_assignments_list_for_resource_group(_api, subscription_id, resource_group_name, api_version; filter=filter, expand=expand, top=top, _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx, response_stream)
+end
+
+const _returntypes_policy_assignments_update_PolicyAssignmentsApi = Dict{Regex,Type}(
+    Regex("^" * replace("200", "x"=>".") * "\$") => PolicyAssignment,
+    Regex("^" * replace("0", "x"=>".") * "\$") => ErrorResponse,
+)
+
+function _oacinternal_policy_assignments_update(_api::PolicyAssignmentsApi, scope::String, policy_assignment_name::String, api_version::String, parameters::PolicyAssignmentUpdate; _mediaType=nothing)
+        OpenAPI.validate_param("policy_assignment_name", "policy_assignments_update", :pattern, policy_assignment_name, r"^[^<>*%&:\?.+/]*[^<>*%&:\?.+/ ]+$")
+
+    OpenAPI.validate_param("api_version", "policy_assignments_update", :minLength, api_version, 1)
+
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_policy_assignments_update_PolicyAssignmentsApi, "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}", ["azure_auth", ], parameters)
+    OpenAPI.Clients.set_param(_ctx.path, "scope", scope)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "policyAssignmentName", policy_assignment_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
+    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
+    return _ctx
+end
+
+@doc raw"""Updates a policy assignment.
+
+ This operation updates a policy assignment with the given scope and name. Policy assignments apply to all resources contained within their scope. For example, when you assign a policy at resource group scope, that policy applies to all resources in the group.
+
+Params:
+- scope::String (required)
+- policy_assignment_name::String (required)
+- api_version::String (required)
+- parameters::PolicyAssignmentUpdate (required)
+
+Return: PolicyAssignment, OpenAPI.Clients.ApiResponse
+"""
+function policy_assignments_update(_api::PolicyAssignmentsApi, scope::String, policy_assignment_name::String, api_version::String, parameters::PolicyAssignmentUpdate; _mediaType=nothing)
+    _ctx = _oacinternal_policy_assignments_update(_api, scope, policy_assignment_name, api_version, parameters; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx)
+end
+
+function policy_assignments_update(_api::PolicyAssignmentsApi, response_stream::Channel, scope::String, policy_assignment_name::String, api_version::String, parameters::PolicyAssignmentUpdate; _mediaType=nothing)
+    _ctx = _oacinternal_policy_assignments_update(_api, scope, policy_assignment_name, api_version, parameters; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx, response_stream)
+end
+
+const _returntypes_policy_assignments_update_by_id_PolicyAssignmentsApi = Dict{Regex,Type}(
+    Regex("^" * replace("200", "x"=>".") * "\$") => PolicyAssignment,
+    Regex("^" * replace("0", "x"=>".") * "\$") => ErrorResponse,
+)
+
+function _oacinternal_policy_assignments_update_by_id(_api::PolicyAssignmentsApi, policy_assignment_id::String, api_version::String, parameters::PolicyAssignmentUpdate; _mediaType=nothing)
+    OpenAPI.validate_param("api_version", "policy_assignments_update_by_id", :minLength, api_version, 1)
+
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_policy_assignments_update_by_id_PolicyAssignmentsApi, "/{policyAssignmentId}", ["azure_auth", ], parameters)
+    OpenAPI.Clients.set_param(_ctx.path, "policyAssignmentId", policy_assignment_id)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
+    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
+    return _ctx
+end
+
+@doc raw"""Updates a policy assignment.
+
+This operation updates the policy assignment with the given ID. Policy assignments made on a scope apply to all resources contained in that scope. For example, when you assign a policy to a resource group that policy applies to all resources in the group. Policy assignment IDs have this format: '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'.
+
+Params:
+- policy_assignment_id::String (required)
+- api_version::String (required)
+- parameters::PolicyAssignmentUpdate (required)
+
+Return: PolicyAssignment, OpenAPI.Clients.ApiResponse
+"""
+function policy_assignments_update_by_id(_api::PolicyAssignmentsApi, policy_assignment_id::String, api_version::String, parameters::PolicyAssignmentUpdate; _mediaType=nothing)
+    _ctx = _oacinternal_policy_assignments_update_by_id(_api, policy_assignment_id, api_version, parameters; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx)
+end
+
+function policy_assignments_update_by_id(_api::PolicyAssignmentsApi, response_stream::Channel, policy_assignment_id::String, api_version::String, parameters::PolicyAssignmentUpdate; _mediaType=nothing)
+    _ctx = _oacinternal_policy_assignments_update_by_id(_api, policy_assignment_id, api_version, parameters; _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
@@ -397,3 +535,5 @@ export policy_assignments_list
 export policy_assignments_list_for_management_group
 export policy_assignments_list_for_resource
 export policy_assignments_list_for_resource_group
+export policy_assignments_update
+export policy_assignments_update_by_id

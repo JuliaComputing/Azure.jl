@@ -21,19 +21,27 @@ Base.@kwdef mutable struct PrivateLinkResourceProperties <: OpenAPI.APIModel
     requiredZoneNames::Union{Nothing, Vector{String}} = nothing
 
     function PrivateLinkResourceProperties(groupId, requiredMembers, requiredZoneNames, )
-        OpenAPI.validate_property(PrivateLinkResourceProperties, Symbol("groupId"), groupId)
-        OpenAPI.validate_property(PrivateLinkResourceProperties, Symbol("requiredMembers"), requiredMembers)
-        OpenAPI.validate_property(PrivateLinkResourceProperties, Symbol("requiredZoneNames"), requiredZoneNames)
-        return new(groupId, requiredMembers, requiredZoneNames, )
+        o = new(groupId, requiredMembers, requiredZoneNames, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PrivateLinkResourceProperties
 
 const _property_types_PrivateLinkResourceProperties = Dict{Symbol,String}(Symbol("groupId")=>"String", Symbol("requiredMembers")=>"Vector{String}", Symbol("requiredZoneNames")=>"Vector{String}", )
 OpenAPI.property_type(::Type{ PrivateLinkResourceProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PrivateLinkResourceProperties[name]))}
 
-function check_required(o::PrivateLinkResourceProperties)
+function OpenAPI.check_required(o::PrivateLinkResourceProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::PrivateLinkResourceProperties)
+    OpenAPI.validate_property(PrivateLinkResourceProperties, Symbol("groupId"), o.groupId)
+    OpenAPI.validate_property(PrivateLinkResourceProperties, Symbol("requiredMembers"), o.requiredMembers)
+    OpenAPI.validate_property(PrivateLinkResourceProperties, Symbol("requiredZoneNames"), o.requiredZoneNames)
+end
+
 function OpenAPI.validate_property(::Type{ PrivateLinkResourceProperties }, name::Symbol, val)
+
+
+
 end

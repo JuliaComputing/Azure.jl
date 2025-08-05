@@ -36,24 +36,37 @@ Base.@kwdef mutable struct ExpressRouteCircuit <: OpenAPI.APIModel
     tags::Union{Nothing, Dict{String, String}} = nothing
 
     function ExpressRouteCircuit(sku, properties, etag, id, name, type, location, tags, )
-        OpenAPI.validate_property(ExpressRouteCircuit, Symbol("sku"), sku)
-        OpenAPI.validate_property(ExpressRouteCircuit, Symbol("properties"), properties)
-        OpenAPI.validate_property(ExpressRouteCircuit, Symbol("etag"), etag)
-        OpenAPI.validate_property(ExpressRouteCircuit, Symbol("id"), id)
-        OpenAPI.validate_property(ExpressRouteCircuit, Symbol("name"), name)
-        OpenAPI.validate_property(ExpressRouteCircuit, Symbol("type"), type)
-        OpenAPI.validate_property(ExpressRouteCircuit, Symbol("location"), location)
-        OpenAPI.validate_property(ExpressRouteCircuit, Symbol("tags"), tags)
-        return new(sku, properties, etag, id, name, type, location, tags, )
+        o = new(sku, properties, etag, id, name, type, location, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ExpressRouteCircuit
 
 const _property_types_ExpressRouteCircuit = Dict{Symbol,String}(Symbol("sku")=>"ExpressRouteCircuitSku", Symbol("properties")=>"ExpressRouteCircuitPropertiesFormat", Symbol("etag")=>"String", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ ExpressRouteCircuit }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExpressRouteCircuit[name]))}
 
-function check_required(o::ExpressRouteCircuit)
+function OpenAPI.check_required(o::ExpressRouteCircuit)
     true
 end
 
+function OpenAPI.validate_properties(o::ExpressRouteCircuit)
+    OpenAPI.validate_property(ExpressRouteCircuit, Symbol("sku"), o.sku)
+    OpenAPI.validate_property(ExpressRouteCircuit, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(ExpressRouteCircuit, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(ExpressRouteCircuit, Symbol("id"), o.id)
+    OpenAPI.validate_property(ExpressRouteCircuit, Symbol("name"), o.name)
+    OpenAPI.validate_property(ExpressRouteCircuit, Symbol("type"), o.type)
+    OpenAPI.validate_property(ExpressRouteCircuit, Symbol("location"), o.location)
+    OpenAPI.validate_property(ExpressRouteCircuit, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ ExpressRouteCircuit }, name::Symbol, val)
+
+
+
+
+
+
+
+
 end

@@ -8,28 +8,44 @@ Export resource group template request parameters.
     ExportTemplateRequest(;
         resources=nothing,
         options=nothing,
+        outputFormat=nothing,
     )
 
     - resources::Vector{String} : The IDs of the resources to filter the export by. To export all resources, supply an array with single entry &#39;*&#39;.
     - options::String : The export template options. A CSV-formatted list containing zero or more of the following: &#39;IncludeParameterDefaultValue&#39;, &#39;IncludeComments&#39;, &#39;SkipResourceNameParameterization&#39;, &#39;SkipAllParameterization&#39;
+    - outputFormat::String : The output format for the exported resources.
 """
 Base.@kwdef mutable struct ExportTemplateRequest <: OpenAPI.APIModel
     resources::Union{Nothing, Vector{String}} = nothing
     options::Union{Nothing, String} = nothing
+    outputFormat::Union{Nothing, String} = nothing
 
-    function ExportTemplateRequest(resources, options, )
-        OpenAPI.validate_property(ExportTemplateRequest, Symbol("resources"), resources)
-        OpenAPI.validate_property(ExportTemplateRequest, Symbol("options"), options)
-        return new(resources, options, )
+    function ExportTemplateRequest(resources, options, outputFormat, )
+        o = new(resources, options, outputFormat, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ExportTemplateRequest
 
-const _property_types_ExportTemplateRequest = Dict{Symbol,String}(Symbol("resources")=>"Vector{String}", Symbol("options")=>"String", )
+const _property_types_ExportTemplateRequest = Dict{Symbol,String}(Symbol("resources")=>"Vector{String}", Symbol("options")=>"String", Symbol("outputFormat")=>"String", )
 OpenAPI.property_type(::Type{ ExportTemplateRequest }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExportTemplateRequest[name]))}
 
-function check_required(o::ExportTemplateRequest)
+function OpenAPI.check_required(o::ExportTemplateRequest)
     true
 end
 
+function OpenAPI.validate_properties(o::ExportTemplateRequest)
+    OpenAPI.validate_property(ExportTemplateRequest, Symbol("resources"), o.resources)
+    OpenAPI.validate_property(ExportTemplateRequest, Symbol("options"), o.options)
+    OpenAPI.validate_property(ExportTemplateRequest, Symbol("outputFormat"), o.outputFormat)
+end
+
 function OpenAPI.validate_property(::Type{ ExportTemplateRequest }, name::Symbol, val)
+
+
+
+    if name === Symbol("outputFormat")
+        OpenAPI.validate_param(name, "ExportTemplateRequest", :enum, val, ["Json", "Bicep"])
+    end
+
 end

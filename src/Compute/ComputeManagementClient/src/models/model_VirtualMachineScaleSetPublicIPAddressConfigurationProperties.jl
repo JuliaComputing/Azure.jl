@@ -11,6 +11,7 @@ Describes a virtual machines scale set IP Configuration&#39;s PublicIPAddress co
         ipTags=nothing,
         publicIPPrefix=nothing,
         publicIPAddressVersion=nothing,
+        deleteOption=nothing,
     )
 
     - idleTimeoutInMinutes::Int64 : The idle timeout of the public IP address.
@@ -18,6 +19,7 @@ Describes a virtual machines scale set IP Configuration&#39;s PublicIPAddress co
     - ipTags::Vector{VirtualMachineScaleSetIpTag} : The list of IP tags associated with the public IP address.
     - publicIPPrefix::SubResource
     - publicIPAddressVersion::String : Available from Api-Version 2019-07-01 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible values are: &#39;IPv4&#39; and &#39;IPv6&#39;.
+    - deleteOption::String : Specify what happens to the public IP when the VM is deleted
 """
 Base.@kwdef mutable struct VirtualMachineScaleSetPublicIPAddressConfigurationProperties <: OpenAPI.APIModel
     idleTimeoutInMinutes::Union{Nothing, Int64} = nothing
@@ -25,29 +27,47 @@ Base.@kwdef mutable struct VirtualMachineScaleSetPublicIPAddressConfigurationPro
     ipTags::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{VirtualMachineScaleSetIpTag} }
     publicIPPrefix = nothing # spec type: Union{ Nothing, SubResource }
     publicIPAddressVersion::Union{Nothing, String} = nothing
+    deleteOption::Union{Nothing, String} = nothing
 
-    function VirtualMachineScaleSetPublicIPAddressConfigurationProperties(idleTimeoutInMinutes, dnsSettings, ipTags, publicIPPrefix, publicIPAddressVersion, )
-        OpenAPI.validate_property(VirtualMachineScaleSetPublicIPAddressConfigurationProperties, Symbol("idleTimeoutInMinutes"), idleTimeoutInMinutes)
-        OpenAPI.validate_property(VirtualMachineScaleSetPublicIPAddressConfigurationProperties, Symbol("dnsSettings"), dnsSettings)
-        OpenAPI.validate_property(VirtualMachineScaleSetPublicIPAddressConfigurationProperties, Symbol("ipTags"), ipTags)
-        OpenAPI.validate_property(VirtualMachineScaleSetPublicIPAddressConfigurationProperties, Symbol("publicIPPrefix"), publicIPPrefix)
-        OpenAPI.validate_property(VirtualMachineScaleSetPublicIPAddressConfigurationProperties, Symbol("publicIPAddressVersion"), publicIPAddressVersion)
-        return new(idleTimeoutInMinutes, dnsSettings, ipTags, publicIPPrefix, publicIPAddressVersion, )
+    function VirtualMachineScaleSetPublicIPAddressConfigurationProperties(idleTimeoutInMinutes, dnsSettings, ipTags, publicIPPrefix, publicIPAddressVersion, deleteOption, )
+        o = new(idleTimeoutInMinutes, dnsSettings, ipTags, publicIPPrefix, publicIPAddressVersion, deleteOption, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetPublicIPAddressConfigurationProperties
 
-const _property_types_VirtualMachineScaleSetPublicIPAddressConfigurationProperties = Dict{Symbol,String}(Symbol("idleTimeoutInMinutes")=>"Int64", Symbol("dnsSettings")=>"VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings", Symbol("ipTags")=>"Vector{VirtualMachineScaleSetIpTag}", Symbol("publicIPPrefix")=>"SubResource", Symbol("publicIPAddressVersion")=>"String", )
+const _property_types_VirtualMachineScaleSetPublicIPAddressConfigurationProperties = Dict{Symbol,String}(Symbol("idleTimeoutInMinutes")=>"Int64", Symbol("dnsSettings")=>"VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings", Symbol("ipTags")=>"Vector{VirtualMachineScaleSetIpTag}", Symbol("publicIPPrefix")=>"SubResource", Symbol("publicIPAddressVersion")=>"String", Symbol("deleteOption")=>"String", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetPublicIPAddressConfigurationProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetPublicIPAddressConfigurationProperties[name]))}
 
-function check_required(o::VirtualMachineScaleSetPublicIPAddressConfigurationProperties)
+function OpenAPI.check_required(o::VirtualMachineScaleSetPublicIPAddressConfigurationProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetPublicIPAddressConfigurationProperties)
+    OpenAPI.validate_property(VirtualMachineScaleSetPublicIPAddressConfigurationProperties, Symbol("idleTimeoutInMinutes"), o.idleTimeoutInMinutes)
+    OpenAPI.validate_property(VirtualMachineScaleSetPublicIPAddressConfigurationProperties, Symbol("dnsSettings"), o.dnsSettings)
+    OpenAPI.validate_property(VirtualMachineScaleSetPublicIPAddressConfigurationProperties, Symbol("ipTags"), o.ipTags)
+    OpenAPI.validate_property(VirtualMachineScaleSetPublicIPAddressConfigurationProperties, Symbol("publicIPPrefix"), o.publicIPPrefix)
+    OpenAPI.validate_property(VirtualMachineScaleSetPublicIPAddressConfigurationProperties, Symbol("publicIPAddressVersion"), o.publicIPAddressVersion)
+    OpenAPI.validate_property(VirtualMachineScaleSetPublicIPAddressConfigurationProperties, Symbol("deleteOption"), o.deleteOption)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetPublicIPAddressConfigurationProperties }, name::Symbol, val)
+
     if name === Symbol("idleTimeoutInMinutes")
         OpenAPI.validate_param(name, "VirtualMachineScaleSetPublicIPAddressConfigurationProperties", :format, val, "int32")
     end
+
+
+
+
     if name === Symbol("publicIPAddressVersion")
         OpenAPI.validate_param(name, "VirtualMachineScaleSetPublicIPAddressConfigurationProperties", :enum, val, ["IPv4", "IPv6"])
     end
+
+
+    if name === Symbol("deleteOption")
+        OpenAPI.validate_param(name, "VirtualMachineScaleSetPublicIPAddressConfigurationProperties", :enum, val, ["Delete", "Detach"])
+    end
+
 end

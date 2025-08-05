@@ -27,21 +27,31 @@ Base.@kwdef mutable struct IPConfigurationProfile <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
 
     function IPConfigurationProfile(properties, name, type, etag, id, )
-        OpenAPI.validate_property(IPConfigurationProfile, Symbol("properties"), properties)
-        OpenAPI.validate_property(IPConfigurationProfile, Symbol("name"), name)
-        OpenAPI.validate_property(IPConfigurationProfile, Symbol("type"), type)
-        OpenAPI.validate_property(IPConfigurationProfile, Symbol("etag"), etag)
-        OpenAPI.validate_property(IPConfigurationProfile, Symbol("id"), id)
-        return new(properties, name, type, etag, id, )
+        o = new(properties, name, type, etag, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type IPConfigurationProfile
 
 const _property_types_IPConfigurationProfile = Dict{Symbol,String}(Symbol("properties")=>"IPConfigurationProfilePropertiesFormat", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("etag")=>"String", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ IPConfigurationProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IPConfigurationProfile[name]))}
 
-function check_required(o::IPConfigurationProfile)
+function OpenAPI.check_required(o::IPConfigurationProfile)
     true
 end
 
+function OpenAPI.validate_properties(o::IPConfigurationProfile)
+    OpenAPI.validate_property(IPConfigurationProfile, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(IPConfigurationProfile, Symbol("name"), o.name)
+    OpenAPI.validate_property(IPConfigurationProfile, Symbol("type"), o.type)
+    OpenAPI.validate_property(IPConfigurationProfile, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(IPConfigurationProfile, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ IPConfigurationProfile }, name::Symbol, val)
+
+
+
+
+
 end

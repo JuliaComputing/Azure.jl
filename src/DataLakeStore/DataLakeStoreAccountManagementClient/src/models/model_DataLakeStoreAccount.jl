@@ -33,23 +33,35 @@ Base.@kwdef mutable struct DataLakeStoreAccount <: OpenAPI.APIModel
     tags::Union{Nothing, Dict{String, String}} = nothing
 
     function DataLakeStoreAccount(identity, properties, id, name, type, location, tags, )
-        OpenAPI.validate_property(DataLakeStoreAccount, Symbol("identity"), identity)
-        OpenAPI.validate_property(DataLakeStoreAccount, Symbol("properties"), properties)
-        OpenAPI.validate_property(DataLakeStoreAccount, Symbol("id"), id)
-        OpenAPI.validate_property(DataLakeStoreAccount, Symbol("name"), name)
-        OpenAPI.validate_property(DataLakeStoreAccount, Symbol("type"), type)
-        OpenAPI.validate_property(DataLakeStoreAccount, Symbol("location"), location)
-        OpenAPI.validate_property(DataLakeStoreAccount, Symbol("tags"), tags)
-        return new(identity, properties, id, name, type, location, tags, )
+        o = new(identity, properties, id, name, type, location, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type DataLakeStoreAccount
 
 const _property_types_DataLakeStoreAccount = Dict{Symbol,String}(Symbol("identity")=>"EncryptionIdentity", Symbol("properties")=>"DataLakeStoreAccountProperties", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ DataLakeStoreAccount }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DataLakeStoreAccount[name]))}
 
-function check_required(o::DataLakeStoreAccount)
+function OpenAPI.check_required(o::DataLakeStoreAccount)
     true
 end
 
+function OpenAPI.validate_properties(o::DataLakeStoreAccount)
+    OpenAPI.validate_property(DataLakeStoreAccount, Symbol("identity"), o.identity)
+    OpenAPI.validate_property(DataLakeStoreAccount, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(DataLakeStoreAccount, Symbol("id"), o.id)
+    OpenAPI.validate_property(DataLakeStoreAccount, Symbol("name"), o.name)
+    OpenAPI.validate_property(DataLakeStoreAccount, Symbol("type"), o.type)
+    OpenAPI.validate_property(DataLakeStoreAccount, Symbol("location"), o.location)
+    OpenAPI.validate_property(DataLakeStoreAccount, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ DataLakeStoreAccount }, name::Symbol, val)
+
+
+
+
+
+
+
 end

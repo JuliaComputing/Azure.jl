@@ -24,23 +24,33 @@ Base.@kwdef mutable struct BlobRestoreStatus <: OpenAPI.APIModel
     parameters = nothing # spec type: Union{ Nothing, BlobRestoreParameters }
 
     function BlobRestoreStatus(status, failureReason, restoreId, parameters, )
-        OpenAPI.validate_property(BlobRestoreStatus, Symbol("status"), status)
-        OpenAPI.validate_property(BlobRestoreStatus, Symbol("failureReason"), failureReason)
-        OpenAPI.validate_property(BlobRestoreStatus, Symbol("restoreId"), restoreId)
-        OpenAPI.validate_property(BlobRestoreStatus, Symbol("parameters"), parameters)
-        return new(status, failureReason, restoreId, parameters, )
+        o = new(status, failureReason, restoreId, parameters, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type BlobRestoreStatus
 
 const _property_types_BlobRestoreStatus = Dict{Symbol,String}(Symbol("status")=>"String", Symbol("failureReason")=>"String", Symbol("restoreId")=>"String", Symbol("parameters")=>"BlobRestoreParameters", )
 OpenAPI.property_type(::Type{ BlobRestoreStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_BlobRestoreStatus[name]))}
 
-function check_required(o::BlobRestoreStatus)
+function OpenAPI.check_required(o::BlobRestoreStatus)
     true
 end
 
+function OpenAPI.validate_properties(o::BlobRestoreStatus)
+    OpenAPI.validate_property(BlobRestoreStatus, Symbol("status"), o.status)
+    OpenAPI.validate_property(BlobRestoreStatus, Symbol("failureReason"), o.failureReason)
+    OpenAPI.validate_property(BlobRestoreStatus, Symbol("restoreId"), o.restoreId)
+    OpenAPI.validate_property(BlobRestoreStatus, Symbol("parameters"), o.parameters)
+end
+
 function OpenAPI.validate_property(::Type{ BlobRestoreStatus }, name::Symbol, val)
+
     if name === Symbol("status")
         OpenAPI.validate_param(name, "BlobRestoreStatus", :enum, val, ["InProgress", "Complete", "Failed"])
     end
+
+
+
+
 end

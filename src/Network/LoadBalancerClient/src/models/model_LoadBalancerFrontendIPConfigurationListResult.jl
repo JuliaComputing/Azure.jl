@@ -18,18 +18,25 @@ Base.@kwdef mutable struct LoadBalancerFrontendIPConfigurationListResult <: Open
     nextLink::Union{Nothing, String} = nothing
 
     function LoadBalancerFrontendIPConfigurationListResult(value, nextLink, )
-        OpenAPI.validate_property(LoadBalancerFrontendIPConfigurationListResult, Symbol("value"), value)
-        OpenAPI.validate_property(LoadBalancerFrontendIPConfigurationListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type LoadBalancerFrontendIPConfigurationListResult
 
 const _property_types_LoadBalancerFrontendIPConfigurationListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{FrontendIPConfiguration}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ LoadBalancerFrontendIPConfigurationListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_LoadBalancerFrontendIPConfigurationListResult[name]))}
 
-function check_required(o::LoadBalancerFrontendIPConfigurationListResult)
+function OpenAPI.check_required(o::LoadBalancerFrontendIPConfigurationListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::LoadBalancerFrontendIPConfigurationListResult)
+    OpenAPI.validate_property(LoadBalancerFrontendIPConfigurationListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(LoadBalancerFrontendIPConfigurationListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ LoadBalancerFrontendIPConfigurationListResult }, name::Symbol, val)
+
+
 end

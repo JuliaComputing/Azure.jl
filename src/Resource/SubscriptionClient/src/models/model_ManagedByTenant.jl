@@ -15,17 +15,23 @@ Base.@kwdef mutable struct ManagedByTenant <: OpenAPI.APIModel
     tenantId::Union{Nothing, String} = nothing
 
     function ManagedByTenant(tenantId, )
-        OpenAPI.validate_property(ManagedByTenant, Symbol("tenantId"), tenantId)
-        return new(tenantId, )
+        o = new(tenantId, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ManagedByTenant
 
 const _property_types_ManagedByTenant = Dict{Symbol,String}(Symbol("tenantId")=>"String", )
 OpenAPI.property_type(::Type{ ManagedByTenant }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ManagedByTenant[name]))}
 
-function check_required(o::ManagedByTenant)
+function OpenAPI.check_required(o::ManagedByTenant)
     true
 end
 
+function OpenAPI.validate_properties(o::ManagedByTenant)
+    OpenAPI.validate_property(ManagedByTenant, Symbol("tenantId"), o.tenantId)
+end
+
 function OpenAPI.validate_property(::Type{ ManagedByTenant }, name::Symbol, val)
+
 end

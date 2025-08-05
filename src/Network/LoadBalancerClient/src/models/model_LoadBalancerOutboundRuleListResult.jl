@@ -18,18 +18,25 @@ Base.@kwdef mutable struct LoadBalancerOutboundRuleListResult <: OpenAPI.APIMode
     nextLink::Union{Nothing, String} = nothing
 
     function LoadBalancerOutboundRuleListResult(value, nextLink, )
-        OpenAPI.validate_property(LoadBalancerOutboundRuleListResult, Symbol("value"), value)
-        OpenAPI.validate_property(LoadBalancerOutboundRuleListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type LoadBalancerOutboundRuleListResult
 
 const _property_types_LoadBalancerOutboundRuleListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{OutboundRule}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ LoadBalancerOutboundRuleListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_LoadBalancerOutboundRuleListResult[name]))}
 
-function check_required(o::LoadBalancerOutboundRuleListResult)
+function OpenAPI.check_required(o::LoadBalancerOutboundRuleListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::LoadBalancerOutboundRuleListResult)
+    OpenAPI.validate_property(LoadBalancerOutboundRuleListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(LoadBalancerOutboundRuleListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ LoadBalancerOutboundRuleListResult }, name::Symbol, val)
+
+
 end

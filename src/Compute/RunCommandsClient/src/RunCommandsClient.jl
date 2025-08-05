@@ -7,11 +7,12 @@ using Dates, TimeZones
 using OpenAPI
 using OpenAPI.Clients
 
-const API_VERSION = "2020-06-01"
+const API_VERSION = "2021-11-01"
 
 include("modelincludes.jl")
 
 include("apis/api_VirtualMachineRunCommandsApi.jl")
+include("apis/api_VirtualMachineScaleSetVMRunCommandsApi.jl")
 include("apis/api_VirtualMachineScaleSetVMsApi.jl")
 include("apis/api_VirtualMachinesApi.jl")
 

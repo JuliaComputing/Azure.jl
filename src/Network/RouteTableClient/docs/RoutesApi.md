@@ -23,12 +23,12 @@ Creates or updates a route in the specified route table.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **RoutesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**route_table_name** | **String**| The name of the route table. | [default to nothing]
-**route_name** | **String**| The name of the route. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**route_parameters** | [**Route**](Route.md)| Parameters supplied to the create or update route operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**route_table_name** | **String** | The name of the route table. |
+**route_name** | **String** | The name of the route. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**route_parameters** | [**Route**](Route.md) | Parameters supplied to the create or update route operation. |
 
 ### Return type
 
@@ -58,11 +58,11 @@ Deletes the specified route from a route table.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **RoutesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**route_table_name** | **String**| The name of the route table. | [default to nothing]
-**route_name** | **String**| The name of the route. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**route_table_name** | **String** | The name of the route table. |
+**route_name** | **String** | The name of the route. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -92,11 +92,11 @@ Gets the specified route from a route table.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **RoutesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**route_table_name** | **String**| The name of the route table. | [default to nothing]
-**route_name** | **String**| The name of the route. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**route_table_name** | **String** | The name of the route table. |
+**route_name** | **String** | The name of the route. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -126,10 +126,10 @@ Gets all routes in a route table.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **RoutesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**route_table_name** | **String**| The name of the route table. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**route_table_name** | **String** | The name of the route table. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 

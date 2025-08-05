@@ -11,14 +11,52 @@ This can be used to construct the `OpenAPI.Clients.Client` instance.
 """
 basepath(::Type{ SubscriptionsApi }) = "https://management.azure.com"
 
+const _returntypes_subscriptions_check_zone_peers_SubscriptionsApi = Dict{Regex,Type}(
+    Regex("^" * replace("200", "x"=>".") * "\$") => CheckZonePeersResult,
+    Regex("^" * replace("0", "x"=>".") * "\$") => ErrorResponse,
+)
+
+function _oacinternal_subscriptions_check_zone_peers(_api::SubscriptionsApi, subscription_id::String, api_version::String, parameters::CheckZonePeersRequest; _mediaType=nothing)
+    OpenAPI.validate_param("api_version", "subscriptions_check_zone_peers", :minLength, api_version, 1)
+
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_subscriptions_check_zone_peers_SubscriptionsApi, "/subscriptions/{subscriptionId}/providers/Microsoft.Resources/checkZonePeers/", ["azure_auth", ], parameters)
+    OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
+    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
+    return _ctx
+end
+
+@doc raw"""Compares a subscriptions logical zone mapping
+
+Params:
+- subscription_id::String (required)
+- api_version::String (required)
+- parameters::CheckZonePeersRequest (required)
+
+Return: CheckZonePeersResult, OpenAPI.Clients.ApiResponse
+"""
+function subscriptions_check_zone_peers(_api::SubscriptionsApi, subscription_id::String, api_version::String, parameters::CheckZonePeersRequest; _mediaType=nothing)
+    _ctx = _oacinternal_subscriptions_check_zone_peers(_api, subscription_id, api_version, parameters; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx)
+end
+
+function subscriptions_check_zone_peers(_api::SubscriptionsApi, response_stream::Channel, subscription_id::String, api_version::String, parameters::CheckZonePeersRequest; _mediaType=nothing)
+    _ctx = _oacinternal_subscriptions_check_zone_peers(_api, subscription_id, api_version, parameters; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx, response_stream)
+end
+
 const _returntypes_subscriptions_get_SubscriptionsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => Subscription,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_subscriptions_get(_api::SubscriptionsApi, subscription_id::String, api_version::String; _mediaType=nothing)
+    OpenAPI.validate_param("api_version", "subscriptions_get", :minLength, api_version, 1)
+
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_subscriptions_get_SubscriptionsApi, "/subscriptions/{subscriptionId}", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -44,11 +82,14 @@ end
 
 const _returntypes_subscriptions_list_SubscriptionsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => SubscriptionListResult,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_subscriptions_list(_api::SubscriptionsApi, api_version::String; _mediaType=nothing)
+    OpenAPI.validate_param("api_version", "subscriptions_list", :minLength, api_version, 1)
+
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_subscriptions_list_SubscriptionsApi, "/subscriptions", ["azure_auth", ])
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -73,12 +114,16 @@ end
 
 const _returntypes_subscriptions_list_locations_SubscriptionsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => LocationListResult,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
-function _oacinternal_subscriptions_list_locations(_api::SubscriptionsApi, subscription_id::String, api_version::String; _mediaType=nothing)
+function _oacinternal_subscriptions_list_locations(_api::SubscriptionsApi, subscription_id::String, api_version::String; include_extended_locations=nothing, _mediaType=nothing)
+    OpenAPI.validate_param("api_version", "subscriptions_list_locations", :minLength, api_version, 1)
+
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_subscriptions_list_locations_SubscriptionsApi, "/subscriptions/{subscriptionId}/locations", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "includeExtendedLocations", include_extended_locations; style="", is_explode=false)  # type Bool
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -91,19 +136,21 @@ This operation provides all the locations that are available for resource provid
 Params:
 - subscription_id::String (required)
 - api_version::String (required)
+- include_extended_locations::Bool
 
 Return: LocationListResult, OpenAPI.Clients.ApiResponse
 """
-function subscriptions_list_locations(_api::SubscriptionsApi, subscription_id::String, api_version::String; _mediaType=nothing)
-    _ctx = _oacinternal_subscriptions_list_locations(_api, subscription_id, api_version; _mediaType=_mediaType)
+function subscriptions_list_locations(_api::SubscriptionsApi, subscription_id::String, api_version::String; include_extended_locations=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_subscriptions_list_locations(_api, subscription_id, api_version; include_extended_locations=include_extended_locations, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx)
 end
 
-function subscriptions_list_locations(_api::SubscriptionsApi, response_stream::Channel, subscription_id::String, api_version::String; _mediaType=nothing)
-    _ctx = _oacinternal_subscriptions_list_locations(_api, subscription_id, api_version; _mediaType=_mediaType)
+function subscriptions_list_locations(_api::SubscriptionsApi, response_stream::Channel, subscription_id::String, api_version::String; include_extended_locations=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_subscriptions_list_locations(_api, subscription_id, api_version; include_extended_locations=include_extended_locations, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
+export subscriptions_check_zone_peers
 export subscriptions_get
 export subscriptions_list
 export subscriptions_list_locations

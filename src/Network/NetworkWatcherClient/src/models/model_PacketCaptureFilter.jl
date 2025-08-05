@@ -6,7 +6,7 @@
 Filter that is applied to packet capture request. Multiple filters can be applied.
 
     PacketCaptureFilter(;
-        protocol=Any,
+        protocol="Any",
         localIPAddress=nothing,
         remoteIPAddress=nothing,
         localPort=nothing,
@@ -20,31 +20,42 @@ Filter that is applied to packet capture request. Multiple filters can be applie
     - remotePort::String : Remote port to be filtered on. Notation: \&quot;80\&quot; for single port entry.\&quot;80-85\&quot; for range. \&quot;80;443;\&quot; for multiple entries. Multiple ranges not currently supported. Mixing ranges with multiple entries not currently supported. Default &#x3D; null.
 """
 Base.@kwdef mutable struct PacketCaptureFilter <: OpenAPI.APIModel
-    protocol::Union{Nothing, String} = Any
+    protocol::Union{Nothing, String} = "Any"
     localIPAddress::Union{Nothing, String} = nothing
     remoteIPAddress::Union{Nothing, String} = nothing
     localPort::Union{Nothing, String} = nothing
     remotePort::Union{Nothing, String} = nothing
 
     function PacketCaptureFilter(protocol, localIPAddress, remoteIPAddress, localPort, remotePort, )
-        OpenAPI.validate_property(PacketCaptureFilter, Symbol("protocol"), protocol)
-        OpenAPI.validate_property(PacketCaptureFilter, Symbol("localIPAddress"), localIPAddress)
-        OpenAPI.validate_property(PacketCaptureFilter, Symbol("remoteIPAddress"), remoteIPAddress)
-        OpenAPI.validate_property(PacketCaptureFilter, Symbol("localPort"), localPort)
-        OpenAPI.validate_property(PacketCaptureFilter, Symbol("remotePort"), remotePort)
-        return new(protocol, localIPAddress, remoteIPAddress, localPort, remotePort, )
+        o = new(protocol, localIPAddress, remoteIPAddress, localPort, remotePort, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PacketCaptureFilter
 
 const _property_types_PacketCaptureFilter = Dict{Symbol,String}(Symbol("protocol")=>"String", Symbol("localIPAddress")=>"String", Symbol("remoteIPAddress")=>"String", Symbol("localPort")=>"String", Symbol("remotePort")=>"String", )
 OpenAPI.property_type(::Type{ PacketCaptureFilter }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PacketCaptureFilter[name]))}
 
-function check_required(o::PacketCaptureFilter)
+function OpenAPI.check_required(o::PacketCaptureFilter)
     true
 end
 
+function OpenAPI.validate_properties(o::PacketCaptureFilter)
+    OpenAPI.validate_property(PacketCaptureFilter, Symbol("protocol"), o.protocol)
+    OpenAPI.validate_property(PacketCaptureFilter, Symbol("localIPAddress"), o.localIPAddress)
+    OpenAPI.validate_property(PacketCaptureFilter, Symbol("remoteIPAddress"), o.remoteIPAddress)
+    OpenAPI.validate_property(PacketCaptureFilter, Symbol("localPort"), o.localPort)
+    OpenAPI.validate_property(PacketCaptureFilter, Symbol("remotePort"), o.remotePort)
+end
+
 function OpenAPI.validate_property(::Type{ PacketCaptureFilter }, name::Symbol, val)
+
     if name === Symbol("protocol")
         OpenAPI.validate_param(name, "PacketCaptureFilter", :enum, val, ["TCP", "UDP", "Any"])
     end
+
+
+
+
+
 end

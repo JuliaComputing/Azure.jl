@@ -15,21 +15,28 @@ Base.@kwdef mutable struct ContainerServiceOrchestratorProfile <: OpenAPI.APIMod
     orchestratorType::Union{Nothing, String} = nothing
 
     function ContainerServiceOrchestratorProfile(orchestratorType, )
-        OpenAPI.validate_property(ContainerServiceOrchestratorProfile, Symbol("orchestratorType"), orchestratorType)
-        return new(orchestratorType, )
+        o = new(orchestratorType, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ContainerServiceOrchestratorProfile
 
 const _property_types_ContainerServiceOrchestratorProfile = Dict{Symbol,String}(Symbol("orchestratorType")=>"String", )
 OpenAPI.property_type(::Type{ ContainerServiceOrchestratorProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ContainerServiceOrchestratorProfile[name]))}
 
-function check_required(o::ContainerServiceOrchestratorProfile)
+function OpenAPI.check_required(o::ContainerServiceOrchestratorProfile)
     o.orchestratorType === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ContainerServiceOrchestratorProfile)
+    OpenAPI.validate_property(ContainerServiceOrchestratorProfile, Symbol("orchestratorType"), o.orchestratorType)
+end
+
 function OpenAPI.validate_property(::Type{ ContainerServiceOrchestratorProfile }, name::Symbol, val)
+
     if name === Symbol("orchestratorType")
         OpenAPI.validate_param(name, "ContainerServiceOrchestratorProfile", :enum, val, ["Swarm", "DCOS", "Custom", "Kubernetes"])
     end
+
 end

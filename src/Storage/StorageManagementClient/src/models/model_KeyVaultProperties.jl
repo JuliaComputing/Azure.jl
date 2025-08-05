@@ -11,6 +11,7 @@ Properties of key vault.
         keyvaulturi=nothing,
         currentVersionedKeyIdentifier=nothing,
         lastKeyRotationTimestamp=nothing,
+        currentVersionedKeyExpirationTimestamp=nothing,
     )
 
     - keyname::String : The name of KeyVault key.
@@ -18,6 +19,7 @@ Properties of key vault.
     - keyvaulturi::String : The Uri of KeyVault.
     - currentVersionedKeyIdentifier::String : The object identifier of the current versioned Key Vault Key in use.
     - lastKeyRotationTimestamp::ZonedDateTime : Timestamp of last rotation of the Key Vault Key.
+    - currentVersionedKeyExpirationTimestamp::ZonedDateTime : This is a read only property that represents the expiration time of the current version of the customer managed key used for encryption.
 """
 Base.@kwdef mutable struct KeyVaultProperties <: OpenAPI.APIModel
     keyname::Union{Nothing, String} = nothing
@@ -25,26 +27,42 @@ Base.@kwdef mutable struct KeyVaultProperties <: OpenAPI.APIModel
     keyvaulturi::Union{Nothing, String} = nothing
     currentVersionedKeyIdentifier::Union{Nothing, String} = nothing
     lastKeyRotationTimestamp::Union{Nothing, ZonedDateTime} = nothing
+    currentVersionedKeyExpirationTimestamp::Union{Nothing, ZonedDateTime} = nothing
 
-    function KeyVaultProperties(keyname, keyversion, keyvaulturi, currentVersionedKeyIdentifier, lastKeyRotationTimestamp, )
-        OpenAPI.validate_property(KeyVaultProperties, Symbol("keyname"), keyname)
-        OpenAPI.validate_property(KeyVaultProperties, Symbol("keyversion"), keyversion)
-        OpenAPI.validate_property(KeyVaultProperties, Symbol("keyvaulturi"), keyvaulturi)
-        OpenAPI.validate_property(KeyVaultProperties, Symbol("currentVersionedKeyIdentifier"), currentVersionedKeyIdentifier)
-        OpenAPI.validate_property(KeyVaultProperties, Symbol("lastKeyRotationTimestamp"), lastKeyRotationTimestamp)
-        return new(keyname, keyversion, keyvaulturi, currentVersionedKeyIdentifier, lastKeyRotationTimestamp, )
+    function KeyVaultProperties(keyname, keyversion, keyvaulturi, currentVersionedKeyIdentifier, lastKeyRotationTimestamp, currentVersionedKeyExpirationTimestamp, )
+        o = new(keyname, keyversion, keyvaulturi, currentVersionedKeyIdentifier, lastKeyRotationTimestamp, currentVersionedKeyExpirationTimestamp, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type KeyVaultProperties
 
-const _property_types_KeyVaultProperties = Dict{Symbol,String}(Symbol("keyname")=>"String", Symbol("keyversion")=>"String", Symbol("keyvaulturi")=>"String", Symbol("currentVersionedKeyIdentifier")=>"String", Symbol("lastKeyRotationTimestamp")=>"ZonedDateTime", )
+const _property_types_KeyVaultProperties = Dict{Symbol,String}(Symbol("keyname")=>"String", Symbol("keyversion")=>"String", Symbol("keyvaulturi")=>"String", Symbol("currentVersionedKeyIdentifier")=>"String", Symbol("lastKeyRotationTimestamp")=>"ZonedDateTime", Symbol("currentVersionedKeyExpirationTimestamp")=>"ZonedDateTime", )
 OpenAPI.property_type(::Type{ KeyVaultProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_KeyVaultProperties[name]))}
 
-function check_required(o::KeyVaultProperties)
+function OpenAPI.check_required(o::KeyVaultProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::KeyVaultProperties)
+    OpenAPI.validate_property(KeyVaultProperties, Symbol("keyname"), o.keyname)
+    OpenAPI.validate_property(KeyVaultProperties, Symbol("keyversion"), o.keyversion)
+    OpenAPI.validate_property(KeyVaultProperties, Symbol("keyvaulturi"), o.keyvaulturi)
+    OpenAPI.validate_property(KeyVaultProperties, Symbol("currentVersionedKeyIdentifier"), o.currentVersionedKeyIdentifier)
+    OpenAPI.validate_property(KeyVaultProperties, Symbol("lastKeyRotationTimestamp"), o.lastKeyRotationTimestamp)
+    OpenAPI.validate_property(KeyVaultProperties, Symbol("currentVersionedKeyExpirationTimestamp"), o.currentVersionedKeyExpirationTimestamp)
+end
+
 function OpenAPI.validate_property(::Type{ KeyVaultProperties }, name::Symbol, val)
+
+
+
+
+
     if name === Symbol("lastKeyRotationTimestamp")
+        OpenAPI.validate_param(name, "KeyVaultProperties", :format, val, "date-time")
+    end
+
+    if name === Symbol("currentVersionedKeyExpirationTimestamp")
         OpenAPI.validate_param(name, "KeyVaultProperties", :format, val, "date-time")
     end
 end

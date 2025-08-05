@@ -8,32 +8,54 @@ Settings for Azure Files identity based authentication.
     AzureFilesIdentityBasedAuthentication(;
         directoryServiceOptions=nothing,
         activeDirectoryProperties=nothing,
+        defaultSharePermission=nothing,
+        smbOAuthSettings=nothing,
     )
 
-    - directoryServiceOptions::String : Indicates the directory service used.
+    - directoryServiceOptions::String : Indicates the directory service used. Note that this enum may be extended in the future.
     - activeDirectoryProperties::ActiveDirectoryProperties
+    - defaultSharePermission::String : Default share permission for users using Kerberos authentication if RBAC role is not assigned.
+    - smbOAuthSettings::SmbOAuthSettings
 """
 Base.@kwdef mutable struct AzureFilesIdentityBasedAuthentication <: OpenAPI.APIModel
     directoryServiceOptions::Union{Nothing, String} = nothing
     activeDirectoryProperties = nothing # spec type: Union{ Nothing, ActiveDirectoryProperties }
+    defaultSharePermission::Union{Nothing, String} = nothing
+    smbOAuthSettings = nothing # spec type: Union{ Nothing, SmbOAuthSettings }
 
-    function AzureFilesIdentityBasedAuthentication(directoryServiceOptions, activeDirectoryProperties, )
-        OpenAPI.validate_property(AzureFilesIdentityBasedAuthentication, Symbol("directoryServiceOptions"), directoryServiceOptions)
-        OpenAPI.validate_property(AzureFilesIdentityBasedAuthentication, Symbol("activeDirectoryProperties"), activeDirectoryProperties)
-        return new(directoryServiceOptions, activeDirectoryProperties, )
+    function AzureFilesIdentityBasedAuthentication(directoryServiceOptions, activeDirectoryProperties, defaultSharePermission, smbOAuthSettings, )
+        o = new(directoryServiceOptions, activeDirectoryProperties, defaultSharePermission, smbOAuthSettings, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AzureFilesIdentityBasedAuthentication
 
-const _property_types_AzureFilesIdentityBasedAuthentication = Dict{Symbol,String}(Symbol("directoryServiceOptions")=>"String", Symbol("activeDirectoryProperties")=>"ActiveDirectoryProperties", )
+const _property_types_AzureFilesIdentityBasedAuthentication = Dict{Symbol,String}(Symbol("directoryServiceOptions")=>"String", Symbol("activeDirectoryProperties")=>"ActiveDirectoryProperties", Symbol("defaultSharePermission")=>"String", Symbol("smbOAuthSettings")=>"SmbOAuthSettings", )
 OpenAPI.property_type(::Type{ AzureFilesIdentityBasedAuthentication }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AzureFilesIdentityBasedAuthentication[name]))}
 
-function check_required(o::AzureFilesIdentityBasedAuthentication)
+function OpenAPI.check_required(o::AzureFilesIdentityBasedAuthentication)
     o.directoryServiceOptions === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::AzureFilesIdentityBasedAuthentication)
+    OpenAPI.validate_property(AzureFilesIdentityBasedAuthentication, Symbol("directoryServiceOptions"), o.directoryServiceOptions)
+    OpenAPI.validate_property(AzureFilesIdentityBasedAuthentication, Symbol("activeDirectoryProperties"), o.activeDirectoryProperties)
+    OpenAPI.validate_property(AzureFilesIdentityBasedAuthentication, Symbol("defaultSharePermission"), o.defaultSharePermission)
+    OpenAPI.validate_property(AzureFilesIdentityBasedAuthentication, Symbol("smbOAuthSettings"), o.smbOAuthSettings)
+end
+
 function OpenAPI.validate_property(::Type{ AzureFilesIdentityBasedAuthentication }, name::Symbol, val)
+
     if name === Symbol("directoryServiceOptions")
-        OpenAPI.validate_param(name, "AzureFilesIdentityBasedAuthentication", :enum, val, ["None", "AADDS", "AD"])
+        OpenAPI.validate_param(name, "AzureFilesIdentityBasedAuthentication", :enum, val, ["None", "AADDS", "AD", "AADKERB"])
     end
+
+
+
+    if name === Symbol("defaultSharePermission")
+        OpenAPI.validate_param(name, "AzureFilesIdentityBasedAuthentication", :enum, val, ["None", "StorageFileDataSmbShareReader", "StorageFileDataSmbShareContributor", "StorageFileDataSmbShareElevatedContributor"])
+    end
+
+
 end

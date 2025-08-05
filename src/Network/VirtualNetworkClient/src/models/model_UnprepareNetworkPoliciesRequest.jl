@@ -15,17 +15,23 @@ Base.@kwdef mutable struct UnprepareNetworkPoliciesRequest <: OpenAPI.APIModel
     serviceName::Union{Nothing, String} = nothing
 
     function UnprepareNetworkPoliciesRequest(serviceName, )
-        OpenAPI.validate_property(UnprepareNetworkPoliciesRequest, Symbol("serviceName"), serviceName)
-        return new(serviceName, )
+        o = new(serviceName, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type UnprepareNetworkPoliciesRequest
 
 const _property_types_UnprepareNetworkPoliciesRequest = Dict{Symbol,String}(Symbol("serviceName")=>"String", )
 OpenAPI.property_type(::Type{ UnprepareNetworkPoliciesRequest }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_UnprepareNetworkPoliciesRequest[name]))}
 
-function check_required(o::UnprepareNetworkPoliciesRequest)
+function OpenAPI.check_required(o::UnprepareNetworkPoliciesRequest)
     true
 end
 
+function OpenAPI.validate_properties(o::UnprepareNetworkPoliciesRequest)
+    OpenAPI.validate_property(UnprepareNetworkPoliciesRequest, Symbol("serviceName"), o.serviceName)
+end
+
 function OpenAPI.validate_property(::Type{ UnprepareNetworkPoliciesRequest }, name::Symbol, val)
+
 end

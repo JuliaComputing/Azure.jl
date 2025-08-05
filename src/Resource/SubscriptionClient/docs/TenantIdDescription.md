@@ -4,8 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | The fully qualified ID of the tenant. For example, /tenants/00000000-0000-0000-0000-000000000000. | [optional] [readonly] [default to nothing]
-**tenantId** | **String** | The tenant ID. For example, 00000000-0000-0000-0000-000000000000. | [optional] [readonly] [default to nothing]
+**id** | **String** | The fully qualified ID of the tenant. For example, /tenants/8d65815f-a5b6-402f-9298-045155da7d74 | [optional] [readonly] [default to nothing]
+**tenantId** | **String** | The tenant ID. For example, 8d65815f-a5b6-402f-9298-045155da7d74 | [optional] [readonly] [default to nothing]
 **tenantCategory** | **String** | Category of the tenant. | [optional] [readonly] [default to nothing]
 **country** | **String** | Country/region name of the address for the tenant. | [optional] [readonly] [default to nothing]
 **countryCode** | **String** | Country/region abbreviation for the tenant. | [optional] [readonly] [default to nothing]

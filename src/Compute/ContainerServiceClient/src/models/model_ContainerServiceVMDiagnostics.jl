@@ -18,19 +18,26 @@ Base.@kwdef mutable struct ContainerServiceVMDiagnostics <: OpenAPI.APIModel
     storageUri::Union{Nothing, String} = nothing
 
     function ContainerServiceVMDiagnostics(enabled, storageUri, )
-        OpenAPI.validate_property(ContainerServiceVMDiagnostics, Symbol("enabled"), enabled)
-        OpenAPI.validate_property(ContainerServiceVMDiagnostics, Symbol("storageUri"), storageUri)
-        return new(enabled, storageUri, )
+        o = new(enabled, storageUri, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ContainerServiceVMDiagnostics
 
 const _property_types_ContainerServiceVMDiagnostics = Dict{Symbol,String}(Symbol("enabled")=>"Bool", Symbol("storageUri")=>"String", )
 OpenAPI.property_type(::Type{ ContainerServiceVMDiagnostics }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ContainerServiceVMDiagnostics[name]))}
 
-function check_required(o::ContainerServiceVMDiagnostics)
+function OpenAPI.check_required(o::ContainerServiceVMDiagnostics)
     o.enabled === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ContainerServiceVMDiagnostics)
+    OpenAPI.validate_property(ContainerServiceVMDiagnostics, Symbol("enabled"), o.enabled)
+    OpenAPI.validate_property(ContainerServiceVMDiagnostics, Symbol("storageUri"), o.storageUri)
+end
+
 function OpenAPI.validate_property(::Type{ ContainerServiceVMDiagnostics }, name::Symbol, val)
+
+
 end

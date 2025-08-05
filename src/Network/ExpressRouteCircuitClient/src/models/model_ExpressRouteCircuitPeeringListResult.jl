@@ -18,18 +18,25 @@ Base.@kwdef mutable struct ExpressRouteCircuitPeeringListResult <: OpenAPI.APIMo
     nextLink::Union{Nothing, String} = nothing
 
     function ExpressRouteCircuitPeeringListResult(value, nextLink, )
-        OpenAPI.validate_property(ExpressRouteCircuitPeeringListResult, Symbol("value"), value)
-        OpenAPI.validate_property(ExpressRouteCircuitPeeringListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ExpressRouteCircuitPeeringListResult
 
 const _property_types_ExpressRouteCircuitPeeringListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{ExpressRouteCircuitPeering}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ ExpressRouteCircuitPeeringListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExpressRouteCircuitPeeringListResult[name]))}
 
-function check_required(o::ExpressRouteCircuitPeeringListResult)
+function OpenAPI.check_required(o::ExpressRouteCircuitPeeringListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::ExpressRouteCircuitPeeringListResult)
+    OpenAPI.validate_property(ExpressRouteCircuitPeeringListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(ExpressRouteCircuitPeeringListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ ExpressRouteCircuitPeeringListResult }, name::Symbol, val)
+
+
 end

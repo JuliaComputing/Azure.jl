@@ -24,22 +24,28 @@ Base.@kwdef mutable struct BgpSettings <: OpenAPI.APIModel
     bgpPeeringAddresses::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{IPConfigurationBgpPeeringAddress} }
 
     function BgpSettings(asn, bgpPeeringAddress, peerWeight, bgpPeeringAddresses, )
-        OpenAPI.validate_property(BgpSettings, Symbol("asn"), asn)
-        OpenAPI.validate_property(BgpSettings, Symbol("bgpPeeringAddress"), bgpPeeringAddress)
-        OpenAPI.validate_property(BgpSettings, Symbol("peerWeight"), peerWeight)
-        OpenAPI.validate_property(BgpSettings, Symbol("bgpPeeringAddresses"), bgpPeeringAddresses)
-        return new(asn, bgpPeeringAddress, peerWeight, bgpPeeringAddresses, )
+        o = new(asn, bgpPeeringAddress, peerWeight, bgpPeeringAddresses, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type BgpSettings
 
 const _property_types_BgpSettings = Dict{Symbol,String}(Symbol("asn")=>"Int64", Symbol("bgpPeeringAddress")=>"String", Symbol("peerWeight")=>"Int64", Symbol("bgpPeeringAddresses")=>"Vector{IPConfigurationBgpPeeringAddress}", )
 OpenAPI.property_type(::Type{ BgpSettings }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_BgpSettings[name]))}
 
-function check_required(o::BgpSettings)
+function OpenAPI.check_required(o::BgpSettings)
     true
 end
 
+function OpenAPI.validate_properties(o::BgpSettings)
+    OpenAPI.validate_property(BgpSettings, Symbol("asn"), o.asn)
+    OpenAPI.validate_property(BgpSettings, Symbol("bgpPeeringAddress"), o.bgpPeeringAddress)
+    OpenAPI.validate_property(BgpSettings, Symbol("peerWeight"), o.peerWeight)
+    OpenAPI.validate_property(BgpSettings, Symbol("bgpPeeringAddresses"), o.bgpPeeringAddresses)
+end
+
 function OpenAPI.validate_property(::Type{ BgpSettings }, name::Symbol, val)
+
     if name === Symbol("asn")
         OpenAPI.validate_param(name, "BgpSettings", :format, val, "int64")
     end
@@ -47,7 +53,10 @@ function OpenAPI.validate_property(::Type{ BgpSettings }, name::Symbol, val)
         OpenAPI.validate_param(name, "BgpSettings", :maximum, val, 4294967295, false)
         OpenAPI.validate_param(name, "BgpSettings", :minimum, val, 0, false)
     end
+
+
     if name === Symbol("peerWeight")
         OpenAPI.validate_param(name, "BgpSettings", :format, val, "int32")
     end
+
 end

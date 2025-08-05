@@ -21,20 +21,28 @@ Base.@kwdef mutable struct AdlsThrottledException <: OpenAPI.APIModel
     message::Union{Nothing, String} = nothing
 
     function AdlsThrottledException(exception, javaClassName, message, )
-        OpenAPI.validate_property(AdlsThrottledException, Symbol("exception"), exception)
-        OpenAPI.validate_property(AdlsThrottledException, Symbol("javaClassName"), javaClassName)
-        OpenAPI.validate_property(AdlsThrottledException, Symbol("message"), message)
-        return new(exception, javaClassName, message, )
+        o = new(exception, javaClassName, message, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AdlsThrottledException
 
 const _property_types_AdlsThrottledException = Dict{Symbol,String}(Symbol("exception")=>"String", Symbol("javaClassName")=>"String", Symbol("message")=>"String", )
 OpenAPI.property_type(::Type{ AdlsThrottledException }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AdlsThrottledException[name]))}
 
-function check_required(o::AdlsThrottledException)
+function OpenAPI.check_required(o::AdlsThrottledException)
     o.exception === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::AdlsThrottledException)
+    OpenAPI.validate_property(AdlsThrottledException, Symbol("exception"), o.exception)
+    OpenAPI.validate_property(AdlsThrottledException, Symbol("javaClassName"), o.javaClassName)
+    OpenAPI.validate_property(AdlsThrottledException, Symbol("message"), o.message)
+end
+
 function OpenAPI.validate_property(::Type{ AdlsThrottledException }, name::Symbol, val)
+
+
+
 end

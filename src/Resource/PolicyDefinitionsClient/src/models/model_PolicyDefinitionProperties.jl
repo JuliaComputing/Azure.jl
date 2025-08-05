@@ -7,12 +7,15 @@ The policy definition properties.
 
     PolicyDefinitionProperties(;
         policyType=nothing,
-        mode=nothing,
+        mode="Indexed",
         displayName=nothing,
         description=nothing,
         policyRule=nothing,
         metadata=nothing,
         parameters=nothing,
+        version=nothing,
+        versions=nothing,
+        externalEvaluationEnforcementSettings=nothing,
     )
 
     - policyType::String : The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
@@ -22,37 +25,62 @@ The policy definition properties.
     - policyRule::Any : The policy rule.
     - metadata::Any : The policy definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.
     - parameters::Dict{String, ParameterDefinitionsValue} : The parameter definitions for parameters used in the policy. The keys are the parameter names.
+    - version::String : The policy definition version in #.#.# format.
+    - versions::Vector{String} : A list of available versions for this policy definition.
+    - externalEvaluationEnforcementSettings::ExternalEvaluationEnforcementSettings
 """
 Base.@kwdef mutable struct PolicyDefinitionProperties <: OpenAPI.APIModel
     policyType::Union{Nothing, String} = nothing
-    mode::Union{Nothing, String} = nothing
+    mode::Union{Nothing, String} = "Indexed"
     displayName::Union{Nothing, String} = nothing
     description::Union{Nothing, String} = nothing
     policyRule::Union{Nothing, Any} = nothing
     metadata::Union{Nothing, Any} = nothing
     parameters::Union{Nothing, Dict} = nothing # spec type: Union{ Nothing, Dict{String, ParameterDefinitionsValue} }
+    version::Union{Nothing, String} = nothing
+    versions::Union{Nothing, Vector{String}} = nothing
+    externalEvaluationEnforcementSettings = nothing # spec type: Union{ Nothing, ExternalEvaluationEnforcementSettings }
 
-    function PolicyDefinitionProperties(policyType, mode, displayName, description, policyRule, metadata, parameters, )
-        OpenAPI.validate_property(PolicyDefinitionProperties, Symbol("policyType"), policyType)
-        OpenAPI.validate_property(PolicyDefinitionProperties, Symbol("mode"), mode)
-        OpenAPI.validate_property(PolicyDefinitionProperties, Symbol("displayName"), displayName)
-        OpenAPI.validate_property(PolicyDefinitionProperties, Symbol("description"), description)
-        OpenAPI.validate_property(PolicyDefinitionProperties, Symbol("policyRule"), policyRule)
-        OpenAPI.validate_property(PolicyDefinitionProperties, Symbol("metadata"), metadata)
-        OpenAPI.validate_property(PolicyDefinitionProperties, Symbol("parameters"), parameters)
-        return new(policyType, mode, displayName, description, policyRule, metadata, parameters, )
+    function PolicyDefinitionProperties(policyType, mode, displayName, description, policyRule, metadata, parameters, version, versions, externalEvaluationEnforcementSettings, )
+        o = new(policyType, mode, displayName, description, policyRule, metadata, parameters, version, versions, externalEvaluationEnforcementSettings, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PolicyDefinitionProperties
 
-const _property_types_PolicyDefinitionProperties = Dict{Symbol,String}(Symbol("policyType")=>"String", Symbol("mode")=>"String", Symbol("displayName")=>"String", Symbol("description")=>"String", Symbol("policyRule")=>"Any", Symbol("metadata")=>"Any", Symbol("parameters")=>"Dict{String, ParameterDefinitionsValue}", )
+const _property_types_PolicyDefinitionProperties = Dict{Symbol,String}(Symbol("policyType")=>"String", Symbol("mode")=>"String", Symbol("displayName")=>"String", Symbol("description")=>"String", Symbol("policyRule")=>"Any", Symbol("metadata")=>"Any", Symbol("parameters")=>"Dict{String, ParameterDefinitionsValue}", Symbol("version")=>"String", Symbol("versions")=>"Vector{String}", Symbol("externalEvaluationEnforcementSettings")=>"ExternalEvaluationEnforcementSettings", )
 OpenAPI.property_type(::Type{ PolicyDefinitionProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PolicyDefinitionProperties[name]))}
 
-function check_required(o::PolicyDefinitionProperties)
+function OpenAPI.check_required(o::PolicyDefinitionProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::PolicyDefinitionProperties)
+    OpenAPI.validate_property(PolicyDefinitionProperties, Symbol("policyType"), o.policyType)
+    OpenAPI.validate_property(PolicyDefinitionProperties, Symbol("mode"), o.mode)
+    OpenAPI.validate_property(PolicyDefinitionProperties, Symbol("displayName"), o.displayName)
+    OpenAPI.validate_property(PolicyDefinitionProperties, Symbol("description"), o.description)
+    OpenAPI.validate_property(PolicyDefinitionProperties, Symbol("policyRule"), o.policyRule)
+    OpenAPI.validate_property(PolicyDefinitionProperties, Symbol("metadata"), o.metadata)
+    OpenAPI.validate_property(PolicyDefinitionProperties, Symbol("parameters"), o.parameters)
+    OpenAPI.validate_property(PolicyDefinitionProperties, Symbol("version"), o.version)
+    OpenAPI.validate_property(PolicyDefinitionProperties, Symbol("versions"), o.versions)
+    OpenAPI.validate_property(PolicyDefinitionProperties, Symbol("externalEvaluationEnforcementSettings"), o.externalEvaluationEnforcementSettings)
+end
+
 function OpenAPI.validate_property(::Type{ PolicyDefinitionProperties }, name::Symbol, val)
+
     if name === Symbol("policyType")
         OpenAPI.validate_param(name, "PolicyDefinitionProperties", :enum, val, ["NotSpecified", "BuiltIn", "Custom", "Static"])
     end
+
+
+
+
+
+
+
+
+
+
 end

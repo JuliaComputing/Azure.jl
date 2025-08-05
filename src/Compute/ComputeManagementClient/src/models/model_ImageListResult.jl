@@ -18,19 +18,26 @@ Base.@kwdef mutable struct ImageListResult <: OpenAPI.APIModel
     nextLink::Union{Nothing, String} = nothing
 
     function ImageListResult(value, nextLink, )
-        OpenAPI.validate_property(ImageListResult, Symbol("value"), value)
-        OpenAPI.validate_property(ImageListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ImageListResult
 
 const _property_types_ImageListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{Image}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ ImageListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ImageListResult[name]))}
 
-function check_required(o::ImageListResult)
+function OpenAPI.check_required(o::ImageListResult)
     o.value === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ImageListResult)
+    OpenAPI.validate_property(ImageListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(ImageListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ ImageListResult }, name::Symbol, val)
+
+
 end

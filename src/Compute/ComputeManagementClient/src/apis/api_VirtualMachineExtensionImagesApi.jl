@@ -13,6 +13,7 @@ basepath(::Type{ VirtualMachineExtensionImagesApi }) = "https://management.azure
 
 const _returntypes_virtual_machine_extension_images_get_VirtualMachineExtensionImagesApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => VirtualMachineExtensionImage,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machine_extension_images_get(_api::VirtualMachineExtensionImagesApi, location::String, publisher_name::String, type::String, version::String, api_version::String, subscription_id::String; _mediaType=nothing)
@@ -22,7 +23,7 @@ function _oacinternal_virtual_machine_extension_images_get(_api::VirtualMachineE
     OpenAPI.Clients.set_param(_ctx.path, "type", type)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "version", version)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -52,6 +53,7 @@ end
 
 const _returntypes_virtual_machine_extension_images_list_types_VirtualMachineExtensionImagesApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => Vector{VirtualMachineExtensionImage},
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machine_extension_images_list_types(_api::VirtualMachineExtensionImagesApi, location::String, publisher_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
@@ -59,7 +61,7 @@ function _oacinternal_virtual_machine_extension_images_list_types(_api::VirtualM
     OpenAPI.Clients.set_param(_ctx.path, "location", location)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "publisherName", publisher_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -87,6 +89,7 @@ end
 
 const _returntypes_virtual_machine_extension_images_list_versions_VirtualMachineExtensionImagesApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => Vector{VirtualMachineExtensionImage},
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machine_extension_images_list_versions(_api::VirtualMachineExtensionImagesApi, location::String, publisher_name::String, type::String, api_version::String, subscription_id::String; filter=nothing, top=nothing, orderby=nothing, _mediaType=nothing)
@@ -95,10 +98,10 @@ function _oacinternal_virtual_machine_extension_images_list_versions(_api::Virtu
     OpenAPI.Clients.set_param(_ctx.path, "publisherName", publisher_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "type", type)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$filter", filter)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$top", top)  # type Int64
-    OpenAPI.Clients.set_param(_ctx.query, "\$orderby", orderby)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$filter", filter; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$top", top; style="", is_explode=false)  # type Int64
+    OpenAPI.Clients.set_param(_ctx.query, "\$orderby", orderby; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx

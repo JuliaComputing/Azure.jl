@@ -18,20 +18,27 @@ Base.@kwdef mutable struct KeyVaultSecretReference <: OpenAPI.APIModel
     sourceVault = nothing # spec type: Union{ Nothing, SubResource }
 
     function KeyVaultSecretReference(secretUrl, sourceVault, )
-        OpenAPI.validate_property(KeyVaultSecretReference, Symbol("secretUrl"), secretUrl)
-        OpenAPI.validate_property(KeyVaultSecretReference, Symbol("sourceVault"), sourceVault)
-        return new(secretUrl, sourceVault, )
+        o = new(secretUrl, sourceVault, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type KeyVaultSecretReference
 
 const _property_types_KeyVaultSecretReference = Dict{Symbol,String}(Symbol("secretUrl")=>"String", Symbol("sourceVault")=>"SubResource", )
 OpenAPI.property_type(::Type{ KeyVaultSecretReference }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_KeyVaultSecretReference[name]))}
 
-function check_required(o::KeyVaultSecretReference)
+function OpenAPI.check_required(o::KeyVaultSecretReference)
     o.secretUrl === nothing && (return false)
     o.sourceVault === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::KeyVaultSecretReference)
+    OpenAPI.validate_property(KeyVaultSecretReference, Symbol("secretUrl"), o.secretUrl)
+    OpenAPI.validate_property(KeyVaultSecretReference, Symbol("sourceVault"), o.sourceVault)
+end
+
 function OpenAPI.validate_property(::Type{ KeyVaultSecretReference }, name::Symbol, val)
+
+
 end

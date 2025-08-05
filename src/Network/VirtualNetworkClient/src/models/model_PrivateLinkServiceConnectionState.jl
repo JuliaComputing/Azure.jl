@@ -21,19 +21,27 @@ Base.@kwdef mutable struct PrivateLinkServiceConnectionState <: OpenAPI.APIModel
     actionsRequired::Union{Nothing, String} = nothing
 
     function PrivateLinkServiceConnectionState(status, description, actionsRequired, )
-        OpenAPI.validate_property(PrivateLinkServiceConnectionState, Symbol("status"), status)
-        OpenAPI.validate_property(PrivateLinkServiceConnectionState, Symbol("description"), description)
-        OpenAPI.validate_property(PrivateLinkServiceConnectionState, Symbol("actionsRequired"), actionsRequired)
-        return new(status, description, actionsRequired, )
+        o = new(status, description, actionsRequired, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PrivateLinkServiceConnectionState
 
 const _property_types_PrivateLinkServiceConnectionState = Dict{Symbol,String}(Symbol("status")=>"String", Symbol("description")=>"String", Symbol("actionsRequired")=>"String", )
 OpenAPI.property_type(::Type{ PrivateLinkServiceConnectionState }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PrivateLinkServiceConnectionState[name]))}
 
-function check_required(o::PrivateLinkServiceConnectionState)
+function OpenAPI.check_required(o::PrivateLinkServiceConnectionState)
     true
 end
 
+function OpenAPI.validate_properties(o::PrivateLinkServiceConnectionState)
+    OpenAPI.validate_property(PrivateLinkServiceConnectionState, Symbol("status"), o.status)
+    OpenAPI.validate_property(PrivateLinkServiceConnectionState, Symbol("description"), o.description)
+    OpenAPI.validate_property(PrivateLinkServiceConnectionState, Symbol("actionsRequired"), o.actionsRequired)
+end
+
 function OpenAPI.validate_property(::Type{ PrivateLinkServiceConnectionState }, name::Symbol, val)
+
+
+
 end

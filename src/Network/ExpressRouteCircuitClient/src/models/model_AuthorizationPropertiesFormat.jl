@@ -8,35 +8,49 @@ Properties of ExpressRouteCircuitAuthorization.
     AuthorizationPropertiesFormat(;
         authorizationKey=nothing,
         authorizationUseStatus=nothing,
+        connectionResourceUri=nothing,
         provisioningState=nothing,
     )
 
     - authorizationKey::String : The authorization key.
     - authorizationUseStatus::String : The authorization use status.
+    - connectionResourceUri::String : The reference to the ExpressRoute connection resource using the authorization.
     - provisioningState::ProvisioningState
 """
 Base.@kwdef mutable struct AuthorizationPropertiesFormat <: OpenAPI.APIModel
     authorizationKey::Union{Nothing, String} = nothing
     authorizationUseStatus::Union{Nothing, String} = nothing
+    connectionResourceUri::Union{Nothing, String} = nothing
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
-    function AuthorizationPropertiesFormat(authorizationKey, authorizationUseStatus, provisioningState, )
-        OpenAPI.validate_property(AuthorizationPropertiesFormat, Symbol("authorizationKey"), authorizationKey)
-        OpenAPI.validate_property(AuthorizationPropertiesFormat, Symbol("authorizationUseStatus"), authorizationUseStatus)
-        OpenAPI.validate_property(AuthorizationPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(authorizationKey, authorizationUseStatus, provisioningState, )
+    function AuthorizationPropertiesFormat(authorizationKey, authorizationUseStatus, connectionResourceUri, provisioningState, )
+        o = new(authorizationKey, authorizationUseStatus, connectionResourceUri, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AuthorizationPropertiesFormat
 
-const _property_types_AuthorizationPropertiesFormat = Dict{Symbol,String}(Symbol("authorizationKey")=>"String", Symbol("authorizationUseStatus")=>"String", Symbol("provisioningState")=>"ProvisioningState", )
+const _property_types_AuthorizationPropertiesFormat = Dict{Symbol,String}(Symbol("authorizationKey")=>"String", Symbol("authorizationUseStatus")=>"String", Symbol("connectionResourceUri")=>"String", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ AuthorizationPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AuthorizationPropertiesFormat[name]))}
 
-function check_required(o::AuthorizationPropertiesFormat)
+function OpenAPI.check_required(o::AuthorizationPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::AuthorizationPropertiesFormat)
+    OpenAPI.validate_property(AuthorizationPropertiesFormat, Symbol("authorizationKey"), o.authorizationKey)
+    OpenAPI.validate_property(AuthorizationPropertiesFormat, Symbol("authorizationUseStatus"), o.authorizationUseStatus)
+    OpenAPI.validate_property(AuthorizationPropertiesFormat, Symbol("connectionResourceUri"), o.connectionResourceUri)
+    OpenAPI.validate_property(AuthorizationPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ AuthorizationPropertiesFormat }, name::Symbol, val)
+
+
     if name === Symbol("authorizationUseStatus")
         OpenAPI.validate_param(name, "AuthorizationPropertiesFormat", :enum, val, ["Available", "InUse"])
     end
+
+
+
 end

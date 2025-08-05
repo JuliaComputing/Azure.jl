@@ -24,8 +24,8 @@ function _oacinternal_network_interfaces_get_virtual_machine_scale_set_ip_config
     OpenAPI.Clients.set_param(_ctx.path, "networkInterfaceName", network_interface_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "ipConfigurationName", ip_configuration_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -67,8 +67,8 @@ function _oacinternal_network_interfaces_get_virtual_machine_scale_set_network_i
     OpenAPI.Clients.set_param(_ctx.path, "virtualmachineIndex", virtualmachine_index)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "networkInterfaceName", network_interface_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -109,8 +109,8 @@ function _oacinternal_network_interfaces_list_virtual_machine_scale_set_ip_confi
     OpenAPI.Clients.set_param(_ctx.path, "virtualmachineIndex", virtualmachine_index)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "networkInterfaceName", network_interface_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -149,7 +149,7 @@ function _oacinternal_network_interfaces_list_virtual_machine_scale_set_network_
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualMachineScaleSetName", virtual_machine_scale_set_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -186,7 +186,7 @@ function _oacinternal_network_interfaces_list_virtual_machine_scale_set_v_m_netw
     OpenAPI.Clients.set_param(_ctx.path, "virtualMachineScaleSetName", virtual_machine_scale_set_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualmachineIndex", virtualmachine_index)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx

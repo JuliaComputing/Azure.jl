@@ -18,18 +18,25 @@ Base.@kwdef mutable struct ResourceGroupListResult <: OpenAPI.APIModel
     nextLink::Union{Nothing, String} = nothing
 
     function ResourceGroupListResult(value, nextLink, )
-        OpenAPI.validate_property(ResourceGroupListResult, Symbol("value"), value)
-        OpenAPI.validate_property(ResourceGroupListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ResourceGroupListResult
 
 const _property_types_ResourceGroupListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{ResourceGroup}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ ResourceGroupListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ResourceGroupListResult[name]))}
 
-function check_required(o::ResourceGroupListResult)
+function OpenAPI.check_required(o::ResourceGroupListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::ResourceGroupListResult)
+    OpenAPI.validate_property(ResourceGroupListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(ResourceGroupListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ ResourceGroupListResult }, name::Symbol, val)
+
+
 end

@@ -12,6 +12,8 @@ Describes the properties of a Virtual Machine Image.
         automaticOSUpgradeProperties=nothing,
         hyperVGeneration=nothing,
         disallowed=nothing,
+        features=nothing,
+        architecture=nothing,
     )
 
     - plan::PurchasePlan
@@ -20,6 +22,8 @@ Describes the properties of a Virtual Machine Image.
     - automaticOSUpgradeProperties::AutomaticOSUpgradeProperties
     - hyperVGeneration::HyperVGenerationType
     - disallowed::DisallowedConfiguration
+    - features::Vector{VirtualMachineImageFeature}
+    - architecture::ArchitectureType
 """
 Base.@kwdef mutable struct VirtualMachineImageProperties <: OpenAPI.APIModel
     plan = nothing # spec type: Union{ Nothing, PurchasePlan }
@@ -28,24 +32,41 @@ Base.@kwdef mutable struct VirtualMachineImageProperties <: OpenAPI.APIModel
     automaticOSUpgradeProperties = nothing # spec type: Union{ Nothing, AutomaticOSUpgradeProperties }
     hyperVGeneration = nothing # spec type: Union{ Nothing, HyperVGenerationType }
     disallowed = nothing # spec type: Union{ Nothing, DisallowedConfiguration }
+    features::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{VirtualMachineImageFeature} }
+    architecture = nothing # spec type: Union{ Nothing, ArchitectureType }
 
-    function VirtualMachineImageProperties(plan, osDiskImage, dataDiskImages, automaticOSUpgradeProperties, hyperVGeneration, disallowed, )
-        OpenAPI.validate_property(VirtualMachineImageProperties, Symbol("plan"), plan)
-        OpenAPI.validate_property(VirtualMachineImageProperties, Symbol("osDiskImage"), osDiskImage)
-        OpenAPI.validate_property(VirtualMachineImageProperties, Symbol("dataDiskImages"), dataDiskImages)
-        OpenAPI.validate_property(VirtualMachineImageProperties, Symbol("automaticOSUpgradeProperties"), automaticOSUpgradeProperties)
-        OpenAPI.validate_property(VirtualMachineImageProperties, Symbol("hyperVGeneration"), hyperVGeneration)
-        OpenAPI.validate_property(VirtualMachineImageProperties, Symbol("disallowed"), disallowed)
-        return new(plan, osDiskImage, dataDiskImages, automaticOSUpgradeProperties, hyperVGeneration, disallowed, )
+    function VirtualMachineImageProperties(plan, osDiskImage, dataDiskImages, automaticOSUpgradeProperties, hyperVGeneration, disallowed, features, architecture, )
+        o = new(plan, osDiskImage, dataDiskImages, automaticOSUpgradeProperties, hyperVGeneration, disallowed, features, architecture, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineImageProperties
 
-const _property_types_VirtualMachineImageProperties = Dict{Symbol,String}(Symbol("plan")=>"PurchasePlan", Symbol("osDiskImage")=>"OSDiskImage", Symbol("dataDiskImages")=>"Vector{DataDiskImage}", Symbol("automaticOSUpgradeProperties")=>"AutomaticOSUpgradeProperties", Symbol("hyperVGeneration")=>"HyperVGenerationType", Symbol("disallowed")=>"DisallowedConfiguration", )
+const _property_types_VirtualMachineImageProperties = Dict{Symbol,String}(Symbol("plan")=>"PurchasePlan", Symbol("osDiskImage")=>"OSDiskImage", Symbol("dataDiskImages")=>"Vector{DataDiskImage}", Symbol("automaticOSUpgradeProperties")=>"AutomaticOSUpgradeProperties", Symbol("hyperVGeneration")=>"HyperVGenerationType", Symbol("disallowed")=>"DisallowedConfiguration", Symbol("features")=>"Vector{VirtualMachineImageFeature}", Symbol("architecture")=>"ArchitectureType", )
 OpenAPI.property_type(::Type{ VirtualMachineImageProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineImageProperties[name]))}
 
-function check_required(o::VirtualMachineImageProperties)
+function OpenAPI.check_required(o::VirtualMachineImageProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineImageProperties)
+    OpenAPI.validate_property(VirtualMachineImageProperties, Symbol("plan"), o.plan)
+    OpenAPI.validate_property(VirtualMachineImageProperties, Symbol("osDiskImage"), o.osDiskImage)
+    OpenAPI.validate_property(VirtualMachineImageProperties, Symbol("dataDiskImages"), o.dataDiskImages)
+    OpenAPI.validate_property(VirtualMachineImageProperties, Symbol("automaticOSUpgradeProperties"), o.automaticOSUpgradeProperties)
+    OpenAPI.validate_property(VirtualMachineImageProperties, Symbol("hyperVGeneration"), o.hyperVGeneration)
+    OpenAPI.validate_property(VirtualMachineImageProperties, Symbol("disallowed"), o.disallowed)
+    OpenAPI.validate_property(VirtualMachineImageProperties, Symbol("features"), o.features)
+    OpenAPI.validate_property(VirtualMachineImageProperties, Symbol("architecture"), o.architecture)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineImageProperties }, name::Symbol, val)
+
+
+
+
+
+
+
+
 end

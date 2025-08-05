@@ -18,18 +18,25 @@ Base.@kwdef mutable struct VirtualNetworkListUsageResult <: OpenAPI.APIModel
     nextLink::Union{Nothing, String} = nothing
 
     function VirtualNetworkListUsageResult(value, nextLink, )
-        OpenAPI.validate_property(VirtualNetworkListUsageResult, Symbol("value"), value)
-        OpenAPI.validate_property(VirtualNetworkListUsageResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualNetworkListUsageResult
 
 const _property_types_VirtualNetworkListUsageResult = Dict{Symbol,String}(Symbol("value")=>"Vector{VirtualNetworkUsage}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ VirtualNetworkListUsageResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualNetworkListUsageResult[name]))}
 
-function check_required(o::VirtualNetworkListUsageResult)
+function OpenAPI.check_required(o::VirtualNetworkListUsageResult)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualNetworkListUsageResult)
+    OpenAPI.validate_property(VirtualNetworkListUsageResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(VirtualNetworkListUsageResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualNetworkListUsageResult }, name::Symbol, val)
+
+
 end

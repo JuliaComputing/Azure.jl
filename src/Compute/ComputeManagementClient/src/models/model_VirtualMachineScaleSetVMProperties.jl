@@ -22,6 +22,7 @@ Describes the properties of a virtual machine scale set virtual machine.
         licenseType=nothing,
         modelDefinitionApplied=nothing,
         protectionPolicy=nothing,
+        userData=nothing,
     )
 
     - latestModelApplied::Bool : Specifies whether the latest model has been applied to the virtual machine.
@@ -37,9 +38,10 @@ Describes the properties of a virtual machine scale set virtual machine.
     - diagnosticsProfile::DiagnosticsProfile
     - availabilitySet::SubResource
     - provisioningState::String : The provisioning state, which only appears in the response.
-    - licenseType::String : Specifies that the image or disk that is being used was licensed on-premises. This element is only used for images that contain the Windows Server operating system. &lt;br&gt;&lt;br&gt; Possible values are: &lt;br&gt;&lt;br&gt; Windows_Client &lt;br&gt;&lt;br&gt; Windows_Server &lt;br&gt;&lt;br&gt; If this element is included in a request for an update, the value must match the initial value. This value cannot be updated. &lt;br&gt;&lt;br&gt; For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-hybrid-use-benefit-licensing?toc&#x3D;%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) &lt;br&gt;&lt;br&gt; Minimum api-version: 2015-06-15
+    - licenseType::String : Specifies that the image or disk that is being used was licensed on-premises. &lt;br&gt;&lt;br&gt; Possible values for Windows Server operating system are: &lt;br&gt;&lt;br&gt; Windows_Client &lt;br&gt;&lt;br&gt; Windows_Server &lt;br&gt;&lt;br&gt; Possible values for Linux Server operating system are: &lt;br&gt;&lt;br&gt; RHEL_BYOS (for RHEL) &lt;br&gt;&lt;br&gt; SLES_BYOS (for SUSE) &lt;br&gt;&lt;br&gt; For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) &lt;br&gt;&lt;br&gt; [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) &lt;br&gt;&lt;br&gt; Minimum api-version: 2015-06-15
     - modelDefinitionApplied::String : Specifies whether the model applied to the virtual machine is the model of the virtual machine scale set or the customized model for the virtual machine.
     - protectionPolicy::VirtualMachineScaleSetVMProtectionPolicy
+    - userData::String : UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here. &lt;br&gt;&lt;br&gt;Minimum api-version: 2021-03-01
 """
 Base.@kwdef mutable struct VirtualMachineScaleSetVMProperties <: OpenAPI.APIModel
     latestModelApplied::Union{Nothing, Bool} = nothing
@@ -58,34 +60,58 @@ Base.@kwdef mutable struct VirtualMachineScaleSetVMProperties <: OpenAPI.APIMode
     licenseType::Union{Nothing, String} = nothing
     modelDefinitionApplied::Union{Nothing, String} = nothing
     protectionPolicy = nothing # spec type: Union{ Nothing, VirtualMachineScaleSetVMProtectionPolicy }
+    userData::Union{Nothing, String} = nothing
 
-    function VirtualMachineScaleSetVMProperties(latestModelApplied, vmId, instanceView, hardwareProfile, storageProfile, additionalCapabilities, osProfile, securityProfile, networkProfile, networkProfileConfiguration, diagnosticsProfile, availabilitySet, provisioningState, licenseType, modelDefinitionApplied, protectionPolicy, )
-        OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("latestModelApplied"), latestModelApplied)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("vmId"), vmId)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("instanceView"), instanceView)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("hardwareProfile"), hardwareProfile)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("storageProfile"), storageProfile)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("additionalCapabilities"), additionalCapabilities)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("osProfile"), osProfile)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("securityProfile"), securityProfile)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("networkProfile"), networkProfile)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("networkProfileConfiguration"), networkProfileConfiguration)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("diagnosticsProfile"), diagnosticsProfile)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("availabilitySet"), availabilitySet)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("provisioningState"), provisioningState)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("licenseType"), licenseType)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("modelDefinitionApplied"), modelDefinitionApplied)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("protectionPolicy"), protectionPolicy)
-        return new(latestModelApplied, vmId, instanceView, hardwareProfile, storageProfile, additionalCapabilities, osProfile, securityProfile, networkProfile, networkProfileConfiguration, diagnosticsProfile, availabilitySet, provisioningState, licenseType, modelDefinitionApplied, protectionPolicy, )
+    function VirtualMachineScaleSetVMProperties(latestModelApplied, vmId, instanceView, hardwareProfile, storageProfile, additionalCapabilities, osProfile, securityProfile, networkProfile, networkProfileConfiguration, diagnosticsProfile, availabilitySet, provisioningState, licenseType, modelDefinitionApplied, protectionPolicy, userData, )
+        o = new(latestModelApplied, vmId, instanceView, hardwareProfile, storageProfile, additionalCapabilities, osProfile, securityProfile, networkProfile, networkProfileConfiguration, diagnosticsProfile, availabilitySet, provisioningState, licenseType, modelDefinitionApplied, protectionPolicy, userData, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetVMProperties
 
-const _property_types_VirtualMachineScaleSetVMProperties = Dict{Symbol,String}(Symbol("latestModelApplied")=>"Bool", Symbol("vmId")=>"String", Symbol("instanceView")=>"VirtualMachineScaleSetVMInstanceView", Symbol("hardwareProfile")=>"HardwareProfile", Symbol("storageProfile")=>"StorageProfile", Symbol("additionalCapabilities")=>"AdditionalCapabilities", Symbol("osProfile")=>"OSProfile", Symbol("securityProfile")=>"SecurityProfile", Symbol("networkProfile")=>"NetworkProfile", Symbol("networkProfileConfiguration")=>"VirtualMachineScaleSetVMNetworkProfileConfiguration", Symbol("diagnosticsProfile")=>"DiagnosticsProfile", Symbol("availabilitySet")=>"SubResource", Symbol("provisioningState")=>"String", Symbol("licenseType")=>"String", Symbol("modelDefinitionApplied")=>"String", Symbol("protectionPolicy")=>"VirtualMachineScaleSetVMProtectionPolicy", )
+const _property_types_VirtualMachineScaleSetVMProperties = Dict{Symbol,String}(Symbol("latestModelApplied")=>"Bool", Symbol("vmId")=>"String", Symbol("instanceView")=>"VirtualMachineScaleSetVMInstanceView", Symbol("hardwareProfile")=>"HardwareProfile", Symbol("storageProfile")=>"StorageProfile", Symbol("additionalCapabilities")=>"AdditionalCapabilities", Symbol("osProfile")=>"OSProfile", Symbol("securityProfile")=>"SecurityProfile", Symbol("networkProfile")=>"NetworkProfile", Symbol("networkProfileConfiguration")=>"VirtualMachineScaleSetVMNetworkProfileConfiguration", Symbol("diagnosticsProfile")=>"DiagnosticsProfile", Symbol("availabilitySet")=>"SubResource", Symbol("provisioningState")=>"String", Symbol("licenseType")=>"String", Symbol("modelDefinitionApplied")=>"String", Symbol("protectionPolicy")=>"VirtualMachineScaleSetVMProtectionPolicy", Symbol("userData")=>"String", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetVMProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetVMProperties[name]))}
 
-function check_required(o::VirtualMachineScaleSetVMProperties)
+function OpenAPI.check_required(o::VirtualMachineScaleSetVMProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetVMProperties)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("latestModelApplied"), o.latestModelApplied)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("vmId"), o.vmId)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("instanceView"), o.instanceView)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("hardwareProfile"), o.hardwareProfile)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("storageProfile"), o.storageProfile)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("additionalCapabilities"), o.additionalCapabilities)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("osProfile"), o.osProfile)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("securityProfile"), o.securityProfile)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("networkProfile"), o.networkProfile)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("networkProfileConfiguration"), o.networkProfileConfiguration)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("diagnosticsProfile"), o.diagnosticsProfile)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("availabilitySet"), o.availabilitySet)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("licenseType"), o.licenseType)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("modelDefinitionApplied"), o.modelDefinitionApplied)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("protectionPolicy"), o.protectionPolicy)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProperties, Symbol("userData"), o.userData)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetVMProperties }, name::Symbol, val)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 end

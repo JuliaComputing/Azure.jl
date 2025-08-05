@@ -6,47 +6,63 @@
 The source user image virtual hard disk. The virtual hard disk will be copied before being attached to the virtual machine. If SourceImage is provided, the destination virtual hard drive must not exist.
 
     Image(;
+        properties=nothing,
+        extendedLocation=nothing,
         id=nothing,
         name=nothing,
         type=nothing,
         location=nothing,
         tags=nothing,
-        properties=nothing,
     )
 
+    - properties::ImageProperties
+    - extendedLocation::ExtendedLocation
     - id::String : Resource Id
     - name::String : Resource name
     - type::String : Resource type
     - location::String : Resource location
     - tags::Dict{String, String} : Resource tags
-    - properties::ImageProperties
 """
 Base.@kwdef mutable struct Image <: OpenAPI.APIModel
+    properties = nothing # spec type: Union{ Nothing, ImageProperties }
+    extendedLocation = nothing # spec type: Union{ Nothing, ExtendedLocation }
     id::Union{Nothing, String} = nothing
     name::Union{Nothing, String} = nothing
     type::Union{Nothing, String} = nothing
     location::Union{Nothing, String} = nothing
     tags::Union{Nothing, Dict{String, String}} = nothing
-    properties = nothing # spec type: Union{ Nothing, ImageProperties }
 
-    function Image(id, name, type, location, tags, properties, )
-        OpenAPI.validate_property(Image, Symbol("id"), id)
-        OpenAPI.validate_property(Image, Symbol("name"), name)
-        OpenAPI.validate_property(Image, Symbol("type"), type)
-        OpenAPI.validate_property(Image, Symbol("location"), location)
-        OpenAPI.validate_property(Image, Symbol("tags"), tags)
-        OpenAPI.validate_property(Image, Symbol("properties"), properties)
-        return new(id, name, type, location, tags, properties, )
+    function Image(properties, extendedLocation, id, name, type, location, tags, )
+        o = new(properties, extendedLocation, id, name, type, location, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type Image
 
-const _property_types_Image = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", Symbol("properties")=>"ImageProperties", )
+const _property_types_Image = Dict{Symbol,String}(Symbol("properties")=>"ImageProperties", Symbol("extendedLocation")=>"ExtendedLocation", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ Image }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Image[name]))}
 
-function check_required(o::Image)
+function OpenAPI.check_required(o::Image)
     o.location === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::Image)
+    OpenAPI.validate_property(Image, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(Image, Symbol("extendedLocation"), o.extendedLocation)
+    OpenAPI.validate_property(Image, Symbol("id"), o.id)
+    OpenAPI.validate_property(Image, Symbol("name"), o.name)
+    OpenAPI.validate_property(Image, Symbol("type"), o.type)
+    OpenAPI.validate_property(Image, Symbol("location"), o.location)
+    OpenAPI.validate_property(Image, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ Image }, name::Symbol, val)
+
+
+
+
+
+
+
 end

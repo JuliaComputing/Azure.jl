@@ -6,6 +6,7 @@
 Private endpoint resource.
 
     PrivateEndpoint(;
+        extendedLocation=nothing,
         properties=nothing,
         etag=nothing,
         id=nothing,
@@ -15,6 +16,7 @@ Private endpoint resource.
         tags=nothing,
     )
 
+    - extendedLocation::ExtendedLocation
     - properties::PrivateEndpointProperties
     - etag::String : A unique read-only string that changes whenever the resource is updated.
     - id::String : Resource ID.
@@ -24,6 +26,7 @@ Private endpoint resource.
     - tags::Dict{String, String} : Resource tags.
 """
 Base.@kwdef mutable struct PrivateEndpoint <: OpenAPI.APIModel
+    extendedLocation = nothing # spec type: Union{ Nothing, ExtendedLocation }
     properties = nothing # spec type: Union{ Nothing, PrivateEndpointProperties }
     etag::Union{Nothing, String} = nothing
     id::Union{Nothing, String} = nothing
@@ -32,24 +35,38 @@ Base.@kwdef mutable struct PrivateEndpoint <: OpenAPI.APIModel
     location::Union{Nothing, String} = nothing
     tags::Union{Nothing, Dict{String, String}} = nothing
 
-    function PrivateEndpoint(properties, etag, id, name, type, location, tags, )
-        OpenAPI.validate_property(PrivateEndpoint, Symbol("properties"), properties)
-        OpenAPI.validate_property(PrivateEndpoint, Symbol("etag"), etag)
-        OpenAPI.validate_property(PrivateEndpoint, Symbol("id"), id)
-        OpenAPI.validate_property(PrivateEndpoint, Symbol("name"), name)
-        OpenAPI.validate_property(PrivateEndpoint, Symbol("type"), type)
-        OpenAPI.validate_property(PrivateEndpoint, Symbol("location"), location)
-        OpenAPI.validate_property(PrivateEndpoint, Symbol("tags"), tags)
-        return new(properties, etag, id, name, type, location, tags, )
+    function PrivateEndpoint(extendedLocation, properties, etag, id, name, type, location, tags, )
+        o = new(extendedLocation, properties, etag, id, name, type, location, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PrivateEndpoint
 
-const _property_types_PrivateEndpoint = Dict{Symbol,String}(Symbol("properties")=>"PrivateEndpointProperties", Symbol("etag")=>"String", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
+const _property_types_PrivateEndpoint = Dict{Symbol,String}(Symbol("extendedLocation")=>"ExtendedLocation", Symbol("properties")=>"PrivateEndpointProperties", Symbol("etag")=>"String", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ PrivateEndpoint }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PrivateEndpoint[name]))}
 
-function check_required(o::PrivateEndpoint)
+function OpenAPI.check_required(o::PrivateEndpoint)
     true
 end
 
+function OpenAPI.validate_properties(o::PrivateEndpoint)
+    OpenAPI.validate_property(PrivateEndpoint, Symbol("extendedLocation"), o.extendedLocation)
+    OpenAPI.validate_property(PrivateEndpoint, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(PrivateEndpoint, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(PrivateEndpoint, Symbol("id"), o.id)
+    OpenAPI.validate_property(PrivateEndpoint, Symbol("name"), o.name)
+    OpenAPI.validate_property(PrivateEndpoint, Symbol("type"), o.type)
+    OpenAPI.validate_property(PrivateEndpoint, Symbol("location"), o.location)
+    OpenAPI.validate_property(PrivateEndpoint, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ PrivateEndpoint }, name::Symbol, val)
+
+
+
+
+
+
+
+
 end

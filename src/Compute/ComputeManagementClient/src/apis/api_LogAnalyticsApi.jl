@@ -14,14 +14,16 @@ basepath(::Type{ LogAnalyticsApi }) = "https://management.azure.com"
 const _returntypes_log_analytics_export_request_rate_by_interval_LogAnalyticsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => LogAnalyticsOperationResult,
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_log_analytics_export_request_rate_by_interval(_api::LogAnalyticsApi, location::String, api_version::String, subscription_id::String, parameters::RequestRateByIntervalInput; _mediaType=nothing)
+        OpenAPI.validate_param("location", "log_analytics_export_request_rate_by_interval", :pattern, location, r"^[-\w\._]+$")
 
     _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_log_analytics_export_request_rate_by_interval_LogAnalyticsApi, "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/logAnalytics/apiAccess/getRequestRateByInterval", ["azure_auth", ], parameters)
     OpenAPI.Clients.set_param(_ctx.path, "location", location)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -50,14 +52,16 @@ end
 const _returntypes_log_analytics_export_throttled_requests_LogAnalyticsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => LogAnalyticsOperationResult,
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_log_analytics_export_throttled_requests(_api::LogAnalyticsApi, location::String, api_version::String, subscription_id::String, parameters::ThrottledRequestsInput; _mediaType=nothing)
+        OpenAPI.validate_param("location", "log_analytics_export_throttled_requests", :pattern, location, r"^[-\w\._]+$")
 
     _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_log_analytics_export_throttled_requests_LogAnalyticsApi, "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/logAnalytics/apiAccess/getThrottledRequests", ["azure_auth", ], parameters)
     OpenAPI.Clients.set_param(_ctx.path, "location", location)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx

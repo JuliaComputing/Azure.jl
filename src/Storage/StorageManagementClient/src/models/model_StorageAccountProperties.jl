@@ -15,21 +15,39 @@ Properties of the storage account.
         statusOfSecondary=nothing,
         creationTime=nothing,
         customDomain=nothing,
+        sasPolicy=nothing,
+        keyPolicy=nothing,
+        keyCreationTime=nothing,
         secondaryEndpoints=nothing,
         encryption=nothing,
         accessTier=nothing,
         azureFilesIdentityBasedAuthentication=nothing,
         supportsHttpsTrafficOnly=nothing,
         networkAcls=nothing,
+        isSftpEnabled=nothing,
+        isLocalUserEnabled=nothing,
+        enableExtendedGroups=nothing,
         isHnsEnabled=nothing,
         geoReplicationStats=nothing,
         failoverInProgress=nothing,
         largeFileSharesState=nothing,
         privateEndpointConnections=nothing,
         routingPreference=nothing,
+        dualStackEndpointPreference=nothing,
         blobRestoreStatus=nothing,
         allowBlobPublicAccess=nothing,
         minimumTlsVersion=nothing,
+        allowSharedKeyAccess=nothing,
+        isNfsV3Enabled=nothing,
+        allowCrossTenantReplication=nothing,
+        defaultToOAuthAuthentication=nothing,
+        publicNetworkAccess=nothing,
+        immutableStorageWithVersioning=nothing,
+        allowedCopyScope=nothing,
+        storageAccountSkuConversionStatus=nothing,
+        dnsEndpointType=nothing,
+        isSkuConversionBlocked=nothing,
+        accountMigrationInProgress=nothing,
     )
 
     - provisioningState::String : Gets the status of the storage account at the time the operation was called.
@@ -41,21 +59,39 @@ Properties of the storage account.
     - statusOfSecondary::String : Gets the status indicating whether the secondary location of the storage account is available or unavailable. Only available if the SKU name is Standard_GRS or Standard_RAGRS.
     - creationTime::ZonedDateTime : Gets the creation date and time of the storage account in UTC.
     - customDomain::CustomDomain
+    - sasPolicy::SasPolicy
+    - keyPolicy::KeyPolicy
+    - keyCreationTime::KeyCreationTime
     - secondaryEndpoints::Endpoints
     - encryption::Encryption
-    - accessTier::String : Required for storage accounts where kind &#x3D; BlobStorage. The access tier used for billing.
+    - accessTier::String : Required for storage accounts where kind &#x3D; BlobStorage. The access tier is used for billing. The &#39;Premium&#39; access tier is the default value for premium block blobs storage account type and it cannot be changed for the premium block blobs storage account type.
     - azureFilesIdentityBasedAuthentication::AzureFilesIdentityBasedAuthentication
     - supportsHttpsTrafficOnly::Bool : Allows https traffic only to storage service if sets to true.
     - networkAcls::NetworkRuleSet
+    - isSftpEnabled::Bool : Enables Secure File Transfer Protocol, if set to true
+    - isLocalUserEnabled::Bool : Enables local users feature, if set to true
+    - enableExtendedGroups::Bool : Enables extended group support with local users feature, if set to true
     - isHnsEnabled::Bool : Account HierarchicalNamespace enabled if sets to true.
     - geoReplicationStats::GeoReplicationStats
     - failoverInProgress::Bool : If the failover is in progress, the value will be true, otherwise, it will be null.
     - largeFileSharesState::String : Allow large file shares if sets to Enabled. It cannot be disabled once it is enabled.
     - privateEndpointConnections::Vector{PrivateEndpointConnection} : List of private endpoint connection associated with the specified storage account
     - routingPreference::RoutingPreference
+    - dualStackEndpointPreference::DualStackEndpointPreference
     - blobRestoreStatus::BlobRestoreStatus
-    - allowBlobPublicAccess::Bool : Allow or disallow public access to all blobs or containers in the storage account. The default interpretation is true for this property.
+    - allowBlobPublicAccess::Bool : Allow or disallow public access to all blobs or containers in the storage account. The default interpretation is false for this property.
     - minimumTlsVersion::String : Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property.
+    - allowSharedKeyAccess::Bool : Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD). The default value is null, which is equivalent to true.
+    - isNfsV3Enabled::Bool : NFS 3.0 protocol support enabled if set to true.
+    - allowCrossTenantReplication::Bool : Allow or disallow cross AAD tenant object replication. Set this property to true for new or existing accounts only if object replication policies will involve storage accounts in different AAD tenants. The default interpretation is false for new accounts to follow best security practices by default.
+    - defaultToOAuthAuthentication::Bool : A boolean flag which indicates whether the default authentication is OAuth or not. The default interpretation is false for this property.
+    - publicNetworkAccess::PublicNetworkAccess
+    - immutableStorageWithVersioning::ImmutableStorageAccount
+    - allowedCopyScope::String : Restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet.
+    - storageAccountSkuConversionStatus::StorageAccountSkuConversionStatus
+    - dnsEndpointType::String : Allows you to specify the type of endpoint. Set this to AzureDNSZone to create a large number of accounts in a single subscription, which creates accounts in an Azure DNS Zone and the endpoint URL will have an alphanumeric DNS Zone identifier.
+    - isSkuConversionBlocked::Bool : This property will be set to true or false on an event of ongoing migration. Default value is null.
+    - accountMigrationInProgress::Bool : If customer initiated account migration is in progress, the value will be true else it will be null.
 """
 Base.@kwdef mutable struct StorageAccountProperties <: OpenAPI.APIModel
     provisioningState::Union{Nothing, String} = nothing
@@ -67,81 +103,178 @@ Base.@kwdef mutable struct StorageAccountProperties <: OpenAPI.APIModel
     statusOfSecondary::Union{Nothing, String} = nothing
     creationTime::Union{Nothing, ZonedDateTime} = nothing
     customDomain = nothing # spec type: Union{ Nothing, CustomDomain }
+    sasPolicy = nothing # spec type: Union{ Nothing, SasPolicy }
+    keyPolicy = nothing # spec type: Union{ Nothing, KeyPolicy }
+    keyCreationTime = nothing # spec type: Union{ Nothing, KeyCreationTime }
     secondaryEndpoints = nothing # spec type: Union{ Nothing, Endpoints }
     encryption = nothing # spec type: Union{ Nothing, Encryption }
     accessTier::Union{Nothing, String} = nothing
     azureFilesIdentityBasedAuthentication = nothing # spec type: Union{ Nothing, AzureFilesIdentityBasedAuthentication }
     supportsHttpsTrafficOnly::Union{Nothing, Bool} = nothing
     networkAcls = nothing # spec type: Union{ Nothing, NetworkRuleSet }
+    isSftpEnabled::Union{Nothing, Bool} = nothing
+    isLocalUserEnabled::Union{Nothing, Bool} = nothing
+    enableExtendedGroups::Union{Nothing, Bool} = nothing
     isHnsEnabled::Union{Nothing, Bool} = nothing
     geoReplicationStats = nothing # spec type: Union{ Nothing, GeoReplicationStats }
     failoverInProgress::Union{Nothing, Bool} = nothing
     largeFileSharesState::Union{Nothing, String} = nothing
     privateEndpointConnections::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{PrivateEndpointConnection} }
     routingPreference = nothing # spec type: Union{ Nothing, RoutingPreference }
+    dualStackEndpointPreference = nothing # spec type: Union{ Nothing, DualStackEndpointPreference }
     blobRestoreStatus = nothing # spec type: Union{ Nothing, BlobRestoreStatus }
     allowBlobPublicAccess::Union{Nothing, Bool} = nothing
     minimumTlsVersion::Union{Nothing, String} = nothing
+    allowSharedKeyAccess::Union{Nothing, Bool} = nothing
+    isNfsV3Enabled::Union{Nothing, Bool} = nothing
+    allowCrossTenantReplication::Union{Nothing, Bool} = nothing
+    defaultToOAuthAuthentication::Union{Nothing, Bool} = nothing
+    publicNetworkAccess = nothing # spec type: Union{ Nothing, PublicNetworkAccess }
+    immutableStorageWithVersioning = nothing # spec type: Union{ Nothing, ImmutableStorageAccount }
+    allowedCopyScope::Union{Nothing, String} = nothing
+    storageAccountSkuConversionStatus = nothing # spec type: Union{ Nothing, StorageAccountSkuConversionStatus }
+    dnsEndpointType::Union{Nothing, String} = nothing
+    isSkuConversionBlocked::Union{Nothing, Bool} = nothing
+    accountMigrationInProgress::Union{Nothing, Bool} = nothing
 
-    function StorageAccountProperties(provisioningState, primaryEndpoints, primaryLocation, statusOfPrimary, lastGeoFailoverTime, secondaryLocation, statusOfSecondary, creationTime, customDomain, secondaryEndpoints, encryption, accessTier, azureFilesIdentityBasedAuthentication, supportsHttpsTrafficOnly, networkAcls, isHnsEnabled, geoReplicationStats, failoverInProgress, largeFileSharesState, privateEndpointConnections, routingPreference, blobRestoreStatus, allowBlobPublicAccess, minimumTlsVersion, )
-        OpenAPI.validate_property(StorageAccountProperties, Symbol("provisioningState"), provisioningState)
-        OpenAPI.validate_property(StorageAccountProperties, Symbol("primaryEndpoints"), primaryEndpoints)
-        OpenAPI.validate_property(StorageAccountProperties, Symbol("primaryLocation"), primaryLocation)
-        OpenAPI.validate_property(StorageAccountProperties, Symbol("statusOfPrimary"), statusOfPrimary)
-        OpenAPI.validate_property(StorageAccountProperties, Symbol("lastGeoFailoverTime"), lastGeoFailoverTime)
-        OpenAPI.validate_property(StorageAccountProperties, Symbol("secondaryLocation"), secondaryLocation)
-        OpenAPI.validate_property(StorageAccountProperties, Symbol("statusOfSecondary"), statusOfSecondary)
-        OpenAPI.validate_property(StorageAccountProperties, Symbol("creationTime"), creationTime)
-        OpenAPI.validate_property(StorageAccountProperties, Symbol("customDomain"), customDomain)
-        OpenAPI.validate_property(StorageAccountProperties, Symbol("secondaryEndpoints"), secondaryEndpoints)
-        OpenAPI.validate_property(StorageAccountProperties, Symbol("encryption"), encryption)
-        OpenAPI.validate_property(StorageAccountProperties, Symbol("accessTier"), accessTier)
-        OpenAPI.validate_property(StorageAccountProperties, Symbol("azureFilesIdentityBasedAuthentication"), azureFilesIdentityBasedAuthentication)
-        OpenAPI.validate_property(StorageAccountProperties, Symbol("supportsHttpsTrafficOnly"), supportsHttpsTrafficOnly)
-        OpenAPI.validate_property(StorageAccountProperties, Symbol("networkAcls"), networkAcls)
-        OpenAPI.validate_property(StorageAccountProperties, Symbol("isHnsEnabled"), isHnsEnabled)
-        OpenAPI.validate_property(StorageAccountProperties, Symbol("geoReplicationStats"), geoReplicationStats)
-        OpenAPI.validate_property(StorageAccountProperties, Symbol("failoverInProgress"), failoverInProgress)
-        OpenAPI.validate_property(StorageAccountProperties, Symbol("largeFileSharesState"), largeFileSharesState)
-        OpenAPI.validate_property(StorageAccountProperties, Symbol("privateEndpointConnections"), privateEndpointConnections)
-        OpenAPI.validate_property(StorageAccountProperties, Symbol("routingPreference"), routingPreference)
-        OpenAPI.validate_property(StorageAccountProperties, Symbol("blobRestoreStatus"), blobRestoreStatus)
-        OpenAPI.validate_property(StorageAccountProperties, Symbol("allowBlobPublicAccess"), allowBlobPublicAccess)
-        OpenAPI.validate_property(StorageAccountProperties, Symbol("minimumTlsVersion"), minimumTlsVersion)
-        return new(provisioningState, primaryEndpoints, primaryLocation, statusOfPrimary, lastGeoFailoverTime, secondaryLocation, statusOfSecondary, creationTime, customDomain, secondaryEndpoints, encryption, accessTier, azureFilesIdentityBasedAuthentication, supportsHttpsTrafficOnly, networkAcls, isHnsEnabled, geoReplicationStats, failoverInProgress, largeFileSharesState, privateEndpointConnections, routingPreference, blobRestoreStatus, allowBlobPublicAccess, minimumTlsVersion, )
+    function StorageAccountProperties(provisioningState, primaryEndpoints, primaryLocation, statusOfPrimary, lastGeoFailoverTime, secondaryLocation, statusOfSecondary, creationTime, customDomain, sasPolicy, keyPolicy, keyCreationTime, secondaryEndpoints, encryption, accessTier, azureFilesIdentityBasedAuthentication, supportsHttpsTrafficOnly, networkAcls, isSftpEnabled, isLocalUserEnabled, enableExtendedGroups, isHnsEnabled, geoReplicationStats, failoverInProgress, largeFileSharesState, privateEndpointConnections, routingPreference, dualStackEndpointPreference, blobRestoreStatus, allowBlobPublicAccess, minimumTlsVersion, allowSharedKeyAccess, isNfsV3Enabled, allowCrossTenantReplication, defaultToOAuthAuthentication, publicNetworkAccess, immutableStorageWithVersioning, allowedCopyScope, storageAccountSkuConversionStatus, dnsEndpointType, isSkuConversionBlocked, accountMigrationInProgress, )
+        o = new(provisioningState, primaryEndpoints, primaryLocation, statusOfPrimary, lastGeoFailoverTime, secondaryLocation, statusOfSecondary, creationTime, customDomain, sasPolicy, keyPolicy, keyCreationTime, secondaryEndpoints, encryption, accessTier, azureFilesIdentityBasedAuthentication, supportsHttpsTrafficOnly, networkAcls, isSftpEnabled, isLocalUserEnabled, enableExtendedGroups, isHnsEnabled, geoReplicationStats, failoverInProgress, largeFileSharesState, privateEndpointConnections, routingPreference, dualStackEndpointPreference, blobRestoreStatus, allowBlobPublicAccess, minimumTlsVersion, allowSharedKeyAccess, isNfsV3Enabled, allowCrossTenantReplication, defaultToOAuthAuthentication, publicNetworkAccess, immutableStorageWithVersioning, allowedCopyScope, storageAccountSkuConversionStatus, dnsEndpointType, isSkuConversionBlocked, accountMigrationInProgress, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type StorageAccountProperties
 
-const _property_types_StorageAccountProperties = Dict{Symbol,String}(Symbol("provisioningState")=>"String", Symbol("primaryEndpoints")=>"Endpoints", Symbol("primaryLocation")=>"String", Symbol("statusOfPrimary")=>"String", Symbol("lastGeoFailoverTime")=>"ZonedDateTime", Symbol("secondaryLocation")=>"String", Symbol("statusOfSecondary")=>"String", Symbol("creationTime")=>"ZonedDateTime", Symbol("customDomain")=>"CustomDomain", Symbol("secondaryEndpoints")=>"Endpoints", Symbol("encryption")=>"Encryption", Symbol("accessTier")=>"String", Symbol("azureFilesIdentityBasedAuthentication")=>"AzureFilesIdentityBasedAuthentication", Symbol("supportsHttpsTrafficOnly")=>"Bool", Symbol("networkAcls")=>"NetworkRuleSet", Symbol("isHnsEnabled")=>"Bool", Symbol("geoReplicationStats")=>"GeoReplicationStats", Symbol("failoverInProgress")=>"Bool", Symbol("largeFileSharesState")=>"String", Symbol("privateEndpointConnections")=>"Vector{PrivateEndpointConnection}", Symbol("routingPreference")=>"RoutingPreference", Symbol("blobRestoreStatus")=>"BlobRestoreStatus", Symbol("allowBlobPublicAccess")=>"Bool", Symbol("minimumTlsVersion")=>"String", )
+const _property_types_StorageAccountProperties = Dict{Symbol,String}(Symbol("provisioningState")=>"String", Symbol("primaryEndpoints")=>"Endpoints", Symbol("primaryLocation")=>"String", Symbol("statusOfPrimary")=>"String", Symbol("lastGeoFailoverTime")=>"ZonedDateTime", Symbol("secondaryLocation")=>"String", Symbol("statusOfSecondary")=>"String", Symbol("creationTime")=>"ZonedDateTime", Symbol("customDomain")=>"CustomDomain", Symbol("sasPolicy")=>"SasPolicy", Symbol("keyPolicy")=>"KeyPolicy", Symbol("keyCreationTime")=>"KeyCreationTime", Symbol("secondaryEndpoints")=>"Endpoints", Symbol("encryption")=>"Encryption", Symbol("accessTier")=>"String", Symbol("azureFilesIdentityBasedAuthentication")=>"AzureFilesIdentityBasedAuthentication", Symbol("supportsHttpsTrafficOnly")=>"Bool", Symbol("networkAcls")=>"NetworkRuleSet", Symbol("isSftpEnabled")=>"Bool", Symbol("isLocalUserEnabled")=>"Bool", Symbol("enableExtendedGroups")=>"Bool", Symbol("isHnsEnabled")=>"Bool", Symbol("geoReplicationStats")=>"GeoReplicationStats", Symbol("failoverInProgress")=>"Bool", Symbol("largeFileSharesState")=>"String", Symbol("privateEndpointConnections")=>"Vector{PrivateEndpointConnection}", Symbol("routingPreference")=>"RoutingPreference", Symbol("dualStackEndpointPreference")=>"DualStackEndpointPreference", Symbol("blobRestoreStatus")=>"BlobRestoreStatus", Symbol("allowBlobPublicAccess")=>"Bool", Symbol("minimumTlsVersion")=>"String", Symbol("allowSharedKeyAccess")=>"Bool", Symbol("isNfsV3Enabled")=>"Bool", Symbol("allowCrossTenantReplication")=>"Bool", Symbol("defaultToOAuthAuthentication")=>"Bool", Symbol("publicNetworkAccess")=>"PublicNetworkAccess", Symbol("immutableStorageWithVersioning")=>"ImmutableStorageAccount", Symbol("allowedCopyScope")=>"String", Symbol("storageAccountSkuConversionStatus")=>"StorageAccountSkuConversionStatus", Symbol("dnsEndpointType")=>"String", Symbol("isSkuConversionBlocked")=>"Bool", Symbol("accountMigrationInProgress")=>"Bool", )
 OpenAPI.property_type(::Type{ StorageAccountProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_StorageAccountProperties[name]))}
 
-function check_required(o::StorageAccountProperties)
+function OpenAPI.check_required(o::StorageAccountProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::StorageAccountProperties)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("primaryEndpoints"), o.primaryEndpoints)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("primaryLocation"), o.primaryLocation)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("statusOfPrimary"), o.statusOfPrimary)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("lastGeoFailoverTime"), o.lastGeoFailoverTime)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("secondaryLocation"), o.secondaryLocation)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("statusOfSecondary"), o.statusOfSecondary)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("creationTime"), o.creationTime)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("customDomain"), o.customDomain)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("sasPolicy"), o.sasPolicy)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("keyPolicy"), o.keyPolicy)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("keyCreationTime"), o.keyCreationTime)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("secondaryEndpoints"), o.secondaryEndpoints)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("encryption"), o.encryption)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("accessTier"), o.accessTier)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("azureFilesIdentityBasedAuthentication"), o.azureFilesIdentityBasedAuthentication)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("supportsHttpsTrafficOnly"), o.supportsHttpsTrafficOnly)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("networkAcls"), o.networkAcls)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("isSftpEnabled"), o.isSftpEnabled)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("isLocalUserEnabled"), o.isLocalUserEnabled)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("enableExtendedGroups"), o.enableExtendedGroups)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("isHnsEnabled"), o.isHnsEnabled)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("geoReplicationStats"), o.geoReplicationStats)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("failoverInProgress"), o.failoverInProgress)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("largeFileSharesState"), o.largeFileSharesState)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("privateEndpointConnections"), o.privateEndpointConnections)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("routingPreference"), o.routingPreference)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("dualStackEndpointPreference"), o.dualStackEndpointPreference)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("blobRestoreStatus"), o.blobRestoreStatus)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("allowBlobPublicAccess"), o.allowBlobPublicAccess)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("minimumTlsVersion"), o.minimumTlsVersion)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("allowSharedKeyAccess"), o.allowSharedKeyAccess)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("isNfsV3Enabled"), o.isNfsV3Enabled)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("allowCrossTenantReplication"), o.allowCrossTenantReplication)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("defaultToOAuthAuthentication"), o.defaultToOAuthAuthentication)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("publicNetworkAccess"), o.publicNetworkAccess)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("immutableStorageWithVersioning"), o.immutableStorageWithVersioning)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("allowedCopyScope"), o.allowedCopyScope)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("storageAccountSkuConversionStatus"), o.storageAccountSkuConversionStatus)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("dnsEndpointType"), o.dnsEndpointType)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("isSkuConversionBlocked"), o.isSkuConversionBlocked)
+    OpenAPI.validate_property(StorageAccountProperties, Symbol("accountMigrationInProgress"), o.accountMigrationInProgress)
+end
+
 function OpenAPI.validate_property(::Type{ StorageAccountProperties }, name::Symbol, val)
+
     if name === Symbol("provisioningState")
         OpenAPI.validate_param(name, "StorageAccountProperties", :enum, val, ["Creating", "ResolvingDNS", "Succeeded"])
     end
+
+
+
+
     if name === Symbol("statusOfPrimary")
         OpenAPI.validate_param(name, "StorageAccountProperties", :enum, val, ["available", "unavailable"])
     end
+
+
     if name === Symbol("lastGeoFailoverTime")
         OpenAPI.validate_param(name, "StorageAccountProperties", :format, val, "date-time")
     end
+
+
     if name === Symbol("statusOfSecondary")
         OpenAPI.validate_param(name, "StorageAccountProperties", :enum, val, ["available", "unavailable"])
     end
+
+
     if name === Symbol("creationTime")
         OpenAPI.validate_param(name, "StorageAccountProperties", :format, val, "date-time")
     end
+
+
+
+
+
+
+
     if name === Symbol("accessTier")
-        OpenAPI.validate_param(name, "StorageAccountProperties", :enum, val, ["Hot", "Cool"])
+        OpenAPI.validate_param(name, "StorageAccountProperties", :enum, val, ["Hot", "Cool", "Premium", "Cold"])
     end
+
+
+
+
+
+
+
+
+
+
+
     if name === Symbol("largeFileSharesState")
         OpenAPI.validate_param(name, "StorageAccountProperties", :enum, val, ["Disabled", "Enabled"])
     end
+
+
+
+
+
+
+
     if name === Symbol("minimumTlsVersion")
-        OpenAPI.validate_param(name, "StorageAccountProperties", :enum, val, ["TLS1_0", "TLS1_1", "TLS1_2"])
+        OpenAPI.validate_param(name, "StorageAccountProperties", :enum, val, ["TLS1_0", "TLS1_1", "TLS1_2", "TLS1_3"])
     end
+
+
+
+
+
+
+
+
+    if name === Symbol("allowedCopyScope")
+        OpenAPI.validate_param(name, "StorageAccountProperties", :enum, val, ["PrivateLink", "AAD"])
+    end
+
+
+
+    if name === Symbol("dnsEndpointType")
+        OpenAPI.validate_param(name, "StorageAccountProperties", :enum, val, ["Standard", "AzureDnsZone"])
+    end
+
+
+
 end

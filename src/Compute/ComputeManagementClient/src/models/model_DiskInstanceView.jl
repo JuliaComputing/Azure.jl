@@ -21,19 +21,27 @@ Base.@kwdef mutable struct DiskInstanceView <: OpenAPI.APIModel
     statuses::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{InstanceViewStatus} }
 
     function DiskInstanceView(name, encryptionSettings, statuses, )
-        OpenAPI.validate_property(DiskInstanceView, Symbol("name"), name)
-        OpenAPI.validate_property(DiskInstanceView, Symbol("encryptionSettings"), encryptionSettings)
-        OpenAPI.validate_property(DiskInstanceView, Symbol("statuses"), statuses)
-        return new(name, encryptionSettings, statuses, )
+        o = new(name, encryptionSettings, statuses, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type DiskInstanceView
 
 const _property_types_DiskInstanceView = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("encryptionSettings")=>"Vector{DiskEncryptionSettings}", Symbol("statuses")=>"Vector{InstanceViewStatus}", )
 OpenAPI.property_type(::Type{ DiskInstanceView }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DiskInstanceView[name]))}
 
-function check_required(o::DiskInstanceView)
+function OpenAPI.check_required(o::DiskInstanceView)
     true
 end
 
+function OpenAPI.validate_properties(o::DiskInstanceView)
+    OpenAPI.validate_property(DiskInstanceView, Symbol("name"), o.name)
+    OpenAPI.validate_property(DiskInstanceView, Symbol("encryptionSettings"), o.encryptionSettings)
+    OpenAPI.validate_property(DiskInstanceView, Symbol("statuses"), o.statuses)
+end
+
 function OpenAPI.validate_property(::Type{ DiskInstanceView }, name::Symbol, val)
+
+
+
 end

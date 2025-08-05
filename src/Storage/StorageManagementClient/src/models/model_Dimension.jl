@@ -18,18 +18,25 @@ Base.@kwdef mutable struct Dimension <: OpenAPI.APIModel
     displayName::Union{Nothing, String} = nothing
 
     function Dimension(name, displayName, )
-        OpenAPI.validate_property(Dimension, Symbol("name"), name)
-        OpenAPI.validate_property(Dimension, Symbol("displayName"), displayName)
-        return new(name, displayName, )
+        o = new(name, displayName, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type Dimension
 
 const _property_types_Dimension = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("displayName")=>"String", )
 OpenAPI.property_type(::Type{ Dimension }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Dimension[name]))}
 
-function check_required(o::Dimension)
+function OpenAPI.check_required(o::Dimension)
     true
 end
 
+function OpenAPI.validate_properties(o::Dimension)
+    OpenAPI.validate_property(Dimension, Symbol("name"), o.name)
+    OpenAPI.validate_property(Dimension, Symbol("displayName"), o.displayName)
+end
+
 function OpenAPI.validate_property(::Type{ Dimension }, name::Symbol, val)
+
+
 end

@@ -30,22 +30,33 @@ Base.@kwdef mutable struct ApplicationGatewayFrontendIPConfigurationPropertiesFo
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
     function ApplicationGatewayFrontendIPConfigurationPropertiesFormat(privateIPAddress, privateIPAllocationMethod, subnet, publicIPAddress, privateLinkConfiguration, provisioningState, )
-        OpenAPI.validate_property(ApplicationGatewayFrontendIPConfigurationPropertiesFormat, Symbol("privateIPAddress"), privateIPAddress)
-        OpenAPI.validate_property(ApplicationGatewayFrontendIPConfigurationPropertiesFormat, Symbol("privateIPAllocationMethod"), privateIPAllocationMethod)
-        OpenAPI.validate_property(ApplicationGatewayFrontendIPConfigurationPropertiesFormat, Symbol("subnet"), subnet)
-        OpenAPI.validate_property(ApplicationGatewayFrontendIPConfigurationPropertiesFormat, Symbol("publicIPAddress"), publicIPAddress)
-        OpenAPI.validate_property(ApplicationGatewayFrontendIPConfigurationPropertiesFormat, Symbol("privateLinkConfiguration"), privateLinkConfiguration)
-        OpenAPI.validate_property(ApplicationGatewayFrontendIPConfigurationPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(privateIPAddress, privateIPAllocationMethod, subnet, publicIPAddress, privateLinkConfiguration, provisioningState, )
+        o = new(privateIPAddress, privateIPAllocationMethod, subnet, publicIPAddress, privateLinkConfiguration, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayFrontendIPConfigurationPropertiesFormat
 
 const _property_types_ApplicationGatewayFrontendIPConfigurationPropertiesFormat = Dict{Symbol,String}(Symbol("privateIPAddress")=>"String", Symbol("privateIPAllocationMethod")=>"IPAllocationMethod", Symbol("subnet")=>"SubResource", Symbol("publicIPAddress")=>"SubResource", Symbol("privateLinkConfiguration")=>"SubResource", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ ApplicationGatewayFrontendIPConfigurationPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayFrontendIPConfigurationPropertiesFormat[name]))}
 
-function check_required(o::ApplicationGatewayFrontendIPConfigurationPropertiesFormat)
+function OpenAPI.check_required(o::ApplicationGatewayFrontendIPConfigurationPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayFrontendIPConfigurationPropertiesFormat)
+    OpenAPI.validate_property(ApplicationGatewayFrontendIPConfigurationPropertiesFormat, Symbol("privateIPAddress"), o.privateIPAddress)
+    OpenAPI.validate_property(ApplicationGatewayFrontendIPConfigurationPropertiesFormat, Symbol("privateIPAllocationMethod"), o.privateIPAllocationMethod)
+    OpenAPI.validate_property(ApplicationGatewayFrontendIPConfigurationPropertiesFormat, Symbol("subnet"), o.subnet)
+    OpenAPI.validate_property(ApplicationGatewayFrontendIPConfigurationPropertiesFormat, Symbol("publicIPAddress"), o.publicIPAddress)
+    OpenAPI.validate_property(ApplicationGatewayFrontendIPConfigurationPropertiesFormat, Symbol("privateLinkConfiguration"), o.privateLinkConfiguration)
+    OpenAPI.validate_property(ApplicationGatewayFrontendIPConfigurationPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayFrontendIPConfigurationPropertiesFormat }, name::Symbol, val)
+
+
+
+
+
+
 end

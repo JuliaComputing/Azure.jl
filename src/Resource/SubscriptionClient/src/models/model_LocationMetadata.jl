@@ -8,54 +8,78 @@ Location metadata information
     LocationMetadata(;
         regionType=nothing,
         regionCategory=nothing,
+        geography=nothing,
         geographyGroup=nothing,
         longitude=nothing,
         latitude=nothing,
         physicalLocation=nothing,
         pairedRegion=nothing,
+        homeLocation=nothing,
     )
 
     - regionType::String : The type of the region.
     - regionCategory::String : The category of the region.
+    - geography::String : The geography of the location.
     - geographyGroup::String : The geography group of the location.
     - longitude::String : The longitude of the location.
     - latitude::String : The latitude of the location.
     - physicalLocation::String : The physical location of the Azure location.
     - pairedRegion::Vector{PairedRegion} : The regions paired to this region.
+    - homeLocation::String : The home location of an edge zone.
 """
 Base.@kwdef mutable struct LocationMetadata <: OpenAPI.APIModel
     regionType::Union{Nothing, String} = nothing
     regionCategory::Union{Nothing, String} = nothing
+    geography::Union{Nothing, String} = nothing
     geographyGroup::Union{Nothing, String} = nothing
     longitude::Union{Nothing, String} = nothing
     latitude::Union{Nothing, String} = nothing
     physicalLocation::Union{Nothing, String} = nothing
     pairedRegion::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{PairedRegion} }
+    homeLocation::Union{Nothing, String} = nothing
 
-    function LocationMetadata(regionType, regionCategory, geographyGroup, longitude, latitude, physicalLocation, pairedRegion, )
-        OpenAPI.validate_property(LocationMetadata, Symbol("regionType"), regionType)
-        OpenAPI.validate_property(LocationMetadata, Symbol("regionCategory"), regionCategory)
-        OpenAPI.validate_property(LocationMetadata, Symbol("geographyGroup"), geographyGroup)
-        OpenAPI.validate_property(LocationMetadata, Symbol("longitude"), longitude)
-        OpenAPI.validate_property(LocationMetadata, Symbol("latitude"), latitude)
-        OpenAPI.validate_property(LocationMetadata, Symbol("physicalLocation"), physicalLocation)
-        OpenAPI.validate_property(LocationMetadata, Symbol("pairedRegion"), pairedRegion)
-        return new(regionType, regionCategory, geographyGroup, longitude, latitude, physicalLocation, pairedRegion, )
+    function LocationMetadata(regionType, regionCategory, geography, geographyGroup, longitude, latitude, physicalLocation, pairedRegion, homeLocation, )
+        o = new(regionType, regionCategory, geography, geographyGroup, longitude, latitude, physicalLocation, pairedRegion, homeLocation, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type LocationMetadata
 
-const _property_types_LocationMetadata = Dict{Symbol,String}(Symbol("regionType")=>"String", Symbol("regionCategory")=>"String", Symbol("geographyGroup")=>"String", Symbol("longitude")=>"String", Symbol("latitude")=>"String", Symbol("physicalLocation")=>"String", Symbol("pairedRegion")=>"Vector{PairedRegion}", )
+const _property_types_LocationMetadata = Dict{Symbol,String}(Symbol("regionType")=>"String", Symbol("regionCategory")=>"String", Symbol("geography")=>"String", Symbol("geographyGroup")=>"String", Symbol("longitude")=>"String", Symbol("latitude")=>"String", Symbol("physicalLocation")=>"String", Symbol("pairedRegion")=>"Vector{PairedRegion}", Symbol("homeLocation")=>"String", )
 OpenAPI.property_type(::Type{ LocationMetadata }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_LocationMetadata[name]))}
 
-function check_required(o::LocationMetadata)
+function OpenAPI.check_required(o::LocationMetadata)
     true
 end
 
+function OpenAPI.validate_properties(o::LocationMetadata)
+    OpenAPI.validate_property(LocationMetadata, Symbol("regionType"), o.regionType)
+    OpenAPI.validate_property(LocationMetadata, Symbol("regionCategory"), o.regionCategory)
+    OpenAPI.validate_property(LocationMetadata, Symbol("geography"), o.geography)
+    OpenAPI.validate_property(LocationMetadata, Symbol("geographyGroup"), o.geographyGroup)
+    OpenAPI.validate_property(LocationMetadata, Symbol("longitude"), o.longitude)
+    OpenAPI.validate_property(LocationMetadata, Symbol("latitude"), o.latitude)
+    OpenAPI.validate_property(LocationMetadata, Symbol("physicalLocation"), o.physicalLocation)
+    OpenAPI.validate_property(LocationMetadata, Symbol("pairedRegion"), o.pairedRegion)
+    OpenAPI.validate_property(LocationMetadata, Symbol("homeLocation"), o.homeLocation)
+end
+
 function OpenAPI.validate_property(::Type{ LocationMetadata }, name::Symbol, val)
+
     if name === Symbol("regionType")
         OpenAPI.validate_param(name, "LocationMetadata", :enum, val, ["Physical", "Logical"])
     end
+
+
     if name === Symbol("regionCategory")
-        OpenAPI.validate_param(name, "LocationMetadata", :enum, val, ["Recommended", "Other"])
+        OpenAPI.validate_param(name, "LocationMetadata", :enum, val, ["Recommended", "Extended", "Other"])
     end
+
+
+
+
+
+
+
+
 end

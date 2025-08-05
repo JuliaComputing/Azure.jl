@@ -22,7 +22,7 @@ function _oacinternal_virtual_machine_scale_set_v_ms_run_command(_api::VirtualMa
     OpenAPI.Clients.set_param(_ctx.path, "vmScaleSetName", vm_scale_set_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "instanceId", instance_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "text/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", "text/json", ] : [_mediaType])
     return _ctx

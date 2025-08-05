@@ -7,33 +7,50 @@ Contains FQDN of the DNS record associated with the public IP address.
 
     PublicIPAddressDnsSettings(;
         domainNameLabel=nothing,
+        domainNameLabelScope=nothing,
         fqdn=nothing,
         reverseFqdn=nothing,
     )
 
     - domainNameLabel::String : The domain name label. The concatenation of the domain name label and the regionalized DNS zone make up the fully qualified domain name associated with the public IP address. If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system.
+    - domainNameLabelScope::String : The domain name label scope. If a domain name label and a domain name label scope are specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system with a hashed value includes in FQDN.
     - fqdn::String : The Fully Qualified Domain Name of the A DNS record associated with the public IP. This is the concatenation of the domainNameLabel and the regionalized DNS zone.
     - reverseFqdn::String : The reverse FQDN. A user-visible, fully qualified domain name that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN.
 """
 Base.@kwdef mutable struct PublicIPAddressDnsSettings <: OpenAPI.APIModel
     domainNameLabel::Union{Nothing, String} = nothing
+    domainNameLabelScope::Union{Nothing, String} = nothing
     fqdn::Union{Nothing, String} = nothing
     reverseFqdn::Union{Nothing, String} = nothing
 
-    function PublicIPAddressDnsSettings(domainNameLabel, fqdn, reverseFqdn, )
-        OpenAPI.validate_property(PublicIPAddressDnsSettings, Symbol("domainNameLabel"), domainNameLabel)
-        OpenAPI.validate_property(PublicIPAddressDnsSettings, Symbol("fqdn"), fqdn)
-        OpenAPI.validate_property(PublicIPAddressDnsSettings, Symbol("reverseFqdn"), reverseFqdn)
-        return new(domainNameLabel, fqdn, reverseFqdn, )
+    function PublicIPAddressDnsSettings(domainNameLabel, domainNameLabelScope, fqdn, reverseFqdn, )
+        o = new(domainNameLabel, domainNameLabelScope, fqdn, reverseFqdn, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PublicIPAddressDnsSettings
 
-const _property_types_PublicIPAddressDnsSettings = Dict{Symbol,String}(Symbol("domainNameLabel")=>"String", Symbol("fqdn")=>"String", Symbol("reverseFqdn")=>"String", )
+const _property_types_PublicIPAddressDnsSettings = Dict{Symbol,String}(Symbol("domainNameLabel")=>"String", Symbol("domainNameLabelScope")=>"String", Symbol("fqdn")=>"String", Symbol("reverseFqdn")=>"String", )
 OpenAPI.property_type(::Type{ PublicIPAddressDnsSettings }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PublicIPAddressDnsSettings[name]))}
 
-function check_required(o::PublicIPAddressDnsSettings)
+function OpenAPI.check_required(o::PublicIPAddressDnsSettings)
     true
 end
 
+function OpenAPI.validate_properties(o::PublicIPAddressDnsSettings)
+    OpenAPI.validate_property(PublicIPAddressDnsSettings, Symbol("domainNameLabel"), o.domainNameLabel)
+    OpenAPI.validate_property(PublicIPAddressDnsSettings, Symbol("domainNameLabelScope"), o.domainNameLabelScope)
+    OpenAPI.validate_property(PublicIPAddressDnsSettings, Symbol("fqdn"), o.fqdn)
+    OpenAPI.validate_property(PublicIPAddressDnsSettings, Symbol("reverseFqdn"), o.reverseFqdn)
+end
+
 function OpenAPI.validate_property(::Type{ PublicIPAddressDnsSettings }, name::Symbol, val)
+
+
+    if name === Symbol("domainNameLabelScope")
+        OpenAPI.validate_param(name, "PublicIPAddressDnsSettings", :enum, val, ["TenantReuse", "SubscriptionReuse", "ResourceGroupReuse", "NoReuse"])
+    end
+
+
+
 end

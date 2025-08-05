@@ -24,20 +24,29 @@ Base.@kwdef mutable struct DedicatedHostInstanceViewWithName <: OpenAPI.APIModel
     statuses::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{InstanceViewStatus} }
 
     function DedicatedHostInstanceViewWithName(name, assetId, availableCapacity, statuses, )
-        OpenAPI.validate_property(DedicatedHostInstanceViewWithName, Symbol("name"), name)
-        OpenAPI.validate_property(DedicatedHostInstanceViewWithName, Symbol("assetId"), assetId)
-        OpenAPI.validate_property(DedicatedHostInstanceViewWithName, Symbol("availableCapacity"), availableCapacity)
-        OpenAPI.validate_property(DedicatedHostInstanceViewWithName, Symbol("statuses"), statuses)
-        return new(name, assetId, availableCapacity, statuses, )
+        o = new(name, assetId, availableCapacity, statuses, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type DedicatedHostInstanceViewWithName
 
 const _property_types_DedicatedHostInstanceViewWithName = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("assetId")=>"String", Symbol("availableCapacity")=>"DedicatedHostAvailableCapacity", Symbol("statuses")=>"Vector{InstanceViewStatus}", )
 OpenAPI.property_type(::Type{ DedicatedHostInstanceViewWithName }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DedicatedHostInstanceViewWithName[name]))}
 
-function check_required(o::DedicatedHostInstanceViewWithName)
+function OpenAPI.check_required(o::DedicatedHostInstanceViewWithName)
     true
 end
 
+function OpenAPI.validate_properties(o::DedicatedHostInstanceViewWithName)
+    OpenAPI.validate_property(DedicatedHostInstanceViewWithName, Symbol("name"), o.name)
+    OpenAPI.validate_property(DedicatedHostInstanceViewWithName, Symbol("assetId"), o.assetId)
+    OpenAPI.validate_property(DedicatedHostInstanceViewWithName, Symbol("availableCapacity"), o.availableCapacity)
+    OpenAPI.validate_property(DedicatedHostInstanceViewWithName, Symbol("statuses"), o.statuses)
+end
+
 function OpenAPI.validate_property(::Type{ DedicatedHostInstanceViewWithName }, name::Symbol, val)
+
+
+
+
 end

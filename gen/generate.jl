@@ -6,32 +6,32 @@ const SRCDIR = abspath(joinpath(DIR, "..", "src"))
 const SPECS = [
     ("DataLakeStoreAccountManagementClient",    "DataLakeStore",    "2016-11-01",           "specification/datalake-store/resource-manager/Microsoft.DataLakeStore/stable/{VER}/account.json"),
     ("DataLakeStoreFileSystemManagementClient", "DataLakeStore",    "2016-11-01",           "specification/datalake-store/data-plane/Microsoft.DataLakeStore/stable/{VER}/filesystem.json"),
-    ("StorageManagementClient",                 "Storage",          "2019-06-01",           "specification/storage/resource-manager/Microsoft.Storage/stable/{VER}/storage.json"),
-    ("ComputeManagementClient",                 "Compute",          "2020-06-01",           "specification/compute/resource-manager/Microsoft.Compute/stable/{VER}/compute.json"),
-    ("DiskResourceProviderClient",              "Compute",          "2020-05-01",           "specification/compute/resource-manager/Microsoft.Compute/stable/{VER}/disk.json"),
-    ("RunCommandsClient",                       "Compute",          "2020-06-01",           "specification/compute/resource-manager/Microsoft.Compute/stable/{VER}/runCommands.json"),
+    ("StorageManagementClient",                 "Storage",          "2025-01-01",           "specification/storage/resource-manager/Microsoft.Storage/stable/{VER}/storage.json"),
+    ("ComputeManagementClient",                 "Compute",          "2021-11-01",           "specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/{VER}/compute.json"),
+    ("DiskResourceProviderClient",              "Compute",          "2023-10-02",           "specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/{VER}/disk.json"),
+    ("RunCommandsClient",                       "Compute",          "2021-11-01",           "specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/{VER}/runCommands.json"),
     ("ContainerServiceClient",                  "Compute",          "2017-01-31",           "specification/compute/resource-manager/Microsoft.ContainerService/stable/{VER}/containerService.json"),
-    ("ApplicationGatewayClient",                "Network",          "2020-05-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/applicationGateway.json"),
-    ("CheckDnsAvailabilityClient",              "Network",          "2020-05-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/checkDnsAvailability.json"),
-    ("ExpressRouteCircuitClient",               "Network",          "2020-05-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/expressRouteCircuit.json"),
-    ("LoadBalancerClient",                      "Network",          "2020-05-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/loadBalancer.json"),
-    ("NetworkManagementClient",                 "Network",          "2020-05-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/network.json"),
-    ("NetworkInterfaceClient",                  "Network",          "2020-05-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/networkInterface.json"),
-    ("NetworkSecurityGroupClient",              "Network",          "2020-05-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/networkSecurityGroup.json"),
-    ("NetworkWatcherClient",                    "Network",          "2020-05-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/networkWatcher.json"),
-    ("PublicIpAddressClient",                   "Network",          "2020-05-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/publicIpAddress.json"),
-    ("RouteFilterClient",                       "Network",          "2020-05-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/routeFilter.json"),
-    ("RouteTableClient",                        "Network",          "2020-05-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/routeTable.json"),
-    ("ServiceCommunityClient",                  "Network",          "2020-05-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/serviceCommunity.json"),
-    ("UsageClient",                             "Network",          "2020-05-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/usage.json"),
-    ("VirtualNetworkClient",                    "Network",          "2020-05-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/virtualNetwork.json"),
-    ("VirtualNetworkGatewayClient",             "Network",          "2020-05-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/virtualNetworkGateway.json"),
-    ("VmssNetworkInterfaceClient",              "Network",          "2020-05-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/vmssNetworkInterface.json"),
-    ("ResourceManagementClient",                "Resource",         "2020-06-01",           "specification/resources/resource-manager/Microsoft.Resources/stable/{VER}/resources.json"),
-    ("SubscriptionClient",                      "Resource",         "2020-01-01",           "specification/resources/resource-manager/Microsoft.Resources/stable/{VER}/subscriptions.json"),
-    ("PolicyAssignmentsClient",                 "Resource",         "2019-09-01",           "specification/resources/resource-manager/Microsoft.Authorization/stable/{VER}/policyAssignments.json"),
-    ("PolicyDefinitionsClient",                 "Resource",         "2019-09-01",           "specification/resources/resource-manager/Microsoft.Authorization/stable/{VER}/policyDefinitions.json"),
-    ("PolicySetDefinitionsClient",              "Resource",         "2019-09-01",           "specification/resources/resource-manager/Microsoft.Authorization/stable/{VER}/policySetDefinitions.json"),
+    ("ApplicationGatewayClient",                "Network",          "2024-07-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/applicationGateway.json"),
+    ("CheckDnsAvailabilityClient",              "Network",          "2024-07-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/checkDnsAvailability.json"),
+    ("ExpressRouteCircuitClient",               "Network",          "2024-07-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/expressRouteCircuit.json"),
+    ("LoadBalancerClient",                      "Network",          "2024-07-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/loadBalancer.json"),
+    ("NetworkManagementClient",                 "Network",          "2024-07-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/network.json"),
+    ("NetworkInterfaceClient",                  "Network",          "2024-07-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/networkInterface.json"),
+    ("NetworkSecurityGroupClient",              "Network",          "2024-07-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/networkSecurityGroup.json"),
+    ("NetworkWatcherClient",                    "Network",          "2024-07-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/networkWatcher.json"),
+    ("PublicIpAddressClient",                   "Network",          "2024-07-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/publicIpAddress.json"),
+    ("RouteFilterClient",                       "Network",          "2024-07-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/routeFilter.json"),
+    ("RouteTableClient",                        "Network",          "2024-07-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/routeTable.json"),
+    ("ServiceCommunityClient",                  "Network",          "2024-07-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/serviceCommunity.json"),
+    ("UsageClient",                             "Network",          "2024-07-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/usage.json"),
+    ("VirtualNetworkClient",                    "Network",          "2024-07-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/virtualNetwork.json"),
+    ("VirtualNetworkGatewayClient",             "Network",          "2024-07-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/virtualNetworkGateway.json"),
+    ("VmssNetworkInterfaceClient",              "Network",          "2024-07-01",           "specification/network/resource-manager/Microsoft.Network/stable/{VER}/vmssNetworkInterface.json"),
+    ("ResourceManagementClient",                "Resource",         "2025-04-01",           "specification/resources/resource-manager/Microsoft.Resources/stable/{VER}/resources.json"),
+    ("SubscriptionClient",                      "Resource",         "2022-12-01",           "specification/resources/resource-manager/Microsoft.Resources/stable/{VER}/subscriptions.json"),
+    ("PolicyAssignmentsClient",                 "Resource",         "2025-03-01",           "specification/resources/resource-manager/Microsoft.Authorization/stable/{VER}/policyAssignments.json"),
+    ("PolicyDefinitionsClient",                 "Resource",         "2025-03-01",           "specification/resources/resource-manager/Microsoft.Authorization/stable/{VER}/policyDefinitions.json"),
+    ("PolicySetDefinitionsClient",              "Resource",         "2025-03-01",           "specification/resources/resource-manager/Microsoft.Authorization/stable/{VER}/policySetDefinitions.json"),
     ("UsageManagementClient",                   "Commerce",         "2015-06-01-preview",  "specification/commerce/resource-manager/Microsoft.Commerce/preview/{VER}/commerce.json"),
 ]
 
@@ -62,7 +62,8 @@ end # module Azure"""
 
 function commands(pkg, outpath, specfile)
     # add --global-property debugModels=true to turn on model debug output
-    gencmd = `java -jar openapi-generator-cli.jar generate -i $specfile -g julia-client -o $outpath --additional-properties=packageName=$pkg`
+    jarpath = abspath(joinpath(dirname(@__FILE__), "openapi-generator-cli.jar"))
+    gencmd = `java -jar $jarpath generate -i $specfile -g julia-client -o $outpath --additional-properties=packageName=$pkg`
     cleancmd = `rm -rf $outpath`
 
     return cleancmd, gencmd
@@ -119,8 +120,10 @@ end
 
 const USAGE = """Usage: julia generate.jl <azure specs repo root>
 Specifications:
-    git clone https://github.com/tanmaykm/azure-rest-api-specs.git
-    cd azure-rest-api-specs && git checkout juliarun"""
+    git clone https://github.com/Azure/azure-rest-api-specs.git
+OpenAPI Generator:
+    download-generator.sh openapi-generator-cli.jar
+"""
 
 if isempty(ARGS)
     println(USAGE)

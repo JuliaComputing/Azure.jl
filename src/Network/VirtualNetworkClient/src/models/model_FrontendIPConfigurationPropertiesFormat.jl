@@ -16,6 +16,7 @@ Properties of Frontend IP Configuration of the load balancer.
         subnet=nothing,
         publicIPAddress=nothing,
         publicIPPrefix=nothing,
+        gatewayLoadBalancer=nothing,
         provisioningState=nothing,
     )
 
@@ -29,6 +30,7 @@ Properties of Frontend IP Configuration of the load balancer.
     - subnet::Subnet2
     - publicIPAddress::PublicIPAddress
     - publicIPPrefix::SubResource
+    - gatewayLoadBalancer::SubResource
     - provisioningState::ProvisioningState
 """
 Base.@kwdef mutable struct FrontendIPConfigurationPropertiesFormat <: OpenAPI.APIModel
@@ -42,30 +44,49 @@ Base.@kwdef mutable struct FrontendIPConfigurationPropertiesFormat <: OpenAPI.AP
     subnet = nothing # spec type: Union{ Nothing, Subnet2 }
     publicIPAddress = nothing # spec type: Union{ Nothing, PublicIPAddress }
     publicIPPrefix = nothing # spec type: Union{ Nothing, SubResource }
+    gatewayLoadBalancer = nothing # spec type: Union{ Nothing, SubResource }
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
-    function FrontendIPConfigurationPropertiesFormat(inboundNatRules, inboundNatPools, outboundRules, loadBalancingRules, privateIPAddress, privateIPAllocationMethod, privateIPAddressVersion, subnet, publicIPAddress, publicIPPrefix, provisioningState, )
-        OpenAPI.validate_property(FrontendIPConfigurationPropertiesFormat, Symbol("inboundNatRules"), inboundNatRules)
-        OpenAPI.validate_property(FrontendIPConfigurationPropertiesFormat, Symbol("inboundNatPools"), inboundNatPools)
-        OpenAPI.validate_property(FrontendIPConfigurationPropertiesFormat, Symbol("outboundRules"), outboundRules)
-        OpenAPI.validate_property(FrontendIPConfigurationPropertiesFormat, Symbol("loadBalancingRules"), loadBalancingRules)
-        OpenAPI.validate_property(FrontendIPConfigurationPropertiesFormat, Symbol("privateIPAddress"), privateIPAddress)
-        OpenAPI.validate_property(FrontendIPConfigurationPropertiesFormat, Symbol("privateIPAllocationMethod"), privateIPAllocationMethod)
-        OpenAPI.validate_property(FrontendIPConfigurationPropertiesFormat, Symbol("privateIPAddressVersion"), privateIPAddressVersion)
-        OpenAPI.validate_property(FrontendIPConfigurationPropertiesFormat, Symbol("subnet"), subnet)
-        OpenAPI.validate_property(FrontendIPConfigurationPropertiesFormat, Symbol("publicIPAddress"), publicIPAddress)
-        OpenAPI.validate_property(FrontendIPConfigurationPropertiesFormat, Symbol("publicIPPrefix"), publicIPPrefix)
-        OpenAPI.validate_property(FrontendIPConfigurationPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(inboundNatRules, inboundNatPools, outboundRules, loadBalancingRules, privateIPAddress, privateIPAllocationMethod, privateIPAddressVersion, subnet, publicIPAddress, publicIPPrefix, provisioningState, )
+    function FrontendIPConfigurationPropertiesFormat(inboundNatRules, inboundNatPools, outboundRules, loadBalancingRules, privateIPAddress, privateIPAllocationMethod, privateIPAddressVersion, subnet, publicIPAddress, publicIPPrefix, gatewayLoadBalancer, provisioningState, )
+        o = new(inboundNatRules, inboundNatPools, outboundRules, loadBalancingRules, privateIPAddress, privateIPAllocationMethod, privateIPAddressVersion, subnet, publicIPAddress, publicIPPrefix, gatewayLoadBalancer, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type FrontendIPConfigurationPropertiesFormat
 
-const _property_types_FrontendIPConfigurationPropertiesFormat = Dict{Symbol,String}(Symbol("inboundNatRules")=>"Vector{SubResource}", Symbol("inboundNatPools")=>"Vector{SubResource}", Symbol("outboundRules")=>"Vector{SubResource}", Symbol("loadBalancingRules")=>"Vector{SubResource}", Symbol("privateIPAddress")=>"String", Symbol("privateIPAllocationMethod")=>"IPAllocationMethod", Symbol("privateIPAddressVersion")=>"IPVersion", Symbol("subnet")=>"Subnet2", Symbol("publicIPAddress")=>"PublicIPAddress", Symbol("publicIPPrefix")=>"SubResource", Symbol("provisioningState")=>"ProvisioningState", )
+const _property_types_FrontendIPConfigurationPropertiesFormat = Dict{Symbol,String}(Symbol("inboundNatRules")=>"Vector{SubResource}", Symbol("inboundNatPools")=>"Vector{SubResource}", Symbol("outboundRules")=>"Vector{SubResource}", Symbol("loadBalancingRules")=>"Vector{SubResource}", Symbol("privateIPAddress")=>"String", Symbol("privateIPAllocationMethod")=>"IPAllocationMethod", Symbol("privateIPAddressVersion")=>"IPVersion", Symbol("subnet")=>"Subnet2", Symbol("publicIPAddress")=>"PublicIPAddress", Symbol("publicIPPrefix")=>"SubResource", Symbol("gatewayLoadBalancer")=>"SubResource", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ FrontendIPConfigurationPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_FrontendIPConfigurationPropertiesFormat[name]))}
 
-function check_required(o::FrontendIPConfigurationPropertiesFormat)
+function OpenAPI.check_required(o::FrontendIPConfigurationPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::FrontendIPConfigurationPropertiesFormat)
+    OpenAPI.validate_property(FrontendIPConfigurationPropertiesFormat, Symbol("inboundNatRules"), o.inboundNatRules)
+    OpenAPI.validate_property(FrontendIPConfigurationPropertiesFormat, Symbol("inboundNatPools"), o.inboundNatPools)
+    OpenAPI.validate_property(FrontendIPConfigurationPropertiesFormat, Symbol("outboundRules"), o.outboundRules)
+    OpenAPI.validate_property(FrontendIPConfigurationPropertiesFormat, Symbol("loadBalancingRules"), o.loadBalancingRules)
+    OpenAPI.validate_property(FrontendIPConfigurationPropertiesFormat, Symbol("privateIPAddress"), o.privateIPAddress)
+    OpenAPI.validate_property(FrontendIPConfigurationPropertiesFormat, Symbol("privateIPAllocationMethod"), o.privateIPAllocationMethod)
+    OpenAPI.validate_property(FrontendIPConfigurationPropertiesFormat, Symbol("privateIPAddressVersion"), o.privateIPAddressVersion)
+    OpenAPI.validate_property(FrontendIPConfigurationPropertiesFormat, Symbol("subnet"), o.subnet)
+    OpenAPI.validate_property(FrontendIPConfigurationPropertiesFormat, Symbol("publicIPAddress"), o.publicIPAddress)
+    OpenAPI.validate_property(FrontendIPConfigurationPropertiesFormat, Symbol("publicIPPrefix"), o.publicIPPrefix)
+    OpenAPI.validate_property(FrontendIPConfigurationPropertiesFormat, Symbol("gatewayLoadBalancer"), o.gatewayLoadBalancer)
+    OpenAPI.validate_property(FrontendIPConfigurationPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ FrontendIPConfigurationPropertiesFormat }, name::Symbol, val)
+
+
+
+
+
+
+
+
+
+
+
+
 end

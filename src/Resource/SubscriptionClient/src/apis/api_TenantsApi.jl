@@ -11,13 +11,51 @@ This can be used to construct the `OpenAPI.Clients.Client` instance.
 """
 basepath(::Type{ TenantsApi }) = "https://management.azure.com"
 
+const _returntypes_check_resource_name_TenantsApi = Dict{Regex,Type}(
+    Regex("^" * replace("200", "x"=>".") * "\$") => CheckResourceNameResult,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+)
+
+function _oacinternal_check_resource_name(_api::TenantsApi, api_version::String; resource_name_definition=nothing, _mediaType=nothing)
+    OpenAPI.validate_param("api_version", "check_resource_name", :minLength, api_version, 1)
+
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_check_resource_name_TenantsApi, "/providers/Microsoft.Resources/checkResourceName", ["azure_auth", ], resource_name_definition)
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
+    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
+    return _ctx
+end
+
+@doc raw"""Checks resource name validity
+
+A resource name is valid if it is not a reserved word, does not contains a reserved word and does not start with a reserved word
+
+Params:
+- api_version::String (required)
+- resource_name_definition::ResourceName
+
+Return: CheckResourceNameResult, OpenAPI.Clients.ApiResponse
+"""
+function check_resource_name(_api::TenantsApi, api_version::String; resource_name_definition=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_check_resource_name(_api, api_version; resource_name_definition=resource_name_definition, _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx)
+end
+
+function check_resource_name(_api::TenantsApi, response_stream::Channel, api_version::String; resource_name_definition=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_check_resource_name(_api, api_version; resource_name_definition=resource_name_definition, _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx, response_stream)
+end
+
 const _returntypes_tenants_list_TenantsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => TenantListResult,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_tenants_list(_api::TenantsApi, api_version::String; _mediaType=nothing)
+    OpenAPI.validate_param("api_version", "tenants_list", :minLength, api_version, 1)
+
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_tenants_list_TenantsApi, "/tenants", ["azure_auth", ])
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -40,4 +78,5 @@ function tenants_list(_api::TenantsApi, response_stream::Channel, api_version::S
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
+export check_resource_name
 export tenants_list

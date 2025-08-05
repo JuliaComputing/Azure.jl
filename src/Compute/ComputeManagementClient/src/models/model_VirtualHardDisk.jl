@@ -15,17 +15,23 @@ Base.@kwdef mutable struct VirtualHardDisk <: OpenAPI.APIModel
     uri::Union{Nothing, String} = nothing
 
     function VirtualHardDisk(uri, )
-        OpenAPI.validate_property(VirtualHardDisk, Symbol("uri"), uri)
-        return new(uri, )
+        o = new(uri, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualHardDisk
 
 const _property_types_VirtualHardDisk = Dict{Symbol,String}(Symbol("uri")=>"String", )
 OpenAPI.property_type(::Type{ VirtualHardDisk }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualHardDisk[name]))}
 
-function check_required(o::VirtualHardDisk)
+function OpenAPI.check_required(o::VirtualHardDisk)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualHardDisk)
+    OpenAPI.validate_property(VirtualHardDisk, Symbol("uri"), o.uri)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualHardDisk }, name::Symbol, val)
+
 end

@@ -21,19 +21,27 @@ Base.@kwdef mutable struct ApplicationGatewayPrivateLinkResourceProperties <: Op
     requiredZoneNames::Union{Nothing, Vector{String}} = nothing
 
     function ApplicationGatewayPrivateLinkResourceProperties(groupId, requiredMembers, requiredZoneNames, )
-        OpenAPI.validate_property(ApplicationGatewayPrivateLinkResourceProperties, Symbol("groupId"), groupId)
-        OpenAPI.validate_property(ApplicationGatewayPrivateLinkResourceProperties, Symbol("requiredMembers"), requiredMembers)
-        OpenAPI.validate_property(ApplicationGatewayPrivateLinkResourceProperties, Symbol("requiredZoneNames"), requiredZoneNames)
-        return new(groupId, requiredMembers, requiredZoneNames, )
+        o = new(groupId, requiredMembers, requiredZoneNames, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayPrivateLinkResourceProperties
 
 const _property_types_ApplicationGatewayPrivateLinkResourceProperties = Dict{Symbol,String}(Symbol("groupId")=>"String", Symbol("requiredMembers")=>"Vector{String}", Symbol("requiredZoneNames")=>"Vector{String}", )
 OpenAPI.property_type(::Type{ ApplicationGatewayPrivateLinkResourceProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayPrivateLinkResourceProperties[name]))}
 
-function check_required(o::ApplicationGatewayPrivateLinkResourceProperties)
+function OpenAPI.check_required(o::ApplicationGatewayPrivateLinkResourceProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayPrivateLinkResourceProperties)
+    OpenAPI.validate_property(ApplicationGatewayPrivateLinkResourceProperties, Symbol("groupId"), o.groupId)
+    OpenAPI.validate_property(ApplicationGatewayPrivateLinkResourceProperties, Symbol("requiredMembers"), o.requiredMembers)
+    OpenAPI.validate_property(ApplicationGatewayPrivateLinkResourceProperties, Symbol("requiredZoneNames"), o.requiredZoneNames)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayPrivateLinkResourceProperties }, name::Symbol, val)
+
+
+
 end

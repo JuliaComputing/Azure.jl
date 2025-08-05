@@ -21,20 +21,28 @@ Base.@kwdef mutable struct EncryptionSettingsCollection <: OpenAPI.APIModel
     encryptionSettingsVersion::Union{Nothing, String} = nothing
 
     function EncryptionSettingsCollection(enabled, encryptionSettings, encryptionSettingsVersion, )
-        OpenAPI.validate_property(EncryptionSettingsCollection, Symbol("enabled"), enabled)
-        OpenAPI.validate_property(EncryptionSettingsCollection, Symbol("encryptionSettings"), encryptionSettings)
-        OpenAPI.validate_property(EncryptionSettingsCollection, Symbol("encryptionSettingsVersion"), encryptionSettingsVersion)
-        return new(enabled, encryptionSettings, encryptionSettingsVersion, )
+        o = new(enabled, encryptionSettings, encryptionSettingsVersion, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type EncryptionSettingsCollection
 
 const _property_types_EncryptionSettingsCollection = Dict{Symbol,String}(Symbol("enabled")=>"Bool", Symbol("encryptionSettings")=>"Vector{EncryptionSettingsElement}", Symbol("encryptionSettingsVersion")=>"String", )
 OpenAPI.property_type(::Type{ EncryptionSettingsCollection }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_EncryptionSettingsCollection[name]))}
 
-function check_required(o::EncryptionSettingsCollection)
+function OpenAPI.check_required(o::EncryptionSettingsCollection)
     o.enabled === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::EncryptionSettingsCollection)
+    OpenAPI.validate_property(EncryptionSettingsCollection, Symbol("enabled"), o.enabled)
+    OpenAPI.validate_property(EncryptionSettingsCollection, Symbol("encryptionSettings"), o.encryptionSettings)
+    OpenAPI.validate_property(EncryptionSettingsCollection, Symbol("encryptionSettingsVersion"), o.encryptionSettingsVersion)
+end
+
 function OpenAPI.validate_property(::Type{ EncryptionSettingsCollection }, name::Symbol, val)
+
+
+
 end

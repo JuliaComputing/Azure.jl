@@ -18,18 +18,25 @@ Base.@kwdef mutable struct TrustedIdProviderListResult <: OpenAPI.APIModel
     nextLink::Union{Nothing, String} = nothing
 
     function TrustedIdProviderListResult(value, nextLink, )
-        OpenAPI.validate_property(TrustedIdProviderListResult, Symbol("value"), value)
-        OpenAPI.validate_property(TrustedIdProviderListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type TrustedIdProviderListResult
 
 const _property_types_TrustedIdProviderListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{TrustedIdProvider}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ TrustedIdProviderListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TrustedIdProviderListResult[name]))}
 
-function check_required(o::TrustedIdProviderListResult)
+function OpenAPI.check_required(o::TrustedIdProviderListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::TrustedIdProviderListResult)
+    OpenAPI.validate_property(TrustedIdProviderListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(TrustedIdProviderListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ TrustedIdProviderListResult }, name::Symbol, val)
+
+
 end

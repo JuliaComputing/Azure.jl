@@ -4,6 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**networkManager** | [***SubResource**](SubResource.md) |  | [optional] [default to nothing]
 **subnet** | [***SubResource**](SubResource.md) |  | [optional] [default to nothing]
 **networkInterface** | [***SubResource**](SubResource.md) |  | [optional] [default to nothing]
 

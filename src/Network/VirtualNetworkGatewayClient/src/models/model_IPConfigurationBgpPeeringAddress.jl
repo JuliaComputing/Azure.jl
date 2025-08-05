@@ -24,20 +24,29 @@ Base.@kwdef mutable struct IPConfigurationBgpPeeringAddress <: OpenAPI.APIModel
     tunnelIpAddresses::Union{Nothing, Vector{String}} = nothing
 
     function IPConfigurationBgpPeeringAddress(ipconfigurationId, defaultBgpIpAddresses, customBgpIpAddresses, tunnelIpAddresses, )
-        OpenAPI.validate_property(IPConfigurationBgpPeeringAddress, Symbol("ipconfigurationId"), ipconfigurationId)
-        OpenAPI.validate_property(IPConfigurationBgpPeeringAddress, Symbol("defaultBgpIpAddresses"), defaultBgpIpAddresses)
-        OpenAPI.validate_property(IPConfigurationBgpPeeringAddress, Symbol("customBgpIpAddresses"), customBgpIpAddresses)
-        OpenAPI.validate_property(IPConfigurationBgpPeeringAddress, Symbol("tunnelIpAddresses"), tunnelIpAddresses)
-        return new(ipconfigurationId, defaultBgpIpAddresses, customBgpIpAddresses, tunnelIpAddresses, )
+        o = new(ipconfigurationId, defaultBgpIpAddresses, customBgpIpAddresses, tunnelIpAddresses, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type IPConfigurationBgpPeeringAddress
 
 const _property_types_IPConfigurationBgpPeeringAddress = Dict{Symbol,String}(Symbol("ipconfigurationId")=>"String", Symbol("defaultBgpIpAddresses")=>"Vector{String}", Symbol("customBgpIpAddresses")=>"Vector{String}", Symbol("tunnelIpAddresses")=>"Vector{String}", )
 OpenAPI.property_type(::Type{ IPConfigurationBgpPeeringAddress }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IPConfigurationBgpPeeringAddress[name]))}
 
-function check_required(o::IPConfigurationBgpPeeringAddress)
+function OpenAPI.check_required(o::IPConfigurationBgpPeeringAddress)
     true
 end
 
+function OpenAPI.validate_properties(o::IPConfigurationBgpPeeringAddress)
+    OpenAPI.validate_property(IPConfigurationBgpPeeringAddress, Symbol("ipconfigurationId"), o.ipconfigurationId)
+    OpenAPI.validate_property(IPConfigurationBgpPeeringAddress, Symbol("defaultBgpIpAddresses"), o.defaultBgpIpAddresses)
+    OpenAPI.validate_property(IPConfigurationBgpPeeringAddress, Symbol("customBgpIpAddresses"), o.customBgpIpAddresses)
+    OpenAPI.validate_property(IPConfigurationBgpPeeringAddress, Symbol("tunnelIpAddresses"), o.tunnelIpAddresses)
+end
+
 function OpenAPI.validate_property(::Type{ IPConfigurationBgpPeeringAddress }, name::Symbol, val)
+
+
+
+
 end

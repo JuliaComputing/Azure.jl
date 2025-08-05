@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **protocol** | [***ApplicationGatewayProtocol**](ApplicationGatewayProtocol.md) |  | [optional] [default to nothing]
 **hostName** | **String** | Host name of HTTP listener. | [optional] [default to nothing]
 **sslCertificate** | [***SubResource**](SubResource.md) |  | [optional] [default to nothing]
+**sslProfile** | [***SubResource**](SubResource.md) |  | [optional] [default to nothing]
 **requireServerNameIndication** | **Bool** | Applicable only if protocol is https. Enables SNI for multi-hosting. | [optional] [default to nothing]
 **provisioningState** | [***ProvisioningState**](ProvisioningState.md) |  | [optional] [default to nothing]
 **customErrorConfigurations** | [**Vector{ApplicationGatewayCustomError}**](ApplicationGatewayCustomError.md) | Custom error configurations of the HTTP listener. | [optional] [default to nothing]

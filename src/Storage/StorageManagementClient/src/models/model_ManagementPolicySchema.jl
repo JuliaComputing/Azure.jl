@@ -3,30 +3,36 @@
 
 
 @doc raw"""ManagementPolicySchema
-The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 
     ManagementPolicySchema(;
         rules=nothing,
     )
 
-    - rules::Vector{ManagementPolicyRule} : The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+    - rules::Vector{ManagementPolicyRule} : The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
 """
 Base.@kwdef mutable struct ManagementPolicySchema <: OpenAPI.APIModel
     rules::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ManagementPolicyRule} }
 
     function ManagementPolicySchema(rules, )
-        OpenAPI.validate_property(ManagementPolicySchema, Symbol("rules"), rules)
-        return new(rules, )
+        o = new(rules, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ManagementPolicySchema
 
 const _property_types_ManagementPolicySchema = Dict{Symbol,String}(Symbol("rules")=>"Vector{ManagementPolicyRule}", )
 OpenAPI.property_type(::Type{ ManagementPolicySchema }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ManagementPolicySchema[name]))}
 
-function check_required(o::ManagementPolicySchema)
+function OpenAPI.check_required(o::ManagementPolicySchema)
     o.rules === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ManagementPolicySchema)
+    OpenAPI.validate_property(ManagementPolicySchema, Symbol("rules"), o.rules)
+end
+
 function OpenAPI.validate_property(::Type{ ManagementPolicySchema }, name::Symbol, val)
+
 end

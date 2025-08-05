@@ -14,6 +14,7 @@ basepath(::Type{ VirtualMachineScaleSetRollingUpgradesApi }) = "https://manageme
 const _returntypes_virtual_machine_scale_set_rolling_upgrades_cancel_VirtualMachineScaleSetRollingUpgradesApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machine_scale_set_rolling_upgrades_cancel(_api::VirtualMachineScaleSetRollingUpgradesApi, resource_group_name::String, vm_scale_set_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
@@ -21,8 +22,8 @@ function _oacinternal_virtual_machine_scale_set_rolling_upgrades_cancel(_api::Vi
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmScaleSetName", vm_scale_set_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_header_accept(_ctx, [])
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
 end
@@ -49,6 +50,7 @@ end
 
 const _returntypes_virtual_machine_scale_set_rolling_upgrades_get_latest_VirtualMachineScaleSetRollingUpgradesApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => RollingUpgradeStatusInfo,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machine_scale_set_rolling_upgrades_get_latest(_api::VirtualMachineScaleSetRollingUpgradesApi, resource_group_name::String, vm_scale_set_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
@@ -56,7 +58,7 @@ function _oacinternal_virtual_machine_scale_set_rolling_upgrades_get_latest(_api
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmScaleSetName", vm_scale_set_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -85,6 +87,7 @@ end
 const _returntypes_virtual_machine_scale_set_rolling_upgrades_start_extension_upgrade_VirtualMachineScaleSetRollingUpgradesApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machine_scale_set_rolling_upgrades_start_extension_upgrade(_api::VirtualMachineScaleSetRollingUpgradesApi, resource_group_name::String, vm_scale_set_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
@@ -92,8 +95,8 @@ function _oacinternal_virtual_machine_scale_set_rolling_upgrades_start_extension
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmScaleSetName", vm_scale_set_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_header_accept(_ctx, [])
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
 end
@@ -121,6 +124,7 @@ end
 const _returntypes_virtual_machine_scale_set_rolling_upgrades_start_o_s_upgrade_VirtualMachineScaleSetRollingUpgradesApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machine_scale_set_rolling_upgrades_start_o_s_upgrade(_api::VirtualMachineScaleSetRollingUpgradesApi, resource_group_name::String, vm_scale_set_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
@@ -128,8 +132,8 @@ function _oacinternal_virtual_machine_scale_set_rolling_upgrades_start_o_s_upgra
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmScaleSetName", vm_scale_set_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_header_accept(_ctx, [])
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
 end

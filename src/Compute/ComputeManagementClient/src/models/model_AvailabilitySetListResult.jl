@@ -18,19 +18,26 @@ Base.@kwdef mutable struct AvailabilitySetListResult <: OpenAPI.APIModel
     nextLink::Union{Nothing, String} = nothing
 
     function AvailabilitySetListResult(value, nextLink, )
-        OpenAPI.validate_property(AvailabilitySetListResult, Symbol("value"), value)
-        OpenAPI.validate_property(AvailabilitySetListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AvailabilitySetListResult
 
 const _property_types_AvailabilitySetListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{AvailabilitySet}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ AvailabilitySetListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AvailabilitySetListResult[name]))}
 
-function check_required(o::AvailabilitySetListResult)
+function OpenAPI.check_required(o::AvailabilitySetListResult)
     o.value === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::AvailabilitySetListResult)
+    OpenAPI.validate_property(AvailabilitySetListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(AvailabilitySetListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ AvailabilitySetListResult }, name::Symbol, val)
+
+
 end

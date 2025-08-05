@@ -15,17 +15,23 @@ Base.@kwdef mutable struct VirtualMachineHealthStatus <: OpenAPI.APIModel
     status = nothing # spec type: Union{ Nothing, InstanceViewStatus }
 
     function VirtualMachineHealthStatus(status, )
-        OpenAPI.validate_property(VirtualMachineHealthStatus, Symbol("status"), status)
-        return new(status, )
+        o = new(status, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineHealthStatus
 
 const _property_types_VirtualMachineHealthStatus = Dict{Symbol,String}(Symbol("status")=>"InstanceViewStatus", )
 OpenAPI.property_type(::Type{ VirtualMachineHealthStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineHealthStatus[name]))}
 
-function check_required(o::VirtualMachineHealthStatus)
+function OpenAPI.check_required(o::VirtualMachineHealthStatus)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineHealthStatus)
+    OpenAPI.validate_property(VirtualMachineHealthStatus, Symbol("status"), o.status)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineHealthStatus }, name::Symbol, val)
+
 end

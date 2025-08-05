@@ -27,21 +27,31 @@ Base.@kwdef mutable struct ServiceAssociationLinkPropertiesFormat <: OpenAPI.API
     locations::Union{Nothing, Vector{String}} = nothing
 
     function ServiceAssociationLinkPropertiesFormat(linkedResourceType, link, provisioningState, allowDelete, locations, )
-        OpenAPI.validate_property(ServiceAssociationLinkPropertiesFormat, Symbol("linkedResourceType"), linkedResourceType)
-        OpenAPI.validate_property(ServiceAssociationLinkPropertiesFormat, Symbol("link"), link)
-        OpenAPI.validate_property(ServiceAssociationLinkPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        OpenAPI.validate_property(ServiceAssociationLinkPropertiesFormat, Symbol("allowDelete"), allowDelete)
-        OpenAPI.validate_property(ServiceAssociationLinkPropertiesFormat, Symbol("locations"), locations)
-        return new(linkedResourceType, link, provisioningState, allowDelete, locations, )
+        o = new(linkedResourceType, link, provisioningState, allowDelete, locations, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ServiceAssociationLinkPropertiesFormat
 
 const _property_types_ServiceAssociationLinkPropertiesFormat = Dict{Symbol,String}(Symbol("linkedResourceType")=>"String", Symbol("link")=>"String", Symbol("provisioningState")=>"ProvisioningState", Symbol("allowDelete")=>"Bool", Symbol("locations")=>"Vector{String}", )
 OpenAPI.property_type(::Type{ ServiceAssociationLinkPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ServiceAssociationLinkPropertiesFormat[name]))}
 
-function check_required(o::ServiceAssociationLinkPropertiesFormat)
+function OpenAPI.check_required(o::ServiceAssociationLinkPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::ServiceAssociationLinkPropertiesFormat)
+    OpenAPI.validate_property(ServiceAssociationLinkPropertiesFormat, Symbol("linkedResourceType"), o.linkedResourceType)
+    OpenAPI.validate_property(ServiceAssociationLinkPropertiesFormat, Symbol("link"), o.link)
+    OpenAPI.validate_property(ServiceAssociationLinkPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(ServiceAssociationLinkPropertiesFormat, Symbol("allowDelete"), o.allowDelete)
+    OpenAPI.validate_property(ServiceAssociationLinkPropertiesFormat, Symbol("locations"), o.locations)
+end
+
 function OpenAPI.validate_property(::Type{ ServiceAssociationLinkPropertiesFormat }, name::Symbol, val)
+
+
+
+
+
 end

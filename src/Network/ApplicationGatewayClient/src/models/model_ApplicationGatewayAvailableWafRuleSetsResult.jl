@@ -15,17 +15,23 @@ Base.@kwdef mutable struct ApplicationGatewayAvailableWafRuleSetsResult <: OpenA
     value::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ApplicationGatewayFirewallRuleSet} }
 
     function ApplicationGatewayAvailableWafRuleSetsResult(value, )
-        OpenAPI.validate_property(ApplicationGatewayAvailableWafRuleSetsResult, Symbol("value"), value)
-        return new(value, )
+        o = new(value, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayAvailableWafRuleSetsResult
 
 const _property_types_ApplicationGatewayAvailableWafRuleSetsResult = Dict{Symbol,String}(Symbol("value")=>"Vector{ApplicationGatewayFirewallRuleSet}", )
 OpenAPI.property_type(::Type{ ApplicationGatewayAvailableWafRuleSetsResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayAvailableWafRuleSetsResult[name]))}
 
-function check_required(o::ApplicationGatewayAvailableWafRuleSetsResult)
+function OpenAPI.check_required(o::ApplicationGatewayAvailableWafRuleSetsResult)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayAvailableWafRuleSetsResult)
+    OpenAPI.validate_property(ApplicationGatewayAvailableWafRuleSetsResult, Symbol("value"), o.value)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayAvailableWafRuleSetsResult }, name::Symbol, val)
+
 end

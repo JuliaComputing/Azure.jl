@@ -21,23 +21,31 @@ Base.@kwdef mutable struct RadiusServer <: OpenAPI.APIModel
     radiusServerSecret::Union{Nothing, String} = nothing
 
     function RadiusServer(radiusServerAddress, radiusServerScore, radiusServerSecret, )
-        OpenAPI.validate_property(RadiusServer, Symbol("radiusServerAddress"), radiusServerAddress)
-        OpenAPI.validate_property(RadiusServer, Symbol("radiusServerScore"), radiusServerScore)
-        OpenAPI.validate_property(RadiusServer, Symbol("radiusServerSecret"), radiusServerSecret)
-        return new(radiusServerAddress, radiusServerScore, radiusServerSecret, )
+        o = new(radiusServerAddress, radiusServerScore, radiusServerSecret, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type RadiusServer
 
 const _property_types_RadiusServer = Dict{Symbol,String}(Symbol("radiusServerAddress")=>"String", Symbol("radiusServerScore")=>"Int64", Symbol("radiusServerSecret")=>"String", )
 OpenAPI.property_type(::Type{ RadiusServer }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RadiusServer[name]))}
 
-function check_required(o::RadiusServer)
+function OpenAPI.check_required(o::RadiusServer)
     o.radiusServerAddress === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::RadiusServer)
+    OpenAPI.validate_property(RadiusServer, Symbol("radiusServerAddress"), o.radiusServerAddress)
+    OpenAPI.validate_property(RadiusServer, Symbol("radiusServerScore"), o.radiusServerScore)
+    OpenAPI.validate_property(RadiusServer, Symbol("radiusServerSecret"), o.radiusServerSecret)
+end
+
 function OpenAPI.validate_property(::Type{ RadiusServer }, name::Symbol, val)
+
+
     if name === Symbol("radiusServerScore")
         OpenAPI.validate_param(name, "RadiusServer", :format, val, "int64")
     end
+
 end

@@ -6,45 +6,66 @@
 Network rule set
 
     NetworkRuleSet(;
-        bypass=AzureServices,
+        bypass="AzureServices",
+        resourceAccessRules=nothing,
         virtualNetworkRules=nothing,
         ipRules=nothing,
-        defaultAction=Allow,
+        ipv6Rules=nothing,
+        defaultAction="Allow",
     )
 
     - bypass::String : Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Possible values are any combination of Logging|Metrics|AzureServices (For example, \&quot;Logging, Metrics\&quot;), or None to bypass none of those traffics.
+    - resourceAccessRules::Vector{ResourceAccessRule} : Sets the resource access rules
     - virtualNetworkRules::Vector{VirtualNetworkRule} : Sets the virtual network rules
     - ipRules::Vector{IPRule} : Sets the IP ACL rules
+    - ipv6Rules::Vector{IPRule} : Sets the IPv6 ACL rules.
     - defaultAction::String : Specifies the default action of allow or deny when no other rules match.
 """
 Base.@kwdef mutable struct NetworkRuleSet <: OpenAPI.APIModel
-    bypass::Union{Nothing, String} = AzureServices
+    bypass::Union{Nothing, String} = "AzureServices"
+    resourceAccessRules::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ResourceAccessRule} }
     virtualNetworkRules::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{VirtualNetworkRule} }
     ipRules::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{IPRule} }
-    defaultAction::Union{Nothing, String} = Allow
+    ipv6Rules::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{IPRule} }
+    defaultAction::Union{Nothing, String} = "Allow"
 
-    function NetworkRuleSet(bypass, virtualNetworkRules, ipRules, defaultAction, )
-        OpenAPI.validate_property(NetworkRuleSet, Symbol("bypass"), bypass)
-        OpenAPI.validate_property(NetworkRuleSet, Symbol("virtualNetworkRules"), virtualNetworkRules)
-        OpenAPI.validate_property(NetworkRuleSet, Symbol("ipRules"), ipRules)
-        OpenAPI.validate_property(NetworkRuleSet, Symbol("defaultAction"), defaultAction)
-        return new(bypass, virtualNetworkRules, ipRules, defaultAction, )
+    function NetworkRuleSet(bypass, resourceAccessRules, virtualNetworkRules, ipRules, ipv6Rules, defaultAction, )
+        o = new(bypass, resourceAccessRules, virtualNetworkRules, ipRules, ipv6Rules, defaultAction, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type NetworkRuleSet
 
-const _property_types_NetworkRuleSet = Dict{Symbol,String}(Symbol("bypass")=>"String", Symbol("virtualNetworkRules")=>"Vector{VirtualNetworkRule}", Symbol("ipRules")=>"Vector{IPRule}", Symbol("defaultAction")=>"String", )
+const _property_types_NetworkRuleSet = Dict{Symbol,String}(Symbol("bypass")=>"String", Symbol("resourceAccessRules")=>"Vector{ResourceAccessRule}", Symbol("virtualNetworkRules")=>"Vector{VirtualNetworkRule}", Symbol("ipRules")=>"Vector{IPRule}", Symbol("ipv6Rules")=>"Vector{IPRule}", Symbol("defaultAction")=>"String", )
 OpenAPI.property_type(::Type{ NetworkRuleSet }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkRuleSet[name]))}
 
-function check_required(o::NetworkRuleSet)
+function OpenAPI.check_required(o::NetworkRuleSet)
     o.defaultAction === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::NetworkRuleSet)
+    OpenAPI.validate_property(NetworkRuleSet, Symbol("bypass"), o.bypass)
+    OpenAPI.validate_property(NetworkRuleSet, Symbol("resourceAccessRules"), o.resourceAccessRules)
+    OpenAPI.validate_property(NetworkRuleSet, Symbol("virtualNetworkRules"), o.virtualNetworkRules)
+    OpenAPI.validate_property(NetworkRuleSet, Symbol("ipRules"), o.ipRules)
+    OpenAPI.validate_property(NetworkRuleSet, Symbol("ipv6Rules"), o.ipv6Rules)
+    OpenAPI.validate_property(NetworkRuleSet, Symbol("defaultAction"), o.defaultAction)
+end
+
 function OpenAPI.validate_property(::Type{ NetworkRuleSet }, name::Symbol, val)
+
     if name === Symbol("bypass")
         OpenAPI.validate_param(name, "NetworkRuleSet", :enum, val, ["None", "Logging", "Metrics", "AzureServices"])
     end
+
+
+
+
+
+
     if name === Symbol("defaultAction")
         OpenAPI.validate_param(name, "NetworkRuleSet", :enum, val, ["Allow", "Deny"])
     end
+
 end

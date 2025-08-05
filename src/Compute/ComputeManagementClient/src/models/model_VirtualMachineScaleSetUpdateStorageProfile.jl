@@ -21,19 +21,27 @@ Base.@kwdef mutable struct VirtualMachineScaleSetUpdateStorageProfile <: OpenAPI
     dataDisks::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{VirtualMachineScaleSetDataDisk} }
 
     function VirtualMachineScaleSetUpdateStorageProfile(imageReference, osDisk, dataDisks, )
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdateStorageProfile, Symbol("imageReference"), imageReference)
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdateStorageProfile, Symbol("osDisk"), osDisk)
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdateStorageProfile, Symbol("dataDisks"), dataDisks)
-        return new(imageReference, osDisk, dataDisks, )
+        o = new(imageReference, osDisk, dataDisks, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetUpdateStorageProfile
 
 const _property_types_VirtualMachineScaleSetUpdateStorageProfile = Dict{Symbol,String}(Symbol("imageReference")=>"ImageReference", Symbol("osDisk")=>"VirtualMachineScaleSetUpdateOSDisk", Symbol("dataDisks")=>"Vector{VirtualMachineScaleSetDataDisk}", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetUpdateStorageProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetUpdateStorageProfile[name]))}
 
-function check_required(o::VirtualMachineScaleSetUpdateStorageProfile)
+function OpenAPI.check_required(o::VirtualMachineScaleSetUpdateStorageProfile)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetUpdateStorageProfile)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdateStorageProfile, Symbol("imageReference"), o.imageReference)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdateStorageProfile, Symbol("osDisk"), o.osDisk)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdateStorageProfile, Symbol("dataDisks"), o.dataDisks)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetUpdateStorageProfile }, name::Symbol, val)
+
+
+
 end

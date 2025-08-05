@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **properties** | [***FlowLogPropertiesFormat**](FlowLogPropertiesFormat.md) |  | [optional] [default to nothing]
 **etag** | **String** | A unique read-only string that changes whenever the resource is updated. | [optional] [readonly] [default to nothing]
+**identity** | [***ManagedServiceIdentity**](ManagedServiceIdentity.md) |  | [optional] [default to nothing]
 **id** | **String** | Resource ID. | [optional] [default to nothing]
 **name** | **String** | Resource name. | [optional] [readonly] [default to nothing]
 **type** | **String** | Resource type. | [optional] [readonly] [default to nothing]

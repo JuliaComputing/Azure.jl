@@ -9,34 +9,51 @@ An access key for the storage account.
         keyName=nothing,
         value=nothing,
         permissions=nothing,
+        creationTime=nothing,
     )
 
     - keyName::String : Name of the key.
     - value::String : Base 64-encoded value of the key.
     - permissions::String : Permissions for the key -- read-only or full permissions.
+    - creationTime::ZonedDateTime : Creation time of the key, in round trip date format.
 """
 Base.@kwdef mutable struct StorageAccountKey <: OpenAPI.APIModel
     keyName::Union{Nothing, String} = nothing
     value::Union{Nothing, String} = nothing
     permissions::Union{Nothing, String} = nothing
+    creationTime::Union{Nothing, ZonedDateTime} = nothing
 
-    function StorageAccountKey(keyName, value, permissions, )
-        OpenAPI.validate_property(StorageAccountKey, Symbol("keyName"), keyName)
-        OpenAPI.validate_property(StorageAccountKey, Symbol("value"), value)
-        OpenAPI.validate_property(StorageAccountKey, Symbol("permissions"), permissions)
-        return new(keyName, value, permissions, )
+    function StorageAccountKey(keyName, value, permissions, creationTime, )
+        o = new(keyName, value, permissions, creationTime, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type StorageAccountKey
 
-const _property_types_StorageAccountKey = Dict{Symbol,String}(Symbol("keyName")=>"String", Symbol("value")=>"String", Symbol("permissions")=>"String", )
+const _property_types_StorageAccountKey = Dict{Symbol,String}(Symbol("keyName")=>"String", Symbol("value")=>"String", Symbol("permissions")=>"String", Symbol("creationTime")=>"ZonedDateTime", )
 OpenAPI.property_type(::Type{ StorageAccountKey }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_StorageAccountKey[name]))}
 
-function check_required(o::StorageAccountKey)
+function OpenAPI.check_required(o::StorageAccountKey)
     true
 end
 
+function OpenAPI.validate_properties(o::StorageAccountKey)
+    OpenAPI.validate_property(StorageAccountKey, Symbol("keyName"), o.keyName)
+    OpenAPI.validate_property(StorageAccountKey, Symbol("value"), o.value)
+    OpenAPI.validate_property(StorageAccountKey, Symbol("permissions"), o.permissions)
+    OpenAPI.validate_property(StorageAccountKey, Symbol("creationTime"), o.creationTime)
+end
+
 function OpenAPI.validate_property(::Type{ StorageAccountKey }, name::Symbol, val)
+
+
+
     if name === Symbol("permissions")
         OpenAPI.validate_param(name, "StorageAccountKey", :enum, val, ["Read", "Full"])
+    end
+
+
+    if name === Symbol("creationTime")
+        OpenAPI.validate_param(name, "StorageAccountKey", :format, val, "date-time")
     end
 end

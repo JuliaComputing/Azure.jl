@@ -18,19 +18,26 @@ Base.@kwdef mutable struct DedicatedHostListResult <: OpenAPI.APIModel
     nextLink::Union{Nothing, String} = nothing
 
     function DedicatedHostListResult(value, nextLink, )
-        OpenAPI.validate_property(DedicatedHostListResult, Symbol("value"), value)
-        OpenAPI.validate_property(DedicatedHostListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type DedicatedHostListResult
 
 const _property_types_DedicatedHostListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{DedicatedHost}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ DedicatedHostListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DedicatedHostListResult[name]))}
 
-function check_required(o::DedicatedHostListResult)
+function OpenAPI.check_required(o::DedicatedHostListResult)
     o.value === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::DedicatedHostListResult)
+    OpenAPI.validate_property(DedicatedHostListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(DedicatedHostListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ DedicatedHostListResult }, name::Symbol, val)
+
+
 end

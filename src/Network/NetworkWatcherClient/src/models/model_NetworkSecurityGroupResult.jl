@@ -18,18 +18,25 @@ Base.@kwdef mutable struct NetworkSecurityGroupResult <: OpenAPI.APIModel
     evaluatedNetworkSecurityGroups::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{EvaluatedNetworkSecurityGroup} }
 
     function NetworkSecurityGroupResult(securityRuleAccessResult, evaluatedNetworkSecurityGroups, )
-        OpenAPI.validate_property(NetworkSecurityGroupResult, Symbol("securityRuleAccessResult"), securityRuleAccessResult)
-        OpenAPI.validate_property(NetworkSecurityGroupResult, Symbol("evaluatedNetworkSecurityGroups"), evaluatedNetworkSecurityGroups)
-        return new(securityRuleAccessResult, evaluatedNetworkSecurityGroups, )
+        o = new(securityRuleAccessResult, evaluatedNetworkSecurityGroups, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type NetworkSecurityGroupResult
 
 const _property_types_NetworkSecurityGroupResult = Dict{Symbol,String}(Symbol("securityRuleAccessResult")=>"SecurityRuleAccess", Symbol("evaluatedNetworkSecurityGroups")=>"Vector{EvaluatedNetworkSecurityGroup}", )
 OpenAPI.property_type(::Type{ NetworkSecurityGroupResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkSecurityGroupResult[name]))}
 
-function check_required(o::NetworkSecurityGroupResult)
+function OpenAPI.check_required(o::NetworkSecurityGroupResult)
     true
 end
 
+function OpenAPI.validate_properties(o::NetworkSecurityGroupResult)
+    OpenAPI.validate_property(NetworkSecurityGroupResult, Symbol("securityRuleAccessResult"), o.securityRuleAccessResult)
+    OpenAPI.validate_property(NetworkSecurityGroupResult, Symbol("evaluatedNetworkSecurityGroups"), o.evaluatedNetworkSecurityGroups)
+end
+
 function OpenAPI.validate_property(::Type{ NetworkSecurityGroupResult }, name::Symbol, val)
+
+
 end

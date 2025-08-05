@@ -30,7 +30,7 @@ Describes a sample of the usageAggregation.
     - meterCategory::String : Category of the consumed resource.
     - meterSubCategory::String : Sub-category of the consumed resource.
     - meterRegion::String : Region of the meterId used for billing purposes
-    - infoFields::InfoField
+    - infoFields::Any : Key-value pairs of instance details in the legacy format.
     - instanceData::String : Key-value pairs of instance details represented as a string.
 """
 Base.@kwdef mutable struct UsageSample <: OpenAPI.APIModel
@@ -44,44 +44,61 @@ Base.@kwdef mutable struct UsageSample <: OpenAPI.APIModel
     meterCategory::Union{Nothing, String} = nothing
     meterSubCategory::Union{Nothing, String} = nothing
     meterRegion::Union{Nothing, String} = nothing
-    infoFields = nothing # spec type: Union{ Nothing, InfoField }
+    infoFields::Union{Nothing, Any} = nothing
     instanceData::Union{Nothing, String} = nothing
 
     function UsageSample(subscriptionId, meterId, usageStartTime, usageEndTime, quantity, unit, meterName, meterCategory, meterSubCategory, meterRegion, infoFields, instanceData, )
-        OpenAPI.validate_property(UsageSample, Symbol("subscriptionId"), subscriptionId)
-        OpenAPI.validate_property(UsageSample, Symbol("meterId"), meterId)
-        OpenAPI.validate_property(UsageSample, Symbol("usageStartTime"), usageStartTime)
-        OpenAPI.validate_property(UsageSample, Symbol("usageEndTime"), usageEndTime)
-        OpenAPI.validate_property(UsageSample, Symbol("quantity"), quantity)
-        OpenAPI.validate_property(UsageSample, Symbol("unit"), unit)
-        OpenAPI.validate_property(UsageSample, Symbol("meterName"), meterName)
-        OpenAPI.validate_property(UsageSample, Symbol("meterCategory"), meterCategory)
-        OpenAPI.validate_property(UsageSample, Symbol("meterSubCategory"), meterSubCategory)
-        OpenAPI.validate_property(UsageSample, Symbol("meterRegion"), meterRegion)
-        OpenAPI.validate_property(UsageSample, Symbol("infoFields"), infoFields)
-        OpenAPI.validate_property(UsageSample, Symbol("instanceData"), instanceData)
-        return new(subscriptionId, meterId, usageStartTime, usageEndTime, quantity, unit, meterName, meterCategory, meterSubCategory, meterRegion, infoFields, instanceData, )
+        o = new(subscriptionId, meterId, usageStartTime, usageEndTime, quantity, unit, meterName, meterCategory, meterSubCategory, meterRegion, infoFields, instanceData, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type UsageSample
 
-const _property_types_UsageSample = Dict{Symbol,String}(Symbol("subscriptionId")=>"String", Symbol("meterId")=>"String", Symbol("usageStartTime")=>"ZonedDateTime", Symbol("usageEndTime")=>"ZonedDateTime", Symbol("quantity")=>"Float32", Symbol("unit")=>"String", Symbol("meterName")=>"String", Symbol("meterCategory")=>"String", Symbol("meterSubCategory")=>"String", Symbol("meterRegion")=>"String", Symbol("infoFields")=>"InfoField", Symbol("instanceData")=>"String", )
+const _property_types_UsageSample = Dict{Symbol,String}(Symbol("subscriptionId")=>"String", Symbol("meterId")=>"String", Symbol("usageStartTime")=>"ZonedDateTime", Symbol("usageEndTime")=>"ZonedDateTime", Symbol("quantity")=>"Float32", Symbol("unit")=>"String", Symbol("meterName")=>"String", Symbol("meterCategory")=>"String", Symbol("meterSubCategory")=>"String", Symbol("meterRegion")=>"String", Symbol("infoFields")=>"Any", Symbol("instanceData")=>"String", )
 OpenAPI.property_type(::Type{ UsageSample }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_UsageSample[name]))}
 
-function check_required(o::UsageSample)
+function OpenAPI.check_required(o::UsageSample)
     true
 end
 
+function OpenAPI.validate_properties(o::UsageSample)
+    OpenAPI.validate_property(UsageSample, Symbol("subscriptionId"), o.subscriptionId)
+    OpenAPI.validate_property(UsageSample, Symbol("meterId"), o.meterId)
+    OpenAPI.validate_property(UsageSample, Symbol("usageStartTime"), o.usageStartTime)
+    OpenAPI.validate_property(UsageSample, Symbol("usageEndTime"), o.usageEndTime)
+    OpenAPI.validate_property(UsageSample, Symbol("quantity"), o.quantity)
+    OpenAPI.validate_property(UsageSample, Symbol("unit"), o.unit)
+    OpenAPI.validate_property(UsageSample, Symbol("meterName"), o.meterName)
+    OpenAPI.validate_property(UsageSample, Symbol("meterCategory"), o.meterCategory)
+    OpenAPI.validate_property(UsageSample, Symbol("meterSubCategory"), o.meterSubCategory)
+    OpenAPI.validate_property(UsageSample, Symbol("meterRegion"), o.meterRegion)
+    OpenAPI.validate_property(UsageSample, Symbol("infoFields"), o.infoFields)
+    OpenAPI.validate_property(UsageSample, Symbol("instanceData"), o.instanceData)
+end
+
 function OpenAPI.validate_property(::Type{ UsageSample }, name::Symbol, val)
+
     if name === Symbol("subscriptionId")
         OpenAPI.validate_param(name, "UsageSample", :format, val, "uuid")
     end
+
+
     if name === Symbol("usageStartTime")
         OpenAPI.validate_param(name, "UsageSample", :format, val, "date-time")
     end
+
     if name === Symbol("usageEndTime")
         OpenAPI.validate_param(name, "UsageSample", :format, val, "date-time")
     end
+
     if name === Symbol("quantity")
         OpenAPI.validate_param(name, "UsageSample", :format, val, "float")
     end
+
+
+
+
+
+
+
 end

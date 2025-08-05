@@ -20,8 +20,8 @@ Gets all the available bgp service communities.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **BgpServiceCommunitiesApi** | API context | 
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 

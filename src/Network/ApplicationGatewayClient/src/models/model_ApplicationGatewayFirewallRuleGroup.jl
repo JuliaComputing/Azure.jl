@@ -21,21 +21,29 @@ Base.@kwdef mutable struct ApplicationGatewayFirewallRuleGroup <: OpenAPI.APIMod
     rules::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ApplicationGatewayFirewallRule} }
 
     function ApplicationGatewayFirewallRuleGroup(ruleGroupName, description, rules, )
-        OpenAPI.validate_property(ApplicationGatewayFirewallRuleGroup, Symbol("ruleGroupName"), ruleGroupName)
-        OpenAPI.validate_property(ApplicationGatewayFirewallRuleGroup, Symbol("description"), description)
-        OpenAPI.validate_property(ApplicationGatewayFirewallRuleGroup, Symbol("rules"), rules)
-        return new(ruleGroupName, description, rules, )
+        o = new(ruleGroupName, description, rules, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayFirewallRuleGroup
 
 const _property_types_ApplicationGatewayFirewallRuleGroup = Dict{Symbol,String}(Symbol("ruleGroupName")=>"String", Symbol("description")=>"String", Symbol("rules")=>"Vector{ApplicationGatewayFirewallRule}", )
 OpenAPI.property_type(::Type{ ApplicationGatewayFirewallRuleGroup }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayFirewallRuleGroup[name]))}
 
-function check_required(o::ApplicationGatewayFirewallRuleGroup)
+function OpenAPI.check_required(o::ApplicationGatewayFirewallRuleGroup)
     o.ruleGroupName === nothing && (return false)
     o.rules === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayFirewallRuleGroup)
+    OpenAPI.validate_property(ApplicationGatewayFirewallRuleGroup, Symbol("ruleGroupName"), o.ruleGroupName)
+    OpenAPI.validate_property(ApplicationGatewayFirewallRuleGroup, Symbol("description"), o.description)
+    OpenAPI.validate_property(ApplicationGatewayFirewallRuleGroup, Symbol("rules"), o.rules)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayFirewallRuleGroup }, name::Symbol, val)
+
+
+
 end

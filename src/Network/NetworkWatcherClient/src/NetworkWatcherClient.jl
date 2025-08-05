@@ -7,7 +7,7 @@ using Dates, TimeZones
 using OpenAPI
 using OpenAPI.Clients
 
-const API_VERSION = "2020-05-01"
+const API_VERSION = "2024-07-01"
 
 include("modelincludes.jl")
 

@@ -18,6 +18,9 @@ Name | Type | Description | Notes
 **provisioningState** | [***ProvisioningState**](ProvisioningState.md) |  | [optional] [default to nothing]
 **gatewayManagerEtag** | **String** | The GatewayManager Etag. | [optional] [default to nothing]
 **globalReachEnabled** | **Bool** | Flag denoting global reach status. | [optional] [default to nothing]
+**authorizationKey** | **String** | The authorizationKey. | [optional] [default to nothing]
+**authorizationStatus** | **String** | The authorization status of the Circuit. | [optional] [readonly] [default to nothing]
+**enableDirectPortRateLimit** | **Bool** | Flag denoting rate-limiting status of the ExpressRoute direct-port circuit. | [optional] [default to nothing]
 
 
 [[Back to Model list]](../README.md#models) [[Back to API list]](../README.md#api-endpoints) [[Back to README]](../README.md)

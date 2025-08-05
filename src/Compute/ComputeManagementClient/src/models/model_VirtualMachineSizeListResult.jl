@@ -15,17 +15,23 @@ Base.@kwdef mutable struct VirtualMachineSizeListResult <: OpenAPI.APIModel
     value::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{VirtualMachineSize} }
 
     function VirtualMachineSizeListResult(value, )
-        OpenAPI.validate_property(VirtualMachineSizeListResult, Symbol("value"), value)
-        return new(value, )
+        o = new(value, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineSizeListResult
 
 const _property_types_VirtualMachineSizeListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{VirtualMachineSize}", )
 OpenAPI.property_type(::Type{ VirtualMachineSizeListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineSizeListResult[name]))}
 
-function check_required(o::VirtualMachineSizeListResult)
+function OpenAPI.check_required(o::VirtualMachineSizeListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineSizeListResult)
+    OpenAPI.validate_property(VirtualMachineSizeListResult, Symbol("value"), o.value)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineSizeListResult }, name::Symbol, val)
+
 end

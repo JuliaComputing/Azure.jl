@@ -8,36 +8,58 @@ Data used for requesting a SAS.
     GrantAccessData(;
         access=nothing,
         durationInSeconds=nothing,
+        getSecureVMGuestStateSAS=nothing,
+        fileFormat=nothing,
     )
 
     - access::String
     - durationInSeconds::Int64 : Time duration in seconds until the SAS access expires.
+    - getSecureVMGuestStateSAS::Bool : Set this flag to true to get additional SAS for VM guest state
+    - fileFormat::String : Used to specify the file format when making request for SAS on a VHDX file format snapshot
 """
 Base.@kwdef mutable struct GrantAccessData <: OpenAPI.APIModel
     access::Union{Nothing, String} = nothing
     durationInSeconds::Union{Nothing, Int64} = nothing
+    getSecureVMGuestStateSAS::Union{Nothing, Bool} = nothing
+    fileFormat::Union{Nothing, String} = nothing
 
-    function GrantAccessData(access, durationInSeconds, )
-        OpenAPI.validate_property(GrantAccessData, Symbol("access"), access)
-        OpenAPI.validate_property(GrantAccessData, Symbol("durationInSeconds"), durationInSeconds)
-        return new(access, durationInSeconds, )
+    function GrantAccessData(access, durationInSeconds, getSecureVMGuestStateSAS, fileFormat, )
+        o = new(access, durationInSeconds, getSecureVMGuestStateSAS, fileFormat, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type GrantAccessData
 
-const _property_types_GrantAccessData = Dict{Symbol,String}(Symbol("access")=>"String", Symbol("durationInSeconds")=>"Int64", )
+const _property_types_GrantAccessData = Dict{Symbol,String}(Symbol("access")=>"String", Symbol("durationInSeconds")=>"Int64", Symbol("getSecureVMGuestStateSAS")=>"Bool", Symbol("fileFormat")=>"String", )
 OpenAPI.property_type(::Type{ GrantAccessData }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_GrantAccessData[name]))}
 
-function check_required(o::GrantAccessData)
+function OpenAPI.check_required(o::GrantAccessData)
     o.access === nothing && (return false)
     o.durationInSeconds === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::GrantAccessData)
+    OpenAPI.validate_property(GrantAccessData, Symbol("access"), o.access)
+    OpenAPI.validate_property(GrantAccessData, Symbol("durationInSeconds"), o.durationInSeconds)
+    OpenAPI.validate_property(GrantAccessData, Symbol("getSecureVMGuestStateSAS"), o.getSecureVMGuestStateSAS)
+    OpenAPI.validate_property(GrantAccessData, Symbol("fileFormat"), o.fileFormat)
+end
+
 function OpenAPI.validate_property(::Type{ GrantAccessData }, name::Symbol, val)
+
     if name === Symbol("access")
         OpenAPI.validate_param(name, "GrantAccessData", :enum, val, ["None", "Read", "Write"])
     end
+
+
     if name === Symbol("durationInSeconds")
         OpenAPI.validate_param(name, "GrantAccessData", :format, val, "int32")
     end
+
+
+    if name === Symbol("fileFormat")
+        OpenAPI.validate_param(name, "GrantAccessData", :enum, val, ["VHD", "VHDX"])
+    end
+
 end

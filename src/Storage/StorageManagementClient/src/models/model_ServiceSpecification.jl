@@ -15,17 +15,23 @@ Base.@kwdef mutable struct ServiceSpecification <: OpenAPI.APIModel
     metricSpecifications::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{MetricSpecification} }
 
     function ServiceSpecification(metricSpecifications, )
-        OpenAPI.validate_property(ServiceSpecification, Symbol("metricSpecifications"), metricSpecifications)
-        return new(metricSpecifications, )
+        o = new(metricSpecifications, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ServiceSpecification
 
 const _property_types_ServiceSpecification = Dict{Symbol,String}(Symbol("metricSpecifications")=>"Vector{MetricSpecification}", )
 OpenAPI.property_type(::Type{ ServiceSpecification }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ServiceSpecification[name]))}
 
-function check_required(o::ServiceSpecification)
+function OpenAPI.check_required(o::ServiceSpecification)
     true
 end
 
+function OpenAPI.validate_properties(o::ServiceSpecification)
+    OpenAPI.validate_property(ServiceSpecification, Symbol("metricSpecifications"), o.metricSpecifications)
+end
+
 function OpenAPI.validate_property(::Type{ ServiceSpecification }, name::Symbol, val)
+
 end

@@ -23,7 +23,7 @@ function _oacinternal_flow_logs_create_or_update(_api::FlowLogsApi, resource_gro
     OpenAPI.Clients.set_param(_ctx.path, "networkWatcherName", network_watcher_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "flowLogName", flow_log_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -63,7 +63,7 @@ function _oacinternal_flow_logs_delete(_api::FlowLogsApi, resource_group_name::S
     OpenAPI.Clients.set_param(_ctx.path, "networkWatcherName", network_watcher_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "flowLogName", flow_log_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -101,7 +101,7 @@ function _oacinternal_flow_logs_get(_api::FlowLogsApi, resource_group_name::Stri
     OpenAPI.Clients.set_param(_ctx.path, "networkWatcherName", network_watcher_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "flowLogName", flow_log_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -138,7 +138,7 @@ function _oacinternal_flow_logs_list(_api::FlowLogsApi, resource_group_name::Str
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "networkWatcherName", network_watcher_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -164,7 +164,47 @@ function flow_logs_list(_api::FlowLogsApi, response_stream::Channel, resource_gr
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
+const _returntypes_flow_logs_update_tags_FlowLogsApi = Dict{Regex,Type}(
+    Regex("^" * replace("200", "x"=>".") * "\$") => FlowLog,
+    Regex("^" * replace("0", "x"=>".") * "\$") => ErrorResponse2,
+)
+
+function _oacinternal_flow_logs_update_tags(_api::FlowLogsApi, resource_group_name::String, network_watcher_name::String, flow_log_name::String, api_version::String, subscription_id::String, parameters::TagsObject; _mediaType=nothing)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_flow_logs_update_tags_FlowLogsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/flowLogs/{flowLogName}", ["azure_auth", ], parameters)
+    OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "networkWatcherName", network_watcher_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "flowLogName", flow_log_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
+    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
+    return _ctx
+end
+
+@doc raw"""Update tags of the specified flow log.
+
+Params:
+- resource_group_name::String (required)
+- network_watcher_name::String (required)
+- flow_log_name::String (required)
+- api_version::String (required)
+- subscription_id::String (required)
+- parameters::TagsObject (required)
+
+Return: FlowLog, OpenAPI.Clients.ApiResponse
+"""
+function flow_logs_update_tags(_api::FlowLogsApi, resource_group_name::String, network_watcher_name::String, flow_log_name::String, api_version::String, subscription_id::String, parameters::TagsObject; _mediaType=nothing)
+    _ctx = _oacinternal_flow_logs_update_tags(_api, resource_group_name, network_watcher_name, flow_log_name, api_version, subscription_id, parameters; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx)
+end
+
+function flow_logs_update_tags(_api::FlowLogsApi, response_stream::Channel, resource_group_name::String, network_watcher_name::String, flow_log_name::String, api_version::String, subscription_id::String, parameters::TagsObject; _mediaType=nothing)
+    _ctx = _oacinternal_flow_logs_update_tags(_api, resource_group_name, network_watcher_name, flow_log_name, api_version, subscription_id, parameters; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx, response_stream)
+end
+
 export flow_logs_create_or_update
 export flow_logs_delete
 export flow_logs_get
 export flow_logs_list
+export flow_logs_update_tags

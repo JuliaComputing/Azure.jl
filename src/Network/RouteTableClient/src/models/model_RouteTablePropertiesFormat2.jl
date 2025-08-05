@@ -10,34 +10,48 @@ Route Table resource.
         subnets=nothing,
         disableBgpRoutePropagation=nothing,
         provisioningState=nothing,
+        resourceGuid=nothing,
     )
 
     - routes::Vector{Route2} : Collection of routes contained within a route table.
     - subnets::Vector{Subnet} : A collection of references to subnets.
     - disableBgpRoutePropagation::Bool : Whether to disable the routes learned by BGP on that route table. True means disable.
     - provisioningState::ProvisioningState
+    - resourceGuid::String : The resource GUID property of the route table.
 """
 Base.@kwdef mutable struct RouteTablePropertiesFormat2 <: OpenAPI.APIModel
     routes::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{Route2} }
     subnets::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{Subnet} }
     disableBgpRoutePropagation::Union{Nothing, Bool} = nothing
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
+    resourceGuid::Union{Nothing, String} = nothing
 
-    function RouteTablePropertiesFormat2(routes, subnets, disableBgpRoutePropagation, provisioningState, )
-        OpenAPI.validate_property(RouteTablePropertiesFormat2, Symbol("routes"), routes)
-        OpenAPI.validate_property(RouteTablePropertiesFormat2, Symbol("subnets"), subnets)
-        OpenAPI.validate_property(RouteTablePropertiesFormat2, Symbol("disableBgpRoutePropagation"), disableBgpRoutePropagation)
-        OpenAPI.validate_property(RouteTablePropertiesFormat2, Symbol("provisioningState"), provisioningState)
-        return new(routes, subnets, disableBgpRoutePropagation, provisioningState, )
+    function RouteTablePropertiesFormat2(routes, subnets, disableBgpRoutePropagation, provisioningState, resourceGuid, )
+        o = new(routes, subnets, disableBgpRoutePropagation, provisioningState, resourceGuid, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type RouteTablePropertiesFormat2
 
-const _property_types_RouteTablePropertiesFormat2 = Dict{Symbol,String}(Symbol("routes")=>"Vector{Route2}", Symbol("subnets")=>"Vector{Subnet}", Symbol("disableBgpRoutePropagation")=>"Bool", Symbol("provisioningState")=>"ProvisioningState", )
+const _property_types_RouteTablePropertiesFormat2 = Dict{Symbol,String}(Symbol("routes")=>"Vector{Route2}", Symbol("subnets")=>"Vector{Subnet}", Symbol("disableBgpRoutePropagation")=>"Bool", Symbol("provisioningState")=>"ProvisioningState", Symbol("resourceGuid")=>"String", )
 OpenAPI.property_type(::Type{ RouteTablePropertiesFormat2 }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RouteTablePropertiesFormat2[name]))}
 
-function check_required(o::RouteTablePropertiesFormat2)
+function OpenAPI.check_required(o::RouteTablePropertiesFormat2)
     true
 end
 
+function OpenAPI.validate_properties(o::RouteTablePropertiesFormat2)
+    OpenAPI.validate_property(RouteTablePropertiesFormat2, Symbol("routes"), o.routes)
+    OpenAPI.validate_property(RouteTablePropertiesFormat2, Symbol("subnets"), o.subnets)
+    OpenAPI.validate_property(RouteTablePropertiesFormat2, Symbol("disableBgpRoutePropagation"), o.disableBgpRoutePropagation)
+    OpenAPI.validate_property(RouteTablePropertiesFormat2, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(RouteTablePropertiesFormat2, Symbol("resourceGuid"), o.resourceGuid)
+end
+
 function OpenAPI.validate_property(::Type{ RouteTablePropertiesFormat2 }, name::Symbol, val)
+
+
+
+
+
 end

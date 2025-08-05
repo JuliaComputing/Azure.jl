@@ -13,6 +13,7 @@ VirtualNetworkGatewayConnection properties.
         connectionType=nothing,
         connectionProtocol=nothing,
         routingWeight=nothing,
+        connectionMode=nothing,
         sharedKey=nothing,
         connectionStatus=nothing,
         tunnelConnectionStatus=nothing,
@@ -20,12 +21,14 @@ VirtualNetworkGatewayConnection properties.
         ingressBytesTransferred=nothing,
         peer=nothing,
         enableBgp=nothing,
+        gatewayCustomBgpIpAddresses=nothing,
         usePolicyBasedTrafficSelectors=nothing,
         ipsecPolicies=nothing,
         trafficSelectorPolicies=nothing,
         resourceGuid=nothing,
         provisioningState=nothing,
         expressRouteGatewayBypass=nothing,
+        enablePrivateLinkFastPath=nothing,
     )
 
     - authorizationKey::String : The authorizationKey.
@@ -35,6 +38,7 @@ VirtualNetworkGatewayConnection properties.
     - connectionType::VirtualNetworkGatewayConnectionType
     - connectionProtocol::ConnectionProtocol
     - routingWeight::Int64 : The routing weight.
+    - connectionMode::VirtualNetworkGatewayConnectionMode
     - sharedKey::String : The IPSec shared key.
     - connectionStatus::VirtualNetworkGatewayConnectionStatus
     - tunnelConnectionStatus::Vector{TunnelConnectionHealth} : Collection of all tunnels&#39; connection health status.
@@ -42,12 +46,14 @@ VirtualNetworkGatewayConnection properties.
     - ingressBytesTransferred::Int64 : The ingress bytes transferred in this connection.
     - peer::SubResource
     - enableBgp::Bool : EnableBgp flag.
+    - gatewayCustomBgpIpAddresses::Vector{GatewayCustomBgpIpAddressIpConfiguration} : GatewayCustomBgpIpAddresses to be used for virtual network gateway Connection.
     - usePolicyBasedTrafficSelectors::Bool : Enable policy-based traffic selectors.
     - ipsecPolicies::Vector{IpsecPolicy} : The IPSec Policies to be considered by this connection.
     - trafficSelectorPolicies::Vector{TrafficSelectorPolicy} : The Traffic Selector Policies to be considered by this connection.
     - resourceGuid::String : The resource GUID property of the virtual network gateway connection resource.
     - provisioningState::ProvisioningState
     - expressRouteGatewayBypass::Bool : Bypass ExpressRoute Gateway for data forwarding.
+    - enablePrivateLinkFastPath::Bool : Bypass the ExpressRoute gateway when accessing private-links. ExpressRoute FastPath (expressRouteGatewayBypass) must be enabled.
 """
 Base.@kwdef mutable struct VirtualNetworkGatewayConnectionListEntityPropertiesFormat <: OpenAPI.APIModel
     authorizationKey::Union{Nothing, String} = nothing
@@ -57,6 +63,7 @@ Base.@kwdef mutable struct VirtualNetworkGatewayConnectionListEntityPropertiesFo
     connectionType = nothing # spec type: Union{ Nothing, VirtualNetworkGatewayConnectionType }
     connectionProtocol = nothing # spec type: Union{ Nothing, ConnectionProtocol }
     routingWeight::Union{Nothing, Int64} = nothing
+    connectionMode = nothing # spec type: Union{ Nothing, VirtualNetworkGatewayConnectionMode }
     sharedKey::Union{Nothing, String} = nothing
     connectionStatus = nothing # spec type: Union{ Nothing, VirtualNetworkGatewayConnectionStatus }
     tunnelConnectionStatus::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{TunnelConnectionHealth} }
@@ -64,55 +71,88 @@ Base.@kwdef mutable struct VirtualNetworkGatewayConnectionListEntityPropertiesFo
     ingressBytesTransferred::Union{Nothing, Int64} = nothing
     peer = nothing # spec type: Union{ Nothing, SubResource }
     enableBgp::Union{Nothing, Bool} = nothing
+    gatewayCustomBgpIpAddresses::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{GatewayCustomBgpIpAddressIpConfiguration} }
     usePolicyBasedTrafficSelectors::Union{Nothing, Bool} = nothing
     ipsecPolicies::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{IpsecPolicy} }
     trafficSelectorPolicies::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{TrafficSelectorPolicy} }
     resourceGuid::Union{Nothing, String} = nothing
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
     expressRouteGatewayBypass::Union{Nothing, Bool} = nothing
+    enablePrivateLinkFastPath::Union{Nothing, Bool} = nothing
 
-    function VirtualNetworkGatewayConnectionListEntityPropertiesFormat(authorizationKey, virtualNetworkGateway1, virtualNetworkGateway2, localNetworkGateway2, connectionType, connectionProtocol, routingWeight, sharedKey, connectionStatus, tunnelConnectionStatus, egressBytesTransferred, ingressBytesTransferred, peer, enableBgp, usePolicyBasedTrafficSelectors, ipsecPolicies, trafficSelectorPolicies, resourceGuid, provisioningState, expressRouteGatewayBypass, )
-        OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("authorizationKey"), authorizationKey)
-        OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("virtualNetworkGateway1"), virtualNetworkGateway1)
-        OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("virtualNetworkGateway2"), virtualNetworkGateway2)
-        OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("localNetworkGateway2"), localNetworkGateway2)
-        OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("connectionType"), connectionType)
-        OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("connectionProtocol"), connectionProtocol)
-        OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("routingWeight"), routingWeight)
-        OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("sharedKey"), sharedKey)
-        OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("connectionStatus"), connectionStatus)
-        OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("tunnelConnectionStatus"), tunnelConnectionStatus)
-        OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("egressBytesTransferred"), egressBytesTransferred)
-        OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("ingressBytesTransferred"), ingressBytesTransferred)
-        OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("peer"), peer)
-        OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("enableBgp"), enableBgp)
-        OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("usePolicyBasedTrafficSelectors"), usePolicyBasedTrafficSelectors)
-        OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("ipsecPolicies"), ipsecPolicies)
-        OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("trafficSelectorPolicies"), trafficSelectorPolicies)
-        OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("resourceGuid"), resourceGuid)
-        OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("expressRouteGatewayBypass"), expressRouteGatewayBypass)
-        return new(authorizationKey, virtualNetworkGateway1, virtualNetworkGateway2, localNetworkGateway2, connectionType, connectionProtocol, routingWeight, sharedKey, connectionStatus, tunnelConnectionStatus, egressBytesTransferred, ingressBytesTransferred, peer, enableBgp, usePolicyBasedTrafficSelectors, ipsecPolicies, trafficSelectorPolicies, resourceGuid, provisioningState, expressRouteGatewayBypass, )
+    function VirtualNetworkGatewayConnectionListEntityPropertiesFormat(authorizationKey, virtualNetworkGateway1, virtualNetworkGateway2, localNetworkGateway2, connectionType, connectionProtocol, routingWeight, connectionMode, sharedKey, connectionStatus, tunnelConnectionStatus, egressBytesTransferred, ingressBytesTransferred, peer, enableBgp, gatewayCustomBgpIpAddresses, usePolicyBasedTrafficSelectors, ipsecPolicies, trafficSelectorPolicies, resourceGuid, provisioningState, expressRouteGatewayBypass, enablePrivateLinkFastPath, )
+        o = new(authorizationKey, virtualNetworkGateway1, virtualNetworkGateway2, localNetworkGateway2, connectionType, connectionProtocol, routingWeight, connectionMode, sharedKey, connectionStatus, tunnelConnectionStatus, egressBytesTransferred, ingressBytesTransferred, peer, enableBgp, gatewayCustomBgpIpAddresses, usePolicyBasedTrafficSelectors, ipsecPolicies, trafficSelectorPolicies, resourceGuid, provisioningState, expressRouteGatewayBypass, enablePrivateLinkFastPath, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualNetworkGatewayConnectionListEntityPropertiesFormat
 
-const _property_types_VirtualNetworkGatewayConnectionListEntityPropertiesFormat = Dict{Symbol,String}(Symbol("authorizationKey")=>"String", Symbol("virtualNetworkGateway1")=>"VirtualNetworkConnectionGatewayReference", Symbol("virtualNetworkGateway2")=>"VirtualNetworkConnectionGatewayReference", Symbol("localNetworkGateway2")=>"VirtualNetworkConnectionGatewayReference", Symbol("connectionType")=>"VirtualNetworkGatewayConnectionType", Symbol("connectionProtocol")=>"ConnectionProtocol", Symbol("routingWeight")=>"Int64", Symbol("sharedKey")=>"String", Symbol("connectionStatus")=>"VirtualNetworkGatewayConnectionStatus", Symbol("tunnelConnectionStatus")=>"Vector{TunnelConnectionHealth}", Symbol("egressBytesTransferred")=>"Int64", Symbol("ingressBytesTransferred")=>"Int64", Symbol("peer")=>"SubResource", Symbol("enableBgp")=>"Bool", Symbol("usePolicyBasedTrafficSelectors")=>"Bool", Symbol("ipsecPolicies")=>"Vector{IpsecPolicy}", Symbol("trafficSelectorPolicies")=>"Vector{TrafficSelectorPolicy}", Symbol("resourceGuid")=>"String", Symbol("provisioningState")=>"ProvisioningState", Symbol("expressRouteGatewayBypass")=>"Bool", )
+const _property_types_VirtualNetworkGatewayConnectionListEntityPropertiesFormat = Dict{Symbol,String}(Symbol("authorizationKey")=>"String", Symbol("virtualNetworkGateway1")=>"VirtualNetworkConnectionGatewayReference", Symbol("virtualNetworkGateway2")=>"VirtualNetworkConnectionGatewayReference", Symbol("localNetworkGateway2")=>"VirtualNetworkConnectionGatewayReference", Symbol("connectionType")=>"VirtualNetworkGatewayConnectionType", Symbol("connectionProtocol")=>"ConnectionProtocol", Symbol("routingWeight")=>"Int64", Symbol("connectionMode")=>"VirtualNetworkGatewayConnectionMode", Symbol("sharedKey")=>"String", Symbol("connectionStatus")=>"VirtualNetworkGatewayConnectionStatus", Symbol("tunnelConnectionStatus")=>"Vector{TunnelConnectionHealth}", Symbol("egressBytesTransferred")=>"Int64", Symbol("ingressBytesTransferred")=>"Int64", Symbol("peer")=>"SubResource", Symbol("enableBgp")=>"Bool", Symbol("gatewayCustomBgpIpAddresses")=>"Vector{GatewayCustomBgpIpAddressIpConfiguration}", Symbol("usePolicyBasedTrafficSelectors")=>"Bool", Symbol("ipsecPolicies")=>"Vector{IpsecPolicy}", Symbol("trafficSelectorPolicies")=>"Vector{TrafficSelectorPolicy}", Symbol("resourceGuid")=>"String", Symbol("provisioningState")=>"ProvisioningState", Symbol("expressRouteGatewayBypass")=>"Bool", Symbol("enablePrivateLinkFastPath")=>"Bool", )
 OpenAPI.property_type(::Type{ VirtualNetworkGatewayConnectionListEntityPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualNetworkGatewayConnectionListEntityPropertiesFormat[name]))}
 
-function check_required(o::VirtualNetworkGatewayConnectionListEntityPropertiesFormat)
+function OpenAPI.check_required(o::VirtualNetworkGatewayConnectionListEntityPropertiesFormat)
     o.virtualNetworkGateway1 === nothing && (return false)
     o.connectionType === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualNetworkGatewayConnectionListEntityPropertiesFormat)
+    OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("authorizationKey"), o.authorizationKey)
+    OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("virtualNetworkGateway1"), o.virtualNetworkGateway1)
+    OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("virtualNetworkGateway2"), o.virtualNetworkGateway2)
+    OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("localNetworkGateway2"), o.localNetworkGateway2)
+    OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("connectionType"), o.connectionType)
+    OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("connectionProtocol"), o.connectionProtocol)
+    OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("routingWeight"), o.routingWeight)
+    OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("connectionMode"), o.connectionMode)
+    OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("sharedKey"), o.sharedKey)
+    OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("connectionStatus"), o.connectionStatus)
+    OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("tunnelConnectionStatus"), o.tunnelConnectionStatus)
+    OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("egressBytesTransferred"), o.egressBytesTransferred)
+    OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("ingressBytesTransferred"), o.ingressBytesTransferred)
+    OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("peer"), o.peer)
+    OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("enableBgp"), o.enableBgp)
+    OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("gatewayCustomBgpIpAddresses"), o.gatewayCustomBgpIpAddresses)
+    OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("usePolicyBasedTrafficSelectors"), o.usePolicyBasedTrafficSelectors)
+    OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("ipsecPolicies"), o.ipsecPolicies)
+    OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("trafficSelectorPolicies"), o.trafficSelectorPolicies)
+    OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("resourceGuid"), o.resourceGuid)
+    OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("expressRouteGatewayBypass"), o.expressRouteGatewayBypass)
+    OpenAPI.validate_property(VirtualNetworkGatewayConnectionListEntityPropertiesFormat, Symbol("enablePrivateLinkFastPath"), o.enablePrivateLinkFastPath)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualNetworkGatewayConnectionListEntityPropertiesFormat }, name::Symbol, val)
+
+
+
+
+
+
+
     if name === Symbol("routingWeight")
         OpenAPI.validate_param(name, "VirtualNetworkGatewayConnectionListEntityPropertiesFormat", :format, val, "int32")
     end
+
+
+
+
+
     if name === Symbol("egressBytesTransferred")
         OpenAPI.validate_param(name, "VirtualNetworkGatewayConnectionListEntityPropertiesFormat", :format, val, "int64")
     end
+
     if name === Symbol("ingressBytesTransferred")
         OpenAPI.validate_param(name, "VirtualNetworkGatewayConnectionListEntityPropertiesFormat", :format, val, "int64")
     end
+
+
+
+
+
+
+
+
+
+
 end

@@ -15,21 +15,28 @@ Base.@kwdef mutable struct OSDiskImage <: OpenAPI.APIModel
     operatingSystem::Union{Nothing, String} = nothing
 
     function OSDiskImage(operatingSystem, )
-        OpenAPI.validate_property(OSDiskImage, Symbol("operatingSystem"), operatingSystem)
-        return new(operatingSystem, )
+        o = new(operatingSystem, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type OSDiskImage
 
 const _property_types_OSDiskImage = Dict{Symbol,String}(Symbol("operatingSystem")=>"String", )
 OpenAPI.property_type(::Type{ OSDiskImage }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_OSDiskImage[name]))}
 
-function check_required(o::OSDiskImage)
+function OpenAPI.check_required(o::OSDiskImage)
     o.operatingSystem === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::OSDiskImage)
+    OpenAPI.validate_property(OSDiskImage, Symbol("operatingSystem"), o.operatingSystem)
+end
+
 function OpenAPI.validate_property(::Type{ OSDiskImage }, name::Symbol, val)
+
     if name === Symbol("operatingSystem")
         OpenAPI.validate_param(name, "OSDiskImage", :enum, val, ["Windows", "Linux"])
     end
+
 end

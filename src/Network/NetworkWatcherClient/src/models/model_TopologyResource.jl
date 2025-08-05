@@ -24,20 +24,29 @@ Base.@kwdef mutable struct TopologyResource <: OpenAPI.APIModel
     associations::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{TopologyAssociation} }
 
     function TopologyResource(name, id, location, associations, )
-        OpenAPI.validate_property(TopologyResource, Symbol("name"), name)
-        OpenAPI.validate_property(TopologyResource, Symbol("id"), id)
-        OpenAPI.validate_property(TopologyResource, Symbol("location"), location)
-        OpenAPI.validate_property(TopologyResource, Symbol("associations"), associations)
-        return new(name, id, location, associations, )
+        o = new(name, id, location, associations, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type TopologyResource
 
 const _property_types_TopologyResource = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("id")=>"String", Symbol("location")=>"String", Symbol("associations")=>"Vector{TopologyAssociation}", )
 OpenAPI.property_type(::Type{ TopologyResource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TopologyResource[name]))}
 
-function check_required(o::TopologyResource)
+function OpenAPI.check_required(o::TopologyResource)
     true
 end
 
+function OpenAPI.validate_properties(o::TopologyResource)
+    OpenAPI.validate_property(TopologyResource, Symbol("name"), o.name)
+    OpenAPI.validate_property(TopologyResource, Symbol("id"), o.id)
+    OpenAPI.validate_property(TopologyResource, Symbol("location"), o.location)
+    OpenAPI.validate_property(TopologyResource, Symbol("associations"), o.associations)
+end
+
 function OpenAPI.validate_property(::Type{ TopologyResource }, name::Symbol, val)
+
+
+
+
 end

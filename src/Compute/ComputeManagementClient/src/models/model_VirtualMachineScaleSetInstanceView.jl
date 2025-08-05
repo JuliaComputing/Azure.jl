@@ -24,20 +24,29 @@ Base.@kwdef mutable struct VirtualMachineScaleSetInstanceView <: OpenAPI.APIMode
     orchestrationServices::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{OrchestrationServiceSummary} }
 
     function VirtualMachineScaleSetInstanceView(virtualMachine, extensions, statuses, orchestrationServices, )
-        OpenAPI.validate_property(VirtualMachineScaleSetInstanceView, Symbol("virtualMachine"), virtualMachine)
-        OpenAPI.validate_property(VirtualMachineScaleSetInstanceView, Symbol("extensions"), extensions)
-        OpenAPI.validate_property(VirtualMachineScaleSetInstanceView, Symbol("statuses"), statuses)
-        OpenAPI.validate_property(VirtualMachineScaleSetInstanceView, Symbol("orchestrationServices"), orchestrationServices)
-        return new(virtualMachine, extensions, statuses, orchestrationServices, )
+        o = new(virtualMachine, extensions, statuses, orchestrationServices, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetInstanceView
 
 const _property_types_VirtualMachineScaleSetInstanceView = Dict{Symbol,String}(Symbol("virtualMachine")=>"VirtualMachineScaleSetInstanceViewStatusesSummary", Symbol("extensions")=>"Vector{VirtualMachineScaleSetVMExtensionsSummary}", Symbol("statuses")=>"Vector{InstanceViewStatus}", Symbol("orchestrationServices")=>"Vector{OrchestrationServiceSummary}", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetInstanceView }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetInstanceView[name]))}
 
-function check_required(o::VirtualMachineScaleSetInstanceView)
+function OpenAPI.check_required(o::VirtualMachineScaleSetInstanceView)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetInstanceView)
+    OpenAPI.validate_property(VirtualMachineScaleSetInstanceView, Symbol("virtualMachine"), o.virtualMachine)
+    OpenAPI.validate_property(VirtualMachineScaleSetInstanceView, Symbol("extensions"), o.extensions)
+    OpenAPI.validate_property(VirtualMachineScaleSetInstanceView, Symbol("statuses"), o.statuses)
+    OpenAPI.validate_property(VirtualMachineScaleSetInstanceView, Symbol("orchestrationServices"), o.orchestrationServices)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetInstanceView }, name::Symbol, val)
+
+
+
+
 end

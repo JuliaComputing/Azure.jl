@@ -9,31 +9,44 @@ The storage location for a packet capture session.
         storageId=nothing,
         storagePath=nothing,
         filePath=nothing,
+        localPath=nothing,
     )
 
-    - storageId::String : The ID of the storage account to save the packet capture session. Required if no local file path is provided.
+    - storageId::String : The ID of the storage account to save the packet capture session. Required if no localPath or filePath is provided.
     - storagePath::String : The URI of the storage path to save the packet capture. Must be a well-formed URI describing the location to save the packet capture.
-    - filePath::String : A valid local path on the targeting VM. Must include the name of the capture file (*.cap). For linux virtual machine it must start with /var/captures. Required if no storage ID is provided, otherwise optional.
+    - filePath::String : This path is invalid if &#39;Continuous Capture&#39; is provided with &#39;true&#39; or &#39;false&#39;. A valid local path on the targeting VM. Must include the name of the capture file (*.cap). For linux virtual machine it must start with /var/captures. Required if no storage ID is provided, otherwise optional.
+    - localPath::String : This path is valid if &#39;Continuous Capture&#39; is provided with &#39;true&#39; or &#39;false&#39; and required if no storage ID is provided, otherwise optional. Must include the name of the capture file (*.cap). For linux virtual machine it must start with /var/captures.
 """
 Base.@kwdef mutable struct PacketCaptureStorageLocation <: OpenAPI.APIModel
     storageId::Union{Nothing, String} = nothing
     storagePath::Union{Nothing, String} = nothing
     filePath::Union{Nothing, String} = nothing
+    localPath::Union{Nothing, String} = nothing
 
-    function PacketCaptureStorageLocation(storageId, storagePath, filePath, )
-        OpenAPI.validate_property(PacketCaptureStorageLocation, Symbol("storageId"), storageId)
-        OpenAPI.validate_property(PacketCaptureStorageLocation, Symbol("storagePath"), storagePath)
-        OpenAPI.validate_property(PacketCaptureStorageLocation, Symbol("filePath"), filePath)
-        return new(storageId, storagePath, filePath, )
+    function PacketCaptureStorageLocation(storageId, storagePath, filePath, localPath, )
+        o = new(storageId, storagePath, filePath, localPath, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PacketCaptureStorageLocation
 
-const _property_types_PacketCaptureStorageLocation = Dict{Symbol,String}(Symbol("storageId")=>"String", Symbol("storagePath")=>"String", Symbol("filePath")=>"String", )
+const _property_types_PacketCaptureStorageLocation = Dict{Symbol,String}(Symbol("storageId")=>"String", Symbol("storagePath")=>"String", Symbol("filePath")=>"String", Symbol("localPath")=>"String", )
 OpenAPI.property_type(::Type{ PacketCaptureStorageLocation }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PacketCaptureStorageLocation[name]))}
 
-function check_required(o::PacketCaptureStorageLocation)
+function OpenAPI.check_required(o::PacketCaptureStorageLocation)
     true
 end
 
+function OpenAPI.validate_properties(o::PacketCaptureStorageLocation)
+    OpenAPI.validate_property(PacketCaptureStorageLocation, Symbol("storageId"), o.storageId)
+    OpenAPI.validate_property(PacketCaptureStorageLocation, Symbol("storagePath"), o.storagePath)
+    OpenAPI.validate_property(PacketCaptureStorageLocation, Symbol("filePath"), o.filePath)
+    OpenAPI.validate_property(PacketCaptureStorageLocation, Symbol("localPath"), o.localPath)
+end
+
 function OpenAPI.validate_property(::Type{ PacketCaptureStorageLocation }, name::Symbol, val)
+
+
+
+
 end

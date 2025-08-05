@@ -30,22 +30,33 @@ Base.@kwdef mutable struct HopLink2 <: OpenAPI.APIModel
     resourceId::Union{Nothing, String} = nothing
 
     function HopLink2(nextHopId, linkType, properties, issues, context, resourceId, )
-        OpenAPI.validate_property(HopLink2, Symbol("nextHopId"), nextHopId)
-        OpenAPI.validate_property(HopLink2, Symbol("linkType"), linkType)
-        OpenAPI.validate_property(HopLink2, Symbol("properties"), properties)
-        OpenAPI.validate_property(HopLink2, Symbol("issues"), issues)
-        OpenAPI.validate_property(HopLink2, Symbol("context"), context)
-        OpenAPI.validate_property(HopLink2, Symbol("resourceId"), resourceId)
-        return new(nextHopId, linkType, properties, issues, context, resourceId, )
+        o = new(nextHopId, linkType, properties, issues, context, resourceId, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type HopLink2
 
 const _property_types_HopLink2 = Dict{Symbol,String}(Symbol("nextHopId")=>"String", Symbol("linkType")=>"String", Symbol("properties")=>"HopLinkProperties2", Symbol("issues")=>"Vector{ConnectivityIssue2}", Symbol("context")=>"Dict{String, String}", Symbol("resourceId")=>"String", )
 OpenAPI.property_type(::Type{ HopLink2 }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_HopLink2[name]))}
 
-function check_required(o::HopLink2)
+function OpenAPI.check_required(o::HopLink2)
     true
 end
 
+function OpenAPI.validate_properties(o::HopLink2)
+    OpenAPI.validate_property(HopLink2, Symbol("nextHopId"), o.nextHopId)
+    OpenAPI.validate_property(HopLink2, Symbol("linkType"), o.linkType)
+    OpenAPI.validate_property(HopLink2, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(HopLink2, Symbol("issues"), o.issues)
+    OpenAPI.validate_property(HopLink2, Symbol("context"), o.context)
+    OpenAPI.validate_property(HopLink2, Symbol("resourceId"), o.resourceId)
+end
+
 function OpenAPI.validate_property(::Type{ HopLink2 }, name::Symbol, val)
+
+
+
+
+
+
 end

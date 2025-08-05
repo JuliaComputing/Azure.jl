@@ -24,20 +24,29 @@ Base.@kwdef mutable struct RollingUpgradeStatusInfoProperties <: OpenAPI.APIMode
     error = nothing # spec type: Union{ Nothing, ApiError }
 
     function RollingUpgradeStatusInfoProperties(policy, runningStatus, progress, error, )
-        OpenAPI.validate_property(RollingUpgradeStatusInfoProperties, Symbol("policy"), policy)
-        OpenAPI.validate_property(RollingUpgradeStatusInfoProperties, Symbol("runningStatus"), runningStatus)
-        OpenAPI.validate_property(RollingUpgradeStatusInfoProperties, Symbol("progress"), progress)
-        OpenAPI.validate_property(RollingUpgradeStatusInfoProperties, Symbol("error"), error)
-        return new(policy, runningStatus, progress, error, )
+        o = new(policy, runningStatus, progress, error, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type RollingUpgradeStatusInfoProperties
 
 const _property_types_RollingUpgradeStatusInfoProperties = Dict{Symbol,String}(Symbol("policy")=>"RollingUpgradePolicy", Symbol("runningStatus")=>"RollingUpgradeRunningStatus", Symbol("progress")=>"RollingUpgradeProgressInfo", Symbol("error")=>"ApiError", )
 OpenAPI.property_type(::Type{ RollingUpgradeStatusInfoProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RollingUpgradeStatusInfoProperties[name]))}
 
-function check_required(o::RollingUpgradeStatusInfoProperties)
+function OpenAPI.check_required(o::RollingUpgradeStatusInfoProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::RollingUpgradeStatusInfoProperties)
+    OpenAPI.validate_property(RollingUpgradeStatusInfoProperties, Symbol("policy"), o.policy)
+    OpenAPI.validate_property(RollingUpgradeStatusInfoProperties, Symbol("runningStatus"), o.runningStatus)
+    OpenAPI.validate_property(RollingUpgradeStatusInfoProperties, Symbol("progress"), o.progress)
+    OpenAPI.validate_property(RollingUpgradeStatusInfoProperties, Symbol("error"), o.error)
+end
+
 function OpenAPI.validate_property(::Type{ RollingUpgradeStatusInfoProperties }, name::Symbol, val)
+
+
+
+
 end

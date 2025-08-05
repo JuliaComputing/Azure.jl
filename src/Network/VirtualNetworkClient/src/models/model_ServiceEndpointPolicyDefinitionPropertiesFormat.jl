@@ -24,20 +24,29 @@ Base.@kwdef mutable struct ServiceEndpointPolicyDefinitionPropertiesFormat <: Op
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
     function ServiceEndpointPolicyDefinitionPropertiesFormat(description, service, serviceResources, provisioningState, )
-        OpenAPI.validate_property(ServiceEndpointPolicyDefinitionPropertiesFormat, Symbol("description"), description)
-        OpenAPI.validate_property(ServiceEndpointPolicyDefinitionPropertiesFormat, Symbol("service"), service)
-        OpenAPI.validate_property(ServiceEndpointPolicyDefinitionPropertiesFormat, Symbol("serviceResources"), serviceResources)
-        OpenAPI.validate_property(ServiceEndpointPolicyDefinitionPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(description, service, serviceResources, provisioningState, )
+        o = new(description, service, serviceResources, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ServiceEndpointPolicyDefinitionPropertiesFormat
 
 const _property_types_ServiceEndpointPolicyDefinitionPropertiesFormat = Dict{Symbol,String}(Symbol("description")=>"String", Symbol("service")=>"String", Symbol("serviceResources")=>"Vector{String}", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ ServiceEndpointPolicyDefinitionPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ServiceEndpointPolicyDefinitionPropertiesFormat[name]))}
 
-function check_required(o::ServiceEndpointPolicyDefinitionPropertiesFormat)
+function OpenAPI.check_required(o::ServiceEndpointPolicyDefinitionPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::ServiceEndpointPolicyDefinitionPropertiesFormat)
+    OpenAPI.validate_property(ServiceEndpointPolicyDefinitionPropertiesFormat, Symbol("description"), o.description)
+    OpenAPI.validate_property(ServiceEndpointPolicyDefinitionPropertiesFormat, Symbol("service"), o.service)
+    OpenAPI.validate_property(ServiceEndpointPolicyDefinitionPropertiesFormat, Symbol("serviceResources"), o.serviceResources)
+    OpenAPI.validate_property(ServiceEndpointPolicyDefinitionPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ ServiceEndpointPolicyDefinitionPropertiesFormat }, name::Symbol, val)
+
+
+
+
 end

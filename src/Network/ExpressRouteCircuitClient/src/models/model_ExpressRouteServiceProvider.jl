@@ -30,22 +30,33 @@ Base.@kwdef mutable struct ExpressRouteServiceProvider <: OpenAPI.APIModel
     tags::Union{Nothing, Dict{String, String}} = nothing
 
     function ExpressRouteServiceProvider(properties, id, name, type, location, tags, )
-        OpenAPI.validate_property(ExpressRouteServiceProvider, Symbol("properties"), properties)
-        OpenAPI.validate_property(ExpressRouteServiceProvider, Symbol("id"), id)
-        OpenAPI.validate_property(ExpressRouteServiceProvider, Symbol("name"), name)
-        OpenAPI.validate_property(ExpressRouteServiceProvider, Symbol("type"), type)
-        OpenAPI.validate_property(ExpressRouteServiceProvider, Symbol("location"), location)
-        OpenAPI.validate_property(ExpressRouteServiceProvider, Symbol("tags"), tags)
-        return new(properties, id, name, type, location, tags, )
+        o = new(properties, id, name, type, location, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ExpressRouteServiceProvider
 
 const _property_types_ExpressRouteServiceProvider = Dict{Symbol,String}(Symbol("properties")=>"ExpressRouteServiceProviderPropertiesFormat", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ ExpressRouteServiceProvider }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExpressRouteServiceProvider[name]))}
 
-function check_required(o::ExpressRouteServiceProvider)
+function OpenAPI.check_required(o::ExpressRouteServiceProvider)
     true
 end
 
+function OpenAPI.validate_properties(o::ExpressRouteServiceProvider)
+    OpenAPI.validate_property(ExpressRouteServiceProvider, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(ExpressRouteServiceProvider, Symbol("id"), o.id)
+    OpenAPI.validate_property(ExpressRouteServiceProvider, Symbol("name"), o.name)
+    OpenAPI.validate_property(ExpressRouteServiceProvider, Symbol("type"), o.type)
+    OpenAPI.validate_property(ExpressRouteServiceProvider, Symbol("location"), o.location)
+    OpenAPI.validate_property(ExpressRouteServiceProvider, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ ExpressRouteServiceProvider }, name::Symbol, val)
+
+
+
+
+
+
 end

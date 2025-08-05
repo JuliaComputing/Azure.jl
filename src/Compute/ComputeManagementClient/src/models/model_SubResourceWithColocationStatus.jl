@@ -17,18 +17,25 @@ Base.@kwdef mutable struct SubResourceWithColocationStatus <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
 
     function SubResourceWithColocationStatus(colocationStatus, id, )
-        OpenAPI.validate_property(SubResourceWithColocationStatus, Symbol("colocationStatus"), colocationStatus)
-        OpenAPI.validate_property(SubResourceWithColocationStatus, Symbol("id"), id)
-        return new(colocationStatus, id, )
+        o = new(colocationStatus, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type SubResourceWithColocationStatus
 
 const _property_types_SubResourceWithColocationStatus = Dict{Symbol,String}(Symbol("colocationStatus")=>"InstanceViewStatus", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ SubResourceWithColocationStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SubResourceWithColocationStatus[name]))}
 
-function check_required(o::SubResourceWithColocationStatus)
+function OpenAPI.check_required(o::SubResourceWithColocationStatus)
     true
 end
 
+function OpenAPI.validate_properties(o::SubResourceWithColocationStatus)
+    OpenAPI.validate_property(SubResourceWithColocationStatus, Symbol("colocationStatus"), o.colocationStatus)
+    OpenAPI.validate_property(SubResourceWithColocationStatus, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ SubResourceWithColocationStatus }, name::Symbol, val)
+
+
 end

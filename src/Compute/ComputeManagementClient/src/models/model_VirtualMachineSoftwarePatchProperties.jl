@@ -9,7 +9,7 @@ Describes the properties of a Virtual Machine software patch.
         patchId=nothing,
         name=nothing,
         version=nothing,
-        kbid=nothing,
+        kbId=nothing,
         classifications=nothing,
         rebootBehavior=nothing,
         activityId=nothing,
@@ -21,19 +21,19 @@ Describes the properties of a Virtual Machine software patch.
     - patchId::String : A unique identifier for the patch.
     - name::String : The friendly name of the patch.
     - version::String : The version number of the patch. This property applies only to Linux patches.
-    - kbid::String : The KBID of the patch. Only applies to Windows patches.
+    - kbId::String : The KBID of the patch. Only applies to Windows patches.
     - classifications::Vector{String} : The classification(s) of the patch as provided by the patch publisher.
     - rebootBehavior::String : Describes the reboot requirements of the patch.
     - activityId::String : The activity ID of the operation that produced this result. It is used to correlate across CRP and extension logs.
     - publishedDate::ZonedDateTime : The UTC timestamp when the repository published this patch.
     - lastModifiedDateTime::ZonedDateTime : The UTC timestamp of the last update to this patch record.
-    - assessmentState::String : Describes the outcome of an install operation for a given patch.
+    - assessmentState::String : Describes the availability of a given patch.
 """
 Base.@kwdef mutable struct VirtualMachineSoftwarePatchProperties <: OpenAPI.APIModel
     patchId::Union{Nothing, String} = nothing
     name::Union{Nothing, String} = nothing
     version::Union{Nothing, String} = nothing
-    kbid::Union{Nothing, String} = nothing
+    kbId::Union{Nothing, String} = nothing
     classifications::Union{Nothing, Vector{String}} = nothing
     rebootBehavior::Union{Nothing, String} = nothing
     activityId::Union{Nothing, String} = nothing
@@ -41,39 +41,56 @@ Base.@kwdef mutable struct VirtualMachineSoftwarePatchProperties <: OpenAPI.APIM
     lastModifiedDateTime::Union{Nothing, ZonedDateTime} = nothing
     assessmentState::Union{Nothing, String} = nothing
 
-    function VirtualMachineSoftwarePatchProperties(patchId, name, version, kbid, classifications, rebootBehavior, activityId, publishedDate, lastModifiedDateTime, assessmentState, )
-        OpenAPI.validate_property(VirtualMachineSoftwarePatchProperties, Symbol("patchId"), patchId)
-        OpenAPI.validate_property(VirtualMachineSoftwarePatchProperties, Symbol("name"), name)
-        OpenAPI.validate_property(VirtualMachineSoftwarePatchProperties, Symbol("version"), version)
-        OpenAPI.validate_property(VirtualMachineSoftwarePatchProperties, Symbol("kbid"), kbid)
-        OpenAPI.validate_property(VirtualMachineSoftwarePatchProperties, Symbol("classifications"), classifications)
-        OpenAPI.validate_property(VirtualMachineSoftwarePatchProperties, Symbol("rebootBehavior"), rebootBehavior)
-        OpenAPI.validate_property(VirtualMachineSoftwarePatchProperties, Symbol("activityId"), activityId)
-        OpenAPI.validate_property(VirtualMachineSoftwarePatchProperties, Symbol("publishedDate"), publishedDate)
-        OpenAPI.validate_property(VirtualMachineSoftwarePatchProperties, Symbol("lastModifiedDateTime"), lastModifiedDateTime)
-        OpenAPI.validate_property(VirtualMachineSoftwarePatchProperties, Symbol("assessmentState"), assessmentState)
-        return new(patchId, name, version, kbid, classifications, rebootBehavior, activityId, publishedDate, lastModifiedDateTime, assessmentState, )
+    function VirtualMachineSoftwarePatchProperties(patchId, name, version, kbId, classifications, rebootBehavior, activityId, publishedDate, lastModifiedDateTime, assessmentState, )
+        o = new(patchId, name, version, kbId, classifications, rebootBehavior, activityId, publishedDate, lastModifiedDateTime, assessmentState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineSoftwarePatchProperties
 
-const _property_types_VirtualMachineSoftwarePatchProperties = Dict{Symbol,String}(Symbol("patchId")=>"String", Symbol("name")=>"String", Symbol("version")=>"String", Symbol("kbid")=>"String", Symbol("classifications")=>"Vector{String}", Symbol("rebootBehavior")=>"String", Symbol("activityId")=>"String", Symbol("publishedDate")=>"ZonedDateTime", Symbol("lastModifiedDateTime")=>"ZonedDateTime", Symbol("assessmentState")=>"String", )
+const _property_types_VirtualMachineSoftwarePatchProperties = Dict{Symbol,String}(Symbol("patchId")=>"String", Symbol("name")=>"String", Symbol("version")=>"String", Symbol("kbId")=>"String", Symbol("classifications")=>"Vector{String}", Symbol("rebootBehavior")=>"String", Symbol("activityId")=>"String", Symbol("publishedDate")=>"ZonedDateTime", Symbol("lastModifiedDateTime")=>"ZonedDateTime", Symbol("assessmentState")=>"String", )
 OpenAPI.property_type(::Type{ VirtualMachineSoftwarePatchProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineSoftwarePatchProperties[name]))}
 
-function check_required(o::VirtualMachineSoftwarePatchProperties)
+function OpenAPI.check_required(o::VirtualMachineSoftwarePatchProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineSoftwarePatchProperties)
+    OpenAPI.validate_property(VirtualMachineSoftwarePatchProperties, Symbol("patchId"), o.patchId)
+    OpenAPI.validate_property(VirtualMachineSoftwarePatchProperties, Symbol("name"), o.name)
+    OpenAPI.validate_property(VirtualMachineSoftwarePatchProperties, Symbol("version"), o.version)
+    OpenAPI.validate_property(VirtualMachineSoftwarePatchProperties, Symbol("kbId"), o.kbId)
+    OpenAPI.validate_property(VirtualMachineSoftwarePatchProperties, Symbol("classifications"), o.classifications)
+    OpenAPI.validate_property(VirtualMachineSoftwarePatchProperties, Symbol("rebootBehavior"), o.rebootBehavior)
+    OpenAPI.validate_property(VirtualMachineSoftwarePatchProperties, Symbol("activityId"), o.activityId)
+    OpenAPI.validate_property(VirtualMachineSoftwarePatchProperties, Symbol("publishedDate"), o.publishedDate)
+    OpenAPI.validate_property(VirtualMachineSoftwarePatchProperties, Symbol("lastModifiedDateTime"), o.lastModifiedDateTime)
+    OpenAPI.validate_property(VirtualMachineSoftwarePatchProperties, Symbol("assessmentState"), o.assessmentState)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineSoftwarePatchProperties }, name::Symbol, val)
+
+
+
+
+
+
     if name === Symbol("rebootBehavior")
-        OpenAPI.validate_param(name, "VirtualMachineSoftwarePatchProperties", :enum, val, ["NeverReboots", "AlwaysRequiresReboot", "CanRequestReboot"])
+        OpenAPI.validate_param(name, "VirtualMachineSoftwarePatchProperties", :enum, val, ["Unknown", "NeverReboots", "AlwaysRequiresReboot", "CanRequestReboot"])
     end
+
+
+
     if name === Symbol("publishedDate")
         OpenAPI.validate_param(name, "VirtualMachineSoftwarePatchProperties", :format, val, "date-time")
     end
+
     if name === Symbol("lastModifiedDateTime")
         OpenAPI.validate_param(name, "VirtualMachineSoftwarePatchProperties", :format, val, "date-time")
     end
+
     if name === Symbol("assessmentState")
-        OpenAPI.validate_param(name, "VirtualMachineSoftwarePatchProperties", :enum, val, ["Installed", "Failed", "Excluded", "NotSelected", "Pending", "Available"])
+        OpenAPI.validate_param(name, "VirtualMachineSoftwarePatchProperties", :enum, val, ["Unknown", "Available"])
     end
+
 end

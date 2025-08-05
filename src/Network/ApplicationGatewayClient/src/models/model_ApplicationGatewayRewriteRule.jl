@@ -24,20 +24,29 @@ Base.@kwdef mutable struct ApplicationGatewayRewriteRule <: OpenAPI.APIModel
     actionSet = nothing # spec type: Union{ Nothing, ApplicationGatewayRewriteRuleActionSet }
 
     function ApplicationGatewayRewriteRule(name, ruleSequence, conditions, actionSet, )
-        OpenAPI.validate_property(ApplicationGatewayRewriteRule, Symbol("name"), name)
-        OpenAPI.validate_property(ApplicationGatewayRewriteRule, Symbol("ruleSequence"), ruleSequence)
-        OpenAPI.validate_property(ApplicationGatewayRewriteRule, Symbol("conditions"), conditions)
-        OpenAPI.validate_property(ApplicationGatewayRewriteRule, Symbol("actionSet"), actionSet)
-        return new(name, ruleSequence, conditions, actionSet, )
+        o = new(name, ruleSequence, conditions, actionSet, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayRewriteRule
 
 const _property_types_ApplicationGatewayRewriteRule = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("ruleSequence")=>"Int64", Symbol("conditions")=>"Vector{ApplicationGatewayRewriteRuleCondition}", Symbol("actionSet")=>"ApplicationGatewayRewriteRuleActionSet", )
 OpenAPI.property_type(::Type{ ApplicationGatewayRewriteRule }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayRewriteRule[name]))}
 
-function check_required(o::ApplicationGatewayRewriteRule)
+function OpenAPI.check_required(o::ApplicationGatewayRewriteRule)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayRewriteRule)
+    OpenAPI.validate_property(ApplicationGatewayRewriteRule, Symbol("name"), o.name)
+    OpenAPI.validate_property(ApplicationGatewayRewriteRule, Symbol("ruleSequence"), o.ruleSequence)
+    OpenAPI.validate_property(ApplicationGatewayRewriteRule, Symbol("conditions"), o.conditions)
+    OpenAPI.validate_property(ApplicationGatewayRewriteRule, Symbol("actionSet"), o.actionSet)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayRewriteRule }, name::Symbol, val)
+
+
+
+
 end

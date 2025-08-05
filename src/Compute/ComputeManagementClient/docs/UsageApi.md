@@ -20,9 +20,9 @@ Gets, for the specified location, the current compute resource usage information
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **UsageApi** | API context | 
-**location** | **String**| The location for which resource usage is queried. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**location** | **String** | The location for which resource usage is queried. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 

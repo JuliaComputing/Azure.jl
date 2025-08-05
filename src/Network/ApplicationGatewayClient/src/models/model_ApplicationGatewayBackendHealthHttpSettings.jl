@@ -18,18 +18,25 @@ Base.@kwdef mutable struct ApplicationGatewayBackendHealthHttpSettings <: OpenAP
     servers::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ApplicationGatewayBackendHealthServer} }
 
     function ApplicationGatewayBackendHealthHttpSettings(backendHttpSettings, servers, )
-        OpenAPI.validate_property(ApplicationGatewayBackendHealthHttpSettings, Symbol("backendHttpSettings"), backendHttpSettings)
-        OpenAPI.validate_property(ApplicationGatewayBackendHealthHttpSettings, Symbol("servers"), servers)
-        return new(backendHttpSettings, servers, )
+        o = new(backendHttpSettings, servers, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayBackendHealthHttpSettings
 
 const _property_types_ApplicationGatewayBackendHealthHttpSettings = Dict{Symbol,String}(Symbol("backendHttpSettings")=>"ApplicationGatewayBackendHttpSettings", Symbol("servers")=>"Vector{ApplicationGatewayBackendHealthServer}", )
 OpenAPI.property_type(::Type{ ApplicationGatewayBackendHealthHttpSettings }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayBackendHealthHttpSettings[name]))}
 
-function check_required(o::ApplicationGatewayBackendHealthHttpSettings)
+function OpenAPI.check_required(o::ApplicationGatewayBackendHealthHttpSettings)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayBackendHealthHttpSettings)
+    OpenAPI.validate_property(ApplicationGatewayBackendHealthHttpSettings, Symbol("backendHttpSettings"), o.backendHttpSettings)
+    OpenAPI.validate_property(ApplicationGatewayBackendHealthHttpSettings, Symbol("servers"), o.servers)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayBackendHealthHttpSettings }, name::Symbol, val)
+
+
 end

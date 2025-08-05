@@ -18,18 +18,25 @@ Base.@kwdef mutable struct RecoveryWalkResponse <: OpenAPI.APIModel
     nextPlatformUpdateDomain::Union{Nothing, Int64} = nothing
 
     function RecoveryWalkResponse(walkPerformed, nextPlatformUpdateDomain, )
-        OpenAPI.validate_property(RecoveryWalkResponse, Symbol("walkPerformed"), walkPerformed)
-        OpenAPI.validate_property(RecoveryWalkResponse, Symbol("nextPlatformUpdateDomain"), nextPlatformUpdateDomain)
-        return new(walkPerformed, nextPlatformUpdateDomain, )
+        o = new(walkPerformed, nextPlatformUpdateDomain, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type RecoveryWalkResponse
 
 const _property_types_RecoveryWalkResponse = Dict{Symbol,String}(Symbol("walkPerformed")=>"Bool", Symbol("nextPlatformUpdateDomain")=>"Int64", )
 OpenAPI.property_type(::Type{ RecoveryWalkResponse }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RecoveryWalkResponse[name]))}
 
-function check_required(o::RecoveryWalkResponse)
+function OpenAPI.check_required(o::RecoveryWalkResponse)
     true
 end
 
+function OpenAPI.validate_properties(o::RecoveryWalkResponse)
+    OpenAPI.validate_property(RecoveryWalkResponse, Symbol("walkPerformed"), o.walkPerformed)
+    OpenAPI.validate_property(RecoveryWalkResponse, Symbol("nextPlatformUpdateDomain"), o.nextPlatformUpdateDomain)
+end
+
 function OpenAPI.validate_property(::Type{ RecoveryWalkResponse }, name::Symbol, val)
+
+
 end

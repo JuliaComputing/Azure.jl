@@ -24,29 +24,41 @@ Base.@kwdef mutable struct AdditionalUnattendContent <: OpenAPI.APIModel
     content::Union{Nothing, String} = nothing
 
     function AdditionalUnattendContent(passName, componentName, settingName, content, )
-        OpenAPI.validate_property(AdditionalUnattendContent, Symbol("passName"), passName)
-        OpenAPI.validate_property(AdditionalUnattendContent, Symbol("componentName"), componentName)
-        OpenAPI.validate_property(AdditionalUnattendContent, Symbol("settingName"), settingName)
-        OpenAPI.validate_property(AdditionalUnattendContent, Symbol("content"), content)
-        return new(passName, componentName, settingName, content, )
+        o = new(passName, componentName, settingName, content, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AdditionalUnattendContent
 
 const _property_types_AdditionalUnattendContent = Dict{Symbol,String}(Symbol("passName")=>"String", Symbol("componentName")=>"String", Symbol("settingName")=>"String", Symbol("content")=>"String", )
 OpenAPI.property_type(::Type{ AdditionalUnattendContent }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AdditionalUnattendContent[name]))}
 
-function check_required(o::AdditionalUnattendContent)
+function OpenAPI.check_required(o::AdditionalUnattendContent)
     true
 end
 
+function OpenAPI.validate_properties(o::AdditionalUnattendContent)
+    OpenAPI.validate_property(AdditionalUnattendContent, Symbol("passName"), o.passName)
+    OpenAPI.validate_property(AdditionalUnattendContent, Symbol("componentName"), o.componentName)
+    OpenAPI.validate_property(AdditionalUnattendContent, Symbol("settingName"), o.settingName)
+    OpenAPI.validate_property(AdditionalUnattendContent, Symbol("content"), o.content)
+end
+
 function OpenAPI.validate_property(::Type{ AdditionalUnattendContent }, name::Symbol, val)
+
     if name === Symbol("passName")
         OpenAPI.validate_param(name, "AdditionalUnattendContent", :enum, val, ["OobeSystem"])
     end
+
+
     if name === Symbol("componentName")
         OpenAPI.validate_param(name, "AdditionalUnattendContent", :enum, val, ["Microsoft-Windows-Shell-Setup"])
     end
+
+
     if name === Symbol("settingName")
         OpenAPI.validate_param(name, "AdditionalUnattendContent", :enum, val, ["AutoLogon", "FirstLogonCommands"])
     end
+
+
 end

@@ -18,18 +18,25 @@ Base.@kwdef mutable struct ApplicationGatewayAvailableSslPredefinedPolicies <: O
     nextLink::Union{Nothing, String} = nothing
 
     function ApplicationGatewayAvailableSslPredefinedPolicies(value, nextLink, )
-        OpenAPI.validate_property(ApplicationGatewayAvailableSslPredefinedPolicies, Symbol("value"), value)
-        OpenAPI.validate_property(ApplicationGatewayAvailableSslPredefinedPolicies, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayAvailableSslPredefinedPolicies
 
 const _property_types_ApplicationGatewayAvailableSslPredefinedPolicies = Dict{Symbol,String}(Symbol("value")=>"Vector{ApplicationGatewaySslPredefinedPolicy}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ ApplicationGatewayAvailableSslPredefinedPolicies }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayAvailableSslPredefinedPolicies[name]))}
 
-function check_required(o::ApplicationGatewayAvailableSslPredefinedPolicies)
+function OpenAPI.check_required(o::ApplicationGatewayAvailableSslPredefinedPolicies)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayAvailableSslPredefinedPolicies)
+    OpenAPI.validate_property(ApplicationGatewayAvailableSslPredefinedPolicies, Symbol("value"), o.value)
+    OpenAPI.validate_property(ApplicationGatewayAvailableSslPredefinedPolicies, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayAvailableSslPredefinedPolicies }, name::Symbol, val)
+
+
 end

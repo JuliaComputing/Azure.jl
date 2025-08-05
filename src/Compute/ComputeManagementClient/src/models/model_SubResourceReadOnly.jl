@@ -14,17 +14,23 @@ Base.@kwdef mutable struct SubResourceReadOnly <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
 
     function SubResourceReadOnly(id, )
-        OpenAPI.validate_property(SubResourceReadOnly, Symbol("id"), id)
-        return new(id, )
+        o = new(id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type SubResourceReadOnly
 
 const _property_types_SubResourceReadOnly = Dict{Symbol,String}(Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ SubResourceReadOnly }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SubResourceReadOnly[name]))}
 
-function check_required(o::SubResourceReadOnly)
+function OpenAPI.check_required(o::SubResourceReadOnly)
     true
 end
 
+function OpenAPI.validate_properties(o::SubResourceReadOnly)
+    OpenAPI.validate_property(SubResourceReadOnly, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ SubResourceReadOnly }, name::Symbol, val)
+
 end

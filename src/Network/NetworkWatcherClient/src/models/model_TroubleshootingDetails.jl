@@ -27,21 +27,31 @@ Base.@kwdef mutable struct TroubleshootingDetails <: OpenAPI.APIModel
     recommendedActions::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{TroubleshootingRecommendedActions} }
 
     function TroubleshootingDetails(id, reasonType, summary, detail, recommendedActions, )
-        OpenAPI.validate_property(TroubleshootingDetails, Symbol("id"), id)
-        OpenAPI.validate_property(TroubleshootingDetails, Symbol("reasonType"), reasonType)
-        OpenAPI.validate_property(TroubleshootingDetails, Symbol("summary"), summary)
-        OpenAPI.validate_property(TroubleshootingDetails, Symbol("detail"), detail)
-        OpenAPI.validate_property(TroubleshootingDetails, Symbol("recommendedActions"), recommendedActions)
-        return new(id, reasonType, summary, detail, recommendedActions, )
+        o = new(id, reasonType, summary, detail, recommendedActions, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type TroubleshootingDetails
 
 const _property_types_TroubleshootingDetails = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("reasonType")=>"String", Symbol("summary")=>"String", Symbol("detail")=>"String", Symbol("recommendedActions")=>"Vector{TroubleshootingRecommendedActions}", )
 OpenAPI.property_type(::Type{ TroubleshootingDetails }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TroubleshootingDetails[name]))}
 
-function check_required(o::TroubleshootingDetails)
+function OpenAPI.check_required(o::TroubleshootingDetails)
     true
 end
 
+function OpenAPI.validate_properties(o::TroubleshootingDetails)
+    OpenAPI.validate_property(TroubleshootingDetails, Symbol("id"), o.id)
+    OpenAPI.validate_property(TroubleshootingDetails, Symbol("reasonType"), o.reasonType)
+    OpenAPI.validate_property(TroubleshootingDetails, Symbol("summary"), o.summary)
+    OpenAPI.validate_property(TroubleshootingDetails, Symbol("detail"), o.detail)
+    OpenAPI.validate_property(TroubleshootingDetails, Symbol("recommendedActions"), o.recommendedActions)
+end
+
 function OpenAPI.validate_property(::Type{ TroubleshootingDetails }, name::Symbol, val)
+
+
+
+
+
 end

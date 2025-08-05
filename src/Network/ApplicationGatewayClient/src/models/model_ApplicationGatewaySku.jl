@@ -9,40 +9,59 @@ SKU of an application gateway.
         name=nothing,
         tier=nothing,
         capacity=nothing,
+        family=nothing,
     )
 
     - name::String : Name of an application gateway SKU.
     - tier::String : Tier of an application gateway.
     - capacity::Int64 : Capacity (instance count) of an application gateway.
+    - family::String : Family of an application gateway SKU.
 """
 Base.@kwdef mutable struct ApplicationGatewaySku <: OpenAPI.APIModel
     name::Union{Nothing, String} = nothing
     tier::Union{Nothing, String} = nothing
     capacity::Union{Nothing, Int64} = nothing
+    family::Union{Nothing, String} = nothing
 
-    function ApplicationGatewaySku(name, tier, capacity, )
-        OpenAPI.validate_property(ApplicationGatewaySku, Symbol("name"), name)
-        OpenAPI.validate_property(ApplicationGatewaySku, Symbol("tier"), tier)
-        OpenAPI.validate_property(ApplicationGatewaySku, Symbol("capacity"), capacity)
-        return new(name, tier, capacity, )
+    function ApplicationGatewaySku(name, tier, capacity, family, )
+        o = new(name, tier, capacity, family, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewaySku
 
-const _property_types_ApplicationGatewaySku = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("tier")=>"String", Symbol("capacity")=>"Int64", )
+const _property_types_ApplicationGatewaySku = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("tier")=>"String", Symbol("capacity")=>"Int64", Symbol("family")=>"String", )
 OpenAPI.property_type(::Type{ ApplicationGatewaySku }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewaySku[name]))}
 
-function check_required(o::ApplicationGatewaySku)
+function OpenAPI.check_required(o::ApplicationGatewaySku)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewaySku)
+    OpenAPI.validate_property(ApplicationGatewaySku, Symbol("name"), o.name)
+    OpenAPI.validate_property(ApplicationGatewaySku, Symbol("tier"), o.tier)
+    OpenAPI.validate_property(ApplicationGatewaySku, Symbol("capacity"), o.capacity)
+    OpenAPI.validate_property(ApplicationGatewaySku, Symbol("family"), o.family)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewaySku }, name::Symbol, val)
+
     if name === Symbol("name")
-        OpenAPI.validate_param(name, "ApplicationGatewaySku", :enum, val, ["Standard_Small", "Standard_Medium", "Standard_Large", "WAF_Medium", "WAF_Large", "Standard_v2", "WAF_v2"])
+        OpenAPI.validate_param(name, "ApplicationGatewaySku", :enum, val, ["Standard_Small", "Standard_Medium", "Standard_Large", "WAF_Medium", "WAF_Large", "Standard_v2", "WAF_v2", "Basic"])
     end
+
+
     if name === Symbol("tier")
-        OpenAPI.validate_param(name, "ApplicationGatewaySku", :enum, val, ["Standard", "WAF", "Standard_v2", "WAF_v2"])
+        OpenAPI.validate_param(name, "ApplicationGatewaySku", :enum, val, ["Standard", "WAF", "Standard_v2", "WAF_v2", "Basic"])
     end
+
+
     if name === Symbol("capacity")
         OpenAPI.validate_param(name, "ApplicationGatewaySku", :format, val, "int32")
     end
+
+    if name === Symbol("family")
+        OpenAPI.validate_param(name, "ApplicationGatewaySku", :enum, val, ["Generation_1", "Generation_2"])
+    end
+
 end

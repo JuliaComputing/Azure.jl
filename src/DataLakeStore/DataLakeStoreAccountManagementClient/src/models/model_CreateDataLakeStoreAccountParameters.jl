@@ -23,21 +23,30 @@ Base.@kwdef mutable struct CreateDataLakeStoreAccountParameters <: OpenAPI.APIMo
     properties = nothing # spec type: Union{ Nothing, CreateDataLakeStoreAccountProperties }
 
     function CreateDataLakeStoreAccountParameters(location, tags, identity, properties, )
-        OpenAPI.validate_property(CreateDataLakeStoreAccountParameters, Symbol("location"), location)
-        OpenAPI.validate_property(CreateDataLakeStoreAccountParameters, Symbol("tags"), tags)
-        OpenAPI.validate_property(CreateDataLakeStoreAccountParameters, Symbol("identity"), identity)
-        OpenAPI.validate_property(CreateDataLakeStoreAccountParameters, Symbol("properties"), properties)
-        return new(location, tags, identity, properties, )
+        o = new(location, tags, identity, properties, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type CreateDataLakeStoreAccountParameters
 
 const _property_types_CreateDataLakeStoreAccountParameters = Dict{Symbol,String}(Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", Symbol("identity")=>"EncryptionIdentity", Symbol("properties")=>"CreateDataLakeStoreAccountProperties", )
 OpenAPI.property_type(::Type{ CreateDataLakeStoreAccountParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_CreateDataLakeStoreAccountParameters[name]))}
 
-function check_required(o::CreateDataLakeStoreAccountParameters)
+function OpenAPI.check_required(o::CreateDataLakeStoreAccountParameters)
     o.location === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::CreateDataLakeStoreAccountParameters)
+    OpenAPI.validate_property(CreateDataLakeStoreAccountParameters, Symbol("location"), o.location)
+    OpenAPI.validate_property(CreateDataLakeStoreAccountParameters, Symbol("tags"), o.tags)
+    OpenAPI.validate_property(CreateDataLakeStoreAccountParameters, Symbol("identity"), o.identity)
+    OpenAPI.validate_property(CreateDataLakeStoreAccountParameters, Symbol("properties"), o.properties)
+end
+
 function OpenAPI.validate_property(::Type{ CreateDataLakeStoreAccountParameters }, name::Symbol, val)
+
+
+
+
 end

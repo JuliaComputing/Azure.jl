@@ -12,6 +12,9 @@ Properties of the private endpoint.
         privateLinkServiceConnections=nothing,
         manualPrivateLinkServiceConnections=nothing,
         customDnsConfigs=nothing,
+        applicationSecurityGroups=nothing,
+        ipConfigurations=nothing,
+        customNetworkInterfaceName=nothing,
     )
 
     - subnet::Subnet
@@ -20,6 +23,9 @@ Properties of the private endpoint.
     - privateLinkServiceConnections::Vector{PrivateLinkServiceConnection} : A grouping of information about the connection to the remote resource.
     - manualPrivateLinkServiceConnections::Vector{PrivateLinkServiceConnection} : A grouping of information about the connection to the remote resource. Used when the network admin does not have access to approve connections to the remote resource.
     - customDnsConfigs::Vector{CustomDnsConfigPropertiesFormat} : An array of custom dns configurations.
+    - applicationSecurityGroups::Vector{ApplicationSecurityGroup} : Application security groups in which the private endpoint IP configuration is included.
+    - ipConfigurations::Vector{PrivateEndpointIPConfiguration} : A list of IP configurations of the private endpoint. This will be used to map to the First Party Service&#39;s endpoints.
+    - customNetworkInterfaceName::String : The custom name of the network interface attached to the private endpoint.
 """
 Base.@kwdef mutable struct PrivateEndpointProperties <: OpenAPI.APIModel
     subnet = nothing # spec type: Union{ Nothing, Subnet }
@@ -28,24 +34,44 @@ Base.@kwdef mutable struct PrivateEndpointProperties <: OpenAPI.APIModel
     privateLinkServiceConnections::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{PrivateLinkServiceConnection} }
     manualPrivateLinkServiceConnections::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{PrivateLinkServiceConnection} }
     customDnsConfigs::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{CustomDnsConfigPropertiesFormat} }
+    applicationSecurityGroups::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ApplicationSecurityGroup} }
+    ipConfigurations::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{PrivateEndpointIPConfiguration} }
+    customNetworkInterfaceName::Union{Nothing, String} = nothing
 
-    function PrivateEndpointProperties(subnet, networkInterfaces, provisioningState, privateLinkServiceConnections, manualPrivateLinkServiceConnections, customDnsConfigs, )
-        OpenAPI.validate_property(PrivateEndpointProperties, Symbol("subnet"), subnet)
-        OpenAPI.validate_property(PrivateEndpointProperties, Symbol("networkInterfaces"), networkInterfaces)
-        OpenAPI.validate_property(PrivateEndpointProperties, Symbol("provisioningState"), provisioningState)
-        OpenAPI.validate_property(PrivateEndpointProperties, Symbol("privateLinkServiceConnections"), privateLinkServiceConnections)
-        OpenAPI.validate_property(PrivateEndpointProperties, Symbol("manualPrivateLinkServiceConnections"), manualPrivateLinkServiceConnections)
-        OpenAPI.validate_property(PrivateEndpointProperties, Symbol("customDnsConfigs"), customDnsConfigs)
-        return new(subnet, networkInterfaces, provisioningState, privateLinkServiceConnections, manualPrivateLinkServiceConnections, customDnsConfigs, )
+    function PrivateEndpointProperties(subnet, networkInterfaces, provisioningState, privateLinkServiceConnections, manualPrivateLinkServiceConnections, customDnsConfigs, applicationSecurityGroups, ipConfigurations, customNetworkInterfaceName, )
+        o = new(subnet, networkInterfaces, provisioningState, privateLinkServiceConnections, manualPrivateLinkServiceConnections, customDnsConfigs, applicationSecurityGroups, ipConfigurations, customNetworkInterfaceName, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PrivateEndpointProperties
 
-const _property_types_PrivateEndpointProperties = Dict{Symbol,String}(Symbol("subnet")=>"Subnet", Symbol("networkInterfaces")=>"Vector{NetworkInterface}", Symbol("provisioningState")=>"ProvisioningState", Symbol("privateLinkServiceConnections")=>"Vector{PrivateLinkServiceConnection}", Symbol("manualPrivateLinkServiceConnections")=>"Vector{PrivateLinkServiceConnection}", Symbol("customDnsConfigs")=>"Vector{CustomDnsConfigPropertiesFormat}", )
+const _property_types_PrivateEndpointProperties = Dict{Symbol,String}(Symbol("subnet")=>"Subnet", Symbol("networkInterfaces")=>"Vector{NetworkInterface}", Symbol("provisioningState")=>"ProvisioningState", Symbol("privateLinkServiceConnections")=>"Vector{PrivateLinkServiceConnection}", Symbol("manualPrivateLinkServiceConnections")=>"Vector{PrivateLinkServiceConnection}", Symbol("customDnsConfigs")=>"Vector{CustomDnsConfigPropertiesFormat}", Symbol("applicationSecurityGroups")=>"Vector{ApplicationSecurityGroup}", Symbol("ipConfigurations")=>"Vector{PrivateEndpointIPConfiguration}", Symbol("customNetworkInterfaceName")=>"String", )
 OpenAPI.property_type(::Type{ PrivateEndpointProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PrivateEndpointProperties[name]))}
 
-function check_required(o::PrivateEndpointProperties)
+function OpenAPI.check_required(o::PrivateEndpointProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::PrivateEndpointProperties)
+    OpenAPI.validate_property(PrivateEndpointProperties, Symbol("subnet"), o.subnet)
+    OpenAPI.validate_property(PrivateEndpointProperties, Symbol("networkInterfaces"), o.networkInterfaces)
+    OpenAPI.validate_property(PrivateEndpointProperties, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(PrivateEndpointProperties, Symbol("privateLinkServiceConnections"), o.privateLinkServiceConnections)
+    OpenAPI.validate_property(PrivateEndpointProperties, Symbol("manualPrivateLinkServiceConnections"), o.manualPrivateLinkServiceConnections)
+    OpenAPI.validate_property(PrivateEndpointProperties, Symbol("customDnsConfigs"), o.customDnsConfigs)
+    OpenAPI.validate_property(PrivateEndpointProperties, Symbol("applicationSecurityGroups"), o.applicationSecurityGroups)
+    OpenAPI.validate_property(PrivateEndpointProperties, Symbol("ipConfigurations"), o.ipConfigurations)
+    OpenAPI.validate_property(PrivateEndpointProperties, Symbol("customNetworkInterfaceName"), o.customNetworkInterfaceName)
+end
+
 function OpenAPI.validate_property(::Type{ PrivateEndpointProperties }, name::Symbol, val)
+
+
+
+
+
+
+
+
+
 end

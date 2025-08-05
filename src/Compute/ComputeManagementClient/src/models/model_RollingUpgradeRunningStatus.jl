@@ -24,31 +24,42 @@ Base.@kwdef mutable struct RollingUpgradeRunningStatus <: OpenAPI.APIModel
     lastActionTime::Union{Nothing, ZonedDateTime} = nothing
 
     function RollingUpgradeRunningStatus(code, startTime, lastAction, lastActionTime, )
-        OpenAPI.validate_property(RollingUpgradeRunningStatus, Symbol("code"), code)
-        OpenAPI.validate_property(RollingUpgradeRunningStatus, Symbol("startTime"), startTime)
-        OpenAPI.validate_property(RollingUpgradeRunningStatus, Symbol("lastAction"), lastAction)
-        OpenAPI.validate_property(RollingUpgradeRunningStatus, Symbol("lastActionTime"), lastActionTime)
-        return new(code, startTime, lastAction, lastActionTime, )
+        o = new(code, startTime, lastAction, lastActionTime, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type RollingUpgradeRunningStatus
 
 const _property_types_RollingUpgradeRunningStatus = Dict{Symbol,String}(Symbol("code")=>"String", Symbol("startTime")=>"ZonedDateTime", Symbol("lastAction")=>"String", Symbol("lastActionTime")=>"ZonedDateTime", )
 OpenAPI.property_type(::Type{ RollingUpgradeRunningStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RollingUpgradeRunningStatus[name]))}
 
-function check_required(o::RollingUpgradeRunningStatus)
+function OpenAPI.check_required(o::RollingUpgradeRunningStatus)
     true
 end
 
+function OpenAPI.validate_properties(o::RollingUpgradeRunningStatus)
+    OpenAPI.validate_property(RollingUpgradeRunningStatus, Symbol("code"), o.code)
+    OpenAPI.validate_property(RollingUpgradeRunningStatus, Symbol("startTime"), o.startTime)
+    OpenAPI.validate_property(RollingUpgradeRunningStatus, Symbol("lastAction"), o.lastAction)
+    OpenAPI.validate_property(RollingUpgradeRunningStatus, Symbol("lastActionTime"), o.lastActionTime)
+end
+
 function OpenAPI.validate_property(::Type{ RollingUpgradeRunningStatus }, name::Symbol, val)
+
     if name === Symbol("code")
         OpenAPI.validate_param(name, "RollingUpgradeRunningStatus", :enum, val, ["RollingForward", "Cancelled", "Completed", "Faulted"])
     end
+
+
     if name === Symbol("startTime")
         OpenAPI.validate_param(name, "RollingUpgradeRunningStatus", :format, val, "date-time")
     end
+
     if name === Symbol("lastAction")
         OpenAPI.validate_param(name, "RollingUpgradeRunningStatus", :enum, val, ["Start", "Cancel"])
     end
+
+
     if name === Symbol("lastActionTime")
         OpenAPI.validate_param(name, "RollingUpgradeRunningStatus", :format, val, "date-time")
     end

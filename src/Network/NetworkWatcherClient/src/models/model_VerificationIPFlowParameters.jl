@@ -36,22 +36,16 @@ Base.@kwdef mutable struct VerificationIPFlowParameters <: OpenAPI.APIModel
     targetNicResourceId::Union{Nothing, String} = nothing
 
     function VerificationIPFlowParameters(targetResourceId, direction, protocol, localPort, remotePort, localIPAddress, remoteIPAddress, targetNicResourceId, )
-        OpenAPI.validate_property(VerificationIPFlowParameters, Symbol("targetResourceId"), targetResourceId)
-        OpenAPI.validate_property(VerificationIPFlowParameters, Symbol("direction"), direction)
-        OpenAPI.validate_property(VerificationIPFlowParameters, Symbol("protocol"), protocol)
-        OpenAPI.validate_property(VerificationIPFlowParameters, Symbol("localPort"), localPort)
-        OpenAPI.validate_property(VerificationIPFlowParameters, Symbol("remotePort"), remotePort)
-        OpenAPI.validate_property(VerificationIPFlowParameters, Symbol("localIPAddress"), localIPAddress)
-        OpenAPI.validate_property(VerificationIPFlowParameters, Symbol("remoteIPAddress"), remoteIPAddress)
-        OpenAPI.validate_property(VerificationIPFlowParameters, Symbol("targetNicResourceId"), targetNicResourceId)
-        return new(targetResourceId, direction, protocol, localPort, remotePort, localIPAddress, remoteIPAddress, targetNicResourceId, )
+        o = new(targetResourceId, direction, protocol, localPort, remotePort, localIPAddress, remoteIPAddress, targetNicResourceId, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VerificationIPFlowParameters
 
 const _property_types_VerificationIPFlowParameters = Dict{Symbol,String}(Symbol("targetResourceId")=>"String", Symbol("direction")=>"Direction", Symbol("protocol")=>"String", Symbol("localPort")=>"String", Symbol("remotePort")=>"String", Symbol("localIPAddress")=>"String", Symbol("remoteIPAddress")=>"String", Symbol("targetNicResourceId")=>"String", )
 OpenAPI.property_type(::Type{ VerificationIPFlowParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VerificationIPFlowParameters[name]))}
 
-function check_required(o::VerificationIPFlowParameters)
+function OpenAPI.check_required(o::VerificationIPFlowParameters)
     o.targetResourceId === nothing && (return false)
     o.direction === nothing && (return false)
     o.protocol === nothing && (return false)
@@ -62,8 +56,28 @@ function check_required(o::VerificationIPFlowParameters)
     true
 end
 
+function OpenAPI.validate_properties(o::VerificationIPFlowParameters)
+    OpenAPI.validate_property(VerificationIPFlowParameters, Symbol("targetResourceId"), o.targetResourceId)
+    OpenAPI.validate_property(VerificationIPFlowParameters, Symbol("direction"), o.direction)
+    OpenAPI.validate_property(VerificationIPFlowParameters, Symbol("protocol"), o.protocol)
+    OpenAPI.validate_property(VerificationIPFlowParameters, Symbol("localPort"), o.localPort)
+    OpenAPI.validate_property(VerificationIPFlowParameters, Symbol("remotePort"), o.remotePort)
+    OpenAPI.validate_property(VerificationIPFlowParameters, Symbol("localIPAddress"), o.localIPAddress)
+    OpenAPI.validate_property(VerificationIPFlowParameters, Symbol("remoteIPAddress"), o.remoteIPAddress)
+    OpenAPI.validate_property(VerificationIPFlowParameters, Symbol("targetNicResourceId"), o.targetNicResourceId)
+end
+
 function OpenAPI.validate_property(::Type{ VerificationIPFlowParameters }, name::Symbol, val)
+
+
+
     if name === Symbol("protocol")
         OpenAPI.validate_param(name, "VerificationIPFlowParameters", :enum, val, ["TCP", "UDP"])
     end
+
+
+
+
+
+
 end

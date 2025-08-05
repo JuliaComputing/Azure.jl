@@ -21,19 +21,27 @@ Base.@kwdef mutable struct ComputeOperationValue <: OpenAPI.APIModel
     display = nothing # spec type: Union{ Nothing, ComputeOperationValueDisplay }
 
     function ComputeOperationValue(origin, name, display, )
-        OpenAPI.validate_property(ComputeOperationValue, Symbol("origin"), origin)
-        OpenAPI.validate_property(ComputeOperationValue, Symbol("name"), name)
-        OpenAPI.validate_property(ComputeOperationValue, Symbol("display"), display)
-        return new(origin, name, display, )
+        o = new(origin, name, display, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ComputeOperationValue
 
 const _property_types_ComputeOperationValue = Dict{Symbol,String}(Symbol("origin")=>"String", Symbol("name")=>"String", Symbol("display")=>"ComputeOperationValueDisplay", )
 OpenAPI.property_type(::Type{ ComputeOperationValue }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ComputeOperationValue[name]))}
 
-function check_required(o::ComputeOperationValue)
+function OpenAPI.check_required(o::ComputeOperationValue)
     true
 end
 
+function OpenAPI.validate_properties(o::ComputeOperationValue)
+    OpenAPI.validate_property(ComputeOperationValue, Symbol("origin"), o.origin)
+    OpenAPI.validate_property(ComputeOperationValue, Symbol("name"), o.name)
+    OpenAPI.validate_property(ComputeOperationValue, Symbol("display"), o.display)
+end
+
 function OpenAPI.validate_property(::Type{ ComputeOperationValue }, name::Symbol, val)
+
+
+
 end

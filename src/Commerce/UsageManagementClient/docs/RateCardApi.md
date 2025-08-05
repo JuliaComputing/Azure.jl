@@ -20,9 +20,9 @@ Enables you to query for the resource/meter metadata and related prices used in 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **RateCardApi** | API context | 
-**filter** | **String**| The filter to apply on the operation. It ONLY supports the &#39;eq&#39; and &#39;and&#39; logical operators at this time. All the 4 query parameters &#39;OfferDurableId&#39;,  &#39;Currency&#39;, &#39;Locale&#39;, &#39;Region&#39; are required to be a part of the $filter. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| It uniquely identifies Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**filter** | **String** | The filter to apply on the operation. It ONLY supports the &#39;eq&#39; and &#39;and&#39; logical operators at this time. All the 4 query parameters &#39;OfferDurableId&#39;,  &#39;Currency&#39;, &#39;Locale&#39;, &#39;Region&#39; are required to be a part of the $filter. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | It uniquely identifies Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 

@@ -18,18 +18,25 @@ Base.@kwdef mutable struct FirewallRuleListResult <: OpenAPI.APIModel
     nextLink::Union{Nothing, String} = nothing
 
     function FirewallRuleListResult(value, nextLink, )
-        OpenAPI.validate_property(FirewallRuleListResult, Symbol("value"), value)
-        OpenAPI.validate_property(FirewallRuleListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type FirewallRuleListResult
 
 const _property_types_FirewallRuleListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{FirewallRule}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ FirewallRuleListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_FirewallRuleListResult[name]))}
 
-function check_required(o::FirewallRuleListResult)
+function OpenAPI.check_required(o::FirewallRuleListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::FirewallRuleListResult)
+    OpenAPI.validate_property(FirewallRuleListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(FirewallRuleListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ FirewallRuleListResult }, name::Symbol, val)
+
+
 end

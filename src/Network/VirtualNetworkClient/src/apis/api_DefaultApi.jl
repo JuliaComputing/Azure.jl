@@ -22,7 +22,7 @@ function _oacinternal_resource_navigation_links_list(_api::DefaultApi, resource_
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkName", virtual_network_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subnetName", subnet_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -60,7 +60,7 @@ function _oacinternal_service_association_links_list(_api::DefaultApi, resource_
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkName", virtual_network_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subnetName", subnet_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -99,7 +99,7 @@ function _oacinternal_subnets_prepare_network_policies(_api::DefaultApi, resourc
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkName", virtual_network_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subnetName", subnet_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -139,7 +139,7 @@ function _oacinternal_subnets_unprepare_network_policies(_api::DefaultApi, resou
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkName", virtual_network_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subnetName", subnet_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -177,8 +177,8 @@ function _oacinternal_virtual_networks_check_i_p_address_availability(_api::Defa
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkName", virtual_network_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "ipAddress", ip_address)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "ipAddress", ip_address; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -205,6 +205,47 @@ function virtual_networks_check_i_p_address_availability(_api::DefaultApi, respo
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
+const _returntypes_virtual_networks_list_ddos_protection_status_DefaultApi = Dict{Regex,Type}(
+    Regex("^" * replace("200", "x"=>".") * "\$") => VirtualNetworkDdosProtectionStatusResult,
+    Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+)
+
+function _oacinternal_virtual_networks_list_ddos_protection_status(_api::DefaultApi, resource_group_name::String, virtual_network_name::String, api_version::String, subscription_id::String; top=nothing, skip_token=nothing, _mediaType=nothing)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_virtual_networks_list_ddos_protection_status_DefaultApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/ddosProtectionStatus", ["azure_auth", ])
+    OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkName", virtual_network_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "top", top; style="", is_explode=false)  # type Int64
+    OpenAPI.Clients.set_param(_ctx.query, "skipToken", skip_token; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
+    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
+    return _ctx
+end
+
+@doc raw"""Gets the Ddos Protection Status of all IP Addresses under the Virtual Network
+
+Params:
+- resource_group_name::String (required)
+- virtual_network_name::String (required)
+- api_version::String (required)
+- subscription_id::String (required)
+- top::Int64
+- skip_token::String
+
+Return: VirtualNetworkDdosProtectionStatusResult, OpenAPI.Clients.ApiResponse
+"""
+function virtual_networks_list_ddos_protection_status(_api::DefaultApi, resource_group_name::String, virtual_network_name::String, api_version::String, subscription_id::String; top=nothing, skip_token=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_virtual_networks_list_ddos_protection_status(_api, resource_group_name, virtual_network_name, api_version, subscription_id; top=top, skip_token=skip_token, _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx)
+end
+
+function virtual_networks_list_ddos_protection_status(_api::DefaultApi, response_stream::Channel, resource_group_name::String, virtual_network_name::String, api_version::String, subscription_id::String; top=nothing, skip_token=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_virtual_networks_list_ddos_protection_status(_api, resource_group_name, virtual_network_name, api_version, subscription_id; top=top, skip_token=skip_token, _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx, response_stream)
+end
+
 const _returntypes_virtual_networks_list_usage_DefaultApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => VirtualNetworkListUsageResult,
     Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
@@ -215,7 +256,7 @@ function _oacinternal_virtual_networks_list_usage(_api::DefaultApi, resource_gro
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkName", virtual_network_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -246,4 +287,5 @@ export service_association_links_list
 export subnets_prepare_network_policies
 export subnets_unprepare_network_policies
 export virtual_networks_check_i_p_address_availability
+export virtual_networks_list_ddos_protection_status
 export virtual_networks_list_usage

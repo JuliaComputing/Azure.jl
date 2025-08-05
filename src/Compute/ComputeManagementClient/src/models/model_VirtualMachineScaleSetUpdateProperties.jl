@@ -39,25 +39,39 @@ Base.@kwdef mutable struct VirtualMachineScaleSetUpdateProperties <: OpenAPI.API
     proximityPlacementGroup = nothing # spec type: Union{ Nothing, SubResource }
 
     function VirtualMachineScaleSetUpdateProperties(upgradePolicy, automaticRepairsPolicy, virtualMachineProfile, overprovision, doNotRunExtensionsOnOverprovisionedVMs, singlePlacementGroup, additionalCapabilities, scaleInPolicy, proximityPlacementGroup, )
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdateProperties, Symbol("upgradePolicy"), upgradePolicy)
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdateProperties, Symbol("automaticRepairsPolicy"), automaticRepairsPolicy)
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdateProperties, Symbol("virtualMachineProfile"), virtualMachineProfile)
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdateProperties, Symbol("overprovision"), overprovision)
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdateProperties, Symbol("doNotRunExtensionsOnOverprovisionedVMs"), doNotRunExtensionsOnOverprovisionedVMs)
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdateProperties, Symbol("singlePlacementGroup"), singlePlacementGroup)
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdateProperties, Symbol("additionalCapabilities"), additionalCapabilities)
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdateProperties, Symbol("scaleInPolicy"), scaleInPolicy)
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdateProperties, Symbol("proximityPlacementGroup"), proximityPlacementGroup)
-        return new(upgradePolicy, automaticRepairsPolicy, virtualMachineProfile, overprovision, doNotRunExtensionsOnOverprovisionedVMs, singlePlacementGroup, additionalCapabilities, scaleInPolicy, proximityPlacementGroup, )
+        o = new(upgradePolicy, automaticRepairsPolicy, virtualMachineProfile, overprovision, doNotRunExtensionsOnOverprovisionedVMs, singlePlacementGroup, additionalCapabilities, scaleInPolicy, proximityPlacementGroup, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetUpdateProperties
 
 const _property_types_VirtualMachineScaleSetUpdateProperties = Dict{Symbol,String}(Symbol("upgradePolicy")=>"UpgradePolicy", Symbol("automaticRepairsPolicy")=>"AutomaticRepairsPolicy", Symbol("virtualMachineProfile")=>"VirtualMachineScaleSetUpdateVMProfile", Symbol("overprovision")=>"Bool", Symbol("doNotRunExtensionsOnOverprovisionedVMs")=>"Bool", Symbol("singlePlacementGroup")=>"Bool", Symbol("additionalCapabilities")=>"AdditionalCapabilities", Symbol("scaleInPolicy")=>"ScaleInPolicy", Symbol("proximityPlacementGroup")=>"SubResource", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetUpdateProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetUpdateProperties[name]))}
 
-function check_required(o::VirtualMachineScaleSetUpdateProperties)
+function OpenAPI.check_required(o::VirtualMachineScaleSetUpdateProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetUpdateProperties)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdateProperties, Symbol("upgradePolicy"), o.upgradePolicy)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdateProperties, Symbol("automaticRepairsPolicy"), o.automaticRepairsPolicy)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdateProperties, Symbol("virtualMachineProfile"), o.virtualMachineProfile)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdateProperties, Symbol("overprovision"), o.overprovision)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdateProperties, Symbol("doNotRunExtensionsOnOverprovisionedVMs"), o.doNotRunExtensionsOnOverprovisionedVMs)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdateProperties, Symbol("singlePlacementGroup"), o.singlePlacementGroup)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdateProperties, Symbol("additionalCapabilities"), o.additionalCapabilities)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdateProperties, Symbol("scaleInPolicy"), o.scaleInPolicy)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdateProperties, Symbol("proximityPlacementGroup"), o.proximityPlacementGroup)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetUpdateProperties }, name::Symbol, val)
+
+
+
+
+
+
+
+
+
 end

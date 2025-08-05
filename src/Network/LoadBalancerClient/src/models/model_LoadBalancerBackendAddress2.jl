@@ -18,18 +18,25 @@ Base.@kwdef mutable struct LoadBalancerBackendAddress2 <: OpenAPI.APIModel
     name::Union{Nothing, String} = nothing
 
     function LoadBalancerBackendAddress2(properties, name, )
-        OpenAPI.validate_property(LoadBalancerBackendAddress2, Symbol("properties"), properties)
-        OpenAPI.validate_property(LoadBalancerBackendAddress2, Symbol("name"), name)
-        return new(properties, name, )
+        o = new(properties, name, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type LoadBalancerBackendAddress2
 
 const _property_types_LoadBalancerBackendAddress2 = Dict{Symbol,String}(Symbol("properties")=>"LoadBalancerBackendAddressPropertiesFormat2", Symbol("name")=>"String", )
 OpenAPI.property_type(::Type{ LoadBalancerBackendAddress2 }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_LoadBalancerBackendAddress2[name]))}
 
-function check_required(o::LoadBalancerBackendAddress2)
+function OpenAPI.check_required(o::LoadBalancerBackendAddress2)
     true
 end
 
+function OpenAPI.validate_properties(o::LoadBalancerBackendAddress2)
+    OpenAPI.validate_property(LoadBalancerBackendAddress2, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(LoadBalancerBackendAddress2, Symbol("name"), o.name)
+end
+
 function OpenAPI.validate_property(::Type{ LoadBalancerBackendAddress2 }, name::Symbol, val)
+
+
 end

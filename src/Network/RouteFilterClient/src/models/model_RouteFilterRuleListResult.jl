@@ -18,18 +18,25 @@ Base.@kwdef mutable struct RouteFilterRuleListResult <: OpenAPI.APIModel
     nextLink::Union{Nothing, String} = nothing
 
     function RouteFilterRuleListResult(value, nextLink, )
-        OpenAPI.validate_property(RouteFilterRuleListResult, Symbol("value"), value)
-        OpenAPI.validate_property(RouteFilterRuleListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type RouteFilterRuleListResult
 
 const _property_types_RouteFilterRuleListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{RouteFilterRule}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ RouteFilterRuleListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RouteFilterRuleListResult[name]))}
 
-function check_required(o::RouteFilterRuleListResult)
+function OpenAPI.check_required(o::RouteFilterRuleListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::RouteFilterRuleListResult)
+    OpenAPI.validate_property(RouteFilterRuleListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(RouteFilterRuleListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ RouteFilterRuleListResult }, name::Symbol, val)
+
+
 end

@@ -27,21 +27,31 @@ Base.@kwdef mutable struct ApplicationGatewayRequestRoutingRule <: OpenAPI.APIMo
     id::Union{Nothing, String} = nothing
 
     function ApplicationGatewayRequestRoutingRule(properties, name, etag, type, id, )
-        OpenAPI.validate_property(ApplicationGatewayRequestRoutingRule, Symbol("properties"), properties)
-        OpenAPI.validate_property(ApplicationGatewayRequestRoutingRule, Symbol("name"), name)
-        OpenAPI.validate_property(ApplicationGatewayRequestRoutingRule, Symbol("etag"), etag)
-        OpenAPI.validate_property(ApplicationGatewayRequestRoutingRule, Symbol("type"), type)
-        OpenAPI.validate_property(ApplicationGatewayRequestRoutingRule, Symbol("id"), id)
-        return new(properties, name, etag, type, id, )
+        o = new(properties, name, etag, type, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayRequestRoutingRule
 
 const _property_types_ApplicationGatewayRequestRoutingRule = Dict{Symbol,String}(Symbol("properties")=>"ApplicationGatewayRequestRoutingRulePropertiesFormat", Symbol("name")=>"String", Symbol("etag")=>"String", Symbol("type")=>"String", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ ApplicationGatewayRequestRoutingRule }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayRequestRoutingRule[name]))}
 
-function check_required(o::ApplicationGatewayRequestRoutingRule)
+function OpenAPI.check_required(o::ApplicationGatewayRequestRoutingRule)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayRequestRoutingRule)
+    OpenAPI.validate_property(ApplicationGatewayRequestRoutingRule, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(ApplicationGatewayRequestRoutingRule, Symbol("name"), o.name)
+    OpenAPI.validate_property(ApplicationGatewayRequestRoutingRule, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(ApplicationGatewayRequestRoutingRule, Symbol("type"), o.type)
+    OpenAPI.validate_property(ApplicationGatewayRequestRoutingRule, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayRequestRoutingRule }, name::Symbol, val)
+
+
+
+
+
 end

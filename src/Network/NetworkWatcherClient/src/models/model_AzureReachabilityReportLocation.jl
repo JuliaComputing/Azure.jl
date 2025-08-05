@@ -21,20 +21,28 @@ Base.@kwdef mutable struct AzureReachabilityReportLocation <: OpenAPI.APIModel
     city::Union{Nothing, String} = nothing
 
     function AzureReachabilityReportLocation(country, state, city, )
-        OpenAPI.validate_property(AzureReachabilityReportLocation, Symbol("country"), country)
-        OpenAPI.validate_property(AzureReachabilityReportLocation, Symbol("state"), state)
-        OpenAPI.validate_property(AzureReachabilityReportLocation, Symbol("city"), city)
-        return new(country, state, city, )
+        o = new(country, state, city, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AzureReachabilityReportLocation
 
 const _property_types_AzureReachabilityReportLocation = Dict{Symbol,String}(Symbol("country")=>"String", Symbol("state")=>"String", Symbol("city")=>"String", )
 OpenAPI.property_type(::Type{ AzureReachabilityReportLocation }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AzureReachabilityReportLocation[name]))}
 
-function check_required(o::AzureReachabilityReportLocation)
+function OpenAPI.check_required(o::AzureReachabilityReportLocation)
     o.country === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::AzureReachabilityReportLocation)
+    OpenAPI.validate_property(AzureReachabilityReportLocation, Symbol("country"), o.country)
+    OpenAPI.validate_property(AzureReachabilityReportLocation, Symbol("state"), o.state)
+    OpenAPI.validate_property(AzureReachabilityReportLocation, Symbol("city"), o.city)
+end
+
 function OpenAPI.validate_property(::Type{ AzureReachabilityReportLocation }, name::Symbol, val)
+
+
+
 end

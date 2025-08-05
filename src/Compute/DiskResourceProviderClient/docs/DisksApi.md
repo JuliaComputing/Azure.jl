@@ -27,11 +27,11 @@ Creates or updates a disk.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **DisksApi** | API context | 
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**disk_name** | **String**| The name of the managed disk that is being created. The name can&#39;t be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**disk** | [**Disk**](Disk.md)| Disk object supplied in the body of the Put disk operation. | 
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**resource_group_name** | **String** | The name of the resource group. |
+**disk_name** | **String** | The name of the managed disk that is being created. The name can&#39;t be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters. |
+**api_version** | **String** | Client Api Version. |
+**disk** | [**Disk**](Disk.md) | Disk object supplied in the body of the Put disk operation. |
 
 ### Return type
 
@@ -61,10 +61,10 @@ Deletes a disk.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **DisksApi** | API context | 
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**disk_name** | **String**| The name of the managed disk that is being created. The name can&#39;t be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**resource_group_name** | **String** | The name of the resource group. |
+**disk_name** | **String** | The name of the managed disk that is being created. The name can&#39;t be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters. |
+**api_version** | **String** | Client Api Version. |
 
 ### Return type
 
@@ -94,10 +94,10 @@ Gets information about a disk.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **DisksApi** | API context | 
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**disk_name** | **String**| The name of the managed disk that is being created. The name can&#39;t be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**resource_group_name** | **String** | The name of the resource group. |
+**disk_name** | **String** | The name of the managed disk that is being created. The name can&#39;t be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters. |
+**api_version** | **String** | Client Api Version. |
 
 ### Return type
 
@@ -127,11 +127,11 @@ Grants access to a disk.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **DisksApi** | API context | 
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**disk_name** | **String**| The name of the managed disk that is being created. The name can&#39;t be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**grant_access_data** | [**GrantAccessData**](GrantAccessData.md)| Access data object supplied in the body of the get disk access operation. | 
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**resource_group_name** | **String** | The name of the resource group. |
+**disk_name** | **String** | The name of the managed disk that is being created. The name can&#39;t be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters. |
+**api_version** | **String** | Client Api Version. |
+**grant_access_data** | [**GrantAccessData**](GrantAccessData.md) | Access data object supplied in the body of the get disk access operation. |
 
 ### Return type
 
@@ -161,8 +161,8 @@ Lists all the disks under a subscription.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **DisksApi** | API context | 
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**api_version** | **String** | Client Api Version. |
 
 ### Return type
 
@@ -192,9 +192,9 @@ Lists all the disks under a resource group.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **DisksApi** | API context | 
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**resource_group_name** | **String** | The name of the resource group. |
+**api_version** | **String** | Client Api Version. |
 
 ### Return type
 
@@ -224,10 +224,10 @@ Revokes access to a disk.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **DisksApi** | API context | 
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**disk_name** | **String**| The name of the managed disk that is being created. The name can&#39;t be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**resource_group_name** | **String** | The name of the resource group. |
+**disk_name** | **String** | The name of the managed disk that is being created. The name can&#39;t be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters. |
+**api_version** | **String** | Client Api Version. |
 
 ### Return type
 
@@ -257,11 +257,11 @@ Updates (patches) a disk.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **DisksApi** | API context | 
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**disk_name** | **String**| The name of the managed disk that is being created. The name can&#39;t be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9 and _. The maximum name length is 80 characters. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**disk** | [**DiskUpdate**](DiskUpdate.md)| Disk object supplied in the body of the Patch disk operation. | 
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**resource_group_name** | **String** | The name of the resource group. |
+**disk_name** | **String** | The name of the managed disk that is being created. The name can&#39;t be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters. |
+**api_version** | **String** | Client Api Version. |
+**disk** | [**DiskUpdate**](DiskUpdate.md) | Disk object supplied in the body of the Patch disk operation. |
 
 ### Return type
 

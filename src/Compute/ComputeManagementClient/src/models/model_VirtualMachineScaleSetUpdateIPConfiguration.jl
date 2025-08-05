@@ -21,19 +21,27 @@ Base.@kwdef mutable struct VirtualMachineScaleSetUpdateIPConfiguration <: OpenAP
     id::Union{Nothing, String} = nothing
 
     function VirtualMachineScaleSetUpdateIPConfiguration(name, properties, id, )
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdateIPConfiguration, Symbol("name"), name)
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdateIPConfiguration, Symbol("properties"), properties)
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdateIPConfiguration, Symbol("id"), id)
-        return new(name, properties, id, )
+        o = new(name, properties, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetUpdateIPConfiguration
 
 const _property_types_VirtualMachineScaleSetUpdateIPConfiguration = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("properties")=>"VirtualMachineScaleSetUpdateIPConfigurationProperties", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetUpdateIPConfiguration }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetUpdateIPConfiguration[name]))}
 
-function check_required(o::VirtualMachineScaleSetUpdateIPConfiguration)
+function OpenAPI.check_required(o::VirtualMachineScaleSetUpdateIPConfiguration)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetUpdateIPConfiguration)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdateIPConfiguration, Symbol("name"), o.name)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdateIPConfiguration, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdateIPConfiguration, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetUpdateIPConfiguration }, name::Symbol, val)
+
+
+
 end

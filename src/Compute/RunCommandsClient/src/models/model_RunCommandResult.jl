@@ -14,17 +14,23 @@ Base.@kwdef mutable struct RunCommandResult <: OpenAPI.APIModel
     value::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{InstanceViewStatus} }
 
     function RunCommandResult(value, )
-        OpenAPI.validate_property(RunCommandResult, Symbol("value"), value)
-        return new(value, )
+        o = new(value, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type RunCommandResult
 
 const _property_types_RunCommandResult = Dict{Symbol,String}(Symbol("value")=>"Vector{InstanceViewStatus}", )
 OpenAPI.property_type(::Type{ RunCommandResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RunCommandResult[name]))}
 
-function check_required(o::RunCommandResult)
+function OpenAPI.check_required(o::RunCommandResult)
     true
 end
 
+function OpenAPI.validate_properties(o::RunCommandResult)
+    OpenAPI.validate_property(RunCommandResult, Symbol("value"), o.value)
+end
+
 function OpenAPI.validate_property(::Type{ RunCommandResult }, name::Symbol, val)
+
 end

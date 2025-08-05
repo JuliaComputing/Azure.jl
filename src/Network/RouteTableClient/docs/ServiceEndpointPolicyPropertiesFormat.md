@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **subnets** | [**Vector{Subnet}**](Subnet.md) | A collection of references to subnets. | [optional] [readonly] [default to nothing]
 **resourceGuid** | **String** | The resource GUID property of the service endpoint policy resource. | [optional] [readonly] [default to nothing]
 **provisioningState** | [***ProvisioningState**](ProvisioningState.md) |  | [optional] [default to nothing]
+**serviceAlias** | **String** | The alias indicating if the policy belongs to a service | [optional] [default to nothing]
+**contextualServiceEndpointPolicies** | **Vector{String}** | A collection of contextual service endpoint policy. | [optional] [default to nothing]
 
 
 [[Back to Model list]](../README.md#models) [[Back to API list]](../README.md#api-endpoints) [[Back to README]](../README.md)

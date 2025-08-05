@@ -21,25 +21,33 @@ Base.@kwdef mutable struct RollbackStatusInfo <: OpenAPI.APIModel
     rollbackError = nothing # spec type: Union{ Nothing, ApiError }
 
     function RollbackStatusInfo(successfullyRolledbackInstanceCount, failedRolledbackInstanceCount, rollbackError, )
-        OpenAPI.validate_property(RollbackStatusInfo, Symbol("successfullyRolledbackInstanceCount"), successfullyRolledbackInstanceCount)
-        OpenAPI.validate_property(RollbackStatusInfo, Symbol("failedRolledbackInstanceCount"), failedRolledbackInstanceCount)
-        OpenAPI.validate_property(RollbackStatusInfo, Symbol("rollbackError"), rollbackError)
-        return new(successfullyRolledbackInstanceCount, failedRolledbackInstanceCount, rollbackError, )
+        o = new(successfullyRolledbackInstanceCount, failedRolledbackInstanceCount, rollbackError, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type RollbackStatusInfo
 
 const _property_types_RollbackStatusInfo = Dict{Symbol,String}(Symbol("successfullyRolledbackInstanceCount")=>"Int64", Symbol("failedRolledbackInstanceCount")=>"Int64", Symbol("rollbackError")=>"ApiError", )
 OpenAPI.property_type(::Type{ RollbackStatusInfo }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RollbackStatusInfo[name]))}
 
-function check_required(o::RollbackStatusInfo)
+function OpenAPI.check_required(o::RollbackStatusInfo)
     true
 end
 
+function OpenAPI.validate_properties(o::RollbackStatusInfo)
+    OpenAPI.validate_property(RollbackStatusInfo, Symbol("successfullyRolledbackInstanceCount"), o.successfullyRolledbackInstanceCount)
+    OpenAPI.validate_property(RollbackStatusInfo, Symbol("failedRolledbackInstanceCount"), o.failedRolledbackInstanceCount)
+    OpenAPI.validate_property(RollbackStatusInfo, Symbol("rollbackError"), o.rollbackError)
+end
+
 function OpenAPI.validate_property(::Type{ RollbackStatusInfo }, name::Symbol, val)
+
     if name === Symbol("successfullyRolledbackInstanceCount")
         OpenAPI.validate_param(name, "RollbackStatusInfo", :format, val, "int32")
     end
+
     if name === Symbol("failedRolledbackInstanceCount")
         OpenAPI.validate_param(name, "RollbackStatusInfo", :format, val, "int32")
     end
+
 end

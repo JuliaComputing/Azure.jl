@@ -23,12 +23,12 @@ Create or update the object replication policy of the storage account.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ObjectReplicationPoliciesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group within the user&#39;s subscription. The name is case insensitive. | [default to nothing]
-**account_name** | **String**| The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. | [default to nothing]
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
-**object_replication_policy_id** | **String**| The ID of object replication policy or &#39;default&#39; if the policy ID is unknown. | [default to nothing]
-**properties** | [**ObjectReplicationPolicy**](ObjectReplicationPolicy.md)| The object replication policy set to a storage account. A unique policy ID will be created if absent. | 
+**resource_group_name** | **String** | The name of the resource group within the user&#39;s subscription. The name is case insensitive. |
+**account_name** | **String** | The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. |
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The ID of the target subscription. |
+**object_replication_policy_id** | **String** | For the destination account, provide the value &#39;default&#39;. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file. |
+**properties** | [**ObjectReplicationPolicy**](ObjectReplicationPolicy.md) | The object replication policy set to a storage account. A unique policy ID will be created if absent. |
 
 ### Return type
 
@@ -58,11 +58,11 @@ Deletes the object replication policy associated with the specified storage acco
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ObjectReplicationPoliciesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group within the user&#39;s subscription. The name is case insensitive. | [default to nothing]
-**account_name** | **String**| The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. | [default to nothing]
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
-**object_replication_policy_id** | **String**| The ID of object replication policy or &#39;default&#39; if the policy ID is unknown. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group within the user&#39;s subscription. The name is case insensitive. |
+**account_name** | **String** | The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. |
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The ID of the target subscription. |
+**object_replication_policy_id** | **String** | For the destination account, provide the value &#39;default&#39;. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file. |
 
 ### Return type
 
@@ -92,11 +92,11 @@ Get the object replication policy of the storage account by policy ID.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ObjectReplicationPoliciesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group within the user&#39;s subscription. The name is case insensitive. | [default to nothing]
-**account_name** | **String**| The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. | [default to nothing]
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
-**object_replication_policy_id** | **String**| The ID of object replication policy or &#39;default&#39; if the policy ID is unknown. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group within the user&#39;s subscription. The name is case insensitive. |
+**account_name** | **String** | The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. |
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The ID of the target subscription. |
+**object_replication_policy_id** | **String** | For the destination account, provide the value &#39;default&#39;. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file. |
 
 ### Return type
 
@@ -126,10 +126,10 @@ List the object replication policies associated with the storage account.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ObjectReplicationPoliciesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group within the user&#39;s subscription. The name is case insensitive. | [default to nothing]
-**account_name** | **String**| The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. | [default to nothing]
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group within the user&#39;s subscription. The name is case insensitive. |
+**account_name** | **String** | The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. |
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The ID of the target subscription. |
 
 ### Return type
 

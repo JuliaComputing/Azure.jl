@@ -15,17 +15,23 @@ Base.@kwdef mutable struct ExpressRouteConnectionId <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
 
     function ExpressRouteConnectionId(id, )
-        OpenAPI.validate_property(ExpressRouteConnectionId, Symbol("id"), id)
-        return new(id, )
+        o = new(id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ExpressRouteConnectionId
 
 const _property_types_ExpressRouteConnectionId = Dict{Symbol,String}(Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ ExpressRouteConnectionId }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExpressRouteConnectionId[name]))}
 
-function check_required(o::ExpressRouteConnectionId)
+function OpenAPI.check_required(o::ExpressRouteConnectionId)
     true
 end
 
+function OpenAPI.validate_properties(o::ExpressRouteConnectionId)
+    OpenAPI.validate_property(ExpressRouteConnectionId, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ ExpressRouteConnectionId }, name::Symbol, val)
+
 end

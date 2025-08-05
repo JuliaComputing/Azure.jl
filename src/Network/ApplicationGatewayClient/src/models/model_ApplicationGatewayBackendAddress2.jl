@@ -18,18 +18,25 @@ Base.@kwdef mutable struct ApplicationGatewayBackendAddress2 <: OpenAPI.APIModel
     ipAddress::Union{Nothing, String} = nothing
 
     function ApplicationGatewayBackendAddress2(fqdn, ipAddress, )
-        OpenAPI.validate_property(ApplicationGatewayBackendAddress2, Symbol("fqdn"), fqdn)
-        OpenAPI.validate_property(ApplicationGatewayBackendAddress2, Symbol("ipAddress"), ipAddress)
-        return new(fqdn, ipAddress, )
+        o = new(fqdn, ipAddress, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayBackendAddress2
 
 const _property_types_ApplicationGatewayBackendAddress2 = Dict{Symbol,String}(Symbol("fqdn")=>"String", Symbol("ipAddress")=>"String", )
 OpenAPI.property_type(::Type{ ApplicationGatewayBackendAddress2 }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayBackendAddress2[name]))}
 
-function check_required(o::ApplicationGatewayBackendAddress2)
+function OpenAPI.check_required(o::ApplicationGatewayBackendAddress2)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayBackendAddress2)
+    OpenAPI.validate_property(ApplicationGatewayBackendAddress2, Symbol("fqdn"), o.fqdn)
+    OpenAPI.validate_property(ApplicationGatewayBackendAddress2, Symbol("ipAddress"), o.ipAddress)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayBackendAddress2 }, name::Symbol, val)
+
+
 end

@@ -18,19 +18,26 @@ Base.@kwdef mutable struct CustomDomain <: OpenAPI.APIModel
     useSubDomainName::Union{Nothing, Bool} = nothing
 
     function CustomDomain(name, useSubDomainName, )
-        OpenAPI.validate_property(CustomDomain, Symbol("name"), name)
-        OpenAPI.validate_property(CustomDomain, Symbol("useSubDomainName"), useSubDomainName)
-        return new(name, useSubDomainName, )
+        o = new(name, useSubDomainName, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type CustomDomain
 
 const _property_types_CustomDomain = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("useSubDomainName")=>"Bool", )
 OpenAPI.property_type(::Type{ CustomDomain }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_CustomDomain[name]))}
 
-function check_required(o::CustomDomain)
+function OpenAPI.check_required(o::CustomDomain)
     o.name === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::CustomDomain)
+    OpenAPI.validate_property(CustomDomain, Symbol("name"), o.name)
+    OpenAPI.validate_property(CustomDomain, Symbol("useSubDomainName"), o.useSubDomainName)
+end
+
 function OpenAPI.validate_property(::Type{ CustomDomain }, name::Symbol, val)
+
+
 end

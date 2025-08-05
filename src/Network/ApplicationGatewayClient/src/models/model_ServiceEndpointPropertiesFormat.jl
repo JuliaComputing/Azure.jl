@@ -7,33 +7,46 @@ The service endpoint properties.
 
     ServiceEndpointPropertiesFormat(;
         service=nothing,
+        networkIdentifier=nothing,
         locations=nothing,
         provisioningState=nothing,
     )
 
     - service::String : The type of the endpoint service.
+    - networkIdentifier::SubResource
     - locations::Vector{String} : A list of locations.
     - provisioningState::ProvisioningState
 """
 Base.@kwdef mutable struct ServiceEndpointPropertiesFormat <: OpenAPI.APIModel
     service::Union{Nothing, String} = nothing
+    networkIdentifier = nothing # spec type: Union{ Nothing, SubResource }
     locations::Union{Nothing, Vector{String}} = nothing
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
-    function ServiceEndpointPropertiesFormat(service, locations, provisioningState, )
-        OpenAPI.validate_property(ServiceEndpointPropertiesFormat, Symbol("service"), service)
-        OpenAPI.validate_property(ServiceEndpointPropertiesFormat, Symbol("locations"), locations)
-        OpenAPI.validate_property(ServiceEndpointPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(service, locations, provisioningState, )
+    function ServiceEndpointPropertiesFormat(service, networkIdentifier, locations, provisioningState, )
+        o = new(service, networkIdentifier, locations, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ServiceEndpointPropertiesFormat
 
-const _property_types_ServiceEndpointPropertiesFormat = Dict{Symbol,String}(Symbol("service")=>"String", Symbol("locations")=>"Vector{String}", Symbol("provisioningState")=>"ProvisioningState", )
+const _property_types_ServiceEndpointPropertiesFormat = Dict{Symbol,String}(Symbol("service")=>"String", Symbol("networkIdentifier")=>"SubResource", Symbol("locations")=>"Vector{String}", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ ServiceEndpointPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ServiceEndpointPropertiesFormat[name]))}
 
-function check_required(o::ServiceEndpointPropertiesFormat)
+function OpenAPI.check_required(o::ServiceEndpointPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::ServiceEndpointPropertiesFormat)
+    OpenAPI.validate_property(ServiceEndpointPropertiesFormat, Symbol("service"), o.service)
+    OpenAPI.validate_property(ServiceEndpointPropertiesFormat, Symbol("networkIdentifier"), o.networkIdentifier)
+    OpenAPI.validate_property(ServiceEndpointPropertiesFormat, Symbol("locations"), o.locations)
+    OpenAPI.validate_property(ServiceEndpointPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ ServiceEndpointPropertiesFormat }, name::Symbol, val)
+
+
+
+
 end

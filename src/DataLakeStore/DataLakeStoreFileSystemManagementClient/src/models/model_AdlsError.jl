@@ -15,17 +15,23 @@ Base.@kwdef mutable struct AdlsError <: OpenAPI.APIModel
     remoteException = nothing # spec type: Union{ Nothing, AdlsRemoteException }
 
     function AdlsError(remoteException, )
-        OpenAPI.validate_property(AdlsError, Symbol("remoteException"), remoteException)
-        return new(remoteException, )
+        o = new(remoteException, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AdlsError
 
 const _property_types_AdlsError = Dict{Symbol,String}(Symbol("remoteException")=>"AdlsRemoteException", )
 OpenAPI.property_type(::Type{ AdlsError }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AdlsError[name]))}
 
-function check_required(o::AdlsError)
+function OpenAPI.check_required(o::AdlsError)
     true
 end
 
+function OpenAPI.validate_properties(o::AdlsError)
+    OpenAPI.validate_property(AdlsError, Symbol("remoteException"), o.remoteException)
+end
+
 function OpenAPI.validate_property(::Type{ AdlsError }, name::Symbol, val)
+
 end

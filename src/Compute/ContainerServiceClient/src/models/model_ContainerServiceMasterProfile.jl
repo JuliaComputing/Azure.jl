@@ -21,23 +21,32 @@ Base.@kwdef mutable struct ContainerServiceMasterProfile <: OpenAPI.APIModel
     fqdn::Union{Nothing, String} = nothing
 
     function ContainerServiceMasterProfile(count, dnsPrefix, fqdn, )
-        OpenAPI.validate_property(ContainerServiceMasterProfile, Symbol("count"), count)
-        OpenAPI.validate_property(ContainerServiceMasterProfile, Symbol("dnsPrefix"), dnsPrefix)
-        OpenAPI.validate_property(ContainerServiceMasterProfile, Symbol("fqdn"), fqdn)
-        return new(count, dnsPrefix, fqdn, )
+        o = new(count, dnsPrefix, fqdn, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ContainerServiceMasterProfile
 
 const _property_types_ContainerServiceMasterProfile = Dict{Symbol,String}(Symbol("count")=>"Int64", Symbol("dnsPrefix")=>"String", Symbol("fqdn")=>"String", )
 OpenAPI.property_type(::Type{ ContainerServiceMasterProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ContainerServiceMasterProfile[name]))}
 
-function check_required(o::ContainerServiceMasterProfile)
+function OpenAPI.check_required(o::ContainerServiceMasterProfile)
     o.dnsPrefix === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ContainerServiceMasterProfile)
+    OpenAPI.validate_property(ContainerServiceMasterProfile, Symbol("count"), o.count)
+    OpenAPI.validate_property(ContainerServiceMasterProfile, Symbol("dnsPrefix"), o.dnsPrefix)
+    OpenAPI.validate_property(ContainerServiceMasterProfile, Symbol("fqdn"), o.fqdn)
+end
+
 function OpenAPI.validate_property(::Type{ ContainerServiceMasterProfile }, name::Symbol, val)
+
     if name === Symbol("count")
-        OpenAPI.validate_param(name, "ContainerServiceMasterProfile", :enum, val, ["1", "3", "5"])
+        OpenAPI.validate_param(name, "ContainerServiceMasterProfile", :enum, val, [1, 3, 5])
     end
+
+
+
 end

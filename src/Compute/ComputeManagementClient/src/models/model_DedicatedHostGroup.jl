@@ -33,24 +33,36 @@ Base.@kwdef mutable struct DedicatedHostGroup <: OpenAPI.APIModel
     tags::Union{Nothing, Dict{String, String}} = nothing
 
     function DedicatedHostGroup(properties, zones, id, name, type, location, tags, )
-        OpenAPI.validate_property(DedicatedHostGroup, Symbol("properties"), properties)
-        OpenAPI.validate_property(DedicatedHostGroup, Symbol("zones"), zones)
-        OpenAPI.validate_property(DedicatedHostGroup, Symbol("id"), id)
-        OpenAPI.validate_property(DedicatedHostGroup, Symbol("name"), name)
-        OpenAPI.validate_property(DedicatedHostGroup, Symbol("type"), type)
-        OpenAPI.validate_property(DedicatedHostGroup, Symbol("location"), location)
-        OpenAPI.validate_property(DedicatedHostGroup, Symbol("tags"), tags)
-        return new(properties, zones, id, name, type, location, tags, )
+        o = new(properties, zones, id, name, type, location, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type DedicatedHostGroup
 
 const _property_types_DedicatedHostGroup = Dict{Symbol,String}(Symbol("properties")=>"DedicatedHostGroupProperties", Symbol("zones")=>"Vector{String}", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ DedicatedHostGroup }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DedicatedHostGroup[name]))}
 
-function check_required(o::DedicatedHostGroup)
+function OpenAPI.check_required(o::DedicatedHostGroup)
     o.location === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::DedicatedHostGroup)
+    OpenAPI.validate_property(DedicatedHostGroup, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(DedicatedHostGroup, Symbol("zones"), o.zones)
+    OpenAPI.validate_property(DedicatedHostGroup, Symbol("id"), o.id)
+    OpenAPI.validate_property(DedicatedHostGroup, Symbol("name"), o.name)
+    OpenAPI.validate_property(DedicatedHostGroup, Symbol("type"), o.type)
+    OpenAPI.validate_property(DedicatedHostGroup, Symbol("location"), o.location)
+    OpenAPI.validate_property(DedicatedHostGroup, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ DedicatedHostGroup }, name::Symbol, val)
+
+
+
+
+
+
+
 end

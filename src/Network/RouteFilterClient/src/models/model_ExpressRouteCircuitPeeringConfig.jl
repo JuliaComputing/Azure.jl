@@ -12,6 +12,7 @@ Specifies the peering configuration.
         legacyMode=nothing,
         customerASN=nothing,
         routingRegistryName=nothing,
+        advertisedPublicPrefixInfo=nothing,
     )
 
     - advertisedPublicPrefixes::Vector{String} : The reference to AdvertisedPublicPrefixes.
@@ -20,6 +21,7 @@ Specifies the peering configuration.
     - legacyMode::Int64 : The legacy mode of the peering.
     - customerASN::Int64 : The CustomerASN of the peering.
     - routingRegistryName::String : The RoutingRegistryName of the configuration.
+    - advertisedPublicPrefixInfo::Vector{AdvertisedPublicPrefixProperties} : List of Prefix information required to perform validation.
 """
 Base.@kwdef mutable struct ExpressRouteCircuitPeeringConfig <: OpenAPI.APIModel
     advertisedPublicPrefixes::Union{Nothing, Vector{String}} = nothing
@@ -28,33 +30,48 @@ Base.@kwdef mutable struct ExpressRouteCircuitPeeringConfig <: OpenAPI.APIModel
     legacyMode::Union{Nothing, Int64} = nothing
     customerASN::Union{Nothing, Int64} = nothing
     routingRegistryName::Union{Nothing, String} = nothing
+    advertisedPublicPrefixInfo::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{AdvertisedPublicPrefixProperties} }
 
-    function ExpressRouteCircuitPeeringConfig(advertisedPublicPrefixes, advertisedCommunities, advertisedPublicPrefixesState, legacyMode, customerASN, routingRegistryName, )
-        OpenAPI.validate_property(ExpressRouteCircuitPeeringConfig, Symbol("advertisedPublicPrefixes"), advertisedPublicPrefixes)
-        OpenAPI.validate_property(ExpressRouteCircuitPeeringConfig, Symbol("advertisedCommunities"), advertisedCommunities)
-        OpenAPI.validate_property(ExpressRouteCircuitPeeringConfig, Symbol("advertisedPublicPrefixesState"), advertisedPublicPrefixesState)
-        OpenAPI.validate_property(ExpressRouteCircuitPeeringConfig, Symbol("legacyMode"), legacyMode)
-        OpenAPI.validate_property(ExpressRouteCircuitPeeringConfig, Symbol("customerASN"), customerASN)
-        OpenAPI.validate_property(ExpressRouteCircuitPeeringConfig, Symbol("routingRegistryName"), routingRegistryName)
-        return new(advertisedPublicPrefixes, advertisedCommunities, advertisedPublicPrefixesState, legacyMode, customerASN, routingRegistryName, )
+    function ExpressRouteCircuitPeeringConfig(advertisedPublicPrefixes, advertisedCommunities, advertisedPublicPrefixesState, legacyMode, customerASN, routingRegistryName, advertisedPublicPrefixInfo, )
+        o = new(advertisedPublicPrefixes, advertisedCommunities, advertisedPublicPrefixesState, legacyMode, customerASN, routingRegistryName, advertisedPublicPrefixInfo, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ExpressRouteCircuitPeeringConfig
 
-const _property_types_ExpressRouteCircuitPeeringConfig = Dict{Symbol,String}(Symbol("advertisedPublicPrefixes")=>"Vector{String}", Symbol("advertisedCommunities")=>"Vector{String}", Symbol("advertisedPublicPrefixesState")=>"String", Symbol("legacyMode")=>"Int64", Symbol("customerASN")=>"Int64", Symbol("routingRegistryName")=>"String", )
+const _property_types_ExpressRouteCircuitPeeringConfig = Dict{Symbol,String}(Symbol("advertisedPublicPrefixes")=>"Vector{String}", Symbol("advertisedCommunities")=>"Vector{String}", Symbol("advertisedPublicPrefixesState")=>"String", Symbol("legacyMode")=>"Int64", Symbol("customerASN")=>"Int64", Symbol("routingRegistryName")=>"String", Symbol("advertisedPublicPrefixInfo")=>"Vector{AdvertisedPublicPrefixProperties}", )
 OpenAPI.property_type(::Type{ ExpressRouteCircuitPeeringConfig }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExpressRouteCircuitPeeringConfig[name]))}
 
-function check_required(o::ExpressRouteCircuitPeeringConfig)
+function OpenAPI.check_required(o::ExpressRouteCircuitPeeringConfig)
     true
 end
 
+function OpenAPI.validate_properties(o::ExpressRouteCircuitPeeringConfig)
+    OpenAPI.validate_property(ExpressRouteCircuitPeeringConfig, Symbol("advertisedPublicPrefixes"), o.advertisedPublicPrefixes)
+    OpenAPI.validate_property(ExpressRouteCircuitPeeringConfig, Symbol("advertisedCommunities"), o.advertisedCommunities)
+    OpenAPI.validate_property(ExpressRouteCircuitPeeringConfig, Symbol("advertisedPublicPrefixesState"), o.advertisedPublicPrefixesState)
+    OpenAPI.validate_property(ExpressRouteCircuitPeeringConfig, Symbol("legacyMode"), o.legacyMode)
+    OpenAPI.validate_property(ExpressRouteCircuitPeeringConfig, Symbol("customerASN"), o.customerASN)
+    OpenAPI.validate_property(ExpressRouteCircuitPeeringConfig, Symbol("routingRegistryName"), o.routingRegistryName)
+    OpenAPI.validate_property(ExpressRouteCircuitPeeringConfig, Symbol("advertisedPublicPrefixInfo"), o.advertisedPublicPrefixInfo)
+end
+
 function OpenAPI.validate_property(::Type{ ExpressRouteCircuitPeeringConfig }, name::Symbol, val)
+
+
+
     if name === Symbol("advertisedPublicPrefixesState")
         OpenAPI.validate_param(name, "ExpressRouteCircuitPeeringConfig", :enum, val, ["NotConfigured", "Configuring", "Configured", "ValidationNeeded"])
     end
+
+
     if name === Symbol("legacyMode")
         OpenAPI.validate_param(name, "ExpressRouteCircuitPeeringConfig", :format, val, "int32")
     end
+
     if name === Symbol("customerASN")
         OpenAPI.validate_param(name, "ExpressRouteCircuitPeeringConfig", :format, val, "int32")
     end
+
+
 end

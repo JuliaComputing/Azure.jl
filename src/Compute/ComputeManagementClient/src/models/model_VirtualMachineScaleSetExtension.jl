@@ -6,38 +6,47 @@
 Describes a Virtual Machine Scale Set Extension.
 
     VirtualMachineScaleSetExtension(;
-        id=nothing,
         name=nothing,
         type=nothing,
         properties=nothing,
+        id=nothing,
     )
 
-    - id::String : Resource Id
     - name::String : The name of the extension.
     - type::String : Resource type
     - properties::VirtualMachineScaleSetExtensionProperties
+    - id::String : Resource Id
 """
 Base.@kwdef mutable struct VirtualMachineScaleSetExtension <: OpenAPI.APIModel
-    id::Union{Nothing, String} = nothing
     name::Union{Nothing, String} = nothing
     type::Union{Nothing, String} = nothing
     properties = nothing # spec type: Union{ Nothing, VirtualMachineScaleSetExtensionProperties }
+    id::Union{Nothing, String} = nothing
 
-    function VirtualMachineScaleSetExtension(id, name, type, properties, )
-        OpenAPI.validate_property(VirtualMachineScaleSetExtension, Symbol("id"), id)
-        OpenAPI.validate_property(VirtualMachineScaleSetExtension, Symbol("name"), name)
-        OpenAPI.validate_property(VirtualMachineScaleSetExtension, Symbol("type"), type)
-        OpenAPI.validate_property(VirtualMachineScaleSetExtension, Symbol("properties"), properties)
-        return new(id, name, type, properties, )
+    function VirtualMachineScaleSetExtension(name, type, properties, id, )
+        o = new(name, type, properties, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetExtension
 
-const _property_types_VirtualMachineScaleSetExtension = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("properties")=>"VirtualMachineScaleSetExtensionProperties", )
+const _property_types_VirtualMachineScaleSetExtension = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("type")=>"String", Symbol("properties")=>"VirtualMachineScaleSetExtensionProperties", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetExtension }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetExtension[name]))}
 
-function check_required(o::VirtualMachineScaleSetExtension)
+function OpenAPI.check_required(o::VirtualMachineScaleSetExtension)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetExtension)
+    OpenAPI.validate_property(VirtualMachineScaleSetExtension, Symbol("name"), o.name)
+    OpenAPI.validate_property(VirtualMachineScaleSetExtension, Symbol("type"), o.type)
+    OpenAPI.validate_property(VirtualMachineScaleSetExtension, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(VirtualMachineScaleSetExtension, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetExtension }, name::Symbol, val)
+
+
+
+
 end

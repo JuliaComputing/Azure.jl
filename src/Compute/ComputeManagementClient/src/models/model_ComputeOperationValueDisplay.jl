@@ -24,20 +24,29 @@ Base.@kwdef mutable struct ComputeOperationValueDisplay <: OpenAPI.APIModel
     provider::Union{Nothing, String} = nothing
 
     function ComputeOperationValueDisplay(operation, resource, description, provider, )
-        OpenAPI.validate_property(ComputeOperationValueDisplay, Symbol("operation"), operation)
-        OpenAPI.validate_property(ComputeOperationValueDisplay, Symbol("resource"), resource)
-        OpenAPI.validate_property(ComputeOperationValueDisplay, Symbol("description"), description)
-        OpenAPI.validate_property(ComputeOperationValueDisplay, Symbol("provider"), provider)
-        return new(operation, resource, description, provider, )
+        o = new(operation, resource, description, provider, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ComputeOperationValueDisplay
 
 const _property_types_ComputeOperationValueDisplay = Dict{Symbol,String}(Symbol("operation")=>"String", Symbol("resource")=>"String", Symbol("description")=>"String", Symbol("provider")=>"String", )
 OpenAPI.property_type(::Type{ ComputeOperationValueDisplay }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ComputeOperationValueDisplay[name]))}
 
-function check_required(o::ComputeOperationValueDisplay)
+function OpenAPI.check_required(o::ComputeOperationValueDisplay)
     true
 end
 
+function OpenAPI.validate_properties(o::ComputeOperationValueDisplay)
+    OpenAPI.validate_property(ComputeOperationValueDisplay, Symbol("operation"), o.operation)
+    OpenAPI.validate_property(ComputeOperationValueDisplay, Symbol("resource"), o.resource)
+    OpenAPI.validate_property(ComputeOperationValueDisplay, Symbol("description"), o.description)
+    OpenAPI.validate_property(ComputeOperationValueDisplay, Symbol("provider"), o.provider)
+end
+
 function OpenAPI.validate_property(::Type{ ComputeOperationValueDisplay }, name::Symbol, val)
+
+
+
+
 end

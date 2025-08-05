@@ -24,18 +24,16 @@ Base.@kwdef mutable struct RateCardQueryParameters <: OpenAPI.APIModel
     RegionInfo::Union{Nothing, String} = nothing
 
     function RateCardQueryParameters(OfferDurableId, Currency, Locale, RegionInfo, )
-        OpenAPI.validate_property(RateCardQueryParameters, Symbol("OfferDurableId"), OfferDurableId)
-        OpenAPI.validate_property(RateCardQueryParameters, Symbol("Currency"), Currency)
-        OpenAPI.validate_property(RateCardQueryParameters, Symbol("Locale"), Locale)
-        OpenAPI.validate_property(RateCardQueryParameters, Symbol("RegionInfo"), RegionInfo)
-        return new(OfferDurableId, Currency, Locale, RegionInfo, )
+        o = new(OfferDurableId, Currency, Locale, RegionInfo, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type RateCardQueryParameters
 
 const _property_types_RateCardQueryParameters = Dict{Symbol,String}(Symbol("OfferDurableId")=>"String", Symbol("Currency")=>"String", Symbol("Locale")=>"String", Symbol("RegionInfo")=>"String", )
 OpenAPI.property_type(::Type{ RateCardQueryParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RateCardQueryParameters[name]))}
 
-function check_required(o::RateCardQueryParameters)
+function OpenAPI.check_required(o::RateCardQueryParameters)
     o.OfferDurableId === nothing && (return false)
     o.Currency === nothing && (return false)
     o.Locale === nothing && (return false)
@@ -43,8 +41,19 @@ function check_required(o::RateCardQueryParameters)
     true
 end
 
+function OpenAPI.validate_properties(o::RateCardQueryParameters)
+    OpenAPI.validate_property(RateCardQueryParameters, Symbol("OfferDurableId"), o.OfferDurableId)
+    OpenAPI.validate_property(RateCardQueryParameters, Symbol("Currency"), o.Currency)
+    OpenAPI.validate_property(RateCardQueryParameters, Symbol("Locale"), o.Locale)
+    OpenAPI.validate_property(RateCardQueryParameters, Symbol("RegionInfo"), o.RegionInfo)
+end
+
 function OpenAPI.validate_property(::Type{ RateCardQueryParameters }, name::Symbol, val)
+
     if name === Symbol("OfferDurableId")
         OpenAPI.validate_param(name, "RateCardQueryParameters", :pattern, val, r"^MS-AZR-\d{4}P(-\d{4}P)*$")
     end
+
+
+
 end

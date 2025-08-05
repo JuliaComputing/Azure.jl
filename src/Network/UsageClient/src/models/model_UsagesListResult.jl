@@ -18,18 +18,25 @@ Base.@kwdef mutable struct UsagesListResult <: OpenAPI.APIModel
     nextLink::Union{Nothing, String} = nothing
 
     function UsagesListResult(value, nextLink, )
-        OpenAPI.validate_property(UsagesListResult, Symbol("value"), value)
-        OpenAPI.validate_property(UsagesListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type UsagesListResult
 
 const _property_types_UsagesListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{Usage}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ UsagesListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_UsagesListResult[name]))}
 
-function check_required(o::UsagesListResult)
+function OpenAPI.check_required(o::UsagesListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::UsagesListResult)
+    OpenAPI.validate_property(UsagesListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(UsagesListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ UsagesListResult }, name::Symbol, val)
+
+
 end

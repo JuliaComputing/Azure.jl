@@ -13,9 +13,9 @@ The Private Endpoint Connection resource.
     )
 
     - properties::PrivateEndpointConnectionProperties
-    - id::String : Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+    - id::String : Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
     - name::String : The name of the resource
-    - type::String : The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+    - type::String : The type of the resource. E.g. \&quot;Microsoft.Compute/virtualMachines\&quot; or \&quot;Microsoft.Storage/storageAccounts\&quot;
 """
 Base.@kwdef mutable struct PrivateEndpointConnection <: OpenAPI.APIModel
     properties = nothing # spec type: Union{ Nothing, PrivateEndpointConnectionProperties }
@@ -24,20 +24,29 @@ Base.@kwdef mutable struct PrivateEndpointConnection <: OpenAPI.APIModel
     type::Union{Nothing, String} = nothing
 
     function PrivateEndpointConnection(properties, id, name, type, )
-        OpenAPI.validate_property(PrivateEndpointConnection, Symbol("properties"), properties)
-        OpenAPI.validate_property(PrivateEndpointConnection, Symbol("id"), id)
-        OpenAPI.validate_property(PrivateEndpointConnection, Symbol("name"), name)
-        OpenAPI.validate_property(PrivateEndpointConnection, Symbol("type"), type)
-        return new(properties, id, name, type, )
+        o = new(properties, id, name, type, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PrivateEndpointConnection
 
 const _property_types_PrivateEndpointConnection = Dict{Symbol,String}(Symbol("properties")=>"PrivateEndpointConnectionProperties", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", )
 OpenAPI.property_type(::Type{ PrivateEndpointConnection }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PrivateEndpointConnection[name]))}
 
-function check_required(o::PrivateEndpointConnection)
+function OpenAPI.check_required(o::PrivateEndpointConnection)
     true
 end
 
+function OpenAPI.validate_properties(o::PrivateEndpointConnection)
+    OpenAPI.validate_property(PrivateEndpointConnection, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(PrivateEndpointConnection, Symbol("id"), o.id)
+    OpenAPI.validate_property(PrivateEndpointConnection, Symbol("name"), o.name)
+    OpenAPI.validate_property(PrivateEndpointConnection, Symbol("type"), o.type)
+end
+
 function OpenAPI.validate_property(::Type{ PrivateEndpointConnection }, name::Symbol, val)
+
+
+
+
 end

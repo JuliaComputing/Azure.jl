@@ -15,17 +15,23 @@ Base.@kwdef mutable struct UpdateTrustedIdProviderParameters <: OpenAPI.APIModel
     properties = nothing # spec type: Union{ Nothing, UpdateTrustedIdProviderProperties }
 
     function UpdateTrustedIdProviderParameters(properties, )
-        OpenAPI.validate_property(UpdateTrustedIdProviderParameters, Symbol("properties"), properties)
-        return new(properties, )
+        o = new(properties, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type UpdateTrustedIdProviderParameters
 
 const _property_types_UpdateTrustedIdProviderParameters = Dict{Symbol,String}(Symbol("properties")=>"UpdateTrustedIdProviderProperties", )
 OpenAPI.property_type(::Type{ UpdateTrustedIdProviderParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_UpdateTrustedIdProviderParameters[name]))}
 
-function check_required(o::UpdateTrustedIdProviderParameters)
+function OpenAPI.check_required(o::UpdateTrustedIdProviderParameters)
     true
 end
 
+function OpenAPI.validate_properties(o::UpdateTrustedIdProviderParameters)
+    OpenAPI.validate_property(UpdateTrustedIdProviderParameters, Symbol("properties"), o.properties)
+end
+
 function OpenAPI.validate_property(::Type{ UpdateTrustedIdProviderParameters }, name::Symbol, val)
+
 end

@@ -17,6 +17,10 @@ Describes a virtual machine scale set virtual machine profile.
         evictionPolicy=nothing,
         billingProfile=nothing,
         scheduledEventsProfile=nothing,
+        userData=nothing,
+        capacityReservation=nothing,
+        applicationProfile=nothing,
+        hardwareProfile=nothing,
     )
 
     - osProfile::VirtualMachineScaleSetOSProfile
@@ -25,11 +29,15 @@ Describes a virtual machine scale set virtual machine profile.
     - securityProfile::SecurityProfile
     - diagnosticsProfile::DiagnosticsProfile
     - extensionProfile::VirtualMachineScaleSetExtensionProfile
-    - licenseType::String : Specifies that the image or disk that is being used was licensed on-premises. This element is only used for images that contain the Windows Server operating system. &lt;br&gt;&lt;br&gt; Possible values are: &lt;br&gt;&lt;br&gt; Windows_Client &lt;br&gt;&lt;br&gt; Windows_Server &lt;br&gt;&lt;br&gt; If this element is included in a request for an update, the value must match the initial value. This value cannot be updated. &lt;br&gt;&lt;br&gt; For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-hybrid-use-benefit-licensing?toc&#x3D;%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) &lt;br&gt;&lt;br&gt; Minimum api-version: 2015-06-15
+    - licenseType::String : Specifies that the image or disk that is being used was licensed on-premises. &lt;br&gt;&lt;br&gt; Possible values for Windows Server operating system are: &lt;br&gt;&lt;br&gt; Windows_Client &lt;br&gt;&lt;br&gt; Windows_Server &lt;br&gt;&lt;br&gt; Possible values for Linux Server operating system are: &lt;br&gt;&lt;br&gt; RHEL_BYOS (for RHEL) &lt;br&gt;&lt;br&gt; SLES_BYOS (for SUSE) &lt;br&gt;&lt;br&gt; For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) &lt;br&gt;&lt;br&gt; [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) &lt;br&gt;&lt;br&gt; Minimum api-version: 2015-06-15
     - priority::Priority
     - evictionPolicy::EvictionPolicy
     - billingProfile::BillingProfile
     - scheduledEventsProfile::ScheduledEventsProfile
+    - userData::String : UserData for the virtual machines in the scale set, which must be base-64 encoded. Customer should not pass any secrets in here. &lt;br&gt;&lt;br&gt;Minimum api-version: 2021-03-01
+    - capacityReservation::CapacityReservationProfile
+    - applicationProfile::ApplicationProfile
+    - hardwareProfile::VirtualMachineScaleSetHardwareProfile
 """
 Base.@kwdef mutable struct VirtualMachineScaleSetVMProfile <: OpenAPI.APIModel
     osProfile = nothing # spec type: Union{ Nothing, VirtualMachineScaleSetOSProfile }
@@ -43,29 +51,57 @@ Base.@kwdef mutable struct VirtualMachineScaleSetVMProfile <: OpenAPI.APIModel
     evictionPolicy = nothing # spec type: Union{ Nothing, EvictionPolicy }
     billingProfile = nothing # spec type: Union{ Nothing, BillingProfile }
     scheduledEventsProfile = nothing # spec type: Union{ Nothing, ScheduledEventsProfile }
+    userData::Union{Nothing, String} = nothing
+    capacityReservation = nothing # spec type: Union{ Nothing, CapacityReservationProfile }
+    applicationProfile = nothing # spec type: Union{ Nothing, ApplicationProfile }
+    hardwareProfile = nothing # spec type: Union{ Nothing, VirtualMachineScaleSetHardwareProfile }
 
-    function VirtualMachineScaleSetVMProfile(osProfile, storageProfile, networkProfile, securityProfile, diagnosticsProfile, extensionProfile, licenseType, priority, evictionPolicy, billingProfile, scheduledEventsProfile, )
-        OpenAPI.validate_property(VirtualMachineScaleSetVMProfile, Symbol("osProfile"), osProfile)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMProfile, Symbol("storageProfile"), storageProfile)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMProfile, Symbol("networkProfile"), networkProfile)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMProfile, Symbol("securityProfile"), securityProfile)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMProfile, Symbol("diagnosticsProfile"), diagnosticsProfile)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMProfile, Symbol("extensionProfile"), extensionProfile)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMProfile, Symbol("licenseType"), licenseType)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMProfile, Symbol("priority"), priority)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMProfile, Symbol("evictionPolicy"), evictionPolicy)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMProfile, Symbol("billingProfile"), billingProfile)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMProfile, Symbol("scheduledEventsProfile"), scheduledEventsProfile)
-        return new(osProfile, storageProfile, networkProfile, securityProfile, diagnosticsProfile, extensionProfile, licenseType, priority, evictionPolicy, billingProfile, scheduledEventsProfile, )
+    function VirtualMachineScaleSetVMProfile(osProfile, storageProfile, networkProfile, securityProfile, diagnosticsProfile, extensionProfile, licenseType, priority, evictionPolicy, billingProfile, scheduledEventsProfile, userData, capacityReservation, applicationProfile, hardwareProfile, )
+        o = new(osProfile, storageProfile, networkProfile, securityProfile, diagnosticsProfile, extensionProfile, licenseType, priority, evictionPolicy, billingProfile, scheduledEventsProfile, userData, capacityReservation, applicationProfile, hardwareProfile, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetVMProfile
 
-const _property_types_VirtualMachineScaleSetVMProfile = Dict{Symbol,String}(Symbol("osProfile")=>"VirtualMachineScaleSetOSProfile", Symbol("storageProfile")=>"VirtualMachineScaleSetStorageProfile", Symbol("networkProfile")=>"VirtualMachineScaleSetNetworkProfile", Symbol("securityProfile")=>"SecurityProfile", Symbol("diagnosticsProfile")=>"DiagnosticsProfile", Symbol("extensionProfile")=>"VirtualMachineScaleSetExtensionProfile", Symbol("licenseType")=>"String", Symbol("priority")=>"Priority", Symbol("evictionPolicy")=>"EvictionPolicy", Symbol("billingProfile")=>"BillingProfile", Symbol("scheduledEventsProfile")=>"ScheduledEventsProfile", )
+const _property_types_VirtualMachineScaleSetVMProfile = Dict{Symbol,String}(Symbol("osProfile")=>"VirtualMachineScaleSetOSProfile", Symbol("storageProfile")=>"VirtualMachineScaleSetStorageProfile", Symbol("networkProfile")=>"VirtualMachineScaleSetNetworkProfile", Symbol("securityProfile")=>"SecurityProfile", Symbol("diagnosticsProfile")=>"DiagnosticsProfile", Symbol("extensionProfile")=>"VirtualMachineScaleSetExtensionProfile", Symbol("licenseType")=>"String", Symbol("priority")=>"Priority", Symbol("evictionPolicy")=>"EvictionPolicy", Symbol("billingProfile")=>"BillingProfile", Symbol("scheduledEventsProfile")=>"ScheduledEventsProfile", Symbol("userData")=>"String", Symbol("capacityReservation")=>"CapacityReservationProfile", Symbol("applicationProfile")=>"ApplicationProfile", Symbol("hardwareProfile")=>"VirtualMachineScaleSetHardwareProfile", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetVMProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetVMProfile[name]))}
 
-function check_required(o::VirtualMachineScaleSetVMProfile)
+function OpenAPI.check_required(o::VirtualMachineScaleSetVMProfile)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetVMProfile)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProfile, Symbol("osProfile"), o.osProfile)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProfile, Symbol("storageProfile"), o.storageProfile)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProfile, Symbol("networkProfile"), o.networkProfile)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProfile, Symbol("securityProfile"), o.securityProfile)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProfile, Symbol("diagnosticsProfile"), o.diagnosticsProfile)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProfile, Symbol("extensionProfile"), o.extensionProfile)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProfile, Symbol("licenseType"), o.licenseType)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProfile, Symbol("priority"), o.priority)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProfile, Symbol("evictionPolicy"), o.evictionPolicy)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProfile, Symbol("billingProfile"), o.billingProfile)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProfile, Symbol("scheduledEventsProfile"), o.scheduledEventsProfile)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProfile, Symbol("userData"), o.userData)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProfile, Symbol("capacityReservation"), o.capacityReservation)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProfile, Symbol("applicationProfile"), o.applicationProfile)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProfile, Symbol("hardwareProfile"), o.hardwareProfile)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetVMProfile }, name::Symbol, val)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 end

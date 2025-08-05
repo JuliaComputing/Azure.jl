@@ -24,20 +24,29 @@ Base.@kwdef mutable struct TroubleshootingRecommendedActions <: OpenAPI.APIModel
     actionUriText::Union{Nothing, String} = nothing
 
     function TroubleshootingRecommendedActions(actionId, actionText, actionUri, actionUriText, )
-        OpenAPI.validate_property(TroubleshootingRecommendedActions, Symbol("actionId"), actionId)
-        OpenAPI.validate_property(TroubleshootingRecommendedActions, Symbol("actionText"), actionText)
-        OpenAPI.validate_property(TroubleshootingRecommendedActions, Symbol("actionUri"), actionUri)
-        OpenAPI.validate_property(TroubleshootingRecommendedActions, Symbol("actionUriText"), actionUriText)
-        return new(actionId, actionText, actionUri, actionUriText, )
+        o = new(actionId, actionText, actionUri, actionUriText, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type TroubleshootingRecommendedActions
 
 const _property_types_TroubleshootingRecommendedActions = Dict{Symbol,String}(Symbol("actionId")=>"String", Symbol("actionText")=>"String", Symbol("actionUri")=>"String", Symbol("actionUriText")=>"String", )
 OpenAPI.property_type(::Type{ TroubleshootingRecommendedActions }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TroubleshootingRecommendedActions[name]))}
 
-function check_required(o::TroubleshootingRecommendedActions)
+function OpenAPI.check_required(o::TroubleshootingRecommendedActions)
     true
 end
 
+function OpenAPI.validate_properties(o::TroubleshootingRecommendedActions)
+    OpenAPI.validate_property(TroubleshootingRecommendedActions, Symbol("actionId"), o.actionId)
+    OpenAPI.validate_property(TroubleshootingRecommendedActions, Symbol("actionText"), o.actionText)
+    OpenAPI.validate_property(TroubleshootingRecommendedActions, Symbol("actionUri"), o.actionUri)
+    OpenAPI.validate_property(TroubleshootingRecommendedActions, Symbol("actionUriText"), o.actionUriText)
+end
+
 function OpenAPI.validate_property(::Type{ TroubleshootingRecommendedActions }, name::Symbol, val)
+
+
+
+
 end

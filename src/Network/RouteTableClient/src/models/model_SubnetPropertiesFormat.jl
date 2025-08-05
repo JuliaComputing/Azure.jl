@@ -22,8 +22,12 @@ Properties of the subnet.
         delegations=nothing,
         purpose=nothing,
         provisioningState=nothing,
-        privateEndpointNetworkPolicies=nothing,
-        privateLinkServiceNetworkPolicies=nothing,
+        privateEndpointNetworkPolicies="Disabled",
+        privateLinkServiceNetworkPolicies="Enabled",
+        applicationGatewayIPConfigurations=nothing,
+        sharingScope="null",
+        defaultOutboundAccess=nothing,
+        ipamPoolPrefixAllocations=nothing,
     )
 
     - addressPrefix::String : The address prefix for the subnet.
@@ -44,6 +48,10 @@ Properties of the subnet.
     - provisioningState::ProvisioningState
     - privateEndpointNetworkPolicies::String : Enable or Disable apply network policies on private end point in the subnet.
     - privateLinkServiceNetworkPolicies::String : Enable or Disable apply network policies on private link service in the subnet.
+    - applicationGatewayIPConfigurations::Vector{ApplicationGatewayIPConfiguration} : Application gateway IP configurations of virtual network resource.
+    - sharingScope::String : Set this property to Tenant to allow sharing subnet with other subscriptions in your AAD tenant. This property can only be set if defaultOutboundAccess is set to false, both properties can only be set if subnet is empty.
+    - defaultOutboundAccess::Bool : Set this property to false to disable default outbound connectivity for all VMs in the subnet. This property can only be set at the time of subnet creation and cannot be updated for an existing subnet.
+    - ipamPoolPrefixAllocations::Vector{IpamPoolPrefixAllocation} : A list of IPAM Pools for allocating IP address prefixes.
 """
 Base.@kwdef mutable struct SubnetPropertiesFormat <: OpenAPI.APIModel
     addressPrefix::Union{Nothing, String} = nothing
@@ -62,38 +70,85 @@ Base.@kwdef mutable struct SubnetPropertiesFormat <: OpenAPI.APIModel
     delegations::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{Delegation} }
     purpose::Union{Nothing, String} = nothing
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
-    privateEndpointNetworkPolicies::Union{Nothing, String} = nothing
-    privateLinkServiceNetworkPolicies::Union{Nothing, String} = nothing
+    privateEndpointNetworkPolicies::Union{Nothing, String} = "Disabled"
+    privateLinkServiceNetworkPolicies::Union{Nothing, String} = "Enabled"
+    applicationGatewayIPConfigurations::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ApplicationGatewayIPConfiguration} }
+    sharingScope::Union{Nothing, String} = "null"
+    defaultOutboundAccess::Union{Nothing, Bool} = nothing
+    ipamPoolPrefixAllocations::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{IpamPoolPrefixAllocation} }
 
-    function SubnetPropertiesFormat(addressPrefix, addressPrefixes, networkSecurityGroup, routeTable, natGateway, serviceEndpoints, serviceEndpointPolicies, privateEndpoints, ipConfigurations, ipConfigurationProfiles, ipAllocations, resourceNavigationLinks, serviceAssociationLinks, delegations, purpose, provisioningState, privateEndpointNetworkPolicies, privateLinkServiceNetworkPolicies, )
-        OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("addressPrefix"), addressPrefix)
-        OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("addressPrefixes"), addressPrefixes)
-        OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("networkSecurityGroup"), networkSecurityGroup)
-        OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("routeTable"), routeTable)
-        OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("natGateway"), natGateway)
-        OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("serviceEndpoints"), serviceEndpoints)
-        OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("serviceEndpointPolicies"), serviceEndpointPolicies)
-        OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("privateEndpoints"), privateEndpoints)
-        OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("ipConfigurations"), ipConfigurations)
-        OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("ipConfigurationProfiles"), ipConfigurationProfiles)
-        OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("ipAllocations"), ipAllocations)
-        OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("resourceNavigationLinks"), resourceNavigationLinks)
-        OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("serviceAssociationLinks"), serviceAssociationLinks)
-        OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("delegations"), delegations)
-        OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("purpose"), purpose)
-        OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("privateEndpointNetworkPolicies"), privateEndpointNetworkPolicies)
-        OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("privateLinkServiceNetworkPolicies"), privateLinkServiceNetworkPolicies)
-        return new(addressPrefix, addressPrefixes, networkSecurityGroup, routeTable, natGateway, serviceEndpoints, serviceEndpointPolicies, privateEndpoints, ipConfigurations, ipConfigurationProfiles, ipAllocations, resourceNavigationLinks, serviceAssociationLinks, delegations, purpose, provisioningState, privateEndpointNetworkPolicies, privateLinkServiceNetworkPolicies, )
+    function SubnetPropertiesFormat(addressPrefix, addressPrefixes, networkSecurityGroup, routeTable, natGateway, serviceEndpoints, serviceEndpointPolicies, privateEndpoints, ipConfigurations, ipConfigurationProfiles, ipAllocations, resourceNavigationLinks, serviceAssociationLinks, delegations, purpose, provisioningState, privateEndpointNetworkPolicies, privateLinkServiceNetworkPolicies, applicationGatewayIPConfigurations, sharingScope, defaultOutboundAccess, ipamPoolPrefixAllocations, )
+        o = new(addressPrefix, addressPrefixes, networkSecurityGroup, routeTable, natGateway, serviceEndpoints, serviceEndpointPolicies, privateEndpoints, ipConfigurations, ipConfigurationProfiles, ipAllocations, resourceNavigationLinks, serviceAssociationLinks, delegations, purpose, provisioningState, privateEndpointNetworkPolicies, privateLinkServiceNetworkPolicies, applicationGatewayIPConfigurations, sharingScope, defaultOutboundAccess, ipamPoolPrefixAllocations, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type SubnetPropertiesFormat
 
-const _property_types_SubnetPropertiesFormat = Dict{Symbol,String}(Symbol("addressPrefix")=>"String", Symbol("addressPrefixes")=>"Vector{String}", Symbol("networkSecurityGroup")=>"NetworkSecurityGroup", Symbol("routeTable")=>"RouteTable2", Symbol("natGateway")=>"SubResource", Symbol("serviceEndpoints")=>"Vector{ServiceEndpointPropertiesFormat}", Symbol("serviceEndpointPolicies")=>"Vector{ServiceEndpointPolicy}", Symbol("privateEndpoints")=>"Vector{PrivateEndpoint}", Symbol("ipConfigurations")=>"Vector{IPConfiguration}", Symbol("ipConfigurationProfiles")=>"Vector{IPConfigurationProfile}", Symbol("ipAllocations")=>"Vector{SubResource}", Symbol("resourceNavigationLinks")=>"Vector{ResourceNavigationLink}", Symbol("serviceAssociationLinks")=>"Vector{ServiceAssociationLink}", Symbol("delegations")=>"Vector{Delegation}", Symbol("purpose")=>"String", Symbol("provisioningState")=>"ProvisioningState", Symbol("privateEndpointNetworkPolicies")=>"String", Symbol("privateLinkServiceNetworkPolicies")=>"String", )
+const _property_types_SubnetPropertiesFormat = Dict{Symbol,String}(Symbol("addressPrefix")=>"String", Symbol("addressPrefixes")=>"Vector{String}", Symbol("networkSecurityGroup")=>"NetworkSecurityGroup", Symbol("routeTable")=>"RouteTable2", Symbol("natGateway")=>"SubResource", Symbol("serviceEndpoints")=>"Vector{ServiceEndpointPropertiesFormat}", Symbol("serviceEndpointPolicies")=>"Vector{ServiceEndpointPolicy}", Symbol("privateEndpoints")=>"Vector{PrivateEndpoint}", Symbol("ipConfigurations")=>"Vector{IPConfiguration}", Symbol("ipConfigurationProfiles")=>"Vector{IPConfigurationProfile}", Symbol("ipAllocations")=>"Vector{SubResource}", Symbol("resourceNavigationLinks")=>"Vector{ResourceNavigationLink}", Symbol("serviceAssociationLinks")=>"Vector{ServiceAssociationLink}", Symbol("delegations")=>"Vector{Delegation}", Symbol("purpose")=>"String", Symbol("provisioningState")=>"ProvisioningState", Symbol("privateEndpointNetworkPolicies")=>"String", Symbol("privateLinkServiceNetworkPolicies")=>"String", Symbol("applicationGatewayIPConfigurations")=>"Vector{ApplicationGatewayIPConfiguration}", Symbol("sharingScope")=>"String", Symbol("defaultOutboundAccess")=>"Bool", Symbol("ipamPoolPrefixAllocations")=>"Vector{IpamPoolPrefixAllocation}", )
 OpenAPI.property_type(::Type{ SubnetPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SubnetPropertiesFormat[name]))}
 
-function check_required(o::SubnetPropertiesFormat)
+function OpenAPI.check_required(o::SubnetPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::SubnetPropertiesFormat)
+    OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("addressPrefix"), o.addressPrefix)
+    OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("addressPrefixes"), o.addressPrefixes)
+    OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("networkSecurityGroup"), o.networkSecurityGroup)
+    OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("routeTable"), o.routeTable)
+    OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("natGateway"), o.natGateway)
+    OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("serviceEndpoints"), o.serviceEndpoints)
+    OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("serviceEndpointPolicies"), o.serviceEndpointPolicies)
+    OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("privateEndpoints"), o.privateEndpoints)
+    OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("ipConfigurations"), o.ipConfigurations)
+    OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("ipConfigurationProfiles"), o.ipConfigurationProfiles)
+    OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("ipAllocations"), o.ipAllocations)
+    OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("resourceNavigationLinks"), o.resourceNavigationLinks)
+    OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("serviceAssociationLinks"), o.serviceAssociationLinks)
+    OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("delegations"), o.delegations)
+    OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("purpose"), o.purpose)
+    OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("privateEndpointNetworkPolicies"), o.privateEndpointNetworkPolicies)
+    OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("privateLinkServiceNetworkPolicies"), o.privateLinkServiceNetworkPolicies)
+    OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("applicationGatewayIPConfigurations"), o.applicationGatewayIPConfigurations)
+    OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("sharingScope"), o.sharingScope)
+    OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("defaultOutboundAccess"), o.defaultOutboundAccess)
+    OpenAPI.validate_property(SubnetPropertiesFormat, Symbol("ipamPoolPrefixAllocations"), o.ipamPoolPrefixAllocations)
+end
+
 function OpenAPI.validate_property(::Type{ SubnetPropertiesFormat }, name::Symbol, val)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if name === Symbol("privateEndpointNetworkPolicies")
+        OpenAPI.validate_param(name, "SubnetPropertiesFormat", :enum, val, ["Enabled", "Disabled", "NetworkSecurityGroupEnabled", "RouteTableEnabled"])
+    end
+
+
+    if name === Symbol("privateLinkServiceNetworkPolicies")
+        OpenAPI.validate_param(name, "SubnetPropertiesFormat", :enum, val, ["Enabled", "Disabled"])
+    end
+
+
+
+    if name === Symbol("sharingScope")
+        OpenAPI.validate_param(name, "SubnetPropertiesFormat", :enum, val, ["Tenant", "DelegatedServices"])
+    end
+
+
+
 end

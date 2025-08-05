@@ -36,26 +36,34 @@ Base.@kwdef mutable struct BgpPeerStatus <: OpenAPI.APIModel
     messagesReceived::Union{Nothing, Int64} = nothing
 
     function BgpPeerStatus(localAddress, neighbor, asn, state, connectedDuration, routesReceived, messagesSent, messagesReceived, )
-        OpenAPI.validate_property(BgpPeerStatus, Symbol("localAddress"), localAddress)
-        OpenAPI.validate_property(BgpPeerStatus, Symbol("neighbor"), neighbor)
-        OpenAPI.validate_property(BgpPeerStatus, Symbol("asn"), asn)
-        OpenAPI.validate_property(BgpPeerStatus, Symbol("state"), state)
-        OpenAPI.validate_property(BgpPeerStatus, Symbol("connectedDuration"), connectedDuration)
-        OpenAPI.validate_property(BgpPeerStatus, Symbol("routesReceived"), routesReceived)
-        OpenAPI.validate_property(BgpPeerStatus, Symbol("messagesSent"), messagesSent)
-        OpenAPI.validate_property(BgpPeerStatus, Symbol("messagesReceived"), messagesReceived)
-        return new(localAddress, neighbor, asn, state, connectedDuration, routesReceived, messagesSent, messagesReceived, )
+        o = new(localAddress, neighbor, asn, state, connectedDuration, routesReceived, messagesSent, messagesReceived, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type BgpPeerStatus
 
 const _property_types_BgpPeerStatus = Dict{Symbol,String}(Symbol("localAddress")=>"String", Symbol("neighbor")=>"String", Symbol("asn")=>"Int64", Symbol("state")=>"String", Symbol("connectedDuration")=>"String", Symbol("routesReceived")=>"Int64", Symbol("messagesSent")=>"Int64", Symbol("messagesReceived")=>"Int64", )
 OpenAPI.property_type(::Type{ BgpPeerStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_BgpPeerStatus[name]))}
 
-function check_required(o::BgpPeerStatus)
+function OpenAPI.check_required(o::BgpPeerStatus)
     true
 end
 
+function OpenAPI.validate_properties(o::BgpPeerStatus)
+    OpenAPI.validate_property(BgpPeerStatus, Symbol("localAddress"), o.localAddress)
+    OpenAPI.validate_property(BgpPeerStatus, Symbol("neighbor"), o.neighbor)
+    OpenAPI.validate_property(BgpPeerStatus, Symbol("asn"), o.asn)
+    OpenAPI.validate_property(BgpPeerStatus, Symbol("state"), o.state)
+    OpenAPI.validate_property(BgpPeerStatus, Symbol("connectedDuration"), o.connectedDuration)
+    OpenAPI.validate_property(BgpPeerStatus, Symbol("routesReceived"), o.routesReceived)
+    OpenAPI.validate_property(BgpPeerStatus, Symbol("messagesSent"), o.messagesSent)
+    OpenAPI.validate_property(BgpPeerStatus, Symbol("messagesReceived"), o.messagesReceived)
+end
+
 function OpenAPI.validate_property(::Type{ BgpPeerStatus }, name::Symbol, val)
+
+
+
     if name === Symbol("asn")
         OpenAPI.validate_param(name, "BgpPeerStatus", :format, val, "int64")
     end
@@ -63,15 +71,21 @@ function OpenAPI.validate_property(::Type{ BgpPeerStatus }, name::Symbol, val)
         OpenAPI.validate_param(name, "BgpPeerStatus", :maximum, val, 4294967295, false)
         OpenAPI.validate_param(name, "BgpPeerStatus", :minimum, val, 0, false)
     end
+
     if name === Symbol("state")
         OpenAPI.validate_param(name, "BgpPeerStatus", :enum, val, ["Unknown", "Stopped", "Idle", "Connecting", "Connected"])
     end
+
+
+
     if name === Symbol("routesReceived")
         OpenAPI.validate_param(name, "BgpPeerStatus", :format, val, "int64")
     end
+
     if name === Symbol("messagesSent")
         OpenAPI.validate_param(name, "BgpPeerStatus", :format, val, "int64")
     end
+
     if name === Symbol("messagesReceived")
         OpenAPI.validate_param(name, "BgpPeerStatus", :format, val, "int64")
     end

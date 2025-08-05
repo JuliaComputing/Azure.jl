@@ -15,17 +15,23 @@ Base.@kwdef mutable struct VirtualMachineScaleSetVMReimageParameters <: OpenAPI.
     tempDisk::Union{Nothing, Bool} = nothing
 
     function VirtualMachineScaleSetVMReimageParameters(tempDisk, )
-        OpenAPI.validate_property(VirtualMachineScaleSetVMReimageParameters, Symbol("tempDisk"), tempDisk)
-        return new(tempDisk, )
+        o = new(tempDisk, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetVMReimageParameters
 
 const _property_types_VirtualMachineScaleSetVMReimageParameters = Dict{Symbol,String}(Symbol("tempDisk")=>"Bool", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetVMReimageParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetVMReimageParameters[name]))}
 
-function check_required(o::VirtualMachineScaleSetVMReimageParameters)
+function OpenAPI.check_required(o::VirtualMachineScaleSetVMReimageParameters)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetVMReimageParameters)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMReimageParameters, Symbol("tempDisk"), o.tempDisk)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetVMReimageParameters }, name::Symbol, val)
+
 end

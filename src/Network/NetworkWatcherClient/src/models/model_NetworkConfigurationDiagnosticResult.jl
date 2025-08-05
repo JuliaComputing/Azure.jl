@@ -18,18 +18,25 @@ Base.@kwdef mutable struct NetworkConfigurationDiagnosticResult <: OpenAPI.APIMo
     networkSecurityGroupResult = nothing # spec type: Union{ Nothing, NetworkSecurityGroupResult }
 
     function NetworkConfigurationDiagnosticResult(profile, networkSecurityGroupResult, )
-        OpenAPI.validate_property(NetworkConfigurationDiagnosticResult, Symbol("profile"), profile)
-        OpenAPI.validate_property(NetworkConfigurationDiagnosticResult, Symbol("networkSecurityGroupResult"), networkSecurityGroupResult)
-        return new(profile, networkSecurityGroupResult, )
+        o = new(profile, networkSecurityGroupResult, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type NetworkConfigurationDiagnosticResult
 
 const _property_types_NetworkConfigurationDiagnosticResult = Dict{Symbol,String}(Symbol("profile")=>"NetworkConfigurationDiagnosticProfile", Symbol("networkSecurityGroupResult")=>"NetworkSecurityGroupResult", )
 OpenAPI.property_type(::Type{ NetworkConfigurationDiagnosticResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkConfigurationDiagnosticResult[name]))}
 
-function check_required(o::NetworkConfigurationDiagnosticResult)
+function OpenAPI.check_required(o::NetworkConfigurationDiagnosticResult)
     true
 end
 
+function OpenAPI.validate_properties(o::NetworkConfigurationDiagnosticResult)
+    OpenAPI.validate_property(NetworkConfigurationDiagnosticResult, Symbol("profile"), o.profile)
+    OpenAPI.validate_property(NetworkConfigurationDiagnosticResult, Symbol("networkSecurityGroupResult"), o.networkSecurityGroupResult)
+end
+
 function OpenAPI.validate_property(::Type{ NetworkConfigurationDiagnosticResult }, name::Symbol, val)
+
+
 end

@@ -21,27 +21,37 @@ Base.@kwdef mutable struct VirtualNetworkGatewaySku <: OpenAPI.APIModel
     capacity::Union{Nothing, Int64} = nothing
 
     function VirtualNetworkGatewaySku(name, tier, capacity, )
-        OpenAPI.validate_property(VirtualNetworkGatewaySku, Symbol("name"), name)
-        OpenAPI.validate_property(VirtualNetworkGatewaySku, Symbol("tier"), tier)
-        OpenAPI.validate_property(VirtualNetworkGatewaySku, Symbol("capacity"), capacity)
-        return new(name, tier, capacity, )
+        o = new(name, tier, capacity, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualNetworkGatewaySku
 
 const _property_types_VirtualNetworkGatewaySku = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("tier")=>"String", Symbol("capacity")=>"Int64", )
 OpenAPI.property_type(::Type{ VirtualNetworkGatewaySku }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualNetworkGatewaySku[name]))}
 
-function check_required(o::VirtualNetworkGatewaySku)
+function OpenAPI.check_required(o::VirtualNetworkGatewaySku)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualNetworkGatewaySku)
+    OpenAPI.validate_property(VirtualNetworkGatewaySku, Symbol("name"), o.name)
+    OpenAPI.validate_property(VirtualNetworkGatewaySku, Symbol("tier"), o.tier)
+    OpenAPI.validate_property(VirtualNetworkGatewaySku, Symbol("capacity"), o.capacity)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualNetworkGatewaySku }, name::Symbol, val)
+
     if name === Symbol("name")
-        OpenAPI.validate_param(name, "VirtualNetworkGatewaySku", :enum, val, ["Basic", "HighPerformance", "Standard", "UltraPerformance", "VpnGw1", "VpnGw2", "VpnGw3", "VpnGw4", "VpnGw5", "VpnGw1AZ", "VpnGw2AZ", "VpnGw3AZ", "VpnGw4AZ", "VpnGw5AZ", "ErGw1AZ", "ErGw2AZ", "ErGw3AZ"])
+        OpenAPI.validate_param(name, "VirtualNetworkGatewaySku", :enum, val, ["Basic", "HighPerformance", "Standard", "UltraPerformance", "VpnGw1", "VpnGw2", "VpnGw3", "VpnGw4", "VpnGw5", "VpnGw1AZ", "VpnGw2AZ", "VpnGw3AZ", "VpnGw4AZ", "VpnGw5AZ", "ErGw1AZ", "ErGw2AZ", "ErGw3AZ", "ErGwScale"])
     end
+
+
     if name === Symbol("tier")
-        OpenAPI.validate_param(name, "VirtualNetworkGatewaySku", :enum, val, ["Basic", "HighPerformance", "Standard", "UltraPerformance", "VpnGw1", "VpnGw2", "VpnGw3", "VpnGw4", "VpnGw5", "VpnGw1AZ", "VpnGw2AZ", "VpnGw3AZ", "VpnGw4AZ", "VpnGw5AZ", "ErGw1AZ", "ErGw2AZ", "ErGw3AZ"])
+        OpenAPI.validate_param(name, "VirtualNetworkGatewaySku", :enum, val, ["Basic", "HighPerformance", "Standard", "UltraPerformance", "VpnGw1", "VpnGw2", "VpnGw3", "VpnGw4", "VpnGw5", "VpnGw1AZ", "VpnGw2AZ", "VpnGw3AZ", "VpnGw4AZ", "VpnGw5AZ", "ErGw1AZ", "ErGw2AZ", "ErGw3AZ", "ErGwScale"])
     end
+
+
     if name === Symbol("capacity")
         OpenAPI.validate_param(name, "VirtualNetworkGatewaySku", :format, val, "int32")
     end

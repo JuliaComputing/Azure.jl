@@ -15,17 +15,23 @@ Base.@kwdef mutable struct PacketCaptureListResult <: OpenAPI.APIModel
     value::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{PacketCaptureResult} }
 
     function PacketCaptureListResult(value, )
-        OpenAPI.validate_property(PacketCaptureListResult, Symbol("value"), value)
-        return new(value, )
+        o = new(value, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PacketCaptureListResult
 
 const _property_types_PacketCaptureListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{PacketCaptureResult}", )
 OpenAPI.property_type(::Type{ PacketCaptureListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PacketCaptureListResult[name]))}
 
-function check_required(o::PacketCaptureListResult)
+function OpenAPI.check_required(o::PacketCaptureListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::PacketCaptureListResult)
+    OpenAPI.validate_property(PacketCaptureListResult, Symbol("value"), o.value)
+end
+
 function OpenAPI.validate_property(::Type{ PacketCaptureListResult }, name::Symbol, val)
+
 end

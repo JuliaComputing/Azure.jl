@@ -18,22 +18,29 @@ Base.@kwdef mutable struct ApplicationGatewayConnectionDraining <: OpenAPI.APIMo
     drainTimeoutInSec::Union{Nothing, Int64} = nothing
 
     function ApplicationGatewayConnectionDraining(enabled, drainTimeoutInSec, )
-        OpenAPI.validate_property(ApplicationGatewayConnectionDraining, Symbol("enabled"), enabled)
-        OpenAPI.validate_property(ApplicationGatewayConnectionDraining, Symbol("drainTimeoutInSec"), drainTimeoutInSec)
-        return new(enabled, drainTimeoutInSec, )
+        o = new(enabled, drainTimeoutInSec, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayConnectionDraining
 
 const _property_types_ApplicationGatewayConnectionDraining = Dict{Symbol,String}(Symbol("enabled")=>"Bool", Symbol("drainTimeoutInSec")=>"Int64", )
 OpenAPI.property_type(::Type{ ApplicationGatewayConnectionDraining }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayConnectionDraining[name]))}
 
-function check_required(o::ApplicationGatewayConnectionDraining)
+function OpenAPI.check_required(o::ApplicationGatewayConnectionDraining)
     o.enabled === nothing && (return false)
     o.drainTimeoutInSec === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayConnectionDraining)
+    OpenAPI.validate_property(ApplicationGatewayConnectionDraining, Symbol("enabled"), o.enabled)
+    OpenAPI.validate_property(ApplicationGatewayConnectionDraining, Symbol("drainTimeoutInSec"), o.drainTimeoutInSec)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayConnectionDraining }, name::Symbol, val)
+
+
     if name === Symbol("drainTimeoutInSec")
         OpenAPI.validate_param(name, "ApplicationGatewayConnectionDraining", :format, val, "int32")
     end

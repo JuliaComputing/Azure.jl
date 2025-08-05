@@ -27,24 +27,35 @@ Base.@kwdef mutable struct ProximityPlacementGroupProperties <: OpenAPI.APIModel
     colocationStatus = nothing # spec type: Union{ Nothing, InstanceViewStatus }
 
     function ProximityPlacementGroupProperties(proximityPlacementGroupType, virtualMachines, virtualMachineScaleSets, availabilitySets, colocationStatus, )
-        OpenAPI.validate_property(ProximityPlacementGroupProperties, Symbol("proximityPlacementGroupType"), proximityPlacementGroupType)
-        OpenAPI.validate_property(ProximityPlacementGroupProperties, Symbol("virtualMachines"), virtualMachines)
-        OpenAPI.validate_property(ProximityPlacementGroupProperties, Symbol("virtualMachineScaleSets"), virtualMachineScaleSets)
-        OpenAPI.validate_property(ProximityPlacementGroupProperties, Symbol("availabilitySets"), availabilitySets)
-        OpenAPI.validate_property(ProximityPlacementGroupProperties, Symbol("colocationStatus"), colocationStatus)
-        return new(proximityPlacementGroupType, virtualMachines, virtualMachineScaleSets, availabilitySets, colocationStatus, )
+        o = new(proximityPlacementGroupType, virtualMachines, virtualMachineScaleSets, availabilitySets, colocationStatus, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ProximityPlacementGroupProperties
 
 const _property_types_ProximityPlacementGroupProperties = Dict{Symbol,String}(Symbol("proximityPlacementGroupType")=>"String", Symbol("virtualMachines")=>"Vector{SubResourceWithColocationStatus}", Symbol("virtualMachineScaleSets")=>"Vector{SubResourceWithColocationStatus}", Symbol("availabilitySets")=>"Vector{SubResourceWithColocationStatus}", Symbol("colocationStatus")=>"InstanceViewStatus", )
 OpenAPI.property_type(::Type{ ProximityPlacementGroupProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ProximityPlacementGroupProperties[name]))}
 
-function check_required(o::ProximityPlacementGroupProperties)
+function OpenAPI.check_required(o::ProximityPlacementGroupProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::ProximityPlacementGroupProperties)
+    OpenAPI.validate_property(ProximityPlacementGroupProperties, Symbol("proximityPlacementGroupType"), o.proximityPlacementGroupType)
+    OpenAPI.validate_property(ProximityPlacementGroupProperties, Symbol("virtualMachines"), o.virtualMachines)
+    OpenAPI.validate_property(ProximityPlacementGroupProperties, Symbol("virtualMachineScaleSets"), o.virtualMachineScaleSets)
+    OpenAPI.validate_property(ProximityPlacementGroupProperties, Symbol("availabilitySets"), o.availabilitySets)
+    OpenAPI.validate_property(ProximityPlacementGroupProperties, Symbol("colocationStatus"), o.colocationStatus)
+end
+
 function OpenAPI.validate_property(::Type{ ProximityPlacementGroupProperties }, name::Symbol, val)
+
     if name === Symbol("proximityPlacementGroupType")
         OpenAPI.validate_param(name, "ProximityPlacementGroupProperties", :enum, val, ["Standard", "Ultra"])
     end
+
+
+
+
+
 end

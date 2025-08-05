@@ -17,9 +17,11 @@ The instance view of a virtual machine.
         maintenanceRedeployStatus=nothing,
         disks=nothing,
         extensions=nothing,
+        vmHealth=nothing,
         bootDiagnostics=nothing,
         assignedHost=nothing,
         statuses=nothing,
+        patchStatus=nothing,
     )
 
     - platformUpdateDomain::Int64 : Specifies the update domain of the virtual machine.
@@ -33,9 +35,11 @@ The instance view of a virtual machine.
     - maintenanceRedeployStatus::MaintenanceRedeployStatus
     - disks::Vector{DiskInstanceView} : The virtual machine disk information.
     - extensions::Vector{VirtualMachineExtensionInstanceView} : The extensions information.
+    - vmHealth::VirtualMachineHealthStatus
     - bootDiagnostics::BootDiagnosticsInstanceView
     - assignedHost::String : Resource id of the dedicated host, on which the virtual machine is allocated through automatic placement, when the virtual machine is associated with a dedicated host group that has automatic placement enabled. &lt;br&gt;&lt;br&gt;Minimum api-version: 2020-06-01.
     - statuses::Vector{InstanceViewStatus} : The resource status information.
+    - patchStatus::VirtualMachinePatchStatus
 """
 Base.@kwdef mutable struct VirtualMachineInstanceView <: OpenAPI.APIModel
     platformUpdateDomain::Union{Nothing, Int64} = nothing
@@ -49,44 +53,70 @@ Base.@kwdef mutable struct VirtualMachineInstanceView <: OpenAPI.APIModel
     maintenanceRedeployStatus = nothing # spec type: Union{ Nothing, MaintenanceRedeployStatus }
     disks::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{DiskInstanceView} }
     extensions::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{VirtualMachineExtensionInstanceView} }
+    vmHealth = nothing # spec type: Union{ Nothing, VirtualMachineHealthStatus }
     bootDiagnostics = nothing # spec type: Union{ Nothing, BootDiagnosticsInstanceView }
     assignedHost::Union{Nothing, String} = nothing
     statuses::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{InstanceViewStatus} }
+    patchStatus = nothing # spec type: Union{ Nothing, VirtualMachinePatchStatus }
 
-    function VirtualMachineInstanceView(platformUpdateDomain, platformFaultDomain, computerName, osName, osVersion, hyperVGeneration, rdpThumbPrint, vmAgent, maintenanceRedeployStatus, disks, extensions, bootDiagnostics, assignedHost, statuses, )
-        OpenAPI.validate_property(VirtualMachineInstanceView, Symbol("platformUpdateDomain"), platformUpdateDomain)
-        OpenAPI.validate_property(VirtualMachineInstanceView, Symbol("platformFaultDomain"), platformFaultDomain)
-        OpenAPI.validate_property(VirtualMachineInstanceView, Symbol("computerName"), computerName)
-        OpenAPI.validate_property(VirtualMachineInstanceView, Symbol("osName"), osName)
-        OpenAPI.validate_property(VirtualMachineInstanceView, Symbol("osVersion"), osVersion)
-        OpenAPI.validate_property(VirtualMachineInstanceView, Symbol("hyperVGeneration"), hyperVGeneration)
-        OpenAPI.validate_property(VirtualMachineInstanceView, Symbol("rdpThumbPrint"), rdpThumbPrint)
-        OpenAPI.validate_property(VirtualMachineInstanceView, Symbol("vmAgent"), vmAgent)
-        OpenAPI.validate_property(VirtualMachineInstanceView, Symbol("maintenanceRedeployStatus"), maintenanceRedeployStatus)
-        OpenAPI.validate_property(VirtualMachineInstanceView, Symbol("disks"), disks)
-        OpenAPI.validate_property(VirtualMachineInstanceView, Symbol("extensions"), extensions)
-        OpenAPI.validate_property(VirtualMachineInstanceView, Symbol("bootDiagnostics"), bootDiagnostics)
-        OpenAPI.validate_property(VirtualMachineInstanceView, Symbol("assignedHost"), assignedHost)
-        OpenAPI.validate_property(VirtualMachineInstanceView, Symbol("statuses"), statuses)
-        return new(platformUpdateDomain, platformFaultDomain, computerName, osName, osVersion, hyperVGeneration, rdpThumbPrint, vmAgent, maintenanceRedeployStatus, disks, extensions, bootDiagnostics, assignedHost, statuses, )
+    function VirtualMachineInstanceView(platformUpdateDomain, platformFaultDomain, computerName, osName, osVersion, hyperVGeneration, rdpThumbPrint, vmAgent, maintenanceRedeployStatus, disks, extensions, vmHealth, bootDiagnostics, assignedHost, statuses, patchStatus, )
+        o = new(platformUpdateDomain, platformFaultDomain, computerName, osName, osVersion, hyperVGeneration, rdpThumbPrint, vmAgent, maintenanceRedeployStatus, disks, extensions, vmHealth, bootDiagnostics, assignedHost, statuses, patchStatus, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineInstanceView
 
-const _property_types_VirtualMachineInstanceView = Dict{Symbol,String}(Symbol("platformUpdateDomain")=>"Int64", Symbol("platformFaultDomain")=>"Int64", Symbol("computerName")=>"String", Symbol("osName")=>"String", Symbol("osVersion")=>"String", Symbol("hyperVGeneration")=>"String", Symbol("rdpThumbPrint")=>"String", Symbol("vmAgent")=>"VirtualMachineAgentInstanceView", Symbol("maintenanceRedeployStatus")=>"MaintenanceRedeployStatus", Symbol("disks")=>"Vector{DiskInstanceView}", Symbol("extensions")=>"Vector{VirtualMachineExtensionInstanceView}", Symbol("bootDiagnostics")=>"BootDiagnosticsInstanceView", Symbol("assignedHost")=>"String", Symbol("statuses")=>"Vector{InstanceViewStatus}", )
+const _property_types_VirtualMachineInstanceView = Dict{Symbol,String}(Symbol("platformUpdateDomain")=>"Int64", Symbol("platformFaultDomain")=>"Int64", Symbol("computerName")=>"String", Symbol("osName")=>"String", Symbol("osVersion")=>"String", Symbol("hyperVGeneration")=>"String", Symbol("rdpThumbPrint")=>"String", Symbol("vmAgent")=>"VirtualMachineAgentInstanceView", Symbol("maintenanceRedeployStatus")=>"MaintenanceRedeployStatus", Symbol("disks")=>"Vector{DiskInstanceView}", Symbol("extensions")=>"Vector{VirtualMachineExtensionInstanceView}", Symbol("vmHealth")=>"VirtualMachineHealthStatus", Symbol("bootDiagnostics")=>"BootDiagnosticsInstanceView", Symbol("assignedHost")=>"String", Symbol("statuses")=>"Vector{InstanceViewStatus}", Symbol("patchStatus")=>"VirtualMachinePatchStatus", )
 OpenAPI.property_type(::Type{ VirtualMachineInstanceView }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineInstanceView[name]))}
 
-function check_required(o::VirtualMachineInstanceView)
+function OpenAPI.check_required(o::VirtualMachineInstanceView)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineInstanceView)
+    OpenAPI.validate_property(VirtualMachineInstanceView, Symbol("platformUpdateDomain"), o.platformUpdateDomain)
+    OpenAPI.validate_property(VirtualMachineInstanceView, Symbol("platformFaultDomain"), o.platformFaultDomain)
+    OpenAPI.validate_property(VirtualMachineInstanceView, Symbol("computerName"), o.computerName)
+    OpenAPI.validate_property(VirtualMachineInstanceView, Symbol("osName"), o.osName)
+    OpenAPI.validate_property(VirtualMachineInstanceView, Symbol("osVersion"), o.osVersion)
+    OpenAPI.validate_property(VirtualMachineInstanceView, Symbol("hyperVGeneration"), o.hyperVGeneration)
+    OpenAPI.validate_property(VirtualMachineInstanceView, Symbol("rdpThumbPrint"), o.rdpThumbPrint)
+    OpenAPI.validate_property(VirtualMachineInstanceView, Symbol("vmAgent"), o.vmAgent)
+    OpenAPI.validate_property(VirtualMachineInstanceView, Symbol("maintenanceRedeployStatus"), o.maintenanceRedeployStatus)
+    OpenAPI.validate_property(VirtualMachineInstanceView, Symbol("disks"), o.disks)
+    OpenAPI.validate_property(VirtualMachineInstanceView, Symbol("extensions"), o.extensions)
+    OpenAPI.validate_property(VirtualMachineInstanceView, Symbol("vmHealth"), o.vmHealth)
+    OpenAPI.validate_property(VirtualMachineInstanceView, Symbol("bootDiagnostics"), o.bootDiagnostics)
+    OpenAPI.validate_property(VirtualMachineInstanceView, Symbol("assignedHost"), o.assignedHost)
+    OpenAPI.validate_property(VirtualMachineInstanceView, Symbol("statuses"), o.statuses)
+    OpenAPI.validate_property(VirtualMachineInstanceView, Symbol("patchStatus"), o.patchStatus)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineInstanceView }, name::Symbol, val)
+
     if name === Symbol("platformUpdateDomain")
         OpenAPI.validate_param(name, "VirtualMachineInstanceView", :format, val, "int32")
     end
+
     if name === Symbol("platformFaultDomain")
         OpenAPI.validate_param(name, "VirtualMachineInstanceView", :format, val, "int32")
     end
+
+
+
+
     if name === Symbol("hyperVGeneration")
         OpenAPI.validate_param(name, "VirtualMachineInstanceView", :enum, val, ["V1", "V2"])
     end
+
+
+
+
+
+
+
+
+
+
+
 end

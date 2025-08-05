@@ -18,18 +18,25 @@ Base.@kwdef mutable struct PolicyDefinitionListResult <: OpenAPI.APIModel
     nextLink::Union{Nothing, String} = nothing
 
     function PolicyDefinitionListResult(value, nextLink, )
-        OpenAPI.validate_property(PolicyDefinitionListResult, Symbol("value"), value)
-        OpenAPI.validate_property(PolicyDefinitionListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PolicyDefinitionListResult
 
 const _property_types_PolicyDefinitionListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{PolicyDefinition}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ PolicyDefinitionListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PolicyDefinitionListResult[name]))}
 
-function check_required(o::PolicyDefinitionListResult)
+function OpenAPI.check_required(o::PolicyDefinitionListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::PolicyDefinitionListResult)
+    OpenAPI.validate_property(PolicyDefinitionListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(PolicyDefinitionListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ PolicyDefinitionListResult }, name::Symbol, val)
+
+
 end

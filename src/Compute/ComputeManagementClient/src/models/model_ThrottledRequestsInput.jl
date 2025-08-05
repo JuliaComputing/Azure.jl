@@ -12,6 +12,8 @@ Api request input for LogAnalytics getThrottledRequests Api.
         groupByThrottlePolicy=nothing,
         groupByOperationName=nothing,
         groupByResourceName=nothing,
+        groupByClientApplicationId=nothing,
+        groupByUserAgent=nothing,
     )
 
     - blobContainerSasUri::String : SAS Uri of the logging blob container to which LogAnalytics Api writes output logs to.
@@ -20,6 +22,8 @@ Api request input for LogAnalytics getThrottledRequests Api.
     - groupByThrottlePolicy::Bool : Group query result by Throttle Policy applied.
     - groupByOperationName::Bool : Group query result by Operation Name.
     - groupByResourceName::Bool : Group query result by Resource Name.
+    - groupByClientApplicationId::Bool : Group query result by Client Application ID.
+    - groupByUserAgent::Bool : Group query result by User Agent.
 """
 Base.@kwdef mutable struct ThrottledRequestsInput <: OpenAPI.APIModel
     blobContainerSasUri::Union{Nothing, String} = nothing
@@ -28,33 +32,50 @@ Base.@kwdef mutable struct ThrottledRequestsInput <: OpenAPI.APIModel
     groupByThrottlePolicy::Union{Nothing, Bool} = nothing
     groupByOperationName::Union{Nothing, Bool} = nothing
     groupByResourceName::Union{Nothing, Bool} = nothing
+    groupByClientApplicationId::Union{Nothing, Bool} = nothing
+    groupByUserAgent::Union{Nothing, Bool} = nothing
 
-    function ThrottledRequestsInput(blobContainerSasUri, fromTime, toTime, groupByThrottlePolicy, groupByOperationName, groupByResourceName, )
-        OpenAPI.validate_property(ThrottledRequestsInput, Symbol("blobContainerSasUri"), blobContainerSasUri)
-        OpenAPI.validate_property(ThrottledRequestsInput, Symbol("fromTime"), fromTime)
-        OpenAPI.validate_property(ThrottledRequestsInput, Symbol("toTime"), toTime)
-        OpenAPI.validate_property(ThrottledRequestsInput, Symbol("groupByThrottlePolicy"), groupByThrottlePolicy)
-        OpenAPI.validate_property(ThrottledRequestsInput, Symbol("groupByOperationName"), groupByOperationName)
-        OpenAPI.validate_property(ThrottledRequestsInput, Symbol("groupByResourceName"), groupByResourceName)
-        return new(blobContainerSasUri, fromTime, toTime, groupByThrottlePolicy, groupByOperationName, groupByResourceName, )
+    function ThrottledRequestsInput(blobContainerSasUri, fromTime, toTime, groupByThrottlePolicy, groupByOperationName, groupByResourceName, groupByClientApplicationId, groupByUserAgent, )
+        o = new(blobContainerSasUri, fromTime, toTime, groupByThrottlePolicy, groupByOperationName, groupByResourceName, groupByClientApplicationId, groupByUserAgent, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ThrottledRequestsInput
 
-const _property_types_ThrottledRequestsInput = Dict{Symbol,String}(Symbol("blobContainerSasUri")=>"String", Symbol("fromTime")=>"ZonedDateTime", Symbol("toTime")=>"ZonedDateTime", Symbol("groupByThrottlePolicy")=>"Bool", Symbol("groupByOperationName")=>"Bool", Symbol("groupByResourceName")=>"Bool", )
+const _property_types_ThrottledRequestsInput = Dict{Symbol,String}(Symbol("blobContainerSasUri")=>"String", Symbol("fromTime")=>"ZonedDateTime", Symbol("toTime")=>"ZonedDateTime", Symbol("groupByThrottlePolicy")=>"Bool", Symbol("groupByOperationName")=>"Bool", Symbol("groupByResourceName")=>"Bool", Symbol("groupByClientApplicationId")=>"Bool", Symbol("groupByUserAgent")=>"Bool", )
 OpenAPI.property_type(::Type{ ThrottledRequestsInput }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ThrottledRequestsInput[name]))}
 
-function check_required(o::ThrottledRequestsInput)
+function OpenAPI.check_required(o::ThrottledRequestsInput)
     o.blobContainerSasUri === nothing && (return false)
     o.fromTime === nothing && (return false)
     o.toTime === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ThrottledRequestsInput)
+    OpenAPI.validate_property(ThrottledRequestsInput, Symbol("blobContainerSasUri"), o.blobContainerSasUri)
+    OpenAPI.validate_property(ThrottledRequestsInput, Symbol("fromTime"), o.fromTime)
+    OpenAPI.validate_property(ThrottledRequestsInput, Symbol("toTime"), o.toTime)
+    OpenAPI.validate_property(ThrottledRequestsInput, Symbol("groupByThrottlePolicy"), o.groupByThrottlePolicy)
+    OpenAPI.validate_property(ThrottledRequestsInput, Symbol("groupByOperationName"), o.groupByOperationName)
+    OpenAPI.validate_property(ThrottledRequestsInput, Symbol("groupByResourceName"), o.groupByResourceName)
+    OpenAPI.validate_property(ThrottledRequestsInput, Symbol("groupByClientApplicationId"), o.groupByClientApplicationId)
+    OpenAPI.validate_property(ThrottledRequestsInput, Symbol("groupByUserAgent"), o.groupByUserAgent)
+end
+
 function OpenAPI.validate_property(::Type{ ThrottledRequestsInput }, name::Symbol, val)
+
+
     if name === Symbol("fromTime")
         OpenAPI.validate_param(name, "ThrottledRequestsInput", :format, val, "date-time")
     end
+
     if name === Symbol("toTime")
         OpenAPI.validate_param(name, "ThrottledRequestsInput", :format, val, "date-time")
     end
+
+
+
+
+
 end

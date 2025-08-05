@@ -3,36 +3,44 @@
 
 
 @doc raw"""ApplicationGatewayCustomError
-Customer error of an application gateway.
+Custom error of an application gateway.
 
     ApplicationGatewayCustomError(;
         statusCode=nothing,
         customErrorPageUrl=nothing,
     )
 
-    - statusCode::String : Status code of the application gateway customer error.
-    - customErrorPageUrl::String : Error page URL of the application gateway customer error.
+    - statusCode::String : Status code of the application gateway custom error.
+    - customErrorPageUrl::String : Error page URL of the application gateway custom error.
 """
 Base.@kwdef mutable struct ApplicationGatewayCustomError <: OpenAPI.APIModel
     statusCode::Union{Nothing, String} = nothing
     customErrorPageUrl::Union{Nothing, String} = nothing
 
     function ApplicationGatewayCustomError(statusCode, customErrorPageUrl, )
-        OpenAPI.validate_property(ApplicationGatewayCustomError, Symbol("statusCode"), statusCode)
-        OpenAPI.validate_property(ApplicationGatewayCustomError, Symbol("customErrorPageUrl"), customErrorPageUrl)
-        return new(statusCode, customErrorPageUrl, )
+        o = new(statusCode, customErrorPageUrl, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayCustomError
 
 const _property_types_ApplicationGatewayCustomError = Dict{Symbol,String}(Symbol("statusCode")=>"String", Symbol("customErrorPageUrl")=>"String", )
 OpenAPI.property_type(::Type{ ApplicationGatewayCustomError }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayCustomError[name]))}
 
-function check_required(o::ApplicationGatewayCustomError)
+function OpenAPI.check_required(o::ApplicationGatewayCustomError)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayCustomError)
+    OpenAPI.validate_property(ApplicationGatewayCustomError, Symbol("statusCode"), o.statusCode)
+    OpenAPI.validate_property(ApplicationGatewayCustomError, Symbol("customErrorPageUrl"), o.customErrorPageUrl)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayCustomError }, name::Symbol, val)
+
     if name === Symbol("statusCode")
-        OpenAPI.validate_param(name, "ApplicationGatewayCustomError", :enum, val, ["HttpStatus403", "HttpStatus502"])
+        OpenAPI.validate_param(name, "ApplicationGatewayCustomError", :enum, val, ["HttpStatus400", "HttpStatus403", "HttpStatus404", "HttpStatus405", "HttpStatus408", "HttpStatus500", "HttpStatus502", "HttpStatus503", "HttpStatus504"])
     end
+
+
 end

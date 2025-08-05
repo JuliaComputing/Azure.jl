@@ -18,18 +18,25 @@ Base.@kwdef mutable struct ServiceAssociationLinksListResult <: OpenAPI.APIModel
     nextLink::Union{Nothing, String} = nothing
 
     function ServiceAssociationLinksListResult(value, nextLink, )
-        OpenAPI.validate_property(ServiceAssociationLinksListResult, Symbol("value"), value)
-        OpenAPI.validate_property(ServiceAssociationLinksListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ServiceAssociationLinksListResult
 
 const _property_types_ServiceAssociationLinksListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{ServiceAssociationLink}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ ServiceAssociationLinksListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ServiceAssociationLinksListResult[name]))}
 
-function check_required(o::ServiceAssociationLinksListResult)
+function OpenAPI.check_required(o::ServiceAssociationLinksListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::ServiceAssociationLinksListResult)
+    OpenAPI.validate_property(ServiceAssociationLinksListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(ServiceAssociationLinksListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ ServiceAssociationLinksListResult }, name::Symbol, val)
+
+
 end

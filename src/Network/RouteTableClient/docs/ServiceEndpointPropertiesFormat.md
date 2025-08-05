@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **service** | **String** | The type of the endpoint service. | [optional] [default to nothing]
+**networkIdentifier** | [***SubResource**](SubResource.md) |  | [optional] [default to nothing]
 **locations** | **Vector{String}** | A list of locations. | [optional] [default to nothing]
 **provisioningState** | [***ProvisioningState**](ProvisioningState.md) |  | [optional] [default to nothing]
 

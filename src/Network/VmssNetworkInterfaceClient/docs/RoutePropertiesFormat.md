@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **nextHopType** | [***RouteNextHopType**](RouteNextHopType.md) |  | [default to nothing]
 **nextHopIpAddress** | **String** | The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance. | [optional] [default to nothing]
 **provisioningState** | [***ProvisioningState**](ProvisioningState.md) |  | [optional] [default to nothing]
+**hasBgpOverride** | **Bool** | A value indicating whether this route overrides overlapping BGP routes regardless of LPM. | [optional] [readonly] [default to nothing]
 
 
 [[Back to Model list]](../README.md#models) [[Back to API list]](../README.md#api-endpoints) [[Back to README]](../README.md)

@@ -24,32 +24,42 @@ Base.@kwdef mutable struct VirtualMachineScaleSetSkuCapacity <: OpenAPI.APIModel
     scaleType::Union{Nothing, String} = nothing
 
     function VirtualMachineScaleSetSkuCapacity(minimum, maximum, defaultCapacity, scaleType, )
-        OpenAPI.validate_property(VirtualMachineScaleSetSkuCapacity, Symbol("minimum"), minimum)
-        OpenAPI.validate_property(VirtualMachineScaleSetSkuCapacity, Symbol("maximum"), maximum)
-        OpenAPI.validate_property(VirtualMachineScaleSetSkuCapacity, Symbol("defaultCapacity"), defaultCapacity)
-        OpenAPI.validate_property(VirtualMachineScaleSetSkuCapacity, Symbol("scaleType"), scaleType)
-        return new(minimum, maximum, defaultCapacity, scaleType, )
+        o = new(minimum, maximum, defaultCapacity, scaleType, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetSkuCapacity
 
 const _property_types_VirtualMachineScaleSetSkuCapacity = Dict{Symbol,String}(Symbol("minimum")=>"Int64", Symbol("maximum")=>"Int64", Symbol("defaultCapacity")=>"Int64", Symbol("scaleType")=>"String", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetSkuCapacity }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetSkuCapacity[name]))}
 
-function check_required(o::VirtualMachineScaleSetSkuCapacity)
+function OpenAPI.check_required(o::VirtualMachineScaleSetSkuCapacity)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetSkuCapacity)
+    OpenAPI.validate_property(VirtualMachineScaleSetSkuCapacity, Symbol("minimum"), o.minimum)
+    OpenAPI.validate_property(VirtualMachineScaleSetSkuCapacity, Symbol("maximum"), o.maximum)
+    OpenAPI.validate_property(VirtualMachineScaleSetSkuCapacity, Symbol("defaultCapacity"), o.defaultCapacity)
+    OpenAPI.validate_property(VirtualMachineScaleSetSkuCapacity, Symbol("scaleType"), o.scaleType)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetSkuCapacity }, name::Symbol, val)
+
     if name === Symbol("minimum")
         OpenAPI.validate_param(name, "VirtualMachineScaleSetSkuCapacity", :format, val, "int64")
     end
+
     if name === Symbol("maximum")
         OpenAPI.validate_param(name, "VirtualMachineScaleSetSkuCapacity", :format, val, "int64")
     end
+
     if name === Symbol("defaultCapacity")
         OpenAPI.validate_param(name, "VirtualMachineScaleSetSkuCapacity", :format, val, "int64")
     end
+
     if name === Symbol("scaleType")
         OpenAPI.validate_param(name, "VirtualMachineScaleSetSkuCapacity", :enum, val, ["Automatic", "None"])
     end
+
 end

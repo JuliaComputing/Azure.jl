@@ -21,11 +21,11 @@ Gets all stats from an express route circuit in a resource group.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ExpressRouteCircuitStatsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**circuit_name** | **String**| The name of the express route circuit. | [default to nothing]
-**peering_name** | **String**| The name of the peering. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**circuit_name** | **String** | The name of the express route circuit. |
+**peering_name** | **String** | The name of the peering. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -55,10 +55,10 @@ Gets all the stats from an express route circuit in a resource group.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ExpressRouteCircuitStatsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**circuit_name** | **String**| The name of the express route circuit. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**circuit_name** | **String** | The name of the express route circuit. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 

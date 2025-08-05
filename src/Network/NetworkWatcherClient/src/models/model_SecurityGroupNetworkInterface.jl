@@ -18,18 +18,25 @@ Base.@kwdef mutable struct SecurityGroupNetworkInterface <: OpenAPI.APIModel
     securityRuleAssociations = nothing # spec type: Union{ Nothing, SecurityRuleAssociations }
 
     function SecurityGroupNetworkInterface(id, securityRuleAssociations, )
-        OpenAPI.validate_property(SecurityGroupNetworkInterface, Symbol("id"), id)
-        OpenAPI.validate_property(SecurityGroupNetworkInterface, Symbol("securityRuleAssociations"), securityRuleAssociations)
-        return new(id, securityRuleAssociations, )
+        o = new(id, securityRuleAssociations, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type SecurityGroupNetworkInterface
 
 const _property_types_SecurityGroupNetworkInterface = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("securityRuleAssociations")=>"SecurityRuleAssociations", )
 OpenAPI.property_type(::Type{ SecurityGroupNetworkInterface }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SecurityGroupNetworkInterface[name]))}
 
-function check_required(o::SecurityGroupNetworkInterface)
+function OpenAPI.check_required(o::SecurityGroupNetworkInterface)
     true
 end
 
+function OpenAPI.validate_properties(o::SecurityGroupNetworkInterface)
+    OpenAPI.validate_property(SecurityGroupNetworkInterface, Symbol("id"), o.id)
+    OpenAPI.validate_property(SecurityGroupNetworkInterface, Symbol("securityRuleAssociations"), o.securityRuleAssociations)
+end
+
 function OpenAPI.validate_property(::Type{ SecurityGroupNetworkInterface }, name::Symbol, val)
+
+
 end

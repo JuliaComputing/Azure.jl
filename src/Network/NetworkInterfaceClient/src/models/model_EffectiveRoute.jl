@@ -33,29 +33,43 @@ Base.@kwdef mutable struct EffectiveRoute <: OpenAPI.APIModel
     nextHopType = nothing # spec type: Union{ Nothing, RouteNextHopType }
 
     function EffectiveRoute(name, disableBgpRoutePropagation, source, state, addressPrefix, nextHopIpAddress, nextHopType, )
-        OpenAPI.validate_property(EffectiveRoute, Symbol("name"), name)
-        OpenAPI.validate_property(EffectiveRoute, Symbol("disableBgpRoutePropagation"), disableBgpRoutePropagation)
-        OpenAPI.validate_property(EffectiveRoute, Symbol("source"), source)
-        OpenAPI.validate_property(EffectiveRoute, Symbol("state"), state)
-        OpenAPI.validate_property(EffectiveRoute, Symbol("addressPrefix"), addressPrefix)
-        OpenAPI.validate_property(EffectiveRoute, Symbol("nextHopIpAddress"), nextHopIpAddress)
-        OpenAPI.validate_property(EffectiveRoute, Symbol("nextHopType"), nextHopType)
-        return new(name, disableBgpRoutePropagation, source, state, addressPrefix, nextHopIpAddress, nextHopType, )
+        o = new(name, disableBgpRoutePropagation, source, state, addressPrefix, nextHopIpAddress, nextHopType, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type EffectiveRoute
 
 const _property_types_EffectiveRoute = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("disableBgpRoutePropagation")=>"Bool", Symbol("source")=>"String", Symbol("state")=>"String", Symbol("addressPrefix")=>"Vector{String}", Symbol("nextHopIpAddress")=>"Vector{String}", Symbol("nextHopType")=>"RouteNextHopType", )
 OpenAPI.property_type(::Type{ EffectiveRoute }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_EffectiveRoute[name]))}
 
-function check_required(o::EffectiveRoute)
+function OpenAPI.check_required(o::EffectiveRoute)
     true
 end
 
+function OpenAPI.validate_properties(o::EffectiveRoute)
+    OpenAPI.validate_property(EffectiveRoute, Symbol("name"), o.name)
+    OpenAPI.validate_property(EffectiveRoute, Symbol("disableBgpRoutePropagation"), o.disableBgpRoutePropagation)
+    OpenAPI.validate_property(EffectiveRoute, Symbol("source"), o.source)
+    OpenAPI.validate_property(EffectiveRoute, Symbol("state"), o.state)
+    OpenAPI.validate_property(EffectiveRoute, Symbol("addressPrefix"), o.addressPrefix)
+    OpenAPI.validate_property(EffectiveRoute, Symbol("nextHopIpAddress"), o.nextHopIpAddress)
+    OpenAPI.validate_property(EffectiveRoute, Symbol("nextHopType"), o.nextHopType)
+end
+
 function OpenAPI.validate_property(::Type{ EffectiveRoute }, name::Symbol, val)
+
+
+
     if name === Symbol("source")
         OpenAPI.validate_param(name, "EffectiveRoute", :enum, val, ["Unknown", "User", "VirtualNetworkGateway", "Default"])
     end
+
+
     if name === Symbol("state")
         OpenAPI.validate_param(name, "EffectiveRoute", :enum, val, ["Active", "Invalid"])
     end
+
+
+
+
 end

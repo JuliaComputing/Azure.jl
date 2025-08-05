@@ -27,29 +27,39 @@ Base.@kwdef mutable struct AzureReachabilityReportParameters <: OpenAPI.APIModel
     endTime::Union{Nothing, ZonedDateTime} = nothing
 
     function AzureReachabilityReportParameters(providerLocation, providers, azureLocations, startTime, endTime, )
-        OpenAPI.validate_property(AzureReachabilityReportParameters, Symbol("providerLocation"), providerLocation)
-        OpenAPI.validate_property(AzureReachabilityReportParameters, Symbol("providers"), providers)
-        OpenAPI.validate_property(AzureReachabilityReportParameters, Symbol("azureLocations"), azureLocations)
-        OpenAPI.validate_property(AzureReachabilityReportParameters, Symbol("startTime"), startTime)
-        OpenAPI.validate_property(AzureReachabilityReportParameters, Symbol("endTime"), endTime)
-        return new(providerLocation, providers, azureLocations, startTime, endTime, )
+        o = new(providerLocation, providers, azureLocations, startTime, endTime, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AzureReachabilityReportParameters
 
 const _property_types_AzureReachabilityReportParameters = Dict{Symbol,String}(Symbol("providerLocation")=>"AzureReachabilityReportLocation", Symbol("providers")=>"Vector{String}", Symbol("azureLocations")=>"Vector{String}", Symbol("startTime")=>"ZonedDateTime", Symbol("endTime")=>"ZonedDateTime", )
 OpenAPI.property_type(::Type{ AzureReachabilityReportParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AzureReachabilityReportParameters[name]))}
 
-function check_required(o::AzureReachabilityReportParameters)
+function OpenAPI.check_required(o::AzureReachabilityReportParameters)
     o.providerLocation === nothing && (return false)
     o.startTime === nothing && (return false)
     o.endTime === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::AzureReachabilityReportParameters)
+    OpenAPI.validate_property(AzureReachabilityReportParameters, Symbol("providerLocation"), o.providerLocation)
+    OpenAPI.validate_property(AzureReachabilityReportParameters, Symbol("providers"), o.providers)
+    OpenAPI.validate_property(AzureReachabilityReportParameters, Symbol("azureLocations"), o.azureLocations)
+    OpenAPI.validate_property(AzureReachabilityReportParameters, Symbol("startTime"), o.startTime)
+    OpenAPI.validate_property(AzureReachabilityReportParameters, Symbol("endTime"), o.endTime)
+end
+
 function OpenAPI.validate_property(::Type{ AzureReachabilityReportParameters }, name::Symbol, val)
+
+
+
+
     if name === Symbol("startTime")
         OpenAPI.validate_param(name, "AzureReachabilityReportParameters", :format, val, "date-time")
     end
+
     if name === Symbol("endTime")
         OpenAPI.validate_param(name, "AzureReachabilityReportParameters", :format, val, "date-time")
     end

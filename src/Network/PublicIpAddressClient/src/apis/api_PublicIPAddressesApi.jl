@@ -22,7 +22,7 @@ function _oacinternal_public_i_p_addresses_create_or_update(_api::PublicIPAddres
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "publicIpAddressName", public_ip_address_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -49,6 +49,43 @@ function public_i_p_addresses_create_or_update(_api::PublicIPAddressesApi, respo
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
+const _returntypes_public_i_p_addresses_ddos_protection_status_PublicIPAddressesApi = Dict{Regex,Type}(
+    Regex("^" * replace("200", "x"=>".") * "\$") => PublicIpDdosProtectionStatusResult,
+    Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+)
+
+function _oacinternal_public_i_p_addresses_ddos_protection_status(_api::PublicIPAddressesApi, resource_group_name::String, public_ip_address_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_public_i_p_addresses_ddos_protection_status_PublicIPAddressesApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses/{publicIpAddressName}/ddosProtectionStatus", ["azure_auth", ])
+    OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "publicIpAddressName", public_ip_address_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
+    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
+    return _ctx
+end
+
+@doc raw"""Gets the Ddos Protection Status of a Public IP Address
+
+Params:
+- resource_group_name::String (required)
+- public_ip_address_name::String (required)
+- api_version::String (required)
+- subscription_id::String (required)
+
+Return: PublicIpDdosProtectionStatusResult, OpenAPI.Clients.ApiResponse
+"""
+function public_i_p_addresses_ddos_protection_status(_api::PublicIPAddressesApi, resource_group_name::String, public_ip_address_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
+    _ctx = _oacinternal_public_i_p_addresses_ddos_protection_status(_api, resource_group_name, public_ip_address_name, api_version, subscription_id; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx)
+end
+
+function public_i_p_addresses_ddos_protection_status(_api::PublicIPAddressesApi, response_stream::Channel, resource_group_name::String, public_ip_address_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
+    _ctx = _oacinternal_public_i_p_addresses_ddos_protection_status(_api, resource_group_name, public_ip_address_name, api_version, subscription_id; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx, response_stream)
+end
+
 const _returntypes_public_i_p_addresses_delete_PublicIPAddressesApi = Dict{Regex,Type}(
     Regex("^" * replace("204", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
@@ -61,7 +98,7 @@ function _oacinternal_public_i_p_addresses_delete(_api::PublicIPAddressesApi, re
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "publicIpAddressName", public_ip_address_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -97,8 +134,8 @@ function _oacinternal_public_i_p_addresses_get(_api::PublicIPAddressesApi, resou
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "publicIpAddressName", public_ip_address_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -134,7 +171,7 @@ function _oacinternal_public_i_p_addresses_list(_api::PublicIPAddressesApi, reso
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_public_i_p_addresses_list_PublicIPAddressesApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -167,7 +204,7 @@ const _returntypes_public_i_p_addresses_list_all_PublicIPAddressesApi = Dict{Reg
 function _oacinternal_public_i_p_addresses_list_all(_api::PublicIPAddressesApi, api_version::String, subscription_id::String; _mediaType=nothing)
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_public_i_p_addresses_list_all_PublicIPAddressesApi, "/subscriptions/{subscriptionId}/providers/Microsoft.Network/publicIPAddresses", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -201,7 +238,7 @@ function _oacinternal_public_i_p_addresses_update_tags(_api::PublicIPAddressesAp
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "publicIpAddressName", public_ip_address_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -229,6 +266,7 @@ function public_i_p_addresses_update_tags(_api::PublicIPAddressesApi, response_s
 end
 
 export public_i_p_addresses_create_or_update
+export public_i_p_addresses_ddos_protection_status
 export public_i_p_addresses_delete
 export public_i_p_addresses_get
 export public_i_p_addresses_list

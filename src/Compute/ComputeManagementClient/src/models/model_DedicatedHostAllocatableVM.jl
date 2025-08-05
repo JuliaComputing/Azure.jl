@@ -18,20 +18,27 @@ Base.@kwdef mutable struct DedicatedHostAllocatableVM <: OpenAPI.APIModel
     count::Union{Nothing, Float64} = nothing
 
     function DedicatedHostAllocatableVM(vmSize, count, )
-        OpenAPI.validate_property(DedicatedHostAllocatableVM, Symbol("vmSize"), vmSize)
-        OpenAPI.validate_property(DedicatedHostAllocatableVM, Symbol("count"), count)
-        return new(vmSize, count, )
+        o = new(vmSize, count, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type DedicatedHostAllocatableVM
 
 const _property_types_DedicatedHostAllocatableVM = Dict{Symbol,String}(Symbol("vmSize")=>"String", Symbol("count")=>"Float64", )
 OpenAPI.property_type(::Type{ DedicatedHostAllocatableVM }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DedicatedHostAllocatableVM[name]))}
 
-function check_required(o::DedicatedHostAllocatableVM)
+function OpenAPI.check_required(o::DedicatedHostAllocatableVM)
     true
 end
 
+function OpenAPI.validate_properties(o::DedicatedHostAllocatableVM)
+    OpenAPI.validate_property(DedicatedHostAllocatableVM, Symbol("vmSize"), o.vmSize)
+    OpenAPI.validate_property(DedicatedHostAllocatableVM, Symbol("count"), o.count)
+end
+
 function OpenAPI.validate_property(::Type{ DedicatedHostAllocatableVM }, name::Symbol, val)
+
+
     if name === Symbol("count")
         OpenAPI.validate_param(name, "DedicatedHostAllocatableVM", :format, val, "double")
     end

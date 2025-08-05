@@ -18,18 +18,25 @@ Base.@kwdef mutable struct ApplicationGatewayBackendHealthOnDemand <: OpenAPI.AP
     backendHealthHttpSettings = nothing # spec type: Union{ Nothing, ApplicationGatewayBackendHealthHttpSettings }
 
     function ApplicationGatewayBackendHealthOnDemand(backendAddressPool, backendHealthHttpSettings, )
-        OpenAPI.validate_property(ApplicationGatewayBackendHealthOnDemand, Symbol("backendAddressPool"), backendAddressPool)
-        OpenAPI.validate_property(ApplicationGatewayBackendHealthOnDemand, Symbol("backendHealthHttpSettings"), backendHealthHttpSettings)
-        return new(backendAddressPool, backendHealthHttpSettings, )
+        o = new(backendAddressPool, backendHealthHttpSettings, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayBackendHealthOnDemand
 
 const _property_types_ApplicationGatewayBackendHealthOnDemand = Dict{Symbol,String}(Symbol("backendAddressPool")=>"ApplicationGatewayBackendAddressPool", Symbol("backendHealthHttpSettings")=>"ApplicationGatewayBackendHealthHttpSettings", )
 OpenAPI.property_type(::Type{ ApplicationGatewayBackendHealthOnDemand }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayBackendHealthOnDemand[name]))}
 
-function check_required(o::ApplicationGatewayBackendHealthOnDemand)
+function OpenAPI.check_required(o::ApplicationGatewayBackendHealthOnDemand)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayBackendHealthOnDemand)
+    OpenAPI.validate_property(ApplicationGatewayBackendHealthOnDemand, Symbol("backendAddressPool"), o.backendAddressPool)
+    OpenAPI.validate_property(ApplicationGatewayBackendHealthOnDemand, Symbol("backendHealthHttpSettings"), o.backendHealthHttpSettings)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayBackendHealthOnDemand }, name::Symbol, val)
+
+
 end

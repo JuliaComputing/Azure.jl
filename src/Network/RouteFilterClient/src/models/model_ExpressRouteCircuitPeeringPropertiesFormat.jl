@@ -72,41 +72,50 @@ Base.@kwdef mutable struct ExpressRouteCircuitPeeringPropertiesFormat <: OpenAPI
     peeredConnections::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{PeerExpressRouteCircuitConnection} }
 
     function ExpressRouteCircuitPeeringPropertiesFormat(peeringType, state, azureASN, peerASN, primaryPeerAddressPrefix, secondaryPeerAddressPrefix, primaryAzurePort, secondaryAzurePort, sharedKey, vlanId, microsoftPeeringConfig, stats, provisioningState, gatewayManagerEtag, lastModifiedBy, routeFilter, ipv6PeeringConfig, expressRouteConnection, connections, peeredConnections, )
-        OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("peeringType"), peeringType)
-        OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("state"), state)
-        OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("azureASN"), azureASN)
-        OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("peerASN"), peerASN)
-        OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("primaryPeerAddressPrefix"), primaryPeerAddressPrefix)
-        OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("secondaryPeerAddressPrefix"), secondaryPeerAddressPrefix)
-        OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("primaryAzurePort"), primaryAzurePort)
-        OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("secondaryAzurePort"), secondaryAzurePort)
-        OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("sharedKey"), sharedKey)
-        OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("vlanId"), vlanId)
-        OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("microsoftPeeringConfig"), microsoftPeeringConfig)
-        OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("stats"), stats)
-        OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("gatewayManagerEtag"), gatewayManagerEtag)
-        OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("lastModifiedBy"), lastModifiedBy)
-        OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("routeFilter"), routeFilter)
-        OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("ipv6PeeringConfig"), ipv6PeeringConfig)
-        OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("expressRouteConnection"), expressRouteConnection)
-        OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("connections"), connections)
-        OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("peeredConnections"), peeredConnections)
-        return new(peeringType, state, azureASN, peerASN, primaryPeerAddressPrefix, secondaryPeerAddressPrefix, primaryAzurePort, secondaryAzurePort, sharedKey, vlanId, microsoftPeeringConfig, stats, provisioningState, gatewayManagerEtag, lastModifiedBy, routeFilter, ipv6PeeringConfig, expressRouteConnection, connections, peeredConnections, )
+        o = new(peeringType, state, azureASN, peerASN, primaryPeerAddressPrefix, secondaryPeerAddressPrefix, primaryAzurePort, secondaryAzurePort, sharedKey, vlanId, microsoftPeeringConfig, stats, provisioningState, gatewayManagerEtag, lastModifiedBy, routeFilter, ipv6PeeringConfig, expressRouteConnection, connections, peeredConnections, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ExpressRouteCircuitPeeringPropertiesFormat
 
 const _property_types_ExpressRouteCircuitPeeringPropertiesFormat = Dict{Symbol,String}(Symbol("peeringType")=>"ExpressRoutePeeringType", Symbol("state")=>"ExpressRoutePeeringState", Symbol("azureASN")=>"Int64", Symbol("peerASN")=>"Int64", Symbol("primaryPeerAddressPrefix")=>"String", Symbol("secondaryPeerAddressPrefix")=>"String", Symbol("primaryAzurePort")=>"String", Symbol("secondaryAzurePort")=>"String", Symbol("sharedKey")=>"String", Symbol("vlanId")=>"Int64", Symbol("microsoftPeeringConfig")=>"ExpressRouteCircuitPeeringConfig", Symbol("stats")=>"ExpressRouteCircuitStats", Symbol("provisioningState")=>"ProvisioningState", Symbol("gatewayManagerEtag")=>"String", Symbol("lastModifiedBy")=>"String", Symbol("routeFilter")=>"SubResource", Symbol("ipv6PeeringConfig")=>"Ipv6ExpressRouteCircuitPeeringConfig", Symbol("expressRouteConnection")=>"ExpressRouteConnectionId", Symbol("connections")=>"Vector{ExpressRouteCircuitConnection}", Symbol("peeredConnections")=>"Vector{PeerExpressRouteCircuitConnection}", )
 OpenAPI.property_type(::Type{ ExpressRouteCircuitPeeringPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExpressRouteCircuitPeeringPropertiesFormat[name]))}
 
-function check_required(o::ExpressRouteCircuitPeeringPropertiesFormat)
+function OpenAPI.check_required(o::ExpressRouteCircuitPeeringPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::ExpressRouteCircuitPeeringPropertiesFormat)
+    OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("peeringType"), o.peeringType)
+    OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("state"), o.state)
+    OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("azureASN"), o.azureASN)
+    OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("peerASN"), o.peerASN)
+    OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("primaryPeerAddressPrefix"), o.primaryPeerAddressPrefix)
+    OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("secondaryPeerAddressPrefix"), o.secondaryPeerAddressPrefix)
+    OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("primaryAzurePort"), o.primaryAzurePort)
+    OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("secondaryAzurePort"), o.secondaryAzurePort)
+    OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("sharedKey"), o.sharedKey)
+    OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("vlanId"), o.vlanId)
+    OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("microsoftPeeringConfig"), o.microsoftPeeringConfig)
+    OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("stats"), o.stats)
+    OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("gatewayManagerEtag"), o.gatewayManagerEtag)
+    OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("lastModifiedBy"), o.lastModifiedBy)
+    OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("routeFilter"), o.routeFilter)
+    OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("ipv6PeeringConfig"), o.ipv6PeeringConfig)
+    OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("expressRouteConnection"), o.expressRouteConnection)
+    OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("connections"), o.connections)
+    OpenAPI.validate_property(ExpressRouteCircuitPeeringPropertiesFormat, Symbol("peeredConnections"), o.peeredConnections)
+end
+
 function OpenAPI.validate_property(::Type{ ExpressRouteCircuitPeeringPropertiesFormat }, name::Symbol, val)
+
+
+
     if name === Symbol("azureASN")
         OpenAPI.validate_param(name, "ExpressRouteCircuitPeeringPropertiesFormat", :format, val, "int32")
     end
+
     if name === Symbol("peerASN")
         OpenAPI.validate_param(name, "ExpressRouteCircuitPeeringPropertiesFormat", :format, val, "int64")
     end
@@ -114,7 +123,23 @@ function OpenAPI.validate_property(::Type{ ExpressRouteCircuitPeeringPropertiesF
         OpenAPI.validate_param(name, "ExpressRouteCircuitPeeringPropertiesFormat", :maximum, val, 4294967295, false)
         OpenAPI.validate_param(name, "ExpressRouteCircuitPeeringPropertiesFormat", :minimum, val, 1, false)
     end
+
+
+
+
+
+
     if name === Symbol("vlanId")
         OpenAPI.validate_param(name, "ExpressRouteCircuitPeeringPropertiesFormat", :format, val, "int32")
     end
+
+
+
+
+
+
+
+
+
+
 end

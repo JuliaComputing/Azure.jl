@@ -18,18 +18,25 @@ Base.@kwdef mutable struct SshPublicKeyUpdateResource <: OpenAPI.APIModel
     tags::Union{Nothing, Dict{String, String}} = nothing
 
     function SshPublicKeyUpdateResource(properties, tags, )
-        OpenAPI.validate_property(SshPublicKeyUpdateResource, Symbol("properties"), properties)
-        OpenAPI.validate_property(SshPublicKeyUpdateResource, Symbol("tags"), tags)
-        return new(properties, tags, )
+        o = new(properties, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type SshPublicKeyUpdateResource
 
 const _property_types_SshPublicKeyUpdateResource = Dict{Symbol,String}(Symbol("properties")=>"SshPublicKeyResourceProperties", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ SshPublicKeyUpdateResource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SshPublicKeyUpdateResource[name]))}
 
-function check_required(o::SshPublicKeyUpdateResource)
+function OpenAPI.check_required(o::SshPublicKeyUpdateResource)
     true
 end
 
+function OpenAPI.validate_properties(o::SshPublicKeyUpdateResource)
+    OpenAPI.validate_property(SshPublicKeyUpdateResource, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(SshPublicKeyUpdateResource, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ SshPublicKeyUpdateResource }, name::Symbol, val)
+
+
 end

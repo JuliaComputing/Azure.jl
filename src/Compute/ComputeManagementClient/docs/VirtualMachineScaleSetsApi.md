@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**virtual_machine_scale_sets_get_o_s_upgrade_history**](VirtualMachineScaleSetsApi.md#virtual_machine_scale_sets_get_o_s_upgrade_history) | **GET** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/osUpgradeHistory | 
 [**virtual_machine_scale_sets_list**](VirtualMachineScaleSetsApi.md#virtual_machine_scale_sets_list) | **GET** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets | 
 [**virtual_machine_scale_sets_list_all**](VirtualMachineScaleSetsApi.md#virtual_machine_scale_sets_list_all) | **GET** /subscriptions/{subscriptionId}/providers/Microsoft.Compute/virtualMachineScaleSets | 
+[**virtual_machine_scale_sets_list_by_location**](VirtualMachineScaleSetsApi.md#virtual_machine_scale_sets_list_by_location) | **GET** /subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/virtualMachineScaleSets | 
 [**virtual_machine_scale_sets_list_skus**](VirtualMachineScaleSetsApi.md#virtual_machine_scale_sets_list_skus) | **GET** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/skus | 
 [**virtual_machine_scale_sets_perform_maintenance**](VirtualMachineScaleSetsApi.md#virtual_machine_scale_sets_perform_maintenance) | **POST** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/performMaintenance | 
 [**virtual_machine_scale_sets_power_off**](VirtualMachineScaleSetsApi.md#virtual_machine_scale_sets_power_off) | **POST** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/poweroff | 
@@ -41,11 +42,11 @@ Converts SinglePlacementGroup property to false for a existing virtual machine s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachineScaleSetsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_scale_set_name** | **String**| The name of the virtual machine scale set to create or update. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**VMScaleSetConvertToSinglePlacementGroupInput**](VMScaleSetConvertToSinglePlacementGroupInput.md)| The input object for ConvertToSinglePlacementGroup API. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_scale_set_name** | **String** | The name of the virtual machine scale set to create or update. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**VMScaleSetConvertToSinglePlacementGroupInput**](VMScaleSetConvertToSinglePlacementGroupInput.md) | The input object for ConvertToSinglePlacementGroup API. |
 
 ### Return type
 
@@ -58,7 +59,7 @@ Nothing
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -75,11 +76,11 @@ Create or update a VM scale set.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachineScaleSetsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_scale_set_name** | **String**| The name of the VM scale set to create or update. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**VirtualMachineScaleSet**](VirtualMachineScaleSet.md)| The scale set object. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_scale_set_name** | **String** | The name of the VM scale set to create or update. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**VirtualMachineScaleSet**](VirtualMachineScaleSet.md) | The scale set object. |
 
 ### Return type
 
@@ -109,16 +110,16 @@ Deallocates specific virtual machines in a VM scale set. Shuts down the virtual 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachineScaleSetsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_scale_set_name** | **String**| The name of the VM scale set. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_scale_set_name** | **String** | The name of the VM scale set. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **vm_instance_i_ds** | [**VirtualMachineScaleSetVMInstanceIDs**](VirtualMachineScaleSetVMInstanceIDs.md)| A list of virtual machine instance IDs from the VM scale set. | 
+ **vm_instance_i_ds** | [**VirtualMachineScaleSetVMInstanceIDs**](VirtualMachineScaleSetVMInstanceIDs.md) | A list of virtual machine instance IDs from the VM scale set. | 
 
 ### Return type
 
@@ -131,13 +132,13 @@ Nothing
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 # **virtual_machine_scale_sets_delete**
-> virtual_machine_scale_sets_delete(_api::VirtualMachineScaleSetsApi, resource_group_name::String, vm_scale_set_name::String, api_version::String, subscription_id::String; _mediaType=nothing) -> Nothing, OpenAPI.Clients.ApiResponse <br/>
-> virtual_machine_scale_sets_delete(_api::VirtualMachineScaleSetsApi, response_stream::Channel, resource_group_name::String, vm_scale_set_name::String, api_version::String, subscription_id::String; _mediaType=nothing) -> Channel{ Nothing }, OpenAPI.Clients.ApiResponse
+> virtual_machine_scale_sets_delete(_api::VirtualMachineScaleSetsApi, resource_group_name::String, vm_scale_set_name::String, api_version::String, subscription_id::String; force_deletion=nothing, _mediaType=nothing) -> Nothing, OpenAPI.Clients.ApiResponse <br/>
+> virtual_machine_scale_sets_delete(_api::VirtualMachineScaleSetsApi, response_stream::Channel, resource_group_name::String, vm_scale_set_name::String, api_version::String, subscription_id::String; force_deletion=nothing, _mediaType=nothing) -> Channel{ Nothing }, OpenAPI.Clients.ApiResponse
 
 
 
@@ -148,10 +149,16 @@ Deletes a VM scale set.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachineScaleSetsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_scale_set_name** | **String**| The name of the VM scale set. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_scale_set_name** | **String** | The name of the VM scale set. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+
+### Optional Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **force_deletion** | **Bool** | Optional parameter to force delete a VM scale set. (Feature in Preview) | [default to nothing]
 
 ### Return type
 
@@ -164,13 +171,13 @@ Nothing
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 # **virtual_machine_scale_sets_delete_instances**
-> virtual_machine_scale_sets_delete_instances(_api::VirtualMachineScaleSetsApi, resource_group_name::String, vm_scale_set_name::String, api_version::String, subscription_id::String, vm_instance_i_ds::VirtualMachineScaleSetVMInstanceRequiredIDs; _mediaType=nothing) -> Nothing, OpenAPI.Clients.ApiResponse <br/>
-> virtual_machine_scale_sets_delete_instances(_api::VirtualMachineScaleSetsApi, response_stream::Channel, resource_group_name::String, vm_scale_set_name::String, api_version::String, subscription_id::String, vm_instance_i_ds::VirtualMachineScaleSetVMInstanceRequiredIDs; _mediaType=nothing) -> Channel{ Nothing }, OpenAPI.Clients.ApiResponse
+> virtual_machine_scale_sets_delete_instances(_api::VirtualMachineScaleSetsApi, resource_group_name::String, vm_scale_set_name::String, api_version::String, subscription_id::String, vm_instance_i_ds::VirtualMachineScaleSetVMInstanceRequiredIDs; force_deletion=nothing, _mediaType=nothing) -> Nothing, OpenAPI.Clients.ApiResponse <br/>
+> virtual_machine_scale_sets_delete_instances(_api::VirtualMachineScaleSetsApi, response_stream::Channel, resource_group_name::String, vm_scale_set_name::String, api_version::String, subscription_id::String, vm_instance_i_ds::VirtualMachineScaleSetVMInstanceRequiredIDs; force_deletion=nothing, _mediaType=nothing) -> Channel{ Nothing }, OpenAPI.Clients.ApiResponse
 
 
 
@@ -181,11 +188,17 @@ Deletes virtual machines in a VM scale set.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachineScaleSetsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_scale_set_name** | **String**| The name of the VM scale set. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**vm_instance_i_ds** | [**VirtualMachineScaleSetVMInstanceRequiredIDs**](VirtualMachineScaleSetVMInstanceRequiredIDs.md)| A list of virtual machine instance IDs from the VM scale set. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_scale_set_name** | **String** | The name of the VM scale set. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**vm_instance_i_ds** | [**VirtualMachineScaleSetVMInstanceRequiredIDs**](VirtualMachineScaleSetVMInstanceRequiredIDs.md) | A list of virtual machine instance IDs from the VM scale set. |
+
+### Optional Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **force_deletion** | **Bool** | Optional parameter to force delete virtual machines from the VM scale set. (Feature in Preview) | [default to nothing]
 
 ### Return type
 
@@ -198,13 +211,13 @@ Nothing
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 # **virtual_machine_scale_sets_force_recovery_service_fabric_platform_update_domain_walk**
-> virtual_machine_scale_sets_force_recovery_service_fabric_platform_update_domain_walk(_api::VirtualMachineScaleSetsApi, resource_group_name::String, vm_scale_set_name::String, api_version::String, subscription_id::String, platform_update_domain::Int64; _mediaType=nothing) -> RecoveryWalkResponse, OpenAPI.Clients.ApiResponse <br/>
-> virtual_machine_scale_sets_force_recovery_service_fabric_platform_update_domain_walk(_api::VirtualMachineScaleSetsApi, response_stream::Channel, resource_group_name::String, vm_scale_set_name::String, api_version::String, subscription_id::String, platform_update_domain::Int64; _mediaType=nothing) -> Channel{ RecoveryWalkResponse }, OpenAPI.Clients.ApiResponse
+> virtual_machine_scale_sets_force_recovery_service_fabric_platform_update_domain_walk(_api::VirtualMachineScaleSetsApi, resource_group_name::String, vm_scale_set_name::String, api_version::String, subscription_id::String, platform_update_domain::Int64; zone=nothing, placement_group_id=nothing, _mediaType=nothing) -> RecoveryWalkResponse, OpenAPI.Clients.ApiResponse <br/>
+> virtual_machine_scale_sets_force_recovery_service_fabric_platform_update_domain_walk(_api::VirtualMachineScaleSetsApi, response_stream::Channel, resource_group_name::String, vm_scale_set_name::String, api_version::String, subscription_id::String, platform_update_domain::Int64; zone=nothing, placement_group_id=nothing, _mediaType=nothing) -> Channel{ RecoveryWalkResponse }, OpenAPI.Clients.ApiResponse
 
 
 
@@ -215,11 +228,18 @@ Manual platform update domain walk to update virtual machines in a service fabri
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachineScaleSetsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_scale_set_name** | **String**| The name of the VM scale set. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**platform_update_domain** | **Int64**| The platform update domain for which a manual recovery walk is requested | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_scale_set_name** | **String** | The name of the VM scale set. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**platform_update_domain** | **Int64** | The platform update domain for which a manual recovery walk is requested |
+
+### Optional Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **zone** | **String** | The zone in which the manual recovery walk is requested for cross zone virtual machine scale set | [default to nothing]
+ **placement_group_id** | **String** | The placement group id for which the manual recovery walk is requested. | [default to nothing]
 
 ### Return type
 
@@ -237,8 +257,8 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 # **virtual_machine_scale_sets_get**
-> virtual_machine_scale_sets_get(_api::VirtualMachineScaleSetsApi, resource_group_name::String, vm_scale_set_name::String, api_version::String, subscription_id::String; _mediaType=nothing) -> VirtualMachineScaleSet, OpenAPI.Clients.ApiResponse <br/>
-> virtual_machine_scale_sets_get(_api::VirtualMachineScaleSetsApi, response_stream::Channel, resource_group_name::String, vm_scale_set_name::String, api_version::String, subscription_id::String; _mediaType=nothing) -> Channel{ VirtualMachineScaleSet }, OpenAPI.Clients.ApiResponse
+> virtual_machine_scale_sets_get(_api::VirtualMachineScaleSetsApi, resource_group_name::String, vm_scale_set_name::String, api_version::String, subscription_id::String; expand=nothing, _mediaType=nothing) -> VirtualMachineScaleSet, OpenAPI.Clients.ApiResponse <br/>
+> virtual_machine_scale_sets_get(_api::VirtualMachineScaleSetsApi, response_stream::Channel, resource_group_name::String, vm_scale_set_name::String, api_version::String, subscription_id::String; expand=nothing, _mediaType=nothing) -> Channel{ VirtualMachineScaleSet }, OpenAPI.Clients.ApiResponse
 
 
 
@@ -249,10 +269,16 @@ Display information about a virtual machine scale set.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachineScaleSetsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_scale_set_name** | **String**| The name of the VM scale set. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_scale_set_name** | **String** | The name of the VM scale set. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+
+### Optional Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **expand** | **String** | The expand expression to apply on the operation. &#39;UserData&#39; retrieves the UserData property of the VM scale set that was provided by the user during the VM scale set Create/Update operation | [default to nothing]
 
 ### Return type
 
@@ -282,10 +308,10 @@ Gets the status of a VM scale set instance.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachineScaleSetsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_scale_set_name** | **String**| The name of the VM scale set. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_scale_set_name** | **String** | The name of the VM scale set. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -315,10 +341,10 @@ Gets list of OS upgrades on a VM scale set instance.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachineScaleSetsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_scale_set_name** | **String**| The name of the VM scale set. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_scale_set_name** | **String** | The name of the VM scale set. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -348,9 +374,9 @@ Gets a list of all VM scale sets under a resource group.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachineScaleSetsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -380,12 +406,44 @@ Gets a list of all VM Scale Sets in the subscription, regardless of the associat
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachineScaleSetsApi** | API context | 
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
 [**VirtualMachineScaleSetListWithLinkResult**](VirtualMachineScaleSetListWithLinkResult.md)
+
+### Authorization
+
+[azure_auth](../README.md#azure_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+# **virtual_machine_scale_sets_list_by_location**
+> virtual_machine_scale_sets_list_by_location(_api::VirtualMachineScaleSetsApi, location::String, api_version::String, subscription_id::String; _mediaType=nothing) -> VirtualMachineScaleSetListResult, OpenAPI.Clients.ApiResponse <br/>
+> virtual_machine_scale_sets_list_by_location(_api::VirtualMachineScaleSetsApi, response_stream::Channel, location::String, api_version::String, subscription_id::String; _mediaType=nothing) -> Channel{ VirtualMachineScaleSetListResult }, OpenAPI.Clients.ApiResponse
+
+
+
+Gets all the VM scale sets under the specified subscription for the specified location.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **_api** | **VirtualMachineScaleSetsApi** | API context | 
+**location** | **String** | The location for which VM scale sets under the subscription are queried. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+
+### Return type
+
+[**VirtualMachineScaleSetListResult**](VirtualMachineScaleSetListResult.md)
 
 ### Authorization
 
@@ -411,10 +469,10 @@ Gets a list of SKUs available for your VM scale set, including the minimum and m
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachineScaleSetsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_scale_set_name** | **String**| The name of the VM scale set. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_scale_set_name** | **String** | The name of the VM scale set. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -437,23 +495,23 @@ Name | Type | Description  | Notes
 
 
 
-Perform maintenance on one or more virtual machines in a VM scale set. Operation on instances which are not eligible for perform maintenance will be failed. Please refer to best practices for more details: https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-maintenance-notifications
+Perform maintenance on one or more virtual machines in a VM scale set. Operation on instances which are not eligible for perform maintenance will be failed. Please refer to best practices for more details: https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-maintenance-notifications
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachineScaleSetsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_scale_set_name** | **String**| The name of the VM scale set. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_scale_set_name** | **String** | The name of the VM scale set. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **vm_instance_i_ds** | [**VirtualMachineScaleSetVMInstanceIDs**](VirtualMachineScaleSetVMInstanceIDs.md)| A list of virtual machine instance IDs from the VM scale set. | 
+ **vm_instance_i_ds** | [**VirtualMachineScaleSetVMInstanceIDs**](VirtualMachineScaleSetVMInstanceIDs.md) | A list of virtual machine instance IDs from the VM scale set. | 
 
 ### Return type
 
@@ -466,7 +524,7 @@ Nothing
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -483,17 +541,17 @@ Power off (stop) one or more virtual machines in a VM scale set. Note that resou
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachineScaleSetsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_scale_set_name** | **String**| The name of the VM scale set. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_scale_set_name** | **String** | The name of the VM scale set. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **skip_shutdown** | **Bool**| The parameter to request non-graceful VM shutdown. True value for this flag indicates non-graceful shutdown whereas false indicates otherwise. Default value for this flag is false if not specified | [default to false]
- **vm_instance_i_ds** | [**VirtualMachineScaleSetVMInstanceIDs**](VirtualMachineScaleSetVMInstanceIDs.md)| A list of virtual machine instance IDs from the VM scale set. | 
+ **skip_shutdown** | **Bool** | The parameter to request non-graceful VM shutdown. True value for this flag indicates non-graceful shutdown whereas false indicates otherwise. Default value for this flag is false if not specified | [default to false]
+ **vm_instance_i_ds** | [**VirtualMachineScaleSetVMInstanceIDs**](VirtualMachineScaleSetVMInstanceIDs.md) | A list of virtual machine instance IDs from the VM scale set. | 
 
 ### Return type
 
@@ -506,7 +564,7 @@ Nothing
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -523,16 +581,16 @@ Shuts down all the virtual machines in the virtual machine scale set, moves them
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachineScaleSetsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_scale_set_name** | **String**| The name of the VM scale set. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_scale_set_name** | **String** | The name of the VM scale set. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **vm_instance_i_ds** | [**VirtualMachineScaleSetVMInstanceIDs**](VirtualMachineScaleSetVMInstanceIDs.md)| A list of virtual machine instance IDs from the VM scale set. | 
+ **vm_instance_i_ds** | [**VirtualMachineScaleSetVMInstanceIDs**](VirtualMachineScaleSetVMInstanceIDs.md) | A list of virtual machine instance IDs from the VM scale set. | 
 
 ### Return type
 
@@ -545,7 +603,7 @@ Nothing
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -562,16 +620,16 @@ Reimages (upgrade the operating system) one or more virtual machines in a VM sca
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachineScaleSetsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_scale_set_name** | **String**| The name of the VM scale set. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_scale_set_name** | **String** | The name of the VM scale set. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **vm_scale_set_reimage_input** | [**VirtualMachineScaleSetReimageParameters**](VirtualMachineScaleSetReimageParameters.md)| Parameters for Reimaging VM ScaleSet. | 
+ **vm_scale_set_reimage_input** | [**VirtualMachineScaleSetReimageParameters**](VirtualMachineScaleSetReimageParameters.md) | Parameters for Reimaging VM ScaleSet. | 
 
 ### Return type
 
@@ -584,7 +642,7 @@ Nothing
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -601,16 +659,16 @@ Reimages all the disks ( including data disks ) in the virtual machines in a VM 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachineScaleSetsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_scale_set_name** | **String**| The name of the VM scale set. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_scale_set_name** | **String** | The name of the VM scale set. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **vm_instance_i_ds** | [**VirtualMachineScaleSetVMInstanceIDs**](VirtualMachineScaleSetVMInstanceIDs.md)| A list of virtual machine instance IDs from the VM scale set. | 
+ **vm_instance_i_ds** | [**VirtualMachineScaleSetVMInstanceIDs**](VirtualMachineScaleSetVMInstanceIDs.md) | A list of virtual machine instance IDs from the VM scale set. | 
 
 ### Return type
 
@@ -623,7 +681,7 @@ Nothing
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -640,16 +698,16 @@ Restarts one or more virtual machines in a VM scale set.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachineScaleSetsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_scale_set_name** | **String**| The name of the VM scale set. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_scale_set_name** | **String** | The name of the VM scale set. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **vm_instance_i_ds** | [**VirtualMachineScaleSetVMInstanceIDs**](VirtualMachineScaleSetVMInstanceIDs.md)| A list of virtual machine instance IDs from the VM scale set. | 
+ **vm_instance_i_ds** | [**VirtualMachineScaleSetVMInstanceIDs**](VirtualMachineScaleSetVMInstanceIDs.md) | A list of virtual machine instance IDs from the VM scale set. | 
 
 ### Return type
 
@@ -662,7 +720,7 @@ Nothing
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -679,11 +737,11 @@ Changes ServiceState property for a given service
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachineScaleSetsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_scale_set_name** | **String**| The name of the virtual machine scale set to create or update. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**OrchestrationServiceStateInput**](OrchestrationServiceStateInput.md)| The input object for SetOrchestrationServiceState API. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_scale_set_name** | **String** | The name of the virtual machine scale set to create or update. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**OrchestrationServiceStateInput**](OrchestrationServiceStateInput.md) | The input object for SetOrchestrationServiceState API. |
 
 ### Return type
 
@@ -696,7 +754,7 @@ Nothing
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -713,16 +771,16 @@ Starts one or more virtual machines in a VM scale set.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachineScaleSetsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_scale_set_name** | **String**| The name of the VM scale set. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_scale_set_name** | **String** | The name of the VM scale set. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **vm_instance_i_ds** | [**VirtualMachineScaleSetVMInstanceIDs**](VirtualMachineScaleSetVMInstanceIDs.md)| A list of virtual machine instance IDs from the VM scale set. | 
+ **vm_instance_i_ds** | [**VirtualMachineScaleSetVMInstanceIDs**](VirtualMachineScaleSetVMInstanceIDs.md) | A list of virtual machine instance IDs from the VM scale set. | 
 
 ### Return type
 
@@ -735,7 +793,7 @@ Nothing
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -752,11 +810,11 @@ Update a VM scale set.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachineScaleSetsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_scale_set_name** | **String**| The name of the VM scale set to create or update. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**VirtualMachineScaleSetUpdate**](VirtualMachineScaleSetUpdate.md)| The scale set object. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_scale_set_name** | **String** | The name of the VM scale set to create or update. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**VirtualMachineScaleSetUpdate**](VirtualMachineScaleSetUpdate.md) | The scale set object. |
 
 ### Return type
 
@@ -786,11 +844,11 @@ Upgrades one or more virtual machines to the latest SKU set in the VM scale set 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachineScaleSetsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_scale_set_name** | **String**| The name of the VM scale set. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**vm_instance_i_ds** | [**VirtualMachineScaleSetVMInstanceRequiredIDs**](VirtualMachineScaleSetVMInstanceRequiredIDs.md)| A list of virtual machine instance IDs from the VM scale set. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_scale_set_name** | **String** | The name of the VM scale set. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**vm_instance_i_ds** | [**VirtualMachineScaleSetVMInstanceRequiredIDs**](VirtualMachineScaleSetVMInstanceRequiredIDs.md) | A list of virtual machine instance IDs from the VM scale set. |
 
 ### Return type
 
@@ -803,7 +861,7 @@ Nothing
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 

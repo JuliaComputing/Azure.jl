@@ -18,18 +18,25 @@ Base.@kwdef mutable struct NetworkInterfaceTapConfigurationPropertiesFormat <: O
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
     function NetworkInterfaceTapConfigurationPropertiesFormat(virtualNetworkTap, provisioningState, )
-        OpenAPI.validate_property(NetworkInterfaceTapConfigurationPropertiesFormat, Symbol("virtualNetworkTap"), virtualNetworkTap)
-        OpenAPI.validate_property(NetworkInterfaceTapConfigurationPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(virtualNetworkTap, provisioningState, )
+        o = new(virtualNetworkTap, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type NetworkInterfaceTapConfigurationPropertiesFormat
 
 const _property_types_NetworkInterfaceTapConfigurationPropertiesFormat = Dict{Symbol,String}(Symbol("virtualNetworkTap")=>"VirtualNetworkTap", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ NetworkInterfaceTapConfigurationPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkInterfaceTapConfigurationPropertiesFormat[name]))}
 
-function check_required(o::NetworkInterfaceTapConfigurationPropertiesFormat)
+function OpenAPI.check_required(o::NetworkInterfaceTapConfigurationPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::NetworkInterfaceTapConfigurationPropertiesFormat)
+    OpenAPI.validate_property(NetworkInterfaceTapConfigurationPropertiesFormat, Symbol("virtualNetworkTap"), o.virtualNetworkTap)
+    OpenAPI.validate_property(NetworkInterfaceTapConfigurationPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ NetworkInterfaceTapConfigurationPropertiesFormat }, name::Symbol, val)
+
+
 end

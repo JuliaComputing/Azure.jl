@@ -18,19 +18,26 @@ Base.@kwdef mutable struct SshPublicKeysGroupListResult <: OpenAPI.APIModel
     nextLink::Union{Nothing, String} = nothing
 
     function SshPublicKeysGroupListResult(value, nextLink, )
-        OpenAPI.validate_property(SshPublicKeysGroupListResult, Symbol("value"), value)
-        OpenAPI.validate_property(SshPublicKeysGroupListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type SshPublicKeysGroupListResult
 
 const _property_types_SshPublicKeysGroupListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{SshPublicKeyResource}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ SshPublicKeysGroupListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SshPublicKeysGroupListResult[name]))}
 
-function check_required(o::SshPublicKeysGroupListResult)
+function OpenAPI.check_required(o::SshPublicKeysGroupListResult)
     o.value === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::SshPublicKeysGroupListResult)
+    OpenAPI.validate_property(SshPublicKeysGroupListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(SshPublicKeysGroupListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ SshPublicKeysGroupListResult }, name::Symbol, val)
+
+
 end

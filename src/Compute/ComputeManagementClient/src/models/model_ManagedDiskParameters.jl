@@ -6,34 +6,47 @@
 The parameters of a managed disk.
 
     ManagedDiskParameters(;
-        id=nothing,
         storageAccountType=nothing,
         diskEncryptionSet=nothing,
+        securityProfile=nothing,
+        id=nothing,
     )
 
-    - id::String : Resource Id
     - storageAccountType::StorageAccountType
     - diskEncryptionSet::DiskEncryptionSetParameters
+    - securityProfile::VMDiskSecurityProfile
+    - id::String : Resource Id
 """
 Base.@kwdef mutable struct ManagedDiskParameters <: OpenAPI.APIModel
-    id::Union{Nothing, String} = nothing
     storageAccountType = nothing # spec type: Union{ Nothing, StorageAccountType }
     diskEncryptionSet = nothing # spec type: Union{ Nothing, DiskEncryptionSetParameters }
+    securityProfile = nothing # spec type: Union{ Nothing, VMDiskSecurityProfile }
+    id::Union{Nothing, String} = nothing
 
-    function ManagedDiskParameters(id, storageAccountType, diskEncryptionSet, )
-        OpenAPI.validate_property(ManagedDiskParameters, Symbol("id"), id)
-        OpenAPI.validate_property(ManagedDiskParameters, Symbol("storageAccountType"), storageAccountType)
-        OpenAPI.validate_property(ManagedDiskParameters, Symbol("diskEncryptionSet"), diskEncryptionSet)
-        return new(id, storageAccountType, diskEncryptionSet, )
+    function ManagedDiskParameters(storageAccountType, diskEncryptionSet, securityProfile, id, )
+        o = new(storageAccountType, diskEncryptionSet, securityProfile, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ManagedDiskParameters
 
-const _property_types_ManagedDiskParameters = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("storageAccountType")=>"StorageAccountType", Symbol("diskEncryptionSet")=>"DiskEncryptionSetParameters", )
+const _property_types_ManagedDiskParameters = Dict{Symbol,String}(Symbol("storageAccountType")=>"StorageAccountType", Symbol("diskEncryptionSet")=>"DiskEncryptionSetParameters", Symbol("securityProfile")=>"VMDiskSecurityProfile", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ ManagedDiskParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ManagedDiskParameters[name]))}
 
-function check_required(o::ManagedDiskParameters)
+function OpenAPI.check_required(o::ManagedDiskParameters)
     true
 end
 
+function OpenAPI.validate_properties(o::ManagedDiskParameters)
+    OpenAPI.validate_property(ManagedDiskParameters, Symbol("storageAccountType"), o.storageAccountType)
+    OpenAPI.validate_property(ManagedDiskParameters, Symbol("diskEncryptionSet"), o.diskEncryptionSet)
+    OpenAPI.validate_property(ManagedDiskParameters, Symbol("securityProfile"), o.securityProfile)
+    OpenAPI.validate_property(ManagedDiskParameters, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ ManagedDiskParameters }, name::Symbol, val)
+
+
+
+
 end

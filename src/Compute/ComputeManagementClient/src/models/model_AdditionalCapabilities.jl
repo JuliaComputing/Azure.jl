@@ -7,25 +7,36 @@ Enables or disables a capability on the virtual machine or virtual machine scale
 
     AdditionalCapabilities(;
         ultraSSDEnabled=nothing,
+        hibernationEnabled=nothing,
     )
 
     - ultraSSDEnabled::Bool : The flag that enables or disables a capability to have one or more managed data disks with UltraSSD_LRS storage account type on the VM or VMSS. Managed disks with storage account type UltraSSD_LRS can be added to a virtual machine or virtual machine scale set only if this property is enabled.
+    - hibernationEnabled::Bool : The flag that enables or disables hibernation capability on the VM.
 """
 Base.@kwdef mutable struct AdditionalCapabilities <: OpenAPI.APIModel
     ultraSSDEnabled::Union{Nothing, Bool} = nothing
+    hibernationEnabled::Union{Nothing, Bool} = nothing
 
-    function AdditionalCapabilities(ultraSSDEnabled, )
-        OpenAPI.validate_property(AdditionalCapabilities, Symbol("ultraSSDEnabled"), ultraSSDEnabled)
-        return new(ultraSSDEnabled, )
+    function AdditionalCapabilities(ultraSSDEnabled, hibernationEnabled, )
+        o = new(ultraSSDEnabled, hibernationEnabled, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AdditionalCapabilities
 
-const _property_types_AdditionalCapabilities = Dict{Symbol,String}(Symbol("ultraSSDEnabled")=>"Bool", )
+const _property_types_AdditionalCapabilities = Dict{Symbol,String}(Symbol("ultraSSDEnabled")=>"Bool", Symbol("hibernationEnabled")=>"Bool", )
 OpenAPI.property_type(::Type{ AdditionalCapabilities }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AdditionalCapabilities[name]))}
 
-function check_required(o::AdditionalCapabilities)
+function OpenAPI.check_required(o::AdditionalCapabilities)
     true
 end
 
+function OpenAPI.validate_properties(o::AdditionalCapabilities)
+    OpenAPI.validate_property(AdditionalCapabilities, Symbol("ultraSSDEnabled"), o.ultraSSDEnabled)
+    OpenAPI.validate_property(AdditionalCapabilities, Symbol("hibernationEnabled"), o.hibernationEnabled)
+end
+
 function OpenAPI.validate_property(::Type{ AdditionalCapabilities }, name::Symbol, val)
+
+
 end

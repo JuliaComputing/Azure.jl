@@ -36,27 +36,40 @@ Base.@kwdef mutable struct ApplicationGatewayOnDemandProbe <: OpenAPI.APIModel
     backendHttpSettings = nothing # spec type: Union{ Nothing, SubResource }
 
     function ApplicationGatewayOnDemandProbe(protocol, host, path, timeout, pickHostNameFromBackendHttpSettings, match, backendAddressPool, backendHttpSettings, )
-        OpenAPI.validate_property(ApplicationGatewayOnDemandProbe, Symbol("protocol"), protocol)
-        OpenAPI.validate_property(ApplicationGatewayOnDemandProbe, Symbol("host"), host)
-        OpenAPI.validate_property(ApplicationGatewayOnDemandProbe, Symbol("path"), path)
-        OpenAPI.validate_property(ApplicationGatewayOnDemandProbe, Symbol("timeout"), timeout)
-        OpenAPI.validate_property(ApplicationGatewayOnDemandProbe, Symbol("pickHostNameFromBackendHttpSettings"), pickHostNameFromBackendHttpSettings)
-        OpenAPI.validate_property(ApplicationGatewayOnDemandProbe, Symbol("match"), match)
-        OpenAPI.validate_property(ApplicationGatewayOnDemandProbe, Symbol("backendAddressPool"), backendAddressPool)
-        OpenAPI.validate_property(ApplicationGatewayOnDemandProbe, Symbol("backendHttpSettings"), backendHttpSettings)
-        return new(protocol, host, path, timeout, pickHostNameFromBackendHttpSettings, match, backendAddressPool, backendHttpSettings, )
+        o = new(protocol, host, path, timeout, pickHostNameFromBackendHttpSettings, match, backendAddressPool, backendHttpSettings, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayOnDemandProbe
 
 const _property_types_ApplicationGatewayOnDemandProbe = Dict{Symbol,String}(Symbol("protocol")=>"ApplicationGatewayProtocol", Symbol("host")=>"String", Symbol("path")=>"String", Symbol("timeout")=>"Int64", Symbol("pickHostNameFromBackendHttpSettings")=>"Bool", Symbol("match")=>"ApplicationGatewayProbeHealthResponseMatch", Symbol("backendAddressPool")=>"SubResource", Symbol("backendHttpSettings")=>"SubResource", )
 OpenAPI.property_type(::Type{ ApplicationGatewayOnDemandProbe }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayOnDemandProbe[name]))}
 
-function check_required(o::ApplicationGatewayOnDemandProbe)
+function OpenAPI.check_required(o::ApplicationGatewayOnDemandProbe)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayOnDemandProbe)
+    OpenAPI.validate_property(ApplicationGatewayOnDemandProbe, Symbol("protocol"), o.protocol)
+    OpenAPI.validate_property(ApplicationGatewayOnDemandProbe, Symbol("host"), o.host)
+    OpenAPI.validate_property(ApplicationGatewayOnDemandProbe, Symbol("path"), o.path)
+    OpenAPI.validate_property(ApplicationGatewayOnDemandProbe, Symbol("timeout"), o.timeout)
+    OpenAPI.validate_property(ApplicationGatewayOnDemandProbe, Symbol("pickHostNameFromBackendHttpSettings"), o.pickHostNameFromBackendHttpSettings)
+    OpenAPI.validate_property(ApplicationGatewayOnDemandProbe, Symbol("match"), o.match)
+    OpenAPI.validate_property(ApplicationGatewayOnDemandProbe, Symbol("backendAddressPool"), o.backendAddressPool)
+    OpenAPI.validate_property(ApplicationGatewayOnDemandProbe, Symbol("backendHttpSettings"), o.backendHttpSettings)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayOnDemandProbe }, name::Symbol, val)
+
+
+
+
     if name === Symbol("timeout")
         OpenAPI.validate_param(name, "ApplicationGatewayOnDemandProbe", :format, val, "int32")
     end
+
+
+
+
 end

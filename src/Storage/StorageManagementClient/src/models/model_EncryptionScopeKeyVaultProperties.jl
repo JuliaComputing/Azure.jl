@@ -7,25 +7,44 @@ The key vault properties for the encryption scope. This is a required field if e
 
     EncryptionScopeKeyVaultProperties(;
         keyUri=nothing,
+        currentVersionedKeyIdentifier=nothing,
+        lastKeyRotationTimestamp=nothing,
     )
 
     - keyUri::String : The object identifier for a key vault key object. When applied, the encryption scope will use the key referenced by the identifier to enable customer-managed key support on this encryption scope.
+    - currentVersionedKeyIdentifier::String : The object identifier of the current versioned Key Vault Key in use.
+    - lastKeyRotationTimestamp::ZonedDateTime : Timestamp of last rotation of the Key Vault Key.
 """
 Base.@kwdef mutable struct EncryptionScopeKeyVaultProperties <: OpenAPI.APIModel
     keyUri::Union{Nothing, String} = nothing
+    currentVersionedKeyIdentifier::Union{Nothing, String} = nothing
+    lastKeyRotationTimestamp::Union{Nothing, ZonedDateTime} = nothing
 
-    function EncryptionScopeKeyVaultProperties(keyUri, )
-        OpenAPI.validate_property(EncryptionScopeKeyVaultProperties, Symbol("keyUri"), keyUri)
-        return new(keyUri, )
+    function EncryptionScopeKeyVaultProperties(keyUri, currentVersionedKeyIdentifier, lastKeyRotationTimestamp, )
+        o = new(keyUri, currentVersionedKeyIdentifier, lastKeyRotationTimestamp, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type EncryptionScopeKeyVaultProperties
 
-const _property_types_EncryptionScopeKeyVaultProperties = Dict{Symbol,String}(Symbol("keyUri")=>"String", )
+const _property_types_EncryptionScopeKeyVaultProperties = Dict{Symbol,String}(Symbol("keyUri")=>"String", Symbol("currentVersionedKeyIdentifier")=>"String", Symbol("lastKeyRotationTimestamp")=>"ZonedDateTime", )
 OpenAPI.property_type(::Type{ EncryptionScopeKeyVaultProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_EncryptionScopeKeyVaultProperties[name]))}
 
-function check_required(o::EncryptionScopeKeyVaultProperties)
+function OpenAPI.check_required(o::EncryptionScopeKeyVaultProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::EncryptionScopeKeyVaultProperties)
+    OpenAPI.validate_property(EncryptionScopeKeyVaultProperties, Symbol("keyUri"), o.keyUri)
+    OpenAPI.validate_property(EncryptionScopeKeyVaultProperties, Symbol("currentVersionedKeyIdentifier"), o.currentVersionedKeyIdentifier)
+    OpenAPI.validate_property(EncryptionScopeKeyVaultProperties, Symbol("lastKeyRotationTimestamp"), o.lastKeyRotationTimestamp)
+end
+
 function OpenAPI.validate_property(::Type{ EncryptionScopeKeyVaultProperties }, name::Symbol, val)
+
+
+
+    if name === Symbol("lastKeyRotationTimestamp")
+        OpenAPI.validate_param(name, "EncryptionScopeKeyVaultProperties", :format, val, "date-time")
+    end
 end

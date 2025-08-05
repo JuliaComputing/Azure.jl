@@ -14,17 +14,23 @@ Base.@kwdef mutable struct ScheduledEventsProfile <: OpenAPI.APIModel
     terminateNotificationProfile = nothing # spec type: Union{ Nothing, TerminateNotificationProfile }
 
     function ScheduledEventsProfile(terminateNotificationProfile, )
-        OpenAPI.validate_property(ScheduledEventsProfile, Symbol("terminateNotificationProfile"), terminateNotificationProfile)
-        return new(terminateNotificationProfile, )
+        o = new(terminateNotificationProfile, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ScheduledEventsProfile
 
 const _property_types_ScheduledEventsProfile = Dict{Symbol,String}(Symbol("terminateNotificationProfile")=>"TerminateNotificationProfile", )
 OpenAPI.property_type(::Type{ ScheduledEventsProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ScheduledEventsProfile[name]))}
 
-function check_required(o::ScheduledEventsProfile)
+function OpenAPI.check_required(o::ScheduledEventsProfile)
     true
 end
 
+function OpenAPI.validate_properties(o::ScheduledEventsProfile)
+    OpenAPI.validate_property(ScheduledEventsProfile, Symbol("terminateNotificationProfile"), o.terminateNotificationProfile)
+end
+
 function OpenAPI.validate_property(::Type{ ScheduledEventsProfile }, name::Symbol, val)
+
 end

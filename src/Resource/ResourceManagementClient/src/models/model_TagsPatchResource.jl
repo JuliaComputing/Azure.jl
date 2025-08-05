@@ -18,21 +18,29 @@ Base.@kwdef mutable struct TagsPatchResource <: OpenAPI.APIModel
     properties = nothing # spec type: Union{ Nothing, Tags }
 
     function TagsPatchResource(operation, properties, )
-        OpenAPI.validate_property(TagsPatchResource, Symbol("operation"), operation)
-        OpenAPI.validate_property(TagsPatchResource, Symbol("properties"), properties)
-        return new(operation, properties, )
+        o = new(operation, properties, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type TagsPatchResource
 
 const _property_types_TagsPatchResource = Dict{Symbol,String}(Symbol("operation")=>"String", Symbol("properties")=>"Tags", )
 OpenAPI.property_type(::Type{ TagsPatchResource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TagsPatchResource[name]))}
 
-function check_required(o::TagsPatchResource)
+function OpenAPI.check_required(o::TagsPatchResource)
     true
 end
 
+function OpenAPI.validate_properties(o::TagsPatchResource)
+    OpenAPI.validate_property(TagsPatchResource, Symbol("operation"), o.operation)
+    OpenAPI.validate_property(TagsPatchResource, Symbol("properties"), o.properties)
+end
+
 function OpenAPI.validate_property(::Type{ TagsPatchResource }, name::Symbol, val)
+
     if name === Symbol("operation")
         OpenAPI.validate_param(name, "TagsPatchResource", :enum, val, ["Replace", "Merge", "Delete"])
     end
+
+
 end

@@ -18,18 +18,28 @@ Base.@kwdef mutable struct ConnectionMonitorSuccessThreshold <: OpenAPI.APIModel
     roundTripTimeMs::Union{Nothing, Float64} = nothing
 
     function ConnectionMonitorSuccessThreshold(checksFailedPercent, roundTripTimeMs, )
-        OpenAPI.validate_property(ConnectionMonitorSuccessThreshold, Symbol("checksFailedPercent"), checksFailedPercent)
-        OpenAPI.validate_property(ConnectionMonitorSuccessThreshold, Symbol("roundTripTimeMs"), roundTripTimeMs)
-        return new(checksFailedPercent, roundTripTimeMs, )
+        o = new(checksFailedPercent, roundTripTimeMs, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ConnectionMonitorSuccessThreshold
 
 const _property_types_ConnectionMonitorSuccessThreshold = Dict{Symbol,String}(Symbol("checksFailedPercent")=>"Int64", Symbol("roundTripTimeMs")=>"Float64", )
 OpenAPI.property_type(::Type{ ConnectionMonitorSuccessThreshold }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ConnectionMonitorSuccessThreshold[name]))}
 
-function check_required(o::ConnectionMonitorSuccessThreshold)
+function OpenAPI.check_required(o::ConnectionMonitorSuccessThreshold)
     true
 end
 
+function OpenAPI.validate_properties(o::ConnectionMonitorSuccessThreshold)
+    OpenAPI.validate_property(ConnectionMonitorSuccessThreshold, Symbol("checksFailedPercent"), o.checksFailedPercent)
+    OpenAPI.validate_property(ConnectionMonitorSuccessThreshold, Symbol("roundTripTimeMs"), o.roundTripTimeMs)
+end
+
 function OpenAPI.validate_property(::Type{ ConnectionMonitorSuccessThreshold }, name::Symbol, val)
+
+    if name === Symbol("checksFailedPercent")
+        OpenAPI.validate_param(name, "ConnectionMonitorSuccessThreshold", :format, val, "int32")
+    end
+
 end

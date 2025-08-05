@@ -24,26 +24,35 @@ Base.@kwdef mutable struct TroubleshootingResult <: OpenAPI.APIModel
     results::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{TroubleshootingDetails} }
 
     function TroubleshootingResult(startTime, endTime, code, results, )
-        OpenAPI.validate_property(TroubleshootingResult, Symbol("startTime"), startTime)
-        OpenAPI.validate_property(TroubleshootingResult, Symbol("endTime"), endTime)
-        OpenAPI.validate_property(TroubleshootingResult, Symbol("code"), code)
-        OpenAPI.validate_property(TroubleshootingResult, Symbol("results"), results)
-        return new(startTime, endTime, code, results, )
+        o = new(startTime, endTime, code, results, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type TroubleshootingResult
 
 const _property_types_TroubleshootingResult = Dict{Symbol,String}(Symbol("startTime")=>"ZonedDateTime", Symbol("endTime")=>"ZonedDateTime", Symbol("code")=>"String", Symbol("results")=>"Vector{TroubleshootingDetails}", )
 OpenAPI.property_type(::Type{ TroubleshootingResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TroubleshootingResult[name]))}
 
-function check_required(o::TroubleshootingResult)
+function OpenAPI.check_required(o::TroubleshootingResult)
     true
 end
 
+function OpenAPI.validate_properties(o::TroubleshootingResult)
+    OpenAPI.validate_property(TroubleshootingResult, Symbol("startTime"), o.startTime)
+    OpenAPI.validate_property(TroubleshootingResult, Symbol("endTime"), o.endTime)
+    OpenAPI.validate_property(TroubleshootingResult, Symbol("code"), o.code)
+    OpenAPI.validate_property(TroubleshootingResult, Symbol("results"), o.results)
+end
+
 function OpenAPI.validate_property(::Type{ TroubleshootingResult }, name::Symbol, val)
+
     if name === Symbol("startTime")
         OpenAPI.validate_param(name, "TroubleshootingResult", :format, val, "date-time")
     end
+
     if name === Symbol("endTime")
         OpenAPI.validate_param(name, "TroubleshootingResult", :format, val, "date-time")
     end
+
+
 end

@@ -18,18 +18,25 @@ Base.@kwdef mutable struct NetworkInterfaceAssociation <: OpenAPI.APIModel
     securityRules::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{SecurityRule} }
 
     function NetworkInterfaceAssociation(id, securityRules, )
-        OpenAPI.validate_property(NetworkInterfaceAssociation, Symbol("id"), id)
-        OpenAPI.validate_property(NetworkInterfaceAssociation, Symbol("securityRules"), securityRules)
-        return new(id, securityRules, )
+        o = new(id, securityRules, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type NetworkInterfaceAssociation
 
 const _property_types_NetworkInterfaceAssociation = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("securityRules")=>"Vector{SecurityRule}", )
 OpenAPI.property_type(::Type{ NetworkInterfaceAssociation }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkInterfaceAssociation[name]))}
 
-function check_required(o::NetworkInterfaceAssociation)
+function OpenAPI.check_required(o::NetworkInterfaceAssociation)
     true
 end
 
+function OpenAPI.validate_properties(o::NetworkInterfaceAssociation)
+    OpenAPI.validate_property(NetworkInterfaceAssociation, Symbol("id"), o.id)
+    OpenAPI.validate_property(NetworkInterfaceAssociation, Symbol("securityRules"), o.securityRules)
+end
+
 function OpenAPI.validate_property(::Type{ NetworkInterfaceAssociation }, name::Symbol, val)
+
+
 end

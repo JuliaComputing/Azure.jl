@@ -18,18 +18,25 @@ Base.@kwdef mutable struct ApplicationGatewaySslPredefinedPolicyPropertiesFormat
     minProtocolVersion = nothing # spec type: Union{ Nothing, ProtocolsEnum }
 
     function ApplicationGatewaySslPredefinedPolicyPropertiesFormat(cipherSuites, minProtocolVersion, )
-        OpenAPI.validate_property(ApplicationGatewaySslPredefinedPolicyPropertiesFormat, Symbol("cipherSuites"), cipherSuites)
-        OpenAPI.validate_property(ApplicationGatewaySslPredefinedPolicyPropertiesFormat, Symbol("minProtocolVersion"), minProtocolVersion)
-        return new(cipherSuites, minProtocolVersion, )
+        o = new(cipherSuites, minProtocolVersion, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewaySslPredefinedPolicyPropertiesFormat
 
 const _property_types_ApplicationGatewaySslPredefinedPolicyPropertiesFormat = Dict{Symbol,String}(Symbol("cipherSuites")=>"Vector{CipherSuitesEnum}", Symbol("minProtocolVersion")=>"ProtocolsEnum", )
 OpenAPI.property_type(::Type{ ApplicationGatewaySslPredefinedPolicyPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewaySslPredefinedPolicyPropertiesFormat[name]))}
 
-function check_required(o::ApplicationGatewaySslPredefinedPolicyPropertiesFormat)
+function OpenAPI.check_required(o::ApplicationGatewaySslPredefinedPolicyPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewaySslPredefinedPolicyPropertiesFormat)
+    OpenAPI.validate_property(ApplicationGatewaySslPredefinedPolicyPropertiesFormat, Symbol("cipherSuites"), o.cipherSuites)
+    OpenAPI.validate_property(ApplicationGatewaySslPredefinedPolicyPropertiesFormat, Symbol("minProtocolVersion"), o.minProtocolVersion)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewaySslPredefinedPolicyPropertiesFormat }, name::Symbol, val)
+
+
 end

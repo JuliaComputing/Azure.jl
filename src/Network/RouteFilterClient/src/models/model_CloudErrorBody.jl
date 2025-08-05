@@ -24,20 +24,29 @@ Base.@kwdef mutable struct CloudErrorBody <: OpenAPI.APIModel
     details::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{CloudErrorBody} }
 
     function CloudErrorBody(code, message, target, details, )
-        OpenAPI.validate_property(CloudErrorBody, Symbol("code"), code)
-        OpenAPI.validate_property(CloudErrorBody, Symbol("message"), message)
-        OpenAPI.validate_property(CloudErrorBody, Symbol("target"), target)
-        OpenAPI.validate_property(CloudErrorBody, Symbol("details"), details)
-        return new(code, message, target, details, )
+        o = new(code, message, target, details, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type CloudErrorBody
 
 const _property_types_CloudErrorBody = Dict{Symbol,String}(Symbol("code")=>"String", Symbol("message")=>"String", Symbol("target")=>"String", Symbol("details")=>"Vector{CloudErrorBody}", )
 OpenAPI.property_type(::Type{ CloudErrorBody }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_CloudErrorBody[name]))}
 
-function check_required(o::CloudErrorBody)
+function OpenAPI.check_required(o::CloudErrorBody)
     true
 end
 
+function OpenAPI.validate_properties(o::CloudErrorBody)
+    OpenAPI.validate_property(CloudErrorBody, Symbol("code"), o.code)
+    OpenAPI.validate_property(CloudErrorBody, Symbol("message"), o.message)
+    OpenAPI.validate_property(CloudErrorBody, Symbol("target"), o.target)
+    OpenAPI.validate_property(CloudErrorBody, Symbol("details"), o.details)
+end
+
 function OpenAPI.validate_property(::Type{ CloudErrorBody }, name::Symbol, val)
+
+
+
+
 end

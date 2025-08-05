@@ -27,10 +27,10 @@ Checks whether the specified account name is available or taken.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **AccountsApi** | API context | 
-**subscription_id** | **String**| Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**location** | **String**| The resource location without whitespace. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**parameters** | [**CheckNameAvailabilityParameters**](CheckNameAvailabilityParameters.md)| Parameters supplied to check the Data Lake Store account name availability. | 
+**subscription_id** | **String** | Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**location** | **String** | The resource location without whitespace. |
+**api_version** | **String** | Client Api Version. |
+**parameters** | [**CheckNameAvailabilityParameters**](CheckNameAvailabilityParameters.md) | Parameters supplied to check the Data Lake Store account name availability. |
 
 ### Return type
 
@@ -60,11 +60,11 @@ Creates the specified Data Lake Store account.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **AccountsApi** | API context | 
-**subscription_id** | **String**| Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**resource_group_name** | **String**| The name of the Azure resource group. | [default to nothing]
-**account_name** | **String**| The name of the Data Lake Store account. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**parameters** | [**CreateDataLakeStoreAccountParameters**](CreateDataLakeStoreAccountParameters.md)| Parameters supplied to create the Data Lake Store account. | 
+**subscription_id** | **String** | Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**resource_group_name** | **String** | The name of the Azure resource group. |
+**account_name** | **String** | The name of the Data Lake Store account. |
+**api_version** | **String** | Client Api Version. |
+**parameters** | [**CreateDataLakeStoreAccountParameters**](CreateDataLakeStoreAccountParameters.md) | Parameters supplied to create the Data Lake Store account. |
 
 ### Return type
 
@@ -94,10 +94,10 @@ Deletes the specified Data Lake Store account.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **AccountsApi** | API context | 
-**subscription_id** | **String**| Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**resource_group_name** | **String**| The name of the Azure resource group. | [default to nothing]
-**account_name** | **String**| The name of the Data Lake Store account. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
+**subscription_id** | **String** | Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**resource_group_name** | **String** | The name of the Azure resource group. |
+**account_name** | **String** | The name of the Data Lake Store account. |
+**api_version** | **String** | Client Api Version. |
 
 ### Return type
 
@@ -127,10 +127,10 @@ Attempts to enable a user managed Key Vault for encryption of the specified Data
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **AccountsApi** | API context | 
-**subscription_id** | **String**| Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**resource_group_name** | **String**| The name of the Azure resource group. | [default to nothing]
-**account_name** | **String**| The name of the Data Lake Store account. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
+**subscription_id** | **String** | Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**resource_group_name** | **String** | The name of the Azure resource group. |
+**account_name** | **String** | The name of the Data Lake Store account. |
+**api_version** | **String** | Client Api Version. |
 
 ### Return type
 
@@ -160,10 +160,10 @@ Gets the specified Data Lake Store account.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **AccountsApi** | API context | 
-**subscription_id** | **String**| Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**resource_group_name** | **String**| The name of the Azure resource group. | [default to nothing]
-**account_name** | **String**| The name of the Data Lake Store account. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
+**subscription_id** | **String** | Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**resource_group_name** | **String** | The name of the Azure resource group. |
+**account_name** | **String** | The name of the Data Lake Store account. |
+**api_version** | **String** | Client Api Version. |
 
 ### Return type
 
@@ -193,19 +193,19 @@ Lists the Data Lake Store accounts within the subscription. The response include
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **AccountsApi** | API context | 
-**subscription_id** | **String**| Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
+**subscription_id** | **String** | Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**api_version** | **String** | Client Api Version. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | **String**| OData filter. Optional. | [default to nothing]
- **top** | **Int64**| The number of items to return. Optional. | [default to nothing]
- **skip** | **Int64**| The number of items to skip over before returning elements. Optional. | [default to nothing]
- **select** | **String**| OData Select statement. Limits the properties on each entry to just those requested, e.g. Categories?$select&#x3D;CategoryName,Description. Optional. | [default to nothing]
- **orderby** | **String**| OrderBy clause. One or more comma-separated expressions with an optional \&quot;asc\&quot; (the default) or \&quot;desc\&quot; depending on the order you&#39;d like the values sorted, e.g. Categories?$orderby&#x3D;CategoryName desc. Optional. | [default to nothing]
- **count** | **Bool**| The Boolean value of true or false to request a count of the matching resources included with the resources in the response, e.g. Categories?$count&#x3D;true. Optional. | [default to nothing]
+ **filter** | **String** | OData filter. Optional. | [default to nothing]
+ **top** | **Int64** | The number of items to return. Optional. | [default to nothing]
+ **skip** | **Int64** | The number of items to skip over before returning elements. Optional. | [default to nothing]
+ **select** | **String** | OData Select statement. Limits the properties on each entry to just those requested, e.g. Categories?$select&#x3D;CategoryName,Description. Optional. | [default to nothing]
+ **orderby** | **String** | OrderBy clause. One or more comma-separated expressions with an optional \&quot;asc\&quot; (the default) or \&quot;desc\&quot; depending on the order you&#39;d like the values sorted, e.g. Categories?$orderby&#x3D;CategoryName desc. Optional. | [default to nothing]
+ **count** | **Bool** | The Boolean value of true or false to request a count of the matching resources included with the resources in the response, e.g. Categories?$count&#x3D;true. Optional. | [default to nothing]
 
 ### Return type
 
@@ -235,20 +235,20 @@ Lists the Data Lake Store accounts within a specific resource group. The respons
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **AccountsApi** | API context | 
-**subscription_id** | **String**| Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**resource_group_name** | **String**| The name of the Azure resource group. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
+**subscription_id** | **String** | Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**resource_group_name** | **String** | The name of the Azure resource group. |
+**api_version** | **String** | Client Api Version. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | **String**| OData filter. Optional. | [default to nothing]
- **top** | **Int64**| The number of items to return. Optional. | [default to nothing]
- **skip** | **Int64**| The number of items to skip over before returning elements. Optional. | [default to nothing]
- **select** | **String**| OData Select statement. Limits the properties on each entry to just those requested, e.g. Categories?$select&#x3D;CategoryName,Description. Optional. | [default to nothing]
- **orderby** | **String**| OrderBy clause. One or more comma-separated expressions with an optional \&quot;asc\&quot; (the default) or \&quot;desc\&quot; depending on the order you&#39;d like the values sorted, e.g. Categories?$orderby&#x3D;CategoryName desc. Optional. | [default to nothing]
- **count** | **Bool**| A Boolean value of true or false to request a count of the matching resources included with the resources in the response, e.g. Categories?$count&#x3D;true. Optional. | [default to nothing]
+ **filter** | **String** | OData filter. Optional. | [default to nothing]
+ **top** | **Int64** | The number of items to return. Optional. | [default to nothing]
+ **skip** | **Int64** | The number of items to skip over before returning elements. Optional. | [default to nothing]
+ **select** | **String** | OData Select statement. Limits the properties on each entry to just those requested, e.g. Categories?$select&#x3D;CategoryName,Description. Optional. | [default to nothing]
+ **orderby** | **String** | OrderBy clause. One or more comma-separated expressions with an optional \&quot;asc\&quot; (the default) or \&quot;desc\&quot; depending on the order you&#39;d like the values sorted, e.g. Categories?$orderby&#x3D;CategoryName desc. Optional. | [default to nothing]
+ **count** | **Bool** | A Boolean value of true or false to request a count of the matching resources included with the resources in the response, e.g. Categories?$count&#x3D;true. Optional. | [default to nothing]
 
 ### Return type
 
@@ -278,11 +278,11 @@ Updates the specified Data Lake Store account information.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **AccountsApi** | API context | 
-**subscription_id** | **String**| Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**resource_group_name** | **String**| The name of the Azure resource group. | [default to nothing]
-**account_name** | **String**| The name of the Data Lake Store account. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**parameters** | [**UpdateDataLakeStoreAccountParameters**](UpdateDataLakeStoreAccountParameters.md)| Parameters supplied to update the Data Lake Store account. | 
+**subscription_id** | **String** | Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**resource_group_name** | **String** | The name of the Azure resource group. |
+**account_name** | **String** | The name of the Data Lake Store account. |
+**api_version** | **String** | Client Api Version. |
+**parameters** | [**UpdateDataLakeStoreAccountParameters**](UpdateDataLakeStoreAccountParameters.md) | Parameters supplied to update the Data Lake Store account. |
 
 ### Return type
 

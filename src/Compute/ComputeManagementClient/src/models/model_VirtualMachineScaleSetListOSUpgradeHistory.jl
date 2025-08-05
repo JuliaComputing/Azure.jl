@@ -18,19 +18,26 @@ Base.@kwdef mutable struct VirtualMachineScaleSetListOSUpgradeHistory <: OpenAPI
     nextLink::Union{Nothing, String} = nothing
 
     function VirtualMachineScaleSetListOSUpgradeHistory(value, nextLink, )
-        OpenAPI.validate_property(VirtualMachineScaleSetListOSUpgradeHistory, Symbol("value"), value)
-        OpenAPI.validate_property(VirtualMachineScaleSetListOSUpgradeHistory, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetListOSUpgradeHistory
 
 const _property_types_VirtualMachineScaleSetListOSUpgradeHistory = Dict{Symbol,String}(Symbol("value")=>"Vector{UpgradeOperationHistoricalStatusInfo}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetListOSUpgradeHistory }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetListOSUpgradeHistory[name]))}
 
-function check_required(o::VirtualMachineScaleSetListOSUpgradeHistory)
+function OpenAPI.check_required(o::VirtualMachineScaleSetListOSUpgradeHistory)
     o.value === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetListOSUpgradeHistory)
+    OpenAPI.validate_property(VirtualMachineScaleSetListOSUpgradeHistory, Symbol("value"), o.value)
+    OpenAPI.validate_property(VirtualMachineScaleSetListOSUpgradeHistory, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetListOSUpgradeHistory }, name::Symbol, val)
+
+
 end

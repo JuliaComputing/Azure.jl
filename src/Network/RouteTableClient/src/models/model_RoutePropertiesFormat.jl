@@ -10,35 +10,49 @@ Route resource.
         nextHopType=nothing,
         nextHopIpAddress=nothing,
         provisioningState=nothing,
+        hasBgpOverride=nothing,
     )
 
     - addressPrefix::String : The destination CIDR to which the route applies.
     - nextHopType::RouteNextHopType
     - nextHopIpAddress::String : The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
     - provisioningState::ProvisioningState
+    - hasBgpOverride::Bool : A value indicating whether this route overrides overlapping BGP routes regardless of LPM.
 """
 Base.@kwdef mutable struct RoutePropertiesFormat <: OpenAPI.APIModel
     addressPrefix::Union{Nothing, String} = nothing
     nextHopType = nothing # spec type: Union{ Nothing, RouteNextHopType }
     nextHopIpAddress::Union{Nothing, String} = nothing
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
+    hasBgpOverride::Union{Nothing, Bool} = nothing
 
-    function RoutePropertiesFormat(addressPrefix, nextHopType, nextHopIpAddress, provisioningState, )
-        OpenAPI.validate_property(RoutePropertiesFormat, Symbol("addressPrefix"), addressPrefix)
-        OpenAPI.validate_property(RoutePropertiesFormat, Symbol("nextHopType"), nextHopType)
-        OpenAPI.validate_property(RoutePropertiesFormat, Symbol("nextHopIpAddress"), nextHopIpAddress)
-        OpenAPI.validate_property(RoutePropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(addressPrefix, nextHopType, nextHopIpAddress, provisioningState, )
+    function RoutePropertiesFormat(addressPrefix, nextHopType, nextHopIpAddress, provisioningState, hasBgpOverride, )
+        o = new(addressPrefix, nextHopType, nextHopIpAddress, provisioningState, hasBgpOverride, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type RoutePropertiesFormat
 
-const _property_types_RoutePropertiesFormat = Dict{Symbol,String}(Symbol("addressPrefix")=>"String", Symbol("nextHopType")=>"RouteNextHopType", Symbol("nextHopIpAddress")=>"String", Symbol("provisioningState")=>"ProvisioningState", )
+const _property_types_RoutePropertiesFormat = Dict{Symbol,String}(Symbol("addressPrefix")=>"String", Symbol("nextHopType")=>"RouteNextHopType", Symbol("nextHopIpAddress")=>"String", Symbol("provisioningState")=>"ProvisioningState", Symbol("hasBgpOverride")=>"Bool", )
 OpenAPI.property_type(::Type{ RoutePropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RoutePropertiesFormat[name]))}
 
-function check_required(o::RoutePropertiesFormat)
+function OpenAPI.check_required(o::RoutePropertiesFormat)
     o.nextHopType === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::RoutePropertiesFormat)
+    OpenAPI.validate_property(RoutePropertiesFormat, Symbol("addressPrefix"), o.addressPrefix)
+    OpenAPI.validate_property(RoutePropertiesFormat, Symbol("nextHopType"), o.nextHopType)
+    OpenAPI.validate_property(RoutePropertiesFormat, Symbol("nextHopIpAddress"), o.nextHopIpAddress)
+    OpenAPI.validate_property(RoutePropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(RoutePropertiesFormat, Symbol("hasBgpOverride"), o.hasBgpOverride)
+end
+
 function OpenAPI.validate_property(::Type{ RoutePropertiesFormat }, name::Symbol, val)
+
+
+
+
+
 end

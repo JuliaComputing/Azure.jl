@@ -18,18 +18,25 @@ Base.@kwdef mutable struct BootDiagnostics <: OpenAPI.APIModel
     storageUri::Union{Nothing, String} = nothing
 
     function BootDiagnostics(enabled, storageUri, )
-        OpenAPI.validate_property(BootDiagnostics, Symbol("enabled"), enabled)
-        OpenAPI.validate_property(BootDiagnostics, Symbol("storageUri"), storageUri)
-        return new(enabled, storageUri, )
+        o = new(enabled, storageUri, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type BootDiagnostics
 
 const _property_types_BootDiagnostics = Dict{Symbol,String}(Symbol("enabled")=>"Bool", Symbol("storageUri")=>"String", )
 OpenAPI.property_type(::Type{ BootDiagnostics }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_BootDiagnostics[name]))}
 
-function check_required(o::BootDiagnostics)
+function OpenAPI.check_required(o::BootDiagnostics)
     true
 end
 
+function OpenAPI.validate_properties(o::BootDiagnostics)
+    OpenAPI.validate_property(BootDiagnostics, Symbol("enabled"), o.enabled)
+    OpenAPI.validate_property(BootDiagnostics, Symbol("storageUri"), o.storageUri)
+end
+
 function OpenAPI.validate_property(::Type{ BootDiagnostics }, name::Symbol, val)
+
+
 end

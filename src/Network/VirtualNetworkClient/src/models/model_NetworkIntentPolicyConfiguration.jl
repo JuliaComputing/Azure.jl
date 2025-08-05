@@ -18,18 +18,25 @@ Base.@kwdef mutable struct NetworkIntentPolicyConfiguration <: OpenAPI.APIModel
     sourceNetworkIntentPolicy = nothing # spec type: Union{ Nothing, NetworkIntentPolicy }
 
     function NetworkIntentPolicyConfiguration(networkIntentPolicyName, sourceNetworkIntentPolicy, )
-        OpenAPI.validate_property(NetworkIntentPolicyConfiguration, Symbol("networkIntentPolicyName"), networkIntentPolicyName)
-        OpenAPI.validate_property(NetworkIntentPolicyConfiguration, Symbol("sourceNetworkIntentPolicy"), sourceNetworkIntentPolicy)
-        return new(networkIntentPolicyName, sourceNetworkIntentPolicy, )
+        o = new(networkIntentPolicyName, sourceNetworkIntentPolicy, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type NetworkIntentPolicyConfiguration
 
 const _property_types_NetworkIntentPolicyConfiguration = Dict{Symbol,String}(Symbol("networkIntentPolicyName")=>"String", Symbol("sourceNetworkIntentPolicy")=>"NetworkIntentPolicy", )
 OpenAPI.property_type(::Type{ NetworkIntentPolicyConfiguration }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkIntentPolicyConfiguration[name]))}
 
-function check_required(o::NetworkIntentPolicyConfiguration)
+function OpenAPI.check_required(o::NetworkIntentPolicyConfiguration)
     true
 end
 
+function OpenAPI.validate_properties(o::NetworkIntentPolicyConfiguration)
+    OpenAPI.validate_property(NetworkIntentPolicyConfiguration, Symbol("networkIntentPolicyName"), o.networkIntentPolicyName)
+    OpenAPI.validate_property(NetworkIntentPolicyConfiguration, Symbol("sourceNetworkIntentPolicy"), o.sourceNetworkIntentPolicy)
+end
+
 function OpenAPI.validate_property(::Type{ NetworkIntentPolicyConfiguration }, name::Symbol, val)
+
+
 end

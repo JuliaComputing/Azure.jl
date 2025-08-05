@@ -23,12 +23,12 @@ Creates or updates a peering in the specified express route circuits.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ExpressRouteCircuitPeeringsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**circuit_name** | **String**| The name of the express route circuit. | [default to nothing]
-**peering_name** | **String**| The name of the peering. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**peering_parameters** | [**ExpressRouteCircuitPeering**](ExpressRouteCircuitPeering.md)| Parameters supplied to the create or update express route circuit peering operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**circuit_name** | **String** | The name of the express route circuit. |
+**peering_name** | **String** | The name of the peering. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**peering_parameters** | [**ExpressRouteCircuitPeering**](ExpressRouteCircuitPeering.md) | Parameters supplied to the create or update express route circuit peering operation. |
 
 ### Return type
 
@@ -58,11 +58,11 @@ Deletes the specified peering from the specified express route circuit.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ExpressRouteCircuitPeeringsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**circuit_name** | **String**| The name of the express route circuit. | [default to nothing]
-**peering_name** | **String**| The name of the peering. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**circuit_name** | **String** | The name of the express route circuit. |
+**peering_name** | **String** | The name of the peering. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -92,11 +92,11 @@ Gets the specified peering for the express route circuit.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ExpressRouteCircuitPeeringsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**circuit_name** | **String**| The name of the express route circuit. | [default to nothing]
-**peering_name** | **String**| The name of the peering. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**circuit_name** | **String** | The name of the express route circuit. |
+**peering_name** | **String** | The name of the peering. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -126,10 +126,10 @@ Gets all peerings in a specified express route circuit.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ExpressRouteCircuitPeeringsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**circuit_name** | **String**| The name of the express route circuit. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**circuit_name** | **String** | The name of the express route circuit. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 

@@ -13,6 +13,7 @@ basepath(::Type{ AvailabilitySetsApi }) = "https://management.azure.com"
 
 const _returntypes_availability_sets_create_or_update_AvailabilitySetsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => AvailabilitySet,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_availability_sets_create_or_update(_api::AvailabilitySetsApi, resource_group_name::String, availability_set_name::String, api_version::String, subscription_id::String, parameters::AvailabilitySet; _mediaType=nothing)
@@ -20,7 +21,7 @@ function _oacinternal_availability_sets_create_or_update(_api::AvailabilitySetsA
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "availabilitySetName", availability_set_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -50,6 +51,7 @@ end
 const _returntypes_availability_sets_delete_AvailabilitySetsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("204", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_availability_sets_delete(_api::AvailabilitySetsApi, resource_group_name::String, availability_set_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
@@ -57,8 +59,8 @@ function _oacinternal_availability_sets_delete(_api::AvailabilitySetsApi, resour
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "availabilitySetName", availability_set_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_header_accept(_ctx, [])
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
 end
@@ -85,6 +87,7 @@ end
 
 const _returntypes_availability_sets_get_AvailabilitySetsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => AvailabilitySet,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_availability_sets_get(_api::AvailabilitySetsApi, resource_group_name::String, availability_set_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
@@ -92,7 +95,7 @@ function _oacinternal_availability_sets_get(_api::AvailabilitySetsApi, resource_
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "availabilitySetName", availability_set_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -120,13 +123,14 @@ end
 
 const _returntypes_availability_sets_list_AvailabilitySetsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => AvailabilitySetListResult,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_availability_sets_list(_api::AvailabilitySetsApi, resource_group_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_availability_sets_list_AvailabilitySetsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/availabilitySets", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -153,6 +157,7 @@ end
 
 const _returntypes_availability_sets_list_available_sizes_AvailabilitySetsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => VirtualMachineSizeListResult,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_availability_sets_list_available_sizes(_api::AvailabilitySetsApi, resource_group_name::String, availability_set_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
@@ -160,7 +165,7 @@ function _oacinternal_availability_sets_list_available_sizes(_api::AvailabilityS
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "availabilitySetName", availability_set_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -188,13 +193,14 @@ end
 
 const _returntypes_availability_sets_list_by_subscription_AvailabilitySetsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => AvailabilitySetListResult,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_availability_sets_list_by_subscription(_api::AvailabilitySetsApi, api_version::String, subscription_id::String; expand=nothing, _mediaType=nothing)
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_availability_sets_list_by_subscription_AvailabilitySetsApi, "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/availabilitySets", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -221,6 +227,7 @@ end
 
 const _returntypes_availability_sets_update_AvailabilitySetsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => AvailabilitySet,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_availability_sets_update(_api::AvailabilitySetsApi, resource_group_name::String, availability_set_name::String, api_version::String, subscription_id::String, parameters::AvailabilitySetUpdate; _mediaType=nothing)
@@ -228,7 +235,7 @@ function _oacinternal_availability_sets_update(_api::AvailabilitySetsApi, resour
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "availabilitySetName", availability_set_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx

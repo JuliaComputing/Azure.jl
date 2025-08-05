@@ -17,13 +17,14 @@ const _returntypes_virtual_network_peerings_create_or_update_VirtualNetworkPeeri
     Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
-function _oacinternal_virtual_network_peerings_create_or_update(_api::VirtualNetworkPeeringsApi, resource_group_name::String, virtual_network_name::String, virtual_network_peering_name::String, api_version::String, subscription_id::String, virtual_network_peering_parameters::VirtualNetworkPeering; _mediaType=nothing)
+function _oacinternal_virtual_network_peerings_create_or_update(_api::VirtualNetworkPeeringsApi, resource_group_name::String, virtual_network_name::String, virtual_network_peering_name::String, api_version::String, subscription_id::String, virtual_network_peering_parameters::VirtualNetworkPeering; sync_remote_address_space=nothing, _mediaType=nothing)
     _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_virtual_network_peerings_create_or_update_VirtualNetworkPeeringsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/virtualNetworkPeerings/{virtualNetworkPeeringName}", ["azure_auth", ], virtual_network_peering_parameters)
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkName", virtual_network_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkPeeringName", virtual_network_peering_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "syncRemoteAddressSpace", sync_remote_address_space; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -38,16 +39,17 @@ Params:
 - api_version::String (required)
 - subscription_id::String (required)
 - virtual_network_peering_parameters::VirtualNetworkPeering (required)
+- sync_remote_address_space::String
 
 Return: VirtualNetworkPeering, OpenAPI.Clients.ApiResponse
 """
-function virtual_network_peerings_create_or_update(_api::VirtualNetworkPeeringsApi, resource_group_name::String, virtual_network_name::String, virtual_network_peering_name::String, api_version::String, subscription_id::String, virtual_network_peering_parameters::VirtualNetworkPeering; _mediaType=nothing)
-    _ctx = _oacinternal_virtual_network_peerings_create_or_update(_api, resource_group_name, virtual_network_name, virtual_network_peering_name, api_version, subscription_id, virtual_network_peering_parameters; _mediaType=_mediaType)
+function virtual_network_peerings_create_or_update(_api::VirtualNetworkPeeringsApi, resource_group_name::String, virtual_network_name::String, virtual_network_peering_name::String, api_version::String, subscription_id::String, virtual_network_peering_parameters::VirtualNetworkPeering; sync_remote_address_space=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_virtual_network_peerings_create_or_update(_api, resource_group_name, virtual_network_name, virtual_network_peering_name, api_version, subscription_id, virtual_network_peering_parameters; sync_remote_address_space=sync_remote_address_space, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx)
 end
 
-function virtual_network_peerings_create_or_update(_api::VirtualNetworkPeeringsApi, response_stream::Channel, resource_group_name::String, virtual_network_name::String, virtual_network_peering_name::String, api_version::String, subscription_id::String, virtual_network_peering_parameters::VirtualNetworkPeering; _mediaType=nothing)
-    _ctx = _oacinternal_virtual_network_peerings_create_or_update(_api, resource_group_name, virtual_network_name, virtual_network_peering_name, api_version, subscription_id, virtual_network_peering_parameters; _mediaType=_mediaType)
+function virtual_network_peerings_create_or_update(_api::VirtualNetworkPeeringsApi, response_stream::Channel, resource_group_name::String, virtual_network_name::String, virtual_network_peering_name::String, api_version::String, subscription_id::String, virtual_network_peering_parameters::VirtualNetworkPeering; sync_remote_address_space=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_virtual_network_peerings_create_or_update(_api, resource_group_name, virtual_network_name, virtual_network_peering_name, api_version, subscription_id, virtual_network_peering_parameters; sync_remote_address_space=sync_remote_address_space, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
@@ -64,7 +66,7 @@ function _oacinternal_virtual_network_peerings_delete(_api::VirtualNetworkPeerin
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkName", virtual_network_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkPeeringName", virtual_network_peering_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -102,7 +104,7 @@ function _oacinternal_virtual_network_peerings_get(_api::VirtualNetworkPeeringsA
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkName", virtual_network_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkPeeringName", virtual_network_peering_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -139,7 +141,7 @@ function _oacinternal_virtual_network_peerings_list(_api::VirtualNetworkPeerings
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkName", virtual_network_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx

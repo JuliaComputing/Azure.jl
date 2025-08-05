@@ -21,19 +21,27 @@ Base.@kwdef mutable struct ApplicationGatewayTrustedRootCertificatePropertiesFor
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
     function ApplicationGatewayTrustedRootCertificatePropertiesFormat(data, keyVaultSecretId, provisioningState, )
-        OpenAPI.validate_property(ApplicationGatewayTrustedRootCertificatePropertiesFormat, Symbol("data"), data)
-        OpenAPI.validate_property(ApplicationGatewayTrustedRootCertificatePropertiesFormat, Symbol("keyVaultSecretId"), keyVaultSecretId)
-        OpenAPI.validate_property(ApplicationGatewayTrustedRootCertificatePropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(data, keyVaultSecretId, provisioningState, )
+        o = new(data, keyVaultSecretId, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayTrustedRootCertificatePropertiesFormat
 
 const _property_types_ApplicationGatewayTrustedRootCertificatePropertiesFormat = Dict{Symbol,String}(Symbol("data")=>"String", Symbol("keyVaultSecretId")=>"String", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ ApplicationGatewayTrustedRootCertificatePropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayTrustedRootCertificatePropertiesFormat[name]))}
 
-function check_required(o::ApplicationGatewayTrustedRootCertificatePropertiesFormat)
+function OpenAPI.check_required(o::ApplicationGatewayTrustedRootCertificatePropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayTrustedRootCertificatePropertiesFormat)
+    OpenAPI.validate_property(ApplicationGatewayTrustedRootCertificatePropertiesFormat, Symbol("data"), o.data)
+    OpenAPI.validate_property(ApplicationGatewayTrustedRootCertificatePropertiesFormat, Symbol("keyVaultSecretId"), o.keyVaultSecretId)
+    OpenAPI.validate_property(ApplicationGatewayTrustedRootCertificatePropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayTrustedRootCertificatePropertiesFormat }, name::Symbol, val)
+
+
+
 end

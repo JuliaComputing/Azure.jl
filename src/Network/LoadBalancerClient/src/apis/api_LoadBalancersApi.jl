@@ -23,13 +23,13 @@ function _oacinternal_inbound_nat_rules_create_or_update(_api::LoadBalancersApi,
     OpenAPI.Clients.set_param(_ctx.path, "loadBalancerName", load_balancer_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "inboundNatRuleName", inbound_nat_rule_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
 end
 
-@doc raw"""Creates or updates a load balancer inbound nat rule.
+@doc raw"""Creates or updates a load balancer inbound NAT rule.
 
 Params:
 - resource_group_name::String (required)
@@ -64,13 +64,13 @@ function _oacinternal_inbound_nat_rules_delete(_api::LoadBalancersApi, resource_
     OpenAPI.Clients.set_param(_ctx.path, "loadBalancerName", load_balancer_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "inboundNatRuleName", inbound_nat_rule_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
 end
 
-@doc raw"""Deletes the specified load balancer inbound nat rule.
+@doc raw"""Deletes the specified load balancer inbound NAT rule.
 
 Params:
 - resource_group_name::String (required)
@@ -102,14 +102,14 @@ function _oacinternal_inbound_nat_rules_get(_api::LoadBalancersApi, resource_gro
     OpenAPI.Clients.set_param(_ctx.path, "loadBalancerName", load_balancer_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "inboundNatRuleName", inbound_nat_rule_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
 end
 
-@doc raw"""Gets the specified load balancer inbound nat rule.
+@doc raw"""Gets the specified load balancer inbound NAT rule.
 
 Params:
 - resource_group_name::String (required)
@@ -141,13 +141,13 @@ function _oacinternal_inbound_nat_rules_list(_api::LoadBalancersApi, resource_gr
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "loadBalancerName", load_balancer_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
 end
 
-@doc raw"""Gets all the inbound nat rules in a load balancer.
+@doc raw"""Gets all the inbound NAT rules in a load balancer.
 
 Params:
 - resource_group_name::String (required)
@@ -179,7 +179,7 @@ function _oacinternal_load_balancer_backend_address_pools_create_or_update(_api:
     OpenAPI.Clients.set_param(_ctx.path, "loadBalancerName", load_balancer_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "backendAddressPoolName", backend_address_pool_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -220,7 +220,7 @@ function _oacinternal_load_balancer_backend_address_pools_delete(_api::LoadBalan
     OpenAPI.Clients.set_param(_ctx.path, "loadBalancerName", load_balancer_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "backendAddressPoolName", backend_address_pool_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -258,7 +258,7 @@ function _oacinternal_load_balancer_backend_address_pools_get(_api::LoadBalancer
     OpenAPI.Clients.set_param(_ctx.path, "loadBalancerName", load_balancer_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "backendAddressPoolName", backend_address_pool_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -295,7 +295,7 @@ function _oacinternal_load_balancer_backend_address_pools_list(_api::LoadBalance
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "loadBalancerName", load_balancer_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -332,7 +332,7 @@ function _oacinternal_load_balancer_frontend_i_p_configurations_get(_api::LoadBa
     OpenAPI.Clients.set_param(_ctx.path, "loadBalancerName", load_balancer_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "frontendIPConfigurationName", frontend_i_p_configuration_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -369,7 +369,7 @@ function _oacinternal_load_balancer_frontend_i_p_configurations_list(_api::LoadB
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "loadBalancerName", load_balancer_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -406,7 +406,7 @@ function _oacinternal_load_balancer_load_balancing_rules_get(_api::LoadBalancers
     OpenAPI.Clients.set_param(_ctx.path, "loadBalancerName", load_balancer_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "loadBalancingRuleName", load_balancing_rule_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -433,6 +433,51 @@ function load_balancer_load_balancing_rules_get(_api::LoadBalancersApi, response
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
+const _returntypes_load_balancer_load_balancing_rules_health_LoadBalancersApi = Dict{Regex,Type}(
+    Regex("^" * replace("200", "x"=>".") * "\$") => LoadBalancerHealthPerRule,
+    Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+)
+
+function _oacinternal_load_balancer_load_balancing_rules_health(_api::LoadBalancersApi, group_name::String, load_balancer_name::String, load_balancing_rule_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
+        OpenAPI.validate_param("group_name", "load_balancer_load_balancing_rules_health", :pattern, group_name, r"^[a-zA-Z0-9_.-]*$")
+
+        OpenAPI.validate_param("load_balancer_name", "load_balancer_load_balancing_rules_health", :pattern, load_balancer_name, r"^[a-zA-Z0-9_.-]*$")
+
+        OpenAPI.validate_param("load_balancing_rule_name", "load_balancer_load_balancing_rules_health", :pattern, load_balancing_rule_name, r"^[a-zA-Z0-9_.-]*$")
+
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_load_balancer_load_balancing_rules_health_LoadBalancersApi, "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/loadBalancingRules/{loadBalancingRuleName}/health", ["azure_auth", ])
+    OpenAPI.Clients.set_param(_ctx.path, "groupName", group_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "loadBalancerName", load_balancer_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "loadBalancingRuleName", load_balancing_rule_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
+    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
+    return _ctx
+end
+
+@doc raw"""Get health details of a load balancing rule.
+
+Params:
+- group_name::String (required)
+- load_balancer_name::String (required)
+- load_balancing_rule_name::String (required)
+- api_version::String (required)
+- subscription_id::String (required)
+
+Return: LoadBalancerHealthPerRule, OpenAPI.Clients.ApiResponse
+"""
+function load_balancer_load_balancing_rules_health(_api::LoadBalancersApi, group_name::String, load_balancer_name::String, load_balancing_rule_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
+    _ctx = _oacinternal_load_balancer_load_balancing_rules_health(_api, group_name, load_balancer_name, load_balancing_rule_name, api_version, subscription_id; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx)
+end
+
+function load_balancer_load_balancing_rules_health(_api::LoadBalancersApi, response_stream::Channel, group_name::String, load_balancer_name::String, load_balancing_rule_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
+    _ctx = _oacinternal_load_balancer_load_balancing_rules_health(_api, group_name, load_balancer_name, load_balancing_rule_name, api_version, subscription_id; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx, response_stream)
+end
+
 const _returntypes_load_balancer_load_balancing_rules_list_LoadBalancersApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => LoadBalancerLoadBalancingRuleListResult,
     Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
@@ -443,7 +488,7 @@ function _oacinternal_load_balancer_load_balancing_rules_list(_api::LoadBalancer
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "loadBalancerName", load_balancer_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -479,7 +524,7 @@ function _oacinternal_load_balancer_network_interfaces_list(_api::LoadBalancersA
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "loadBalancerName", load_balancer_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -516,7 +561,7 @@ function _oacinternal_load_balancer_outbound_rules_get(_api::LoadBalancersApi, r
     OpenAPI.Clients.set_param(_ctx.path, "loadBalancerName", load_balancer_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "outboundRuleName", outbound_rule_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -553,7 +598,7 @@ function _oacinternal_load_balancer_outbound_rules_list(_api::LoadBalancersApi, 
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "loadBalancerName", load_balancer_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -590,7 +635,7 @@ function _oacinternal_load_balancer_probes_get(_api::LoadBalancersApi, resource_
     OpenAPI.Clients.set_param(_ctx.path, "loadBalancerName", load_balancer_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "probeName", probe_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -627,7 +672,7 @@ function _oacinternal_load_balancer_probes_list(_api::LoadBalancersApi, resource
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "loadBalancerName", load_balancer_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -664,7 +709,7 @@ function _oacinternal_load_balancers_create_or_update(_api::LoadBalancersApi, re
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "loadBalancerName", load_balancer_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -703,7 +748,7 @@ function _oacinternal_load_balancers_delete(_api::LoadBalancersApi, resource_gro
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "loadBalancerName", load_balancer_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -739,8 +784,8 @@ function _oacinternal_load_balancers_get(_api::LoadBalancersApi, resource_group_
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "loadBalancerName", load_balancer_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -776,7 +821,7 @@ function _oacinternal_load_balancers_list(_api::LoadBalancersApi, resource_group
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_load_balancers_list_LoadBalancersApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -809,7 +854,7 @@ const _returntypes_load_balancers_list_all_LoadBalancersApi = Dict{Regex,Type}(
 function _oacinternal_load_balancers_list_all(_api::LoadBalancersApi, api_version::String, subscription_id::String; _mediaType=nothing)
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_load_balancers_list_all_LoadBalancersApi, "/subscriptions/{subscriptionId}/providers/Microsoft.Network/loadBalancers", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -833,6 +878,123 @@ function load_balancers_list_all(_api::LoadBalancersApi, response_stream::Channe
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
+const _returntypes_load_balancers_list_inbound_nat_rule_port_mappings_LoadBalancersApi = Dict{Regex,Type}(
+    Regex("^" * replace("200", "x"=>".") * "\$") => BackendAddressInboundNatRulePortMappings,
+    Regex("^" * replace("202", "x"=>".") * "\$") => BackendAddressInboundNatRulePortMappings,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+)
+
+function _oacinternal_load_balancers_list_inbound_nat_rule_port_mappings(_api::LoadBalancersApi, group_name::String, load_balancer_name::String, backend_pool_name::String, api_version::String, subscription_id::String, parameters::QueryInboundNatRulePortMappingRequest; _mediaType=nothing)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_load_balancers_list_inbound_nat_rule_port_mappings_LoadBalancersApi, "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendPoolName}/queryInboundNatRulePortMapping", ["azure_auth", ], parameters)
+    OpenAPI.Clients.set_param(_ctx.path, "groupName", group_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "loadBalancerName", load_balancer_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "backendPoolName", backend_pool_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
+    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
+    return _ctx
+end
+
+@doc raw"""List of inbound NAT rule port mappings.
+
+Params:
+- group_name::String (required)
+- load_balancer_name::String (required)
+- backend_pool_name::String (required)
+- api_version::String (required)
+- subscription_id::String (required)
+- parameters::QueryInboundNatRulePortMappingRequest (required)
+
+Return: BackendAddressInboundNatRulePortMappings, OpenAPI.Clients.ApiResponse
+"""
+function load_balancers_list_inbound_nat_rule_port_mappings(_api::LoadBalancersApi, group_name::String, load_balancer_name::String, backend_pool_name::String, api_version::String, subscription_id::String, parameters::QueryInboundNatRulePortMappingRequest; _mediaType=nothing)
+    _ctx = _oacinternal_load_balancers_list_inbound_nat_rule_port_mappings(_api, group_name, load_balancer_name, backend_pool_name, api_version, subscription_id, parameters; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx)
+end
+
+function load_balancers_list_inbound_nat_rule_port_mappings(_api::LoadBalancersApi, response_stream::Channel, group_name::String, load_balancer_name::String, backend_pool_name::String, api_version::String, subscription_id::String, parameters::QueryInboundNatRulePortMappingRequest; _mediaType=nothing)
+    _ctx = _oacinternal_load_balancers_list_inbound_nat_rule_port_mappings(_api, group_name, load_balancer_name, backend_pool_name, api_version, subscription_id, parameters; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx, response_stream)
+end
+
+const _returntypes_load_balancers_migrate_to_ip_based_LoadBalancersApi = Dict{Regex,Type}(
+    Regex("^" * replace("200", "x"=>".") * "\$") => MigratedPools,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+)
+
+function _oacinternal_load_balancers_migrate_to_ip_based(_api::LoadBalancersApi, group_name::String, load_balancer_name::String, api_version::String, subscription_id::String; parameters=nothing, _mediaType=nothing)
+        OpenAPI.validate_param("group_name", "load_balancers_migrate_to_ip_based", :pattern, group_name, r"^[a-z][a-z0-9]*$")
+
+        OpenAPI.validate_param("load_balancer_name", "load_balancers_migrate_to_ip_based", :pattern, load_balancer_name, r"^[a-z][a-z0-9]*$")
+
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_load_balancers_migrate_to_ip_based_LoadBalancersApi, "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/migrateToIpBased", ["azure_auth", ], parameters)
+    OpenAPI.Clients.set_param(_ctx.path, "groupName", group_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "loadBalancerName", load_balancer_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
+    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
+    return _ctx
+end
+
+@doc raw"""Migrate load balancer to IP Based
+
+Params:
+- group_name::String (required)
+- load_balancer_name::String (required)
+- api_version::String (required)
+- subscription_id::String (required)
+- parameters::MigrateLoadBalancerToIpBasedRequest
+
+Return: MigratedPools, OpenAPI.Clients.ApiResponse
+"""
+function load_balancers_migrate_to_ip_based(_api::LoadBalancersApi, group_name::String, load_balancer_name::String, api_version::String, subscription_id::String; parameters=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_load_balancers_migrate_to_ip_based(_api, group_name, load_balancer_name, api_version, subscription_id; parameters=parameters, _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx)
+end
+
+function load_balancers_migrate_to_ip_based(_api::LoadBalancersApi, response_stream::Channel, group_name::String, load_balancer_name::String, api_version::String, subscription_id::String; parameters=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_load_balancers_migrate_to_ip_based(_api, group_name, load_balancer_name, api_version, subscription_id; parameters=parameters, _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx, response_stream)
+end
+
+const _returntypes_load_balancers_swap_public_ip_addresses_LoadBalancersApi = Dict{Regex,Type}(
+    Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+)
+
+function _oacinternal_load_balancers_swap_public_ip_addresses(_api::LoadBalancersApi, location::String, api_version::String, subscription_id::String, parameters::LoadBalancerVipSwapRequest; _mediaType=nothing)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_load_balancers_swap_public_ip_addresses_LoadBalancersApi, "/subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/setLoadBalancerFrontendPublicIpAddresses", ["azure_auth", ], parameters)
+    OpenAPI.Clients.set_param(_ctx.path, "location", location)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
+    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
+    return _ctx
+end
+
+@doc raw"""Swaps VIPs between two load balancers.
+
+Params:
+- location::String (required)
+- api_version::String (required)
+- subscription_id::String (required)
+- parameters::LoadBalancerVipSwapRequest (required)
+
+Return: Nothing, OpenAPI.Clients.ApiResponse
+"""
+function load_balancers_swap_public_ip_addresses(_api::LoadBalancersApi, location::String, api_version::String, subscription_id::String, parameters::LoadBalancerVipSwapRequest; _mediaType=nothing)
+    _ctx = _oacinternal_load_balancers_swap_public_ip_addresses(_api, location, api_version, subscription_id, parameters; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx)
+end
+
+function load_balancers_swap_public_ip_addresses(_api::LoadBalancersApi, response_stream::Channel, location::String, api_version::String, subscription_id::String, parameters::LoadBalancerVipSwapRequest; _mediaType=nothing)
+    _ctx = _oacinternal_load_balancers_swap_public_ip_addresses(_api, location, api_version, subscription_id, parameters; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx, response_stream)
+end
+
 const _returntypes_load_balancers_update_tags_LoadBalancersApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => LoadBalancer,
     Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
@@ -843,7 +1005,7 @@ function _oacinternal_load_balancers_update_tags(_api::LoadBalancersApi, resourc
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "loadBalancerName", load_balancer_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -881,6 +1043,7 @@ export load_balancer_backend_address_pools_list
 export load_balancer_frontend_i_p_configurations_get
 export load_balancer_frontend_i_p_configurations_list
 export load_balancer_load_balancing_rules_get
+export load_balancer_load_balancing_rules_health
 export load_balancer_load_balancing_rules_list
 export load_balancer_network_interfaces_list
 export load_balancer_outbound_rules_get
@@ -892,4 +1055,7 @@ export load_balancers_delete
 export load_balancers_get
 export load_balancers_list
 export load_balancers_list_all
+export load_balancers_list_inbound_nat_rule_port_mappings
+export load_balancers_migrate_to_ip_based
+export load_balancers_swap_public_ip_addresses
 export load_balancers_update_tags

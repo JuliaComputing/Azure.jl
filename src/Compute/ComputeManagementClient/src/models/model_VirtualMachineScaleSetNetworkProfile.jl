@@ -8,28 +8,44 @@ Describes a virtual machine scale set network profile.
     VirtualMachineScaleSetNetworkProfile(;
         healthProbe=nothing,
         networkInterfaceConfigurations=nothing,
+        networkApiVersion=nothing,
     )
 
     - healthProbe::ApiEntityReference
     - networkInterfaceConfigurations::Vector{VirtualMachineScaleSetNetworkConfiguration} : The list of network configurations.
+    - networkApiVersion::String : specifies the Microsoft.Network API version used when creating networking resources in the Network Interface Configurations for Virtual Machine Scale Set with orchestration mode &#39;Flexible&#39;
 """
 Base.@kwdef mutable struct VirtualMachineScaleSetNetworkProfile <: OpenAPI.APIModel
     healthProbe = nothing # spec type: Union{ Nothing, ApiEntityReference }
     networkInterfaceConfigurations::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{VirtualMachineScaleSetNetworkConfiguration} }
+    networkApiVersion::Union{Nothing, String} = nothing
 
-    function VirtualMachineScaleSetNetworkProfile(healthProbe, networkInterfaceConfigurations, )
-        OpenAPI.validate_property(VirtualMachineScaleSetNetworkProfile, Symbol("healthProbe"), healthProbe)
-        OpenAPI.validate_property(VirtualMachineScaleSetNetworkProfile, Symbol("networkInterfaceConfigurations"), networkInterfaceConfigurations)
-        return new(healthProbe, networkInterfaceConfigurations, )
+    function VirtualMachineScaleSetNetworkProfile(healthProbe, networkInterfaceConfigurations, networkApiVersion, )
+        o = new(healthProbe, networkInterfaceConfigurations, networkApiVersion, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetNetworkProfile
 
-const _property_types_VirtualMachineScaleSetNetworkProfile = Dict{Symbol,String}(Symbol("healthProbe")=>"ApiEntityReference", Symbol("networkInterfaceConfigurations")=>"Vector{VirtualMachineScaleSetNetworkConfiguration}", )
+const _property_types_VirtualMachineScaleSetNetworkProfile = Dict{Symbol,String}(Symbol("healthProbe")=>"ApiEntityReference", Symbol("networkInterfaceConfigurations")=>"Vector{VirtualMachineScaleSetNetworkConfiguration}", Symbol("networkApiVersion")=>"String", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetNetworkProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetNetworkProfile[name]))}
 
-function check_required(o::VirtualMachineScaleSetNetworkProfile)
+function OpenAPI.check_required(o::VirtualMachineScaleSetNetworkProfile)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetNetworkProfile)
+    OpenAPI.validate_property(VirtualMachineScaleSetNetworkProfile, Symbol("healthProbe"), o.healthProbe)
+    OpenAPI.validate_property(VirtualMachineScaleSetNetworkProfile, Symbol("networkInterfaceConfigurations"), o.networkInterfaceConfigurations)
+    OpenAPI.validate_property(VirtualMachineScaleSetNetworkProfile, Symbol("networkApiVersion"), o.networkApiVersion)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetNetworkProfile }, name::Symbol, val)
+
+
+
+    if name === Symbol("networkApiVersion")
+        OpenAPI.validate_param(name, "VirtualMachineScaleSetNetworkProfile", :enum, val, ["2020-11-01"])
+    end
+
 end

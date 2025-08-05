@@ -21,19 +21,27 @@ Base.@kwdef mutable struct SubResource <: OpenAPI.APIModel
     type::Union{Nothing, String} = nothing
 
     function SubResource(id, name, type, )
-        OpenAPI.validate_property(SubResource, Symbol("id"), id)
-        OpenAPI.validate_property(SubResource, Symbol("name"), name)
-        OpenAPI.validate_property(SubResource, Symbol("type"), type)
-        return new(id, name, type, )
+        o = new(id, name, type, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type SubResource
 
 const _property_types_SubResource = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", )
 OpenAPI.property_type(::Type{ SubResource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SubResource[name]))}
 
-function check_required(o::SubResource)
+function OpenAPI.check_required(o::SubResource)
     true
 end
 
+function OpenAPI.validate_properties(o::SubResource)
+    OpenAPI.validate_property(SubResource, Symbol("id"), o.id)
+    OpenAPI.validate_property(SubResource, Symbol("name"), o.name)
+    OpenAPI.validate_property(SubResource, Symbol("type"), o.type)
+end
+
 function OpenAPI.validate_property(::Type{ SubResource }, name::Symbol, val)
+
+
+
 end

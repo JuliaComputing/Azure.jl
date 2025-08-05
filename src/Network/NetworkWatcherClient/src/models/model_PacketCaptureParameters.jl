@@ -7,47 +7,103 @@ Parameters that define the create packet capture operation.
 
     PacketCaptureParameters(;
         target=nothing,
-        bytesToCapturePerPacket=nothing,
-        totalBytesPerSession=nothing,
-        timeLimitInSeconds=nothing,
+        scope=nothing,
+        targetType=nothing,
+        bytesToCapturePerPacket=0,
+        totalBytesPerSession=1073741824,
+        timeLimitInSeconds=18000,
         storageLocation=nothing,
         filters=nothing,
+        continuousCapture=nothing,
+        captureSettings=nothing,
     )
 
-    - target::String : The ID of the targeted resource, only VM is currently supported.
+    - target::String : The ID of the targeted resource, only AzureVM and AzureVMSS as target type are currently supported.
+    - scope::PacketCaptureMachineScope
+    - targetType::String : Target type of the resource provided.
     - bytesToCapturePerPacket::Int64 : Number of bytes captured per packet, the remaining bytes are truncated.
     - totalBytesPerSession::Int64 : Maximum size of the capture output.
     - timeLimitInSeconds::Int64 : Maximum duration of the capture session in seconds.
     - storageLocation::PacketCaptureStorageLocation
     - filters::Vector{PacketCaptureFilter} : A list of packet capture filters.
+    - continuousCapture::Bool : This continuous capture is a nullable boolean, which can hold &#39;null&#39;, &#39;true&#39; or &#39;false&#39; value. If we do not pass this parameter, it would be consider as &#39;null&#39;, default value is &#39;null&#39;.
+    - captureSettings::PacketCaptureSettings
 """
 Base.@kwdef mutable struct PacketCaptureParameters <: OpenAPI.APIModel
     target::Union{Nothing, String} = nothing
-    bytesToCapturePerPacket::Union{Nothing, Int64} = nothing
-    totalBytesPerSession::Union{Nothing, Int64} = nothing
-    timeLimitInSeconds::Union{Nothing, Int64} = nothing
+    scope = nothing # spec type: Union{ Nothing, PacketCaptureMachineScope }
+    targetType::Union{Nothing, String} = nothing
+    bytesToCapturePerPacket::Union{Nothing, Int64} = 0
+    totalBytesPerSession::Union{Nothing, Int64} = 1073741824
+    timeLimitInSeconds::Union{Nothing, Int64} = 18000
     storageLocation = nothing # spec type: Union{ Nothing, PacketCaptureStorageLocation }
     filters::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{PacketCaptureFilter} }
+    continuousCapture::Union{Nothing, Bool} = nothing
+    captureSettings = nothing # spec type: Union{ Nothing, PacketCaptureSettings }
 
-    function PacketCaptureParameters(target, bytesToCapturePerPacket, totalBytesPerSession, timeLimitInSeconds, storageLocation, filters, )
-        OpenAPI.validate_property(PacketCaptureParameters, Symbol("target"), target)
-        OpenAPI.validate_property(PacketCaptureParameters, Symbol("bytesToCapturePerPacket"), bytesToCapturePerPacket)
-        OpenAPI.validate_property(PacketCaptureParameters, Symbol("totalBytesPerSession"), totalBytesPerSession)
-        OpenAPI.validate_property(PacketCaptureParameters, Symbol("timeLimitInSeconds"), timeLimitInSeconds)
-        OpenAPI.validate_property(PacketCaptureParameters, Symbol("storageLocation"), storageLocation)
-        OpenAPI.validate_property(PacketCaptureParameters, Symbol("filters"), filters)
-        return new(target, bytesToCapturePerPacket, totalBytesPerSession, timeLimitInSeconds, storageLocation, filters, )
+    function PacketCaptureParameters(target, scope, targetType, bytesToCapturePerPacket, totalBytesPerSession, timeLimitInSeconds, storageLocation, filters, continuousCapture, captureSettings, )
+        o = new(target, scope, targetType, bytesToCapturePerPacket, totalBytesPerSession, timeLimitInSeconds, storageLocation, filters, continuousCapture, captureSettings, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PacketCaptureParameters
 
-const _property_types_PacketCaptureParameters = Dict{Symbol,String}(Symbol("target")=>"String", Symbol("bytesToCapturePerPacket")=>"Int64", Symbol("totalBytesPerSession")=>"Int64", Symbol("timeLimitInSeconds")=>"Int64", Symbol("storageLocation")=>"PacketCaptureStorageLocation", Symbol("filters")=>"Vector{PacketCaptureFilter}", )
+const _property_types_PacketCaptureParameters = Dict{Symbol,String}(Symbol("target")=>"String", Symbol("scope")=>"PacketCaptureMachineScope", Symbol("targetType")=>"String", Symbol("bytesToCapturePerPacket")=>"Int64", Symbol("totalBytesPerSession")=>"Int64", Symbol("timeLimitInSeconds")=>"Int64", Symbol("storageLocation")=>"PacketCaptureStorageLocation", Symbol("filters")=>"Vector{PacketCaptureFilter}", Symbol("continuousCapture")=>"Bool", Symbol("captureSettings")=>"PacketCaptureSettings", )
 OpenAPI.property_type(::Type{ PacketCaptureParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PacketCaptureParameters[name]))}
 
-function check_required(o::PacketCaptureParameters)
+function OpenAPI.check_required(o::PacketCaptureParameters)
     o.target === nothing && (return false)
     o.storageLocation === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::PacketCaptureParameters)
+    OpenAPI.validate_property(PacketCaptureParameters, Symbol("target"), o.target)
+    OpenAPI.validate_property(PacketCaptureParameters, Symbol("scope"), o.scope)
+    OpenAPI.validate_property(PacketCaptureParameters, Symbol("targetType"), o.targetType)
+    OpenAPI.validate_property(PacketCaptureParameters, Symbol("bytesToCapturePerPacket"), o.bytesToCapturePerPacket)
+    OpenAPI.validate_property(PacketCaptureParameters, Symbol("totalBytesPerSession"), o.totalBytesPerSession)
+    OpenAPI.validate_property(PacketCaptureParameters, Symbol("timeLimitInSeconds"), o.timeLimitInSeconds)
+    OpenAPI.validate_property(PacketCaptureParameters, Symbol("storageLocation"), o.storageLocation)
+    OpenAPI.validate_property(PacketCaptureParameters, Symbol("filters"), o.filters)
+    OpenAPI.validate_property(PacketCaptureParameters, Symbol("continuousCapture"), o.continuousCapture)
+    OpenAPI.validate_property(PacketCaptureParameters, Symbol("captureSettings"), o.captureSettings)
+end
+
 function OpenAPI.validate_property(::Type{ PacketCaptureParameters }, name::Symbol, val)
+
+
+
+    if name === Symbol("targetType")
+        OpenAPI.validate_param(name, "PacketCaptureParameters", :enum, val, ["AzureVM", "AzureVMSS"])
+    end
+
+
+    if name === Symbol("bytesToCapturePerPacket")
+        OpenAPI.validate_param(name, "PacketCaptureParameters", :format, val, "int64")
+    end
+    if name === Symbol("bytesToCapturePerPacket")
+        OpenAPI.validate_param(name, "PacketCaptureParameters", :maximum, val, 4294967295, false)
+        OpenAPI.validate_param(name, "PacketCaptureParameters", :minimum, val, 0, false)
+    end
+
+    if name === Symbol("totalBytesPerSession")
+        OpenAPI.validate_param(name, "PacketCaptureParameters", :format, val, "int64")
+    end
+    if name === Symbol("totalBytesPerSession")
+        OpenAPI.validate_param(name, "PacketCaptureParameters", :maximum, val, 4294967295, false)
+        OpenAPI.validate_param(name, "PacketCaptureParameters", :minimum, val, 0, false)
+    end
+
+    if name === Symbol("timeLimitInSeconds")
+        OpenAPI.validate_param(name, "PacketCaptureParameters", :format, val, "int32")
+    end
+    if name === Symbol("timeLimitInSeconds")
+        OpenAPI.validate_param(name, "PacketCaptureParameters", :maximum, val, 18000, false)
+        OpenAPI.validate_param(name, "PacketCaptureParameters", :minimum, val, 0, false)
+    end
+
+
+
+
 end

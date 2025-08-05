@@ -18,18 +18,25 @@ Base.@kwdef mutable struct EffectiveNetworkSecurityGroupListResult <: OpenAPI.AP
     nextLink::Union{Nothing, String} = nothing
 
     function EffectiveNetworkSecurityGroupListResult(value, nextLink, )
-        OpenAPI.validate_property(EffectiveNetworkSecurityGroupListResult, Symbol("value"), value)
-        OpenAPI.validate_property(EffectiveNetworkSecurityGroupListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type EffectiveNetworkSecurityGroupListResult
 
 const _property_types_EffectiveNetworkSecurityGroupListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{EffectiveNetworkSecurityGroup}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ EffectiveNetworkSecurityGroupListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_EffectiveNetworkSecurityGroupListResult[name]))}
 
-function check_required(o::EffectiveNetworkSecurityGroupListResult)
+function OpenAPI.check_required(o::EffectiveNetworkSecurityGroupListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::EffectiveNetworkSecurityGroupListResult)
+    OpenAPI.validate_property(EffectiveNetworkSecurityGroupListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(EffectiveNetworkSecurityGroupListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ EffectiveNetworkSecurityGroupListResult }, name::Symbol, val)
+
+
 end

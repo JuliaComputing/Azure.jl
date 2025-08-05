@@ -11,6 +11,7 @@ Properties of path rule of an application gateway.
         backendHttpSettings=nothing,
         redirectConfiguration=nothing,
         rewriteRuleSet=nothing,
+        loadDistributionPolicy=nothing,
         provisioningState=nothing,
         firewallPolicy=nothing,
     )
@@ -20,6 +21,7 @@ Properties of path rule of an application gateway.
     - backendHttpSettings::SubResource
     - redirectConfiguration::SubResource
     - rewriteRuleSet::SubResource
+    - loadDistributionPolicy::SubResource
     - provisioningState::ProvisioningState
     - firewallPolicy::SubResource
 """
@@ -29,27 +31,42 @@ Base.@kwdef mutable struct ApplicationGatewayPathRulePropertiesFormat <: OpenAPI
     backendHttpSettings = nothing # spec type: Union{ Nothing, SubResource }
     redirectConfiguration = nothing # spec type: Union{ Nothing, SubResource }
     rewriteRuleSet = nothing # spec type: Union{ Nothing, SubResource }
+    loadDistributionPolicy = nothing # spec type: Union{ Nothing, SubResource }
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
     firewallPolicy = nothing # spec type: Union{ Nothing, SubResource }
 
-    function ApplicationGatewayPathRulePropertiesFormat(paths, backendAddressPool, backendHttpSettings, redirectConfiguration, rewriteRuleSet, provisioningState, firewallPolicy, )
-        OpenAPI.validate_property(ApplicationGatewayPathRulePropertiesFormat, Symbol("paths"), paths)
-        OpenAPI.validate_property(ApplicationGatewayPathRulePropertiesFormat, Symbol("backendAddressPool"), backendAddressPool)
-        OpenAPI.validate_property(ApplicationGatewayPathRulePropertiesFormat, Symbol("backendHttpSettings"), backendHttpSettings)
-        OpenAPI.validate_property(ApplicationGatewayPathRulePropertiesFormat, Symbol("redirectConfiguration"), redirectConfiguration)
-        OpenAPI.validate_property(ApplicationGatewayPathRulePropertiesFormat, Symbol("rewriteRuleSet"), rewriteRuleSet)
-        OpenAPI.validate_property(ApplicationGatewayPathRulePropertiesFormat, Symbol("provisioningState"), provisioningState)
-        OpenAPI.validate_property(ApplicationGatewayPathRulePropertiesFormat, Symbol("firewallPolicy"), firewallPolicy)
-        return new(paths, backendAddressPool, backendHttpSettings, redirectConfiguration, rewriteRuleSet, provisioningState, firewallPolicy, )
+    function ApplicationGatewayPathRulePropertiesFormat(paths, backendAddressPool, backendHttpSettings, redirectConfiguration, rewriteRuleSet, loadDistributionPolicy, provisioningState, firewallPolicy, )
+        o = new(paths, backendAddressPool, backendHttpSettings, redirectConfiguration, rewriteRuleSet, loadDistributionPolicy, provisioningState, firewallPolicy, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayPathRulePropertiesFormat
 
-const _property_types_ApplicationGatewayPathRulePropertiesFormat = Dict{Symbol,String}(Symbol("paths")=>"Vector{String}", Symbol("backendAddressPool")=>"SubResource", Symbol("backendHttpSettings")=>"SubResource", Symbol("redirectConfiguration")=>"SubResource", Symbol("rewriteRuleSet")=>"SubResource", Symbol("provisioningState")=>"ProvisioningState", Symbol("firewallPolicy")=>"SubResource", )
+const _property_types_ApplicationGatewayPathRulePropertiesFormat = Dict{Symbol,String}(Symbol("paths")=>"Vector{String}", Symbol("backendAddressPool")=>"SubResource", Symbol("backendHttpSettings")=>"SubResource", Symbol("redirectConfiguration")=>"SubResource", Symbol("rewriteRuleSet")=>"SubResource", Symbol("loadDistributionPolicy")=>"SubResource", Symbol("provisioningState")=>"ProvisioningState", Symbol("firewallPolicy")=>"SubResource", )
 OpenAPI.property_type(::Type{ ApplicationGatewayPathRulePropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayPathRulePropertiesFormat[name]))}
 
-function check_required(o::ApplicationGatewayPathRulePropertiesFormat)
+function OpenAPI.check_required(o::ApplicationGatewayPathRulePropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayPathRulePropertiesFormat)
+    OpenAPI.validate_property(ApplicationGatewayPathRulePropertiesFormat, Symbol("paths"), o.paths)
+    OpenAPI.validate_property(ApplicationGatewayPathRulePropertiesFormat, Symbol("backendAddressPool"), o.backendAddressPool)
+    OpenAPI.validate_property(ApplicationGatewayPathRulePropertiesFormat, Symbol("backendHttpSettings"), o.backendHttpSettings)
+    OpenAPI.validate_property(ApplicationGatewayPathRulePropertiesFormat, Symbol("redirectConfiguration"), o.redirectConfiguration)
+    OpenAPI.validate_property(ApplicationGatewayPathRulePropertiesFormat, Symbol("rewriteRuleSet"), o.rewriteRuleSet)
+    OpenAPI.validate_property(ApplicationGatewayPathRulePropertiesFormat, Symbol("loadDistributionPolicy"), o.loadDistributionPolicy)
+    OpenAPI.validate_property(ApplicationGatewayPathRulePropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(ApplicationGatewayPathRulePropertiesFormat, Symbol("firewallPolicy"), o.firewallPolicy)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayPathRulePropertiesFormat }, name::Symbol, val)
+
+
+
+
+
+
+
+
 end

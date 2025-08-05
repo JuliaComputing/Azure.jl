@@ -15,17 +15,23 @@ Base.@kwdef mutable struct DhcpOptions <: OpenAPI.APIModel
     dnsServers::Union{Nothing, Vector{String}} = nothing
 
     function DhcpOptions(dnsServers, )
-        OpenAPI.validate_property(DhcpOptions, Symbol("dnsServers"), dnsServers)
-        return new(dnsServers, )
+        o = new(dnsServers, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type DhcpOptions
 
 const _property_types_DhcpOptions = Dict{Symbol,String}(Symbol("dnsServers")=>"Vector{String}", )
 OpenAPI.property_type(::Type{ DhcpOptions }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DhcpOptions[name]))}
 
-function check_required(o::DhcpOptions)
+function OpenAPI.check_required(o::DhcpOptions)
     true
 end
 
+function OpenAPI.validate_properties(o::DhcpOptions)
+    OpenAPI.validate_property(DhcpOptions, Symbol("dnsServers"), o.dnsServers)
+end
+
 function OpenAPI.validate_property(::Type{ DhcpOptions }, name::Symbol, val)
+
 end

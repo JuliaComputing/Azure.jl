@@ -18,18 +18,25 @@ Base.@kwdef mutable struct SubnetAssociation <: OpenAPI.APIModel
     securityRules::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{SecurityRule} }
 
     function SubnetAssociation(id, securityRules, )
-        OpenAPI.validate_property(SubnetAssociation, Symbol("id"), id)
-        OpenAPI.validate_property(SubnetAssociation, Symbol("securityRules"), securityRules)
-        return new(id, securityRules, )
+        o = new(id, securityRules, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type SubnetAssociation
 
 const _property_types_SubnetAssociation = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("securityRules")=>"Vector{SecurityRule}", )
 OpenAPI.property_type(::Type{ SubnetAssociation }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SubnetAssociation[name]))}
 
-function check_required(o::SubnetAssociation)
+function OpenAPI.check_required(o::SubnetAssociation)
     true
 end
 
+function OpenAPI.validate_properties(o::SubnetAssociation)
+    OpenAPI.validate_property(SubnetAssociation, Symbol("id"), o.id)
+    OpenAPI.validate_property(SubnetAssociation, Symbol("securityRules"), o.securityRules)
+end
+
 function OpenAPI.validate_property(::Type{ SubnetAssociation }, name::Symbol, val)
+
+
 end

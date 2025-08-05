@@ -14,6 +14,7 @@ basepath(::Type{ SshPublicKeysApi }) = "https://management.azure.com"
 const _returntypes_ssh_public_keys_create_SshPublicKeysApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => SshPublicKeyResource,
     Regex("^" * replace("201", "x"=>".") * "\$") => SshPublicKeyResource,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_ssh_public_keys_create(_api::SshPublicKeysApi, resource_group_name::String, ssh_public_key_name::String, api_version::String, subscription_id::String, parameters::SshPublicKeyResource; _mediaType=nothing)
@@ -21,7 +22,7 @@ function _oacinternal_ssh_public_keys_create(_api::SshPublicKeysApi, resource_gr
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "sshPublicKeyName", ssh_public_key_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -51,6 +52,7 @@ end
 const _returntypes_ssh_public_keys_delete_SshPublicKeysApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("204", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_ssh_public_keys_delete(_api::SshPublicKeysApi, resource_group_name::String, ssh_public_key_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
@@ -58,8 +60,8 @@ function _oacinternal_ssh_public_keys_delete(_api::SshPublicKeysApi, resource_gr
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "sshPublicKeyName", ssh_public_key_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_header_accept(_ctx, [])
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
 end
@@ -86,6 +88,7 @@ end
 
 const _returntypes_ssh_public_keys_generate_key_pair_SshPublicKeysApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => SshPublicKeyGenerateKeyPairResult,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_ssh_public_keys_generate_key_pair(_api::SshPublicKeysApi, resource_group_name::String, ssh_public_key_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
@@ -93,7 +96,7 @@ function _oacinternal_ssh_public_keys_generate_key_pair(_api::SshPublicKeysApi, 
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "sshPublicKeyName", ssh_public_key_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -121,6 +124,7 @@ end
 
 const _returntypes_ssh_public_keys_get_SshPublicKeysApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => SshPublicKeyResource,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_ssh_public_keys_get(_api::SshPublicKeysApi, resource_group_name::String, ssh_public_key_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
@@ -128,7 +132,7 @@ function _oacinternal_ssh_public_keys_get(_api::SshPublicKeysApi, resource_group
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "sshPublicKeyName", ssh_public_key_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -156,13 +160,14 @@ end
 
 const _returntypes_ssh_public_keys_list_by_resource_group_SshPublicKeysApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => SshPublicKeysGroupListResult,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_ssh_public_keys_list_by_resource_group(_api::SshPublicKeysApi, resource_group_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_ssh_public_keys_list_by_resource_group_SshPublicKeysApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/sshPublicKeys", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -189,12 +194,13 @@ end
 
 const _returntypes_ssh_public_keys_list_by_subscription_SshPublicKeysApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => SshPublicKeysGroupListResult,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_ssh_public_keys_list_by_subscription(_api::SshPublicKeysApi, api_version::String, subscription_id::String; _mediaType=nothing)
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_ssh_public_keys_list_by_subscription_SshPublicKeysApi, "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/sshPublicKeys", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -220,6 +226,7 @@ end
 
 const _returntypes_ssh_public_keys_update_SshPublicKeysApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => SshPublicKeyResource,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_ssh_public_keys_update(_api::SshPublicKeysApi, resource_group_name::String, ssh_public_key_name::String, api_version::String, subscription_id::String, parameters::SshPublicKeyUpdateResource; _mediaType=nothing)
@@ -227,7 +234,7 @@ function _oacinternal_ssh_public_keys_update(_api::SshPublicKeysApi, resource_gr
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "sshPublicKeyName", ssh_public_key_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx

@@ -18,18 +18,25 @@ Base.@kwdef mutable struct IpTag <: OpenAPI.APIModel
     tag::Union{Nothing, String} = nothing
 
     function IpTag(ipTagType, tag, )
-        OpenAPI.validate_property(IpTag, Symbol("ipTagType"), ipTagType)
-        OpenAPI.validate_property(IpTag, Symbol("tag"), tag)
-        return new(ipTagType, tag, )
+        o = new(ipTagType, tag, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type IpTag
 
 const _property_types_IpTag = Dict{Symbol,String}(Symbol("ipTagType")=>"String", Symbol("tag")=>"String", )
 OpenAPI.property_type(::Type{ IpTag }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IpTag[name]))}
 
-function check_required(o::IpTag)
+function OpenAPI.check_required(o::IpTag)
     true
 end
 
+function OpenAPI.validate_properties(o::IpTag)
+    OpenAPI.validate_property(IpTag, Symbol("ipTagType"), o.ipTagType)
+    OpenAPI.validate_property(IpTag, Symbol("tag"), o.tag)
+end
+
 function OpenAPI.validate_property(::Type{ IpTag }, name::Symbol, val)
+
+
 end

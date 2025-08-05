@@ -7,33 +7,72 @@ A web application firewall rule.
 
     ApplicationGatewayFirewallRule(;
         ruleId=nothing,
+        ruleIdString=nothing,
+        state=nothing,
+        action=nothing,
+        sensitivity=nothing,
         description=nothing,
     )
 
     - ruleId::Int64 : The identifier of the web application firewall rule.
+    - ruleIdString::String : The string representation of the web application firewall rule identifier.
+    - state::String : The string representation of the web application firewall rule state.
+    - action::String : The string representation of the web application firewall rule action.
+    - sensitivity::String : The string representation of the web application firewall rule sensitivity.
     - description::String : The description of the web application firewall rule.
 """
 Base.@kwdef mutable struct ApplicationGatewayFirewallRule <: OpenAPI.APIModel
     ruleId::Union{Nothing, Int64} = nothing
+    ruleIdString::Union{Nothing, String} = nothing
+    state::Union{Nothing, String} = nothing
+    action::Union{Nothing, String} = nothing
+    sensitivity::Union{Nothing, String} = nothing
     description::Union{Nothing, String} = nothing
 
-    function ApplicationGatewayFirewallRule(ruleId, description, )
-        OpenAPI.validate_property(ApplicationGatewayFirewallRule, Symbol("ruleId"), ruleId)
-        OpenAPI.validate_property(ApplicationGatewayFirewallRule, Symbol("description"), description)
-        return new(ruleId, description, )
+    function ApplicationGatewayFirewallRule(ruleId, ruleIdString, state, action, sensitivity, description, )
+        o = new(ruleId, ruleIdString, state, action, sensitivity, description, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayFirewallRule
 
-const _property_types_ApplicationGatewayFirewallRule = Dict{Symbol,String}(Symbol("ruleId")=>"Int64", Symbol("description")=>"String", )
+const _property_types_ApplicationGatewayFirewallRule = Dict{Symbol,String}(Symbol("ruleId")=>"Int64", Symbol("ruleIdString")=>"String", Symbol("state")=>"String", Symbol("action")=>"String", Symbol("sensitivity")=>"String", Symbol("description")=>"String", )
 OpenAPI.property_type(::Type{ ApplicationGatewayFirewallRule }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayFirewallRule[name]))}
 
-function check_required(o::ApplicationGatewayFirewallRule)
+function OpenAPI.check_required(o::ApplicationGatewayFirewallRule)
     o.ruleId === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayFirewallRule)
+    OpenAPI.validate_property(ApplicationGatewayFirewallRule, Symbol("ruleId"), o.ruleId)
+    OpenAPI.validate_property(ApplicationGatewayFirewallRule, Symbol("ruleIdString"), o.ruleIdString)
+    OpenAPI.validate_property(ApplicationGatewayFirewallRule, Symbol("state"), o.state)
+    OpenAPI.validate_property(ApplicationGatewayFirewallRule, Symbol("action"), o.action)
+    OpenAPI.validate_property(ApplicationGatewayFirewallRule, Symbol("sensitivity"), o.sensitivity)
+    OpenAPI.validate_property(ApplicationGatewayFirewallRule, Symbol("description"), o.description)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayFirewallRule }, name::Symbol, val)
+
     if name === Symbol("ruleId")
         OpenAPI.validate_param(name, "ApplicationGatewayFirewallRule", :format, val, "int32")
     end
+
+
+    if name === Symbol("state")
+        OpenAPI.validate_param(name, "ApplicationGatewayFirewallRule", :enum, val, ["Enabled", "Disabled"])
+    end
+
+
+    if name === Symbol("action")
+        OpenAPI.validate_param(name, "ApplicationGatewayFirewallRule", :enum, val, ["None", "AnomalyScoring", "Allow", "Block", "Log"])
+    end
+
+
+    if name === Symbol("sensitivity")
+        OpenAPI.validate_param(name, "ApplicationGatewayFirewallRule", :enum, val, ["None", "Low", "Medium", "High"])
+    end
+
+
 end

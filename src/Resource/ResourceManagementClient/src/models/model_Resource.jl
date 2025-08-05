@@ -10,6 +10,7 @@ Specified resource.
         name=nothing,
         type=nothing,
         location=nothing,
+        extendedLocation=nothing,
         tags=nothing,
     )
 
@@ -17,6 +18,7 @@ Specified resource.
     - name::String : Resource name
     - type::String : Resource type
     - location::String : Resource location
+    - extendedLocation::ExtendedLocation
     - tags::Dict{String, String} : Resource tags
 """
 Base.@kwdef mutable struct Resource <: OpenAPI.APIModel
@@ -24,24 +26,37 @@ Base.@kwdef mutable struct Resource <: OpenAPI.APIModel
     name::Union{Nothing, String} = nothing
     type::Union{Nothing, String} = nothing
     location::Union{Nothing, String} = nothing
+    extendedLocation = nothing # spec type: Union{ Nothing, ExtendedLocation }
     tags::Union{Nothing, Dict{String, String}} = nothing
 
-    function Resource(id, name, type, location, tags, )
-        OpenAPI.validate_property(Resource, Symbol("id"), id)
-        OpenAPI.validate_property(Resource, Symbol("name"), name)
-        OpenAPI.validate_property(Resource, Symbol("type"), type)
-        OpenAPI.validate_property(Resource, Symbol("location"), location)
-        OpenAPI.validate_property(Resource, Symbol("tags"), tags)
-        return new(id, name, type, location, tags, )
+    function Resource(id, name, type, location, extendedLocation, tags, )
+        o = new(id, name, type, location, extendedLocation, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type Resource
 
-const _property_types_Resource = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
+const _property_types_Resource = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("extendedLocation")=>"ExtendedLocation", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ Resource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Resource[name]))}
 
-function check_required(o::Resource)
+function OpenAPI.check_required(o::Resource)
     true
 end
 
+function OpenAPI.validate_properties(o::Resource)
+    OpenAPI.validate_property(Resource, Symbol("id"), o.id)
+    OpenAPI.validate_property(Resource, Symbol("name"), o.name)
+    OpenAPI.validate_property(Resource, Symbol("type"), o.type)
+    OpenAPI.validate_property(Resource, Symbol("location"), o.location)
+    OpenAPI.validate_property(Resource, Symbol("extendedLocation"), o.extendedLocation)
+    OpenAPI.validate_property(Resource, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ Resource }, name::Symbol, val)
+
+
+
+
+
+
 end

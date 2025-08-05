@@ -27,21 +27,31 @@ Base.@kwdef mutable struct ResourceProviderOperationDisplayProperties <: OpenAPI
     description::Union{Nothing, String} = nothing
 
     function ResourceProviderOperationDisplayProperties(publisher, provider, resource, operation, description, )
-        OpenAPI.validate_property(ResourceProviderOperationDisplayProperties, Symbol("publisher"), publisher)
-        OpenAPI.validate_property(ResourceProviderOperationDisplayProperties, Symbol("provider"), provider)
-        OpenAPI.validate_property(ResourceProviderOperationDisplayProperties, Symbol("resource"), resource)
-        OpenAPI.validate_property(ResourceProviderOperationDisplayProperties, Symbol("operation"), operation)
-        OpenAPI.validate_property(ResourceProviderOperationDisplayProperties, Symbol("description"), description)
-        return new(publisher, provider, resource, operation, description, )
+        o = new(publisher, provider, resource, operation, description, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ResourceProviderOperationDisplayProperties
 
 const _property_types_ResourceProviderOperationDisplayProperties = Dict{Symbol,String}(Symbol("publisher")=>"String", Symbol("provider")=>"String", Symbol("resource")=>"String", Symbol("operation")=>"String", Symbol("description")=>"String", )
 OpenAPI.property_type(::Type{ ResourceProviderOperationDisplayProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ResourceProviderOperationDisplayProperties[name]))}
 
-function check_required(o::ResourceProviderOperationDisplayProperties)
+function OpenAPI.check_required(o::ResourceProviderOperationDisplayProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::ResourceProviderOperationDisplayProperties)
+    OpenAPI.validate_property(ResourceProviderOperationDisplayProperties, Symbol("publisher"), o.publisher)
+    OpenAPI.validate_property(ResourceProviderOperationDisplayProperties, Symbol("provider"), o.provider)
+    OpenAPI.validate_property(ResourceProviderOperationDisplayProperties, Symbol("resource"), o.resource)
+    OpenAPI.validate_property(ResourceProviderOperationDisplayProperties, Symbol("operation"), o.operation)
+    OpenAPI.validate_property(ResourceProviderOperationDisplayProperties, Symbol("description"), o.description)
+end
+
 function OpenAPI.validate_property(::Type{ ResourceProviderOperationDisplayProperties }, name::Symbol, val)
+
+
+
+
+
 end

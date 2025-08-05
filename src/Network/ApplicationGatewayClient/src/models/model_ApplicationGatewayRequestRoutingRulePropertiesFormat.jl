@@ -14,6 +14,7 @@ Properties of request routing rule of the application gateway.
         urlPathMap=nothing,
         rewriteRuleSet=nothing,
         redirectConfiguration=nothing,
+        loadDistributionPolicy=nothing,
         provisioningState=nothing,
     )
 
@@ -25,6 +26,7 @@ Properties of request routing rule of the application gateway.
     - urlPathMap::SubResource
     - rewriteRuleSet::SubResource
     - redirectConfiguration::SubResource
+    - loadDistributionPolicy::SubResource
     - provisioningState::ProvisioningState
 """
 Base.@kwdef mutable struct ApplicationGatewayRequestRoutingRulePropertiesFormat <: OpenAPI.APIModel
@@ -36,33 +38,43 @@ Base.@kwdef mutable struct ApplicationGatewayRequestRoutingRulePropertiesFormat 
     urlPathMap = nothing # spec type: Union{ Nothing, SubResource }
     rewriteRuleSet = nothing # spec type: Union{ Nothing, SubResource }
     redirectConfiguration = nothing # spec type: Union{ Nothing, SubResource }
+    loadDistributionPolicy = nothing # spec type: Union{ Nothing, SubResource }
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
-    function ApplicationGatewayRequestRoutingRulePropertiesFormat(ruleType, priority, backendAddressPool, backendHttpSettings, httpListener, urlPathMap, rewriteRuleSet, redirectConfiguration, provisioningState, )
-        OpenAPI.validate_property(ApplicationGatewayRequestRoutingRulePropertiesFormat, Symbol("ruleType"), ruleType)
-        OpenAPI.validate_property(ApplicationGatewayRequestRoutingRulePropertiesFormat, Symbol("priority"), priority)
-        OpenAPI.validate_property(ApplicationGatewayRequestRoutingRulePropertiesFormat, Symbol("backendAddressPool"), backendAddressPool)
-        OpenAPI.validate_property(ApplicationGatewayRequestRoutingRulePropertiesFormat, Symbol("backendHttpSettings"), backendHttpSettings)
-        OpenAPI.validate_property(ApplicationGatewayRequestRoutingRulePropertiesFormat, Symbol("httpListener"), httpListener)
-        OpenAPI.validate_property(ApplicationGatewayRequestRoutingRulePropertiesFormat, Symbol("urlPathMap"), urlPathMap)
-        OpenAPI.validate_property(ApplicationGatewayRequestRoutingRulePropertiesFormat, Symbol("rewriteRuleSet"), rewriteRuleSet)
-        OpenAPI.validate_property(ApplicationGatewayRequestRoutingRulePropertiesFormat, Symbol("redirectConfiguration"), redirectConfiguration)
-        OpenAPI.validate_property(ApplicationGatewayRequestRoutingRulePropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(ruleType, priority, backendAddressPool, backendHttpSettings, httpListener, urlPathMap, rewriteRuleSet, redirectConfiguration, provisioningState, )
+    function ApplicationGatewayRequestRoutingRulePropertiesFormat(ruleType, priority, backendAddressPool, backendHttpSettings, httpListener, urlPathMap, rewriteRuleSet, redirectConfiguration, loadDistributionPolicy, provisioningState, )
+        o = new(ruleType, priority, backendAddressPool, backendHttpSettings, httpListener, urlPathMap, rewriteRuleSet, redirectConfiguration, loadDistributionPolicy, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayRequestRoutingRulePropertiesFormat
 
-const _property_types_ApplicationGatewayRequestRoutingRulePropertiesFormat = Dict{Symbol,String}(Symbol("ruleType")=>"String", Symbol("priority")=>"Int64", Symbol("backendAddressPool")=>"SubResource", Symbol("backendHttpSettings")=>"SubResource", Symbol("httpListener")=>"SubResource", Symbol("urlPathMap")=>"SubResource", Symbol("rewriteRuleSet")=>"SubResource", Symbol("redirectConfiguration")=>"SubResource", Symbol("provisioningState")=>"ProvisioningState", )
+const _property_types_ApplicationGatewayRequestRoutingRulePropertiesFormat = Dict{Symbol,String}(Symbol("ruleType")=>"String", Symbol("priority")=>"Int64", Symbol("backendAddressPool")=>"SubResource", Symbol("backendHttpSettings")=>"SubResource", Symbol("httpListener")=>"SubResource", Symbol("urlPathMap")=>"SubResource", Symbol("rewriteRuleSet")=>"SubResource", Symbol("redirectConfiguration")=>"SubResource", Symbol("loadDistributionPolicy")=>"SubResource", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ ApplicationGatewayRequestRoutingRulePropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayRequestRoutingRulePropertiesFormat[name]))}
 
-function check_required(o::ApplicationGatewayRequestRoutingRulePropertiesFormat)
+function OpenAPI.check_required(o::ApplicationGatewayRequestRoutingRulePropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayRequestRoutingRulePropertiesFormat)
+    OpenAPI.validate_property(ApplicationGatewayRequestRoutingRulePropertiesFormat, Symbol("ruleType"), o.ruleType)
+    OpenAPI.validate_property(ApplicationGatewayRequestRoutingRulePropertiesFormat, Symbol("priority"), o.priority)
+    OpenAPI.validate_property(ApplicationGatewayRequestRoutingRulePropertiesFormat, Symbol("backendAddressPool"), o.backendAddressPool)
+    OpenAPI.validate_property(ApplicationGatewayRequestRoutingRulePropertiesFormat, Symbol("backendHttpSettings"), o.backendHttpSettings)
+    OpenAPI.validate_property(ApplicationGatewayRequestRoutingRulePropertiesFormat, Symbol("httpListener"), o.httpListener)
+    OpenAPI.validate_property(ApplicationGatewayRequestRoutingRulePropertiesFormat, Symbol("urlPathMap"), o.urlPathMap)
+    OpenAPI.validate_property(ApplicationGatewayRequestRoutingRulePropertiesFormat, Symbol("rewriteRuleSet"), o.rewriteRuleSet)
+    OpenAPI.validate_property(ApplicationGatewayRequestRoutingRulePropertiesFormat, Symbol("redirectConfiguration"), o.redirectConfiguration)
+    OpenAPI.validate_property(ApplicationGatewayRequestRoutingRulePropertiesFormat, Symbol("loadDistributionPolicy"), o.loadDistributionPolicy)
+    OpenAPI.validate_property(ApplicationGatewayRequestRoutingRulePropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayRequestRoutingRulePropertiesFormat }, name::Symbol, val)
+
     if name === Symbol("ruleType")
         OpenAPI.validate_param(name, "ApplicationGatewayRequestRoutingRulePropertiesFormat", :enum, val, ["Basic", "PathBasedRouting"])
     end
+
+
     if name === Symbol("priority")
         OpenAPI.validate_param(name, "ApplicationGatewayRequestRoutingRulePropertiesFormat", :format, val, "int32")
     end
@@ -70,4 +82,12 @@ function OpenAPI.validate_property(::Type{ ApplicationGatewayRequestRoutingRuleP
         OpenAPI.validate_param(name, "ApplicationGatewayRequestRoutingRulePropertiesFormat", :maximum, val, 20000, false)
         OpenAPI.validate_param(name, "ApplicationGatewayRequestRoutingRulePropertiesFormat", :minimum, val, 1, false)
     end
+
+
+
+
+
+
+
+
 end

@@ -21,25 +21,34 @@ Base.@kwdef mutable struct RecurringCharge <: OpenAPI.APIModel
     EffectiveDate::Union{Nothing, ZonedDateTime} = nothing
 
     function RecurringCharge(RecurringCharge, Name, EffectiveDate, )
-        OpenAPI.validate_property(RecurringCharge, Symbol("RecurringCharge"), RecurringCharge)
-        OpenAPI.validate_property(RecurringCharge, Symbol("Name"), Name)
-        OpenAPI.validate_property(RecurringCharge, Symbol("EffectiveDate"), EffectiveDate)
-        return new(RecurringCharge, Name, EffectiveDate, )
+        o = new(RecurringCharge, Name, EffectiveDate, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type RecurringCharge
 
 const _property_types_RecurringCharge = Dict{Symbol,String}(Symbol("RecurringCharge")=>"Int64", Symbol("Name")=>"String", Symbol("EffectiveDate")=>"ZonedDateTime", )
 OpenAPI.property_type(::Type{ RecurringCharge }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RecurringCharge[name]))}
 
-function check_required(o::RecurringCharge)
+function OpenAPI.check_required(o::RecurringCharge)
     o.Name === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::RecurringCharge)
+    OpenAPI.validate_property(RecurringCharge, Symbol("RecurringCharge"), o.RecurringCharge)
+    OpenAPI.validate_property(RecurringCharge, Symbol("Name"), o.Name)
+    OpenAPI.validate_property(RecurringCharge, Symbol("EffectiveDate"), o.EffectiveDate)
+end
+
 function OpenAPI.validate_property(::Type{ RecurringCharge }, name::Symbol, val)
+
+
     if name === Symbol("Name")
         OpenAPI.validate_param(name, "RecurringCharge", :enum, val, ["Recurring Charge", "Monetary Commitment", "Monetary Credit"])
     end
+
+
     if name === Symbol("EffectiveDate")
         OpenAPI.validate_param(name, "RecurringCharge", :format, val, "date-time")
     end

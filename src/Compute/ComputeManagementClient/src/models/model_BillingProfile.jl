@@ -15,19 +15,25 @@ Base.@kwdef mutable struct BillingProfile <: OpenAPI.APIModel
     maxPrice::Union{Nothing, Float64} = nothing
 
     function BillingProfile(maxPrice, )
-        OpenAPI.validate_property(BillingProfile, Symbol("maxPrice"), maxPrice)
-        return new(maxPrice, )
+        o = new(maxPrice, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type BillingProfile
 
 const _property_types_BillingProfile = Dict{Symbol,String}(Symbol("maxPrice")=>"Float64", )
 OpenAPI.property_type(::Type{ BillingProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_BillingProfile[name]))}
 
-function check_required(o::BillingProfile)
+function OpenAPI.check_required(o::BillingProfile)
     true
 end
 
+function OpenAPI.validate_properties(o::BillingProfile)
+    OpenAPI.validate_property(BillingProfile, Symbol("maxPrice"), o.maxPrice)
+end
+
 function OpenAPI.validate_property(::Type{ BillingProfile }, name::Symbol, val)
+
     if name === Symbol("maxPrice")
         OpenAPI.validate_param(name, "BillingProfile", :format, val, "double")
     end

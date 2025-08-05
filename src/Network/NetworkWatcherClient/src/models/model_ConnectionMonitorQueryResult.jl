@@ -18,21 +18,29 @@ Base.@kwdef mutable struct ConnectionMonitorQueryResult <: OpenAPI.APIModel
     states::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ConnectionStateSnapshot} }
 
     function ConnectionMonitorQueryResult(sourceStatus, states, )
-        OpenAPI.validate_property(ConnectionMonitorQueryResult, Symbol("sourceStatus"), sourceStatus)
-        OpenAPI.validate_property(ConnectionMonitorQueryResult, Symbol("states"), states)
-        return new(sourceStatus, states, )
+        o = new(sourceStatus, states, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ConnectionMonitorQueryResult
 
 const _property_types_ConnectionMonitorQueryResult = Dict{Symbol,String}(Symbol("sourceStatus")=>"String", Symbol("states")=>"Vector{ConnectionStateSnapshot}", )
 OpenAPI.property_type(::Type{ ConnectionMonitorQueryResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ConnectionMonitorQueryResult[name]))}
 
-function check_required(o::ConnectionMonitorQueryResult)
+function OpenAPI.check_required(o::ConnectionMonitorQueryResult)
     true
 end
 
+function OpenAPI.validate_properties(o::ConnectionMonitorQueryResult)
+    OpenAPI.validate_property(ConnectionMonitorQueryResult, Symbol("sourceStatus"), o.sourceStatus)
+    OpenAPI.validate_property(ConnectionMonitorQueryResult, Symbol("states"), o.states)
+end
+
 function OpenAPI.validate_property(::Type{ ConnectionMonitorQueryResult }, name::Symbol, val)
+
     if name === Symbol("sourceStatus")
         OpenAPI.validate_param(name, "ConnectionMonitorQueryResult", :enum, val, ["Unknown", "Active", "Inactive"])
     end
+
+
 end

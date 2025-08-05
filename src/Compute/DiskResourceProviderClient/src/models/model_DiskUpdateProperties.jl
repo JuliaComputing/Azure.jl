@@ -17,6 +17,15 @@ Disk resource update properties.
         encryption=nothing,
         networkAccessPolicy=nothing,
         diskAccessId=nothing,
+        tier=nothing,
+        burstingEnabled=nothing,
+        purchasePlan=nothing,
+        supportedCapabilities=nothing,
+        propertyUpdatesInProgress=nothing,
+        supportsHibernation=nothing,
+        publicNetworkAccess=nothing,
+        dataAccessAuthMode=nothing,
+        optimizedForFrequentAttach=nothing,
     )
 
     - osType::String : the Operating System type.
@@ -30,6 +39,15 @@ Disk resource update properties.
     - encryption::Encryption
     - networkAccessPolicy::NetworkAccessPolicy
     - diskAccessId::String : ARM id of the DiskAccess resource for using private endpoints on disks.
+    - tier::String : Performance tier of the disk (e.g, P4, S10) as described here: https://azure.microsoft.com/en-us/pricing/details/managed-disks/. Does not apply to Ultra disks.
+    - burstingEnabled::Bool : Set to true to enable bursting beyond the provisioned performance target of the disk. Bursting is disabled by default. Does not apply to Ultra disks.
+    - purchasePlan::PurchasePlan
+    - supportedCapabilities::SupportedCapabilities
+    - propertyUpdatesInProgress::PropertyUpdatesInProgress
+    - supportsHibernation::Bool : Indicates the OS on a disk supports hibernation.
+    - publicNetworkAccess::PublicNetworkAccess
+    - dataAccessAuthMode::DataAccessAuthMode
+    - optimizedForFrequentAttach::Bool : Setting this property to true improves reliability and performance of data disks that are frequently (more than 5 times a day) by detached from one virtual machine and attached to another. This property should not be set for disks that are not detached and attached frequently as it causes the disks to not align with the fault domain of the virtual machine.
 """
 Base.@kwdef mutable struct DiskUpdateProperties <: OpenAPI.APIModel
     osType::Union{Nothing, String} = nothing
@@ -43,50 +61,94 @@ Base.@kwdef mutable struct DiskUpdateProperties <: OpenAPI.APIModel
     encryption = nothing # spec type: Union{ Nothing, Encryption }
     networkAccessPolicy = nothing # spec type: Union{ Nothing, NetworkAccessPolicy }
     diskAccessId::Union{Nothing, String} = nothing
+    tier::Union{Nothing, String} = nothing
+    burstingEnabled::Union{Nothing, Bool} = nothing
+    purchasePlan = nothing # spec type: Union{ Nothing, PurchasePlan }
+    supportedCapabilities = nothing # spec type: Union{ Nothing, SupportedCapabilities }
+    propertyUpdatesInProgress = nothing # spec type: Union{ Nothing, PropertyUpdatesInProgress }
+    supportsHibernation::Union{Nothing, Bool} = nothing
+    publicNetworkAccess = nothing # spec type: Union{ Nothing, PublicNetworkAccess }
+    dataAccessAuthMode = nothing # spec type: Union{ Nothing, DataAccessAuthMode }
+    optimizedForFrequentAttach::Union{Nothing, Bool} = nothing
 
-    function DiskUpdateProperties(osType, diskSizeGB, encryptionSettingsCollection, diskIOPSReadWrite, diskMBpsReadWrite, diskIOPSReadOnly, diskMBpsReadOnly, maxShares, encryption, networkAccessPolicy, diskAccessId, )
-        OpenAPI.validate_property(DiskUpdateProperties, Symbol("osType"), osType)
-        OpenAPI.validate_property(DiskUpdateProperties, Symbol("diskSizeGB"), diskSizeGB)
-        OpenAPI.validate_property(DiskUpdateProperties, Symbol("encryptionSettingsCollection"), encryptionSettingsCollection)
-        OpenAPI.validate_property(DiskUpdateProperties, Symbol("diskIOPSReadWrite"), diskIOPSReadWrite)
-        OpenAPI.validate_property(DiskUpdateProperties, Symbol("diskMBpsReadWrite"), diskMBpsReadWrite)
-        OpenAPI.validate_property(DiskUpdateProperties, Symbol("diskIOPSReadOnly"), diskIOPSReadOnly)
-        OpenAPI.validate_property(DiskUpdateProperties, Symbol("diskMBpsReadOnly"), diskMBpsReadOnly)
-        OpenAPI.validate_property(DiskUpdateProperties, Symbol("maxShares"), maxShares)
-        OpenAPI.validate_property(DiskUpdateProperties, Symbol("encryption"), encryption)
-        OpenAPI.validate_property(DiskUpdateProperties, Symbol("networkAccessPolicy"), networkAccessPolicy)
-        OpenAPI.validate_property(DiskUpdateProperties, Symbol("diskAccessId"), diskAccessId)
-        return new(osType, diskSizeGB, encryptionSettingsCollection, diskIOPSReadWrite, diskMBpsReadWrite, diskIOPSReadOnly, diskMBpsReadOnly, maxShares, encryption, networkAccessPolicy, diskAccessId, )
+    function DiskUpdateProperties(osType, diskSizeGB, encryptionSettingsCollection, diskIOPSReadWrite, diskMBpsReadWrite, diskIOPSReadOnly, diskMBpsReadOnly, maxShares, encryption, networkAccessPolicy, diskAccessId, tier, burstingEnabled, purchasePlan, supportedCapabilities, propertyUpdatesInProgress, supportsHibernation, publicNetworkAccess, dataAccessAuthMode, optimizedForFrequentAttach, )
+        o = new(osType, diskSizeGB, encryptionSettingsCollection, diskIOPSReadWrite, diskMBpsReadWrite, diskIOPSReadOnly, diskMBpsReadOnly, maxShares, encryption, networkAccessPolicy, diskAccessId, tier, burstingEnabled, purchasePlan, supportedCapabilities, propertyUpdatesInProgress, supportsHibernation, publicNetworkAccess, dataAccessAuthMode, optimizedForFrequentAttach, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type DiskUpdateProperties
 
-const _property_types_DiskUpdateProperties = Dict{Symbol,String}(Symbol("osType")=>"String", Symbol("diskSizeGB")=>"Int64", Symbol("encryptionSettingsCollection")=>"EncryptionSettingsCollection", Symbol("diskIOPSReadWrite")=>"Int64", Symbol("diskMBpsReadWrite")=>"Int64", Symbol("diskIOPSReadOnly")=>"Int64", Symbol("diskMBpsReadOnly")=>"Int64", Symbol("maxShares")=>"Int64", Symbol("encryption")=>"Encryption", Symbol("networkAccessPolicy")=>"NetworkAccessPolicy", Symbol("diskAccessId")=>"String", )
+const _property_types_DiskUpdateProperties = Dict{Symbol,String}(Symbol("osType")=>"String", Symbol("diskSizeGB")=>"Int64", Symbol("encryptionSettingsCollection")=>"EncryptionSettingsCollection", Symbol("diskIOPSReadWrite")=>"Int64", Symbol("diskMBpsReadWrite")=>"Int64", Symbol("diskIOPSReadOnly")=>"Int64", Symbol("diskMBpsReadOnly")=>"Int64", Symbol("maxShares")=>"Int64", Symbol("encryption")=>"Encryption", Symbol("networkAccessPolicy")=>"NetworkAccessPolicy", Symbol("diskAccessId")=>"String", Symbol("tier")=>"String", Symbol("burstingEnabled")=>"Bool", Symbol("purchasePlan")=>"PurchasePlan", Symbol("supportedCapabilities")=>"SupportedCapabilities", Symbol("propertyUpdatesInProgress")=>"PropertyUpdatesInProgress", Symbol("supportsHibernation")=>"Bool", Symbol("publicNetworkAccess")=>"PublicNetworkAccess", Symbol("dataAccessAuthMode")=>"DataAccessAuthMode", Symbol("optimizedForFrequentAttach")=>"Bool", )
 OpenAPI.property_type(::Type{ DiskUpdateProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DiskUpdateProperties[name]))}
 
-function check_required(o::DiskUpdateProperties)
+function OpenAPI.check_required(o::DiskUpdateProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::DiskUpdateProperties)
+    OpenAPI.validate_property(DiskUpdateProperties, Symbol("osType"), o.osType)
+    OpenAPI.validate_property(DiskUpdateProperties, Symbol("diskSizeGB"), o.diskSizeGB)
+    OpenAPI.validate_property(DiskUpdateProperties, Symbol("encryptionSettingsCollection"), o.encryptionSettingsCollection)
+    OpenAPI.validate_property(DiskUpdateProperties, Symbol("diskIOPSReadWrite"), o.diskIOPSReadWrite)
+    OpenAPI.validate_property(DiskUpdateProperties, Symbol("diskMBpsReadWrite"), o.diskMBpsReadWrite)
+    OpenAPI.validate_property(DiskUpdateProperties, Symbol("diskIOPSReadOnly"), o.diskIOPSReadOnly)
+    OpenAPI.validate_property(DiskUpdateProperties, Symbol("diskMBpsReadOnly"), o.diskMBpsReadOnly)
+    OpenAPI.validate_property(DiskUpdateProperties, Symbol("maxShares"), o.maxShares)
+    OpenAPI.validate_property(DiskUpdateProperties, Symbol("encryption"), o.encryption)
+    OpenAPI.validate_property(DiskUpdateProperties, Symbol("networkAccessPolicy"), o.networkAccessPolicy)
+    OpenAPI.validate_property(DiskUpdateProperties, Symbol("diskAccessId"), o.diskAccessId)
+    OpenAPI.validate_property(DiskUpdateProperties, Symbol("tier"), o.tier)
+    OpenAPI.validate_property(DiskUpdateProperties, Symbol("burstingEnabled"), o.burstingEnabled)
+    OpenAPI.validate_property(DiskUpdateProperties, Symbol("purchasePlan"), o.purchasePlan)
+    OpenAPI.validate_property(DiskUpdateProperties, Symbol("supportedCapabilities"), o.supportedCapabilities)
+    OpenAPI.validate_property(DiskUpdateProperties, Symbol("propertyUpdatesInProgress"), o.propertyUpdatesInProgress)
+    OpenAPI.validate_property(DiskUpdateProperties, Symbol("supportsHibernation"), o.supportsHibernation)
+    OpenAPI.validate_property(DiskUpdateProperties, Symbol("publicNetworkAccess"), o.publicNetworkAccess)
+    OpenAPI.validate_property(DiskUpdateProperties, Symbol("dataAccessAuthMode"), o.dataAccessAuthMode)
+    OpenAPI.validate_property(DiskUpdateProperties, Symbol("optimizedForFrequentAttach"), o.optimizedForFrequentAttach)
+end
+
 function OpenAPI.validate_property(::Type{ DiskUpdateProperties }, name::Symbol, val)
+
     if name === Symbol("osType")
         OpenAPI.validate_param(name, "DiskUpdateProperties", :enum, val, ["Windows", "Linux"])
     end
+
+
     if name === Symbol("diskSizeGB")
         OpenAPI.validate_param(name, "DiskUpdateProperties", :format, val, "int32")
     end
+
+
     if name === Symbol("diskIOPSReadWrite")
         OpenAPI.validate_param(name, "DiskUpdateProperties", :format, val, "int64")
     end
+
     if name === Symbol("diskMBpsReadWrite")
         OpenAPI.validate_param(name, "DiskUpdateProperties", :format, val, "int64")
     end
+
     if name === Symbol("diskIOPSReadOnly")
         OpenAPI.validate_param(name, "DiskUpdateProperties", :format, val, "int64")
     end
+
     if name === Symbol("diskMBpsReadOnly")
         OpenAPI.validate_param(name, "DiskUpdateProperties", :format, val, "int64")
     end
+
     if name === Symbol("maxShares")
         OpenAPI.validate_param(name, "DiskUpdateProperties", :format, val, "int32")
     end
+
+
+
+
+
+
+
+
+
+
+
+
 end

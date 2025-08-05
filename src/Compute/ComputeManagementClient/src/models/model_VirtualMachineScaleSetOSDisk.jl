@@ -42,33 +42,49 @@ Base.@kwdef mutable struct VirtualMachineScaleSetOSDisk <: OpenAPI.APIModel
     managedDisk = nothing # spec type: Union{ Nothing, VirtualMachineScaleSetManagedDiskParameters }
 
     function VirtualMachineScaleSetOSDisk(name, caching, writeAcceleratorEnabled, createOption, diffDiskSettings, diskSizeGB, osType, image, vhdContainers, managedDisk, )
-        OpenAPI.validate_property(VirtualMachineScaleSetOSDisk, Symbol("name"), name)
-        OpenAPI.validate_property(VirtualMachineScaleSetOSDisk, Symbol("caching"), caching)
-        OpenAPI.validate_property(VirtualMachineScaleSetOSDisk, Symbol("writeAcceleratorEnabled"), writeAcceleratorEnabled)
-        OpenAPI.validate_property(VirtualMachineScaleSetOSDisk, Symbol("createOption"), createOption)
-        OpenAPI.validate_property(VirtualMachineScaleSetOSDisk, Symbol("diffDiskSettings"), diffDiskSettings)
-        OpenAPI.validate_property(VirtualMachineScaleSetOSDisk, Symbol("diskSizeGB"), diskSizeGB)
-        OpenAPI.validate_property(VirtualMachineScaleSetOSDisk, Symbol("osType"), osType)
-        OpenAPI.validate_property(VirtualMachineScaleSetOSDisk, Symbol("image"), image)
-        OpenAPI.validate_property(VirtualMachineScaleSetOSDisk, Symbol("vhdContainers"), vhdContainers)
-        OpenAPI.validate_property(VirtualMachineScaleSetOSDisk, Symbol("managedDisk"), managedDisk)
-        return new(name, caching, writeAcceleratorEnabled, createOption, diffDiskSettings, diskSizeGB, osType, image, vhdContainers, managedDisk, )
+        o = new(name, caching, writeAcceleratorEnabled, createOption, diffDiskSettings, diskSizeGB, osType, image, vhdContainers, managedDisk, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetOSDisk
 
 const _property_types_VirtualMachineScaleSetOSDisk = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("caching")=>"Caching", Symbol("writeAcceleratorEnabled")=>"Bool", Symbol("createOption")=>"CreateOption", Symbol("diffDiskSettings")=>"DiffDiskSettings", Symbol("diskSizeGB")=>"Int64", Symbol("osType")=>"String", Symbol("image")=>"VirtualHardDisk", Symbol("vhdContainers")=>"Vector{String}", Symbol("managedDisk")=>"VirtualMachineScaleSetManagedDiskParameters", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetOSDisk }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetOSDisk[name]))}
 
-function check_required(o::VirtualMachineScaleSetOSDisk)
+function OpenAPI.check_required(o::VirtualMachineScaleSetOSDisk)
     o.createOption === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetOSDisk)
+    OpenAPI.validate_property(VirtualMachineScaleSetOSDisk, Symbol("name"), o.name)
+    OpenAPI.validate_property(VirtualMachineScaleSetOSDisk, Symbol("caching"), o.caching)
+    OpenAPI.validate_property(VirtualMachineScaleSetOSDisk, Symbol("writeAcceleratorEnabled"), o.writeAcceleratorEnabled)
+    OpenAPI.validate_property(VirtualMachineScaleSetOSDisk, Symbol("createOption"), o.createOption)
+    OpenAPI.validate_property(VirtualMachineScaleSetOSDisk, Symbol("diffDiskSettings"), o.diffDiskSettings)
+    OpenAPI.validate_property(VirtualMachineScaleSetOSDisk, Symbol("diskSizeGB"), o.diskSizeGB)
+    OpenAPI.validate_property(VirtualMachineScaleSetOSDisk, Symbol("osType"), o.osType)
+    OpenAPI.validate_property(VirtualMachineScaleSetOSDisk, Symbol("image"), o.image)
+    OpenAPI.validate_property(VirtualMachineScaleSetOSDisk, Symbol("vhdContainers"), o.vhdContainers)
+    OpenAPI.validate_property(VirtualMachineScaleSetOSDisk, Symbol("managedDisk"), o.managedDisk)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetOSDisk }, name::Symbol, val)
+
+
+
+
+
+
     if name === Symbol("diskSizeGB")
         OpenAPI.validate_param(name, "VirtualMachineScaleSetOSDisk", :format, val, "int32")
     end
+
     if name === Symbol("osType")
         OpenAPI.validate_param(name, "VirtualMachineScaleSetOSDisk", :enum, val, ["Windows", "Linux"])
     end
+
+
+
+
 end

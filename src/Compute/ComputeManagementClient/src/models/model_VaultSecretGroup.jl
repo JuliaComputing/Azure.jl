@@ -18,18 +18,25 @@ Base.@kwdef mutable struct VaultSecretGroup <: OpenAPI.APIModel
     vaultCertificates::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{VaultCertificate} }
 
     function VaultSecretGroup(sourceVault, vaultCertificates, )
-        OpenAPI.validate_property(VaultSecretGroup, Symbol("sourceVault"), sourceVault)
-        OpenAPI.validate_property(VaultSecretGroup, Symbol("vaultCertificates"), vaultCertificates)
-        return new(sourceVault, vaultCertificates, )
+        o = new(sourceVault, vaultCertificates, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VaultSecretGroup
 
 const _property_types_VaultSecretGroup = Dict{Symbol,String}(Symbol("sourceVault")=>"SubResource", Symbol("vaultCertificates")=>"Vector{VaultCertificate}", )
 OpenAPI.property_type(::Type{ VaultSecretGroup }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VaultSecretGroup[name]))}
 
-function check_required(o::VaultSecretGroup)
+function OpenAPI.check_required(o::VaultSecretGroup)
     true
 end
 
+function OpenAPI.validate_properties(o::VaultSecretGroup)
+    OpenAPI.validate_property(VaultSecretGroup, Symbol("sourceVault"), o.sourceVault)
+    OpenAPI.validate_property(VaultSecretGroup, Symbol("vaultCertificates"), o.vaultCertificates)
+end
+
 function OpenAPI.validate_property(::Type{ VaultSecretGroup }, name::Symbol, val)
+
+
 end

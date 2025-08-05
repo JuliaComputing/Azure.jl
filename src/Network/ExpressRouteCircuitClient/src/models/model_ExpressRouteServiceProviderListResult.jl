@@ -18,18 +18,25 @@ Base.@kwdef mutable struct ExpressRouteServiceProviderListResult <: OpenAPI.APIM
     nextLink::Union{Nothing, String} = nothing
 
     function ExpressRouteServiceProviderListResult(value, nextLink, )
-        OpenAPI.validate_property(ExpressRouteServiceProviderListResult, Symbol("value"), value)
-        OpenAPI.validate_property(ExpressRouteServiceProviderListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ExpressRouteServiceProviderListResult
 
 const _property_types_ExpressRouteServiceProviderListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{ExpressRouteServiceProvider}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ ExpressRouteServiceProviderListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExpressRouteServiceProviderListResult[name]))}
 
-function check_required(o::ExpressRouteServiceProviderListResult)
+function OpenAPI.check_required(o::ExpressRouteServiceProviderListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::ExpressRouteServiceProviderListResult)
+    OpenAPI.validate_property(ExpressRouteServiceProviderListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(ExpressRouteServiceProviderListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ ExpressRouteServiceProviderListResult }, name::Symbol, val)
+
+
 end

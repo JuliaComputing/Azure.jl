@@ -27,21 +27,31 @@ Base.@kwdef mutable struct ApplicationGatewayProbe <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
 
     function ApplicationGatewayProbe(properties, name, etag, type, id, )
-        OpenAPI.validate_property(ApplicationGatewayProbe, Symbol("properties"), properties)
-        OpenAPI.validate_property(ApplicationGatewayProbe, Symbol("name"), name)
-        OpenAPI.validate_property(ApplicationGatewayProbe, Symbol("etag"), etag)
-        OpenAPI.validate_property(ApplicationGatewayProbe, Symbol("type"), type)
-        OpenAPI.validate_property(ApplicationGatewayProbe, Symbol("id"), id)
-        return new(properties, name, etag, type, id, )
+        o = new(properties, name, etag, type, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayProbe
 
 const _property_types_ApplicationGatewayProbe = Dict{Symbol,String}(Symbol("properties")=>"ApplicationGatewayProbePropertiesFormat", Symbol("name")=>"String", Symbol("etag")=>"String", Symbol("type")=>"String", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ ApplicationGatewayProbe }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayProbe[name]))}
 
-function check_required(o::ApplicationGatewayProbe)
+function OpenAPI.check_required(o::ApplicationGatewayProbe)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayProbe)
+    OpenAPI.validate_property(ApplicationGatewayProbe, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(ApplicationGatewayProbe, Symbol("name"), o.name)
+    OpenAPI.validate_property(ApplicationGatewayProbe, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(ApplicationGatewayProbe, Symbol("type"), o.type)
+    OpenAPI.validate_property(ApplicationGatewayProbe, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayProbe }, name::Symbol, val)
+
+
+
+
+
 end

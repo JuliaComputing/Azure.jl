@@ -11,6 +11,55 @@ This can be used to construct the `OpenAPI.Clients.Client` instance.
 """
 basepath(::Type{ StorageAccountsApi }) = "https://management.azure.com"
 
+const _returntypes_storage_accounts_abort_hierarchical_namespace_migration_StorageAccountsApi = Dict{Regex,Type}(
+    Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => ErrorResponse,
+)
+
+function _oacinternal_storage_accounts_abort_hierarchical_namespace_migration(_api::StorageAccountsApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
+    OpenAPI.validate_param("resource_group_name", "storage_accounts_abort_hierarchical_namespace_migration", :maxLength, resource_group_name, 90)
+    OpenAPI.validate_param("resource_group_name", "storage_accounts_abort_hierarchical_namespace_migration", :minLength, resource_group_name, 1)
+        OpenAPI.validate_param("resource_group_name", "storage_accounts_abort_hierarchical_namespace_migration", :pattern, resource_group_name, r"^[-\w\._\(\)]+$")
+
+    OpenAPI.validate_param("account_name", "storage_accounts_abort_hierarchical_namespace_migration", :maxLength, account_name, 24)
+    OpenAPI.validate_param("account_name", "storage_accounts_abort_hierarchical_namespace_migration", :minLength, account_name, 3)
+        OpenAPI.validate_param("account_name", "storage_accounts_abort_hierarchical_namespace_migration", :pattern, account_name, r"^[a-z0-9]+$")
+
+    OpenAPI.validate_param("api_version", "storage_accounts_abort_hierarchical_namespace_migration", :minLength, api_version, 1)
+
+    OpenAPI.validate_param("subscription_id", "storage_accounts_abort_hierarchical_namespace_migration", :minLength, subscription_id, 1)
+
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_storage_accounts_abort_hierarchical_namespace_migration_StorageAccountsApi, "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/aborthnsonmigration", ["azure_auth", ])
+    OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "accountName", account_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
+    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
+    return _ctx
+end
+
+@doc raw"""Abort live Migration of storage account to enable Hns
+
+Params:
+- resource_group_name::String (required)
+- account_name::String (required)
+- api_version::String (required)
+- subscription_id::String (required)
+
+Return: Nothing, OpenAPI.Clients.ApiResponse
+"""
+function storage_accounts_abort_hierarchical_namespace_migration(_api::StorageAccountsApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
+    _ctx = _oacinternal_storage_accounts_abort_hierarchical_namespace_migration(_api, resource_group_name, account_name, api_version, subscription_id; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx)
+end
+
+function storage_accounts_abort_hierarchical_namespace_migration(_api::StorageAccountsApi, response_stream::Channel, resource_group_name::String, account_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
+    _ctx = _oacinternal_storage_accounts_abort_hierarchical_namespace_migration(_api, resource_group_name, account_name, api_version, subscription_id; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx, response_stream)
+end
+
 const _returntypes_storage_accounts_check_name_availability_StorageAccountsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => CheckNameAvailabilityResult,
 )
@@ -22,7 +71,7 @@ function _oacinternal_storage_accounts_check_name_availability(_api::StorageAcco
 
     _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_storage_accounts_check_name_availability_StorageAccountsApi, "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/checkNameAvailability", ["azure_auth", ], account_name)
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -55,9 +104,11 @@ const _returntypes_storage_accounts_create_StorageAccountsApi = Dict{Regex,Type}
 function _oacinternal_storage_accounts_create(_api::StorageAccountsApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String, parameters::StorageAccountCreateParameters; _mediaType=nothing)
     OpenAPI.validate_param("resource_group_name", "storage_accounts_create", :maxLength, resource_group_name, 90)
     OpenAPI.validate_param("resource_group_name", "storage_accounts_create", :minLength, resource_group_name, 1)
+        OpenAPI.validate_param("resource_group_name", "storage_accounts_create", :pattern, resource_group_name, r"^[-\w\._\(\)]+$")
 
     OpenAPI.validate_param("account_name", "storage_accounts_create", :maxLength, account_name, 24)
     OpenAPI.validate_param("account_name", "storage_accounts_create", :minLength, account_name, 3)
+        OpenAPI.validate_param("account_name", "storage_accounts_create", :pattern, account_name, r"^[a-z0-9]+$")
 
     OpenAPI.validate_param("api_version", "storage_accounts_create", :minLength, api_version, 1)
 
@@ -67,7 +118,7 @@ function _oacinternal_storage_accounts_create(_api::StorageAccountsApi, resource
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "accountName", account_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -102,9 +153,11 @@ const _returntypes_storage_accounts_delete_StorageAccountsApi = Dict{Regex,Type}
 function _oacinternal_storage_accounts_delete(_api::StorageAccountsApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
     OpenAPI.validate_param("resource_group_name", "storage_accounts_delete", :maxLength, resource_group_name, 90)
     OpenAPI.validate_param("resource_group_name", "storage_accounts_delete", :minLength, resource_group_name, 1)
+        OpenAPI.validate_param("resource_group_name", "storage_accounts_delete", :pattern, resource_group_name, r"^[-\w\._\(\)]+$")
 
     OpenAPI.validate_param("account_name", "storage_accounts_delete", :maxLength, account_name, 24)
     OpenAPI.validate_param("account_name", "storage_accounts_delete", :minLength, account_name, 3)
+        OpenAPI.validate_param("account_name", "storage_accounts_delete", :pattern, account_name, r"^[a-z0-9]+$")
 
     OpenAPI.validate_param("api_version", "storage_accounts_delete", :minLength, api_version, 1)
 
@@ -114,7 +167,7 @@ function _oacinternal_storage_accounts_delete(_api::StorageAccountsApi, resource
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "accountName", account_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, [])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -145,12 +198,14 @@ const _returntypes_storage_accounts_failover_StorageAccountsApi = Dict{Regex,Typ
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
 )
 
-function _oacinternal_storage_accounts_failover(_api::StorageAccountsApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
+function _oacinternal_storage_accounts_failover(_api::StorageAccountsApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String; failover_type=nothing, _mediaType=nothing)
     OpenAPI.validate_param("resource_group_name", "storage_accounts_failover", :maxLength, resource_group_name, 90)
     OpenAPI.validate_param("resource_group_name", "storage_accounts_failover", :minLength, resource_group_name, 1)
+        OpenAPI.validate_param("resource_group_name", "storage_accounts_failover", :pattern, resource_group_name, r"^[-\w\._\(\)]+$")
 
     OpenAPI.validate_param("account_name", "storage_accounts_failover", :maxLength, account_name, 24)
     OpenAPI.validate_param("account_name", "storage_accounts_failover", :minLength, account_name, 3)
+        OpenAPI.validate_param("account_name", "storage_accounts_failover", :pattern, account_name, r"^[a-z0-9]+$")
 
     OpenAPI.validate_param("api_version", "storage_accounts_failover", :minLength, api_version, 1)
 
@@ -160,29 +215,31 @@ function _oacinternal_storage_accounts_failover(_api::StorageAccountsApi, resour
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "accountName", account_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "failoverType", failover_type; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, [])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
 end
 
-@doc raw"""Failover request can be triggered for a storage account in case of availability issues. The failover occurs from the storage account's primary cluster to secondary cluster for RA-GRS accounts. The secondary cluster will become primary after failover.
+@doc raw"""A failover request can be triggered for a storage account in the event a primary endpoint becomes unavailable for any reason. The failover occurs from the storage account's primary cluster to the secondary cluster for RA-GRS accounts. The secondary cluster will become primary after failover and the account is converted to LRS. In the case of a Planned Failover, the primary and secondary clusters are swapped after failover and the account remains geo-replicated. Failover should continue to be used in the event of availability issues as Planned failover is only available while the primary and secondary endpoints are available. The primary use case of a Planned Failover is disaster recovery testing drills. This type of failover is invoked by setting FailoverType parameter to 'Planned'. Learn more about the failover options here- https://learn.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance
 
 Params:
 - resource_group_name::String (required)
 - account_name::String (required)
 - api_version::String (required)
 - subscription_id::String (required)
+- failover_type::String
 
 Return: Nothing, OpenAPI.Clients.ApiResponse
 """
-function storage_accounts_failover(_api::StorageAccountsApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = _oacinternal_storage_accounts_failover(_api, resource_group_name, account_name, api_version, subscription_id; _mediaType=_mediaType)
+function storage_accounts_failover(_api::StorageAccountsApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String; failover_type=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_storage_accounts_failover(_api, resource_group_name, account_name, api_version, subscription_id; failover_type=failover_type, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx)
 end
 
-function storage_accounts_failover(_api::StorageAccountsApi, response_stream::Channel, resource_group_name::String, account_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = _oacinternal_storage_accounts_failover(_api, resource_group_name, account_name, api_version, subscription_id; _mediaType=_mediaType)
+function storage_accounts_failover(_api::StorageAccountsApi, response_stream::Channel, resource_group_name::String, account_name::String, api_version::String, subscription_id::String; failover_type=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_storage_accounts_failover(_api, resource_group_name, account_name, api_version, subscription_id; failover_type=failover_type, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
@@ -193,9 +250,11 @@ const _returntypes_storage_accounts_get_properties_StorageAccountsApi = Dict{Reg
 function _oacinternal_storage_accounts_get_properties(_api::StorageAccountsApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String; expand=nothing, _mediaType=nothing)
     OpenAPI.validate_param("resource_group_name", "storage_accounts_get_properties", :maxLength, resource_group_name, 90)
     OpenAPI.validate_param("resource_group_name", "storage_accounts_get_properties", :minLength, resource_group_name, 1)
+        OpenAPI.validate_param("resource_group_name", "storage_accounts_get_properties", :pattern, resource_group_name, r"^[-\w\._\(\)]+$")
 
     OpenAPI.validate_param("account_name", "storage_accounts_get_properties", :maxLength, account_name, 24)
     OpenAPI.validate_param("account_name", "storage_accounts_get_properties", :minLength, account_name, 3)
+        OpenAPI.validate_param("account_name", "storage_accounts_get_properties", :pattern, account_name, r"^[a-z0-9]+$")
 
     OpenAPI.validate_param("api_version", "storage_accounts_get_properties", :minLength, api_version, 1)
 
@@ -205,8 +264,8 @@ function _oacinternal_storage_accounts_get_properties(_api::StorageAccountsApi, 
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "accountName", account_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -233,6 +292,57 @@ function storage_accounts_get_properties(_api::StorageAccountsApi, response_stre
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
+const _returntypes_storage_accounts_hierarchical_namespace_migration_StorageAccountsApi = Dict{Regex,Type}(
+    Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => ErrorResponse,
+)
+
+function _oacinternal_storage_accounts_hierarchical_namespace_migration(_api::StorageAccountsApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String, request_type::String; _mediaType=nothing)
+    OpenAPI.validate_param("resource_group_name", "storage_accounts_hierarchical_namespace_migration", :maxLength, resource_group_name, 90)
+    OpenAPI.validate_param("resource_group_name", "storage_accounts_hierarchical_namespace_migration", :minLength, resource_group_name, 1)
+        OpenAPI.validate_param("resource_group_name", "storage_accounts_hierarchical_namespace_migration", :pattern, resource_group_name, r"^[-\w\._\(\)]+$")
+
+    OpenAPI.validate_param("account_name", "storage_accounts_hierarchical_namespace_migration", :maxLength, account_name, 24)
+    OpenAPI.validate_param("account_name", "storage_accounts_hierarchical_namespace_migration", :minLength, account_name, 3)
+        OpenAPI.validate_param("account_name", "storage_accounts_hierarchical_namespace_migration", :pattern, account_name, r"^[a-z0-9]+$")
+
+    OpenAPI.validate_param("api_version", "storage_accounts_hierarchical_namespace_migration", :minLength, api_version, 1)
+
+    OpenAPI.validate_param("subscription_id", "storage_accounts_hierarchical_namespace_migration", :minLength, subscription_id, 1)
+
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_storage_accounts_hierarchical_namespace_migration_StorageAccountsApi, "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/hnsonmigration", ["azure_auth", ])
+    OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "accountName", account_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "requestType", request_type; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
+    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
+    return _ctx
+end
+
+@doc raw"""Live Migration of storage account to enable Hns
+
+Params:
+- resource_group_name::String (required)
+- account_name::String (required)
+- api_version::String (required)
+- subscription_id::String (required)
+- request_type::String (required)
+
+Return: Nothing, OpenAPI.Clients.ApiResponse
+"""
+function storage_accounts_hierarchical_namespace_migration(_api::StorageAccountsApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String, request_type::String; _mediaType=nothing)
+    _ctx = _oacinternal_storage_accounts_hierarchical_namespace_migration(_api, resource_group_name, account_name, api_version, subscription_id, request_type; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx)
+end
+
+function storage_accounts_hierarchical_namespace_migration(_api::StorageAccountsApi, response_stream::Channel, resource_group_name::String, account_name::String, api_version::String, subscription_id::String, request_type::String; _mediaType=nothing)
+    _ctx = _oacinternal_storage_accounts_hierarchical_namespace_migration(_api, resource_group_name, account_name, api_version, subscription_id, request_type; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx, response_stream)
+end
+
 const _returntypes_storage_accounts_list_StorageAccountsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => StorageAccountListResult,
 )
@@ -244,7 +354,7 @@ function _oacinternal_storage_accounts_list(_api::StorageAccountsApi, api_versio
 
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_storage_accounts_list_StorageAccountsApi, "/subscriptions/{subscriptionId}/providers/Microsoft.Storage/storageAccounts", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -275,9 +385,11 @@ const _returntypes_storage_accounts_list_account_s_a_s_StorageAccountsApi = Dict
 function _oacinternal_storage_accounts_list_account_s_a_s(_api::StorageAccountsApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String, parameters::AccountSasParameters; _mediaType=nothing)
     OpenAPI.validate_param("resource_group_name", "storage_accounts_list_account_s_a_s", :maxLength, resource_group_name, 90)
     OpenAPI.validate_param("resource_group_name", "storage_accounts_list_account_s_a_s", :minLength, resource_group_name, 1)
+        OpenAPI.validate_param("resource_group_name", "storage_accounts_list_account_s_a_s", :pattern, resource_group_name, r"^[-\w\._\(\)]+$")
 
     OpenAPI.validate_param("account_name", "storage_accounts_list_account_s_a_s", :maxLength, account_name, 24)
     OpenAPI.validate_param("account_name", "storage_accounts_list_account_s_a_s", :minLength, account_name, 3)
+        OpenAPI.validate_param("account_name", "storage_accounts_list_account_s_a_s", :pattern, account_name, r"^[a-z0-9]+$")
 
     OpenAPI.validate_param("api_version", "storage_accounts_list_account_s_a_s", :minLength, api_version, 1)
 
@@ -287,7 +399,7 @@ function _oacinternal_storage_accounts_list_account_s_a_s(_api::StorageAccountsA
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "accountName", account_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -321,6 +433,7 @@ const _returntypes_storage_accounts_list_by_resource_group_StorageAccountsApi = 
 function _oacinternal_storage_accounts_list_by_resource_group(_api::StorageAccountsApi, resource_group_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
     OpenAPI.validate_param("resource_group_name", "storage_accounts_list_by_resource_group", :maxLength, resource_group_name, 90)
     OpenAPI.validate_param("resource_group_name", "storage_accounts_list_by_resource_group", :minLength, resource_group_name, 1)
+        OpenAPI.validate_param("resource_group_name", "storage_accounts_list_by_resource_group", :pattern, resource_group_name, r"^[-\w\._\(\)]+$")
 
     OpenAPI.validate_param("api_version", "storage_accounts_list_by_resource_group", :minLength, api_version, 1)
 
@@ -329,7 +442,7 @@ function _oacinternal_storage_accounts_list_by_resource_group(_api::StorageAccou
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_storage_accounts_list_by_resource_group_StorageAccountsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -361,9 +474,11 @@ const _returntypes_storage_accounts_list_keys_StorageAccountsApi = Dict{Regex,Ty
 function _oacinternal_storage_accounts_list_keys(_api::StorageAccountsApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String; expand=nothing, _mediaType=nothing)
     OpenAPI.validate_param("resource_group_name", "storage_accounts_list_keys", :maxLength, resource_group_name, 90)
     OpenAPI.validate_param("resource_group_name", "storage_accounts_list_keys", :minLength, resource_group_name, 1)
+        OpenAPI.validate_param("resource_group_name", "storage_accounts_list_keys", :pattern, resource_group_name, r"^[-\w\._\(\)]+$")
 
     OpenAPI.validate_param("account_name", "storage_accounts_list_keys", :maxLength, account_name, 24)
     OpenAPI.validate_param("account_name", "storage_accounts_list_keys", :minLength, account_name, 3)
+        OpenAPI.validate_param("account_name", "storage_accounts_list_keys", :pattern, account_name, r"^[a-z0-9]+$")
 
     OpenAPI.validate_param("api_version", "storage_accounts_list_keys", :minLength, api_version, 1)
 
@@ -373,8 +488,8 @@ function _oacinternal_storage_accounts_list_keys(_api::StorageAccountsApi, resou
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "accountName", account_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -408,9 +523,11 @@ const _returntypes_storage_accounts_list_service_s_a_s_StorageAccountsApi = Dict
 function _oacinternal_storage_accounts_list_service_s_a_s(_api::StorageAccountsApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String, parameters::ServiceSasParameters; _mediaType=nothing)
     OpenAPI.validate_param("resource_group_name", "storage_accounts_list_service_s_a_s", :maxLength, resource_group_name, 90)
     OpenAPI.validate_param("resource_group_name", "storage_accounts_list_service_s_a_s", :minLength, resource_group_name, 1)
+        OpenAPI.validate_param("resource_group_name", "storage_accounts_list_service_s_a_s", :pattern, resource_group_name, r"^[-\w\._\(\)]+$")
 
     OpenAPI.validate_param("account_name", "storage_accounts_list_service_s_a_s", :maxLength, account_name, 24)
     OpenAPI.validate_param("account_name", "storage_accounts_list_service_s_a_s", :minLength, account_name, 3)
+        OpenAPI.validate_param("account_name", "storage_accounts_list_service_s_a_s", :pattern, account_name, r"^[a-z0-9]+$")
 
     OpenAPI.validate_param("api_version", "storage_accounts_list_service_s_a_s", :minLength, api_version, 1)
 
@@ -420,7 +537,7 @@ function _oacinternal_storage_accounts_list_service_s_a_s(_api::StorageAccountsA
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "accountName", account_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -454,9 +571,11 @@ const _returntypes_storage_accounts_regenerate_key_StorageAccountsApi = Dict{Reg
 function _oacinternal_storage_accounts_regenerate_key(_api::StorageAccountsApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String, regenerate_key::StorageAccountRegenerateKeyParameters; _mediaType=nothing)
     OpenAPI.validate_param("resource_group_name", "storage_accounts_regenerate_key", :maxLength, resource_group_name, 90)
     OpenAPI.validate_param("resource_group_name", "storage_accounts_regenerate_key", :minLength, resource_group_name, 1)
+        OpenAPI.validate_param("resource_group_name", "storage_accounts_regenerate_key", :pattern, resource_group_name, r"^[-\w\._\(\)]+$")
 
     OpenAPI.validate_param("account_name", "storage_accounts_regenerate_key", :maxLength, account_name, 24)
     OpenAPI.validate_param("account_name", "storage_accounts_regenerate_key", :minLength, account_name, 3)
+        OpenAPI.validate_param("account_name", "storage_accounts_regenerate_key", :pattern, account_name, r"^[a-z0-9]+$")
 
     OpenAPI.validate_param("api_version", "storage_accounts_regenerate_key", :minLength, api_version, 1)
 
@@ -466,7 +585,7 @@ function _oacinternal_storage_accounts_regenerate_key(_api::StorageAccountsApi, 
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "accountName", account_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -501,9 +620,11 @@ const _returntypes_storage_accounts_restore_blob_ranges_StorageAccountsApi = Dic
 function _oacinternal_storage_accounts_restore_blob_ranges(_api::StorageAccountsApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String, parameters::BlobRestoreParameters; _mediaType=nothing)
     OpenAPI.validate_param("resource_group_name", "storage_accounts_restore_blob_ranges", :maxLength, resource_group_name, 90)
     OpenAPI.validate_param("resource_group_name", "storage_accounts_restore_blob_ranges", :minLength, resource_group_name, 1)
+        OpenAPI.validate_param("resource_group_name", "storage_accounts_restore_blob_ranges", :pattern, resource_group_name, r"^[-\w\._\(\)]+$")
 
     OpenAPI.validate_param("account_name", "storage_accounts_restore_blob_ranges", :maxLength, account_name, 24)
     OpenAPI.validate_param("account_name", "storage_accounts_restore_blob_ranges", :minLength, account_name, 3)
+        OpenAPI.validate_param("account_name", "storage_accounts_restore_blob_ranges", :pattern, account_name, r"^[a-z0-9]+$")
 
     OpenAPI.validate_param("api_version", "storage_accounts_restore_blob_ranges", :minLength, api_version, 1)
 
@@ -513,7 +634,7 @@ function _oacinternal_storage_accounts_restore_blob_ranges(_api::StorageAccounts
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "accountName", account_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -547,6 +668,7 @@ const _returntypes_storage_accounts_revoke_user_delegation_keys_StorageAccountsA
 function _oacinternal_storage_accounts_revoke_user_delegation_keys(_api::StorageAccountsApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
     OpenAPI.validate_param("resource_group_name", "storage_accounts_revoke_user_delegation_keys", :maxLength, resource_group_name, 90)
     OpenAPI.validate_param("resource_group_name", "storage_accounts_revoke_user_delegation_keys", :minLength, resource_group_name, 1)
+        OpenAPI.validate_param("resource_group_name", "storage_accounts_revoke_user_delegation_keys", :pattern, resource_group_name, r"^[-\w\._\(\)]+$")
 
     OpenAPI.validate_param("account_name", "storage_accounts_revoke_user_delegation_keys", :maxLength, account_name, 24)
     OpenAPI.validate_param("account_name", "storage_accounts_revoke_user_delegation_keys", :minLength, account_name, 3)
@@ -559,7 +681,7 @@ function _oacinternal_storage_accounts_revoke_user_delegation_keys(_api::Storage
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "accountName", account_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, [])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -592,9 +714,11 @@ const _returntypes_storage_accounts_update_StorageAccountsApi = Dict{Regex,Type}
 function _oacinternal_storage_accounts_update(_api::StorageAccountsApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String, parameters::StorageAccountUpdateParameters; _mediaType=nothing)
     OpenAPI.validate_param("resource_group_name", "storage_accounts_update", :maxLength, resource_group_name, 90)
     OpenAPI.validate_param("resource_group_name", "storage_accounts_update", :minLength, resource_group_name, 1)
+        OpenAPI.validate_param("resource_group_name", "storage_accounts_update", :pattern, resource_group_name, r"^[-\w\._\(\)]+$")
 
     OpenAPI.validate_param("account_name", "storage_accounts_update", :maxLength, account_name, 24)
     OpenAPI.validate_param("account_name", "storage_accounts_update", :minLength, account_name, 3)
+        OpenAPI.validate_param("account_name", "storage_accounts_update", :pattern, account_name, r"^[a-z0-9]+$")
 
     OpenAPI.validate_param("api_version", "storage_accounts_update", :minLength, api_version, 1)
 
@@ -604,7 +728,7 @@ function _oacinternal_storage_accounts_update(_api::StorageAccountsApi, resource
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "accountName", account_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -631,11 +755,13 @@ function storage_accounts_update(_api::StorageAccountsApi, response_stream::Chan
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
+export storage_accounts_abort_hierarchical_namespace_migration
 export storage_accounts_check_name_availability
 export storage_accounts_create
 export storage_accounts_delete
 export storage_accounts_failover
 export storage_accounts_get_properties
+export storage_accounts_hierarchical_namespace_migration
 export storage_accounts_list
 export storage_accounts_list_account_s_a_s
 export storage_accounts_list_by_resource_group

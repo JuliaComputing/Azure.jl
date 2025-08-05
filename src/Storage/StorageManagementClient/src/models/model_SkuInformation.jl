@@ -11,6 +11,7 @@ Storage SKU and its properties
         resourceType=nothing,
         kind=nothing,
         locations=nothing,
+        locationInfo=nothing,
         capabilities=nothing,
         restrictions=nothing,
     )
@@ -20,6 +21,7 @@ Storage SKU and its properties
     - resourceType::String : The type of the resource, usually it is &#39;storageAccounts&#39;.
     - kind::String : Indicates the type of storage account.
     - locations::Vector{String} : The set of locations that the SKU is available. This will be supported and registered Azure Geo Regions (e.g. West US, East US, Southeast Asia, etc.).
+    - locationInfo::Vector{SkuInformationLocationInfoInner}
     - capabilities::Vector{SKUCapability} : The capability information in the specified SKU, including file encryption, network ACLs, change notification, etc.
     - restrictions::Vector{Restriction} : The restrictions because of which SKU cannot be used. This is empty if there are no restrictions.
 """
@@ -29,31 +31,47 @@ Base.@kwdef mutable struct SkuInformation <: OpenAPI.APIModel
     resourceType::Union{Nothing, String} = nothing
     kind::Union{Nothing, String} = nothing
     locations::Union{Nothing, Vector{String}} = nothing
+    locationInfo::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{SkuInformationLocationInfoInner} }
     capabilities::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{SKUCapability} }
     restrictions::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{Restriction} }
 
-    function SkuInformation(name, tier, resourceType, kind, locations, capabilities, restrictions, )
-        OpenAPI.validate_property(SkuInformation, Symbol("name"), name)
-        OpenAPI.validate_property(SkuInformation, Symbol("tier"), tier)
-        OpenAPI.validate_property(SkuInformation, Symbol("resourceType"), resourceType)
-        OpenAPI.validate_property(SkuInformation, Symbol("kind"), kind)
-        OpenAPI.validate_property(SkuInformation, Symbol("locations"), locations)
-        OpenAPI.validate_property(SkuInformation, Symbol("capabilities"), capabilities)
-        OpenAPI.validate_property(SkuInformation, Symbol("restrictions"), restrictions)
-        return new(name, tier, resourceType, kind, locations, capabilities, restrictions, )
+    function SkuInformation(name, tier, resourceType, kind, locations, locationInfo, capabilities, restrictions, )
+        o = new(name, tier, resourceType, kind, locations, locationInfo, capabilities, restrictions, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type SkuInformation
 
-const _property_types_SkuInformation = Dict{Symbol,String}(Symbol("name")=>"SkuName", Symbol("tier")=>"Tier", Symbol("resourceType")=>"String", Symbol("kind")=>"String", Symbol("locations")=>"Vector{String}", Symbol("capabilities")=>"Vector{SKUCapability}", Symbol("restrictions")=>"Vector{Restriction}", )
+const _property_types_SkuInformation = Dict{Symbol,String}(Symbol("name")=>"SkuName", Symbol("tier")=>"Tier", Symbol("resourceType")=>"String", Symbol("kind")=>"String", Symbol("locations")=>"Vector{String}", Symbol("locationInfo")=>"Vector{SkuInformationLocationInfoInner}", Symbol("capabilities")=>"Vector{SKUCapability}", Symbol("restrictions")=>"Vector{Restriction}", )
 OpenAPI.property_type(::Type{ SkuInformation }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SkuInformation[name]))}
 
-function check_required(o::SkuInformation)
+function OpenAPI.check_required(o::SkuInformation)
     o.name === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::SkuInformation)
+    OpenAPI.validate_property(SkuInformation, Symbol("name"), o.name)
+    OpenAPI.validate_property(SkuInformation, Symbol("tier"), o.tier)
+    OpenAPI.validate_property(SkuInformation, Symbol("resourceType"), o.resourceType)
+    OpenAPI.validate_property(SkuInformation, Symbol("kind"), o.kind)
+    OpenAPI.validate_property(SkuInformation, Symbol("locations"), o.locations)
+    OpenAPI.validate_property(SkuInformation, Symbol("locationInfo"), o.locationInfo)
+    OpenAPI.validate_property(SkuInformation, Symbol("capabilities"), o.capabilities)
+    OpenAPI.validate_property(SkuInformation, Symbol("restrictions"), o.restrictions)
+end
+
 function OpenAPI.validate_property(::Type{ SkuInformation }, name::Symbol, val)
+
+
+
+
     if name === Symbol("kind")
         OpenAPI.validate_param(name, "SkuInformation", :enum, val, ["Storage", "StorageV2", "BlobStorage", "FileStorage", "BlockBlobStorage"])
     end
+
+
+
+
+
 end

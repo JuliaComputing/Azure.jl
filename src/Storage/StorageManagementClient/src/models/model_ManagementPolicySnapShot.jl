@@ -6,26 +6,52 @@
 Management policy action for snapshot.
 
     ManagementPolicySnapShot(;
+        tierToCool=nothing,
+        tierToArchive=nothing,
+        tierToCold=nothing,
+        tierToHot=nothing,
         delete=nothing,
     )
 
+    - tierToCool::DateAfterCreation
+    - tierToArchive::DateAfterCreation
+    - tierToCold::DateAfterCreation
+    - tierToHot::DateAfterCreation
     - delete::DateAfterCreation
 """
 Base.@kwdef mutable struct ManagementPolicySnapShot <: OpenAPI.APIModel
+    tierToCool = nothing # spec type: Union{ Nothing, DateAfterCreation }
+    tierToArchive = nothing # spec type: Union{ Nothing, DateAfterCreation }
+    tierToCold = nothing # spec type: Union{ Nothing, DateAfterCreation }
+    tierToHot = nothing # spec type: Union{ Nothing, DateAfterCreation }
     delete = nothing # spec type: Union{ Nothing, DateAfterCreation }
 
-    function ManagementPolicySnapShot(delete, )
-        OpenAPI.validate_property(ManagementPolicySnapShot, Symbol("delete"), delete)
-        return new(delete, )
+    function ManagementPolicySnapShot(tierToCool, tierToArchive, tierToCold, tierToHot, delete, )
+        o = new(tierToCool, tierToArchive, tierToCold, tierToHot, delete, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ManagementPolicySnapShot
 
-const _property_types_ManagementPolicySnapShot = Dict{Symbol,String}(Symbol("delete")=>"DateAfterCreation", )
+const _property_types_ManagementPolicySnapShot = Dict{Symbol,String}(Symbol("tierToCool")=>"DateAfterCreation", Symbol("tierToArchive")=>"DateAfterCreation", Symbol("tierToCold")=>"DateAfterCreation", Symbol("tierToHot")=>"DateAfterCreation", Symbol("delete")=>"DateAfterCreation", )
 OpenAPI.property_type(::Type{ ManagementPolicySnapShot }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ManagementPolicySnapShot[name]))}
 
-function check_required(o::ManagementPolicySnapShot)
+function OpenAPI.check_required(o::ManagementPolicySnapShot)
     true
 end
 
+function OpenAPI.validate_properties(o::ManagementPolicySnapShot)
+    OpenAPI.validate_property(ManagementPolicySnapShot, Symbol("tierToCool"), o.tierToCool)
+    OpenAPI.validate_property(ManagementPolicySnapShot, Symbol("tierToArchive"), o.tierToArchive)
+    OpenAPI.validate_property(ManagementPolicySnapShot, Symbol("tierToCold"), o.tierToCold)
+    OpenAPI.validate_property(ManagementPolicySnapShot, Symbol("tierToHot"), o.tierToHot)
+    OpenAPI.validate_property(ManagementPolicySnapShot, Symbol("delete"), o.delete)
+end
+
 function OpenAPI.validate_property(::Type{ ManagementPolicySnapShot }, name::Symbol, val)
+
+
+
+
+
 end

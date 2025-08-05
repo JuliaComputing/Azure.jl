@@ -24,20 +24,29 @@ Base.@kwdef mutable struct EncryptionServices <: OpenAPI.APIModel
     queue = nothing # spec type: Union{ Nothing, EncryptionService }
 
     function EncryptionServices(blob, file, table, queue, )
-        OpenAPI.validate_property(EncryptionServices, Symbol("blob"), blob)
-        OpenAPI.validate_property(EncryptionServices, Symbol("file"), file)
-        OpenAPI.validate_property(EncryptionServices, Symbol("table"), table)
-        OpenAPI.validate_property(EncryptionServices, Symbol("queue"), queue)
-        return new(blob, file, table, queue, )
+        o = new(blob, file, table, queue, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type EncryptionServices
 
 const _property_types_EncryptionServices = Dict{Symbol,String}(Symbol("blob")=>"EncryptionService", Symbol("file")=>"EncryptionService", Symbol("table")=>"EncryptionService", Symbol("queue")=>"EncryptionService", )
 OpenAPI.property_type(::Type{ EncryptionServices }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_EncryptionServices[name]))}
 
-function check_required(o::EncryptionServices)
+function OpenAPI.check_required(o::EncryptionServices)
     true
 end
 
+function OpenAPI.validate_properties(o::EncryptionServices)
+    OpenAPI.validate_property(EncryptionServices, Symbol("blob"), o.blob)
+    OpenAPI.validate_property(EncryptionServices, Symbol("file"), o.file)
+    OpenAPI.validate_property(EncryptionServices, Symbol("table"), o.table)
+    OpenAPI.validate_property(EncryptionServices, Symbol("queue"), o.queue)
+end
+
 function OpenAPI.validate_property(::Type{ EncryptionServices }, name::Symbol, val)
+
+
+
+
 end

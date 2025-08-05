@@ -12,19 +12,19 @@ This can be used to construct the `OpenAPI.Clients.Client` instance.
 basepath(::Type{ VirtualMachineScaleSetVMExtensionsApi }) = "https://management.azure.com"
 
 const _returntypes_virtual_machine_scale_set_v_m_extensions_create_or_update_VirtualMachineScaleSetVMExtensionsApi = Dict{Regex,Type}(
-    Regex("^" * replace("200", "x"=>".") * "\$") => VirtualMachineExtension,
-    Regex("^" * replace("201", "x"=>".") * "\$") => VirtualMachineExtension,
+    Regex("^" * replace("200", "x"=>".") * "\$") => VirtualMachineScaleSetVMExtension,
+    Regex("^" * replace("201", "x"=>".") * "\$") => VirtualMachineScaleSetVMExtension,
     Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
-function _oacinternal_virtual_machine_scale_set_v_m_extensions_create_or_update(_api::VirtualMachineScaleSetVMExtensionsApi, resource_group_name::String, vm_scale_set_name::String, instance_id::String, vm_extension_name::String, api_version::String, subscription_id::String, extension_parameters::VirtualMachineExtension; _mediaType=nothing)
+function _oacinternal_virtual_machine_scale_set_v_m_extensions_create_or_update(_api::VirtualMachineScaleSetVMExtensionsApi, resource_group_name::String, vm_scale_set_name::String, instance_id::String, vm_extension_name::String, api_version::String, subscription_id::String, extension_parameters::VirtualMachineScaleSetVMExtension; _mediaType=nothing)
     _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_virtual_machine_scale_set_v_m_extensions_create_or_update_VirtualMachineScaleSetVMExtensionsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/extensions/{vmExtensionName}", ["azure_auth", ], extension_parameters)
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmScaleSetName", vm_scale_set_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "instanceId", instance_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmExtensionName", vm_extension_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -39,16 +39,16 @@ Params:
 - vm_extension_name::String (required)
 - api_version::String (required)
 - subscription_id::String (required)
-- extension_parameters::VirtualMachineExtension (required)
+- extension_parameters::VirtualMachineScaleSetVMExtension (required)
 
-Return: VirtualMachineExtension, OpenAPI.Clients.ApiResponse
+Return: VirtualMachineScaleSetVMExtension, OpenAPI.Clients.ApiResponse
 """
-function virtual_machine_scale_set_v_m_extensions_create_or_update(_api::VirtualMachineScaleSetVMExtensionsApi, resource_group_name::String, vm_scale_set_name::String, instance_id::String, vm_extension_name::String, api_version::String, subscription_id::String, extension_parameters::VirtualMachineExtension; _mediaType=nothing)
+function virtual_machine_scale_set_v_m_extensions_create_or_update(_api::VirtualMachineScaleSetVMExtensionsApi, resource_group_name::String, vm_scale_set_name::String, instance_id::String, vm_extension_name::String, api_version::String, subscription_id::String, extension_parameters::VirtualMachineScaleSetVMExtension; _mediaType=nothing)
     _ctx = _oacinternal_virtual_machine_scale_set_v_m_extensions_create_or_update(_api, resource_group_name, vm_scale_set_name, instance_id, vm_extension_name, api_version, subscription_id, extension_parameters; _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx)
 end
 
-function virtual_machine_scale_set_v_m_extensions_create_or_update(_api::VirtualMachineScaleSetVMExtensionsApi, response_stream::Channel, resource_group_name::String, vm_scale_set_name::String, instance_id::String, vm_extension_name::String, api_version::String, subscription_id::String, extension_parameters::VirtualMachineExtension; _mediaType=nothing)
+function virtual_machine_scale_set_v_m_extensions_create_or_update(_api::VirtualMachineScaleSetVMExtensionsApi, response_stream::Channel, resource_group_name::String, vm_scale_set_name::String, instance_id::String, vm_extension_name::String, api_version::String, subscription_id::String, extension_parameters::VirtualMachineScaleSetVMExtension; _mediaType=nothing)
     _ctx = _oacinternal_virtual_machine_scale_set_v_m_extensions_create_or_update(_api, resource_group_name, vm_scale_set_name, instance_id, vm_extension_name, api_version, subscription_id, extension_parameters; _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
@@ -67,7 +67,7 @@ function _oacinternal_virtual_machine_scale_set_v_m_extensions_delete(_api::Virt
     OpenAPI.Clients.set_param(_ctx.path, "instanceId", instance_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmExtensionName", vm_extension_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -96,7 +96,7 @@ function virtual_machine_scale_set_v_m_extensions_delete(_api::VirtualMachineSca
 end
 
 const _returntypes_virtual_machine_scale_set_v_m_extensions_get_VirtualMachineScaleSetVMExtensionsApi = Dict{Regex,Type}(
-    Regex("^" * replace("200", "x"=>".") * "\$") => VirtualMachineExtension,
+    Regex("^" * replace("200", "x"=>".") * "\$") => VirtualMachineScaleSetVMExtension,
     Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
@@ -107,8 +107,8 @@ function _oacinternal_virtual_machine_scale_set_v_m_extensions_get(_api::Virtual
     OpenAPI.Clients.set_param(_ctx.path, "instanceId", instance_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmExtensionName", vm_extension_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -125,7 +125,7 @@ Params:
 - subscription_id::String (required)
 - expand::String
 
-Return: VirtualMachineExtension, OpenAPI.Clients.ApiResponse
+Return: VirtualMachineScaleSetVMExtension, OpenAPI.Clients.ApiResponse
 """
 function virtual_machine_scale_set_v_m_extensions_get(_api::VirtualMachineScaleSetVMExtensionsApi, resource_group_name::String, vm_scale_set_name::String, instance_id::String, vm_extension_name::String, api_version::String, subscription_id::String; expand=nothing, _mediaType=nothing)
     _ctx = _oacinternal_virtual_machine_scale_set_v_m_extensions_get(_api, resource_group_name, vm_scale_set_name, instance_id, vm_extension_name, api_version, subscription_id; expand=expand, _mediaType=_mediaType)
@@ -138,7 +138,7 @@ function virtual_machine_scale_set_v_m_extensions_get(_api::VirtualMachineScaleS
 end
 
 const _returntypes_virtual_machine_scale_set_v_m_extensions_list_VirtualMachineScaleSetVMExtensionsApi = Dict{Regex,Type}(
-    Regex("^" * replace("200", "x"=>".") * "\$") => VirtualMachineExtensionsListResult,
+    Regex("^" * replace("200", "x"=>".") * "\$") => VirtualMachineScaleSetVMExtensionsListResult,
     Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
@@ -148,8 +148,8 @@ function _oacinternal_virtual_machine_scale_set_v_m_extensions_list(_api::Virtua
     OpenAPI.Clients.set_param(_ctx.path, "vmScaleSetName", vm_scale_set_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "instanceId", instance_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -165,7 +165,7 @@ Params:
 - subscription_id::String (required)
 - expand::String
 
-Return: VirtualMachineExtensionsListResult, OpenAPI.Clients.ApiResponse
+Return: VirtualMachineScaleSetVMExtensionsListResult, OpenAPI.Clients.ApiResponse
 """
 function virtual_machine_scale_set_v_m_extensions_list(_api::VirtualMachineScaleSetVMExtensionsApi, resource_group_name::String, vm_scale_set_name::String, instance_id::String, api_version::String, subscription_id::String; expand=nothing, _mediaType=nothing)
     _ctx = _oacinternal_virtual_machine_scale_set_v_m_extensions_list(_api, resource_group_name, vm_scale_set_name, instance_id, api_version, subscription_id; expand=expand, _mediaType=_mediaType)
@@ -178,18 +178,18 @@ function virtual_machine_scale_set_v_m_extensions_list(_api::VirtualMachineScale
 end
 
 const _returntypes_virtual_machine_scale_set_v_m_extensions_update_VirtualMachineScaleSetVMExtensionsApi = Dict{Regex,Type}(
-    Regex("^" * replace("200", "x"=>".") * "\$") => VirtualMachineExtension,
+    Regex("^" * replace("200", "x"=>".") * "\$") => VirtualMachineScaleSetVMExtension,
     Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
-function _oacinternal_virtual_machine_scale_set_v_m_extensions_update(_api::VirtualMachineScaleSetVMExtensionsApi, resource_group_name::String, vm_scale_set_name::String, instance_id::String, vm_extension_name::String, api_version::String, subscription_id::String, extension_parameters::VirtualMachineExtensionUpdate; _mediaType=nothing)
+function _oacinternal_virtual_machine_scale_set_v_m_extensions_update(_api::VirtualMachineScaleSetVMExtensionsApi, resource_group_name::String, vm_scale_set_name::String, instance_id::String, vm_extension_name::String, api_version::String, subscription_id::String, extension_parameters::VirtualMachineScaleSetVMExtensionUpdate; _mediaType=nothing)
     _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_virtual_machine_scale_set_v_m_extensions_update_VirtualMachineScaleSetVMExtensionsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/extensions/{vmExtensionName}", ["azure_auth", ], extension_parameters)
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmScaleSetName", vm_scale_set_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "instanceId", instance_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmExtensionName", vm_extension_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -204,16 +204,16 @@ Params:
 - vm_extension_name::String (required)
 - api_version::String (required)
 - subscription_id::String (required)
-- extension_parameters::VirtualMachineExtensionUpdate (required)
+- extension_parameters::VirtualMachineScaleSetVMExtensionUpdate (required)
 
-Return: VirtualMachineExtension, OpenAPI.Clients.ApiResponse
+Return: VirtualMachineScaleSetVMExtension, OpenAPI.Clients.ApiResponse
 """
-function virtual_machine_scale_set_v_m_extensions_update(_api::VirtualMachineScaleSetVMExtensionsApi, resource_group_name::String, vm_scale_set_name::String, instance_id::String, vm_extension_name::String, api_version::String, subscription_id::String, extension_parameters::VirtualMachineExtensionUpdate; _mediaType=nothing)
+function virtual_machine_scale_set_v_m_extensions_update(_api::VirtualMachineScaleSetVMExtensionsApi, resource_group_name::String, vm_scale_set_name::String, instance_id::String, vm_extension_name::String, api_version::String, subscription_id::String, extension_parameters::VirtualMachineScaleSetVMExtensionUpdate; _mediaType=nothing)
     _ctx = _oacinternal_virtual_machine_scale_set_v_m_extensions_update(_api, resource_group_name, vm_scale_set_name, instance_id, vm_extension_name, api_version, subscription_id, extension_parameters; _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx)
 end
 
-function virtual_machine_scale_set_v_m_extensions_update(_api::VirtualMachineScaleSetVMExtensionsApi, response_stream::Channel, resource_group_name::String, vm_scale_set_name::String, instance_id::String, vm_extension_name::String, api_version::String, subscription_id::String, extension_parameters::VirtualMachineExtensionUpdate; _mediaType=nothing)
+function virtual_machine_scale_set_v_m_extensions_update(_api::VirtualMachineScaleSetVMExtensionsApi, response_stream::Channel, resource_group_name::String, vm_scale_set_name::String, instance_id::String, vm_extension_name::String, api_version::String, subscription_id::String, extension_parameters::VirtualMachineScaleSetVMExtensionUpdate; _mediaType=nothing)
     _ctx = _oacinternal_virtual_machine_scale_set_v_m_extensions_update(_api, resource_group_name, vm_scale_set_name, instance_id, vm_extension_name, api_version, subscription_id, extension_parameters; _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end

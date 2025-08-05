@@ -25,12 +25,12 @@ Create and start a packet capture on the specified VM.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **PacketCapturesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_watcher_name** | **String**| The name of the network watcher. | [default to nothing]
-**packet_capture_name** | **String**| The name of the packet capture session. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**PacketCapture**](PacketCapture.md)| Parameters that define the create packet capture operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**network_watcher_name** | **String** | The name of the network watcher. |
+**packet_capture_name** | **String** | The name of the packet capture session. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**PacketCapture**](PacketCapture.md) | Parameters that define the create packet capture operation. |
 
 ### Return type
 
@@ -60,11 +60,11 @@ Deletes the specified packet capture session.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **PacketCapturesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_watcher_name** | **String**| The name of the network watcher. | [default to nothing]
-**packet_capture_name** | **String**| The name of the packet capture session. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**network_watcher_name** | **String** | The name of the network watcher. |
+**packet_capture_name** | **String** | The name of the packet capture session. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -94,11 +94,11 @@ Gets a packet capture session by name.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **PacketCapturesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_watcher_name** | **String**| The name of the network watcher. | [default to nothing]
-**packet_capture_name** | **String**| The name of the packet capture session. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**network_watcher_name** | **String** | The name of the network watcher. |
+**packet_capture_name** | **String** | The name of the packet capture session. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -128,11 +128,11 @@ Query the status of a running packet capture session.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **PacketCapturesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_watcher_name** | **String**| The name of the Network Watcher resource. | [default to nothing]
-**packet_capture_name** | **String**| The name given to the packet capture session. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**network_watcher_name** | **String** | The name of the Network Watcher resource. |
+**packet_capture_name** | **String** | The name given to the packet capture session. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -162,10 +162,10 @@ Lists all packet capture sessions within the specified resource group.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **PacketCapturesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_watcher_name** | **String**| The name of the Network Watcher resource. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**network_watcher_name** | **String** | The name of the Network Watcher resource. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -195,11 +195,11 @@ Stops a specified packet capture session.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **PacketCapturesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_watcher_name** | **String**| The name of the network watcher. | [default to nothing]
-**packet_capture_name** | **String**| The name of the packet capture session. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**network_watcher_name** | **String** | The name of the network watcher. |
+**packet_capture_name** | **String** | The name of the packet capture session. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 

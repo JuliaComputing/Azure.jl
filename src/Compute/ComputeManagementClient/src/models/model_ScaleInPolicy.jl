@@ -7,28 +7,40 @@ Describes a scale-in policy for a virtual machine scale set.
 
     ScaleInPolicy(;
         rules=nothing,
+        forceDeletion=nothing,
     )
 
     - rules::Vector{String} : The rules to be followed when scaling-in a virtual machine scale set. &lt;br&gt;&lt;br&gt; Possible values are: &lt;br&gt;&lt;br&gt; **Default** When a virtual machine scale set is scaled in, the scale set will first be balanced across zones if it is a zonal scale set. Then, it will be balanced across Fault Domains as far as possible. Within each Fault Domain, the virtual machines chosen for removal will be the newest ones that are not protected from scale-in. &lt;br&gt;&lt;br&gt; **OldestVM** When a virtual machine scale set is being scaled-in, the oldest virtual machines that are not protected from scale-in will be chosen for removal. For zonal virtual machine scale sets, the scale set will first be balanced across zones. Within each zone, the oldest virtual machines that are not protected will be chosen for removal. &lt;br&gt;&lt;br&gt; **NewestVM** When a virtual machine scale set is being scaled-in, the newest virtual machines that are not protected from scale-in will be chosen for removal. For zonal virtual machine scale sets, the scale set will first be balanced across zones. Within each zone, the newest virtual machines that are not protected will be chosen for removal. &lt;br&gt;&lt;br&gt;
+    - forceDeletion::Bool : This property allows you to specify if virtual machines chosen for removal have to be force deleted when a virtual machine scale set is being scaled-in.(Feature in Preview)
 """
 Base.@kwdef mutable struct ScaleInPolicy <: OpenAPI.APIModel
     rules::Union{Nothing, Vector{String}} = nothing
+    forceDeletion::Union{Nothing, Bool} = nothing
 
-    function ScaleInPolicy(rules, )
-        OpenAPI.validate_property(ScaleInPolicy, Symbol("rules"), rules)
-        return new(rules, )
+    function ScaleInPolicy(rules, forceDeletion, )
+        o = new(rules, forceDeletion, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ScaleInPolicy
 
-const _property_types_ScaleInPolicy = Dict{Symbol,String}(Symbol("rules")=>"Vector{String}", )
+const _property_types_ScaleInPolicy = Dict{Symbol,String}(Symbol("rules")=>"Vector{String}", Symbol("forceDeletion")=>"Bool", )
 OpenAPI.property_type(::Type{ ScaleInPolicy }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ScaleInPolicy[name]))}
 
-function check_required(o::ScaleInPolicy)
+function OpenAPI.check_required(o::ScaleInPolicy)
     true
 end
 
+function OpenAPI.validate_properties(o::ScaleInPolicy)
+    OpenAPI.validate_property(ScaleInPolicy, Symbol("rules"), o.rules)
+    OpenAPI.validate_property(ScaleInPolicy, Symbol("forceDeletion"), o.forceDeletion)
+end
+
 function OpenAPI.validate_property(::Type{ ScaleInPolicy }, name::Symbol, val)
+
     if name === Symbol("rules")
-        OpenAPI.validate_param(name, "ScaleInPolicy", :enum, val, [])
+        OpenAPI.validate_param(name, "ScaleInPolicy", :enum, val, ["Default", "OldestVM", "NewestVM"])
     end
+
+
 end

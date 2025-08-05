@@ -6,47 +6,58 @@
 Describes a Virtual Machine Extension.
 
     VirtualMachineExtension(;
+        properties=nothing,
         id=nothing,
         name=nothing,
         type=nothing,
         location=nothing,
         tags=nothing,
-        properties=nothing,
     )
 
+    - properties::VirtualMachineExtensionProperties
     - id::String : Resource Id
     - name::String : Resource name
     - type::String : Resource type
     - location::String : Resource location
     - tags::Dict{String, String} : Resource tags
-    - properties::VirtualMachineExtensionProperties
 """
 Base.@kwdef mutable struct VirtualMachineExtension <: OpenAPI.APIModel
+    properties = nothing # spec type: Union{ Nothing, VirtualMachineExtensionProperties }
     id::Union{Nothing, String} = nothing
     name::Union{Nothing, String} = nothing
     type::Union{Nothing, String} = nothing
     location::Union{Nothing, String} = nothing
     tags::Union{Nothing, Dict{String, String}} = nothing
-    properties = nothing # spec type: Union{ Nothing, VirtualMachineExtensionProperties }
 
-    function VirtualMachineExtension(id, name, type, location, tags, properties, )
-        OpenAPI.validate_property(VirtualMachineExtension, Symbol("id"), id)
-        OpenAPI.validate_property(VirtualMachineExtension, Symbol("name"), name)
-        OpenAPI.validate_property(VirtualMachineExtension, Symbol("type"), type)
-        OpenAPI.validate_property(VirtualMachineExtension, Symbol("location"), location)
-        OpenAPI.validate_property(VirtualMachineExtension, Symbol("tags"), tags)
-        OpenAPI.validate_property(VirtualMachineExtension, Symbol("properties"), properties)
-        return new(id, name, type, location, tags, properties, )
+    function VirtualMachineExtension(properties, id, name, type, location, tags, )
+        o = new(properties, id, name, type, location, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineExtension
 
-const _property_types_VirtualMachineExtension = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", Symbol("properties")=>"VirtualMachineExtensionProperties", )
+const _property_types_VirtualMachineExtension = Dict{Symbol,String}(Symbol("properties")=>"VirtualMachineExtensionProperties", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ VirtualMachineExtension }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineExtension[name]))}
 
-function check_required(o::VirtualMachineExtension)
+function OpenAPI.check_required(o::VirtualMachineExtension)
     o.location === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineExtension)
+    OpenAPI.validate_property(VirtualMachineExtension, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(VirtualMachineExtension, Symbol("id"), o.id)
+    OpenAPI.validate_property(VirtualMachineExtension, Symbol("name"), o.name)
+    OpenAPI.validate_property(VirtualMachineExtension, Symbol("type"), o.type)
+    OpenAPI.validate_property(VirtualMachineExtension, Symbol("location"), o.location)
+    OpenAPI.validate_property(VirtualMachineExtension, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineExtension }, name::Symbol, val)
+
+
+
+
+
+
 end

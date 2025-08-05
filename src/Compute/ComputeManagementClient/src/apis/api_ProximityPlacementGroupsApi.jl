@@ -14,6 +14,7 @@ basepath(::Type{ ProximityPlacementGroupsApi }) = "https://management.azure.com"
 const _returntypes_proximity_placement_groups_create_or_update_ProximityPlacementGroupsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => ProximityPlacementGroup,
     Regex("^" * replace("201", "x"=>".") * "\$") => ProximityPlacementGroup,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_proximity_placement_groups_create_or_update(_api::ProximityPlacementGroupsApi, resource_group_name::String, proximity_placement_group_name::String, api_version::String, subscription_id::String, parameters::ProximityPlacementGroup; _mediaType=nothing)
@@ -21,7 +22,7 @@ function _oacinternal_proximity_placement_groups_create_or_update(_api::Proximit
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "proximityPlacementGroupName", proximity_placement_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -50,6 +51,7 @@ end
 
 const _returntypes_proximity_placement_groups_delete_ProximityPlacementGroupsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_proximity_placement_groups_delete(_api::ProximityPlacementGroupsApi, resource_group_name::String, proximity_placement_group_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
@@ -57,8 +59,8 @@ function _oacinternal_proximity_placement_groups_delete(_api::ProximityPlacement
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "proximityPlacementGroupName", proximity_placement_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_header_accept(_ctx, [])
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
 end
@@ -85,6 +87,7 @@ end
 
 const _returntypes_proximity_placement_groups_get_ProximityPlacementGroupsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => ProximityPlacementGroup,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_proximity_placement_groups_get(_api::ProximityPlacementGroupsApi, resource_group_name::String, proximity_placement_group_name::String, api_version::String, subscription_id::String; include_colocation_status=nothing, _mediaType=nothing)
@@ -92,8 +95,8 @@ function _oacinternal_proximity_placement_groups_get(_api::ProximityPlacementGro
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "proximityPlacementGroupName", proximity_placement_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "includeColocationStatus", include_colocation_status)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "includeColocationStatus", include_colocation_status; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -122,13 +125,14 @@ end
 
 const _returntypes_proximity_placement_groups_list_by_resource_group_ProximityPlacementGroupsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => ProximityPlacementGroupListResult,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_proximity_placement_groups_list_by_resource_group(_api::ProximityPlacementGroupsApi, resource_group_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_proximity_placement_groups_list_by_resource_group_ProximityPlacementGroupsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/proximityPlacementGroups", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -155,12 +159,13 @@ end
 
 const _returntypes_proximity_placement_groups_list_by_subscription_ProximityPlacementGroupsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => ProximityPlacementGroupListResult,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_proximity_placement_groups_list_by_subscription(_api::ProximityPlacementGroupsApi, api_version::String, subscription_id::String; _mediaType=nothing)
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_proximity_placement_groups_list_by_subscription_ProximityPlacementGroupsApi, "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/proximityPlacementGroups", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -186,6 +191,7 @@ end
 
 const _returntypes_proximity_placement_groups_update_ProximityPlacementGroupsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => ProximityPlacementGroup,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_proximity_placement_groups_update(_api::ProximityPlacementGroupsApi, resource_group_name::String, proximity_placement_group_name::String, api_version::String, subscription_id::String, parameters::ProximityPlacementGroupUpdate; _mediaType=nothing)
@@ -193,7 +199,7 @@ function _oacinternal_proximity_placement_groups_update(_api::ProximityPlacement
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "proximityPlacementGroupName", proximity_placement_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx

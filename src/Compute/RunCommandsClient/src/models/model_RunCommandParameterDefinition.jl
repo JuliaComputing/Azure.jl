@@ -24,22 +24,31 @@ Base.@kwdef mutable struct RunCommandParameterDefinition <: OpenAPI.APIModel
     required::Union{Nothing, Bool} = false
 
     function RunCommandParameterDefinition(name, type, defaultValue, required, )
-        OpenAPI.validate_property(RunCommandParameterDefinition, Symbol("name"), name)
-        OpenAPI.validate_property(RunCommandParameterDefinition, Symbol("type"), type)
-        OpenAPI.validate_property(RunCommandParameterDefinition, Symbol("defaultValue"), defaultValue)
-        OpenAPI.validate_property(RunCommandParameterDefinition, Symbol("required"), required)
-        return new(name, type, defaultValue, required, )
+        o = new(name, type, defaultValue, required, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type RunCommandParameterDefinition
 
 const _property_types_RunCommandParameterDefinition = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("type")=>"String", Symbol("defaultValue")=>"String", Symbol("required")=>"Bool", )
 OpenAPI.property_type(::Type{ RunCommandParameterDefinition }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RunCommandParameterDefinition[name]))}
 
-function check_required(o::RunCommandParameterDefinition)
+function OpenAPI.check_required(o::RunCommandParameterDefinition)
     o.name === nothing && (return false)
     o.type === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::RunCommandParameterDefinition)
+    OpenAPI.validate_property(RunCommandParameterDefinition, Symbol("name"), o.name)
+    OpenAPI.validate_property(RunCommandParameterDefinition, Symbol("type"), o.type)
+    OpenAPI.validate_property(RunCommandParameterDefinition, Symbol("defaultValue"), o.defaultValue)
+    OpenAPI.validate_property(RunCommandParameterDefinition, Symbol("required"), o.required)
+end
+
 function OpenAPI.validate_property(::Type{ RunCommandParameterDefinition }, name::Symbol, val)
+
+
+
+
 end

@@ -24,21 +24,30 @@ Base.@kwdef mutable struct TagsResource <: OpenAPI.APIModel
     properties = nothing # spec type: Union{ Nothing, Tags }
 
     function TagsResource(id, name, type, properties, )
-        OpenAPI.validate_property(TagsResource, Symbol("id"), id)
-        OpenAPI.validate_property(TagsResource, Symbol("name"), name)
-        OpenAPI.validate_property(TagsResource, Symbol("type"), type)
-        OpenAPI.validate_property(TagsResource, Symbol("properties"), properties)
-        return new(id, name, type, properties, )
+        o = new(id, name, type, properties, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type TagsResource
 
 const _property_types_TagsResource = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("properties")=>"Tags", )
 OpenAPI.property_type(::Type{ TagsResource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TagsResource[name]))}
 
-function check_required(o::TagsResource)
+function OpenAPI.check_required(o::TagsResource)
     o.properties === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::TagsResource)
+    OpenAPI.validate_property(TagsResource, Symbol("id"), o.id)
+    OpenAPI.validate_property(TagsResource, Symbol("name"), o.name)
+    OpenAPI.validate_property(TagsResource, Symbol("type"), o.type)
+    OpenAPI.validate_property(TagsResource, Symbol("properties"), o.properties)
+end
+
 function OpenAPI.validate_property(::Type{ TagsResource }, name::Symbol, val)
+
+
+
+
 end

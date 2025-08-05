@@ -24,26 +24,36 @@ Base.@kwdef mutable struct ManagementPolicyRule <: OpenAPI.APIModel
     definition = nothing # spec type: Union{ Nothing, ManagementPolicyDefinition }
 
     function ManagementPolicyRule(enabled, name, type, definition, )
-        OpenAPI.validate_property(ManagementPolicyRule, Symbol("enabled"), enabled)
-        OpenAPI.validate_property(ManagementPolicyRule, Symbol("name"), name)
-        OpenAPI.validate_property(ManagementPolicyRule, Symbol("type"), type)
-        OpenAPI.validate_property(ManagementPolicyRule, Symbol("definition"), definition)
-        return new(enabled, name, type, definition, )
+        o = new(enabled, name, type, definition, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ManagementPolicyRule
 
 const _property_types_ManagementPolicyRule = Dict{Symbol,String}(Symbol("enabled")=>"Bool", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("definition")=>"ManagementPolicyDefinition", )
 OpenAPI.property_type(::Type{ ManagementPolicyRule }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ManagementPolicyRule[name]))}
 
-function check_required(o::ManagementPolicyRule)
+function OpenAPI.check_required(o::ManagementPolicyRule)
     o.name === nothing && (return false)
     o.type === nothing && (return false)
     o.definition === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ManagementPolicyRule)
+    OpenAPI.validate_property(ManagementPolicyRule, Symbol("enabled"), o.enabled)
+    OpenAPI.validate_property(ManagementPolicyRule, Symbol("name"), o.name)
+    OpenAPI.validate_property(ManagementPolicyRule, Symbol("type"), o.type)
+    OpenAPI.validate_property(ManagementPolicyRule, Symbol("definition"), o.definition)
+end
+
 function OpenAPI.validate_property(::Type{ ManagementPolicyRule }, name::Symbol, val)
+
+
+
     if name === Symbol("type")
         OpenAPI.validate_param(name, "ManagementPolicyRule", :enum, val, ["Lifecycle"])
     end
+
+
 end

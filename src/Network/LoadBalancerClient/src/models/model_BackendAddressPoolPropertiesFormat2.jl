@@ -6,46 +6,94 @@
 Properties of the backend address pool.
 
     BackendAddressPoolPropertiesFormat2(;
-        backendIPConfigurations=nothing,
+        location=nothing,
+        tunnelInterfaces=nothing,
         loadBalancerBackendAddresses=nothing,
+        backendIPConfigurations=nothing,
         loadBalancingRules=nothing,
         outboundRule=nothing,
         outboundRules=nothing,
+        inboundNatRules=nothing,
         provisioningState=nothing,
+        drainPeriodInSeconds=nothing,
+        virtualNetwork=nothing,
+        syncMode=nothing,
     )
 
-    - backendIPConfigurations::Vector{NetworkInterfaceIPConfiguration} : An array of references to IP addresses defined in network interfaces.
+    - location::String : The location of the backend address pool.
+    - tunnelInterfaces::Vector{GatewayLoadBalancerTunnelInterface2} : An array of gateway load balancer tunnel interfaces.
     - loadBalancerBackendAddresses::Vector{LoadBalancerBackendAddress2} : An array of backend addresses.
+    - backendIPConfigurations::Vector{NetworkInterfaceIPConfiguration} : An array of references to IP addresses defined in network interfaces.
     - loadBalancingRules::Vector{SubResource} : An array of references to load balancing rules that use this backend address pool.
     - outboundRule::SubResource
     - outboundRules::Vector{SubResource} : An array of references to outbound rules that use this backend address pool.
+    - inboundNatRules::Vector{SubResource} : An array of references to inbound NAT rules that use this backend address pool.
     - provisioningState::ProvisioningState
+    - drainPeriodInSeconds::Int64 : Amount of seconds Load Balancer waits for before sending RESET to client and backend address.
+    - virtualNetwork::SubResource
+    - syncMode::String : Backend address synchronous mode for the backend pool
 """
 Base.@kwdef mutable struct BackendAddressPoolPropertiesFormat2 <: OpenAPI.APIModel
-    backendIPConfigurations::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{NetworkInterfaceIPConfiguration} }
+    location::Union{Nothing, String} = nothing
+    tunnelInterfaces::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{GatewayLoadBalancerTunnelInterface2} }
     loadBalancerBackendAddresses::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{LoadBalancerBackendAddress2} }
+    backendIPConfigurations::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{NetworkInterfaceIPConfiguration} }
     loadBalancingRules::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{SubResource} }
     outboundRule = nothing # spec type: Union{ Nothing, SubResource }
     outboundRules::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{SubResource} }
+    inboundNatRules::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{SubResource} }
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
+    drainPeriodInSeconds::Union{Nothing, Int64} = nothing
+    virtualNetwork = nothing # spec type: Union{ Nothing, SubResource }
+    syncMode::Union{Nothing, String} = nothing
 
-    function BackendAddressPoolPropertiesFormat2(backendIPConfigurations, loadBalancerBackendAddresses, loadBalancingRules, outboundRule, outboundRules, provisioningState, )
-        OpenAPI.validate_property(BackendAddressPoolPropertiesFormat2, Symbol("backendIPConfigurations"), backendIPConfigurations)
-        OpenAPI.validate_property(BackendAddressPoolPropertiesFormat2, Symbol("loadBalancerBackendAddresses"), loadBalancerBackendAddresses)
-        OpenAPI.validate_property(BackendAddressPoolPropertiesFormat2, Symbol("loadBalancingRules"), loadBalancingRules)
-        OpenAPI.validate_property(BackendAddressPoolPropertiesFormat2, Symbol("outboundRule"), outboundRule)
-        OpenAPI.validate_property(BackendAddressPoolPropertiesFormat2, Symbol("outboundRules"), outboundRules)
-        OpenAPI.validate_property(BackendAddressPoolPropertiesFormat2, Symbol("provisioningState"), provisioningState)
-        return new(backendIPConfigurations, loadBalancerBackendAddresses, loadBalancingRules, outboundRule, outboundRules, provisioningState, )
+    function BackendAddressPoolPropertiesFormat2(location, tunnelInterfaces, loadBalancerBackendAddresses, backendIPConfigurations, loadBalancingRules, outboundRule, outboundRules, inboundNatRules, provisioningState, drainPeriodInSeconds, virtualNetwork, syncMode, )
+        o = new(location, tunnelInterfaces, loadBalancerBackendAddresses, backendIPConfigurations, loadBalancingRules, outboundRule, outboundRules, inboundNatRules, provisioningState, drainPeriodInSeconds, virtualNetwork, syncMode, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type BackendAddressPoolPropertiesFormat2
 
-const _property_types_BackendAddressPoolPropertiesFormat2 = Dict{Symbol,String}(Symbol("backendIPConfigurations")=>"Vector{NetworkInterfaceIPConfiguration}", Symbol("loadBalancerBackendAddresses")=>"Vector{LoadBalancerBackendAddress2}", Symbol("loadBalancingRules")=>"Vector{SubResource}", Symbol("outboundRule")=>"SubResource", Symbol("outboundRules")=>"Vector{SubResource}", Symbol("provisioningState")=>"ProvisioningState", )
+const _property_types_BackendAddressPoolPropertiesFormat2 = Dict{Symbol,String}(Symbol("location")=>"String", Symbol("tunnelInterfaces")=>"Vector{GatewayLoadBalancerTunnelInterface2}", Symbol("loadBalancerBackendAddresses")=>"Vector{LoadBalancerBackendAddress2}", Symbol("backendIPConfigurations")=>"Vector{NetworkInterfaceIPConfiguration}", Symbol("loadBalancingRules")=>"Vector{SubResource}", Symbol("outboundRule")=>"SubResource", Symbol("outboundRules")=>"Vector{SubResource}", Symbol("inboundNatRules")=>"Vector{SubResource}", Symbol("provisioningState")=>"ProvisioningState", Symbol("drainPeriodInSeconds")=>"Int64", Symbol("virtualNetwork")=>"SubResource", Symbol("syncMode")=>"String", )
 OpenAPI.property_type(::Type{ BackendAddressPoolPropertiesFormat2 }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_BackendAddressPoolPropertiesFormat2[name]))}
 
-function check_required(o::BackendAddressPoolPropertiesFormat2)
+function OpenAPI.check_required(o::BackendAddressPoolPropertiesFormat2)
     true
 end
 
+function OpenAPI.validate_properties(o::BackendAddressPoolPropertiesFormat2)
+    OpenAPI.validate_property(BackendAddressPoolPropertiesFormat2, Symbol("location"), o.location)
+    OpenAPI.validate_property(BackendAddressPoolPropertiesFormat2, Symbol("tunnelInterfaces"), o.tunnelInterfaces)
+    OpenAPI.validate_property(BackendAddressPoolPropertiesFormat2, Symbol("loadBalancerBackendAddresses"), o.loadBalancerBackendAddresses)
+    OpenAPI.validate_property(BackendAddressPoolPropertiesFormat2, Symbol("backendIPConfigurations"), o.backendIPConfigurations)
+    OpenAPI.validate_property(BackendAddressPoolPropertiesFormat2, Symbol("loadBalancingRules"), o.loadBalancingRules)
+    OpenAPI.validate_property(BackendAddressPoolPropertiesFormat2, Symbol("outboundRule"), o.outboundRule)
+    OpenAPI.validate_property(BackendAddressPoolPropertiesFormat2, Symbol("outboundRules"), o.outboundRules)
+    OpenAPI.validate_property(BackendAddressPoolPropertiesFormat2, Symbol("inboundNatRules"), o.inboundNatRules)
+    OpenAPI.validate_property(BackendAddressPoolPropertiesFormat2, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(BackendAddressPoolPropertiesFormat2, Symbol("drainPeriodInSeconds"), o.drainPeriodInSeconds)
+    OpenAPI.validate_property(BackendAddressPoolPropertiesFormat2, Symbol("virtualNetwork"), o.virtualNetwork)
+    OpenAPI.validate_property(BackendAddressPoolPropertiesFormat2, Symbol("syncMode"), o.syncMode)
+end
+
 function OpenAPI.validate_property(::Type{ BackendAddressPoolPropertiesFormat2 }, name::Symbol, val)
+
+
+
+
+
+
+
+
+
+
+    if name === Symbol("drainPeriodInSeconds")
+        OpenAPI.validate_param(name, "BackendAddressPoolPropertiesFormat2", :format, val, "int32")
+    end
+
+
+    if name === Symbol("syncMode")
+        OpenAPI.validate_param(name, "BackendAddressPoolPropertiesFormat2", :enum, val, ["Automatic", "Manual"])
+    end
+
 end

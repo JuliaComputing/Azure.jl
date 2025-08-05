@@ -33,23 +33,35 @@ Base.@kwdef mutable struct RouteTable <: OpenAPI.APIModel
     tags::Union{Nothing, Dict{String, String}} = nothing
 
     function RouteTable(properties, etag, id, name, type, location, tags, )
-        OpenAPI.validate_property(RouteTable, Symbol("properties"), properties)
-        OpenAPI.validate_property(RouteTable, Symbol("etag"), etag)
-        OpenAPI.validate_property(RouteTable, Symbol("id"), id)
-        OpenAPI.validate_property(RouteTable, Symbol("name"), name)
-        OpenAPI.validate_property(RouteTable, Symbol("type"), type)
-        OpenAPI.validate_property(RouteTable, Symbol("location"), location)
-        OpenAPI.validate_property(RouteTable, Symbol("tags"), tags)
-        return new(properties, etag, id, name, type, location, tags, )
+        o = new(properties, etag, id, name, type, location, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type RouteTable
 
 const _property_types_RouteTable = Dict{Symbol,String}(Symbol("properties")=>"RouteTablePropertiesFormat", Symbol("etag")=>"String", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ RouteTable }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RouteTable[name]))}
 
-function check_required(o::RouteTable)
+function OpenAPI.check_required(o::RouteTable)
     true
 end
 
+function OpenAPI.validate_properties(o::RouteTable)
+    OpenAPI.validate_property(RouteTable, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(RouteTable, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(RouteTable, Symbol("id"), o.id)
+    OpenAPI.validate_property(RouteTable, Symbol("name"), o.name)
+    OpenAPI.validate_property(RouteTable, Symbol("type"), o.type)
+    OpenAPI.validate_property(RouteTable, Symbol("location"), o.location)
+    OpenAPI.validate_property(RouteTable, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ RouteTable }, name::Symbol, val)
+
+
+
+
+
+
+
 end

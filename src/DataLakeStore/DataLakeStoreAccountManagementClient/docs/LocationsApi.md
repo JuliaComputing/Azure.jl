@@ -20,9 +20,9 @@ Gets subscription-level properties and limits for Data Lake Store specified by r
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LocationsApi** | API context | 
-**subscription_id** | **String**| Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**location** | **String**| The resource location without whitespace. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
+**subscription_id** | **String** | Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**location** | **String** | The resource location without whitespace. |
+**api_version** | **String** | Client Api Version. |
 
 ### Return type
 

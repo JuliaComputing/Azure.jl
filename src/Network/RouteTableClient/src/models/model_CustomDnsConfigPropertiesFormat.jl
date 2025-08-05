@@ -18,18 +18,25 @@ Base.@kwdef mutable struct CustomDnsConfigPropertiesFormat <: OpenAPI.APIModel
     ipAddresses::Union{Nothing, Vector{String}} = nothing
 
     function CustomDnsConfigPropertiesFormat(fqdn, ipAddresses, )
-        OpenAPI.validate_property(CustomDnsConfigPropertiesFormat, Symbol("fqdn"), fqdn)
-        OpenAPI.validate_property(CustomDnsConfigPropertiesFormat, Symbol("ipAddresses"), ipAddresses)
-        return new(fqdn, ipAddresses, )
+        o = new(fqdn, ipAddresses, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type CustomDnsConfigPropertiesFormat
 
 const _property_types_CustomDnsConfigPropertiesFormat = Dict{Symbol,String}(Symbol("fqdn")=>"String", Symbol("ipAddresses")=>"Vector{String}", )
 OpenAPI.property_type(::Type{ CustomDnsConfigPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_CustomDnsConfigPropertiesFormat[name]))}
 
-function check_required(o::CustomDnsConfigPropertiesFormat)
+function OpenAPI.check_required(o::CustomDnsConfigPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::CustomDnsConfigPropertiesFormat)
+    OpenAPI.validate_property(CustomDnsConfigPropertiesFormat, Symbol("fqdn"), o.fqdn)
+    OpenAPI.validate_property(CustomDnsConfigPropertiesFormat, Symbol("ipAddresses"), o.ipAddresses)
+end
+
 function OpenAPI.validate_property(::Type{ CustomDnsConfigPropertiesFormat }, name::Symbol, val)
+
+
 end

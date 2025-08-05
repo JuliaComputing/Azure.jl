@@ -36,22 +36,16 @@ Base.@kwdef mutable struct AccountSasParameters <: OpenAPI.APIModel
     keyToSign::Union{Nothing, String} = nothing
 
     function AccountSasParameters(signedServices, signedResourceTypes, signedPermission, signedIp, signedProtocol, signedStart, signedExpiry, keyToSign, )
-        OpenAPI.validate_property(AccountSasParameters, Symbol("signedServices"), signedServices)
-        OpenAPI.validate_property(AccountSasParameters, Symbol("signedResourceTypes"), signedResourceTypes)
-        OpenAPI.validate_property(AccountSasParameters, Symbol("signedPermission"), signedPermission)
-        OpenAPI.validate_property(AccountSasParameters, Symbol("signedIp"), signedIp)
-        OpenAPI.validate_property(AccountSasParameters, Symbol("signedProtocol"), signedProtocol)
-        OpenAPI.validate_property(AccountSasParameters, Symbol("signedStart"), signedStart)
-        OpenAPI.validate_property(AccountSasParameters, Symbol("signedExpiry"), signedExpiry)
-        OpenAPI.validate_property(AccountSasParameters, Symbol("keyToSign"), keyToSign)
-        return new(signedServices, signedResourceTypes, signedPermission, signedIp, signedProtocol, signedStart, signedExpiry, keyToSign, )
+        o = new(signedServices, signedResourceTypes, signedPermission, signedIp, signedProtocol, signedStart, signedExpiry, keyToSign, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AccountSasParameters
 
 const _property_types_AccountSasParameters = Dict{Symbol,String}(Symbol("signedServices")=>"String", Symbol("signedResourceTypes")=>"String", Symbol("signedPermission")=>"String", Symbol("signedIp")=>"String", Symbol("signedProtocol")=>"String", Symbol("signedStart")=>"ZonedDateTime", Symbol("signedExpiry")=>"ZonedDateTime", Symbol("keyToSign")=>"String", )
 OpenAPI.property_type(::Type{ AccountSasParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AccountSasParameters[name]))}
 
-function check_required(o::AccountSasParameters)
+function OpenAPI.check_required(o::AccountSasParameters)
     o.signedServices === nothing && (return false)
     o.signedResourceTypes === nothing && (return false)
     o.signedPermission === nothing && (return false)
@@ -59,23 +53,46 @@ function check_required(o::AccountSasParameters)
     true
 end
 
+function OpenAPI.validate_properties(o::AccountSasParameters)
+    OpenAPI.validate_property(AccountSasParameters, Symbol("signedServices"), o.signedServices)
+    OpenAPI.validate_property(AccountSasParameters, Symbol("signedResourceTypes"), o.signedResourceTypes)
+    OpenAPI.validate_property(AccountSasParameters, Symbol("signedPermission"), o.signedPermission)
+    OpenAPI.validate_property(AccountSasParameters, Symbol("signedIp"), o.signedIp)
+    OpenAPI.validate_property(AccountSasParameters, Symbol("signedProtocol"), o.signedProtocol)
+    OpenAPI.validate_property(AccountSasParameters, Symbol("signedStart"), o.signedStart)
+    OpenAPI.validate_property(AccountSasParameters, Symbol("signedExpiry"), o.signedExpiry)
+    OpenAPI.validate_property(AccountSasParameters, Symbol("keyToSign"), o.keyToSign)
+end
+
 function OpenAPI.validate_property(::Type{ AccountSasParameters }, name::Symbol, val)
+
     if name === Symbol("signedServices")
         OpenAPI.validate_param(name, "AccountSasParameters", :enum, val, ["b", "q", "t", "f"])
     end
+
+
     if name === Symbol("signedResourceTypes")
         OpenAPI.validate_param(name, "AccountSasParameters", :enum, val, ["s", "c", "o"])
     end
+
+
     if name === Symbol("signedPermission")
         OpenAPI.validate_param(name, "AccountSasParameters", :enum, val, ["r", "d", "w", "l", "a", "c", "u", "p"])
     end
+
+
+
     if name === Symbol("signedProtocol")
         OpenAPI.validate_param(name, "AccountSasParameters", :enum, val, ["https,http", "https"])
     end
+
+
     if name === Symbol("signedStart")
         OpenAPI.validate_param(name, "AccountSasParameters", :format, val, "date-time")
     end
+
     if name === Symbol("signedExpiry")
         OpenAPI.validate_param(name, "AccountSasParameters", :format, val, "date-time")
     end
+
 end

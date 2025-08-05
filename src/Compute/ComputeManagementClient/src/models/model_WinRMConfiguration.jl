@@ -15,17 +15,23 @@ Base.@kwdef mutable struct WinRMConfiguration <: OpenAPI.APIModel
     listeners::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{WinRMListener} }
 
     function WinRMConfiguration(listeners, )
-        OpenAPI.validate_property(WinRMConfiguration, Symbol("listeners"), listeners)
-        return new(listeners, )
+        o = new(listeners, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type WinRMConfiguration
 
 const _property_types_WinRMConfiguration = Dict{Symbol,String}(Symbol("listeners")=>"Vector{WinRMListener}", )
 OpenAPI.property_type(::Type{ WinRMConfiguration }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_WinRMConfiguration[name]))}
 
-function check_required(o::WinRMConfiguration)
+function OpenAPI.check_required(o::WinRMConfiguration)
     true
 end
 
+function OpenAPI.validate_properties(o::WinRMConfiguration)
+    OpenAPI.validate_property(WinRMConfiguration, Symbol("listeners"), o.listeners)
+end
+
 function OpenAPI.validate_property(::Type{ WinRMConfiguration }, name::Symbol, val)
+
 end

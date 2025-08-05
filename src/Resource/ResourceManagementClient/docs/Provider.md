@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **registrationState** | **String** | The registration state of the resource provider. | [optional] [readonly] [default to nothing]
 **registrationPolicy** | **String** | The registration policy of the resource provider. | [optional] [readonly] [default to nothing]
 **resourceTypes** | [**Vector{ProviderResourceType}**](ProviderResourceType.md) | The collection of provider resource types. | [optional] [readonly] [default to nothing]
+**providerAuthorizationConsentState** | **String** | The provider authorization consent state. | [optional] [default to nothing]
 
 
 [[Back to Model list]](../README.md#models) [[Back to API list]](../README.md#api-endpoints) [[Back to README]](../README.md)

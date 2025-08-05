@@ -24,23 +24,33 @@ Base.@kwdef mutable struct VpnClientParameters <: OpenAPI.APIModel
     clientRootCertificates::Union{Nothing, Vector{String}} = nothing
 
     function VpnClientParameters(processorArchitecture, authenticationMethod, radiusServerAuthCertificate, clientRootCertificates, )
-        OpenAPI.validate_property(VpnClientParameters, Symbol("processorArchitecture"), processorArchitecture)
-        OpenAPI.validate_property(VpnClientParameters, Symbol("authenticationMethod"), authenticationMethod)
-        OpenAPI.validate_property(VpnClientParameters, Symbol("radiusServerAuthCertificate"), radiusServerAuthCertificate)
-        OpenAPI.validate_property(VpnClientParameters, Symbol("clientRootCertificates"), clientRootCertificates)
-        return new(processorArchitecture, authenticationMethod, radiusServerAuthCertificate, clientRootCertificates, )
+        o = new(processorArchitecture, authenticationMethod, radiusServerAuthCertificate, clientRootCertificates, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VpnClientParameters
 
 const _property_types_VpnClientParameters = Dict{Symbol,String}(Symbol("processorArchitecture")=>"String", Symbol("authenticationMethod")=>"AuthenticationMethod", Symbol("radiusServerAuthCertificate")=>"String", Symbol("clientRootCertificates")=>"Vector{String}", )
 OpenAPI.property_type(::Type{ VpnClientParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VpnClientParameters[name]))}
 
-function check_required(o::VpnClientParameters)
+function OpenAPI.check_required(o::VpnClientParameters)
     true
 end
 
+function OpenAPI.validate_properties(o::VpnClientParameters)
+    OpenAPI.validate_property(VpnClientParameters, Symbol("processorArchitecture"), o.processorArchitecture)
+    OpenAPI.validate_property(VpnClientParameters, Symbol("authenticationMethod"), o.authenticationMethod)
+    OpenAPI.validate_property(VpnClientParameters, Symbol("radiusServerAuthCertificate"), o.radiusServerAuthCertificate)
+    OpenAPI.validate_property(VpnClientParameters, Symbol("clientRootCertificates"), o.clientRootCertificates)
+end
+
 function OpenAPI.validate_property(::Type{ VpnClientParameters }, name::Symbol, val)
+
     if name === Symbol("processorArchitecture")
         OpenAPI.validate_param(name, "VpnClientParameters", :enum, val, ["Amd64", "X86"])
     end
+
+
+
+
 end

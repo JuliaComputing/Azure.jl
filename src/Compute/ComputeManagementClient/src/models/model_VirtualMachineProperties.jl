@@ -26,6 +26,12 @@ Describes the properties of a Virtual Machine.
         licenseType=nothing,
         vmId=nothing,
         extensionsTimeBudget=nothing,
+        platformFaultDomain=nothing,
+        scheduledEventsProfile=nothing,
+        userData=nothing,
+        capacityReservation=nothing,
+        applicationProfile=nothing,
+        timeCreated=nothing,
     )
 
     - hardwareProfile::HardwareProfile
@@ -45,9 +51,15 @@ Describes the properties of a Virtual Machine.
     - hostGroup::SubResource
     - provisioningState::String : The provisioning state, which only appears in the response.
     - instanceView::VirtualMachineInstanceView
-    - licenseType::String : Specifies that the image or disk that is being used was licensed on-premises. This element is only used for images that contain the Windows Server operating system. &lt;br&gt;&lt;br&gt; Possible values are: &lt;br&gt;&lt;br&gt; Windows_Client &lt;br&gt;&lt;br&gt; Windows_Server &lt;br&gt;&lt;br&gt; If this element is included in a request for an update, the value must match the initial value. This value cannot be updated. &lt;br&gt;&lt;br&gt; For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-hybrid-use-benefit-licensing?toc&#x3D;%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) &lt;br&gt;&lt;br&gt; Minimum api-version: 2015-06-15
+    - licenseType::String : Specifies that the image or disk that is being used was licensed on-premises. &lt;br&gt;&lt;br&gt; Possible values for Windows Server operating system are: &lt;br&gt;&lt;br&gt; Windows_Client &lt;br&gt;&lt;br&gt; Windows_Server &lt;br&gt;&lt;br&gt; Possible values for Linux Server operating system are: &lt;br&gt;&lt;br&gt; RHEL_BYOS (for RHEL) &lt;br&gt;&lt;br&gt; SLES_BYOS (for SUSE) &lt;br&gt;&lt;br&gt; For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) &lt;br&gt;&lt;br&gt; [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) &lt;br&gt;&lt;br&gt; Minimum api-version: 2015-06-15
     - vmId::String : Specifies the VM unique ID which is a 128-bits identifier that is encoded and stored in all Azure IaaS VMs SMBIOS and can be read using platform BIOS commands.
     - extensionsTimeBudget::String : Specifies the time alloted for all extensions to start. The time duration should be between 15 minutes and 120 minutes (inclusive) and should be specified in ISO 8601 format. The default value is 90 minutes (PT1H30M). &lt;br&gt;&lt;br&gt; Minimum api-version: 2020-06-01
+    - platformFaultDomain::Int64 : Specifies the scale set logical fault domain into which the Virtual Machine will be created. By default, the Virtual Machine will by automatically assigned to a fault domain that best maintains balance across available fault domains.&lt;br&gt;&lt;li&gt;This is applicable only if the &#39;virtualMachineScaleSet&#39; property of this Virtual Machine is set.&lt;li&gt;The Virtual Machine Scale Set that is referenced, must have &#39;platformFaultDomainCount&#39; &amp;gt; 1.&lt;li&gt;This property cannot be updated once the Virtual Machine is created.&lt;li&gt;Fault domain assignment can be viewed in the Virtual Machine Instance View.&lt;br&gt;&lt;br&gt;Minimum api‐version: 2020‐12‐01
+    - scheduledEventsProfile::ScheduledEventsProfile
+    - userData::String : UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here. &lt;br&gt;&lt;br&gt;Minimum api-version: 2021-03-01
+    - capacityReservation::CapacityReservationProfile
+    - applicationProfile::ApplicationProfile
+    - timeCreated::ZonedDateTime : Specifies the time at which the Virtual Machine resource was created.&lt;br&gt;&lt;br&gt;Minimum api-version: 2021-11-01.
 """
 Base.@kwdef mutable struct VirtualMachineProperties <: OpenAPI.APIModel
     hardwareProfile = nothing # spec type: Union{ Nothing, HardwareProfile }
@@ -70,38 +82,87 @@ Base.@kwdef mutable struct VirtualMachineProperties <: OpenAPI.APIModel
     licenseType::Union{Nothing, String} = nothing
     vmId::Union{Nothing, String} = nothing
     extensionsTimeBudget::Union{Nothing, String} = nothing
+    platformFaultDomain::Union{Nothing, Int64} = nothing
+    scheduledEventsProfile = nothing # spec type: Union{ Nothing, ScheduledEventsProfile }
+    userData::Union{Nothing, String} = nothing
+    capacityReservation = nothing # spec type: Union{ Nothing, CapacityReservationProfile }
+    applicationProfile = nothing # spec type: Union{ Nothing, ApplicationProfile }
+    timeCreated::Union{Nothing, ZonedDateTime} = nothing
 
-    function VirtualMachineProperties(hardwareProfile, storageProfile, additionalCapabilities, osProfile, networkProfile, securityProfile, diagnosticsProfile, availabilitySet, virtualMachineScaleSet, proximityPlacementGroup, priority, evictionPolicy, billingProfile, host, hostGroup, provisioningState, instanceView, licenseType, vmId, extensionsTimeBudget, )
-        OpenAPI.validate_property(VirtualMachineProperties, Symbol("hardwareProfile"), hardwareProfile)
-        OpenAPI.validate_property(VirtualMachineProperties, Symbol("storageProfile"), storageProfile)
-        OpenAPI.validate_property(VirtualMachineProperties, Symbol("additionalCapabilities"), additionalCapabilities)
-        OpenAPI.validate_property(VirtualMachineProperties, Symbol("osProfile"), osProfile)
-        OpenAPI.validate_property(VirtualMachineProperties, Symbol("networkProfile"), networkProfile)
-        OpenAPI.validate_property(VirtualMachineProperties, Symbol("securityProfile"), securityProfile)
-        OpenAPI.validate_property(VirtualMachineProperties, Symbol("diagnosticsProfile"), diagnosticsProfile)
-        OpenAPI.validate_property(VirtualMachineProperties, Symbol("availabilitySet"), availabilitySet)
-        OpenAPI.validate_property(VirtualMachineProperties, Symbol("virtualMachineScaleSet"), virtualMachineScaleSet)
-        OpenAPI.validate_property(VirtualMachineProperties, Symbol("proximityPlacementGroup"), proximityPlacementGroup)
-        OpenAPI.validate_property(VirtualMachineProperties, Symbol("priority"), priority)
-        OpenAPI.validate_property(VirtualMachineProperties, Symbol("evictionPolicy"), evictionPolicy)
-        OpenAPI.validate_property(VirtualMachineProperties, Symbol("billingProfile"), billingProfile)
-        OpenAPI.validate_property(VirtualMachineProperties, Symbol("host"), host)
-        OpenAPI.validate_property(VirtualMachineProperties, Symbol("hostGroup"), hostGroup)
-        OpenAPI.validate_property(VirtualMachineProperties, Symbol("provisioningState"), provisioningState)
-        OpenAPI.validate_property(VirtualMachineProperties, Symbol("instanceView"), instanceView)
-        OpenAPI.validate_property(VirtualMachineProperties, Symbol("licenseType"), licenseType)
-        OpenAPI.validate_property(VirtualMachineProperties, Symbol("vmId"), vmId)
-        OpenAPI.validate_property(VirtualMachineProperties, Symbol("extensionsTimeBudget"), extensionsTimeBudget)
-        return new(hardwareProfile, storageProfile, additionalCapabilities, osProfile, networkProfile, securityProfile, diagnosticsProfile, availabilitySet, virtualMachineScaleSet, proximityPlacementGroup, priority, evictionPolicy, billingProfile, host, hostGroup, provisioningState, instanceView, licenseType, vmId, extensionsTimeBudget, )
+    function VirtualMachineProperties(hardwareProfile, storageProfile, additionalCapabilities, osProfile, networkProfile, securityProfile, diagnosticsProfile, availabilitySet, virtualMachineScaleSet, proximityPlacementGroup, priority, evictionPolicy, billingProfile, host, hostGroup, provisioningState, instanceView, licenseType, vmId, extensionsTimeBudget, platformFaultDomain, scheduledEventsProfile, userData, capacityReservation, applicationProfile, timeCreated, )
+        o = new(hardwareProfile, storageProfile, additionalCapabilities, osProfile, networkProfile, securityProfile, diagnosticsProfile, availabilitySet, virtualMachineScaleSet, proximityPlacementGroup, priority, evictionPolicy, billingProfile, host, hostGroup, provisioningState, instanceView, licenseType, vmId, extensionsTimeBudget, platformFaultDomain, scheduledEventsProfile, userData, capacityReservation, applicationProfile, timeCreated, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineProperties
 
-const _property_types_VirtualMachineProperties = Dict{Symbol,String}(Symbol("hardwareProfile")=>"HardwareProfile", Symbol("storageProfile")=>"StorageProfile", Symbol("additionalCapabilities")=>"AdditionalCapabilities", Symbol("osProfile")=>"OSProfile", Symbol("networkProfile")=>"NetworkProfile", Symbol("securityProfile")=>"SecurityProfile", Symbol("diagnosticsProfile")=>"DiagnosticsProfile", Symbol("availabilitySet")=>"SubResource", Symbol("virtualMachineScaleSet")=>"SubResource", Symbol("proximityPlacementGroup")=>"SubResource", Symbol("priority")=>"Priority", Symbol("evictionPolicy")=>"EvictionPolicy", Symbol("billingProfile")=>"BillingProfile", Symbol("host")=>"SubResource", Symbol("hostGroup")=>"SubResource", Symbol("provisioningState")=>"String", Symbol("instanceView")=>"VirtualMachineInstanceView", Symbol("licenseType")=>"String", Symbol("vmId")=>"String", Symbol("extensionsTimeBudget")=>"String", )
+const _property_types_VirtualMachineProperties = Dict{Symbol,String}(Symbol("hardwareProfile")=>"HardwareProfile", Symbol("storageProfile")=>"StorageProfile", Symbol("additionalCapabilities")=>"AdditionalCapabilities", Symbol("osProfile")=>"OSProfile", Symbol("networkProfile")=>"NetworkProfile", Symbol("securityProfile")=>"SecurityProfile", Symbol("diagnosticsProfile")=>"DiagnosticsProfile", Symbol("availabilitySet")=>"SubResource", Symbol("virtualMachineScaleSet")=>"SubResource", Symbol("proximityPlacementGroup")=>"SubResource", Symbol("priority")=>"Priority", Symbol("evictionPolicy")=>"EvictionPolicy", Symbol("billingProfile")=>"BillingProfile", Symbol("host")=>"SubResource", Symbol("hostGroup")=>"SubResource", Symbol("provisioningState")=>"String", Symbol("instanceView")=>"VirtualMachineInstanceView", Symbol("licenseType")=>"String", Symbol("vmId")=>"String", Symbol("extensionsTimeBudget")=>"String", Symbol("platformFaultDomain")=>"Int64", Symbol("scheduledEventsProfile")=>"ScheduledEventsProfile", Symbol("userData")=>"String", Symbol("capacityReservation")=>"CapacityReservationProfile", Symbol("applicationProfile")=>"ApplicationProfile", Symbol("timeCreated")=>"ZonedDateTime", )
 OpenAPI.property_type(::Type{ VirtualMachineProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineProperties[name]))}
 
-function check_required(o::VirtualMachineProperties)
+function OpenAPI.check_required(o::VirtualMachineProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineProperties)
+    OpenAPI.validate_property(VirtualMachineProperties, Symbol("hardwareProfile"), o.hardwareProfile)
+    OpenAPI.validate_property(VirtualMachineProperties, Symbol("storageProfile"), o.storageProfile)
+    OpenAPI.validate_property(VirtualMachineProperties, Symbol("additionalCapabilities"), o.additionalCapabilities)
+    OpenAPI.validate_property(VirtualMachineProperties, Symbol("osProfile"), o.osProfile)
+    OpenAPI.validate_property(VirtualMachineProperties, Symbol("networkProfile"), o.networkProfile)
+    OpenAPI.validate_property(VirtualMachineProperties, Symbol("securityProfile"), o.securityProfile)
+    OpenAPI.validate_property(VirtualMachineProperties, Symbol("diagnosticsProfile"), o.diagnosticsProfile)
+    OpenAPI.validate_property(VirtualMachineProperties, Symbol("availabilitySet"), o.availabilitySet)
+    OpenAPI.validate_property(VirtualMachineProperties, Symbol("virtualMachineScaleSet"), o.virtualMachineScaleSet)
+    OpenAPI.validate_property(VirtualMachineProperties, Symbol("proximityPlacementGroup"), o.proximityPlacementGroup)
+    OpenAPI.validate_property(VirtualMachineProperties, Symbol("priority"), o.priority)
+    OpenAPI.validate_property(VirtualMachineProperties, Symbol("evictionPolicy"), o.evictionPolicy)
+    OpenAPI.validate_property(VirtualMachineProperties, Symbol("billingProfile"), o.billingProfile)
+    OpenAPI.validate_property(VirtualMachineProperties, Symbol("host"), o.host)
+    OpenAPI.validate_property(VirtualMachineProperties, Symbol("hostGroup"), o.hostGroup)
+    OpenAPI.validate_property(VirtualMachineProperties, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(VirtualMachineProperties, Symbol("instanceView"), o.instanceView)
+    OpenAPI.validate_property(VirtualMachineProperties, Symbol("licenseType"), o.licenseType)
+    OpenAPI.validate_property(VirtualMachineProperties, Symbol("vmId"), o.vmId)
+    OpenAPI.validate_property(VirtualMachineProperties, Symbol("extensionsTimeBudget"), o.extensionsTimeBudget)
+    OpenAPI.validate_property(VirtualMachineProperties, Symbol("platformFaultDomain"), o.platformFaultDomain)
+    OpenAPI.validate_property(VirtualMachineProperties, Symbol("scheduledEventsProfile"), o.scheduledEventsProfile)
+    OpenAPI.validate_property(VirtualMachineProperties, Symbol("userData"), o.userData)
+    OpenAPI.validate_property(VirtualMachineProperties, Symbol("capacityReservation"), o.capacityReservation)
+    OpenAPI.validate_property(VirtualMachineProperties, Symbol("applicationProfile"), o.applicationProfile)
+    OpenAPI.validate_property(VirtualMachineProperties, Symbol("timeCreated"), o.timeCreated)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineProperties }, name::Symbol, val)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if name === Symbol("platformFaultDomain")
+        OpenAPI.validate_param(name, "VirtualMachineProperties", :format, val, "int32")
+    end
+
+
+
+
+
+    if name === Symbol("timeCreated")
+        OpenAPI.validate_param(name, "VirtualMachineProperties", :format, val, "date-time")
+    end
 end

@@ -36,16 +36,16 @@ Gets the backend health of the specified application gateway in a resource group
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ApplicationGatewaysApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**application_gateway_name** | **String**| The name of the application gateway. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**application_gateway_name** | **String** | The name of the application gateway. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expand** | **String**| Expands BackendAddressPool and BackendHttpSettings referenced in backend health. | [default to nothing]
+ **expand** | **String** | Expands BackendAddressPool and BackendHttpSettings referenced in backend health. | [default to nothing]
 
 ### Return type
 
@@ -75,17 +75,17 @@ Gets the backend health for given combination of backend pool and http setting o
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ApplicationGatewaysApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**application_gateway_name** | **String**| The name of the application gateway. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**probe_request** | [**ApplicationGatewayOnDemandProbe**](ApplicationGatewayOnDemandProbe.md)| Request body for on-demand test probe operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**application_gateway_name** | **String** | The name of the application gateway. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**probe_request** | [**ApplicationGatewayOnDemandProbe**](ApplicationGatewayOnDemandProbe.md) | Request body for on-demand test probe operation. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expand** | **String**| Expands BackendAddressPool and BackendHttpSettings referenced in backend health. | [default to nothing]
+ **expand** | **String** | Expands BackendAddressPool and BackendHttpSettings referenced in backend health. | [default to nothing]
 
 ### Return type
 
@@ -115,11 +115,11 @@ Creates or updates the specified application gateway.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ApplicationGatewaysApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**application_gateway_name** | **String**| The name of the application gateway. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**ApplicationGateway**](ApplicationGateway.md)| Parameters supplied to the create or update application gateway operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**application_gateway_name** | **String** | The name of the application gateway. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**ApplicationGateway**](ApplicationGateway.md) | Parameters supplied to the create or update application gateway operation. |
 
 ### Return type
 
@@ -149,10 +149,10 @@ Deletes the specified application gateway.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ApplicationGatewaysApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**application_gateway_name** | **String**| The name of the application gateway. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**application_gateway_name** | **String** | The name of the application gateway. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -182,10 +182,10 @@ Gets the specified application gateway.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ApplicationGatewaysApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**application_gateway_name** | **String**| The name of the application gateway. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**application_gateway_name** | **String** | The name of the application gateway. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -215,9 +215,9 @@ Gets Ssl predefined policy with the specified policy name.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ApplicationGatewaysApi** | API context | 
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**predefined_policy_name** | **String**| Name of Ssl predefined policy. | [default to nothing]
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**predefined_policy_name** | **String** | Name of Ssl predefined policy. |
 
 ### Return type
 
@@ -247,9 +247,9 @@ Lists all application gateways in a resource group.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ApplicationGatewaysApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -279,8 +279,8 @@ Gets all the application gateways in a subscription.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ApplicationGatewaysApi** | API context | 
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -310,8 +310,8 @@ Lists all available request headers.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ApplicationGatewaysApi** | API context | 
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -341,8 +341,8 @@ Lists all available response headers.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ApplicationGatewaysApi** | API context | 
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -372,8 +372,8 @@ Lists all available server variables.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ApplicationGatewaysApi** | API context | 
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -403,8 +403,8 @@ Lists available Ssl options for configuring Ssl policy.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ApplicationGatewaysApi** | API context | 
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -434,8 +434,8 @@ Lists all SSL predefined policies for configuring Ssl policy.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ApplicationGatewaysApi** | API context | 
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -465,8 +465,8 @@ Lists all available web application firewall rule sets.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ApplicationGatewaysApi** | API context | 
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -496,10 +496,10 @@ Starts the specified application gateway.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ApplicationGatewaysApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**application_gateway_name** | **String**| The name of the application gateway. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**application_gateway_name** | **String** | The name of the application gateway. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -529,10 +529,10 @@ Stops the specified application gateway in a resource group.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ApplicationGatewaysApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**application_gateway_name** | **String**| The name of the application gateway. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**application_gateway_name** | **String** | The name of the application gateway. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -562,11 +562,11 @@ Updates the specified application gateway tags.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ApplicationGatewaysApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**application_gateway_name** | **String**| The name of the application gateway. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**TagsObject**](TagsObject.md)| Parameters supplied to update application gateway tags. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**application_gateway_name** | **String** | The name of the application gateway. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**TagsObject**](TagsObject.md) | Parameters supplied to update application gateway tags. |
 
 ### Return type
 

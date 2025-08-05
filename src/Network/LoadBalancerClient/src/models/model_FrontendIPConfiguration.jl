@@ -30,22 +30,33 @@ Base.@kwdef mutable struct FrontendIPConfiguration <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
 
     function FrontendIPConfiguration(properties, name, etag, type, zones, id, )
-        OpenAPI.validate_property(FrontendIPConfiguration, Symbol("properties"), properties)
-        OpenAPI.validate_property(FrontendIPConfiguration, Symbol("name"), name)
-        OpenAPI.validate_property(FrontendIPConfiguration, Symbol("etag"), etag)
-        OpenAPI.validate_property(FrontendIPConfiguration, Symbol("type"), type)
-        OpenAPI.validate_property(FrontendIPConfiguration, Symbol("zones"), zones)
-        OpenAPI.validate_property(FrontendIPConfiguration, Symbol("id"), id)
-        return new(properties, name, etag, type, zones, id, )
+        o = new(properties, name, etag, type, zones, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type FrontendIPConfiguration
 
 const _property_types_FrontendIPConfiguration = Dict{Symbol,String}(Symbol("properties")=>"FrontendIPConfigurationPropertiesFormat", Symbol("name")=>"String", Symbol("etag")=>"String", Symbol("type")=>"String", Symbol("zones")=>"Vector{String}", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ FrontendIPConfiguration }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_FrontendIPConfiguration[name]))}
 
-function check_required(o::FrontendIPConfiguration)
+function OpenAPI.check_required(o::FrontendIPConfiguration)
     true
 end
 
+function OpenAPI.validate_properties(o::FrontendIPConfiguration)
+    OpenAPI.validate_property(FrontendIPConfiguration, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(FrontendIPConfiguration, Symbol("name"), o.name)
+    OpenAPI.validate_property(FrontendIPConfiguration, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(FrontendIPConfiguration, Symbol("type"), o.type)
+    OpenAPI.validate_property(FrontendIPConfiguration, Symbol("zones"), o.zones)
+    OpenAPI.validate_property(FrontendIPConfiguration, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ FrontendIPConfiguration }, name::Symbol, val)
+
+
+
+
+
+
 end

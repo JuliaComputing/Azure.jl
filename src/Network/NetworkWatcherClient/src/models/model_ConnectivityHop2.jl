@@ -39,25 +39,39 @@ Base.@kwdef mutable struct ConnectivityHop2 <: OpenAPI.APIModel
     issues::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ConnectivityIssue2} }
 
     function ConnectivityHop2(type, id, address, resourceId, nextHopIds, previousHopIds, links, previousLinks, issues, )
-        OpenAPI.validate_property(ConnectivityHop2, Symbol("type"), type)
-        OpenAPI.validate_property(ConnectivityHop2, Symbol("id"), id)
-        OpenAPI.validate_property(ConnectivityHop2, Symbol("address"), address)
-        OpenAPI.validate_property(ConnectivityHop2, Symbol("resourceId"), resourceId)
-        OpenAPI.validate_property(ConnectivityHop2, Symbol("nextHopIds"), nextHopIds)
-        OpenAPI.validate_property(ConnectivityHop2, Symbol("previousHopIds"), previousHopIds)
-        OpenAPI.validate_property(ConnectivityHop2, Symbol("links"), links)
-        OpenAPI.validate_property(ConnectivityHop2, Symbol("previousLinks"), previousLinks)
-        OpenAPI.validate_property(ConnectivityHop2, Symbol("issues"), issues)
-        return new(type, id, address, resourceId, nextHopIds, previousHopIds, links, previousLinks, issues, )
+        o = new(type, id, address, resourceId, nextHopIds, previousHopIds, links, previousLinks, issues, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ConnectivityHop2
 
 const _property_types_ConnectivityHop2 = Dict{Symbol,String}(Symbol("type")=>"String", Symbol("id")=>"String", Symbol("address")=>"String", Symbol("resourceId")=>"String", Symbol("nextHopIds")=>"Vector{String}", Symbol("previousHopIds")=>"Vector{String}", Symbol("links")=>"Vector{HopLink2}", Symbol("previousLinks")=>"Vector{HopLink2}", Symbol("issues")=>"Vector{ConnectivityIssue2}", )
 OpenAPI.property_type(::Type{ ConnectivityHop2 }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ConnectivityHop2[name]))}
 
-function check_required(o::ConnectivityHop2)
+function OpenAPI.check_required(o::ConnectivityHop2)
     true
 end
 
+function OpenAPI.validate_properties(o::ConnectivityHop2)
+    OpenAPI.validate_property(ConnectivityHop2, Symbol("type"), o.type)
+    OpenAPI.validate_property(ConnectivityHop2, Symbol("id"), o.id)
+    OpenAPI.validate_property(ConnectivityHop2, Symbol("address"), o.address)
+    OpenAPI.validate_property(ConnectivityHop2, Symbol("resourceId"), o.resourceId)
+    OpenAPI.validate_property(ConnectivityHop2, Symbol("nextHopIds"), o.nextHopIds)
+    OpenAPI.validate_property(ConnectivityHop2, Symbol("previousHopIds"), o.previousHopIds)
+    OpenAPI.validate_property(ConnectivityHop2, Symbol("links"), o.links)
+    OpenAPI.validate_property(ConnectivityHop2, Symbol("previousLinks"), o.previousLinks)
+    OpenAPI.validate_property(ConnectivityHop2, Symbol("issues"), o.issues)
+end
+
 function OpenAPI.validate_property(::Type{ ConnectivityHop2 }, name::Symbol, val)
+
+
+
+
+
+
+
+
+
 end

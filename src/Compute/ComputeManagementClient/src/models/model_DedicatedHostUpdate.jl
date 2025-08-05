@@ -18,18 +18,25 @@ Base.@kwdef mutable struct DedicatedHostUpdate <: OpenAPI.APIModel
     tags::Union{Nothing, Dict{String, String}} = nothing
 
     function DedicatedHostUpdate(properties, tags, )
-        OpenAPI.validate_property(DedicatedHostUpdate, Symbol("properties"), properties)
-        OpenAPI.validate_property(DedicatedHostUpdate, Symbol("tags"), tags)
-        return new(properties, tags, )
+        o = new(properties, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type DedicatedHostUpdate
 
 const _property_types_DedicatedHostUpdate = Dict{Symbol,String}(Symbol("properties")=>"DedicatedHostProperties", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ DedicatedHostUpdate }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DedicatedHostUpdate[name]))}
 
-function check_required(o::DedicatedHostUpdate)
+function OpenAPI.check_required(o::DedicatedHostUpdate)
     true
 end
 
+function OpenAPI.validate_properties(o::DedicatedHostUpdate)
+    OpenAPI.validate_property(DedicatedHostUpdate, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(DedicatedHostUpdate, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ DedicatedHostUpdate }, name::Symbol, val)
+
+
 end

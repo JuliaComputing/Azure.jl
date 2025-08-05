@@ -24,20 +24,29 @@ Base.@kwdef mutable struct RouteFilterPropertiesFormat <: OpenAPI.APIModel
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
     function RouteFilterPropertiesFormat(rules, peerings, ipv6Peerings, provisioningState, )
-        OpenAPI.validate_property(RouteFilterPropertiesFormat, Symbol("rules"), rules)
-        OpenAPI.validate_property(RouteFilterPropertiesFormat, Symbol("peerings"), peerings)
-        OpenAPI.validate_property(RouteFilterPropertiesFormat, Symbol("ipv6Peerings"), ipv6Peerings)
-        OpenAPI.validate_property(RouteFilterPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(rules, peerings, ipv6Peerings, provisioningState, )
+        o = new(rules, peerings, ipv6Peerings, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type RouteFilterPropertiesFormat
 
 const _property_types_RouteFilterPropertiesFormat = Dict{Symbol,String}(Symbol("rules")=>"Vector{RouteFilterRule}", Symbol("peerings")=>"Vector{ExpressRouteCircuitPeering}", Symbol("ipv6Peerings")=>"Vector{ExpressRouteCircuitPeering}", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ RouteFilterPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RouteFilterPropertiesFormat[name]))}
 
-function check_required(o::RouteFilterPropertiesFormat)
+function OpenAPI.check_required(o::RouteFilterPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::RouteFilterPropertiesFormat)
+    OpenAPI.validate_property(RouteFilterPropertiesFormat, Symbol("rules"), o.rules)
+    OpenAPI.validate_property(RouteFilterPropertiesFormat, Symbol("peerings"), o.peerings)
+    OpenAPI.validate_property(RouteFilterPropertiesFormat, Symbol("ipv6Peerings"), o.ipv6Peerings)
+    OpenAPI.validate_property(RouteFilterPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ RouteFilterPropertiesFormat }, name::Symbol, val)
+
+
+
+
 end

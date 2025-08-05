@@ -18,25 +18,32 @@ Base.@kwdef mutable struct ContainerServiceWindowsProfile <: OpenAPI.APIModel
     adminPassword::Union{Nothing, String} = nothing
 
     function ContainerServiceWindowsProfile(adminUsername, adminPassword, )
-        OpenAPI.validate_property(ContainerServiceWindowsProfile, Symbol("adminUsername"), adminUsername)
-        OpenAPI.validate_property(ContainerServiceWindowsProfile, Symbol("adminPassword"), adminPassword)
-        return new(adminUsername, adminPassword, )
+        o = new(adminUsername, adminPassword, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ContainerServiceWindowsProfile
 
 const _property_types_ContainerServiceWindowsProfile = Dict{Symbol,String}(Symbol("adminUsername")=>"String", Symbol("adminPassword")=>"String", )
 OpenAPI.property_type(::Type{ ContainerServiceWindowsProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ContainerServiceWindowsProfile[name]))}
 
-function check_required(o::ContainerServiceWindowsProfile)
+function OpenAPI.check_required(o::ContainerServiceWindowsProfile)
     o.adminUsername === nothing && (return false)
     o.adminPassword === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ContainerServiceWindowsProfile)
+    OpenAPI.validate_property(ContainerServiceWindowsProfile, Symbol("adminUsername"), o.adminUsername)
+    OpenAPI.validate_property(ContainerServiceWindowsProfile, Symbol("adminPassword"), o.adminPassword)
+end
+
 function OpenAPI.validate_property(::Type{ ContainerServiceWindowsProfile }, name::Symbol, val)
+
     if name === Symbol("adminUsername")
         OpenAPI.validate_param(name, "ContainerServiceWindowsProfile", :pattern, val, r"^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$")
     end
+
     if name === Symbol("adminPassword")
         OpenAPI.validate_param(name, "ContainerServiceWindowsProfile", :pattern, val, r"^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%\^&\*\(\)])[a-zA-Z\d!@#$%\^&\*\(\)]{12,123}$")
     end

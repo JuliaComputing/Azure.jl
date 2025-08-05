@@ -4,6 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**flushConnection** | **Bool** | When enabled, flows created from Network Security Group connections will be re-evaluated when rules are updates. Initial enablement will trigger re-evaluation. | [optional] [default to nothing]
 **securityRules** | [**Vector{SecurityRule}**](SecurityRule.md) | A collection of security rules of the network security group. | [optional] [default to nothing]
 **defaultSecurityRules** | [**Vector{SecurityRule}**](SecurityRule.md) | The default security rules of network security group. | [optional] [readonly] [default to nothing]
 **networkInterfaces** | [**Vector{NetworkInterface}**](NetworkInterface.md) | A collection of references to network interfaces. | [optional] [readonly] [default to nothing]

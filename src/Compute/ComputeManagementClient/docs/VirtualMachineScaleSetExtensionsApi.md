@@ -24,12 +24,12 @@ The operation to create or update an extension.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachineScaleSetExtensionsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_scale_set_name** | **String**| The name of the VM scale set where the extension should be create or updated. | [default to nothing]
-**vmss_extension_name** | **String**| The name of the VM scale set extension. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**extension_parameters** | [**VirtualMachineScaleSetExtension**](VirtualMachineScaleSetExtension.md)| Parameters supplied to the Create VM scale set Extension operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_scale_set_name** | **String** | The name of the VM scale set where the extension should be create or updated. |
+**vmss_extension_name** | **String** | The name of the VM scale set extension. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**extension_parameters** | [**VirtualMachineScaleSetExtension**](VirtualMachineScaleSetExtension.md) | Parameters supplied to the Create VM scale set Extension operation. |
 
 ### Return type
 
@@ -59,11 +59,11 @@ The operation to delete the extension.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachineScaleSetExtensionsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_scale_set_name** | **String**| The name of the VM scale set where the extension should be deleted. | [default to nothing]
-**vmss_extension_name** | **String**| The name of the VM scale set extension. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_scale_set_name** | **String** | The name of the VM scale set where the extension should be deleted. |
+**vmss_extension_name** | **String** | The name of the VM scale set extension. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -76,7 +76,7 @@ Nothing
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -93,17 +93,17 @@ The operation to get the extension.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachineScaleSetExtensionsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_scale_set_name** | **String**| The name of the VM scale set containing the extension. | [default to nothing]
-**vmss_extension_name** | **String**| The name of the VM scale set extension. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_scale_set_name** | **String** | The name of the VM scale set containing the extension. |
+**vmss_extension_name** | **String** | The name of the VM scale set extension. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expand** | **String**| The expand expression to apply on the operation. | [default to nothing]
+ **expand** | **String** | The expand expression to apply on the operation. | [default to nothing]
 
 ### Return type
 
@@ -133,10 +133,10 @@ Gets a list of all extensions in a VM scale set.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachineScaleSetExtensionsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_scale_set_name** | **String**| The name of the VM scale set containing the extension. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_scale_set_name** | **String** | The name of the VM scale set containing the extension. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -166,12 +166,12 @@ The operation to update an extension.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachineScaleSetExtensionsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**vm_scale_set_name** | **String**| The name of the VM scale set where the extension should be updated. | [default to nothing]
-**vmss_extension_name** | **String**| The name of the VM scale set extension. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**extension_parameters** | [**VirtualMachineScaleSetExtensionUpdate**](VirtualMachineScaleSetExtensionUpdate.md)| Parameters supplied to the Update VM scale set Extension operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**vm_scale_set_name** | **String** | The name of the VM scale set where the extension should be updated. |
+**vmss_extension_name** | **String** | The name of the VM scale set extension. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**extension_parameters** | [**VirtualMachineScaleSetExtensionUpdate**](VirtualMachineScaleSetExtensionUpdate.md) | Parameters supplied to the Update VM scale set Extension operation. |
 
 ### Return type
 

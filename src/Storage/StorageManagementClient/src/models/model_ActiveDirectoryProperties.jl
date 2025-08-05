@@ -12,14 +12,18 @@ Settings properties for Active Directory (AD).
         domainGuid=nothing,
         domainSid=nothing,
         azureStorageSid=nothing,
+        samAccountName=nothing,
+        accountType=nothing,
     )
 
-    - domainName::String : Specifies the primary domain that the AD DNS server is authoritative for.
-    - netBiosDomainName::String : Specifies the NetBIOS domain name.
-    - forestName::String : Specifies the Active Directory forest to get.
-    - domainGuid::String : Specifies the domain GUID.
-    - domainSid::String : Specifies the security identifier (SID).
-    - azureStorageSid::String : Specifies the security identifier (SID) for Azure Storage.
+    - domainName::String : Specifies the primary domain that the AD DNS server is authoritative for. This property is required if directoryServiceOptions is set to AD (AD DS authentication). If directoryServiceOptions is set to AADDS (Entra DS authentication), providing this property is optional, as it will be inferred automatically if omitted. If directoryServiceOptions is set to AADKERB (Entra authentication), this property is optional; it is needed to support configuration of directory- and file-level permissions via Windows File Explorer, but is not required for authentication.
+    - netBiosDomainName::String : Specifies the NetBIOS domain name. If directoryServiceOptions is set to AD (AD DS authentication), this property is required. Otherwise, it can be omitted.
+    - forestName::String : Specifies the Active Directory forest to get. If directoryServiceOptions is set to AD (AD DS authentication), this property is required. Otherwise, it can be omitted.
+    - domainGuid::String : Specifies the domain GUID. If directoryServiceOptions is set to AD (AD DS authentication), this property is required. If directoryServiceOptions is set to AADDS (Entra DS authentication), this property can be omitted. If directoryServiceOptions is set to AADKERB (Entra authentication), this property is optional; it is needed to support configuration of directory- and file-level permissions via Windows File Explorer, but is not required for authentication.
+    - domainSid::String : Specifies the security identifier (SID) of the AD domain. If directoryServiceOptions is set to AD (AD DS authentication), this property is required. Otherwise, it can be omitted.
+    - azureStorageSid::String : Specifies the security identifier (SID) for Azure Storage. If directoryServiceOptions is set to AD (AD DS authentication), this property is required. Otherwise, it can be omitted.
+    - samAccountName::String : Specifies the Active Directory SAMAccountName for Azure Storage. If directoryServiceOptions is set to AD (AD DS authentication), this property is optional. If provided, accountType should also be provided. For directoryServiceOptions AADDS (Entra DS authentication) or AADKERB (Entra authentication), this property can be omitted.
+    - accountType::String : Specifies the Active Directory account type for Azure Storage. If directoryServiceOptions is set to AD (AD DS authentication), this property is optional. If provided, samAccountName should also be provided. For directoryServiceOptions AADDS (Entra DS authentication) or AADKERB (Entra authentication), this property can be omitted.
 """
 Base.@kwdef mutable struct ActiveDirectoryProperties <: OpenAPI.APIModel
     domainName::Union{Nothing, String} = nothing
@@ -28,30 +32,45 @@ Base.@kwdef mutable struct ActiveDirectoryProperties <: OpenAPI.APIModel
     domainGuid::Union{Nothing, String} = nothing
     domainSid::Union{Nothing, String} = nothing
     azureStorageSid::Union{Nothing, String} = nothing
+    samAccountName::Union{Nothing, String} = nothing
+    accountType::Union{Nothing, String} = nothing
 
-    function ActiveDirectoryProperties(domainName, netBiosDomainName, forestName, domainGuid, domainSid, azureStorageSid, )
-        OpenAPI.validate_property(ActiveDirectoryProperties, Symbol("domainName"), domainName)
-        OpenAPI.validate_property(ActiveDirectoryProperties, Symbol("netBiosDomainName"), netBiosDomainName)
-        OpenAPI.validate_property(ActiveDirectoryProperties, Symbol("forestName"), forestName)
-        OpenAPI.validate_property(ActiveDirectoryProperties, Symbol("domainGuid"), domainGuid)
-        OpenAPI.validate_property(ActiveDirectoryProperties, Symbol("domainSid"), domainSid)
-        OpenAPI.validate_property(ActiveDirectoryProperties, Symbol("azureStorageSid"), azureStorageSid)
-        return new(domainName, netBiosDomainName, forestName, domainGuid, domainSid, azureStorageSid, )
+    function ActiveDirectoryProperties(domainName, netBiosDomainName, forestName, domainGuid, domainSid, azureStorageSid, samAccountName, accountType, )
+        o = new(domainName, netBiosDomainName, forestName, domainGuid, domainSid, azureStorageSid, samAccountName, accountType, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ActiveDirectoryProperties
 
-const _property_types_ActiveDirectoryProperties = Dict{Symbol,String}(Symbol("domainName")=>"String", Symbol("netBiosDomainName")=>"String", Symbol("forestName")=>"String", Symbol("domainGuid")=>"String", Symbol("domainSid")=>"String", Symbol("azureStorageSid")=>"String", )
+const _property_types_ActiveDirectoryProperties = Dict{Symbol,String}(Symbol("domainName")=>"String", Symbol("netBiosDomainName")=>"String", Symbol("forestName")=>"String", Symbol("domainGuid")=>"String", Symbol("domainSid")=>"String", Symbol("azureStorageSid")=>"String", Symbol("samAccountName")=>"String", Symbol("accountType")=>"String", )
 OpenAPI.property_type(::Type{ ActiveDirectoryProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ActiveDirectoryProperties[name]))}
 
-function check_required(o::ActiveDirectoryProperties)
-    o.domainName === nothing && (return false)
-    o.netBiosDomainName === nothing && (return false)
-    o.forestName === nothing && (return false)
-    o.domainGuid === nothing && (return false)
-    o.domainSid === nothing && (return false)
-    o.azureStorageSid === nothing && (return false)
+function OpenAPI.check_required(o::ActiveDirectoryProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::ActiveDirectoryProperties)
+    OpenAPI.validate_property(ActiveDirectoryProperties, Symbol("domainName"), o.domainName)
+    OpenAPI.validate_property(ActiveDirectoryProperties, Symbol("netBiosDomainName"), o.netBiosDomainName)
+    OpenAPI.validate_property(ActiveDirectoryProperties, Symbol("forestName"), o.forestName)
+    OpenAPI.validate_property(ActiveDirectoryProperties, Symbol("domainGuid"), o.domainGuid)
+    OpenAPI.validate_property(ActiveDirectoryProperties, Symbol("domainSid"), o.domainSid)
+    OpenAPI.validate_property(ActiveDirectoryProperties, Symbol("azureStorageSid"), o.azureStorageSid)
+    OpenAPI.validate_property(ActiveDirectoryProperties, Symbol("samAccountName"), o.samAccountName)
+    OpenAPI.validate_property(ActiveDirectoryProperties, Symbol("accountType"), o.accountType)
+end
+
 function OpenAPI.validate_property(::Type{ ActiveDirectoryProperties }, name::Symbol, val)
+
+
+
+
+
+
+
+
+    if name === Symbol("accountType")
+        OpenAPI.validate_param(name, "ActiveDirectoryProperties", :enum, val, ["User", "Computer"])
+    end
+
 end

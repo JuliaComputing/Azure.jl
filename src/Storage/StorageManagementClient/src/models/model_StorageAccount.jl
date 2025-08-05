@@ -9,50 +9,89 @@ The storage account.
         sku=nothing,
         kind=nothing,
         identity=nothing,
+        extendedLocation=nothing,
+        zones=nothing,
+        placement=nothing,
         properties=nothing,
+        tags=nothing,
+        location=nothing,
         id=nothing,
         name=nothing,
         type=nothing,
     )
 
-    - sku::Any
+    - sku::Sku
     - kind::String : Gets the Kind.
     - identity::Identity
+    - extendedLocation::ExtendedLocation
+    - zones::Vector{String} : Optional. Gets or sets the pinned logical availability zone for the storage account.
+    - placement::Placement
     - properties::StorageAccountProperties
-    - id::String : Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+    - tags::Dict{String, String} : Resource tags.
+    - location::String : The geo-location where the resource lives
+    - id::String : Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
     - name::String : The name of the resource
-    - type::String : The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+    - type::String : The type of the resource. E.g. \&quot;Microsoft.Compute/virtualMachines\&quot; or \&quot;Microsoft.Storage/storageAccounts\&quot;
 """
 Base.@kwdef mutable struct StorageAccount <: OpenAPI.APIModel
-    sku::Union{Nothing, Any} = nothing
+    sku = nothing # spec type: Union{ Nothing, Sku }
     kind::Union{Nothing, String} = nothing
     identity = nothing # spec type: Union{ Nothing, Identity }
+    extendedLocation = nothing # spec type: Union{ Nothing, ExtendedLocation }
+    zones::Union{Nothing, Vector{String}} = nothing
+    placement = nothing # spec type: Union{ Nothing, Placement }
     properties = nothing # spec type: Union{ Nothing, StorageAccountProperties }
+    tags::Union{Nothing, Dict{String, String}} = nothing
+    location::Union{Nothing, String} = nothing
     id::Union{Nothing, String} = nothing
     name::Union{Nothing, String} = nothing
     type::Union{Nothing, String} = nothing
 
-    function StorageAccount(sku, kind, identity, properties, id, name, type, )
-        OpenAPI.validate_property(StorageAccount, Symbol("sku"), sku)
-        OpenAPI.validate_property(StorageAccount, Symbol("kind"), kind)
-        OpenAPI.validate_property(StorageAccount, Symbol("identity"), identity)
-        OpenAPI.validate_property(StorageAccount, Symbol("properties"), properties)
-        OpenAPI.validate_property(StorageAccount, Symbol("id"), id)
-        OpenAPI.validate_property(StorageAccount, Symbol("name"), name)
-        OpenAPI.validate_property(StorageAccount, Symbol("type"), type)
-        return new(sku, kind, identity, properties, id, name, type, )
+    function StorageAccount(sku, kind, identity, extendedLocation, zones, placement, properties, tags, location, id, name, type, )
+        o = new(sku, kind, identity, extendedLocation, zones, placement, properties, tags, location, id, name, type, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type StorageAccount
 
-const _property_types_StorageAccount = Dict{Symbol,String}(Symbol("sku")=>"Any", Symbol("kind")=>"String", Symbol("identity")=>"Identity", Symbol("properties")=>"StorageAccountProperties", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", )
+const _property_types_StorageAccount = Dict{Symbol,String}(Symbol("sku")=>"Sku", Symbol("kind")=>"String", Symbol("identity")=>"Identity", Symbol("extendedLocation")=>"ExtendedLocation", Symbol("zones")=>"Vector{String}", Symbol("placement")=>"Placement", Symbol("properties")=>"StorageAccountProperties", Symbol("tags")=>"Dict{String, String}", Symbol("location")=>"String", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", )
 OpenAPI.property_type(::Type{ StorageAccount }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_StorageAccount[name]))}
 
-function check_required(o::StorageAccount)
+function OpenAPI.check_required(o::StorageAccount)
+    o.location === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::StorageAccount)
+    OpenAPI.validate_property(StorageAccount, Symbol("sku"), o.sku)
+    OpenAPI.validate_property(StorageAccount, Symbol("kind"), o.kind)
+    OpenAPI.validate_property(StorageAccount, Symbol("identity"), o.identity)
+    OpenAPI.validate_property(StorageAccount, Symbol("extendedLocation"), o.extendedLocation)
+    OpenAPI.validate_property(StorageAccount, Symbol("zones"), o.zones)
+    OpenAPI.validate_property(StorageAccount, Symbol("placement"), o.placement)
+    OpenAPI.validate_property(StorageAccount, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(StorageAccount, Symbol("tags"), o.tags)
+    OpenAPI.validate_property(StorageAccount, Symbol("location"), o.location)
+    OpenAPI.validate_property(StorageAccount, Symbol("id"), o.id)
+    OpenAPI.validate_property(StorageAccount, Symbol("name"), o.name)
+    OpenAPI.validate_property(StorageAccount, Symbol("type"), o.type)
+end
+
 function OpenAPI.validate_property(::Type{ StorageAccount }, name::Symbol, val)
+
+
     if name === Symbol("kind")
         OpenAPI.validate_param(name, "StorageAccount", :enum, val, ["Storage", "StorageV2", "BlobStorage", "FileStorage", "BlockBlobStorage"])
     end
+
+
+
+
+
+
+
+
+
+
+
 end

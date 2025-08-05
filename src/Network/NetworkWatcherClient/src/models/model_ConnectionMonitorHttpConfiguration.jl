@@ -30,25 +30,44 @@ Base.@kwdef mutable struct ConnectionMonitorHttpConfiguration <: OpenAPI.APIMode
     preferHTTPS::Union{Nothing, Bool} = nothing
 
     function ConnectionMonitorHttpConfiguration(port, method, path, requestHeaders, validStatusCodeRanges, preferHTTPS, )
-        OpenAPI.validate_property(ConnectionMonitorHttpConfiguration, Symbol("port"), port)
-        OpenAPI.validate_property(ConnectionMonitorHttpConfiguration, Symbol("method"), method)
-        OpenAPI.validate_property(ConnectionMonitorHttpConfiguration, Symbol("path"), path)
-        OpenAPI.validate_property(ConnectionMonitorHttpConfiguration, Symbol("requestHeaders"), requestHeaders)
-        OpenAPI.validate_property(ConnectionMonitorHttpConfiguration, Symbol("validStatusCodeRanges"), validStatusCodeRanges)
-        OpenAPI.validate_property(ConnectionMonitorHttpConfiguration, Symbol("preferHTTPS"), preferHTTPS)
-        return new(port, method, path, requestHeaders, validStatusCodeRanges, preferHTTPS, )
+        o = new(port, method, path, requestHeaders, validStatusCodeRanges, preferHTTPS, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ConnectionMonitorHttpConfiguration
 
 const _property_types_ConnectionMonitorHttpConfiguration = Dict{Symbol,String}(Symbol("port")=>"Int64", Symbol("method")=>"String", Symbol("path")=>"String", Symbol("requestHeaders")=>"Vector{HTTPHeader}", Symbol("validStatusCodeRanges")=>"Vector{String}", Symbol("preferHTTPS")=>"Bool", )
 OpenAPI.property_type(::Type{ ConnectionMonitorHttpConfiguration }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ConnectionMonitorHttpConfiguration[name]))}
 
-function check_required(o::ConnectionMonitorHttpConfiguration)
+function OpenAPI.check_required(o::ConnectionMonitorHttpConfiguration)
     true
 end
 
+function OpenAPI.validate_properties(o::ConnectionMonitorHttpConfiguration)
+    OpenAPI.validate_property(ConnectionMonitorHttpConfiguration, Symbol("port"), o.port)
+    OpenAPI.validate_property(ConnectionMonitorHttpConfiguration, Symbol("method"), o.method)
+    OpenAPI.validate_property(ConnectionMonitorHttpConfiguration, Symbol("path"), o.path)
+    OpenAPI.validate_property(ConnectionMonitorHttpConfiguration, Symbol("requestHeaders"), o.requestHeaders)
+    OpenAPI.validate_property(ConnectionMonitorHttpConfiguration, Symbol("validStatusCodeRanges"), o.validStatusCodeRanges)
+    OpenAPI.validate_property(ConnectionMonitorHttpConfiguration, Symbol("preferHTTPS"), o.preferHTTPS)
+end
+
 function OpenAPI.validate_property(::Type{ ConnectionMonitorHttpConfiguration }, name::Symbol, val)
+
+    if name === Symbol("port")
+        OpenAPI.validate_param(name, "ConnectionMonitorHttpConfiguration", :format, val, "int32")
+    end
+    if name === Symbol("port")
+        OpenAPI.validate_param(name, "ConnectionMonitorHttpConfiguration", :maximum, val, 65535, false)
+        OpenAPI.validate_param(name, "ConnectionMonitorHttpConfiguration", :minimum, val, 0, false)
+    end
+
     if name === Symbol("method")
         OpenAPI.validate_param(name, "ConnectionMonitorHttpConfiguration", :enum, val, ["Get", "Post"])
     end
+
+
+
+
+
 end

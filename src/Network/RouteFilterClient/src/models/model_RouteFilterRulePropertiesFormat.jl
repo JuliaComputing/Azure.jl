@@ -24,26 +24,36 @@ Base.@kwdef mutable struct RouteFilterRulePropertiesFormat <: OpenAPI.APIModel
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
     function RouteFilterRulePropertiesFormat(access, routeFilterRuleType, communities, provisioningState, )
-        OpenAPI.validate_property(RouteFilterRulePropertiesFormat, Symbol("access"), access)
-        OpenAPI.validate_property(RouteFilterRulePropertiesFormat, Symbol("routeFilterRuleType"), routeFilterRuleType)
-        OpenAPI.validate_property(RouteFilterRulePropertiesFormat, Symbol("communities"), communities)
-        OpenAPI.validate_property(RouteFilterRulePropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(access, routeFilterRuleType, communities, provisioningState, )
+        o = new(access, routeFilterRuleType, communities, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type RouteFilterRulePropertiesFormat
 
 const _property_types_RouteFilterRulePropertiesFormat = Dict{Symbol,String}(Symbol("access")=>"Access", Symbol("routeFilterRuleType")=>"String", Symbol("communities")=>"Vector{String}", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ RouteFilterRulePropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RouteFilterRulePropertiesFormat[name]))}
 
-function check_required(o::RouteFilterRulePropertiesFormat)
+function OpenAPI.check_required(o::RouteFilterRulePropertiesFormat)
     o.access === nothing && (return false)
     o.routeFilterRuleType === nothing && (return false)
     o.communities === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::RouteFilterRulePropertiesFormat)
+    OpenAPI.validate_property(RouteFilterRulePropertiesFormat, Symbol("access"), o.access)
+    OpenAPI.validate_property(RouteFilterRulePropertiesFormat, Symbol("routeFilterRuleType"), o.routeFilterRuleType)
+    OpenAPI.validate_property(RouteFilterRulePropertiesFormat, Symbol("communities"), o.communities)
+    OpenAPI.validate_property(RouteFilterRulePropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ RouteFilterRulePropertiesFormat }, name::Symbol, val)
+
+
     if name === Symbol("routeFilterRuleType")
         OpenAPI.validate_param(name, "RouteFilterRulePropertiesFormat", :enum, val, ["Community"])
     end
+
+
+
 end

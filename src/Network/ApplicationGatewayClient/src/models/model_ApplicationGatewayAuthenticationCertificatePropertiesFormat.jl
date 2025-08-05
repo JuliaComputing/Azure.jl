@@ -18,18 +18,25 @@ Base.@kwdef mutable struct ApplicationGatewayAuthenticationCertificateProperties
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
     function ApplicationGatewayAuthenticationCertificatePropertiesFormat(data, provisioningState, )
-        OpenAPI.validate_property(ApplicationGatewayAuthenticationCertificatePropertiesFormat, Symbol("data"), data)
-        OpenAPI.validate_property(ApplicationGatewayAuthenticationCertificatePropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(data, provisioningState, )
+        o = new(data, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayAuthenticationCertificatePropertiesFormat
 
 const _property_types_ApplicationGatewayAuthenticationCertificatePropertiesFormat = Dict{Symbol,String}(Symbol("data")=>"String", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ ApplicationGatewayAuthenticationCertificatePropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayAuthenticationCertificatePropertiesFormat[name]))}
 
-function check_required(o::ApplicationGatewayAuthenticationCertificatePropertiesFormat)
+function OpenAPI.check_required(o::ApplicationGatewayAuthenticationCertificatePropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayAuthenticationCertificatePropertiesFormat)
+    OpenAPI.validate_property(ApplicationGatewayAuthenticationCertificatePropertiesFormat, Symbol("data"), o.data)
+    OpenAPI.validate_property(ApplicationGatewayAuthenticationCertificatePropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayAuthenticationCertificatePropertiesFormat }, name::Symbol, val)
+
+
 end

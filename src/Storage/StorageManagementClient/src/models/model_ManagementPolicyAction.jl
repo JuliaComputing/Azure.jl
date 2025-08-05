@@ -8,28 +8,40 @@ Actions are applied to the filtered blobs when the execution condition is met.
     ManagementPolicyAction(;
         baseBlob=nothing,
         snapshot=nothing,
+        version=nothing,
     )
 
     - baseBlob::ManagementPolicyBaseBlob
     - snapshot::ManagementPolicySnapShot
+    - version::ManagementPolicyVersion
 """
 Base.@kwdef mutable struct ManagementPolicyAction <: OpenAPI.APIModel
     baseBlob = nothing # spec type: Union{ Nothing, ManagementPolicyBaseBlob }
     snapshot = nothing # spec type: Union{ Nothing, ManagementPolicySnapShot }
+    version = nothing # spec type: Union{ Nothing, ManagementPolicyVersion }
 
-    function ManagementPolicyAction(baseBlob, snapshot, )
-        OpenAPI.validate_property(ManagementPolicyAction, Symbol("baseBlob"), baseBlob)
-        OpenAPI.validate_property(ManagementPolicyAction, Symbol("snapshot"), snapshot)
-        return new(baseBlob, snapshot, )
+    function ManagementPolicyAction(baseBlob, snapshot, version, )
+        o = new(baseBlob, snapshot, version, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ManagementPolicyAction
 
-const _property_types_ManagementPolicyAction = Dict{Symbol,String}(Symbol("baseBlob")=>"ManagementPolicyBaseBlob", Symbol("snapshot")=>"ManagementPolicySnapShot", )
+const _property_types_ManagementPolicyAction = Dict{Symbol,String}(Symbol("baseBlob")=>"ManagementPolicyBaseBlob", Symbol("snapshot")=>"ManagementPolicySnapShot", Symbol("version")=>"ManagementPolicyVersion", )
 OpenAPI.property_type(::Type{ ManagementPolicyAction }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ManagementPolicyAction[name]))}
 
-function check_required(o::ManagementPolicyAction)
+function OpenAPI.check_required(o::ManagementPolicyAction)
     true
 end
 
+function OpenAPI.validate_properties(o::ManagementPolicyAction)
+    OpenAPI.validate_property(ManagementPolicyAction, Symbol("baseBlob"), o.baseBlob)
+    OpenAPI.validate_property(ManagementPolicyAction, Symbol("snapshot"), o.snapshot)
+    OpenAPI.validate_property(ManagementPolicyAction, Symbol("version"), o.version)
+end
+
 function OpenAPI.validate_property(::Type{ ManagementPolicyAction }, name::Symbol, val)
+
+
+
 end

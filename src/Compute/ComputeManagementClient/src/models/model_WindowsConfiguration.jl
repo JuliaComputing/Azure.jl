@@ -16,7 +16,7 @@ Specifies Windows operating system settings on the virtual machine.
 
     - provisionVMAgent::Bool : Indicates whether virtual machine agent should be provisioned on the virtual machine. &lt;br&gt;&lt;br&gt; When this property is not specified in the request body, default behavior is to set it to true.  This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later.
     - enableAutomaticUpdates::Bool : Indicates whether Automatic Updates is enabled for the Windows virtual machine. Default value is true. &lt;br&gt;&lt;br&gt; For virtual machine scale sets, this property can be updated and updates will take effect on OS reprovisioning.
-    - timeZone::String : Specifies the time zone of the virtual machine. e.g. \&quot;Pacific Standard Time\&quot;. &lt;br&gt;&lt;br&gt; Possible values can be [TimeZoneInfo.Id](https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id) value from time zones returned by [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.getsystemtimezones).
+    - timeZone::String : Specifies the time zone of the virtual machine. e.g. \&quot;Pacific Standard Time\&quot;. &lt;br&gt;&lt;br&gt; Possible values can be [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id) value from time zones returned by [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
     - additionalUnattendContent::Vector{AdditionalUnattendContent} : Specifies additional base-64 encoded XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup.
     - patchSettings::PatchSettings
     - winRM::WinRMConfiguration
@@ -30,22 +30,33 @@ Base.@kwdef mutable struct WindowsConfiguration <: OpenAPI.APIModel
     winRM = nothing # spec type: Union{ Nothing, WinRMConfiguration }
 
     function WindowsConfiguration(provisionVMAgent, enableAutomaticUpdates, timeZone, additionalUnattendContent, patchSettings, winRM, )
-        OpenAPI.validate_property(WindowsConfiguration, Symbol("provisionVMAgent"), provisionVMAgent)
-        OpenAPI.validate_property(WindowsConfiguration, Symbol("enableAutomaticUpdates"), enableAutomaticUpdates)
-        OpenAPI.validate_property(WindowsConfiguration, Symbol("timeZone"), timeZone)
-        OpenAPI.validate_property(WindowsConfiguration, Symbol("additionalUnattendContent"), additionalUnattendContent)
-        OpenAPI.validate_property(WindowsConfiguration, Symbol("patchSettings"), patchSettings)
-        OpenAPI.validate_property(WindowsConfiguration, Symbol("winRM"), winRM)
-        return new(provisionVMAgent, enableAutomaticUpdates, timeZone, additionalUnattendContent, patchSettings, winRM, )
+        o = new(provisionVMAgent, enableAutomaticUpdates, timeZone, additionalUnattendContent, patchSettings, winRM, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type WindowsConfiguration
 
 const _property_types_WindowsConfiguration = Dict{Symbol,String}(Symbol("provisionVMAgent")=>"Bool", Symbol("enableAutomaticUpdates")=>"Bool", Symbol("timeZone")=>"String", Symbol("additionalUnattendContent")=>"Vector{AdditionalUnattendContent}", Symbol("patchSettings")=>"PatchSettings", Symbol("winRM")=>"WinRMConfiguration", )
 OpenAPI.property_type(::Type{ WindowsConfiguration }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_WindowsConfiguration[name]))}
 
-function check_required(o::WindowsConfiguration)
+function OpenAPI.check_required(o::WindowsConfiguration)
     true
 end
 
+function OpenAPI.validate_properties(o::WindowsConfiguration)
+    OpenAPI.validate_property(WindowsConfiguration, Symbol("provisionVMAgent"), o.provisionVMAgent)
+    OpenAPI.validate_property(WindowsConfiguration, Symbol("enableAutomaticUpdates"), o.enableAutomaticUpdates)
+    OpenAPI.validate_property(WindowsConfiguration, Symbol("timeZone"), o.timeZone)
+    OpenAPI.validate_property(WindowsConfiguration, Symbol("additionalUnattendContent"), o.additionalUnattendContent)
+    OpenAPI.validate_property(WindowsConfiguration, Symbol("patchSettings"), o.patchSettings)
+    OpenAPI.validate_property(WindowsConfiguration, Symbol("winRM"), o.winRM)
+end
+
 function OpenAPI.validate_property(::Type{ WindowsConfiguration }, name::Symbol, val)
+
+
+
+
+
+
 end

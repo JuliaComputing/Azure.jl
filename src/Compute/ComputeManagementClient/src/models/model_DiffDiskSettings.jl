@@ -18,18 +18,25 @@ Base.@kwdef mutable struct DiffDiskSettings <: OpenAPI.APIModel
     placement = nothing # spec type: Union{ Nothing, DiffDiskPlacement }
 
     function DiffDiskSettings(option, placement, )
-        OpenAPI.validate_property(DiffDiskSettings, Symbol("option"), option)
-        OpenAPI.validate_property(DiffDiskSettings, Symbol("placement"), placement)
-        return new(option, placement, )
+        o = new(option, placement, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type DiffDiskSettings
 
 const _property_types_DiffDiskSettings = Dict{Symbol,String}(Symbol("option")=>"DiffDiskOption", Symbol("placement")=>"DiffDiskPlacement", )
 OpenAPI.property_type(::Type{ DiffDiskSettings }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DiffDiskSettings[name]))}
 
-function check_required(o::DiffDiskSettings)
+function OpenAPI.check_required(o::DiffDiskSettings)
     true
 end
 
+function OpenAPI.validate_properties(o::DiffDiskSettings)
+    OpenAPI.validate_property(DiffDiskSettings, Symbol("option"), o.option)
+    OpenAPI.validate_property(DiffDiskSettings, Symbol("placement"), o.placement)
+end
+
 function OpenAPI.validate_property(::Type{ DiffDiskSettings }, name::Symbol, val)
+
+
 end

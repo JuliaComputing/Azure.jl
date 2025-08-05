@@ -27,24 +27,34 @@ Base.@kwdef mutable struct ExpressRouteCircuitRoutesTable <: OpenAPI.APIModel
     path::Union{Nothing, String} = nothing
 
     function ExpressRouteCircuitRoutesTable(network, nextHop, locPrf, weight, path, )
-        OpenAPI.validate_property(ExpressRouteCircuitRoutesTable, Symbol("network"), network)
-        OpenAPI.validate_property(ExpressRouteCircuitRoutesTable, Symbol("nextHop"), nextHop)
-        OpenAPI.validate_property(ExpressRouteCircuitRoutesTable, Symbol("locPrf"), locPrf)
-        OpenAPI.validate_property(ExpressRouteCircuitRoutesTable, Symbol("weight"), weight)
-        OpenAPI.validate_property(ExpressRouteCircuitRoutesTable, Symbol("path"), path)
-        return new(network, nextHop, locPrf, weight, path, )
+        o = new(network, nextHop, locPrf, weight, path, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ExpressRouteCircuitRoutesTable
 
 const _property_types_ExpressRouteCircuitRoutesTable = Dict{Symbol,String}(Symbol("network")=>"String", Symbol("nextHop")=>"String", Symbol("locPrf")=>"String", Symbol("weight")=>"Int64", Symbol("path")=>"String", )
 OpenAPI.property_type(::Type{ ExpressRouteCircuitRoutesTable }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExpressRouteCircuitRoutesTable[name]))}
 
-function check_required(o::ExpressRouteCircuitRoutesTable)
+function OpenAPI.check_required(o::ExpressRouteCircuitRoutesTable)
     true
 end
 
+function OpenAPI.validate_properties(o::ExpressRouteCircuitRoutesTable)
+    OpenAPI.validate_property(ExpressRouteCircuitRoutesTable, Symbol("network"), o.network)
+    OpenAPI.validate_property(ExpressRouteCircuitRoutesTable, Symbol("nextHop"), o.nextHop)
+    OpenAPI.validate_property(ExpressRouteCircuitRoutesTable, Symbol("locPrf"), o.locPrf)
+    OpenAPI.validate_property(ExpressRouteCircuitRoutesTable, Symbol("weight"), o.weight)
+    OpenAPI.validate_property(ExpressRouteCircuitRoutesTable, Symbol("path"), o.path)
+end
+
 function OpenAPI.validate_property(::Type{ ExpressRouteCircuitRoutesTable }, name::Symbol, val)
+
+
+
+
     if name === Symbol("weight")
         OpenAPI.validate_param(name, "ExpressRouteCircuitRoutesTable", :format, val, "int32")
     end
+
 end

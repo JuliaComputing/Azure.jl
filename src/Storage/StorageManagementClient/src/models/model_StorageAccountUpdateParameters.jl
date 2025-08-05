@@ -11,6 +11,8 @@ The parameters that can be provided when updating the storage account properties
         identity=nothing,
         properties=nothing,
         kind=nothing,
+        zones=nothing,
+        placement=nothing,
     )
 
     - sku::Sku
@@ -18,6 +20,8 @@ The parameters that can be provided when updating the storage account properties
     - identity::Identity
     - properties::StorageAccountPropertiesUpdateParameters
     - kind::String : Optional. Indicates the type of storage account. Currently only StorageV2 value supported by server.
+    - zones::Vector{String} : Optional. Gets or sets the pinned logical availability zone for the storage account.
+    - placement::Placement
 """
 Base.@kwdef mutable struct StorageAccountUpdateParameters <: OpenAPI.APIModel
     sku = nothing # spec type: Union{ Nothing, Sku }
@@ -25,26 +29,43 @@ Base.@kwdef mutable struct StorageAccountUpdateParameters <: OpenAPI.APIModel
     identity = nothing # spec type: Union{ Nothing, Identity }
     properties = nothing # spec type: Union{ Nothing, StorageAccountPropertiesUpdateParameters }
     kind::Union{Nothing, String} = nothing
+    zones::Union{Nothing, Vector{String}} = nothing
+    placement = nothing # spec type: Union{ Nothing, Placement }
 
-    function StorageAccountUpdateParameters(sku, tags, identity, properties, kind, )
-        OpenAPI.validate_property(StorageAccountUpdateParameters, Symbol("sku"), sku)
-        OpenAPI.validate_property(StorageAccountUpdateParameters, Symbol("tags"), tags)
-        OpenAPI.validate_property(StorageAccountUpdateParameters, Symbol("identity"), identity)
-        OpenAPI.validate_property(StorageAccountUpdateParameters, Symbol("properties"), properties)
-        OpenAPI.validate_property(StorageAccountUpdateParameters, Symbol("kind"), kind)
-        return new(sku, tags, identity, properties, kind, )
+    function StorageAccountUpdateParameters(sku, tags, identity, properties, kind, zones, placement, )
+        o = new(sku, tags, identity, properties, kind, zones, placement, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type StorageAccountUpdateParameters
 
-const _property_types_StorageAccountUpdateParameters = Dict{Symbol,String}(Symbol("sku")=>"Sku", Symbol("tags")=>"Dict{String, String}", Symbol("identity")=>"Identity", Symbol("properties")=>"StorageAccountPropertiesUpdateParameters", Symbol("kind")=>"String", )
+const _property_types_StorageAccountUpdateParameters = Dict{Symbol,String}(Symbol("sku")=>"Sku", Symbol("tags")=>"Dict{String, String}", Symbol("identity")=>"Identity", Symbol("properties")=>"StorageAccountPropertiesUpdateParameters", Symbol("kind")=>"String", Symbol("zones")=>"Vector{String}", Symbol("placement")=>"Placement", )
 OpenAPI.property_type(::Type{ StorageAccountUpdateParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_StorageAccountUpdateParameters[name]))}
 
-function check_required(o::StorageAccountUpdateParameters)
+function OpenAPI.check_required(o::StorageAccountUpdateParameters)
     true
 end
 
+function OpenAPI.validate_properties(o::StorageAccountUpdateParameters)
+    OpenAPI.validate_property(StorageAccountUpdateParameters, Symbol("sku"), o.sku)
+    OpenAPI.validate_property(StorageAccountUpdateParameters, Symbol("tags"), o.tags)
+    OpenAPI.validate_property(StorageAccountUpdateParameters, Symbol("identity"), o.identity)
+    OpenAPI.validate_property(StorageAccountUpdateParameters, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(StorageAccountUpdateParameters, Symbol("kind"), o.kind)
+    OpenAPI.validate_property(StorageAccountUpdateParameters, Symbol("zones"), o.zones)
+    OpenAPI.validate_property(StorageAccountUpdateParameters, Symbol("placement"), o.placement)
+end
+
 function OpenAPI.validate_property(::Type{ StorageAccountUpdateParameters }, name::Symbol, val)
+
+
+
+
+
     if name === Symbol("kind")
         OpenAPI.validate_param(name, "StorageAccountUpdateParameters", :enum, val, ["Storage", "StorageV2", "BlobStorage", "FileStorage", "BlockBlobStorage"])
     end
+
+
+
 end

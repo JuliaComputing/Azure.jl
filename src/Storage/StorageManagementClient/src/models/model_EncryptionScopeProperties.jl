@@ -11,6 +11,7 @@ Properties of the encryption scope.
         creationTime=nothing,
         lastModifiedTime=nothing,
         keyVaultProperties=nothing,
+        requireInfrastructureEncryption=nothing,
     )
 
     - source::String : The provider for the encryption scope. Possible values (case-insensitive):  Microsoft.Storage, Microsoft.KeyVault.
@@ -18,6 +19,7 @@ Properties of the encryption scope.
     - creationTime::ZonedDateTime : Gets the creation date and time of the encryption scope in UTC.
     - lastModifiedTime::ZonedDateTime : Gets the last modification date and time of the encryption scope in UTC.
     - keyVaultProperties::EncryptionScopeKeyVaultProperties
+    - requireInfrastructureEncryption::Bool : A boolean indicating whether or not the service applies a secondary layer of encryption with platform managed keys for data at rest.
 """
 Base.@kwdef mutable struct EncryptionScopeProperties <: OpenAPI.APIModel
     source::Union{Nothing, String} = nothing
@@ -25,35 +27,50 @@ Base.@kwdef mutable struct EncryptionScopeProperties <: OpenAPI.APIModel
     creationTime::Union{Nothing, ZonedDateTime} = nothing
     lastModifiedTime::Union{Nothing, ZonedDateTime} = nothing
     keyVaultProperties = nothing # spec type: Union{ Nothing, EncryptionScopeKeyVaultProperties }
+    requireInfrastructureEncryption::Union{Nothing, Bool} = nothing
 
-    function EncryptionScopeProperties(source, state, creationTime, lastModifiedTime, keyVaultProperties, )
-        OpenAPI.validate_property(EncryptionScopeProperties, Symbol("source"), source)
-        OpenAPI.validate_property(EncryptionScopeProperties, Symbol("state"), state)
-        OpenAPI.validate_property(EncryptionScopeProperties, Symbol("creationTime"), creationTime)
-        OpenAPI.validate_property(EncryptionScopeProperties, Symbol("lastModifiedTime"), lastModifiedTime)
-        OpenAPI.validate_property(EncryptionScopeProperties, Symbol("keyVaultProperties"), keyVaultProperties)
-        return new(source, state, creationTime, lastModifiedTime, keyVaultProperties, )
+    function EncryptionScopeProperties(source, state, creationTime, lastModifiedTime, keyVaultProperties, requireInfrastructureEncryption, )
+        o = new(source, state, creationTime, lastModifiedTime, keyVaultProperties, requireInfrastructureEncryption, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type EncryptionScopeProperties
 
-const _property_types_EncryptionScopeProperties = Dict{Symbol,String}(Symbol("source")=>"String", Symbol("state")=>"String", Symbol("creationTime")=>"ZonedDateTime", Symbol("lastModifiedTime")=>"ZonedDateTime", Symbol("keyVaultProperties")=>"EncryptionScopeKeyVaultProperties", )
+const _property_types_EncryptionScopeProperties = Dict{Symbol,String}(Symbol("source")=>"String", Symbol("state")=>"String", Symbol("creationTime")=>"ZonedDateTime", Symbol("lastModifiedTime")=>"ZonedDateTime", Symbol("keyVaultProperties")=>"EncryptionScopeKeyVaultProperties", Symbol("requireInfrastructureEncryption")=>"Bool", )
 OpenAPI.property_type(::Type{ EncryptionScopeProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_EncryptionScopeProperties[name]))}
 
-function check_required(o::EncryptionScopeProperties)
+function OpenAPI.check_required(o::EncryptionScopeProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::EncryptionScopeProperties)
+    OpenAPI.validate_property(EncryptionScopeProperties, Symbol("source"), o.source)
+    OpenAPI.validate_property(EncryptionScopeProperties, Symbol("state"), o.state)
+    OpenAPI.validate_property(EncryptionScopeProperties, Symbol("creationTime"), o.creationTime)
+    OpenAPI.validate_property(EncryptionScopeProperties, Symbol("lastModifiedTime"), o.lastModifiedTime)
+    OpenAPI.validate_property(EncryptionScopeProperties, Symbol("keyVaultProperties"), o.keyVaultProperties)
+    OpenAPI.validate_property(EncryptionScopeProperties, Symbol("requireInfrastructureEncryption"), o.requireInfrastructureEncryption)
+end
+
 function OpenAPI.validate_property(::Type{ EncryptionScopeProperties }, name::Symbol, val)
+
     if name === Symbol("source")
         OpenAPI.validate_param(name, "EncryptionScopeProperties", :enum, val, ["Microsoft.Storage", "Microsoft.KeyVault"])
     end
+
+
     if name === Symbol("state")
         OpenAPI.validate_param(name, "EncryptionScopeProperties", :enum, val, ["Enabled", "Disabled"])
     end
+
+
     if name === Symbol("creationTime")
         OpenAPI.validate_param(name, "EncryptionScopeProperties", :format, val, "date-time")
     end
+
     if name === Symbol("lastModifiedTime")
         OpenAPI.validate_param(name, "EncryptionScopeProperties", :format, val, "date-time")
     end
+
+
 end

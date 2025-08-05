@@ -18,18 +18,25 @@ Base.@kwdef mutable struct SKUCapability <: OpenAPI.APIModel
     value::Union{Nothing, String} = nothing
 
     function SKUCapability(name, value, )
-        OpenAPI.validate_property(SKUCapability, Symbol("name"), name)
-        OpenAPI.validate_property(SKUCapability, Symbol("value"), value)
-        return new(name, value, )
+        o = new(name, value, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type SKUCapability
 
 const _property_types_SKUCapability = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("value")=>"String", )
 OpenAPI.property_type(::Type{ SKUCapability }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SKUCapability[name]))}
 
-function check_required(o::SKUCapability)
+function OpenAPI.check_required(o::SKUCapability)
     true
 end
 
+function OpenAPI.validate_properties(o::SKUCapability)
+    OpenAPI.validate_property(SKUCapability, Symbol("name"), o.name)
+    OpenAPI.validate_property(SKUCapability, Symbol("value"), o.value)
+end
+
 function OpenAPI.validate_property(::Type{ SKUCapability }, name::Symbol, val)
+
+
 end

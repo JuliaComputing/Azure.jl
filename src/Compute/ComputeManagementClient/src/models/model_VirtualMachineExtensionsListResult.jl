@@ -15,17 +15,23 @@ Base.@kwdef mutable struct VirtualMachineExtensionsListResult <: OpenAPI.APIMode
     value::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{VirtualMachineExtension} }
 
     function VirtualMachineExtensionsListResult(value, )
-        OpenAPI.validate_property(VirtualMachineExtensionsListResult, Symbol("value"), value)
-        return new(value, )
+        o = new(value, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineExtensionsListResult
 
 const _property_types_VirtualMachineExtensionsListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{VirtualMachineExtension}", )
 OpenAPI.property_type(::Type{ VirtualMachineExtensionsListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineExtensionsListResult[name]))}
 
-function check_required(o::VirtualMachineExtensionsListResult)
+function OpenAPI.check_required(o::VirtualMachineExtensionsListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineExtensionsListResult)
+    OpenAPI.validate_property(VirtualMachineExtensionsListResult, Symbol("value"), o.value)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineExtensionsListResult }, name::Symbol, val)
+
 end

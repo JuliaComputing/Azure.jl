@@ -48,34 +48,51 @@ Base.@kwdef mutable struct VirtualMachineScaleSetVMInstanceView <: OpenAPI.APIMo
     placementGroupId::Union{Nothing, String} = nothing
 
     function VirtualMachineScaleSetVMInstanceView(platformUpdateDomain, platformFaultDomain, rdpThumbPrint, vmAgent, maintenanceRedeployStatus, disks, extensions, vmHealth, bootDiagnostics, statuses, assignedHost, placementGroupId, )
-        OpenAPI.validate_property(VirtualMachineScaleSetVMInstanceView, Symbol("platformUpdateDomain"), platformUpdateDomain)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMInstanceView, Symbol("platformFaultDomain"), platformFaultDomain)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMInstanceView, Symbol("rdpThumbPrint"), rdpThumbPrint)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMInstanceView, Symbol("vmAgent"), vmAgent)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMInstanceView, Symbol("maintenanceRedeployStatus"), maintenanceRedeployStatus)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMInstanceView, Symbol("disks"), disks)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMInstanceView, Symbol("extensions"), extensions)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMInstanceView, Symbol("vmHealth"), vmHealth)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMInstanceView, Symbol("bootDiagnostics"), bootDiagnostics)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMInstanceView, Symbol("statuses"), statuses)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMInstanceView, Symbol("assignedHost"), assignedHost)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMInstanceView, Symbol("placementGroupId"), placementGroupId)
-        return new(platformUpdateDomain, platformFaultDomain, rdpThumbPrint, vmAgent, maintenanceRedeployStatus, disks, extensions, vmHealth, bootDiagnostics, statuses, assignedHost, placementGroupId, )
+        o = new(platformUpdateDomain, platformFaultDomain, rdpThumbPrint, vmAgent, maintenanceRedeployStatus, disks, extensions, vmHealth, bootDiagnostics, statuses, assignedHost, placementGroupId, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetVMInstanceView
 
 const _property_types_VirtualMachineScaleSetVMInstanceView = Dict{Symbol,String}(Symbol("platformUpdateDomain")=>"Int64", Symbol("platformFaultDomain")=>"Int64", Symbol("rdpThumbPrint")=>"String", Symbol("vmAgent")=>"VirtualMachineAgentInstanceView", Symbol("maintenanceRedeployStatus")=>"MaintenanceRedeployStatus", Symbol("disks")=>"Vector{DiskInstanceView}", Symbol("extensions")=>"Vector{VirtualMachineExtensionInstanceView}", Symbol("vmHealth")=>"VirtualMachineHealthStatus", Symbol("bootDiagnostics")=>"BootDiagnosticsInstanceView", Symbol("statuses")=>"Vector{InstanceViewStatus}", Symbol("assignedHost")=>"String", Symbol("placementGroupId")=>"String", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetVMInstanceView }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetVMInstanceView[name]))}
 
-function check_required(o::VirtualMachineScaleSetVMInstanceView)
+function OpenAPI.check_required(o::VirtualMachineScaleSetVMInstanceView)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetVMInstanceView)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMInstanceView, Symbol("platformUpdateDomain"), o.platformUpdateDomain)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMInstanceView, Symbol("platformFaultDomain"), o.platformFaultDomain)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMInstanceView, Symbol("rdpThumbPrint"), o.rdpThumbPrint)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMInstanceView, Symbol("vmAgent"), o.vmAgent)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMInstanceView, Symbol("maintenanceRedeployStatus"), o.maintenanceRedeployStatus)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMInstanceView, Symbol("disks"), o.disks)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMInstanceView, Symbol("extensions"), o.extensions)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMInstanceView, Symbol("vmHealth"), o.vmHealth)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMInstanceView, Symbol("bootDiagnostics"), o.bootDiagnostics)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMInstanceView, Symbol("statuses"), o.statuses)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMInstanceView, Symbol("assignedHost"), o.assignedHost)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMInstanceView, Symbol("placementGroupId"), o.placementGroupId)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetVMInstanceView }, name::Symbol, val)
+
     if name === Symbol("platformUpdateDomain")
         OpenAPI.validate_param(name, "VirtualMachineScaleSetVMInstanceView", :format, val, "int32")
     end
+
     if name === Symbol("platformFaultDomain")
         OpenAPI.validate_param(name, "VirtualMachineScaleSetVMInstanceView", :format, val, "int32")
     end
+
+
+
+
+
+
+
+
+
+
 end

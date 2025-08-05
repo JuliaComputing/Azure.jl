@@ -18,18 +18,25 @@ Base.@kwdef mutable struct BgpServiceCommunityPropertiesFormat <: OpenAPI.APIMod
     bgpCommunities::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{BGPCommunity} }
 
     function BgpServiceCommunityPropertiesFormat(serviceName, bgpCommunities, )
-        OpenAPI.validate_property(BgpServiceCommunityPropertiesFormat, Symbol("serviceName"), serviceName)
-        OpenAPI.validate_property(BgpServiceCommunityPropertiesFormat, Symbol("bgpCommunities"), bgpCommunities)
-        return new(serviceName, bgpCommunities, )
+        o = new(serviceName, bgpCommunities, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type BgpServiceCommunityPropertiesFormat
 
 const _property_types_BgpServiceCommunityPropertiesFormat = Dict{Symbol,String}(Symbol("serviceName")=>"String", Symbol("bgpCommunities")=>"Vector{BGPCommunity}", )
 OpenAPI.property_type(::Type{ BgpServiceCommunityPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_BgpServiceCommunityPropertiesFormat[name]))}
 
-function check_required(o::BgpServiceCommunityPropertiesFormat)
+function OpenAPI.check_required(o::BgpServiceCommunityPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::BgpServiceCommunityPropertiesFormat)
+    OpenAPI.validate_property(BgpServiceCommunityPropertiesFormat, Symbol("serviceName"), o.serviceName)
+    OpenAPI.validate_property(BgpServiceCommunityPropertiesFormat, Symbol("bgpCommunities"), o.bgpCommunities)
+end
+
 function OpenAPI.validate_property(::Type{ BgpServiceCommunityPropertiesFormat }, name::Symbol, val)
+
+
 end

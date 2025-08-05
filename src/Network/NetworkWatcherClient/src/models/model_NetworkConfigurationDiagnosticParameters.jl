@@ -21,24 +21,33 @@ Base.@kwdef mutable struct NetworkConfigurationDiagnosticParameters <: OpenAPI.A
     profiles::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{NetworkConfigurationDiagnosticProfile} }
 
     function NetworkConfigurationDiagnosticParameters(targetResourceId, verbosityLevel, profiles, )
-        OpenAPI.validate_property(NetworkConfigurationDiagnosticParameters, Symbol("targetResourceId"), targetResourceId)
-        OpenAPI.validate_property(NetworkConfigurationDiagnosticParameters, Symbol("verbosityLevel"), verbosityLevel)
-        OpenAPI.validate_property(NetworkConfigurationDiagnosticParameters, Symbol("profiles"), profiles)
-        return new(targetResourceId, verbosityLevel, profiles, )
+        o = new(targetResourceId, verbosityLevel, profiles, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type NetworkConfigurationDiagnosticParameters
 
 const _property_types_NetworkConfigurationDiagnosticParameters = Dict{Symbol,String}(Symbol("targetResourceId")=>"String", Symbol("verbosityLevel")=>"String", Symbol("profiles")=>"Vector{NetworkConfigurationDiagnosticProfile}", )
 OpenAPI.property_type(::Type{ NetworkConfigurationDiagnosticParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkConfigurationDiagnosticParameters[name]))}
 
-function check_required(o::NetworkConfigurationDiagnosticParameters)
+function OpenAPI.check_required(o::NetworkConfigurationDiagnosticParameters)
     o.targetResourceId === nothing && (return false)
     o.profiles === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::NetworkConfigurationDiagnosticParameters)
+    OpenAPI.validate_property(NetworkConfigurationDiagnosticParameters, Symbol("targetResourceId"), o.targetResourceId)
+    OpenAPI.validate_property(NetworkConfigurationDiagnosticParameters, Symbol("verbosityLevel"), o.verbosityLevel)
+    OpenAPI.validate_property(NetworkConfigurationDiagnosticParameters, Symbol("profiles"), o.profiles)
+end
+
 function OpenAPI.validate_property(::Type{ NetworkConfigurationDiagnosticParameters }, name::Symbol, val)
+
+
     if name === Symbol("verbosityLevel")
         OpenAPI.validate_param(name, "NetworkConfigurationDiagnosticParameters", :enum, val, ["Normal", "Minimum", "Full"])
     end
+
+
 end

@@ -15,19 +15,25 @@ Base.@kwdef mutable struct DataDiskImage <: OpenAPI.APIModel
     lun::Union{Nothing, Int64} = nothing
 
     function DataDiskImage(lun, )
-        OpenAPI.validate_property(DataDiskImage, Symbol("lun"), lun)
-        return new(lun, )
+        o = new(lun, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type DataDiskImage
 
 const _property_types_DataDiskImage = Dict{Symbol,String}(Symbol("lun")=>"Int64", )
 OpenAPI.property_type(::Type{ DataDiskImage }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DataDiskImage[name]))}
 
-function check_required(o::DataDiskImage)
+function OpenAPI.check_required(o::DataDiskImage)
     true
 end
 
+function OpenAPI.validate_properties(o::DataDiskImage)
+    OpenAPI.validate_property(DataDiskImage, Symbol("lun"), o.lun)
+end
+
 function OpenAPI.validate_property(::Type{ DataDiskImage }, name::Symbol, val)
+
     if name === Symbol("lun")
         OpenAPI.validate_param(name, "DataDiskImage", :format, val, "int32")
     end

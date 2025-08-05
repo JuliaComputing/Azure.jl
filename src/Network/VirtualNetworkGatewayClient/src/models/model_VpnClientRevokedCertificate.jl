@@ -24,20 +24,29 @@ Base.@kwdef mutable struct VpnClientRevokedCertificate <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
 
     function VpnClientRevokedCertificate(properties, name, etag, id, )
-        OpenAPI.validate_property(VpnClientRevokedCertificate, Symbol("properties"), properties)
-        OpenAPI.validate_property(VpnClientRevokedCertificate, Symbol("name"), name)
-        OpenAPI.validate_property(VpnClientRevokedCertificate, Symbol("etag"), etag)
-        OpenAPI.validate_property(VpnClientRevokedCertificate, Symbol("id"), id)
-        return new(properties, name, etag, id, )
+        o = new(properties, name, etag, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VpnClientRevokedCertificate
 
 const _property_types_VpnClientRevokedCertificate = Dict{Symbol,String}(Symbol("properties")=>"VpnClientRevokedCertificatePropertiesFormat", Symbol("name")=>"String", Symbol("etag")=>"String", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ VpnClientRevokedCertificate }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VpnClientRevokedCertificate[name]))}
 
-function check_required(o::VpnClientRevokedCertificate)
+function OpenAPI.check_required(o::VpnClientRevokedCertificate)
     true
 end
 
+function OpenAPI.validate_properties(o::VpnClientRevokedCertificate)
+    OpenAPI.validate_property(VpnClientRevokedCertificate, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(VpnClientRevokedCertificate, Symbol("name"), o.name)
+    OpenAPI.validate_property(VpnClientRevokedCertificate, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(VpnClientRevokedCertificate, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ VpnClientRevokedCertificate }, name::Symbol, val)
+
+
+
+
 end

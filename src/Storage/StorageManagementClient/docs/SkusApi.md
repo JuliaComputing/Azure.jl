@@ -20,8 +20,8 @@ Lists the available SKUs supported by Microsoft.Storage for given subscription.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **SkusApi** | API context | 
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The ID of the target subscription. |
 
 ### Return type
 

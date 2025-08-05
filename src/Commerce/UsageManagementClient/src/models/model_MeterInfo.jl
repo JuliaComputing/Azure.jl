@@ -42,34 +42,49 @@ Base.@kwdef mutable struct MeterInfo <: OpenAPI.APIModel
     IncludedQuantity::Union{Nothing, Float32} = nothing
 
     function MeterInfo(MeterId, MeterName, MeterCategory, MeterSubCategory, Unit, MeterTags, MeterRegion, MeterRates, EffectiveDate, IncludedQuantity, )
-        OpenAPI.validate_property(MeterInfo, Symbol("MeterId"), MeterId)
-        OpenAPI.validate_property(MeterInfo, Symbol("MeterName"), MeterName)
-        OpenAPI.validate_property(MeterInfo, Symbol("MeterCategory"), MeterCategory)
-        OpenAPI.validate_property(MeterInfo, Symbol("MeterSubCategory"), MeterSubCategory)
-        OpenAPI.validate_property(MeterInfo, Symbol("Unit"), Unit)
-        OpenAPI.validate_property(MeterInfo, Symbol("MeterTags"), MeterTags)
-        OpenAPI.validate_property(MeterInfo, Symbol("MeterRegion"), MeterRegion)
-        OpenAPI.validate_property(MeterInfo, Symbol("MeterRates"), MeterRates)
-        OpenAPI.validate_property(MeterInfo, Symbol("EffectiveDate"), EffectiveDate)
-        OpenAPI.validate_property(MeterInfo, Symbol("IncludedQuantity"), IncludedQuantity)
-        return new(MeterId, MeterName, MeterCategory, MeterSubCategory, Unit, MeterTags, MeterRegion, MeterRates, EffectiveDate, IncludedQuantity, )
+        o = new(MeterId, MeterName, MeterCategory, MeterSubCategory, Unit, MeterTags, MeterRegion, MeterRates, EffectiveDate, IncludedQuantity, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type MeterInfo
 
 const _property_types_MeterInfo = Dict{Symbol,String}(Symbol("MeterId")=>"String", Symbol("MeterName")=>"String", Symbol("MeterCategory")=>"String", Symbol("MeterSubCategory")=>"String", Symbol("Unit")=>"String", Symbol("MeterTags")=>"Vector{String}", Symbol("MeterRegion")=>"String", Symbol("MeterRates")=>"Dict{String, Float32}", Symbol("EffectiveDate")=>"ZonedDateTime", Symbol("IncludedQuantity")=>"Float32", )
 OpenAPI.property_type(::Type{ MeterInfo }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_MeterInfo[name]))}
 
-function check_required(o::MeterInfo)
+function OpenAPI.check_required(o::MeterInfo)
     true
 end
 
+function OpenAPI.validate_properties(o::MeterInfo)
+    OpenAPI.validate_property(MeterInfo, Symbol("MeterId"), o.MeterId)
+    OpenAPI.validate_property(MeterInfo, Symbol("MeterName"), o.MeterName)
+    OpenAPI.validate_property(MeterInfo, Symbol("MeterCategory"), o.MeterCategory)
+    OpenAPI.validate_property(MeterInfo, Symbol("MeterSubCategory"), o.MeterSubCategory)
+    OpenAPI.validate_property(MeterInfo, Symbol("Unit"), o.Unit)
+    OpenAPI.validate_property(MeterInfo, Symbol("MeterTags"), o.MeterTags)
+    OpenAPI.validate_property(MeterInfo, Symbol("MeterRegion"), o.MeterRegion)
+    OpenAPI.validate_property(MeterInfo, Symbol("MeterRates"), o.MeterRates)
+    OpenAPI.validate_property(MeterInfo, Symbol("EffectiveDate"), o.EffectiveDate)
+    OpenAPI.validate_property(MeterInfo, Symbol("IncludedQuantity"), o.IncludedQuantity)
+end
+
 function OpenAPI.validate_property(::Type{ MeterInfo }, name::Symbol, val)
+
     if name === Symbol("MeterId")
         OpenAPI.validate_param(name, "MeterInfo", :format, val, "uuid")
     end
+
+
+
+
+
+
+
+
     if name === Symbol("EffectiveDate")
         OpenAPI.validate_param(name, "MeterInfo", :format, val, "date-time")
     end
+
     if name === Symbol("IncludedQuantity")
         OpenAPI.validate_param(name, "MeterInfo", :format, val, "float")
     end

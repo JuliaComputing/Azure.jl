@@ -23,11 +23,11 @@ Deletes the specified private endpoint connection on application gateway.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ApplicationGatewayPrivateEndpointConnectionsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**application_gateway_name** | **String**| The name of the application gateway. | [default to nothing]
-**connection_name** | **String**| The name of the application gateway private endpoint connection. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**application_gateway_name** | **String** | The name of the application gateway. |
+**connection_name** | **String** | The name of the application gateway private endpoint connection. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -57,11 +57,11 @@ Gets the specified private endpoint connection on application gateway.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ApplicationGatewayPrivateEndpointConnectionsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**application_gateway_name** | **String**| The name of the application gateway. | [default to nothing]
-**connection_name** | **String**| The name of the application gateway private endpoint connection. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**application_gateway_name** | **String** | The name of the application gateway. |
+**connection_name** | **String** | The name of the application gateway private endpoint connection. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -91,10 +91,10 @@ Lists all private endpoint connections on an application gateway.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ApplicationGatewayPrivateEndpointConnectionsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**application_gateway_name** | **String**| The name of the application gateway. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**application_gateway_name** | **String** | The name of the application gateway. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -124,12 +124,12 @@ Updates the specified private endpoint connection on application gateway.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ApplicationGatewayPrivateEndpointConnectionsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**application_gateway_name** | **String**| The name of the application gateway. | [default to nothing]
-**connection_name** | **String**| The name of the application gateway private endpoint connection. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**ApplicationGatewayPrivateEndpointConnection**](ApplicationGatewayPrivateEndpointConnection.md)| Parameters supplied to update application gateway private endpoint connection operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**application_gateway_name** | **String** | The name of the application gateway. |
+**connection_name** | **String** | The name of the application gateway private endpoint connection. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**ApplicationGatewayPrivateEndpointConnection**](ApplicationGatewayPrivateEndpointConnection.md) | Parameters supplied to update application gateway private endpoint connection operation. |
 
 ### Return type
 

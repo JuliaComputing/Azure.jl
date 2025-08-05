@@ -15,17 +15,23 @@ Base.@kwdef mutable struct LogAnalyticsOutput <: OpenAPI.APIModel
     output::Union{Nothing, String} = nothing
 
     function LogAnalyticsOutput(output, )
-        OpenAPI.validate_property(LogAnalyticsOutput, Symbol("output"), output)
-        return new(output, )
+        o = new(output, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type LogAnalyticsOutput
 
 const _property_types_LogAnalyticsOutput = Dict{Symbol,String}(Symbol("output")=>"String", )
 OpenAPI.property_type(::Type{ LogAnalyticsOutput }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_LogAnalyticsOutput[name]))}
 
-function check_required(o::LogAnalyticsOutput)
+function OpenAPI.check_required(o::LogAnalyticsOutput)
     true
 end
 
+function OpenAPI.validate_properties(o::LogAnalyticsOutput)
+    OpenAPI.validate_property(LogAnalyticsOutput, Symbol("output"), o.output)
+end
+
 function OpenAPI.validate_property(::Type{ LogAnalyticsOutput }, name::Symbol, val)
+
 end

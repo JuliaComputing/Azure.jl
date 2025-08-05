@@ -4,6 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**extendedLocation** | [***ExtendedLocation**](ExtendedLocation.md) |  | [optional] [default to nothing]
 **properties** | [***VirtualNetworkPropertiesFormat**](VirtualNetworkPropertiesFormat.md) |  | [optional] [default to nothing]
 **etag** | **String** | A unique read-only string that changes whenever the resource is updated. | [optional] [readonly] [default to nothing]
 **id** | **String** | Resource ID. | [optional] [default to nothing]
