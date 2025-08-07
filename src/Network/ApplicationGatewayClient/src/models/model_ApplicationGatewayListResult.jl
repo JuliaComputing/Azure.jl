@@ -18,18 +18,25 @@ Base.@kwdef mutable struct ApplicationGatewayListResult <: OpenAPI.APIModel
     nextLink::Union{Nothing, String} = nothing
 
     function ApplicationGatewayListResult(value, nextLink, )
-        OpenAPI.validate_property(ApplicationGatewayListResult, Symbol("value"), value)
-        OpenAPI.validate_property(ApplicationGatewayListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayListResult
 
 const _property_types_ApplicationGatewayListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{ApplicationGateway}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ ApplicationGatewayListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayListResult[name]))}
 
-function check_required(o::ApplicationGatewayListResult)
+function OpenAPI.check_required(o::ApplicationGatewayListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayListResult)
+    OpenAPI.validate_property(ApplicationGatewayListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(ApplicationGatewayListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayListResult }, name::Symbol, val)
+
+
 end

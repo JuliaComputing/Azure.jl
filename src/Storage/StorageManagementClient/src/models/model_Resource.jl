@@ -3,6 +3,7 @@
 
 
 @doc raw"""Resource
+Common fields that are returned in the response for all Azure Resource Manager resources
 
     Resource(;
         id=nothing,
@@ -10,9 +11,9 @@
         type=nothing,
     )
 
-    - id::String : Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+    - id::String : Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
     - name::String : The name of the resource
-    - type::String : The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+    - type::String : The type of the resource. E.g. \&quot;Microsoft.Compute/virtualMachines\&quot; or \&quot;Microsoft.Storage/storageAccounts\&quot;
 """
 Base.@kwdef mutable struct Resource <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
@@ -20,19 +21,27 @@ Base.@kwdef mutable struct Resource <: OpenAPI.APIModel
     type::Union{Nothing, String} = nothing
 
     function Resource(id, name, type, )
-        OpenAPI.validate_property(Resource, Symbol("id"), id)
-        OpenAPI.validate_property(Resource, Symbol("name"), name)
-        OpenAPI.validate_property(Resource, Symbol("type"), type)
-        return new(id, name, type, )
+        o = new(id, name, type, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type Resource
 
 const _property_types_Resource = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", )
 OpenAPI.property_type(::Type{ Resource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Resource[name]))}
 
-function check_required(o::Resource)
+function OpenAPI.check_required(o::Resource)
     true
 end
 
+function OpenAPI.validate_properties(o::Resource)
+    OpenAPI.validate_property(Resource, Symbol("id"), o.id)
+    OpenAPI.validate_property(Resource, Symbol("name"), o.name)
+    OpenAPI.validate_property(Resource, Symbol("type"), o.type)
+end
+
 function OpenAPI.validate_property(::Type{ Resource }, name::Symbol, val)
+
+
+
 end

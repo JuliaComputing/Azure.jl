@@ -14,18 +14,24 @@ Base.@kwdef mutable struct ContainerServiceDiagnosticsProfile <: OpenAPI.APIMode
     vmDiagnostics = nothing # spec type: Union{ Nothing, ContainerServiceVMDiagnostics }
 
     function ContainerServiceDiagnosticsProfile(vmDiagnostics, )
-        OpenAPI.validate_property(ContainerServiceDiagnosticsProfile, Symbol("vmDiagnostics"), vmDiagnostics)
-        return new(vmDiagnostics, )
+        o = new(vmDiagnostics, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ContainerServiceDiagnosticsProfile
 
 const _property_types_ContainerServiceDiagnosticsProfile = Dict{Symbol,String}(Symbol("vmDiagnostics")=>"ContainerServiceVMDiagnostics", )
 OpenAPI.property_type(::Type{ ContainerServiceDiagnosticsProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ContainerServiceDiagnosticsProfile[name]))}
 
-function check_required(o::ContainerServiceDiagnosticsProfile)
+function OpenAPI.check_required(o::ContainerServiceDiagnosticsProfile)
     o.vmDiagnostics === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ContainerServiceDiagnosticsProfile)
+    OpenAPI.validate_property(ContainerServiceDiagnosticsProfile, Symbol("vmDiagnostics"), o.vmDiagnostics)
+end
+
 function OpenAPI.validate_property(::Type{ ContainerServiceDiagnosticsProfile }, name::Symbol, val)
+
 end

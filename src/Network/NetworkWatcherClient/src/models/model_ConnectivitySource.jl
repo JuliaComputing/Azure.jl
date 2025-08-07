@@ -18,19 +18,33 @@ Base.@kwdef mutable struct ConnectivitySource <: OpenAPI.APIModel
     port::Union{Nothing, Int64} = nothing
 
     function ConnectivitySource(resourceId, port, )
-        OpenAPI.validate_property(ConnectivitySource, Symbol("resourceId"), resourceId)
-        OpenAPI.validate_property(ConnectivitySource, Symbol("port"), port)
-        return new(resourceId, port, )
+        o = new(resourceId, port, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ConnectivitySource
 
 const _property_types_ConnectivitySource = Dict{Symbol,String}(Symbol("resourceId")=>"String", Symbol("port")=>"Int64", )
 OpenAPI.property_type(::Type{ ConnectivitySource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ConnectivitySource[name]))}
 
-function check_required(o::ConnectivitySource)
+function OpenAPI.check_required(o::ConnectivitySource)
     o.resourceId === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ConnectivitySource)
+    OpenAPI.validate_property(ConnectivitySource, Symbol("resourceId"), o.resourceId)
+    OpenAPI.validate_property(ConnectivitySource, Symbol("port"), o.port)
+end
+
 function OpenAPI.validate_property(::Type{ ConnectivitySource }, name::Symbol, val)
+
+
+    if name === Symbol("port")
+        OpenAPI.validate_param(name, "ConnectivitySource", :format, val, "int32")
+    end
+    if name === Symbol("port")
+        OpenAPI.validate_param(name, "ConnectivitySource", :maximum, val, 65535, false)
+        OpenAPI.validate_param(name, "ConnectivitySource", :minimum, val, 0, false)
+    end
 end

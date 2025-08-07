@@ -12,6 +12,8 @@ Api input base class for LogAnalytics Api.
         groupByThrottlePolicy=nothing,
         groupByOperationName=nothing,
         groupByResourceName=nothing,
+        groupByClientApplicationId=nothing,
+        groupByUserAgent=nothing,
     )
 
     - blobContainerSasUri::String : SAS Uri of the logging blob container to which LogAnalytics Api writes output logs to.
@@ -20,6 +22,8 @@ Api input base class for LogAnalytics Api.
     - groupByThrottlePolicy::Bool : Group query result by Throttle Policy applied.
     - groupByOperationName::Bool : Group query result by Operation Name.
     - groupByResourceName::Bool : Group query result by Resource Name.
+    - groupByClientApplicationId::Bool : Group query result by Client Application ID.
+    - groupByUserAgent::Bool : Group query result by User Agent.
 """
 Base.@kwdef mutable struct LogAnalyticsInputBase <: OpenAPI.APIModel
     blobContainerSasUri::Union{Nothing, String} = nothing
@@ -28,33 +32,50 @@ Base.@kwdef mutable struct LogAnalyticsInputBase <: OpenAPI.APIModel
     groupByThrottlePolicy::Union{Nothing, Bool} = nothing
     groupByOperationName::Union{Nothing, Bool} = nothing
     groupByResourceName::Union{Nothing, Bool} = nothing
+    groupByClientApplicationId::Union{Nothing, Bool} = nothing
+    groupByUserAgent::Union{Nothing, Bool} = nothing
 
-    function LogAnalyticsInputBase(blobContainerSasUri, fromTime, toTime, groupByThrottlePolicy, groupByOperationName, groupByResourceName, )
-        OpenAPI.validate_property(LogAnalyticsInputBase, Symbol("blobContainerSasUri"), blobContainerSasUri)
-        OpenAPI.validate_property(LogAnalyticsInputBase, Symbol("fromTime"), fromTime)
-        OpenAPI.validate_property(LogAnalyticsInputBase, Symbol("toTime"), toTime)
-        OpenAPI.validate_property(LogAnalyticsInputBase, Symbol("groupByThrottlePolicy"), groupByThrottlePolicy)
-        OpenAPI.validate_property(LogAnalyticsInputBase, Symbol("groupByOperationName"), groupByOperationName)
-        OpenAPI.validate_property(LogAnalyticsInputBase, Symbol("groupByResourceName"), groupByResourceName)
-        return new(blobContainerSasUri, fromTime, toTime, groupByThrottlePolicy, groupByOperationName, groupByResourceName, )
+    function LogAnalyticsInputBase(blobContainerSasUri, fromTime, toTime, groupByThrottlePolicy, groupByOperationName, groupByResourceName, groupByClientApplicationId, groupByUserAgent, )
+        o = new(blobContainerSasUri, fromTime, toTime, groupByThrottlePolicy, groupByOperationName, groupByResourceName, groupByClientApplicationId, groupByUserAgent, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type LogAnalyticsInputBase
 
-const _property_types_LogAnalyticsInputBase = Dict{Symbol,String}(Symbol("blobContainerSasUri")=>"String", Symbol("fromTime")=>"ZonedDateTime", Symbol("toTime")=>"ZonedDateTime", Symbol("groupByThrottlePolicy")=>"Bool", Symbol("groupByOperationName")=>"Bool", Symbol("groupByResourceName")=>"Bool", )
+const _property_types_LogAnalyticsInputBase = Dict{Symbol,String}(Symbol("blobContainerSasUri")=>"String", Symbol("fromTime")=>"ZonedDateTime", Symbol("toTime")=>"ZonedDateTime", Symbol("groupByThrottlePolicy")=>"Bool", Symbol("groupByOperationName")=>"Bool", Symbol("groupByResourceName")=>"Bool", Symbol("groupByClientApplicationId")=>"Bool", Symbol("groupByUserAgent")=>"Bool", )
 OpenAPI.property_type(::Type{ LogAnalyticsInputBase }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_LogAnalyticsInputBase[name]))}
 
-function check_required(o::LogAnalyticsInputBase)
+function OpenAPI.check_required(o::LogAnalyticsInputBase)
     o.blobContainerSasUri === nothing && (return false)
     o.fromTime === nothing && (return false)
     o.toTime === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::LogAnalyticsInputBase)
+    OpenAPI.validate_property(LogAnalyticsInputBase, Symbol("blobContainerSasUri"), o.blobContainerSasUri)
+    OpenAPI.validate_property(LogAnalyticsInputBase, Symbol("fromTime"), o.fromTime)
+    OpenAPI.validate_property(LogAnalyticsInputBase, Symbol("toTime"), o.toTime)
+    OpenAPI.validate_property(LogAnalyticsInputBase, Symbol("groupByThrottlePolicy"), o.groupByThrottlePolicy)
+    OpenAPI.validate_property(LogAnalyticsInputBase, Symbol("groupByOperationName"), o.groupByOperationName)
+    OpenAPI.validate_property(LogAnalyticsInputBase, Symbol("groupByResourceName"), o.groupByResourceName)
+    OpenAPI.validate_property(LogAnalyticsInputBase, Symbol("groupByClientApplicationId"), o.groupByClientApplicationId)
+    OpenAPI.validate_property(LogAnalyticsInputBase, Symbol("groupByUserAgent"), o.groupByUserAgent)
+end
+
 function OpenAPI.validate_property(::Type{ LogAnalyticsInputBase }, name::Symbol, val)
+
+
     if name === Symbol("fromTime")
         OpenAPI.validate_param(name, "LogAnalyticsInputBase", :format, val, "date-time")
     end
+
     if name === Symbol("toTime")
         OpenAPI.validate_param(name, "LogAnalyticsInputBase", :format, val, "date-time")
     end
+
+
+
+
+
 end

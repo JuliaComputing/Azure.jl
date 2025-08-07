@@ -27,27 +27,37 @@ Base.@kwdef mutable struct ExpressRouteCircuitRoutesTableSummary <: OpenAPI.APIM
     statePfxRcd::Union{Nothing, String} = nothing
 
     function ExpressRouteCircuitRoutesTableSummary(neighbor, v, as, upDown, statePfxRcd, )
-        OpenAPI.validate_property(ExpressRouteCircuitRoutesTableSummary, Symbol("neighbor"), neighbor)
-        OpenAPI.validate_property(ExpressRouteCircuitRoutesTableSummary, Symbol("v"), v)
-        OpenAPI.validate_property(ExpressRouteCircuitRoutesTableSummary, Symbol("as"), as)
-        OpenAPI.validate_property(ExpressRouteCircuitRoutesTableSummary, Symbol("upDown"), upDown)
-        OpenAPI.validate_property(ExpressRouteCircuitRoutesTableSummary, Symbol("statePfxRcd"), statePfxRcd)
-        return new(neighbor, v, as, upDown, statePfxRcd, )
+        o = new(neighbor, v, as, upDown, statePfxRcd, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ExpressRouteCircuitRoutesTableSummary
 
 const _property_types_ExpressRouteCircuitRoutesTableSummary = Dict{Symbol,String}(Symbol("neighbor")=>"String", Symbol("v")=>"Int64", Symbol("as")=>"Int64", Symbol("upDown")=>"String", Symbol("statePfxRcd")=>"String", )
 OpenAPI.property_type(::Type{ ExpressRouteCircuitRoutesTableSummary }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExpressRouteCircuitRoutesTableSummary[name]))}
 
-function check_required(o::ExpressRouteCircuitRoutesTableSummary)
+function OpenAPI.check_required(o::ExpressRouteCircuitRoutesTableSummary)
     true
 end
 
+function OpenAPI.validate_properties(o::ExpressRouteCircuitRoutesTableSummary)
+    OpenAPI.validate_property(ExpressRouteCircuitRoutesTableSummary, Symbol("neighbor"), o.neighbor)
+    OpenAPI.validate_property(ExpressRouteCircuitRoutesTableSummary, Symbol("v"), o.v)
+    OpenAPI.validate_property(ExpressRouteCircuitRoutesTableSummary, Symbol("as"), o.as)
+    OpenAPI.validate_property(ExpressRouteCircuitRoutesTableSummary, Symbol("upDown"), o.upDown)
+    OpenAPI.validate_property(ExpressRouteCircuitRoutesTableSummary, Symbol("statePfxRcd"), o.statePfxRcd)
+end
+
 function OpenAPI.validate_property(::Type{ ExpressRouteCircuitRoutesTableSummary }, name::Symbol, val)
+
+
     if name === Symbol("v")
         OpenAPI.validate_param(name, "ExpressRouteCircuitRoutesTableSummary", :format, val, "int32")
     end
+
     if name === Symbol("as")
         OpenAPI.validate_param(name, "ExpressRouteCircuitRoutesTableSummary", :format, val, "int32")
     end
+
+
 end

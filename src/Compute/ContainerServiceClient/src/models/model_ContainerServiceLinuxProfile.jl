@@ -18,23 +18,30 @@ Base.@kwdef mutable struct ContainerServiceLinuxProfile <: OpenAPI.APIModel
     ssh = nothing # spec type: Union{ Nothing, ContainerServiceSshConfiguration }
 
     function ContainerServiceLinuxProfile(adminUsername, ssh, )
-        OpenAPI.validate_property(ContainerServiceLinuxProfile, Symbol("adminUsername"), adminUsername)
-        OpenAPI.validate_property(ContainerServiceLinuxProfile, Symbol("ssh"), ssh)
-        return new(adminUsername, ssh, )
+        o = new(adminUsername, ssh, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ContainerServiceLinuxProfile
 
 const _property_types_ContainerServiceLinuxProfile = Dict{Symbol,String}(Symbol("adminUsername")=>"String", Symbol("ssh")=>"ContainerServiceSshConfiguration", )
 OpenAPI.property_type(::Type{ ContainerServiceLinuxProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ContainerServiceLinuxProfile[name]))}
 
-function check_required(o::ContainerServiceLinuxProfile)
+function OpenAPI.check_required(o::ContainerServiceLinuxProfile)
     o.adminUsername === nothing && (return false)
     o.ssh === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ContainerServiceLinuxProfile)
+    OpenAPI.validate_property(ContainerServiceLinuxProfile, Symbol("adminUsername"), o.adminUsername)
+    OpenAPI.validate_property(ContainerServiceLinuxProfile, Symbol("ssh"), o.ssh)
+end
+
 function OpenAPI.validate_property(::Type{ ContainerServiceLinuxProfile }, name::Symbol, val)
+
     if name === Symbol("adminUsername")
         OpenAPI.validate_param(name, "ContainerServiceLinuxProfile", :pattern, val, r"^[a-z][a-z0-9_-]*$")
     end
+
 end

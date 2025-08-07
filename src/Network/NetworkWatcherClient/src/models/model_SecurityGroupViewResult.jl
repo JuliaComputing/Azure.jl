@@ -15,17 +15,23 @@ Base.@kwdef mutable struct SecurityGroupViewResult <: OpenAPI.APIModel
     networkInterfaces::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{SecurityGroupNetworkInterface} }
 
     function SecurityGroupViewResult(networkInterfaces, )
-        OpenAPI.validate_property(SecurityGroupViewResult, Symbol("networkInterfaces"), networkInterfaces)
-        return new(networkInterfaces, )
+        o = new(networkInterfaces, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type SecurityGroupViewResult
 
 const _property_types_SecurityGroupViewResult = Dict{Symbol,String}(Symbol("networkInterfaces")=>"Vector{SecurityGroupNetworkInterface}", )
 OpenAPI.property_type(::Type{ SecurityGroupViewResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SecurityGroupViewResult[name]))}
 
-function check_required(o::SecurityGroupViewResult)
+function OpenAPI.check_required(o::SecurityGroupViewResult)
     true
 end
 
+function OpenAPI.validate_properties(o::SecurityGroupViewResult)
+    OpenAPI.validate_property(SecurityGroupViewResult, Symbol("networkInterfaces"), o.networkInterfaces)
+end
+
 function OpenAPI.validate_property(::Type{ SecurityGroupViewResult }, name::Symbol, val)
+
 end

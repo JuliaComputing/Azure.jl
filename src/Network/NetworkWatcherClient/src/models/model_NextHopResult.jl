@@ -21,22 +21,31 @@ Base.@kwdef mutable struct NextHopResult <: OpenAPI.APIModel
     routeTableId::Union{Nothing, String} = nothing
 
     function NextHopResult(nextHopType, nextHopIpAddress, routeTableId, )
-        OpenAPI.validate_property(NextHopResult, Symbol("nextHopType"), nextHopType)
-        OpenAPI.validate_property(NextHopResult, Symbol("nextHopIpAddress"), nextHopIpAddress)
-        OpenAPI.validate_property(NextHopResult, Symbol("routeTableId"), routeTableId)
-        return new(nextHopType, nextHopIpAddress, routeTableId, )
+        o = new(nextHopType, nextHopIpAddress, routeTableId, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type NextHopResult
 
 const _property_types_NextHopResult = Dict{Symbol,String}(Symbol("nextHopType")=>"String", Symbol("nextHopIpAddress")=>"String", Symbol("routeTableId")=>"String", )
 OpenAPI.property_type(::Type{ NextHopResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NextHopResult[name]))}
 
-function check_required(o::NextHopResult)
+function OpenAPI.check_required(o::NextHopResult)
     true
 end
 
+function OpenAPI.validate_properties(o::NextHopResult)
+    OpenAPI.validate_property(NextHopResult, Symbol("nextHopType"), o.nextHopType)
+    OpenAPI.validate_property(NextHopResult, Symbol("nextHopIpAddress"), o.nextHopIpAddress)
+    OpenAPI.validate_property(NextHopResult, Symbol("routeTableId"), o.routeTableId)
+end
+
 function OpenAPI.validate_property(::Type{ NextHopResult }, name::Symbol, val)
+
     if name === Symbol("nextHopType")
         OpenAPI.validate_param(name, "NextHopResult", :enum, val, ["Internet", "VirtualAppliance", "VirtualNetworkGateway", "VnetLocal", "HyperNetGateway", "None"])
     end
+
+
+
 end

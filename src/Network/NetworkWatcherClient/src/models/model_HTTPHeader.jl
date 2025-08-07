@@ -18,18 +18,25 @@ Base.@kwdef mutable struct HTTPHeader <: OpenAPI.APIModel
     value::Union{Nothing, String} = nothing
 
     function HTTPHeader(name, value, )
-        OpenAPI.validate_property(HTTPHeader, Symbol("name"), name)
-        OpenAPI.validate_property(HTTPHeader, Symbol("value"), value)
-        return new(name, value, )
+        o = new(name, value, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type HTTPHeader
 
 const _property_types_HTTPHeader = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("value")=>"String", )
 OpenAPI.property_type(::Type{ HTTPHeader }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_HTTPHeader[name]))}
 
-function check_required(o::HTTPHeader)
+function OpenAPI.check_required(o::HTTPHeader)
     true
 end
 
+function OpenAPI.validate_properties(o::HTTPHeader)
+    OpenAPI.validate_property(HTTPHeader, Symbol("name"), o.name)
+    OpenAPI.validate_property(HTTPHeader, Symbol("value"), o.value)
+end
+
 function OpenAPI.validate_property(::Type{ HTTPHeader }, name::Symbol, val)
+
+
 end

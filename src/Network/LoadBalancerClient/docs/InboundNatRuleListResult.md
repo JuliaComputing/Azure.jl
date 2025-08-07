@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**value** | [**Vector{InboundNatRule}**](InboundNatRule.md) | A list of inbound nat rules in a load balancer. | [optional] [default to nothing]
+**value** | [**Vector{InboundNatRule}**](InboundNatRule.md) | A list of inbound NAT rules in a load balancer. | [optional] [default to nothing]
 **nextLink** | **String** | The URL to get the next set of results. | [optional] [readonly] [default to nothing]
 
 

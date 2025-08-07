@@ -15,17 +15,23 @@ Base.@kwdef mutable struct CloudError <: OpenAPI.APIModel
     error = nothing # spec type: Union{ Nothing, ErrorResponse }
 
     function CloudError(error, )
-        OpenAPI.validate_property(CloudError, Symbol("error"), error)
-        return new(error, )
+        o = new(error, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type CloudError
 
 const _property_types_CloudError = Dict{Symbol,String}(Symbol("error")=>"ErrorResponse", )
 OpenAPI.property_type(::Type{ CloudError }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_CloudError[name]))}
 
-function check_required(o::CloudError)
+function OpenAPI.check_required(o::CloudError)
     true
 end
 
+function OpenAPI.validate_properties(o::CloudError)
+    OpenAPI.validate_property(CloudError, Symbol("error"), o.error)
+end
+
 function OpenAPI.validate_property(::Type{ CloudError }, name::Symbol, val)
+
 end

@@ -18,21 +18,28 @@ Base.@kwdef mutable struct ApplicationGatewayFrontendPortPropertiesFormat <: Ope
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
     function ApplicationGatewayFrontendPortPropertiesFormat(port, provisioningState, )
-        OpenAPI.validate_property(ApplicationGatewayFrontendPortPropertiesFormat, Symbol("port"), port)
-        OpenAPI.validate_property(ApplicationGatewayFrontendPortPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(port, provisioningState, )
+        o = new(port, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayFrontendPortPropertiesFormat
 
 const _property_types_ApplicationGatewayFrontendPortPropertiesFormat = Dict{Symbol,String}(Symbol("port")=>"Int64", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ ApplicationGatewayFrontendPortPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayFrontendPortPropertiesFormat[name]))}
 
-function check_required(o::ApplicationGatewayFrontendPortPropertiesFormat)
+function OpenAPI.check_required(o::ApplicationGatewayFrontendPortPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayFrontendPortPropertiesFormat)
+    OpenAPI.validate_property(ApplicationGatewayFrontendPortPropertiesFormat, Symbol("port"), o.port)
+    OpenAPI.validate_property(ApplicationGatewayFrontendPortPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayFrontendPortPropertiesFormat }, name::Symbol, val)
+
     if name === Symbol("port")
         OpenAPI.validate_param(name, "ApplicationGatewayFrontendPortPropertiesFormat", :format, val, "int32")
     end
+
 end

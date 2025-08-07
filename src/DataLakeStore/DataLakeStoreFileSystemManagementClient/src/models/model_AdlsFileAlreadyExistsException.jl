@@ -21,20 +21,28 @@ Base.@kwdef mutable struct AdlsFileAlreadyExistsException <: OpenAPI.APIModel
     message::Union{Nothing, String} = nothing
 
     function AdlsFileAlreadyExistsException(exception, javaClassName, message, )
-        OpenAPI.validate_property(AdlsFileAlreadyExistsException, Symbol("exception"), exception)
-        OpenAPI.validate_property(AdlsFileAlreadyExistsException, Symbol("javaClassName"), javaClassName)
-        OpenAPI.validate_property(AdlsFileAlreadyExistsException, Symbol("message"), message)
-        return new(exception, javaClassName, message, )
+        o = new(exception, javaClassName, message, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AdlsFileAlreadyExistsException
 
 const _property_types_AdlsFileAlreadyExistsException = Dict{Symbol,String}(Symbol("exception")=>"String", Symbol("javaClassName")=>"String", Symbol("message")=>"String", )
 OpenAPI.property_type(::Type{ AdlsFileAlreadyExistsException }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AdlsFileAlreadyExistsException[name]))}
 
-function check_required(o::AdlsFileAlreadyExistsException)
+function OpenAPI.check_required(o::AdlsFileAlreadyExistsException)
     o.exception === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::AdlsFileAlreadyExistsException)
+    OpenAPI.validate_property(AdlsFileAlreadyExistsException, Symbol("exception"), o.exception)
+    OpenAPI.validate_property(AdlsFileAlreadyExistsException, Symbol("javaClassName"), o.javaClassName)
+    OpenAPI.validate_property(AdlsFileAlreadyExistsException, Symbol("message"), o.message)
+end
+
 function OpenAPI.validate_property(::Type{ AdlsFileAlreadyExistsException }, name::Symbol, val)
+
+
+
 end

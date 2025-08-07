@@ -18,18 +18,25 @@ Base.@kwdef mutable struct ApplicationGatewayPrivateLinkResourceListResult <: Op
     nextLink::Union{Nothing, String} = nothing
 
     function ApplicationGatewayPrivateLinkResourceListResult(value, nextLink, )
-        OpenAPI.validate_property(ApplicationGatewayPrivateLinkResourceListResult, Symbol("value"), value)
-        OpenAPI.validate_property(ApplicationGatewayPrivateLinkResourceListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayPrivateLinkResourceListResult
 
 const _property_types_ApplicationGatewayPrivateLinkResourceListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{ApplicationGatewayPrivateLinkResource}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ ApplicationGatewayPrivateLinkResourceListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayPrivateLinkResourceListResult[name]))}
 
-function check_required(o::ApplicationGatewayPrivateLinkResourceListResult)
+function OpenAPI.check_required(o::ApplicationGatewayPrivateLinkResourceListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayPrivateLinkResourceListResult)
+    OpenAPI.validate_property(ApplicationGatewayPrivateLinkResourceListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(ApplicationGatewayPrivateLinkResourceListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayPrivateLinkResourceListResult }, name::Symbol, val)
+
+
 end

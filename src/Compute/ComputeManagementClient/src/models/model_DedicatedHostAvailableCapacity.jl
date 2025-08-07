@@ -15,17 +15,23 @@ Base.@kwdef mutable struct DedicatedHostAvailableCapacity <: OpenAPI.APIModel
     allocatableVMs::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{DedicatedHostAllocatableVM} }
 
     function DedicatedHostAvailableCapacity(allocatableVMs, )
-        OpenAPI.validate_property(DedicatedHostAvailableCapacity, Symbol("allocatableVMs"), allocatableVMs)
-        return new(allocatableVMs, )
+        o = new(allocatableVMs, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type DedicatedHostAvailableCapacity
 
 const _property_types_DedicatedHostAvailableCapacity = Dict{Symbol,String}(Symbol("allocatableVMs")=>"Vector{DedicatedHostAllocatableVM}", )
 OpenAPI.property_type(::Type{ DedicatedHostAvailableCapacity }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DedicatedHostAvailableCapacity[name]))}
 
-function check_required(o::DedicatedHostAvailableCapacity)
+function OpenAPI.check_required(o::DedicatedHostAvailableCapacity)
     true
 end
 
+function OpenAPI.validate_properties(o::DedicatedHostAvailableCapacity)
+    OpenAPI.validate_property(DedicatedHostAvailableCapacity, Symbol("allocatableVMs"), o.allocatableVMs)
+end
+
 function OpenAPI.validate_property(::Type{ DedicatedHostAvailableCapacity }, name::Symbol, val)
+
 end

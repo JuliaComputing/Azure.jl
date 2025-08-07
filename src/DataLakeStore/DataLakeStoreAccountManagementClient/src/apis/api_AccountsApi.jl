@@ -19,7 +19,7 @@ function _oacinternal_accounts_check_name_availability(_api::AccountsApi, subscr
     _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_accounts_check_name_availability_AccountsApi, "/subscriptions/{subscriptionId}/providers/Microsoft.DataLakeStore/locations/{location}/checkNameAvailability", ["azure_auth", ], parameters)
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "location", location)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -55,7 +55,7 @@ function _oacinternal_accounts_create(_api::AccountsApi, subscription_id::String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "accountName", account_name)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -93,7 +93,7 @@ function _oacinternal_accounts_delete(_api::AccountsApi, subscription_id::String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "accountName", account_name)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, [])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -128,7 +128,7 @@ function _oacinternal_accounts_enable_key_vault(_api::AccountsApi, subscription_
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "accountName", account_name)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, [])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -163,7 +163,7 @@ function _oacinternal_accounts_get(_api::AccountsApi, subscription_id::String, r
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "accountName", account_name)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -200,13 +200,13 @@ function _oacinternal_accounts_list(_api::AccountsApi, subscription_id::String, 
 
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_accounts_list_AccountsApi, "/subscriptions/{subscriptionId}/providers/Microsoft.DataLakeStore/accounts", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$filter", filter)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$top", top)  # type Int64
-    OpenAPI.Clients.set_param(_ctx.query, "\$skip", skip)  # type Int64
-    OpenAPI.Clients.set_param(_ctx.query, "\$select", select)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$orderby", orderby)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$count", count)  # type Bool
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$filter", filter; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$top", top; style="", is_explode=false)  # type Int64
+    OpenAPI.Clients.set_param(_ctx.query, "\$skip", skip; style="", is_explode=false)  # type Int64
+    OpenAPI.Clients.set_param(_ctx.query, "\$select", select; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$orderby", orderby; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$count", count; style="", is_explode=false)  # type Bool
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -248,13 +248,13 @@ function _oacinternal_accounts_list_by_resource_group(_api::AccountsApi, subscri
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_accounts_list_by_resource_group_AccountsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataLakeStore/accounts", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$filter", filter)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$top", top)  # type Int64
-    OpenAPI.Clients.set_param(_ctx.query, "\$skip", skip)  # type Int64
-    OpenAPI.Clients.set_param(_ctx.query, "\$select", select)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$orderby", orderby)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$count", count)  # type Bool
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$filter", filter; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$top", top; style="", is_explode=false)  # type Int64
+    OpenAPI.Clients.set_param(_ctx.query, "\$skip", skip; style="", is_explode=false)  # type Int64
+    OpenAPI.Clients.set_param(_ctx.query, "\$select", select; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$orderby", orderby; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$count", count; style="", is_explode=false)  # type Bool
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -296,7 +296,7 @@ function _oacinternal_accounts_update(_api::AccountsApi, subscription_id::String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "accountName", account_name)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx

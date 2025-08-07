@@ -21,19 +21,48 @@ Base.@kwdef mutable struct HopLinkProperties <: OpenAPI.APIModel
     roundTripTimeMax::Union{Nothing, Int64} = nothing
 
     function HopLinkProperties(roundTripTimeMin, roundTripTimeAvg, roundTripTimeMax, )
-        OpenAPI.validate_property(HopLinkProperties, Symbol("roundTripTimeMin"), roundTripTimeMin)
-        OpenAPI.validate_property(HopLinkProperties, Symbol("roundTripTimeAvg"), roundTripTimeAvg)
-        OpenAPI.validate_property(HopLinkProperties, Symbol("roundTripTimeMax"), roundTripTimeMax)
-        return new(roundTripTimeMin, roundTripTimeAvg, roundTripTimeMax, )
+        o = new(roundTripTimeMin, roundTripTimeAvg, roundTripTimeMax, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type HopLinkProperties
 
 const _property_types_HopLinkProperties = Dict{Symbol,String}(Symbol("roundTripTimeMin")=>"Int64", Symbol("roundTripTimeAvg")=>"Int64", Symbol("roundTripTimeMax")=>"Int64", )
 OpenAPI.property_type(::Type{ HopLinkProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_HopLinkProperties[name]))}
 
-function check_required(o::HopLinkProperties)
+function OpenAPI.check_required(o::HopLinkProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::HopLinkProperties)
+    OpenAPI.validate_property(HopLinkProperties, Symbol("roundTripTimeMin"), o.roundTripTimeMin)
+    OpenAPI.validate_property(HopLinkProperties, Symbol("roundTripTimeAvg"), o.roundTripTimeAvg)
+    OpenAPI.validate_property(HopLinkProperties, Symbol("roundTripTimeMax"), o.roundTripTimeMax)
+end
+
 function OpenAPI.validate_property(::Type{ HopLinkProperties }, name::Symbol, val)
+
+    if name === Symbol("roundTripTimeMin")
+        OpenAPI.validate_param(name, "HopLinkProperties", :format, val, "int64")
+    end
+    if name === Symbol("roundTripTimeMin")
+        OpenAPI.validate_param(name, "HopLinkProperties", :maximum, val, 4294967295, false)
+        OpenAPI.validate_param(name, "HopLinkProperties", :minimum, val, 0, false)
+    end
+
+    if name === Symbol("roundTripTimeAvg")
+        OpenAPI.validate_param(name, "HopLinkProperties", :format, val, "int64")
+    end
+    if name === Symbol("roundTripTimeAvg")
+        OpenAPI.validate_param(name, "HopLinkProperties", :maximum, val, 4294967295, false)
+        OpenAPI.validate_param(name, "HopLinkProperties", :minimum, val, 0, false)
+    end
+
+    if name === Symbol("roundTripTimeMax")
+        OpenAPI.validate_param(name, "HopLinkProperties", :format, val, "int64")
+    end
+    if name === Symbol("roundTripTimeMax")
+        OpenAPI.validate_param(name, "HopLinkProperties", :maximum, val, 4294967295, false)
+        OpenAPI.validate_param(name, "HopLinkProperties", :minimum, val, 0, false)
+    end
 end

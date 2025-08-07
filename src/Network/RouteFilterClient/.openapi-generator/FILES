@@ -1,6 +1,7 @@
 .openapi-generator-ignore
 README.md
 docs/Access.md
+docs/AdvertisedPublicPrefixProperties.md
 docs/CircuitConnectionStatus.md
 docs/CloudError.md
 docs/CloudErrorBody.md
@@ -36,6 +37,7 @@ src/apis/api_RouteFilterRulesApi.jl
 src/apis/api_RouteFiltersApi.jl
 src/modelincludes.jl
 src/models/model_Access.jl
+src/models/model_AdvertisedPublicPrefixProperties.jl
 src/models/model_CircuitConnectionStatus.jl
 src/models/model_CloudError.jl
 src/models/model_CloudErrorBody.jl

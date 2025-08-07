@@ -7,8 +7,10 @@ Method | HTTP request | Description
 [**virtual_network_gateway_connections_create_or_update**](VirtualNetworkGatewayConnectionsApi.md#virtual_network_gateway_connections_create_or_update) | **PUT** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName} | 
 [**virtual_network_gateway_connections_delete**](VirtualNetworkGatewayConnectionsApi.md#virtual_network_gateway_connections_delete) | **DELETE** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName} | 
 [**virtual_network_gateway_connections_get**](VirtualNetworkGatewayConnectionsApi.md#virtual_network_gateway_connections_get) | **GET** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName} | 
+[**virtual_network_gateway_connections_get_ike_sas**](VirtualNetworkGatewayConnectionsApi.md#virtual_network_gateway_connections_get_ike_sas) | **POST** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/getikesas | 
 [**virtual_network_gateway_connections_get_shared_key**](VirtualNetworkGatewayConnectionsApi.md#virtual_network_gateway_connections_get_shared_key) | **GET** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/sharedkey | 
 [**virtual_network_gateway_connections_list**](VirtualNetworkGatewayConnectionsApi.md#virtual_network_gateway_connections_list) | **GET** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections | 
+[**virtual_network_gateway_connections_reset_connection**](VirtualNetworkGatewayConnectionsApi.md#virtual_network_gateway_connections_reset_connection) | **POST** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/resetconnection | 
 [**virtual_network_gateway_connections_reset_shared_key**](VirtualNetworkGatewayConnectionsApi.md#virtual_network_gateway_connections_reset_shared_key) | **POST** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/sharedkey/reset | 
 [**virtual_network_gateway_connections_set_shared_key**](VirtualNetworkGatewayConnectionsApi.md#virtual_network_gateway_connections_set_shared_key) | **PUT** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/sharedkey | 
 [**virtual_network_gateway_connections_start_packet_capture**](VirtualNetworkGatewayConnectionsApi.md#virtual_network_gateway_connections_start_packet_capture) | **POST** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/startPacketCapture | 
@@ -29,11 +31,11 @@ Creates or updates a virtual network gateway connection in the specified resourc
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualNetworkGatewayConnectionsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**virtual_network_gateway_connection_name** | **String**| The name of the virtual network gateway connection. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**VirtualNetworkGatewayConnection**](VirtualNetworkGatewayConnection.md)| Parameters supplied to the create or update virtual network gateway connection operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**virtual_network_gateway_connection_name** | **String** | The name of the virtual network gateway connection. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**VirtualNetworkGatewayConnection**](VirtualNetworkGatewayConnection.md) | Parameters supplied to the create or update virtual network gateway connection operation. |
 
 ### Return type
 
@@ -63,10 +65,10 @@ Deletes the specified virtual network Gateway connection.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualNetworkGatewayConnectionsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**virtual_network_gateway_connection_name** | **String**| The name of the virtual network gateway connection. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**virtual_network_gateway_connection_name** | **String** | The name of the virtual network gateway connection. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -96,14 +98,47 @@ Gets the specified virtual network gateway connection by resource group.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualNetworkGatewayConnectionsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**virtual_network_gateway_connection_name** | **String**| The name of the virtual network gateway connection. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**virtual_network_gateway_connection_name** | **String** | The name of the virtual network gateway connection. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
 [**VirtualNetworkGatewayConnection**](VirtualNetworkGatewayConnection.md)
+
+### Authorization
+
+[azure_auth](../README.md#azure_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+# **virtual_network_gateway_connections_get_ike_sas**
+> virtual_network_gateway_connections_get_ike_sas(_api::VirtualNetworkGatewayConnectionsApi, resource_group_name::String, virtual_network_gateway_connection_name::String, api_version::String, subscription_id::String; _mediaType=nothing) -> String, OpenAPI.Clients.ApiResponse <br/>
+> virtual_network_gateway_connections_get_ike_sas(_api::VirtualNetworkGatewayConnectionsApi, response_stream::Channel, resource_group_name::String, virtual_network_gateway_connection_name::String, api_version::String, subscription_id::String; _mediaType=nothing) -> Channel{ String }, OpenAPI.Clients.ApiResponse
+
+
+
+Lists IKE Security Associations for the virtual network gateway connection in the specified resource group.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **_api** | **VirtualNetworkGatewayConnectionsApi** | API context | 
+**resource_group_name** | **String** | The name of the resource group. |
+**virtual_network_gateway_connection_name** | **String** | The name of the virtual network gateway Connection. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+
+### Return type
+
+**String**
 
 ### Authorization
 
@@ -129,10 +164,10 @@ The Get VirtualNetworkGatewayConnectionSharedKey operation retrieves information
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualNetworkGatewayConnectionsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**virtual_network_gateway_connection_name** | **String**| The virtual network gateway connection shared key name. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**virtual_network_gateway_connection_name** | **String** | The virtual network gateway connection shared key name. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -162,13 +197,46 @@ The List VirtualNetworkGatewayConnections operation retrieves all the virtual ne
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualNetworkGatewayConnectionsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
 [**VirtualNetworkGatewayConnectionListResult**](VirtualNetworkGatewayConnectionListResult.md)
+
+### Authorization
+
+[azure_auth](../README.md#azure_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+# **virtual_network_gateway_connections_reset_connection**
+> virtual_network_gateway_connections_reset_connection(_api::VirtualNetworkGatewayConnectionsApi, resource_group_name::String, virtual_network_gateway_connection_name::String, api_version::String, subscription_id::String; _mediaType=nothing) -> Nothing, OpenAPI.Clients.ApiResponse <br/>
+> virtual_network_gateway_connections_reset_connection(_api::VirtualNetworkGatewayConnectionsApi, response_stream::Channel, resource_group_name::String, virtual_network_gateway_connection_name::String, api_version::String, subscription_id::String; _mediaType=nothing) -> Channel{ Nothing }, OpenAPI.Clients.ApiResponse
+
+
+
+Resets the virtual network gateway connection specified.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **_api** | **VirtualNetworkGatewayConnectionsApi** | API context | 
+**resource_group_name** | **String** | The name of the resource group. |
+**virtual_network_gateway_connection_name** | **String** | The name of the virtual network gateway Connection. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+
+### Return type
+
+Nothing
 
 ### Authorization
 
@@ -194,11 +262,11 @@ The VirtualNetworkGatewayConnectionResetSharedKey operation resets the virtual n
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualNetworkGatewayConnectionsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**virtual_network_gateway_connection_name** | **String**| The virtual network gateway connection reset shared key Name. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**ConnectionResetSharedKey**](ConnectionResetSharedKey.md)| Parameters supplied to the begin reset virtual network gateway connection shared key operation through network resource provider. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**virtual_network_gateway_connection_name** | **String** | The virtual network gateway connection reset shared key Name. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**ConnectionResetSharedKey**](ConnectionResetSharedKey.md) | Parameters supplied to the begin reset virtual network gateway connection shared key operation through network resource provider. |
 
 ### Return type
 
@@ -228,11 +296,11 @@ The Put VirtualNetworkGatewayConnectionSharedKey operation sets the virtual netw
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualNetworkGatewayConnectionsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**virtual_network_gateway_connection_name** | **String**| The virtual network gateway connection name. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**ConnectionSharedKey**](ConnectionSharedKey.md)| Parameters supplied to the Begin Set Virtual Network Gateway connection Shared key operation throughNetwork resource provider. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**virtual_network_gateway_connection_name** | **String** | The virtual network gateway connection name. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**ConnectionSharedKey**](ConnectionSharedKey.md) | Parameters supplied to the Begin Set Virtual Network Gateway connection Shared key operation throughNetwork resource provider. |
 
 ### Return type
 
@@ -262,16 +330,16 @@ Starts packet capture on virtual network gateway connection in the specified res
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualNetworkGatewayConnectionsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**virtual_network_gateway_connection_name** | **String**| The name of the virtual network gateway connection. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**virtual_network_gateway_connection_name** | **String** | The name of the virtual network gateway connection. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **parameters** | [**VpnPacketCaptureStartParameters**](VpnPacketCaptureStartParameters.md)| Virtual network gateway packet capture parameters supplied to start packet capture on gateway connection. | 
+ **parameters** | [**VpnPacketCaptureStartParameters**](VpnPacketCaptureStartParameters.md) | Virtual network gateway packet capture parameters supplied to start packet capture on gateway connection. | 
 
 ### Return type
 
@@ -301,11 +369,11 @@ Stops packet capture on virtual network gateway connection in the specified reso
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualNetworkGatewayConnectionsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**virtual_network_gateway_connection_name** | **String**| The name of the virtual network gateway Connection. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**VpnPacketCaptureStopParameters**](VpnPacketCaptureStopParameters.md)| Virtual network gateway packet capture parameters supplied to stop packet capture on gateway connection. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**virtual_network_gateway_connection_name** | **String** | The name of the virtual network gateway Connection. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**VpnPacketCaptureStopParameters**](VpnPacketCaptureStopParameters.md) | Virtual network gateway packet capture parameters supplied to stop packet capture on gateway connection. |
 
 ### Return type
 
@@ -335,11 +403,11 @@ Updates a virtual network gateway connection tags.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualNetworkGatewayConnectionsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**virtual_network_gateway_connection_name** | **String**| The name of the virtual network gateway connection. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**TagsObject**](TagsObject.md)| Parameters supplied to update virtual network gateway connection tags. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**virtual_network_gateway_connection_name** | **String** | The name of the virtual network gateway connection. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**TagsObject**](TagsObject.md) | Parameters supplied to update virtual network gateway connection tags. |
 
 ### Return type
 

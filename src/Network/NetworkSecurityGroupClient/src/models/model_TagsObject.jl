@@ -15,17 +15,23 @@ Base.@kwdef mutable struct TagsObject <: OpenAPI.APIModel
     tags::Union{Nothing, Dict{String, String}} = nothing
 
     function TagsObject(tags, )
-        OpenAPI.validate_property(TagsObject, Symbol("tags"), tags)
-        return new(tags, )
+        o = new(tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type TagsObject
 
 const _property_types_TagsObject = Dict{Symbol,String}(Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ TagsObject }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TagsObject[name]))}
 
-function check_required(o::TagsObject)
+function OpenAPI.check_required(o::TagsObject)
     true
 end
 
+function OpenAPI.validate_properties(o::TagsObject)
+    OpenAPI.validate_property(TagsObject, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ TagsObject }, name::Symbol, val)
+
 end

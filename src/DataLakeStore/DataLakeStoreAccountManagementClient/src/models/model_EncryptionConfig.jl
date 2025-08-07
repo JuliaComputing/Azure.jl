@@ -18,22 +18,30 @@ Base.@kwdef mutable struct EncryptionConfig <: OpenAPI.APIModel
     keyVaultMetaInfo = nothing # spec type: Union{ Nothing, KeyVaultMetaInfo }
 
     function EncryptionConfig(type, keyVaultMetaInfo, )
-        OpenAPI.validate_property(EncryptionConfig, Symbol("type"), type)
-        OpenAPI.validate_property(EncryptionConfig, Symbol("keyVaultMetaInfo"), keyVaultMetaInfo)
-        return new(type, keyVaultMetaInfo, )
+        o = new(type, keyVaultMetaInfo, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type EncryptionConfig
 
 const _property_types_EncryptionConfig = Dict{Symbol,String}(Symbol("type")=>"String", Symbol("keyVaultMetaInfo")=>"KeyVaultMetaInfo", )
 OpenAPI.property_type(::Type{ EncryptionConfig }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_EncryptionConfig[name]))}
 
-function check_required(o::EncryptionConfig)
+function OpenAPI.check_required(o::EncryptionConfig)
     o.type === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::EncryptionConfig)
+    OpenAPI.validate_property(EncryptionConfig, Symbol("type"), o.type)
+    OpenAPI.validate_property(EncryptionConfig, Symbol("keyVaultMetaInfo"), o.keyVaultMetaInfo)
+end
+
 function OpenAPI.validate_property(::Type{ EncryptionConfig }, name::Symbol, val)
+
     if name === Symbol("type")
         OpenAPI.validate_param(name, "EncryptionConfig", :enum, val, ["UserManaged", "ServiceManaged"])
     end
+
+
 end

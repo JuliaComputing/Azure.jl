@@ -25,11 +25,11 @@ Create or update a dedicated host group. For details of Dedicated Host and Dedic
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **DedicatedHostGroupsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**host_group_name** | **String**| The name of the dedicated host group. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**DedicatedHostGroup**](DedicatedHostGroup.md)| Parameters supplied to the Create Dedicated Host Group. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**host_group_name** | **String** | The name of the dedicated host group. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**DedicatedHostGroup**](DedicatedHostGroup.md) | Parameters supplied to the Create Dedicated Host Group. |
 
 ### Return type
 
@@ -59,10 +59,10 @@ Delete a dedicated host group.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **DedicatedHostGroupsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**host_group_name** | **String**| The name of the dedicated host group. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**host_group_name** | **String** | The name of the dedicated host group. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -75,7 +75,7 @@ Nothing
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -92,16 +92,16 @@ Retrieves information about a dedicated host group.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **DedicatedHostGroupsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**host_group_name** | **String**| The name of the dedicated host group. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**host_group_name** | **String** | The name of the dedicated host group. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expand** | **String**| The expand expression to apply on the operation. The response shows the list of instance view of the dedicated hosts under the dedicated host group. | [default to nothing]
+ **expand** | **String** | The expand expression to apply on the operation. &#39;InstanceView&#39; will retrieve the list of instance views of the dedicated hosts under the dedicated host group. &#39;UserData&#39; is not supported for dedicated host group. | [default to nothing]
 
 ### Return type
 
@@ -131,9 +131,9 @@ Lists all of the dedicated host groups in the specified resource group. Use the 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **DedicatedHostGroupsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -163,8 +163,8 @@ Lists all of the dedicated host groups in the subscription. Use the nextLink pro
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **DedicatedHostGroupsApi** | API context | 
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -194,11 +194,11 @@ Update an dedicated host group.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **DedicatedHostGroupsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**host_group_name** | **String**| The name of the dedicated host group. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**DedicatedHostGroupUpdate**](DedicatedHostGroupUpdate.md)| Parameters supplied to the Update Dedicated Host Group operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**host_group_name** | **String** | The name of the dedicated host group. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**DedicatedHostGroupUpdate**](DedicatedHostGroupUpdate.md) | Parameters supplied to the Update Dedicated Host Group operation. |
 
 ### Return type
 

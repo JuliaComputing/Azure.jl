@@ -21,22 +21,30 @@ Base.@kwdef mutable struct AzureReachabilityReport <: OpenAPI.APIModel
     reachabilityReport::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{AzureReachabilityReportItem} }
 
     function AzureReachabilityReport(aggregationLevel, providerLocation, reachabilityReport, )
-        OpenAPI.validate_property(AzureReachabilityReport, Symbol("aggregationLevel"), aggregationLevel)
-        OpenAPI.validate_property(AzureReachabilityReport, Symbol("providerLocation"), providerLocation)
-        OpenAPI.validate_property(AzureReachabilityReport, Symbol("reachabilityReport"), reachabilityReport)
-        return new(aggregationLevel, providerLocation, reachabilityReport, )
+        o = new(aggregationLevel, providerLocation, reachabilityReport, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AzureReachabilityReport
 
 const _property_types_AzureReachabilityReport = Dict{Symbol,String}(Symbol("aggregationLevel")=>"String", Symbol("providerLocation")=>"AzureReachabilityReportLocation", Symbol("reachabilityReport")=>"Vector{AzureReachabilityReportItem}", )
 OpenAPI.property_type(::Type{ AzureReachabilityReport }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AzureReachabilityReport[name]))}
 
-function check_required(o::AzureReachabilityReport)
+function OpenAPI.check_required(o::AzureReachabilityReport)
     o.aggregationLevel === nothing && (return false)
     o.providerLocation === nothing && (return false)
     o.reachabilityReport === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::AzureReachabilityReport)
+    OpenAPI.validate_property(AzureReachabilityReport, Symbol("aggregationLevel"), o.aggregationLevel)
+    OpenAPI.validate_property(AzureReachabilityReport, Symbol("providerLocation"), o.providerLocation)
+    OpenAPI.validate_property(AzureReachabilityReport, Symbol("reachabilityReport"), o.reachabilityReport)
+end
+
 function OpenAPI.validate_property(::Type{ AzureReachabilityReport }, name::Symbol, val)
+
+
+
 end

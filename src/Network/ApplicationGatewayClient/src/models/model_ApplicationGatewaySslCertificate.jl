@@ -27,21 +27,31 @@ Base.@kwdef mutable struct ApplicationGatewaySslCertificate <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
 
     function ApplicationGatewaySslCertificate(properties, name, etag, type, id, )
-        OpenAPI.validate_property(ApplicationGatewaySslCertificate, Symbol("properties"), properties)
-        OpenAPI.validate_property(ApplicationGatewaySslCertificate, Symbol("name"), name)
-        OpenAPI.validate_property(ApplicationGatewaySslCertificate, Symbol("etag"), etag)
-        OpenAPI.validate_property(ApplicationGatewaySslCertificate, Symbol("type"), type)
-        OpenAPI.validate_property(ApplicationGatewaySslCertificate, Symbol("id"), id)
-        return new(properties, name, etag, type, id, )
+        o = new(properties, name, etag, type, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewaySslCertificate
 
 const _property_types_ApplicationGatewaySslCertificate = Dict{Symbol,String}(Symbol("properties")=>"ApplicationGatewaySslCertificatePropertiesFormat", Symbol("name")=>"String", Symbol("etag")=>"String", Symbol("type")=>"String", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ ApplicationGatewaySslCertificate }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewaySslCertificate[name]))}
 
-function check_required(o::ApplicationGatewaySslCertificate)
+function OpenAPI.check_required(o::ApplicationGatewaySslCertificate)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewaySslCertificate)
+    OpenAPI.validate_property(ApplicationGatewaySslCertificate, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(ApplicationGatewaySslCertificate, Symbol("name"), o.name)
+    OpenAPI.validate_property(ApplicationGatewaySslCertificate, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(ApplicationGatewaySslCertificate, Symbol("type"), o.type)
+    OpenAPI.validate_property(ApplicationGatewaySslCertificate, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewaySslCertificate }, name::Symbol, val)
+
+
+
+
+
 end

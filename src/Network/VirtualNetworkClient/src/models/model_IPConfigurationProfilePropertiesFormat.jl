@@ -18,18 +18,25 @@ Base.@kwdef mutable struct IPConfigurationProfilePropertiesFormat <: OpenAPI.API
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
     function IPConfigurationProfilePropertiesFormat(subnet, provisioningState, )
-        OpenAPI.validate_property(IPConfigurationProfilePropertiesFormat, Symbol("subnet"), subnet)
-        OpenAPI.validate_property(IPConfigurationProfilePropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(subnet, provisioningState, )
+        o = new(subnet, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type IPConfigurationProfilePropertiesFormat
 
 const _property_types_IPConfigurationProfilePropertiesFormat = Dict{Symbol,String}(Symbol("subnet")=>"Subnet2", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ IPConfigurationProfilePropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IPConfigurationProfilePropertiesFormat[name]))}
 
-function check_required(o::IPConfigurationProfilePropertiesFormat)
+function OpenAPI.check_required(o::IPConfigurationProfilePropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::IPConfigurationProfilePropertiesFormat)
+    OpenAPI.validate_property(IPConfigurationProfilePropertiesFormat, Symbol("subnet"), o.subnet)
+    OpenAPI.validate_property(IPConfigurationProfilePropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ IPConfigurationProfilePropertiesFormat }, name::Symbol, val)
+
+
 end

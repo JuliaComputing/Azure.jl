@@ -21,19 +21,27 @@ Base.@kwdef mutable struct ApplicationGatewayBackendAddressPoolPropertiesFormat2
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
     function ApplicationGatewayBackendAddressPoolPropertiesFormat2(backendIPConfigurations, backendAddresses, provisioningState, )
-        OpenAPI.validate_property(ApplicationGatewayBackendAddressPoolPropertiesFormat2, Symbol("backendIPConfigurations"), backendIPConfigurations)
-        OpenAPI.validate_property(ApplicationGatewayBackendAddressPoolPropertiesFormat2, Symbol("backendAddresses"), backendAddresses)
-        OpenAPI.validate_property(ApplicationGatewayBackendAddressPoolPropertiesFormat2, Symbol("provisioningState"), provisioningState)
-        return new(backendIPConfigurations, backendAddresses, provisioningState, )
+        o = new(backendIPConfigurations, backendAddresses, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayBackendAddressPoolPropertiesFormat2
 
 const _property_types_ApplicationGatewayBackendAddressPoolPropertiesFormat2 = Dict{Symbol,String}(Symbol("backendIPConfigurations")=>"Vector{NetworkInterfaceIPConfiguration}", Symbol("backendAddresses")=>"Vector{ApplicationGatewayBackendAddress2}", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ ApplicationGatewayBackendAddressPoolPropertiesFormat2 }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayBackendAddressPoolPropertiesFormat2[name]))}
 
-function check_required(o::ApplicationGatewayBackendAddressPoolPropertiesFormat2)
+function OpenAPI.check_required(o::ApplicationGatewayBackendAddressPoolPropertiesFormat2)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayBackendAddressPoolPropertiesFormat2)
+    OpenAPI.validate_property(ApplicationGatewayBackendAddressPoolPropertiesFormat2, Symbol("backendIPConfigurations"), o.backendIPConfigurations)
+    OpenAPI.validate_property(ApplicationGatewayBackendAddressPoolPropertiesFormat2, Symbol("backendAddresses"), o.backendAddresses)
+    OpenAPI.validate_property(ApplicationGatewayBackendAddressPoolPropertiesFormat2, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayBackendAddressPoolPropertiesFormat2 }, name::Symbol, val)
+
+
+
 end

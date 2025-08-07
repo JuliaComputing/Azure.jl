@@ -8,28 +8,40 @@ Describes the parameters of a ScaleSet managed disk.
     VirtualMachineScaleSetManagedDiskParameters(;
         storageAccountType=nothing,
         diskEncryptionSet=nothing,
+        securityProfile=nothing,
     )
 
     - storageAccountType::StorageAccountType
     - diskEncryptionSet::DiskEncryptionSetParameters
+    - securityProfile::VMDiskSecurityProfile
 """
 Base.@kwdef mutable struct VirtualMachineScaleSetManagedDiskParameters <: OpenAPI.APIModel
     storageAccountType = nothing # spec type: Union{ Nothing, StorageAccountType }
     diskEncryptionSet = nothing # spec type: Union{ Nothing, DiskEncryptionSetParameters }
+    securityProfile = nothing # spec type: Union{ Nothing, VMDiskSecurityProfile }
 
-    function VirtualMachineScaleSetManagedDiskParameters(storageAccountType, diskEncryptionSet, )
-        OpenAPI.validate_property(VirtualMachineScaleSetManagedDiskParameters, Symbol("storageAccountType"), storageAccountType)
-        OpenAPI.validate_property(VirtualMachineScaleSetManagedDiskParameters, Symbol("diskEncryptionSet"), diskEncryptionSet)
-        return new(storageAccountType, diskEncryptionSet, )
+    function VirtualMachineScaleSetManagedDiskParameters(storageAccountType, diskEncryptionSet, securityProfile, )
+        o = new(storageAccountType, diskEncryptionSet, securityProfile, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetManagedDiskParameters
 
-const _property_types_VirtualMachineScaleSetManagedDiskParameters = Dict{Symbol,String}(Symbol("storageAccountType")=>"StorageAccountType", Symbol("diskEncryptionSet")=>"DiskEncryptionSetParameters", )
+const _property_types_VirtualMachineScaleSetManagedDiskParameters = Dict{Symbol,String}(Symbol("storageAccountType")=>"StorageAccountType", Symbol("diskEncryptionSet")=>"DiskEncryptionSetParameters", Symbol("securityProfile")=>"VMDiskSecurityProfile", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetManagedDiskParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetManagedDiskParameters[name]))}
 
-function check_required(o::VirtualMachineScaleSetManagedDiskParameters)
+function OpenAPI.check_required(o::VirtualMachineScaleSetManagedDiskParameters)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetManagedDiskParameters)
+    OpenAPI.validate_property(VirtualMachineScaleSetManagedDiskParameters, Symbol("storageAccountType"), o.storageAccountType)
+    OpenAPI.validate_property(VirtualMachineScaleSetManagedDiskParameters, Symbol("diskEncryptionSet"), o.diskEncryptionSet)
+    OpenAPI.validate_property(VirtualMachineScaleSetManagedDiskParameters, Symbol("securityProfile"), o.securityProfile)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetManagedDiskParameters }, name::Symbol, val)
+
+
+
 end

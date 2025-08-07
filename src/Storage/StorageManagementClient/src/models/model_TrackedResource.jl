@@ -3,7 +3,7 @@
 
 
 @doc raw"""TrackedResource
-The resource model definition for a ARM tracked top level resource
+The resource model definition for an Azure Resource Manager tracked top level resource which has &#39;tags&#39; and a &#39;location&#39;
 
     TrackedResource(;
         tags=nothing,
@@ -15,9 +15,9 @@ The resource model definition for a ARM tracked top level resource
 
     - tags::Dict{String, String} : Resource tags.
     - location::String : The geo-location where the resource lives
-    - id::String : Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+    - id::String : Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
     - name::String : The name of the resource
-    - type::String : The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+    - type::String : The type of the resource. E.g. \&quot;Microsoft.Compute/virtualMachines\&quot; or \&quot;Microsoft.Storage/storageAccounts\&quot;
 """
 Base.@kwdef mutable struct TrackedResource <: OpenAPI.APIModel
     tags::Union{Nothing, Dict{String, String}} = nothing
@@ -27,22 +27,32 @@ Base.@kwdef mutable struct TrackedResource <: OpenAPI.APIModel
     type::Union{Nothing, String} = nothing
 
     function TrackedResource(tags, location, id, name, type, )
-        OpenAPI.validate_property(TrackedResource, Symbol("tags"), tags)
-        OpenAPI.validate_property(TrackedResource, Symbol("location"), location)
-        OpenAPI.validate_property(TrackedResource, Symbol("id"), id)
-        OpenAPI.validate_property(TrackedResource, Symbol("name"), name)
-        OpenAPI.validate_property(TrackedResource, Symbol("type"), type)
-        return new(tags, location, id, name, type, )
+        o = new(tags, location, id, name, type, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type TrackedResource
 
 const _property_types_TrackedResource = Dict{Symbol,String}(Symbol("tags")=>"Dict{String, String}", Symbol("location")=>"String", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", )
 OpenAPI.property_type(::Type{ TrackedResource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TrackedResource[name]))}
 
-function check_required(o::TrackedResource)
+function OpenAPI.check_required(o::TrackedResource)
     o.location === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::TrackedResource)
+    OpenAPI.validate_property(TrackedResource, Symbol("tags"), o.tags)
+    OpenAPI.validate_property(TrackedResource, Symbol("location"), o.location)
+    OpenAPI.validate_property(TrackedResource, Symbol("id"), o.id)
+    OpenAPI.validate_property(TrackedResource, Symbol("name"), o.name)
+    OpenAPI.validate_property(TrackedResource, Symbol("type"), o.type)
+end
+
 function OpenAPI.validate_property(::Type{ TrackedResource }, name::Symbol, val)
+
+
+
+
+
 end

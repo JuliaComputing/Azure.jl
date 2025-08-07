@@ -24,22 +24,31 @@ Base.@kwdef mutable struct ObjectReplicationPolicyRule <: OpenAPI.APIModel
     filters = nothing # spec type: Union{ Nothing, ObjectReplicationPolicyFilter }
 
     function ObjectReplicationPolicyRule(ruleId, sourceContainer, destinationContainer, filters, )
-        OpenAPI.validate_property(ObjectReplicationPolicyRule, Symbol("ruleId"), ruleId)
-        OpenAPI.validate_property(ObjectReplicationPolicyRule, Symbol("sourceContainer"), sourceContainer)
-        OpenAPI.validate_property(ObjectReplicationPolicyRule, Symbol("destinationContainer"), destinationContainer)
-        OpenAPI.validate_property(ObjectReplicationPolicyRule, Symbol("filters"), filters)
-        return new(ruleId, sourceContainer, destinationContainer, filters, )
+        o = new(ruleId, sourceContainer, destinationContainer, filters, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ObjectReplicationPolicyRule
 
 const _property_types_ObjectReplicationPolicyRule = Dict{Symbol,String}(Symbol("ruleId")=>"String", Symbol("sourceContainer")=>"String", Symbol("destinationContainer")=>"String", Symbol("filters")=>"ObjectReplicationPolicyFilter", )
 OpenAPI.property_type(::Type{ ObjectReplicationPolicyRule }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ObjectReplicationPolicyRule[name]))}
 
-function check_required(o::ObjectReplicationPolicyRule)
+function OpenAPI.check_required(o::ObjectReplicationPolicyRule)
     o.sourceContainer === nothing && (return false)
     o.destinationContainer === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ObjectReplicationPolicyRule)
+    OpenAPI.validate_property(ObjectReplicationPolicyRule, Symbol("ruleId"), o.ruleId)
+    OpenAPI.validate_property(ObjectReplicationPolicyRule, Symbol("sourceContainer"), o.sourceContainer)
+    OpenAPI.validate_property(ObjectReplicationPolicyRule, Symbol("destinationContainer"), o.destinationContainer)
+    OpenAPI.validate_property(ObjectReplicationPolicyRule, Symbol("filters"), o.filters)
+end
+
 function OpenAPI.validate_property(::Type{ ObjectReplicationPolicyRule }, name::Symbol, val)
+
+
+
+
 end

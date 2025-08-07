@@ -27,21 +27,31 @@ Base.@kwdef mutable struct AclStatus <: OpenAPI.APIModel
     stickyBit::Union{Nothing, Bool} = nothing
 
     function AclStatus(entries, group, owner, permission, stickyBit, )
-        OpenAPI.validate_property(AclStatus, Symbol("entries"), entries)
-        OpenAPI.validate_property(AclStatus, Symbol("group"), group)
-        OpenAPI.validate_property(AclStatus, Symbol("owner"), owner)
-        OpenAPI.validate_property(AclStatus, Symbol("permission"), permission)
-        OpenAPI.validate_property(AclStatus, Symbol("stickyBit"), stickyBit)
-        return new(entries, group, owner, permission, stickyBit, )
+        o = new(entries, group, owner, permission, stickyBit, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AclStatus
 
 const _property_types_AclStatus = Dict{Symbol,String}(Symbol("entries")=>"Vector{String}", Symbol("group")=>"String", Symbol("owner")=>"String", Symbol("permission")=>"String", Symbol("stickyBit")=>"Bool", )
 OpenAPI.property_type(::Type{ AclStatus }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AclStatus[name]))}
 
-function check_required(o::AclStatus)
+function OpenAPI.check_required(o::AclStatus)
     true
 end
 
+function OpenAPI.validate_properties(o::AclStatus)
+    OpenAPI.validate_property(AclStatus, Symbol("entries"), o.entries)
+    OpenAPI.validate_property(AclStatus, Symbol("group"), o.group)
+    OpenAPI.validate_property(AclStatus, Symbol("owner"), o.owner)
+    OpenAPI.validate_property(AclStatus, Symbol("permission"), o.permission)
+    OpenAPI.validate_property(AclStatus, Symbol("stickyBit"), o.stickyBit)
+end
+
 function OpenAPI.validate_property(::Type{ AclStatus }, name::Symbol, val)
+
+
+
+
+
 end

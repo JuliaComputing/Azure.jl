@@ -18,18 +18,25 @@ Base.@kwdef mutable struct Operation <: OpenAPI.APIModel
     display = nothing # spec type: Union{ Nothing, OperationDisplay }
 
     function Operation(name, display, )
-        OpenAPI.validate_property(Operation, Symbol("name"), name)
-        OpenAPI.validate_property(Operation, Symbol("display"), display)
-        return new(name, display, )
+        o = new(name, display, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type Operation
 
 const _property_types_Operation = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("display")=>"OperationDisplay", )
 OpenAPI.property_type(::Type{ Operation }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Operation[name]))}
 
-function check_required(o::Operation)
+function OpenAPI.check_required(o::Operation)
     true
 end
 
+function OpenAPI.validate_properties(o::Operation)
+    OpenAPI.validate_property(Operation, Symbol("name"), o.name)
+    OpenAPI.validate_property(Operation, Symbol("display"), o.display)
+end
+
 function OpenAPI.validate_property(::Type{ Operation }, name::Symbol, val)
+
+
 end

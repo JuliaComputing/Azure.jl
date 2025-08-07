@@ -15,17 +15,23 @@ Base.@kwdef mutable struct BgpPeerStatusListResult <: OpenAPI.APIModel
     value::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{BgpPeerStatus} }
 
     function BgpPeerStatusListResult(value, )
-        OpenAPI.validate_property(BgpPeerStatusListResult, Symbol("value"), value)
-        return new(value, )
+        o = new(value, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type BgpPeerStatusListResult
 
 const _property_types_BgpPeerStatusListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{BgpPeerStatus}", )
 OpenAPI.property_type(::Type{ BgpPeerStatusListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_BgpPeerStatusListResult[name]))}
 
-function check_required(o::BgpPeerStatusListResult)
+function OpenAPI.check_required(o::BgpPeerStatusListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::BgpPeerStatusListResult)
+    OpenAPI.validate_property(BgpPeerStatusListResult, Symbol("value"), o.value)
+end
+
 function OpenAPI.validate_property(::Type{ BgpPeerStatusListResult }, name::Symbol, val)
+
 end

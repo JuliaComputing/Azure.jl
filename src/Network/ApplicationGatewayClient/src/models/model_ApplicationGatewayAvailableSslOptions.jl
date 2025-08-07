@@ -30,22 +30,33 @@ Base.@kwdef mutable struct ApplicationGatewayAvailableSslOptions <: OpenAPI.APIM
     tags::Union{Nothing, Dict{String, String}} = nothing
 
     function ApplicationGatewayAvailableSslOptions(properties, id, name, type, location, tags, )
-        OpenAPI.validate_property(ApplicationGatewayAvailableSslOptions, Symbol("properties"), properties)
-        OpenAPI.validate_property(ApplicationGatewayAvailableSslOptions, Symbol("id"), id)
-        OpenAPI.validate_property(ApplicationGatewayAvailableSslOptions, Symbol("name"), name)
-        OpenAPI.validate_property(ApplicationGatewayAvailableSslOptions, Symbol("type"), type)
-        OpenAPI.validate_property(ApplicationGatewayAvailableSslOptions, Symbol("location"), location)
-        OpenAPI.validate_property(ApplicationGatewayAvailableSslOptions, Symbol("tags"), tags)
-        return new(properties, id, name, type, location, tags, )
+        o = new(properties, id, name, type, location, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayAvailableSslOptions
 
 const _property_types_ApplicationGatewayAvailableSslOptions = Dict{Symbol,String}(Symbol("properties")=>"ApplicationGatewayAvailableSslOptionsPropertiesFormat", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ ApplicationGatewayAvailableSslOptions }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayAvailableSslOptions[name]))}
 
-function check_required(o::ApplicationGatewayAvailableSslOptions)
+function OpenAPI.check_required(o::ApplicationGatewayAvailableSslOptions)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayAvailableSslOptions)
+    OpenAPI.validate_property(ApplicationGatewayAvailableSslOptions, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(ApplicationGatewayAvailableSslOptions, Symbol("id"), o.id)
+    OpenAPI.validate_property(ApplicationGatewayAvailableSslOptions, Symbol("name"), o.name)
+    OpenAPI.validate_property(ApplicationGatewayAvailableSslOptions, Symbol("type"), o.type)
+    OpenAPI.validate_property(ApplicationGatewayAvailableSslOptions, Symbol("location"), o.location)
+    OpenAPI.validate_property(ApplicationGatewayAvailableSslOptions, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayAvailableSslOptions }, name::Symbol, val)
+
+
+
+
+
+
 end

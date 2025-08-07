@@ -24,20 +24,29 @@ Base.@kwdef mutable struct PacketCaptureResult <: OpenAPI.APIModel
     properties = nothing # spec type: Union{ Nothing, PacketCaptureResultProperties }
 
     function PacketCaptureResult(name, id, etag, properties, )
-        OpenAPI.validate_property(PacketCaptureResult, Symbol("name"), name)
-        OpenAPI.validate_property(PacketCaptureResult, Symbol("id"), id)
-        OpenAPI.validate_property(PacketCaptureResult, Symbol("etag"), etag)
-        OpenAPI.validate_property(PacketCaptureResult, Symbol("properties"), properties)
-        return new(name, id, etag, properties, )
+        o = new(name, id, etag, properties, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PacketCaptureResult
 
 const _property_types_PacketCaptureResult = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("id")=>"String", Symbol("etag")=>"String", Symbol("properties")=>"PacketCaptureResultProperties", )
 OpenAPI.property_type(::Type{ PacketCaptureResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PacketCaptureResult[name]))}
 
-function check_required(o::PacketCaptureResult)
+function OpenAPI.check_required(o::PacketCaptureResult)
     true
 end
 
+function OpenAPI.validate_properties(o::PacketCaptureResult)
+    OpenAPI.validate_property(PacketCaptureResult, Symbol("name"), o.name)
+    OpenAPI.validate_property(PacketCaptureResult, Symbol("id"), o.id)
+    OpenAPI.validate_property(PacketCaptureResult, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(PacketCaptureResult, Symbol("properties"), o.properties)
+end
+
 function OpenAPI.validate_property(::Type{ PacketCaptureResult }, name::Symbol, val)
+
+
+
+
 end

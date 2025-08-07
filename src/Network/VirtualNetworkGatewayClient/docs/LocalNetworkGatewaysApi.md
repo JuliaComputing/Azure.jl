@@ -24,11 +24,11 @@ Creates or updates a local network gateway in the specified resource group.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LocalNetworkGatewaysApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**local_network_gateway_name** | **String**| The name of the local network gateway. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**LocalNetworkGateway**](LocalNetworkGateway.md)| Parameters supplied to the create or update local network gateway operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**local_network_gateway_name** | **String** | The name of the local network gateway. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**LocalNetworkGateway**](LocalNetworkGateway.md) | Parameters supplied to the create or update local network gateway operation. |
 
 ### Return type
 
@@ -58,10 +58,10 @@ Deletes the specified local network gateway.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LocalNetworkGatewaysApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**local_network_gateway_name** | **String**| The name of the local network gateway. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**local_network_gateway_name** | **String** | The name of the local network gateway. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -91,10 +91,10 @@ Gets the specified local network gateway in a resource group.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LocalNetworkGatewaysApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**local_network_gateway_name** | **String**| The name of the local network gateway. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**local_network_gateway_name** | **String** | The name of the local network gateway. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -124,9 +124,9 @@ Gets all the local network gateways in a resource group.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LocalNetworkGatewaysApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -156,11 +156,11 @@ Updates a local network gateway tags.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LocalNetworkGatewaysApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**local_network_gateway_name** | **String**| The name of the local network gateway. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**TagsObject**](TagsObject.md)| Parameters supplied to update local network gateway tags. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**local_network_gateway_name** | **String** | The name of the local network gateway. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**TagsObject**](TagsObject.md) | Parameters supplied to update local network gateway tags. |
 
 ### Return type
 

@@ -21,22 +21,31 @@ Base.@kwdef mutable struct UpgradePolicy <: OpenAPI.APIModel
     automaticOSUpgradePolicy = nothing # spec type: Union{ Nothing, AutomaticOSUpgradePolicy }
 
     function UpgradePolicy(mode, rollingUpgradePolicy, automaticOSUpgradePolicy, )
-        OpenAPI.validate_property(UpgradePolicy, Symbol("mode"), mode)
-        OpenAPI.validate_property(UpgradePolicy, Symbol("rollingUpgradePolicy"), rollingUpgradePolicy)
-        OpenAPI.validate_property(UpgradePolicy, Symbol("automaticOSUpgradePolicy"), automaticOSUpgradePolicy)
-        return new(mode, rollingUpgradePolicy, automaticOSUpgradePolicy, )
+        o = new(mode, rollingUpgradePolicy, automaticOSUpgradePolicy, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type UpgradePolicy
 
 const _property_types_UpgradePolicy = Dict{Symbol,String}(Symbol("mode")=>"String", Symbol("rollingUpgradePolicy")=>"RollingUpgradePolicy", Symbol("automaticOSUpgradePolicy")=>"AutomaticOSUpgradePolicy", )
 OpenAPI.property_type(::Type{ UpgradePolicy }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_UpgradePolicy[name]))}
 
-function check_required(o::UpgradePolicy)
+function OpenAPI.check_required(o::UpgradePolicy)
     true
 end
 
+function OpenAPI.validate_properties(o::UpgradePolicy)
+    OpenAPI.validate_property(UpgradePolicy, Symbol("mode"), o.mode)
+    OpenAPI.validate_property(UpgradePolicy, Symbol("rollingUpgradePolicy"), o.rollingUpgradePolicy)
+    OpenAPI.validate_property(UpgradePolicy, Symbol("automaticOSUpgradePolicy"), o.automaticOSUpgradePolicy)
+end
+
 function OpenAPI.validate_property(::Type{ UpgradePolicy }, name::Symbol, val)
+
     if name === Symbol("mode")
         OpenAPI.validate_param(name, "UpgradePolicy", :enum, val, ["Automatic", "Manual", "Rolling"])
     end
+
+
+
 end

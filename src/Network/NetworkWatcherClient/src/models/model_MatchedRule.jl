@@ -18,18 +18,25 @@ Base.@kwdef mutable struct MatchedRule <: OpenAPI.APIModel
     action::Union{Nothing, String} = nothing
 
     function MatchedRule(ruleName, action, )
-        OpenAPI.validate_property(MatchedRule, Symbol("ruleName"), ruleName)
-        OpenAPI.validate_property(MatchedRule, Symbol("action"), action)
-        return new(ruleName, action, )
+        o = new(ruleName, action, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type MatchedRule
 
 const _property_types_MatchedRule = Dict{Symbol,String}(Symbol("ruleName")=>"String", Symbol("action")=>"String", )
 OpenAPI.property_type(::Type{ MatchedRule }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_MatchedRule[name]))}
 
-function check_required(o::MatchedRule)
+function OpenAPI.check_required(o::MatchedRule)
     true
 end
 
+function OpenAPI.validate_properties(o::MatchedRule)
+    OpenAPI.validate_property(MatchedRule, Symbol("ruleName"), o.ruleName)
+    OpenAPI.validate_property(MatchedRule, Symbol("action"), o.action)
+end
+
 function OpenAPI.validate_property(::Type{ MatchedRule }, name::Symbol, val)
+
+
 end

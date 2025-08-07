@@ -21,19 +21,27 @@ Base.@kwdef mutable struct VirtualMachineScaleSetSku <: OpenAPI.APIModel
     capacity = nothing # spec type: Union{ Nothing, VirtualMachineScaleSetSkuCapacity }
 
     function VirtualMachineScaleSetSku(resourceType, sku, capacity, )
-        OpenAPI.validate_property(VirtualMachineScaleSetSku, Symbol("resourceType"), resourceType)
-        OpenAPI.validate_property(VirtualMachineScaleSetSku, Symbol("sku"), sku)
-        OpenAPI.validate_property(VirtualMachineScaleSetSku, Symbol("capacity"), capacity)
-        return new(resourceType, sku, capacity, )
+        o = new(resourceType, sku, capacity, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetSku
 
 const _property_types_VirtualMachineScaleSetSku = Dict{Symbol,String}(Symbol("resourceType")=>"String", Symbol("sku")=>"Sku", Symbol("capacity")=>"VirtualMachineScaleSetSkuCapacity", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetSku }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetSku[name]))}
 
-function check_required(o::VirtualMachineScaleSetSku)
+function OpenAPI.check_required(o::VirtualMachineScaleSetSku)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetSku)
+    OpenAPI.validate_property(VirtualMachineScaleSetSku, Symbol("resourceType"), o.resourceType)
+    OpenAPI.validate_property(VirtualMachineScaleSetSku, Symbol("sku"), o.sku)
+    OpenAPI.validate_property(VirtualMachineScaleSetSku, Symbol("capacity"), o.capacity)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetSku }, name::Symbol, val)
+
+
+
 end

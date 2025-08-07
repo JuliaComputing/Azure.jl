@@ -27,27 +27,37 @@ Base.@kwdef mutable struct AvailabilitySetProperties <: OpenAPI.APIModel
     statuses::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{InstanceViewStatus} }
 
     function AvailabilitySetProperties(platformUpdateDomainCount, platformFaultDomainCount, virtualMachines, proximityPlacementGroup, statuses, )
-        OpenAPI.validate_property(AvailabilitySetProperties, Symbol("platformUpdateDomainCount"), platformUpdateDomainCount)
-        OpenAPI.validate_property(AvailabilitySetProperties, Symbol("platformFaultDomainCount"), platformFaultDomainCount)
-        OpenAPI.validate_property(AvailabilitySetProperties, Symbol("virtualMachines"), virtualMachines)
-        OpenAPI.validate_property(AvailabilitySetProperties, Symbol("proximityPlacementGroup"), proximityPlacementGroup)
-        OpenAPI.validate_property(AvailabilitySetProperties, Symbol("statuses"), statuses)
-        return new(platformUpdateDomainCount, platformFaultDomainCount, virtualMachines, proximityPlacementGroup, statuses, )
+        o = new(platformUpdateDomainCount, platformFaultDomainCount, virtualMachines, proximityPlacementGroup, statuses, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AvailabilitySetProperties
 
 const _property_types_AvailabilitySetProperties = Dict{Symbol,String}(Symbol("platformUpdateDomainCount")=>"Int64", Symbol("platformFaultDomainCount")=>"Int64", Symbol("virtualMachines")=>"Vector{SubResource}", Symbol("proximityPlacementGroup")=>"SubResource", Symbol("statuses")=>"Vector{InstanceViewStatus}", )
 OpenAPI.property_type(::Type{ AvailabilitySetProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AvailabilitySetProperties[name]))}
 
-function check_required(o::AvailabilitySetProperties)
+function OpenAPI.check_required(o::AvailabilitySetProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::AvailabilitySetProperties)
+    OpenAPI.validate_property(AvailabilitySetProperties, Symbol("platformUpdateDomainCount"), o.platformUpdateDomainCount)
+    OpenAPI.validate_property(AvailabilitySetProperties, Symbol("platformFaultDomainCount"), o.platformFaultDomainCount)
+    OpenAPI.validate_property(AvailabilitySetProperties, Symbol("virtualMachines"), o.virtualMachines)
+    OpenAPI.validate_property(AvailabilitySetProperties, Symbol("proximityPlacementGroup"), o.proximityPlacementGroup)
+    OpenAPI.validate_property(AvailabilitySetProperties, Symbol("statuses"), o.statuses)
+end
+
 function OpenAPI.validate_property(::Type{ AvailabilitySetProperties }, name::Symbol, val)
+
     if name === Symbol("platformUpdateDomainCount")
         OpenAPI.validate_param(name, "AvailabilitySetProperties", :format, val, "int32")
     end
+
     if name === Symbol("platformFaultDomainCount")
         OpenAPI.validate_param(name, "AvailabilitySetProperties", :format, val, "int32")
     end
+
+
+
 end

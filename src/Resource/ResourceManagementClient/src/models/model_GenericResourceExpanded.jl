@@ -9,57 +9,108 @@ Resource information.
         createdTime=nothing,
         changedTime=nothing,
         provisioningState=nothing,
+        plan=nothing,
+        properties=nothing,
+        kind=nothing,
+        managedBy=nothing,
+        sku=nothing,
+        identity=nothing,
         id=nothing,
         name=nothing,
         type=nothing,
         location=nothing,
+        extendedLocation=nothing,
         tags=nothing,
     )
 
     - createdTime::ZonedDateTime : The created time of the resource. This is only present if requested via the $expand query parameter.
     - changedTime::ZonedDateTime : The changed time of the resource. This is only present if requested via the $expand query parameter.
     - provisioningState::String : The provisioning state of the resource. This is only present if requested via the $expand query parameter.
+    - plan::Plan
+    - properties::Any : The resource properties.
+    - kind::String : The kind of the resource.
+    - managedBy::String : ID of the resource that manages this resource.
+    - sku::Sku
+    - identity::Identity
     - id::String : Resource ID
     - name::String : Resource name
     - type::String : Resource type
     - location::String : Resource location
+    - extendedLocation::ExtendedLocation
     - tags::Dict{String, String} : Resource tags
 """
 Base.@kwdef mutable struct GenericResourceExpanded <: OpenAPI.APIModel
     createdTime::Union{Nothing, ZonedDateTime} = nothing
     changedTime::Union{Nothing, ZonedDateTime} = nothing
     provisioningState::Union{Nothing, String} = nothing
+    plan = nothing # spec type: Union{ Nothing, Plan }
+    properties::Union{Nothing, Any} = nothing
+    kind::Union{Nothing, String} = nothing
+    managedBy::Union{Nothing, String} = nothing
+    sku = nothing # spec type: Union{ Nothing, Sku }
+    identity = nothing # spec type: Union{ Nothing, Identity }
     id::Union{Nothing, String} = nothing
     name::Union{Nothing, String} = nothing
     type::Union{Nothing, String} = nothing
     location::Union{Nothing, String} = nothing
+    extendedLocation = nothing # spec type: Union{ Nothing, ExtendedLocation }
     tags::Union{Nothing, Dict{String, String}} = nothing
 
-    function GenericResourceExpanded(createdTime, changedTime, provisioningState, id, name, type, location, tags, )
-        OpenAPI.validate_property(GenericResourceExpanded, Symbol("createdTime"), createdTime)
-        OpenAPI.validate_property(GenericResourceExpanded, Symbol("changedTime"), changedTime)
-        OpenAPI.validate_property(GenericResourceExpanded, Symbol("provisioningState"), provisioningState)
-        OpenAPI.validate_property(GenericResourceExpanded, Symbol("id"), id)
-        OpenAPI.validate_property(GenericResourceExpanded, Symbol("name"), name)
-        OpenAPI.validate_property(GenericResourceExpanded, Symbol("type"), type)
-        OpenAPI.validate_property(GenericResourceExpanded, Symbol("location"), location)
-        OpenAPI.validate_property(GenericResourceExpanded, Symbol("tags"), tags)
-        return new(createdTime, changedTime, provisioningState, id, name, type, location, tags, )
+    function GenericResourceExpanded(createdTime, changedTime, provisioningState, plan, properties, kind, managedBy, sku, identity, id, name, type, location, extendedLocation, tags, )
+        o = new(createdTime, changedTime, provisioningState, plan, properties, kind, managedBy, sku, identity, id, name, type, location, extendedLocation, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type GenericResourceExpanded
 
-const _property_types_GenericResourceExpanded = Dict{Symbol,String}(Symbol("createdTime")=>"ZonedDateTime", Symbol("changedTime")=>"ZonedDateTime", Symbol("provisioningState")=>"String", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
+const _property_types_GenericResourceExpanded = Dict{Symbol,String}(Symbol("createdTime")=>"ZonedDateTime", Symbol("changedTime")=>"ZonedDateTime", Symbol("provisioningState")=>"String", Symbol("plan")=>"Plan", Symbol("properties")=>"Any", Symbol("kind")=>"String", Symbol("managedBy")=>"String", Symbol("sku")=>"Sku", Symbol("identity")=>"Identity", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("extendedLocation")=>"ExtendedLocation", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ GenericResourceExpanded }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_GenericResourceExpanded[name]))}
 
-function check_required(o::GenericResourceExpanded)
+function OpenAPI.check_required(o::GenericResourceExpanded)
     true
 end
 
+function OpenAPI.validate_properties(o::GenericResourceExpanded)
+    OpenAPI.validate_property(GenericResourceExpanded, Symbol("createdTime"), o.createdTime)
+    OpenAPI.validate_property(GenericResourceExpanded, Symbol("changedTime"), o.changedTime)
+    OpenAPI.validate_property(GenericResourceExpanded, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(GenericResourceExpanded, Symbol("plan"), o.plan)
+    OpenAPI.validate_property(GenericResourceExpanded, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(GenericResourceExpanded, Symbol("kind"), o.kind)
+    OpenAPI.validate_property(GenericResourceExpanded, Symbol("managedBy"), o.managedBy)
+    OpenAPI.validate_property(GenericResourceExpanded, Symbol("sku"), o.sku)
+    OpenAPI.validate_property(GenericResourceExpanded, Symbol("identity"), o.identity)
+    OpenAPI.validate_property(GenericResourceExpanded, Symbol("id"), o.id)
+    OpenAPI.validate_property(GenericResourceExpanded, Symbol("name"), o.name)
+    OpenAPI.validate_property(GenericResourceExpanded, Symbol("type"), o.type)
+    OpenAPI.validate_property(GenericResourceExpanded, Symbol("location"), o.location)
+    OpenAPI.validate_property(GenericResourceExpanded, Symbol("extendedLocation"), o.extendedLocation)
+    OpenAPI.validate_property(GenericResourceExpanded, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ GenericResourceExpanded }, name::Symbol, val)
+
     if name === Symbol("createdTime")
         OpenAPI.validate_param(name, "GenericResourceExpanded", :format, val, "date-time")
     end
+
     if name === Symbol("changedTime")
         OpenAPI.validate_param(name, "GenericResourceExpanded", :format, val, "date-time")
     end
+
+
+
+
+    if name === Symbol("kind")
+        OpenAPI.validate_param(name, "GenericResourceExpanded", :pattern, val, r"^[-\w\._,\(\)]+$")
+    end
+
+
+
+
+
+
+
+
+
 end

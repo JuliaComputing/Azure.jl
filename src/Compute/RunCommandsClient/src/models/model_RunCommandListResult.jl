@@ -18,19 +18,26 @@ Base.@kwdef mutable struct RunCommandListResult <: OpenAPI.APIModel
     nextLink::Union{Nothing, String} = nothing
 
     function RunCommandListResult(value, nextLink, )
-        OpenAPI.validate_property(RunCommandListResult, Symbol("value"), value)
-        OpenAPI.validate_property(RunCommandListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type RunCommandListResult
 
 const _property_types_RunCommandListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{RunCommandDocumentBase}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ RunCommandListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RunCommandListResult[name]))}
 
-function check_required(o::RunCommandListResult)
+function OpenAPI.check_required(o::RunCommandListResult)
     o.value === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::RunCommandListResult)
+    OpenAPI.validate_property(RunCommandListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(RunCommandListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ RunCommandListResult }, name::Symbol, val)
+
+
 end

@@ -45,45 +45,62 @@ Base.@kwdef mutable struct FileStatusProperties <: OpenAPI.APIModel
     aclBit::Union{Nothing, Bool} = nothing
 
     function FileStatusProperties(accessTime, blockSize, msExpirationTime, group, length, modificationTime, owner, pathSuffix, permission, type, aclBit, )
-        OpenAPI.validate_property(FileStatusProperties, Symbol("accessTime"), accessTime)
-        OpenAPI.validate_property(FileStatusProperties, Symbol("blockSize"), blockSize)
-        OpenAPI.validate_property(FileStatusProperties, Symbol("msExpirationTime"), msExpirationTime)
-        OpenAPI.validate_property(FileStatusProperties, Symbol("group"), group)
-        OpenAPI.validate_property(FileStatusProperties, Symbol("length"), length)
-        OpenAPI.validate_property(FileStatusProperties, Symbol("modificationTime"), modificationTime)
-        OpenAPI.validate_property(FileStatusProperties, Symbol("owner"), owner)
-        OpenAPI.validate_property(FileStatusProperties, Symbol("pathSuffix"), pathSuffix)
-        OpenAPI.validate_property(FileStatusProperties, Symbol("permission"), permission)
-        OpenAPI.validate_property(FileStatusProperties, Symbol("type"), type)
-        OpenAPI.validate_property(FileStatusProperties, Symbol("aclBit"), aclBit)
-        return new(accessTime, blockSize, msExpirationTime, group, length, modificationTime, owner, pathSuffix, permission, type, aclBit, )
+        o = new(accessTime, blockSize, msExpirationTime, group, length, modificationTime, owner, pathSuffix, permission, type, aclBit, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type FileStatusProperties
 
 const _property_types_FileStatusProperties = Dict{Symbol,String}(Symbol("accessTime")=>"Int64", Symbol("blockSize")=>"Int64", Symbol("msExpirationTime")=>"Int64", Symbol("group")=>"String", Symbol("length")=>"Int64", Symbol("modificationTime")=>"Int64", Symbol("owner")=>"String", Symbol("pathSuffix")=>"String", Symbol("permission")=>"String", Symbol("type")=>"String", Symbol("aclBit")=>"Bool", )
 OpenAPI.property_type(::Type{ FileStatusProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_FileStatusProperties[name]))}
 
-function check_required(o::FileStatusProperties)
+function OpenAPI.check_required(o::FileStatusProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::FileStatusProperties)
+    OpenAPI.validate_property(FileStatusProperties, Symbol("accessTime"), o.accessTime)
+    OpenAPI.validate_property(FileStatusProperties, Symbol("blockSize"), o.blockSize)
+    OpenAPI.validate_property(FileStatusProperties, Symbol("msExpirationTime"), o.msExpirationTime)
+    OpenAPI.validate_property(FileStatusProperties, Symbol("group"), o.group)
+    OpenAPI.validate_property(FileStatusProperties, Symbol("length"), o.length)
+    OpenAPI.validate_property(FileStatusProperties, Symbol("modificationTime"), o.modificationTime)
+    OpenAPI.validate_property(FileStatusProperties, Symbol("owner"), o.owner)
+    OpenAPI.validate_property(FileStatusProperties, Symbol("pathSuffix"), o.pathSuffix)
+    OpenAPI.validate_property(FileStatusProperties, Symbol("permission"), o.permission)
+    OpenAPI.validate_property(FileStatusProperties, Symbol("type"), o.type)
+    OpenAPI.validate_property(FileStatusProperties, Symbol("aclBit"), o.aclBit)
+end
+
 function OpenAPI.validate_property(::Type{ FileStatusProperties }, name::Symbol, val)
+
     if name === Symbol("accessTime")
         OpenAPI.validate_param(name, "FileStatusProperties", :format, val, "int64")
     end
+
     if name === Symbol("blockSize")
         OpenAPI.validate_param(name, "FileStatusProperties", :format, val, "int64")
     end
+
     if name === Symbol("msExpirationTime")
         OpenAPI.validate_param(name, "FileStatusProperties", :format, val, "int64")
     end
+
+
     if name === Symbol("length")
         OpenAPI.validate_param(name, "FileStatusProperties", :format, val, "int64")
     end
+
     if name === Symbol("modificationTime")
         OpenAPI.validate_param(name, "FileStatusProperties", :format, val, "int64")
     end
+
+
+
+
     if name === Symbol("type")
         OpenAPI.validate_param(name, "FileStatusProperties", :enum, val, ["FILE", "DIRECTORY"])
     end
+
+
 end

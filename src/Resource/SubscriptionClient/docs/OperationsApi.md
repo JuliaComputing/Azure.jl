@@ -8,8 +8,8 @@ Method | HTTP request | Description
 
 
 # **operations_list**
-> operations_list(_api::OperationsApi, api_version::String; _mediaType=nothing) -> OperationListResult, OpenAPI.Clients.ApiResponse <br/>
-> operations_list(_api::OperationsApi, response_stream::Channel, api_version::String; _mediaType=nothing) -> Channel{ OperationListResult }, OpenAPI.Clients.ApiResponse
+> operations_list(_api::OperationsApi, api_version::String; _mediaType=nothing) -> OperationListResult2, OpenAPI.Clients.ApiResponse <br/>
+> operations_list(_api::OperationsApi, response_stream::Channel, api_version::String; _mediaType=nothing) -> Channel{ OperationListResult2 }, OpenAPI.Clients.ApiResponse
 
 
 
@@ -20,11 +20,11 @@ Lists all of the available Microsoft.Resources REST API operations.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **OperationsApi** | API context | 
-**api_version** | **String**| The API version to use for the operation. | [default to nothing]
+**api_version** | **String** | The API version to use for this operation. |
 
 ### Return type
 
-[**OperationListResult**](OperationListResult.md)
+[**OperationListResult2**](OperationListResult2.md)
 
 ### Authorization
 

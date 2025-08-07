@@ -10,7 +10,7 @@ Response for ListInboundNatRule API service call.
         nextLink=nothing,
     )
 
-    - value::Vector{InboundNatRule} : A list of inbound nat rules in a load balancer.
+    - value::Vector{InboundNatRule} : A list of inbound NAT rules in a load balancer.
     - nextLink::String : The URL to get the next set of results.
 """
 Base.@kwdef mutable struct InboundNatRuleListResult <: OpenAPI.APIModel
@@ -18,18 +18,25 @@ Base.@kwdef mutable struct InboundNatRuleListResult <: OpenAPI.APIModel
     nextLink::Union{Nothing, String} = nothing
 
     function InboundNatRuleListResult(value, nextLink, )
-        OpenAPI.validate_property(InboundNatRuleListResult, Symbol("value"), value)
-        OpenAPI.validate_property(InboundNatRuleListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type InboundNatRuleListResult
 
 const _property_types_InboundNatRuleListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{InboundNatRule}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ InboundNatRuleListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_InboundNatRuleListResult[name]))}
 
-function check_required(o::InboundNatRuleListResult)
+function OpenAPI.check_required(o::InboundNatRuleListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::InboundNatRuleListResult)
+    OpenAPI.validate_property(InboundNatRuleListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(InboundNatRuleListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ InboundNatRuleListResult }, name::Symbol, val)
+
+
 end

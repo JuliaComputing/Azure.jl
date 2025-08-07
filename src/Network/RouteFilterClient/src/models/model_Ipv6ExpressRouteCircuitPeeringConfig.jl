@@ -27,24 +27,35 @@ Base.@kwdef mutable struct Ipv6ExpressRouteCircuitPeeringConfig <: OpenAPI.APIMo
     state::Union{Nothing, String} = nothing
 
     function Ipv6ExpressRouteCircuitPeeringConfig(primaryPeerAddressPrefix, secondaryPeerAddressPrefix, microsoftPeeringConfig, routeFilter, state, )
-        OpenAPI.validate_property(Ipv6ExpressRouteCircuitPeeringConfig, Symbol("primaryPeerAddressPrefix"), primaryPeerAddressPrefix)
-        OpenAPI.validate_property(Ipv6ExpressRouteCircuitPeeringConfig, Symbol("secondaryPeerAddressPrefix"), secondaryPeerAddressPrefix)
-        OpenAPI.validate_property(Ipv6ExpressRouteCircuitPeeringConfig, Symbol("microsoftPeeringConfig"), microsoftPeeringConfig)
-        OpenAPI.validate_property(Ipv6ExpressRouteCircuitPeeringConfig, Symbol("routeFilter"), routeFilter)
-        OpenAPI.validate_property(Ipv6ExpressRouteCircuitPeeringConfig, Symbol("state"), state)
-        return new(primaryPeerAddressPrefix, secondaryPeerAddressPrefix, microsoftPeeringConfig, routeFilter, state, )
+        o = new(primaryPeerAddressPrefix, secondaryPeerAddressPrefix, microsoftPeeringConfig, routeFilter, state, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type Ipv6ExpressRouteCircuitPeeringConfig
 
 const _property_types_Ipv6ExpressRouteCircuitPeeringConfig = Dict{Symbol,String}(Symbol("primaryPeerAddressPrefix")=>"String", Symbol("secondaryPeerAddressPrefix")=>"String", Symbol("microsoftPeeringConfig")=>"ExpressRouteCircuitPeeringConfig", Symbol("routeFilter")=>"SubResource", Symbol("state")=>"String", )
 OpenAPI.property_type(::Type{ Ipv6ExpressRouteCircuitPeeringConfig }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Ipv6ExpressRouteCircuitPeeringConfig[name]))}
 
-function check_required(o::Ipv6ExpressRouteCircuitPeeringConfig)
+function OpenAPI.check_required(o::Ipv6ExpressRouteCircuitPeeringConfig)
     true
 end
 
+function OpenAPI.validate_properties(o::Ipv6ExpressRouteCircuitPeeringConfig)
+    OpenAPI.validate_property(Ipv6ExpressRouteCircuitPeeringConfig, Symbol("primaryPeerAddressPrefix"), o.primaryPeerAddressPrefix)
+    OpenAPI.validate_property(Ipv6ExpressRouteCircuitPeeringConfig, Symbol("secondaryPeerAddressPrefix"), o.secondaryPeerAddressPrefix)
+    OpenAPI.validate_property(Ipv6ExpressRouteCircuitPeeringConfig, Symbol("microsoftPeeringConfig"), o.microsoftPeeringConfig)
+    OpenAPI.validate_property(Ipv6ExpressRouteCircuitPeeringConfig, Symbol("routeFilter"), o.routeFilter)
+    OpenAPI.validate_property(Ipv6ExpressRouteCircuitPeeringConfig, Symbol("state"), o.state)
+end
+
 function OpenAPI.validate_property(::Type{ Ipv6ExpressRouteCircuitPeeringConfig }, name::Symbol, val)
+
+
+
+
+
     if name === Symbol("state")
         OpenAPI.validate_param(name, "Ipv6ExpressRouteCircuitPeeringConfig", :enum, val, ["Disabled", "Enabled"])
     end
+
 end

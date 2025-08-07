@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **properties** | [***ApplicationGatewayPropertiesFormat**](ApplicationGatewayPropertiesFormat.md) |  | [optional] [default to nothing]
 **etag** | **String** | A unique read-only string that changes whenever the resource is updated. | [optional] [readonly] [default to nothing]
 **zones** | **Vector{String}** | A list of availability zones denoting where the resource needs to come from. | [optional] [default to nothing]
-**identity** | **Any** |  | [optional] [default to nothing]
+**identity** | [***ManagedServiceIdentity**](ManagedServiceIdentity.md) |  | [optional] [default to nothing]
 **id** | **String** | Resource ID. | [optional] [default to nothing]
 **name** | **String** | Resource name. | [optional] [readonly] [default to nothing]
 **type** | **String** | Resource type. | [optional] [readonly] [default to nothing]

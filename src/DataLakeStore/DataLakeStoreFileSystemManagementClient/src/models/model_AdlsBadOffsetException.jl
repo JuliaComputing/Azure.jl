@@ -21,20 +21,28 @@ Base.@kwdef mutable struct AdlsBadOffsetException <: OpenAPI.APIModel
     message::Union{Nothing, String} = nothing
 
     function AdlsBadOffsetException(exception, javaClassName, message, )
-        OpenAPI.validate_property(AdlsBadOffsetException, Symbol("exception"), exception)
-        OpenAPI.validate_property(AdlsBadOffsetException, Symbol("javaClassName"), javaClassName)
-        OpenAPI.validate_property(AdlsBadOffsetException, Symbol("message"), message)
-        return new(exception, javaClassName, message, )
+        o = new(exception, javaClassName, message, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AdlsBadOffsetException
 
 const _property_types_AdlsBadOffsetException = Dict{Symbol,String}(Symbol("exception")=>"String", Symbol("javaClassName")=>"String", Symbol("message")=>"String", )
 OpenAPI.property_type(::Type{ AdlsBadOffsetException }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AdlsBadOffsetException[name]))}
 
-function check_required(o::AdlsBadOffsetException)
+function OpenAPI.check_required(o::AdlsBadOffsetException)
     o.exception === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::AdlsBadOffsetException)
+    OpenAPI.validate_property(AdlsBadOffsetException, Symbol("exception"), o.exception)
+    OpenAPI.validate_property(AdlsBadOffsetException, Symbol("javaClassName"), o.javaClassName)
+    OpenAPI.validate_property(AdlsBadOffsetException, Symbol("message"), o.message)
+end
+
 function OpenAPI.validate_property(::Type{ AdlsBadOffsetException }, name::Symbol, val)
+
+
+
 end

@@ -2,6 +2,7 @@
 # Do not modify this file directly. Modify the OpenAPI specification instead.
 
 include("models/model_Access.jl")
+include("models/model_AdvertisedPublicPrefixProperties.jl")
 include("models/model_CircuitConnectionStatus.jl")
 include("models/model_CloudError.jl")
 include("models/model_CloudErrorBody.jl")

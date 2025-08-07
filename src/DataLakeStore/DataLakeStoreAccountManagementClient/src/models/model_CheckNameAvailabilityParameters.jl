@@ -18,23 +18,31 @@ Base.@kwdef mutable struct CheckNameAvailabilityParameters <: OpenAPI.APIModel
     type::Union{Nothing, String} = nothing
 
     function CheckNameAvailabilityParameters(name, type, )
-        OpenAPI.validate_property(CheckNameAvailabilityParameters, Symbol("name"), name)
-        OpenAPI.validate_property(CheckNameAvailabilityParameters, Symbol("type"), type)
-        return new(name, type, )
+        o = new(name, type, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type CheckNameAvailabilityParameters
 
 const _property_types_CheckNameAvailabilityParameters = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("type")=>"String", )
 OpenAPI.property_type(::Type{ CheckNameAvailabilityParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_CheckNameAvailabilityParameters[name]))}
 
-function check_required(o::CheckNameAvailabilityParameters)
+function OpenAPI.check_required(o::CheckNameAvailabilityParameters)
     o.name === nothing && (return false)
     o.type === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::CheckNameAvailabilityParameters)
+    OpenAPI.validate_property(CheckNameAvailabilityParameters, Symbol("name"), o.name)
+    OpenAPI.validate_property(CheckNameAvailabilityParameters, Symbol("type"), o.type)
+end
+
 function OpenAPI.validate_property(::Type{ CheckNameAvailabilityParameters }, name::Symbol, val)
+
+
     if name === Symbol("type")
         OpenAPI.validate_param(name, "CheckNameAvailabilityParameters", :enum, val, ["Microsoft.DataLakeStore/accounts"])
     end
+
 end

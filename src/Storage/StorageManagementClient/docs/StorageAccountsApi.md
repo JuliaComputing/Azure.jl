@@ -4,11 +4,13 @@ All URIs are relative to *https://management.azure.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**storage_accounts_abort_hierarchical_namespace_migration**](StorageAccountsApi.md#storage_accounts_abort_hierarchical_namespace_migration) | **POST** /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/aborthnsonmigration | 
 [**storage_accounts_check_name_availability**](StorageAccountsApi.md#storage_accounts_check_name_availability) | **POST** /subscriptions/{subscriptionId}/providers/Microsoft.Storage/checkNameAvailability | 
 [**storage_accounts_create**](StorageAccountsApi.md#storage_accounts_create) | **PUT** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName} | 
 [**storage_accounts_delete**](StorageAccountsApi.md#storage_accounts_delete) | **DELETE** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName} | 
 [**storage_accounts_failover**](StorageAccountsApi.md#storage_accounts_failover) | **POST** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/failover | 
 [**storage_accounts_get_properties**](StorageAccountsApi.md#storage_accounts_get_properties) | **GET** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName} | 
+[**storage_accounts_hierarchical_namespace_migration**](StorageAccountsApi.md#storage_accounts_hierarchical_namespace_migration) | **POST** /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/hnsonmigration | 
 [**storage_accounts_list**](StorageAccountsApi.md#storage_accounts_list) | **GET** /subscriptions/{subscriptionId}/providers/Microsoft.Storage/storageAccounts | 
 [**storage_accounts_list_account_s_a_s**](StorageAccountsApi.md#storage_accounts_list_account_s_a_s) | **POST** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/ListAccountSas | 
 [**storage_accounts_list_by_resource_group**](StorageAccountsApi.md#storage_accounts_list_by_resource_group) | **GET** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts | 
@@ -19,6 +21,39 @@ Method | HTTP request | Description
 [**storage_accounts_revoke_user_delegation_keys**](StorageAccountsApi.md#storage_accounts_revoke_user_delegation_keys) | **POST** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/revokeUserDelegationKeys | 
 [**storage_accounts_update**](StorageAccountsApi.md#storage_accounts_update) | **PATCH** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName} | 
 
+
+# **storage_accounts_abort_hierarchical_namespace_migration**
+> storage_accounts_abort_hierarchical_namespace_migration(_api::StorageAccountsApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String; _mediaType=nothing) -> Nothing, OpenAPI.Clients.ApiResponse <br/>
+> storage_accounts_abort_hierarchical_namespace_migration(_api::StorageAccountsApi, response_stream::Channel, resource_group_name::String, account_name::String, api_version::String, subscription_id::String; _mediaType=nothing) -> Channel{ Nothing }, OpenAPI.Clients.ApiResponse
+
+
+
+Abort live Migration of storage account to enable Hns
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **_api** | **StorageAccountsApi** | API context | 
+**resource_group_name** | **String** | The name of the resource group within the user&#39;s subscription. The name is case insensitive. |
+**account_name** | **String** | The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. |
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The ID of the target subscription. |
+
+### Return type
+
+Nothing
+
+### Authorization
+
+[azure_auth](../README.md#azure_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 # **storage_accounts_check_name_availability**
 > storage_accounts_check_name_availability(_api::StorageAccountsApi, api_version::String, subscription_id::String, account_name::StorageAccountCheckNameAvailabilityParameters; _mediaType=nothing) -> CheckNameAvailabilityResult, OpenAPI.Clients.ApiResponse <br/>
@@ -33,9 +68,9 @@ Checks that the storage account name is valid and is not already in use.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **StorageAccountsApi** | API context | 
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
-**account_name** | [**StorageAccountCheckNameAvailabilityParameters**](StorageAccountCheckNameAvailabilityParameters.md)| The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. | 
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The ID of the target subscription. |
+**account_name** | [**StorageAccountCheckNameAvailabilityParameters**](StorageAccountCheckNameAvailabilityParameters.md) | The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. |
 
 ### Return type
 
@@ -65,11 +100,11 @@ Asynchronously creates a new storage account with the specified parameters. If a
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **StorageAccountsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group within the user&#39;s subscription. The name is case insensitive. | [default to nothing]
-**account_name** | **String**| The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. | [default to nothing]
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
-**parameters** | [**StorageAccountCreateParameters**](StorageAccountCreateParameters.md)| The parameters to provide for the created account. | 
+**resource_group_name** | **String** | The name of the resource group within the user&#39;s subscription. The name is case insensitive. |
+**account_name** | **String** | The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. |
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The ID of the target subscription. |
+**parameters** | [**StorageAccountCreateParameters**](StorageAccountCreateParameters.md) | The parameters to provide for the created account. |
 
 ### Return type
 
@@ -99,10 +134,10 @@ Deletes a storage account in Microsoft Azure.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **StorageAccountsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group within the user&#39;s subscription. The name is case insensitive. | [default to nothing]
-**account_name** | **String**| The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. | [default to nothing]
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group within the user&#39;s subscription. The name is case insensitive. |
+**account_name** | **String** | The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. |
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The ID of the target subscription. |
 
 ### Return type
 
@@ -120,22 +155,28 @@ Nothing
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 # **storage_accounts_failover**
-> storage_accounts_failover(_api::StorageAccountsApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String; _mediaType=nothing) -> Nothing, OpenAPI.Clients.ApiResponse <br/>
-> storage_accounts_failover(_api::StorageAccountsApi, response_stream::Channel, resource_group_name::String, account_name::String, api_version::String, subscription_id::String; _mediaType=nothing) -> Channel{ Nothing }, OpenAPI.Clients.ApiResponse
+> storage_accounts_failover(_api::StorageAccountsApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String; failover_type=nothing, _mediaType=nothing) -> Nothing, OpenAPI.Clients.ApiResponse <br/>
+> storage_accounts_failover(_api::StorageAccountsApi, response_stream::Channel, resource_group_name::String, account_name::String, api_version::String, subscription_id::String; failover_type=nothing, _mediaType=nothing) -> Channel{ Nothing }, OpenAPI.Clients.ApiResponse
 
 
 
-Failover request can be triggered for a storage account in case of availability issues. The failover occurs from the storage account's primary cluster to secondary cluster for RA-GRS accounts. The secondary cluster will become primary after failover.
+A failover request can be triggered for a storage account in the event a primary endpoint becomes unavailable for any reason. The failover occurs from the storage account's primary cluster to the secondary cluster for RA-GRS accounts. The secondary cluster will become primary after failover and the account is converted to LRS. In the case of a Planned Failover, the primary and secondary clusters are swapped after failover and the account remains geo-replicated. Failover should continue to be used in the event of availability issues as Planned failover is only available while the primary and secondary endpoints are available. The primary use case of a Planned Failover is disaster recovery testing drills. This type of failover is invoked by setting FailoverType parameter to 'Planned'. Learn more about the failover options here- https://learn.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **StorageAccountsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group within the user&#39;s subscription. The name is case insensitive. | [default to nothing]
-**account_name** | **String**| The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. | [default to nothing]
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group within the user&#39;s subscription. The name is case insensitive. |
+**account_name** | **String** | The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. |
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The ID of the target subscription. |
+
+### Optional Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **failover_type** | **String** | The parameter is set to &#39;Planned&#39; to indicate whether a Planned failover is requested. | [default to nothing]
 
 ### Return type
 
@@ -165,20 +206,54 @@ Returns the properties for the specified storage account including but not limit
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **StorageAccountsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group within the user&#39;s subscription. The name is case insensitive. | [default to nothing]
-**account_name** | **String**| The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. | [default to nothing]
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group within the user&#39;s subscription. The name is case insensitive. |
+**account_name** | **String** | The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. |
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The ID of the target subscription. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expand** | **String**| May be used to expand the properties within account&#39;s properties. By default, data is not included when fetching properties. Currently we only support geoReplicationStats and blobRestoreStatus. | [default to nothing]
+ **expand** | **String** | May be used to expand the properties within account&#39;s properties. By default, data is not included when fetching properties. Currently we only support geoReplicationStats and blobRestoreStatus. | [default to nothing]
 
 ### Return type
 
 [**StorageAccount**](StorageAccount.md)
+
+### Authorization
+
+[azure_auth](../README.md#azure_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+# **storage_accounts_hierarchical_namespace_migration**
+> storage_accounts_hierarchical_namespace_migration(_api::StorageAccountsApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String, request_type::String; _mediaType=nothing) -> Nothing, OpenAPI.Clients.ApiResponse <br/>
+> storage_accounts_hierarchical_namespace_migration(_api::StorageAccountsApi, response_stream::Channel, resource_group_name::String, account_name::String, api_version::String, subscription_id::String, request_type::String; _mediaType=nothing) -> Channel{ Nothing }, OpenAPI.Clients.ApiResponse
+
+
+
+Live Migration of storage account to enable Hns
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **_api** | **StorageAccountsApi** | API context | 
+**resource_group_name** | **String** | The name of the resource group within the user&#39;s subscription. The name is case insensitive. |
+**account_name** | **String** | The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. |
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The ID of the target subscription. |
+**request_type** | **String** | Required. Hierarchical namespace migration type can either be a hierarchical namespace validation request &#39;HnsOnValidationRequest&#39; or a hydration request &#39;HnsOnHydrationRequest&#39;. The validation request will validate the migration whereas the hydration request will migrate the account. |
+
+### Return type
+
+Nothing
 
 ### Authorization
 
@@ -204,8 +279,8 @@ Lists all the storage accounts available under the subscription. Note that stora
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **StorageAccountsApi** | API context | 
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The ID of the target subscription. |
 
 ### Return type
 
@@ -235,11 +310,11 @@ List SAS credentials of a storage account.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **StorageAccountsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group within the user&#39;s subscription. The name is case insensitive. | [default to nothing]
-**account_name** | **String**| The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. | [default to nothing]
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
-**parameters** | [**AccountSasParameters**](AccountSasParameters.md)| The parameters to provide to list SAS credentials for the storage account. | 
+**resource_group_name** | **String** | The name of the resource group within the user&#39;s subscription. The name is case insensitive. |
+**account_name** | **String** | The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. |
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The ID of the target subscription. |
+**parameters** | [**AccountSasParameters**](AccountSasParameters.md) | The parameters to provide to list SAS credentials for the storage account. |
 
 ### Return type
 
@@ -269,9 +344,9 @@ Lists all the storage accounts available under the given resource group. Note th
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **StorageAccountsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group within the user&#39;s subscription. The name is case insensitive. | [default to nothing]
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group within the user&#39;s subscription. The name is case insensitive. |
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The ID of the target subscription. |
 
 ### Return type
 
@@ -301,16 +376,16 @@ Lists the access keys or Kerberos keys (if active directory enabled) for the spe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **StorageAccountsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group within the user&#39;s subscription. The name is case insensitive. | [default to nothing]
-**account_name** | **String**| The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. | [default to nothing]
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group within the user&#39;s subscription. The name is case insensitive. |
+**account_name** | **String** | The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. |
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The ID of the target subscription. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expand** | **String**| Specifies type of the key to be listed. Possible value is kerb. | [default to nothing]
+ **expand** | **String** | Specifies type of the key to be listed. Possible value is kerb. | [default to nothing]
 
 ### Return type
 
@@ -340,11 +415,11 @@ List service SAS credentials of a specific resource.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **StorageAccountsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group within the user&#39;s subscription. The name is case insensitive. | [default to nothing]
-**account_name** | **String**| The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. | [default to nothing]
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
-**parameters** | [**ServiceSasParameters**](ServiceSasParameters.md)| The parameters to provide to list service SAS credentials. | 
+**resource_group_name** | **String** | The name of the resource group within the user&#39;s subscription. The name is case insensitive. |
+**account_name** | **String** | The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. |
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The ID of the target subscription. |
+**parameters** | [**ServiceSasParameters**](ServiceSasParameters.md) | The parameters to provide to list service SAS credentials. |
 
 ### Return type
 
@@ -374,11 +449,11 @@ Regenerates one of the access keys or Kerberos keys for the specified storage ac
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **StorageAccountsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group within the user&#39;s subscription. The name is case insensitive. | [default to nothing]
-**account_name** | **String**| The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. | [default to nothing]
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
-**regenerate_key** | [**StorageAccountRegenerateKeyParameters**](StorageAccountRegenerateKeyParameters.md)| Specifies name of the key which should be regenerated -- key1, key2, kerb1, kerb2. | 
+**resource_group_name** | **String** | The name of the resource group within the user&#39;s subscription. The name is case insensitive. |
+**account_name** | **String** | The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. |
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The ID of the target subscription. |
+**regenerate_key** | [**StorageAccountRegenerateKeyParameters**](StorageAccountRegenerateKeyParameters.md) | Specifies name of the key which should be regenerated -- key1, key2, kerb1, kerb2. |
 
 ### Return type
 
@@ -408,11 +483,11 @@ Restore blobs in the specified blob ranges
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **StorageAccountsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group within the user&#39;s subscription. The name is case insensitive. | [default to nothing]
-**account_name** | **String**| The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. | [default to nothing]
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
-**parameters** | [**BlobRestoreParameters**](BlobRestoreParameters.md)| The parameters to provide for restore blob ranges. | 
+**resource_group_name** | **String** | The name of the resource group within the user&#39;s subscription. The name is case insensitive. |
+**account_name** | **String** | The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. |
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The ID of the target subscription. |
+**parameters** | [**BlobRestoreParameters**](BlobRestoreParameters.md) | The parameters to provide for restore blob ranges. |
 
 ### Return type
 
@@ -442,10 +517,10 @@ Revoke user delegation keys.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **StorageAccountsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group within the user&#39;s subscription. The name is case insensitive. | [default to nothing]
-**account_name** | **String**| The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. | [default to nothing]
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group within the user&#39;s subscription. The name is case insensitive. |
+**account_name** | **String** | The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. |
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The ID of the target subscription. |
 
 ### Return type
 
@@ -475,11 +550,11 @@ The update operation can be used to update the SKU, encryption, access tier, or 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **StorageAccountsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group within the user&#39;s subscription. The name is case insensitive. | [default to nothing]
-**account_name** | **String**| The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. | [default to nothing]
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
-**parameters** | [**StorageAccountUpdateParameters**](StorageAccountUpdateParameters.md)| The parameters to provide for the updated account. | 
+**resource_group_name** | **String** | The name of the resource group within the user&#39;s subscription. The name is case insensitive. |
+**account_name** | **String** | The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. |
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The ID of the target subscription. |
+**parameters** | [**StorageAccountUpdateParameters**](StorageAccountUpdateParameters.md) | The parameters to provide for the updated account. |
 
 ### Return type
 

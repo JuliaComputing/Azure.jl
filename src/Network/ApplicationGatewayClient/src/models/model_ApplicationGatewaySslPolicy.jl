@@ -27,24 +27,35 @@ Base.@kwdef mutable struct ApplicationGatewaySslPolicy <: OpenAPI.APIModel
     minProtocolVersion = nothing # spec type: Union{ Nothing, ProtocolsEnum }
 
     function ApplicationGatewaySslPolicy(disabledSslProtocols, policyType, policyName, cipherSuites, minProtocolVersion, )
-        OpenAPI.validate_property(ApplicationGatewaySslPolicy, Symbol("disabledSslProtocols"), disabledSslProtocols)
-        OpenAPI.validate_property(ApplicationGatewaySslPolicy, Symbol("policyType"), policyType)
-        OpenAPI.validate_property(ApplicationGatewaySslPolicy, Symbol("policyName"), policyName)
-        OpenAPI.validate_property(ApplicationGatewaySslPolicy, Symbol("cipherSuites"), cipherSuites)
-        OpenAPI.validate_property(ApplicationGatewaySslPolicy, Symbol("minProtocolVersion"), minProtocolVersion)
-        return new(disabledSslProtocols, policyType, policyName, cipherSuites, minProtocolVersion, )
+        o = new(disabledSslProtocols, policyType, policyName, cipherSuites, minProtocolVersion, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewaySslPolicy
 
 const _property_types_ApplicationGatewaySslPolicy = Dict{Symbol,String}(Symbol("disabledSslProtocols")=>"Vector{ProtocolsEnum}", Symbol("policyType")=>"String", Symbol("policyName")=>"PolicyNameEnum", Symbol("cipherSuites")=>"Vector{CipherSuitesEnum}", Symbol("minProtocolVersion")=>"ProtocolsEnum", )
 OpenAPI.property_type(::Type{ ApplicationGatewaySslPolicy }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewaySslPolicy[name]))}
 
-function check_required(o::ApplicationGatewaySslPolicy)
+function OpenAPI.check_required(o::ApplicationGatewaySslPolicy)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewaySslPolicy)
+    OpenAPI.validate_property(ApplicationGatewaySslPolicy, Symbol("disabledSslProtocols"), o.disabledSslProtocols)
+    OpenAPI.validate_property(ApplicationGatewaySslPolicy, Symbol("policyType"), o.policyType)
+    OpenAPI.validate_property(ApplicationGatewaySslPolicy, Symbol("policyName"), o.policyName)
+    OpenAPI.validate_property(ApplicationGatewaySslPolicy, Symbol("cipherSuites"), o.cipherSuites)
+    OpenAPI.validate_property(ApplicationGatewaySslPolicy, Symbol("minProtocolVersion"), o.minProtocolVersion)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewaySslPolicy }, name::Symbol, val)
+
+
     if name === Symbol("policyType")
-        OpenAPI.validate_param(name, "ApplicationGatewaySslPolicy", :enum, val, ["Predefined", "Custom"])
+        OpenAPI.validate_param(name, "ApplicationGatewaySslPolicy", :enum, val, ["Predefined", "Custom", "CustomV2"])
     end
+
+
+
+
 end

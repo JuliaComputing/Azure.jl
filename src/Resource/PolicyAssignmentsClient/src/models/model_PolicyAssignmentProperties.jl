@@ -8,55 +8,113 @@ The policy assignment properties.
     PolicyAssignmentProperties(;
         displayName=nothing,
         policyDefinitionId=nothing,
+        definitionVersion=nothing,
+        latestDefinitionVersion=nothing,
+        effectiveDefinitionVersion=nothing,
         scope=nothing,
         notScopes=nothing,
         parameters=nothing,
         description=nothing,
         metadata=nothing,
-        enforcementMode=nothing,
+        enforcementMode="Default",
+        nonComplianceMessages=nothing,
+        resourceSelectors=nothing,
+        overrides=nothing,
+        assignmentType=nothing,
+        instanceId=nothing,
     )
 
     - displayName::String : The display name of the policy assignment.
     - policyDefinitionId::String : The ID of the policy definition or policy set definition being assigned.
+    - definitionVersion::String : The version of the policy definition to use.
+    - latestDefinitionVersion::String : The latest version of the policy definition available. This is only present if requested via the $expand query parameter.
+    - effectiveDefinitionVersion::String : The effective version of the policy definition in use. This is only present if requested via the $expand query parameter.
     - scope::String : The scope for the policy assignment.
     - notScopes::Vector{String} : The policy&#39;s excluded scopes.
     - parameters::Dict{String, ParameterValuesValue} : The parameter values for the policy rule. The keys are the parameter names.
     - description::String : This message will be part of response in case of policy violation.
     - metadata::Any : The policy assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
-    - enforcementMode::String : The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
+    - enforcementMode::String : The policy assignment enforcement mode. Possible values are Default, DoNotEnforce, and Enroll
+    - nonComplianceMessages::Vector{NonComplianceMessage} : The messages that describe why a resource is non-compliant with the policy.
+    - resourceSelectors::Vector{ResourceSelector} : The resource selector list to filter policies by resource properties.
+    - overrides::Vector{Override} : The policy property value override.
+    - assignmentType::String : The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.
+    - instanceId::String : The instance ID of the policy assignment. This ID only and always changes when the assignment is deleted and recreated.
 """
 Base.@kwdef mutable struct PolicyAssignmentProperties <: OpenAPI.APIModel
     displayName::Union{Nothing, String} = nothing
     policyDefinitionId::Union{Nothing, String} = nothing
+    definitionVersion::Union{Nothing, String} = nothing
+    latestDefinitionVersion::Union{Nothing, String} = nothing
+    effectiveDefinitionVersion::Union{Nothing, String} = nothing
     scope::Union{Nothing, String} = nothing
     notScopes::Union{Nothing, Vector{String}} = nothing
     parameters::Union{Nothing, Dict} = nothing # spec type: Union{ Nothing, Dict{String, ParameterValuesValue} }
     description::Union{Nothing, String} = nothing
     metadata::Union{Nothing, Any} = nothing
-    enforcementMode::Union{Nothing, String} = nothing
+    enforcementMode::Union{Nothing, String} = "Default"
+    nonComplianceMessages::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{NonComplianceMessage} }
+    resourceSelectors::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ResourceSelector} }
+    overrides::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{Override} }
+    assignmentType::Union{Nothing, String} = nothing
+    instanceId::Union{Nothing, String} = nothing
 
-    function PolicyAssignmentProperties(displayName, policyDefinitionId, scope, notScopes, parameters, description, metadata, enforcementMode, )
-        OpenAPI.validate_property(PolicyAssignmentProperties, Symbol("displayName"), displayName)
-        OpenAPI.validate_property(PolicyAssignmentProperties, Symbol("policyDefinitionId"), policyDefinitionId)
-        OpenAPI.validate_property(PolicyAssignmentProperties, Symbol("scope"), scope)
-        OpenAPI.validate_property(PolicyAssignmentProperties, Symbol("notScopes"), notScopes)
-        OpenAPI.validate_property(PolicyAssignmentProperties, Symbol("parameters"), parameters)
-        OpenAPI.validate_property(PolicyAssignmentProperties, Symbol("description"), description)
-        OpenAPI.validate_property(PolicyAssignmentProperties, Symbol("metadata"), metadata)
-        OpenAPI.validate_property(PolicyAssignmentProperties, Symbol("enforcementMode"), enforcementMode)
-        return new(displayName, policyDefinitionId, scope, notScopes, parameters, description, metadata, enforcementMode, )
+    function PolicyAssignmentProperties(displayName, policyDefinitionId, definitionVersion, latestDefinitionVersion, effectiveDefinitionVersion, scope, notScopes, parameters, description, metadata, enforcementMode, nonComplianceMessages, resourceSelectors, overrides, assignmentType, instanceId, )
+        o = new(displayName, policyDefinitionId, definitionVersion, latestDefinitionVersion, effectiveDefinitionVersion, scope, notScopes, parameters, description, metadata, enforcementMode, nonComplianceMessages, resourceSelectors, overrides, assignmentType, instanceId, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PolicyAssignmentProperties
 
-const _property_types_PolicyAssignmentProperties = Dict{Symbol,String}(Symbol("displayName")=>"String", Symbol("policyDefinitionId")=>"String", Symbol("scope")=>"String", Symbol("notScopes")=>"Vector{String}", Symbol("parameters")=>"Dict{String, ParameterValuesValue}", Symbol("description")=>"String", Symbol("metadata")=>"Any", Symbol("enforcementMode")=>"String", )
+const _property_types_PolicyAssignmentProperties = Dict{Symbol,String}(Symbol("displayName")=>"String", Symbol("policyDefinitionId")=>"String", Symbol("definitionVersion")=>"String", Symbol("latestDefinitionVersion")=>"String", Symbol("effectiveDefinitionVersion")=>"String", Symbol("scope")=>"String", Symbol("notScopes")=>"Vector{String}", Symbol("parameters")=>"Dict{String, ParameterValuesValue}", Symbol("description")=>"String", Symbol("metadata")=>"Any", Symbol("enforcementMode")=>"String", Symbol("nonComplianceMessages")=>"Vector{NonComplianceMessage}", Symbol("resourceSelectors")=>"Vector{ResourceSelector}", Symbol("overrides")=>"Vector{Override}", Symbol("assignmentType")=>"String", Symbol("instanceId")=>"String", )
 OpenAPI.property_type(::Type{ PolicyAssignmentProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PolicyAssignmentProperties[name]))}
 
-function check_required(o::PolicyAssignmentProperties)
+function OpenAPI.check_required(o::PolicyAssignmentProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::PolicyAssignmentProperties)
+    OpenAPI.validate_property(PolicyAssignmentProperties, Symbol("displayName"), o.displayName)
+    OpenAPI.validate_property(PolicyAssignmentProperties, Symbol("policyDefinitionId"), o.policyDefinitionId)
+    OpenAPI.validate_property(PolicyAssignmentProperties, Symbol("definitionVersion"), o.definitionVersion)
+    OpenAPI.validate_property(PolicyAssignmentProperties, Symbol("latestDefinitionVersion"), o.latestDefinitionVersion)
+    OpenAPI.validate_property(PolicyAssignmentProperties, Symbol("effectiveDefinitionVersion"), o.effectiveDefinitionVersion)
+    OpenAPI.validate_property(PolicyAssignmentProperties, Symbol("scope"), o.scope)
+    OpenAPI.validate_property(PolicyAssignmentProperties, Symbol("notScopes"), o.notScopes)
+    OpenAPI.validate_property(PolicyAssignmentProperties, Symbol("parameters"), o.parameters)
+    OpenAPI.validate_property(PolicyAssignmentProperties, Symbol("description"), o.description)
+    OpenAPI.validate_property(PolicyAssignmentProperties, Symbol("metadata"), o.metadata)
+    OpenAPI.validate_property(PolicyAssignmentProperties, Symbol("enforcementMode"), o.enforcementMode)
+    OpenAPI.validate_property(PolicyAssignmentProperties, Symbol("nonComplianceMessages"), o.nonComplianceMessages)
+    OpenAPI.validate_property(PolicyAssignmentProperties, Symbol("resourceSelectors"), o.resourceSelectors)
+    OpenAPI.validate_property(PolicyAssignmentProperties, Symbol("overrides"), o.overrides)
+    OpenAPI.validate_property(PolicyAssignmentProperties, Symbol("assignmentType"), o.assignmentType)
+    OpenAPI.validate_property(PolicyAssignmentProperties, Symbol("instanceId"), o.instanceId)
+end
+
 function OpenAPI.validate_property(::Type{ PolicyAssignmentProperties }, name::Symbol, val)
+
+
+
+
+
+
+
+
+
+
+
     if name === Symbol("enforcementMode")
-        OpenAPI.validate_param(name, "PolicyAssignmentProperties", :enum, val, ["Default", "DoNotEnforce"])
+        OpenAPI.validate_param(name, "PolicyAssignmentProperties", :enum, val, ["Default", "DoNotEnforce", "Enroll"])
     end
+
+
+
+
+
+    if name === Symbol("assignmentType")
+        OpenAPI.validate_param(name, "PolicyAssignmentProperties", :enum, val, ["NotSpecified", "System", "SystemHidden", "Custom"])
+    end
+
+
 end

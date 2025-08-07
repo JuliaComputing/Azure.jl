@@ -24,20 +24,29 @@ Base.@kwdef mutable struct SecurityRuleAssociations <: OpenAPI.APIModel
     effectiveSecurityRules::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{EffectiveNetworkSecurityRule} }
 
     function SecurityRuleAssociations(networkInterfaceAssociation, subnetAssociation, defaultSecurityRules, effectiveSecurityRules, )
-        OpenAPI.validate_property(SecurityRuleAssociations, Symbol("networkInterfaceAssociation"), networkInterfaceAssociation)
-        OpenAPI.validate_property(SecurityRuleAssociations, Symbol("subnetAssociation"), subnetAssociation)
-        OpenAPI.validate_property(SecurityRuleAssociations, Symbol("defaultSecurityRules"), defaultSecurityRules)
-        OpenAPI.validate_property(SecurityRuleAssociations, Symbol("effectiveSecurityRules"), effectiveSecurityRules)
-        return new(networkInterfaceAssociation, subnetAssociation, defaultSecurityRules, effectiveSecurityRules, )
+        o = new(networkInterfaceAssociation, subnetAssociation, defaultSecurityRules, effectiveSecurityRules, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type SecurityRuleAssociations
 
 const _property_types_SecurityRuleAssociations = Dict{Symbol,String}(Symbol("networkInterfaceAssociation")=>"NetworkInterfaceAssociation", Symbol("subnetAssociation")=>"SubnetAssociation", Symbol("defaultSecurityRules")=>"Vector{SecurityRule}", Symbol("effectiveSecurityRules")=>"Vector{EffectiveNetworkSecurityRule}", )
 OpenAPI.property_type(::Type{ SecurityRuleAssociations }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SecurityRuleAssociations[name]))}
 
-function check_required(o::SecurityRuleAssociations)
+function OpenAPI.check_required(o::SecurityRuleAssociations)
     true
 end
 
+function OpenAPI.validate_properties(o::SecurityRuleAssociations)
+    OpenAPI.validate_property(SecurityRuleAssociations, Symbol("networkInterfaceAssociation"), o.networkInterfaceAssociation)
+    OpenAPI.validate_property(SecurityRuleAssociations, Symbol("subnetAssociation"), o.subnetAssociation)
+    OpenAPI.validate_property(SecurityRuleAssociations, Symbol("defaultSecurityRules"), o.defaultSecurityRules)
+    OpenAPI.validate_property(SecurityRuleAssociations, Symbol("effectiveSecurityRules"), o.effectiveSecurityRules)
+end
+
 function OpenAPI.validate_property(::Type{ SecurityRuleAssociations }, name::Symbol, val)
+
+
+
+
 end

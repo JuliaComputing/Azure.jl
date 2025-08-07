@@ -30,22 +30,33 @@ Base.@kwdef mutable struct PatchRouteFilter <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
 
     function PatchRouteFilter(properties, name, etag, type, tags, id, )
-        OpenAPI.validate_property(PatchRouteFilter, Symbol("properties"), properties)
-        OpenAPI.validate_property(PatchRouteFilter, Symbol("name"), name)
-        OpenAPI.validate_property(PatchRouteFilter, Symbol("etag"), etag)
-        OpenAPI.validate_property(PatchRouteFilter, Symbol("type"), type)
-        OpenAPI.validate_property(PatchRouteFilter, Symbol("tags"), tags)
-        OpenAPI.validate_property(PatchRouteFilter, Symbol("id"), id)
-        return new(properties, name, etag, type, tags, id, )
+        o = new(properties, name, etag, type, tags, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PatchRouteFilter
 
 const _property_types_PatchRouteFilter = Dict{Symbol,String}(Symbol("properties")=>"RouteFilterPropertiesFormat", Symbol("name")=>"String", Symbol("etag")=>"String", Symbol("type")=>"String", Symbol("tags")=>"Dict{String, String}", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ PatchRouteFilter }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PatchRouteFilter[name]))}
 
-function check_required(o::PatchRouteFilter)
+function OpenAPI.check_required(o::PatchRouteFilter)
     true
 end
 
+function OpenAPI.validate_properties(o::PatchRouteFilter)
+    OpenAPI.validate_property(PatchRouteFilter, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(PatchRouteFilter, Symbol("name"), o.name)
+    OpenAPI.validate_property(PatchRouteFilter, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(PatchRouteFilter, Symbol("type"), o.type)
+    OpenAPI.validate_property(PatchRouteFilter, Symbol("tags"), o.tags)
+    OpenAPI.validate_property(PatchRouteFilter, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ PatchRouteFilter }, name::Symbol, val)
+
+
+
+
+
+
 end

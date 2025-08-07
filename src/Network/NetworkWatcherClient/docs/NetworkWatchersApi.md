@@ -37,11 +37,11 @@ Verifies the possibility of establishing a direct TCP connection from a virtual 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkWatchersApi** | API context | 
-**resource_group_name** | **String**| The name of the network watcher resource group. | [default to nothing]
-**network_watcher_name** | **String**| The name of the network watcher resource. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**ConnectivityParameters**](ConnectivityParameters.md)| Parameters that determine how the connectivity check will be performed. | 
+**resource_group_name** | **String** | The name of the network watcher resource group. |
+**network_watcher_name** | **String** | The name of the network watcher resource. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**ConnectivityParameters**](ConnectivityParameters.md) | Parameters that determine how the connectivity check will be performed. |
 
 ### Return type
 
@@ -71,11 +71,11 @@ Creates or updates a network watcher in the specified resource group.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkWatchersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_watcher_name** | **String**| The name of the network watcher. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**NetworkWatcher**](NetworkWatcher.md)| Parameters that define the network watcher resource. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**network_watcher_name** | **String** | The name of the network watcher. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**NetworkWatcher**](NetworkWatcher.md) | Parameters that define the network watcher resource. |
 
 ### Return type
 
@@ -105,10 +105,10 @@ Deletes the specified network watcher resource.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkWatchersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_watcher_name** | **String**| The name of the network watcher. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**network_watcher_name** | **String** | The name of the network watcher. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -138,10 +138,10 @@ Gets the specified network watcher by resource group.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkWatchersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_watcher_name** | **String**| The name of the network watcher. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**network_watcher_name** | **String** | The name of the network watcher. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -171,11 +171,11 @@ NOTE: This feature is currently in preview and still being tested for stability.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkWatchersApi** | API context | 
-**resource_group_name** | **String**| The name of the network watcher resource group. | [default to nothing]
-**network_watcher_name** | **String**| The name of the network watcher resource. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**AzureReachabilityReportParameters**](AzureReachabilityReportParameters.md)| Parameters that determine Azure reachability report configuration. | 
+**resource_group_name** | **String** | The name of the network watcher resource group. |
+**network_watcher_name** | **String** | The name of the network watcher resource. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**AzureReachabilityReportParameters**](AzureReachabilityReportParameters.md) | Parameters that determine Azure reachability report configuration. |
 
 ### Return type
 
@@ -205,11 +205,11 @@ Queries status of flow log and traffic analytics (optional) on a specified resou
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkWatchersApi** | API context | 
-**resource_group_name** | **String**| The name of the network watcher resource group. | [default to nothing]
-**network_watcher_name** | **String**| The name of the network watcher resource. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**FlowLogStatusParameters**](FlowLogStatusParameters.md)| Parameters that define a resource to query flow log and traffic analytics (optional) status. | 
+**resource_group_name** | **String** | The name of the network watcher resource group. |
+**network_watcher_name** | **String** | The name of the network watcher resource. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**FlowLogStatusParameters**](FlowLogStatusParameters.md) | Parameters that define a resource to query flow log and traffic analytics (optional) status. |
 
 ### Return type
 
@@ -239,11 +239,11 @@ Gets Network Configuration Diagnostic data to help customers understand and debu
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkWatchersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_watcher_name** | **String**| The name of the network watcher. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**NetworkConfigurationDiagnosticParameters**](NetworkConfigurationDiagnosticParameters.md)| Parameters to get network configuration diagnostic. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**network_watcher_name** | **String** | The name of the network watcher. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**NetworkConfigurationDiagnosticParameters**](NetworkConfigurationDiagnosticParameters.md) | Parameters to get network configuration diagnostic. |
 
 ### Return type
 
@@ -273,11 +273,11 @@ Gets the next hop from the specified VM.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkWatchersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_watcher_name** | **String**| The name of the network watcher. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**NextHopParameters**](NextHopParameters.md)| Parameters that define the source and destination endpoint. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**network_watcher_name** | **String** | The name of the network watcher. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**NextHopParameters**](NextHopParameters.md) | Parameters that define the source and destination endpoint. |
 
 ### Return type
 
@@ -307,11 +307,11 @@ Gets the current network topology by resource group.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkWatchersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_watcher_name** | **String**| The name of the network watcher. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**TopologyParameters**](TopologyParameters.md)| Parameters that define the representation of topology. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**network_watcher_name** | **String** | The name of the network watcher. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**TopologyParameters**](TopologyParameters.md) | Parameters that define the representation of topology. |
 
 ### Return type
 
@@ -341,11 +341,11 @@ Initiate troubleshooting on a specified resource.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkWatchersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_watcher_name** | **String**| The name of the network watcher resource. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**TroubleshootingParameters**](TroubleshootingParameters.md)| Parameters that define the resource to troubleshoot. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**network_watcher_name** | **String** | The name of the network watcher resource. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**TroubleshootingParameters**](TroubleshootingParameters.md) | Parameters that define the resource to troubleshoot. |
 
 ### Return type
 
@@ -375,11 +375,11 @@ Get the last completed troubleshooting result on a specified resource.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkWatchersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_watcher_name** | **String**| The name of the network watcher resource. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**QueryTroubleshootingParameters**](QueryTroubleshootingParameters.md)| Parameters that define the resource to query the troubleshooting result. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**network_watcher_name** | **String** | The name of the network watcher resource. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**QueryTroubleshootingParameters**](QueryTroubleshootingParameters.md) | Parameters that define the resource to query the troubleshooting result. |
 
 ### Return type
 
@@ -409,11 +409,11 @@ Gets the configured and effective security group rules on the specified VM.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkWatchersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_watcher_name** | **String**| The name of the network watcher. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**SecurityGroupViewParameters**](SecurityGroupViewParameters.md)| Parameters that define the VM to check security groups for. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**network_watcher_name** | **String** | The name of the network watcher. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**SecurityGroupViewParameters**](SecurityGroupViewParameters.md) | Parameters that define the VM to check security groups for. |
 
 ### Return type
 
@@ -443,9 +443,9 @@ Gets all network watchers by resource group.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkWatchersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -475,8 +475,8 @@ Gets all network watchers by subscription.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkWatchersApi** | API context | 
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -506,11 +506,11 @@ NOTE: This feature is currently in preview and still being tested for stability.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkWatchersApi** | API context | 
-**resource_group_name** | **String**| The name of the network watcher resource group. | [default to nothing]
-**network_watcher_name** | **String**| The name of the network watcher resource. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**AvailableProvidersListParameters**](AvailableProvidersListParameters.md)| Parameters that scope the list of available providers. | 
+**resource_group_name** | **String** | The name of the network watcher resource group. |
+**network_watcher_name** | **String** | The name of the network watcher resource. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**AvailableProvidersListParameters**](AvailableProvidersListParameters.md) | Parameters that scope the list of available providers. |
 
 ### Return type
 
@@ -540,11 +540,11 @@ Configures flow log and traffic analytics (optional) on a specified resource.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkWatchersApi** | API context | 
-**resource_group_name** | **String**| The name of the network watcher resource group. | [default to nothing]
-**network_watcher_name** | **String**| The name of the network watcher resource. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**FlowLogInformation**](FlowLogInformation.md)| Parameters that define the configuration of flow log. | 
+**resource_group_name** | **String** | The name of the network watcher resource group. |
+**network_watcher_name** | **String** | The name of the network watcher resource. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**FlowLogInformation**](FlowLogInformation.md) | Parameters that define the configuration of flow log. |
 
 ### Return type
 
@@ -574,11 +574,11 @@ Updates a network watcher tags.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkWatchersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_watcher_name** | **String**| The name of the network watcher. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**TagsObject**](TagsObject.md)| Parameters supplied to update network watcher tags. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**network_watcher_name** | **String** | The name of the network watcher. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**TagsObject**](TagsObject.md) | Parameters supplied to update network watcher tags. |
 
 ### Return type
 
@@ -608,11 +608,11 @@ Verify IP flow from the specified VM to a location given the currently configure
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **NetworkWatchersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_watcher_name** | **String**| The name of the network watcher. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**VerificationIPFlowParameters**](VerificationIPFlowParameters.md)| Parameters that define the IP flow to be verified. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**network_watcher_name** | **String** | The name of the network watcher. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**VerificationIPFlowParameters**](VerificationIPFlowParameters.md) | Parameters that define the IP flow to be verified. |
 
 ### Return type
 

@@ -14,11 +14,21 @@ NetworkInterface properties.
         dnsSettings=nothing,
         macAddress=nothing,
         primary=nothing,
+        vnetEncryptionSupported=nothing,
+        defaultOutboundConnectivityEnabled=nothing,
         enableAcceleratedNetworking=nothing,
+        disableTcpStateTracking=nothing,
         enableIPForwarding=nothing,
         hostedWorkloads=nothing,
+        dscpConfiguration=nothing,
         resourceGuid=nothing,
         provisioningState=nothing,
+        workloadType=nothing,
+        nicType=nothing,
+        privateLinkService=nothing,
+        migrationPhase=nothing,
+        auxiliaryMode=nothing,
+        auxiliarySku=nothing,
     )
 
     - virtualMachine::SubResource
@@ -29,11 +39,21 @@ NetworkInterface properties.
     - dnsSettings::NetworkInterfaceDnsSettings2
     - macAddress::String : The MAC address of the network interface.
     - primary::Bool : Whether this is a primary network interface on a virtual machine.
-    - enableAcceleratedNetworking::Bool : If the network interface is accelerated networking enabled.
+    - vnetEncryptionSupported::Bool : Whether the virtual machine this nic is attached to supports encryption.
+    - defaultOutboundConnectivityEnabled::Bool : Whether default outbound connectivity for nic was configured or not.
+    - enableAcceleratedNetworking::Bool : If the network interface is configured for accelerated networking. Not applicable to VM sizes which require accelerated networking.
+    - disableTcpStateTracking::Bool : Indicates whether to disable tcp state tracking.
     - enableIPForwarding::Bool : Indicates whether IP forwarding is enabled on this network interface.
     - hostedWorkloads::Vector{String} : A list of references to linked BareMetal resources.
+    - dscpConfiguration::SubResource
     - resourceGuid::String : The resource GUID property of the network interface resource.
     - provisioningState::ProvisioningState
+    - workloadType::String : WorkloadType of the NetworkInterface for BareMetal resources
+    - nicType::String : Type of Network Interface resource.
+    - privateLinkService::PrivateLinkService
+    - migrationPhase::String : Migration phase of Network Interface resource.
+    - auxiliaryMode::String : Auxiliary mode of Network Interface resource.
+    - auxiliarySku::String : Auxiliary sku of Network Interface resource.
 """
 Base.@kwdef mutable struct NetworkInterfacePropertiesFormat2 <: OpenAPI.APIModel
     virtualMachine = nothing # spec type: Union{ Nothing, SubResource }
@@ -44,36 +64,100 @@ Base.@kwdef mutable struct NetworkInterfacePropertiesFormat2 <: OpenAPI.APIModel
     dnsSettings = nothing # spec type: Union{ Nothing, NetworkInterfaceDnsSettings2 }
     macAddress::Union{Nothing, String} = nothing
     primary::Union{Nothing, Bool} = nothing
+    vnetEncryptionSupported::Union{Nothing, Bool} = nothing
+    defaultOutboundConnectivityEnabled::Union{Nothing, Bool} = nothing
     enableAcceleratedNetworking::Union{Nothing, Bool} = nothing
+    disableTcpStateTracking::Union{Nothing, Bool} = nothing
     enableIPForwarding::Union{Nothing, Bool} = nothing
     hostedWorkloads::Union{Nothing, Vector{String}} = nothing
+    dscpConfiguration = nothing # spec type: Union{ Nothing, SubResource }
     resourceGuid::Union{Nothing, String} = nothing
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
+    workloadType::Union{Nothing, String} = nothing
+    nicType::Union{Nothing, String} = nothing
+    privateLinkService = nothing # spec type: Union{ Nothing, PrivateLinkService }
+    migrationPhase::Union{Nothing, String} = nothing
+    auxiliaryMode::Union{Nothing, String} = nothing
+    auxiliarySku::Union{Nothing, String} = nothing
 
-    function NetworkInterfacePropertiesFormat2(virtualMachine, networkSecurityGroup, privateEndpoint, ipConfigurations, tapConfigurations, dnsSettings, macAddress, primary, enableAcceleratedNetworking, enableIPForwarding, hostedWorkloads, resourceGuid, provisioningState, )
-        OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("virtualMachine"), virtualMachine)
-        OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("networkSecurityGroup"), networkSecurityGroup)
-        OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("privateEndpoint"), privateEndpoint)
-        OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("ipConfigurations"), ipConfigurations)
-        OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("tapConfigurations"), tapConfigurations)
-        OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("dnsSettings"), dnsSettings)
-        OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("macAddress"), macAddress)
-        OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("primary"), primary)
-        OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("enableAcceleratedNetworking"), enableAcceleratedNetworking)
-        OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("enableIPForwarding"), enableIPForwarding)
-        OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("hostedWorkloads"), hostedWorkloads)
-        OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("resourceGuid"), resourceGuid)
-        OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("provisioningState"), provisioningState)
-        return new(virtualMachine, networkSecurityGroup, privateEndpoint, ipConfigurations, tapConfigurations, dnsSettings, macAddress, primary, enableAcceleratedNetworking, enableIPForwarding, hostedWorkloads, resourceGuid, provisioningState, )
+    function NetworkInterfacePropertiesFormat2(virtualMachine, networkSecurityGroup, privateEndpoint, ipConfigurations, tapConfigurations, dnsSettings, macAddress, primary, vnetEncryptionSupported, defaultOutboundConnectivityEnabled, enableAcceleratedNetworking, disableTcpStateTracking, enableIPForwarding, hostedWorkloads, dscpConfiguration, resourceGuid, provisioningState, workloadType, nicType, privateLinkService, migrationPhase, auxiliaryMode, auxiliarySku, )
+        o = new(virtualMachine, networkSecurityGroup, privateEndpoint, ipConfigurations, tapConfigurations, dnsSettings, macAddress, primary, vnetEncryptionSupported, defaultOutboundConnectivityEnabled, enableAcceleratedNetworking, disableTcpStateTracking, enableIPForwarding, hostedWorkloads, dscpConfiguration, resourceGuid, provisioningState, workloadType, nicType, privateLinkService, migrationPhase, auxiliaryMode, auxiliarySku, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type NetworkInterfacePropertiesFormat2
 
-const _property_types_NetworkInterfacePropertiesFormat2 = Dict{Symbol,String}(Symbol("virtualMachine")=>"SubResource", Symbol("networkSecurityGroup")=>"NetworkSecurityGroup", Symbol("privateEndpoint")=>"PrivateEndpoint", Symbol("ipConfigurations")=>"Vector{NetworkInterfaceIPConfiguration2}", Symbol("tapConfigurations")=>"Vector{NetworkInterfaceTapConfiguration2}", Symbol("dnsSettings")=>"NetworkInterfaceDnsSettings2", Symbol("macAddress")=>"String", Symbol("primary")=>"Bool", Symbol("enableAcceleratedNetworking")=>"Bool", Symbol("enableIPForwarding")=>"Bool", Symbol("hostedWorkloads")=>"Vector{String}", Symbol("resourceGuid")=>"String", Symbol("provisioningState")=>"ProvisioningState", )
+const _property_types_NetworkInterfacePropertiesFormat2 = Dict{Symbol,String}(Symbol("virtualMachine")=>"SubResource", Symbol("networkSecurityGroup")=>"NetworkSecurityGroup", Symbol("privateEndpoint")=>"PrivateEndpoint", Symbol("ipConfigurations")=>"Vector{NetworkInterfaceIPConfiguration2}", Symbol("tapConfigurations")=>"Vector{NetworkInterfaceTapConfiguration2}", Symbol("dnsSettings")=>"NetworkInterfaceDnsSettings2", Symbol("macAddress")=>"String", Symbol("primary")=>"Bool", Symbol("vnetEncryptionSupported")=>"Bool", Symbol("defaultOutboundConnectivityEnabled")=>"Bool", Symbol("enableAcceleratedNetworking")=>"Bool", Symbol("disableTcpStateTracking")=>"Bool", Symbol("enableIPForwarding")=>"Bool", Symbol("hostedWorkloads")=>"Vector{String}", Symbol("dscpConfiguration")=>"SubResource", Symbol("resourceGuid")=>"String", Symbol("provisioningState")=>"ProvisioningState", Symbol("workloadType")=>"String", Symbol("nicType")=>"String", Symbol("privateLinkService")=>"PrivateLinkService", Symbol("migrationPhase")=>"String", Symbol("auxiliaryMode")=>"String", Symbol("auxiliarySku")=>"String", )
 OpenAPI.property_type(::Type{ NetworkInterfacePropertiesFormat2 }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkInterfacePropertiesFormat2[name]))}
 
-function check_required(o::NetworkInterfacePropertiesFormat2)
+function OpenAPI.check_required(o::NetworkInterfacePropertiesFormat2)
     true
 end
 
+function OpenAPI.validate_properties(o::NetworkInterfacePropertiesFormat2)
+    OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("virtualMachine"), o.virtualMachine)
+    OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("networkSecurityGroup"), o.networkSecurityGroup)
+    OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("privateEndpoint"), o.privateEndpoint)
+    OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("ipConfigurations"), o.ipConfigurations)
+    OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("tapConfigurations"), o.tapConfigurations)
+    OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("dnsSettings"), o.dnsSettings)
+    OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("macAddress"), o.macAddress)
+    OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("primary"), o.primary)
+    OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("vnetEncryptionSupported"), o.vnetEncryptionSupported)
+    OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("defaultOutboundConnectivityEnabled"), o.defaultOutboundConnectivityEnabled)
+    OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("enableAcceleratedNetworking"), o.enableAcceleratedNetworking)
+    OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("disableTcpStateTracking"), o.disableTcpStateTracking)
+    OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("enableIPForwarding"), o.enableIPForwarding)
+    OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("hostedWorkloads"), o.hostedWorkloads)
+    OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("dscpConfiguration"), o.dscpConfiguration)
+    OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("resourceGuid"), o.resourceGuid)
+    OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("workloadType"), o.workloadType)
+    OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("nicType"), o.nicType)
+    OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("privateLinkService"), o.privateLinkService)
+    OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("migrationPhase"), o.migrationPhase)
+    OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("auxiliaryMode"), o.auxiliaryMode)
+    OpenAPI.validate_property(NetworkInterfacePropertiesFormat2, Symbol("auxiliarySku"), o.auxiliarySku)
+end
+
 function OpenAPI.validate_property(::Type{ NetworkInterfacePropertiesFormat2 }, name::Symbol, val)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    if name === Symbol("nicType")
+        OpenAPI.validate_param(name, "NetworkInterfacePropertiesFormat2", :enum, val, ["Standard", "Elastic"])
+    end
+
+
+
+    if name === Symbol("migrationPhase")
+        OpenAPI.validate_param(name, "NetworkInterfacePropertiesFormat2", :enum, val, ["None", "Prepare", "Commit", "Abort", "Committed"])
+    end
+
+
+    if name === Symbol("auxiliaryMode")
+        OpenAPI.validate_param(name, "NetworkInterfacePropertiesFormat2", :enum, val, ["None", "MaxConnections", "Floating", "AcceleratedConnections"])
+    end
+
+
+    if name === Symbol("auxiliarySku")
+        OpenAPI.validate_param(name, "NetworkInterfacePropertiesFormat2", :enum, val, ["None", "A1", "A2", "A4", "A8"])
+    end
+
 end

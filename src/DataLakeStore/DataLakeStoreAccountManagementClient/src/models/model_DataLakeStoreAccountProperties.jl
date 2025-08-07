@@ -66,70 +66,102 @@ Base.@kwdef mutable struct DataLakeStoreAccountProperties <: OpenAPI.APIModel
     endpoint::Union{Nothing, String} = nothing
 
     function DataLakeStoreAccountProperties(defaultGroup, encryptionConfig, encryptionState, encryptionProvisioningState, firewallRules, virtualNetworkRules, firewallState, firewallAllowAzureIps, trustedIdProviders, trustedIdProviderState, newTier, currentTier, accountId, provisioningState, state, creationTime, lastModifiedTime, endpoint, )
-        OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("defaultGroup"), defaultGroup)
-        OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("encryptionConfig"), encryptionConfig)
-        OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("encryptionState"), encryptionState)
-        OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("encryptionProvisioningState"), encryptionProvisioningState)
-        OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("firewallRules"), firewallRules)
-        OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("virtualNetworkRules"), virtualNetworkRules)
-        OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("firewallState"), firewallState)
-        OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("firewallAllowAzureIps"), firewallAllowAzureIps)
-        OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("trustedIdProviders"), trustedIdProviders)
-        OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("trustedIdProviderState"), trustedIdProviderState)
-        OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("newTier"), newTier)
-        OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("currentTier"), currentTier)
-        OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("accountId"), accountId)
-        OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("provisioningState"), provisioningState)
-        OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("state"), state)
-        OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("creationTime"), creationTime)
-        OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("lastModifiedTime"), lastModifiedTime)
-        OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("endpoint"), endpoint)
-        return new(defaultGroup, encryptionConfig, encryptionState, encryptionProvisioningState, firewallRules, virtualNetworkRules, firewallState, firewallAllowAzureIps, trustedIdProviders, trustedIdProviderState, newTier, currentTier, accountId, provisioningState, state, creationTime, lastModifiedTime, endpoint, )
+        o = new(defaultGroup, encryptionConfig, encryptionState, encryptionProvisioningState, firewallRules, virtualNetworkRules, firewallState, firewallAllowAzureIps, trustedIdProviders, trustedIdProviderState, newTier, currentTier, accountId, provisioningState, state, creationTime, lastModifiedTime, endpoint, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type DataLakeStoreAccountProperties
 
 const _property_types_DataLakeStoreAccountProperties = Dict{Symbol,String}(Symbol("defaultGroup")=>"String", Symbol("encryptionConfig")=>"EncryptionConfig", Symbol("encryptionState")=>"String", Symbol("encryptionProvisioningState")=>"String", Symbol("firewallRules")=>"Vector{FirewallRule}", Symbol("virtualNetworkRules")=>"Vector{VirtualNetworkRule}", Symbol("firewallState")=>"String", Symbol("firewallAllowAzureIps")=>"String", Symbol("trustedIdProviders")=>"Vector{TrustedIdProvider}", Symbol("trustedIdProviderState")=>"String", Symbol("newTier")=>"String", Symbol("currentTier")=>"String", Symbol("accountId")=>"String", Symbol("provisioningState")=>"String", Symbol("state")=>"String", Symbol("creationTime")=>"ZonedDateTime", Symbol("lastModifiedTime")=>"ZonedDateTime", Symbol("endpoint")=>"String", )
 OpenAPI.property_type(::Type{ DataLakeStoreAccountProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DataLakeStoreAccountProperties[name]))}
 
-function check_required(o::DataLakeStoreAccountProperties)
+function OpenAPI.check_required(o::DataLakeStoreAccountProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::DataLakeStoreAccountProperties)
+    OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("defaultGroup"), o.defaultGroup)
+    OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("encryptionConfig"), o.encryptionConfig)
+    OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("encryptionState"), o.encryptionState)
+    OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("encryptionProvisioningState"), o.encryptionProvisioningState)
+    OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("firewallRules"), o.firewallRules)
+    OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("virtualNetworkRules"), o.virtualNetworkRules)
+    OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("firewallState"), o.firewallState)
+    OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("firewallAllowAzureIps"), o.firewallAllowAzureIps)
+    OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("trustedIdProviders"), o.trustedIdProviders)
+    OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("trustedIdProviderState"), o.trustedIdProviderState)
+    OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("newTier"), o.newTier)
+    OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("currentTier"), o.currentTier)
+    OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("accountId"), o.accountId)
+    OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("state"), o.state)
+    OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("creationTime"), o.creationTime)
+    OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("lastModifiedTime"), o.lastModifiedTime)
+    OpenAPI.validate_property(DataLakeStoreAccountProperties, Symbol("endpoint"), o.endpoint)
+end
+
 function OpenAPI.validate_property(::Type{ DataLakeStoreAccountProperties }, name::Symbol, val)
+
+
+
     if name === Symbol("encryptionState")
         OpenAPI.validate_param(name, "DataLakeStoreAccountProperties", :enum, val, ["Enabled", "Disabled"])
     end
+
+
     if name === Symbol("encryptionProvisioningState")
         OpenAPI.validate_param(name, "DataLakeStoreAccountProperties", :enum, val, ["Creating", "Succeeded"])
     end
+
+
+
+
     if name === Symbol("firewallState")
         OpenAPI.validate_param(name, "DataLakeStoreAccountProperties", :enum, val, ["Enabled", "Disabled"])
     end
+
+
     if name === Symbol("firewallAllowAzureIps")
         OpenAPI.validate_param(name, "DataLakeStoreAccountProperties", :enum, val, ["Enabled", "Disabled"])
     end
+
+
+
     if name === Symbol("trustedIdProviderState")
         OpenAPI.validate_param(name, "DataLakeStoreAccountProperties", :enum, val, ["Enabled", "Disabled"])
     end
+
+
     if name === Symbol("newTier")
         OpenAPI.validate_param(name, "DataLakeStoreAccountProperties", :enum, val, ["Consumption", "Commitment_1TB", "Commitment_10TB", "Commitment_100TB", "Commitment_500TB", "Commitment_1PB", "Commitment_5PB"])
     end
+
+
     if name === Symbol("currentTier")
         OpenAPI.validate_param(name, "DataLakeStoreAccountProperties", :enum, val, ["Consumption", "Commitment_1TB", "Commitment_10TB", "Commitment_100TB", "Commitment_500TB", "Commitment_1PB", "Commitment_5PB"])
     end
+
+
     if name === Symbol("accountId")
         OpenAPI.validate_param(name, "DataLakeStoreAccountProperties", :format, val, "uuid")
     end
+
     if name === Symbol("provisioningState")
         OpenAPI.validate_param(name, "DataLakeStoreAccountProperties", :enum, val, ["Failed", "Creating", "Running", "Succeeded", "Patching", "Suspending", "Resuming", "Deleting", "Deleted", "Undeleting", "Canceled"])
     end
+
+
     if name === Symbol("state")
         OpenAPI.validate_param(name, "DataLakeStoreAccountProperties", :enum, val, ["Active", "Suspended"])
     end
+
+
     if name === Symbol("creationTime")
         OpenAPI.validate_param(name, "DataLakeStoreAccountProperties", :format, val, "date-time")
     end
+
     if name === Symbol("lastModifiedTime")
         OpenAPI.validate_param(name, "DataLakeStoreAccountProperties", :format, val, "date-time")
     end
+
 end

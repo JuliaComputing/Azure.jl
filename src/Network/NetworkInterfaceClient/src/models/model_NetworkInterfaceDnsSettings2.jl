@@ -27,21 +27,31 @@ Base.@kwdef mutable struct NetworkInterfaceDnsSettings2 <: OpenAPI.APIModel
     internalDomainNameSuffix::Union{Nothing, String} = nothing
 
     function NetworkInterfaceDnsSettings2(dnsServers, appliedDnsServers, internalDnsNameLabel, internalFqdn, internalDomainNameSuffix, )
-        OpenAPI.validate_property(NetworkInterfaceDnsSettings2, Symbol("dnsServers"), dnsServers)
-        OpenAPI.validate_property(NetworkInterfaceDnsSettings2, Symbol("appliedDnsServers"), appliedDnsServers)
-        OpenAPI.validate_property(NetworkInterfaceDnsSettings2, Symbol("internalDnsNameLabel"), internalDnsNameLabel)
-        OpenAPI.validate_property(NetworkInterfaceDnsSettings2, Symbol("internalFqdn"), internalFqdn)
-        OpenAPI.validate_property(NetworkInterfaceDnsSettings2, Symbol("internalDomainNameSuffix"), internalDomainNameSuffix)
-        return new(dnsServers, appliedDnsServers, internalDnsNameLabel, internalFqdn, internalDomainNameSuffix, )
+        o = new(dnsServers, appliedDnsServers, internalDnsNameLabel, internalFqdn, internalDomainNameSuffix, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type NetworkInterfaceDnsSettings2
 
 const _property_types_NetworkInterfaceDnsSettings2 = Dict{Symbol,String}(Symbol("dnsServers")=>"Vector{String}", Symbol("appliedDnsServers")=>"Vector{String}", Symbol("internalDnsNameLabel")=>"String", Symbol("internalFqdn")=>"String", Symbol("internalDomainNameSuffix")=>"String", )
 OpenAPI.property_type(::Type{ NetworkInterfaceDnsSettings2 }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkInterfaceDnsSettings2[name]))}
 
-function check_required(o::NetworkInterfaceDnsSettings2)
+function OpenAPI.check_required(o::NetworkInterfaceDnsSettings2)
     true
 end
 
+function OpenAPI.validate_properties(o::NetworkInterfaceDnsSettings2)
+    OpenAPI.validate_property(NetworkInterfaceDnsSettings2, Symbol("dnsServers"), o.dnsServers)
+    OpenAPI.validate_property(NetworkInterfaceDnsSettings2, Symbol("appliedDnsServers"), o.appliedDnsServers)
+    OpenAPI.validate_property(NetworkInterfaceDnsSettings2, Symbol("internalDnsNameLabel"), o.internalDnsNameLabel)
+    OpenAPI.validate_property(NetworkInterfaceDnsSettings2, Symbol("internalFqdn"), o.internalFqdn)
+    OpenAPI.validate_property(NetworkInterfaceDnsSettings2, Symbol("internalDomainNameSuffix"), o.internalDomainNameSuffix)
+end
+
 function OpenAPI.validate_property(::Type{ NetworkInterfaceDnsSettings2 }, name::Symbol, val)
+
+
+
+
+
 end

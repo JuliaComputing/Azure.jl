@@ -18,18 +18,25 @@ Base.@kwdef mutable struct ResourceNavigationLinksListResult <: OpenAPI.APIModel
     nextLink::Union{Nothing, String} = nothing
 
     function ResourceNavigationLinksListResult(value, nextLink, )
-        OpenAPI.validate_property(ResourceNavigationLinksListResult, Symbol("value"), value)
-        OpenAPI.validate_property(ResourceNavigationLinksListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ResourceNavigationLinksListResult
 
 const _property_types_ResourceNavigationLinksListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{ResourceNavigationLink}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ ResourceNavigationLinksListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ResourceNavigationLinksListResult[name]))}
 
-function check_required(o::ResourceNavigationLinksListResult)
+function OpenAPI.check_required(o::ResourceNavigationLinksListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::ResourceNavigationLinksListResult)
+    OpenAPI.validate_property(ResourceNavigationLinksListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(ResourceNavigationLinksListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ ResourceNavigationLinksListResult }, name::Symbol, val)
+
+
 end

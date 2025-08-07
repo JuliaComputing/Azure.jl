@@ -27,21 +27,31 @@ Base.@kwdef mutable struct OutboundRule <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
 
     function OutboundRule(properties, name, etag, type, id, )
-        OpenAPI.validate_property(OutboundRule, Symbol("properties"), properties)
-        OpenAPI.validate_property(OutboundRule, Symbol("name"), name)
-        OpenAPI.validate_property(OutboundRule, Symbol("etag"), etag)
-        OpenAPI.validate_property(OutboundRule, Symbol("type"), type)
-        OpenAPI.validate_property(OutboundRule, Symbol("id"), id)
-        return new(properties, name, etag, type, id, )
+        o = new(properties, name, etag, type, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type OutboundRule
 
 const _property_types_OutboundRule = Dict{Symbol,String}(Symbol("properties")=>"OutboundRulePropertiesFormat", Symbol("name")=>"String", Symbol("etag")=>"String", Symbol("type")=>"String", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ OutboundRule }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_OutboundRule[name]))}
 
-function check_required(o::OutboundRule)
+function OpenAPI.check_required(o::OutboundRule)
     true
 end
 
+function OpenAPI.validate_properties(o::OutboundRule)
+    OpenAPI.validate_property(OutboundRule, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(OutboundRule, Symbol("name"), o.name)
+    OpenAPI.validate_property(OutboundRule, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(OutboundRule, Symbol("type"), o.type)
+    OpenAPI.validate_property(OutboundRule, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ OutboundRule }, name::Symbol, val)
+
+
+
+
+
 end

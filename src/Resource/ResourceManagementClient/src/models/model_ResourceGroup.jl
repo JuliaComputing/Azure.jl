@@ -33,24 +33,36 @@ Base.@kwdef mutable struct ResourceGroup <: OpenAPI.APIModel
     tags::Union{Nothing, Dict{String, String}} = nothing
 
     function ResourceGroup(id, name, type, properties, location, managedBy, tags, )
-        OpenAPI.validate_property(ResourceGroup, Symbol("id"), id)
-        OpenAPI.validate_property(ResourceGroup, Symbol("name"), name)
-        OpenAPI.validate_property(ResourceGroup, Symbol("type"), type)
-        OpenAPI.validate_property(ResourceGroup, Symbol("properties"), properties)
-        OpenAPI.validate_property(ResourceGroup, Symbol("location"), location)
-        OpenAPI.validate_property(ResourceGroup, Symbol("managedBy"), managedBy)
-        OpenAPI.validate_property(ResourceGroup, Symbol("tags"), tags)
-        return new(id, name, type, properties, location, managedBy, tags, )
+        o = new(id, name, type, properties, location, managedBy, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ResourceGroup
 
 const _property_types_ResourceGroup = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("properties")=>"ResourceGroupProperties", Symbol("location")=>"String", Symbol("managedBy")=>"String", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ ResourceGroup }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ResourceGroup[name]))}
 
-function check_required(o::ResourceGroup)
+function OpenAPI.check_required(o::ResourceGroup)
     o.location === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ResourceGroup)
+    OpenAPI.validate_property(ResourceGroup, Symbol("id"), o.id)
+    OpenAPI.validate_property(ResourceGroup, Symbol("name"), o.name)
+    OpenAPI.validate_property(ResourceGroup, Symbol("type"), o.type)
+    OpenAPI.validate_property(ResourceGroup, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(ResourceGroup, Symbol("location"), o.location)
+    OpenAPI.validate_property(ResourceGroup, Symbol("managedBy"), o.managedBy)
+    OpenAPI.validate_property(ResourceGroup, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ ResourceGroup }, name::Symbol, val)
+
+
+
+
+
+
+
 end

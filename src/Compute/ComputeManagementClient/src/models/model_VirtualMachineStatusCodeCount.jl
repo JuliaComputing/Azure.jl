@@ -18,20 +18,27 @@ Base.@kwdef mutable struct VirtualMachineStatusCodeCount <: OpenAPI.APIModel
     count::Union{Nothing, Int64} = nothing
 
     function VirtualMachineStatusCodeCount(code, count, )
-        OpenAPI.validate_property(VirtualMachineStatusCodeCount, Symbol("code"), code)
-        OpenAPI.validate_property(VirtualMachineStatusCodeCount, Symbol("count"), count)
-        return new(code, count, )
+        o = new(code, count, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineStatusCodeCount
 
 const _property_types_VirtualMachineStatusCodeCount = Dict{Symbol,String}(Symbol("code")=>"String", Symbol("count")=>"Int64", )
 OpenAPI.property_type(::Type{ VirtualMachineStatusCodeCount }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineStatusCodeCount[name]))}
 
-function check_required(o::VirtualMachineStatusCodeCount)
+function OpenAPI.check_required(o::VirtualMachineStatusCodeCount)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineStatusCodeCount)
+    OpenAPI.validate_property(VirtualMachineStatusCodeCount, Symbol("code"), o.code)
+    OpenAPI.validate_property(VirtualMachineStatusCodeCount, Symbol("count"), o.count)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineStatusCodeCount }, name::Symbol, val)
+
+
     if name === Symbol("count")
         OpenAPI.validate_param(name, "VirtualMachineStatusCodeCount", :format, val, "int32")
     end

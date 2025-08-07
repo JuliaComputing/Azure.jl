@@ -27,19 +27,16 @@ Base.@kwdef mutable struct Usage <: OpenAPI.APIModel
     name = nothing # spec type: Union{ Nothing, UsageName }
 
     function Usage(id, unit, currentValue, limit, name, )
-        OpenAPI.validate_property(Usage, Symbol("id"), id)
-        OpenAPI.validate_property(Usage, Symbol("unit"), unit)
-        OpenAPI.validate_property(Usage, Symbol("currentValue"), currentValue)
-        OpenAPI.validate_property(Usage, Symbol("limit"), limit)
-        OpenAPI.validate_property(Usage, Symbol("name"), name)
-        return new(id, unit, currentValue, limit, name, )
+        o = new(id, unit, currentValue, limit, name, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type Usage
 
 const _property_types_Usage = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("unit")=>"String", Symbol("currentValue")=>"Int64", Symbol("limit")=>"Int64", Symbol("name")=>"UsageName", )
 OpenAPI.property_type(::Type{ Usage }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Usage[name]))}
 
-function check_required(o::Usage)
+function OpenAPI.check_required(o::Usage)
     o.unit === nothing && (return false)
     o.currentValue === nothing && (return false)
     o.limit === nothing && (return false)
@@ -47,14 +44,28 @@ function check_required(o::Usage)
     true
 end
 
+function OpenAPI.validate_properties(o::Usage)
+    OpenAPI.validate_property(Usage, Symbol("id"), o.id)
+    OpenAPI.validate_property(Usage, Symbol("unit"), o.unit)
+    OpenAPI.validate_property(Usage, Symbol("currentValue"), o.currentValue)
+    OpenAPI.validate_property(Usage, Symbol("limit"), o.limit)
+    OpenAPI.validate_property(Usage, Symbol("name"), o.name)
+end
+
 function OpenAPI.validate_property(::Type{ Usage }, name::Symbol, val)
+
+
     if name === Symbol("unit")
         OpenAPI.validate_param(name, "Usage", :enum, val, ["Count"])
     end
+
+
     if name === Symbol("currentValue")
         OpenAPI.validate_param(name, "Usage", :format, val, "int64")
     end
+
     if name === Symbol("limit")
         OpenAPI.validate_param(name, "Usage", :format, val, "int64")
     end
+
 end

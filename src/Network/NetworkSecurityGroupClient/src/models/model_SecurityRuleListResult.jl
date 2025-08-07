@@ -18,18 +18,25 @@ Base.@kwdef mutable struct SecurityRuleListResult <: OpenAPI.APIModel
     nextLink::Union{Nothing, String} = nothing
 
     function SecurityRuleListResult(value, nextLink, )
-        OpenAPI.validate_property(SecurityRuleListResult, Symbol("value"), value)
-        OpenAPI.validate_property(SecurityRuleListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type SecurityRuleListResult
 
 const _property_types_SecurityRuleListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{SecurityRule}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ SecurityRuleListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SecurityRuleListResult[name]))}
 
-function check_required(o::SecurityRuleListResult)
+function OpenAPI.check_required(o::SecurityRuleListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::SecurityRuleListResult)
+    OpenAPI.validate_property(SecurityRuleListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(SecurityRuleListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ SecurityRuleListResult }, name::Symbol, val)
+
+
 end

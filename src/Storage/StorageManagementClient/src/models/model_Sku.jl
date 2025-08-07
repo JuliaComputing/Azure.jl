@@ -18,19 +18,26 @@ Base.@kwdef mutable struct Sku <: OpenAPI.APIModel
     tier = nothing # spec type: Union{ Nothing, Tier }
 
     function Sku(name, tier, )
-        OpenAPI.validate_property(Sku, Symbol("name"), name)
-        OpenAPI.validate_property(Sku, Symbol("tier"), tier)
-        return new(name, tier, )
+        o = new(name, tier, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type Sku
 
 const _property_types_Sku = Dict{Symbol,String}(Symbol("name")=>"SkuName", Symbol("tier")=>"Tier", )
 OpenAPI.property_type(::Type{ Sku }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Sku[name]))}
 
-function check_required(o::Sku)
+function OpenAPI.check_required(o::Sku)
     o.name === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::Sku)
+    OpenAPI.validate_property(Sku, Symbol("name"), o.name)
+    OpenAPI.validate_property(Sku, Symbol("tier"), o.tier)
+end
+
 function OpenAPI.validate_property(::Type{ Sku }, name::Symbol, val)
+
+
 end

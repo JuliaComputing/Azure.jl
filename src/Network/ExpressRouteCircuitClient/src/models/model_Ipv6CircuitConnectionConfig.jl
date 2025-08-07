@@ -18,18 +18,25 @@ Base.@kwdef mutable struct Ipv6CircuitConnectionConfig <: OpenAPI.APIModel
     circuitConnectionStatus = nothing # spec type: Union{ Nothing, CircuitConnectionStatus }
 
     function Ipv6CircuitConnectionConfig(addressPrefix, circuitConnectionStatus, )
-        OpenAPI.validate_property(Ipv6CircuitConnectionConfig, Symbol("addressPrefix"), addressPrefix)
-        OpenAPI.validate_property(Ipv6CircuitConnectionConfig, Symbol("circuitConnectionStatus"), circuitConnectionStatus)
-        return new(addressPrefix, circuitConnectionStatus, )
+        o = new(addressPrefix, circuitConnectionStatus, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type Ipv6CircuitConnectionConfig
 
 const _property_types_Ipv6CircuitConnectionConfig = Dict{Symbol,String}(Symbol("addressPrefix")=>"String", Symbol("circuitConnectionStatus")=>"CircuitConnectionStatus", )
 OpenAPI.property_type(::Type{ Ipv6CircuitConnectionConfig }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Ipv6CircuitConnectionConfig[name]))}
 
-function check_required(o::Ipv6CircuitConnectionConfig)
+function OpenAPI.check_required(o::Ipv6CircuitConnectionConfig)
     true
 end
 
+function OpenAPI.validate_properties(o::Ipv6CircuitConnectionConfig)
+    OpenAPI.validate_property(Ipv6CircuitConnectionConfig, Symbol("addressPrefix"), o.addressPrefix)
+    OpenAPI.validate_property(Ipv6CircuitConnectionConfig, Symbol("circuitConnectionStatus"), o.circuitConnectionStatus)
+end
+
 function OpenAPI.validate_property(::Type{ Ipv6CircuitConnectionConfig }, name::Symbol, val)
+
+
 end

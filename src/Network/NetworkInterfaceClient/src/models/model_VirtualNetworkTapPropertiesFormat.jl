@@ -30,22 +30,33 @@ Base.@kwdef mutable struct VirtualNetworkTapPropertiesFormat <: OpenAPI.APIModel
     destinationPort::Union{Nothing, Int64} = nothing
 
     function VirtualNetworkTapPropertiesFormat(networkInterfaceTapConfigurations, resourceGuid, provisioningState, destinationNetworkInterfaceIPConfiguration, destinationLoadBalancerFrontEndIPConfiguration, destinationPort, )
-        OpenAPI.validate_property(VirtualNetworkTapPropertiesFormat, Symbol("networkInterfaceTapConfigurations"), networkInterfaceTapConfigurations)
-        OpenAPI.validate_property(VirtualNetworkTapPropertiesFormat, Symbol("resourceGuid"), resourceGuid)
-        OpenAPI.validate_property(VirtualNetworkTapPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        OpenAPI.validate_property(VirtualNetworkTapPropertiesFormat, Symbol("destinationNetworkInterfaceIPConfiguration"), destinationNetworkInterfaceIPConfiguration)
-        OpenAPI.validate_property(VirtualNetworkTapPropertiesFormat, Symbol("destinationLoadBalancerFrontEndIPConfiguration"), destinationLoadBalancerFrontEndIPConfiguration)
-        OpenAPI.validate_property(VirtualNetworkTapPropertiesFormat, Symbol("destinationPort"), destinationPort)
-        return new(networkInterfaceTapConfigurations, resourceGuid, provisioningState, destinationNetworkInterfaceIPConfiguration, destinationLoadBalancerFrontEndIPConfiguration, destinationPort, )
+        o = new(networkInterfaceTapConfigurations, resourceGuid, provisioningState, destinationNetworkInterfaceIPConfiguration, destinationLoadBalancerFrontEndIPConfiguration, destinationPort, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualNetworkTapPropertiesFormat
 
 const _property_types_VirtualNetworkTapPropertiesFormat = Dict{Symbol,String}(Symbol("networkInterfaceTapConfigurations")=>"Vector{NetworkInterfaceTapConfiguration2}", Symbol("resourceGuid")=>"String", Symbol("provisioningState")=>"ProvisioningState", Symbol("destinationNetworkInterfaceIPConfiguration")=>"NetworkInterfaceIPConfiguration2", Symbol("destinationLoadBalancerFrontEndIPConfiguration")=>"FrontendIPConfiguration", Symbol("destinationPort")=>"Int64", )
 OpenAPI.property_type(::Type{ VirtualNetworkTapPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualNetworkTapPropertiesFormat[name]))}
 
-function check_required(o::VirtualNetworkTapPropertiesFormat)
+function OpenAPI.check_required(o::VirtualNetworkTapPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualNetworkTapPropertiesFormat)
+    OpenAPI.validate_property(VirtualNetworkTapPropertiesFormat, Symbol("networkInterfaceTapConfigurations"), o.networkInterfaceTapConfigurations)
+    OpenAPI.validate_property(VirtualNetworkTapPropertiesFormat, Symbol("resourceGuid"), o.resourceGuid)
+    OpenAPI.validate_property(VirtualNetworkTapPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(VirtualNetworkTapPropertiesFormat, Symbol("destinationNetworkInterfaceIPConfiguration"), o.destinationNetworkInterfaceIPConfiguration)
+    OpenAPI.validate_property(VirtualNetworkTapPropertiesFormat, Symbol("destinationLoadBalancerFrontEndIPConfiguration"), o.destinationLoadBalancerFrontEndIPConfiguration)
+    OpenAPI.validate_property(VirtualNetworkTapPropertiesFormat, Symbol("destinationPort"), o.destinationPort)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualNetworkTapPropertiesFormat }, name::Symbol, val)
+
+
+
+
+
+
 end

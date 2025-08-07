@@ -20,7 +20,7 @@ Application gateway resource.
     - properties::ApplicationGatewayPropertiesFormat
     - etag::String : A unique read-only string that changes whenever the resource is updated.
     - zones::Vector{String} : A list of availability zones denoting where the resource needs to come from.
-    - identity::Any
+    - identity::ManagedServiceIdentity
     - id::String : Resource ID.
     - name::String : Resource name.
     - type::String : Resource type.
@@ -31,7 +31,7 @@ Base.@kwdef mutable struct ApplicationGateway <: OpenAPI.APIModel
     properties = nothing # spec type: Union{ Nothing, ApplicationGatewayPropertiesFormat }
     etag::Union{Nothing, String} = nothing
     zones::Union{Nothing, Vector{String}} = nothing
-    identity::Union{Nothing, Any} = nothing
+    identity = nothing # spec type: Union{ Nothing, ManagedServiceIdentity }
     id::Union{Nothing, String} = nothing
     name::Union{Nothing, String} = nothing
     type::Union{Nothing, String} = nothing
@@ -39,25 +39,39 @@ Base.@kwdef mutable struct ApplicationGateway <: OpenAPI.APIModel
     tags::Union{Nothing, Dict{String, String}} = nothing
 
     function ApplicationGateway(properties, etag, zones, identity, id, name, type, location, tags, )
-        OpenAPI.validate_property(ApplicationGateway, Symbol("properties"), properties)
-        OpenAPI.validate_property(ApplicationGateway, Symbol("etag"), etag)
-        OpenAPI.validate_property(ApplicationGateway, Symbol("zones"), zones)
-        OpenAPI.validate_property(ApplicationGateway, Symbol("identity"), identity)
-        OpenAPI.validate_property(ApplicationGateway, Symbol("id"), id)
-        OpenAPI.validate_property(ApplicationGateway, Symbol("name"), name)
-        OpenAPI.validate_property(ApplicationGateway, Symbol("type"), type)
-        OpenAPI.validate_property(ApplicationGateway, Symbol("location"), location)
-        OpenAPI.validate_property(ApplicationGateway, Symbol("tags"), tags)
-        return new(properties, etag, zones, identity, id, name, type, location, tags, )
+        o = new(properties, etag, zones, identity, id, name, type, location, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGateway
 
-const _property_types_ApplicationGateway = Dict{Symbol,String}(Symbol("properties")=>"ApplicationGatewayPropertiesFormat", Symbol("etag")=>"String", Symbol("zones")=>"Vector{String}", Symbol("identity")=>"Any", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
+const _property_types_ApplicationGateway = Dict{Symbol,String}(Symbol("properties")=>"ApplicationGatewayPropertiesFormat", Symbol("etag")=>"String", Symbol("zones")=>"Vector{String}", Symbol("identity")=>"ManagedServiceIdentity", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ ApplicationGateway }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGateway[name]))}
 
-function check_required(o::ApplicationGateway)
+function OpenAPI.check_required(o::ApplicationGateway)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGateway)
+    OpenAPI.validate_property(ApplicationGateway, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(ApplicationGateway, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(ApplicationGateway, Symbol("zones"), o.zones)
+    OpenAPI.validate_property(ApplicationGateway, Symbol("identity"), o.identity)
+    OpenAPI.validate_property(ApplicationGateway, Symbol("id"), o.id)
+    OpenAPI.validate_property(ApplicationGateway, Symbol("name"), o.name)
+    OpenAPI.validate_property(ApplicationGateway, Symbol("type"), o.type)
+    OpenAPI.validate_property(ApplicationGateway, Symbol("location"), o.location)
+    OpenAPI.validate_property(ApplicationGateway, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGateway }, name::Symbol, val)
+
+
+
+
+
+
+
+
+
 end

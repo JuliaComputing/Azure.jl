@@ -22,7 +22,7 @@ function _oacinternal_virtual_network_gateways_create_or_update(_api::VirtualNet
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayName", virtual_network_gateway_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -61,7 +61,7 @@ function _oacinternal_virtual_network_gateways_delete(_api::VirtualNetworkGatewa
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayName", virtual_network_gateway_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -98,7 +98,7 @@ function _oacinternal_virtual_network_gateways_disconnect_virtual_network_gatewa
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayName", virtual_network_gateway_name)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -136,7 +136,7 @@ function _oacinternal_virtual_network_gateways_generate_vpn_profile(_api::Virtua
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayName", virtual_network_gateway_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -174,7 +174,7 @@ function _oacinternal_virtual_network_gateways_generatevpnclientpackage(_api::Vi
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayName", virtual_network_gateway_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -211,7 +211,7 @@ function _oacinternal_virtual_network_gateways_get(_api::VirtualNetworkGatewaysA
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayName", virtual_network_gateway_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -248,8 +248,8 @@ function _oacinternal_virtual_network_gateways_get_advertised_routes(_api::Virtu
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayName", virtual_network_gateway_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "peer", peer)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "peer", peer; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -287,8 +287,8 @@ function _oacinternal_virtual_network_gateways_get_bgp_peer_status(_api::Virtual
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayName", virtual_network_gateway_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "peer", peer)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "peer", peer; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -315,6 +315,88 @@ function virtual_network_gateways_get_bgp_peer_status(_api::VirtualNetworkGatewa
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
+const _returntypes_virtual_network_gateways_get_failover_all_test_details_VirtualNetworkGatewaysApi = Dict{Regex,Type}(
+    Regex("^" * replace("200", "x"=>".") * "\$") => Vector{ExpressRouteFailoverTestDetails},
+    Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+)
+
+function _oacinternal_virtual_network_gateways_get_failover_all_test_details(_api::VirtualNetworkGatewaysApi, resource_group_name::String, virtual_network_gateway_name::String, type::String, fetch_latest::Bool, api_version::String, subscription_id::String; _mediaType=nothing)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_virtual_network_gateways_get_failover_all_test_details_VirtualNetworkGatewaysApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getFailoverAllTestsDetails", ["azure_auth", ])
+    OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayName", virtual_network_gateway_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "type", type; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "fetchLatest", fetch_latest; style="", is_explode=false)  # type Bool
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
+    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
+    return _ctx
+end
+
+@doc raw"""This operation retrieves the details of all the failover tests performed on the gateway for different peering locations
+
+Params:
+- resource_group_name::String (required)
+- virtual_network_gateway_name::String (required)
+- type::String (required)
+- fetch_latest::Bool (required)
+- api_version::String (required)
+- subscription_id::String (required)
+
+Return: Vector{ExpressRouteFailoverTestDetails}, OpenAPI.Clients.ApiResponse
+"""
+function virtual_network_gateways_get_failover_all_test_details(_api::VirtualNetworkGatewaysApi, resource_group_name::String, virtual_network_gateway_name::String, type::String, fetch_latest::Bool, api_version::String, subscription_id::String; _mediaType=nothing)
+    _ctx = _oacinternal_virtual_network_gateways_get_failover_all_test_details(_api, resource_group_name, virtual_network_gateway_name, type, fetch_latest, api_version, subscription_id; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx)
+end
+
+function virtual_network_gateways_get_failover_all_test_details(_api::VirtualNetworkGatewaysApi, response_stream::Channel, resource_group_name::String, virtual_network_gateway_name::String, type::String, fetch_latest::Bool, api_version::String, subscription_id::String; _mediaType=nothing)
+    _ctx = _oacinternal_virtual_network_gateways_get_failover_all_test_details(_api, resource_group_name, virtual_network_gateway_name, type, fetch_latest, api_version, subscription_id; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx, response_stream)
+end
+
+const _returntypes_virtual_network_gateways_get_failover_single_test_details_VirtualNetworkGatewaysApi = Dict{Regex,Type}(
+    Regex("^" * replace("200", "x"=>".") * "\$") => Vector{ExpressRouteFailoverSingleTestDetails},
+    Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+)
+
+function _oacinternal_virtual_network_gateways_get_failover_single_test_details(_api::VirtualNetworkGatewaysApi, resource_group_name::String, virtual_network_gateway_name::String, peering_location::String, failover_test_id::String, api_version::String, subscription_id::String; _mediaType=nothing)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_virtual_network_gateways_get_failover_single_test_details_VirtualNetworkGatewaysApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getFailoverSingleTestDetails", ["azure_auth", ])
+    OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayName", virtual_network_gateway_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "peeringLocation", peering_location; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "failoverTestId", failover_test_id; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
+    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
+    return _ctx
+end
+
+@doc raw"""This operation retrieves the details of a particular failover test performed on the gateway based on the test Guid
+
+Params:
+- resource_group_name::String (required)
+- virtual_network_gateway_name::String (required)
+- peering_location::String (required)
+- failover_test_id::String (required)
+- api_version::String (required)
+- subscription_id::String (required)
+
+Return: Vector{ExpressRouteFailoverSingleTestDetails}, OpenAPI.Clients.ApiResponse
+"""
+function virtual_network_gateways_get_failover_single_test_details(_api::VirtualNetworkGatewaysApi, resource_group_name::String, virtual_network_gateway_name::String, peering_location::String, failover_test_id::String, api_version::String, subscription_id::String; _mediaType=nothing)
+    _ctx = _oacinternal_virtual_network_gateways_get_failover_single_test_details(_api, resource_group_name, virtual_network_gateway_name, peering_location, failover_test_id, api_version, subscription_id; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx)
+end
+
+function virtual_network_gateways_get_failover_single_test_details(_api::VirtualNetworkGatewaysApi, response_stream::Channel, resource_group_name::String, virtual_network_gateway_name::String, peering_location::String, failover_test_id::String, api_version::String, subscription_id::String; _mediaType=nothing)
+    _ctx = _oacinternal_virtual_network_gateways_get_failover_single_test_details(_api, resource_group_name, virtual_network_gateway_name, peering_location, failover_test_id, api_version, subscription_id; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx, response_stream)
+end
+
 const _returntypes_virtual_network_gateways_get_learned_routes_VirtualNetworkGatewaysApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => GatewayRouteListResult,
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
@@ -326,7 +408,7 @@ function _oacinternal_virtual_network_gateways_get_learned_routes(_api::VirtualN
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayName", virtual_network_gateway_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -352,6 +434,84 @@ function virtual_network_gateways_get_learned_routes(_api::VirtualNetworkGateway
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
+const _returntypes_virtual_network_gateways_get_resiliency_information_VirtualNetworkGatewaysApi = Dict{Regex,Type}(
+    Regex("^" * replace("200", "x"=>".") * "\$") => GatewayResiliencyInformation,
+    Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+)
+
+function _oacinternal_virtual_network_gateways_get_resiliency_information(_api::VirtualNetworkGatewaysApi, resource_group_name::String, virtual_network_gateway_name::String, api_version::String, subscription_id::String; attempt_refresh=nothing, _mediaType=nothing)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_virtual_network_gateways_get_resiliency_information_VirtualNetworkGatewaysApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getResiliencyInformation", ["azure_auth", ])
+    OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayName", virtual_network_gateway_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "attemptRefresh", attempt_refresh; style="", is_explode=false)  # type Bool
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
+    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
+    return _ctx
+end
+
+@doc raw"""This operation retrieves the resiliency information for an Express Route Gateway, including the gateway's current resiliency score and recommendations to further improve the score
+
+Params:
+- resource_group_name::String (required)
+- virtual_network_gateway_name::String (required)
+- api_version::String (required)
+- subscription_id::String (required)
+- attempt_refresh::Bool
+
+Return: GatewayResiliencyInformation, OpenAPI.Clients.ApiResponse
+"""
+function virtual_network_gateways_get_resiliency_information(_api::VirtualNetworkGatewaysApi, resource_group_name::String, virtual_network_gateway_name::String, api_version::String, subscription_id::String; attempt_refresh=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_virtual_network_gateways_get_resiliency_information(_api, resource_group_name, virtual_network_gateway_name, api_version, subscription_id; attempt_refresh=attempt_refresh, _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx)
+end
+
+function virtual_network_gateways_get_resiliency_information(_api::VirtualNetworkGatewaysApi, response_stream::Channel, resource_group_name::String, virtual_network_gateway_name::String, api_version::String, subscription_id::String; attempt_refresh=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_virtual_network_gateways_get_resiliency_information(_api, resource_group_name, virtual_network_gateway_name, api_version, subscription_id; attempt_refresh=attempt_refresh, _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx, response_stream)
+end
+
+const _returntypes_virtual_network_gateways_get_routes_information_VirtualNetworkGatewaysApi = Dict{Regex,Type}(
+    Regex("^" * replace("200", "x"=>".") * "\$") => GatewayRouteSetsInformation,
+    Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+)
+
+function _oacinternal_virtual_network_gateways_get_routes_information(_api::VirtualNetworkGatewaysApi, resource_group_name::String, virtual_network_gateway_name::String, api_version::String, subscription_id::String; attempt_refresh=nothing, _mediaType=nothing)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_virtual_network_gateways_get_routes_information_VirtualNetworkGatewaysApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/getRoutesInformation", ["azure_auth", ])
+    OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayName", virtual_network_gateway_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "attemptRefresh", attempt_refresh; style="", is_explode=false)  # type Bool
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
+    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
+    return _ctx
+end
+
+@doc raw"""This operation retrieves the route set information for an Express Route Gateway based on their resiliency
+
+Params:
+- resource_group_name::String (required)
+- virtual_network_gateway_name::String (required)
+- api_version::String (required)
+- subscription_id::String (required)
+- attempt_refresh::Bool
+
+Return: GatewayRouteSetsInformation, OpenAPI.Clients.ApiResponse
+"""
+function virtual_network_gateways_get_routes_information(_api::VirtualNetworkGatewaysApi, resource_group_name::String, virtual_network_gateway_name::String, api_version::String, subscription_id::String; attempt_refresh=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_virtual_network_gateways_get_routes_information(_api, resource_group_name, virtual_network_gateway_name, api_version, subscription_id; attempt_refresh=attempt_refresh, _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx)
+end
+
+function virtual_network_gateways_get_routes_information(_api::VirtualNetworkGatewaysApi, response_stream::Channel, resource_group_name::String, virtual_network_gateway_name::String, api_version::String, subscription_id::String; attempt_refresh=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_virtual_network_gateways_get_routes_information(_api, resource_group_name, virtual_network_gateway_name, api_version, subscription_id; attempt_refresh=attempt_refresh, _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx, response_stream)
+end
+
 const _returntypes_virtual_network_gateways_get_vpn_profile_package_url_VirtualNetworkGatewaysApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
@@ -363,7 +523,7 @@ function _oacinternal_virtual_network_gateways_get_vpn_profile_package_url(_api:
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayName", virtual_network_gateway_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -400,7 +560,7 @@ function _oacinternal_virtual_network_gateways_get_vpnclient_connection_health(_
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayName", virtual_network_gateway_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -436,7 +596,7 @@ function _oacinternal_virtual_network_gateways_get_vpnclient_ipsec_parameters(_a
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayName", virtual_network_gateway_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -471,7 +631,7 @@ function _oacinternal_virtual_network_gateways_list(_api::VirtualNetworkGateways
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_virtual_network_gateways_list_VirtualNetworkGatewaysApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -506,7 +666,7 @@ function _oacinternal_virtual_network_gateways_list_connections(_api::VirtualNet
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayName", virtual_network_gateway_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -543,8 +703,8 @@ function _oacinternal_virtual_network_gateways_reset(_api::VirtualNetworkGateway
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayName", virtual_network_gateway_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "gatewayVip", gateway_vip)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "gatewayVip", gateway_vip; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -582,7 +742,7 @@ function _oacinternal_virtual_network_gateways_reset_vpn_client_shared_key(_api:
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayName", virtual_network_gateway_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -619,7 +779,7 @@ function _oacinternal_virtual_network_gateways_set_vpnclient_ipsec_parameters(_a
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayName", virtual_network_gateway_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -646,6 +806,45 @@ function virtual_network_gateways_set_vpnclient_ipsec_parameters(_api::VirtualNe
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
+const _returntypes_virtual_network_gateways_start_express_route_site_failover_simulation_VirtualNetworkGatewaysApi = Dict{Regex,Type}(
+    Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("200", "x"=>".") * "\$") => String,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+)
+
+function _oacinternal_virtual_network_gateways_start_express_route_site_failover_simulation(_api::VirtualNetworkGatewaysApi, resource_group_name::String, virtual_network_gateway_name::String, peering_location::String, api_version::String, subscription_id::String; _mediaType=nothing)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_virtual_network_gateways_start_express_route_site_failover_simulation_VirtualNetworkGatewaysApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/startSiteFailoverTest", ["azure_auth", ])
+    OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayName", virtual_network_gateway_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "peeringLocation", peering_location; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
+    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
+    return _ctx
+end
+
+@doc raw"""This operation starts failover simulation on the gateway for the specified peering location
+
+Params:
+- resource_group_name::String (required)
+- virtual_network_gateway_name::String (required)
+- peering_location::String (required)
+- api_version::String (required)
+- subscription_id::String (required)
+
+Return: String, OpenAPI.Clients.ApiResponse
+"""
+function virtual_network_gateways_start_express_route_site_failover_simulation(_api::VirtualNetworkGatewaysApi, resource_group_name::String, virtual_network_gateway_name::String, peering_location::String, api_version::String, subscription_id::String; _mediaType=nothing)
+    _ctx = _oacinternal_virtual_network_gateways_start_express_route_site_failover_simulation(_api, resource_group_name, virtual_network_gateway_name, peering_location, api_version, subscription_id; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx)
+end
+
+function virtual_network_gateways_start_express_route_site_failover_simulation(_api::VirtualNetworkGatewaysApi, response_stream::Channel, resource_group_name::String, virtual_network_gateway_name::String, peering_location::String, api_version::String, subscription_id::String; _mediaType=nothing)
+    _ctx = _oacinternal_virtual_network_gateways_start_express_route_site_failover_simulation(_api, resource_group_name, virtual_network_gateway_name, peering_location, api_version, subscription_id; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx, response_stream)
+end
+
 const _returntypes_virtual_network_gateways_start_packet_capture_VirtualNetworkGatewaysApi = Dict{Regex,Type}(
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
@@ -657,7 +856,7 @@ function _oacinternal_virtual_network_gateways_start_packet_capture(_api::Virtua
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayName", virtual_network_gateway_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -684,6 +883,44 @@ function virtual_network_gateways_start_packet_capture(_api::VirtualNetworkGatew
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
+const _returntypes_virtual_network_gateways_stop_express_route_site_failover_simulation_VirtualNetworkGatewaysApi = Dict{Regex,Type}(
+    Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("200", "x"=>".") * "\$") => String,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+)
+
+function _oacinternal_virtual_network_gateways_stop_express_route_site_failover_simulation(_api::VirtualNetworkGatewaysApi, resource_group_name::String, virtual_network_gateway_name::String, api_version::String, subscription_id::String, stop_parameters::ExpressRouteFailoverStopApiParameters; _mediaType=nothing)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_virtual_network_gateways_stop_express_route_site_failover_simulation_VirtualNetworkGatewaysApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworkGateways/{virtualNetworkGatewayName}/stopSiteFailoverTest", ["azure_auth", ], stop_parameters)
+    OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayName", virtual_network_gateway_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
+    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
+    return _ctx
+end
+
+@doc raw"""This operation stops failover simulation on the gateway for the specified peering location
+
+Params:
+- resource_group_name::String (required)
+- virtual_network_gateway_name::String (required)
+- api_version::String (required)
+- subscription_id::String (required)
+- stop_parameters::ExpressRouteFailoverStopApiParameters (required)
+
+Return: String, OpenAPI.Clients.ApiResponse
+"""
+function virtual_network_gateways_stop_express_route_site_failover_simulation(_api::VirtualNetworkGatewaysApi, resource_group_name::String, virtual_network_gateway_name::String, api_version::String, subscription_id::String, stop_parameters::ExpressRouteFailoverStopApiParameters; _mediaType=nothing)
+    _ctx = _oacinternal_virtual_network_gateways_stop_express_route_site_failover_simulation(_api, resource_group_name, virtual_network_gateway_name, api_version, subscription_id, stop_parameters; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx)
+end
+
+function virtual_network_gateways_stop_express_route_site_failover_simulation(_api::VirtualNetworkGatewaysApi, response_stream::Channel, resource_group_name::String, virtual_network_gateway_name::String, api_version::String, subscription_id::String, stop_parameters::ExpressRouteFailoverStopApiParameters; _mediaType=nothing)
+    _ctx = _oacinternal_virtual_network_gateways_stop_express_route_site_failover_simulation(_api, resource_group_name, virtual_network_gateway_name, api_version, subscription_id, stop_parameters; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx, response_stream)
+end
+
 const _returntypes_virtual_network_gateways_stop_packet_capture_VirtualNetworkGatewaysApi = Dict{Regex,Type}(
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("200", "x"=>".") * "\$") => String,
@@ -695,7 +932,7 @@ function _oacinternal_virtual_network_gateways_stop_packet_capture(_api::Virtual
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayName", virtual_network_gateway_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -732,7 +969,7 @@ function _oacinternal_virtual_network_gateways_supported_vpn_devices(_api::Virtu
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayName", virtual_network_gateway_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -769,7 +1006,7 @@ function _oacinternal_virtual_network_gateways_update_tags(_api::VirtualNetworkG
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayName", virtual_network_gateway_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -806,7 +1043,7 @@ function _oacinternal_virtual_network_gateways_vpn_device_configuration_script(_
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayConnectionName", virtual_network_gateway_connection_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -841,7 +1078,11 @@ export virtual_network_gateways_generatevpnclientpackage
 export virtual_network_gateways_get
 export virtual_network_gateways_get_advertised_routes
 export virtual_network_gateways_get_bgp_peer_status
+export virtual_network_gateways_get_failover_all_test_details
+export virtual_network_gateways_get_failover_single_test_details
 export virtual_network_gateways_get_learned_routes
+export virtual_network_gateways_get_resiliency_information
+export virtual_network_gateways_get_routes_information
 export virtual_network_gateways_get_vpn_profile_package_url
 export virtual_network_gateways_get_vpnclient_connection_health
 export virtual_network_gateways_get_vpnclient_ipsec_parameters
@@ -850,7 +1091,9 @@ export virtual_network_gateways_list_connections
 export virtual_network_gateways_reset
 export virtual_network_gateways_reset_vpn_client_shared_key
 export virtual_network_gateways_set_vpnclient_ipsec_parameters
+export virtual_network_gateways_start_express_route_site_failover_simulation
 export virtual_network_gateways_start_packet_capture
+export virtual_network_gateways_stop_express_route_site_failover_simulation
 export virtual_network_gateways_stop_packet_capture
 export virtual_network_gateways_supported_vpn_devices
 export virtual_network_gateways_update_tags

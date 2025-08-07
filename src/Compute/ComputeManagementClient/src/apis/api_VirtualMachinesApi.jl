@@ -22,7 +22,7 @@ function _oacinternal_virtual_machines_assess_patches(_api::VirtualMachinesApi, 
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmName", vm_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -51,6 +51,7 @@ end
 const _returntypes_virtual_machines_capture_VirtualMachinesApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => VirtualMachineCaptureResult,
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machines_capture(_api::VirtualMachinesApi, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String, parameters::VirtualMachineCaptureParameters; _mediaType=nothing)
@@ -58,7 +59,7 @@ function _oacinternal_virtual_machines_capture(_api::VirtualMachinesApi, resourc
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmName", vm_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -88,6 +89,7 @@ end
 const _returntypes_virtual_machines_convert_to_managed_disks_VirtualMachinesApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machines_convert_to_managed_disks(_api::VirtualMachinesApi, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
@@ -95,8 +97,8 @@ function _oacinternal_virtual_machines_convert_to_managed_disks(_api::VirtualMac
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmName", vm_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_header_accept(_ctx, [])
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
 end
@@ -124,6 +126,7 @@ end
 const _returntypes_virtual_machines_create_or_update_VirtualMachinesApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => VirtualMachine,
     Regex("^" * replace("201", "x"=>".") * "\$") => VirtualMachine,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machines_create_or_update(_api::VirtualMachinesApi, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String, parameters::VirtualMachine; _mediaType=nothing)
@@ -131,7 +134,7 @@ function _oacinternal_virtual_machines_create_or_update(_api::VirtualMachinesApi
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmName", vm_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -161,15 +164,17 @@ end
 const _returntypes_virtual_machines_deallocate_VirtualMachinesApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
-function _oacinternal_virtual_machines_deallocate(_api::VirtualMachinesApi, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
+function _oacinternal_virtual_machines_deallocate(_api::VirtualMachinesApi, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; hibernate=nothing, _mediaType=nothing)
     _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_virtual_machines_deallocate_VirtualMachinesApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/deallocate", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmName", vm_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_header_accept(_ctx, [])
+    OpenAPI.Clients.set_param(_ctx.query, "hibernate", hibernate; style="", is_explode=false)  # type Bool
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
 end
@@ -181,16 +186,17 @@ Params:
 - vm_name::String (required)
 - api_version::String (required)
 - subscription_id::String (required)
+- hibernate::Bool
 
 Return: Nothing, OpenAPI.Clients.ApiResponse
 """
-function virtual_machines_deallocate(_api::VirtualMachinesApi, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = _oacinternal_virtual_machines_deallocate(_api, resource_group_name, vm_name, api_version, subscription_id; _mediaType=_mediaType)
+function virtual_machines_deallocate(_api::VirtualMachinesApi, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; hibernate=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_virtual_machines_deallocate(_api, resource_group_name, vm_name, api_version, subscription_id; hibernate=hibernate, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx)
 end
 
-function virtual_machines_deallocate(_api::VirtualMachinesApi, response_stream::Channel, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = _oacinternal_virtual_machines_deallocate(_api, resource_group_name, vm_name, api_version, subscription_id; _mediaType=_mediaType)
+function virtual_machines_deallocate(_api::VirtualMachinesApi, response_stream::Channel, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; hibernate=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_virtual_machines_deallocate(_api, resource_group_name, vm_name, api_version, subscription_id; hibernate=hibernate, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
@@ -198,15 +204,17 @@ const _returntypes_virtual_machines_delete_VirtualMachinesApi = Dict{Regex,Type}
     Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("204", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
-function _oacinternal_virtual_machines_delete(_api::VirtualMachinesApi, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
+function _oacinternal_virtual_machines_delete(_api::VirtualMachinesApi, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; force_deletion=nothing, _mediaType=nothing)
     _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_virtual_machines_delete_VirtualMachinesApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmName", vm_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_header_accept(_ctx, [])
+    OpenAPI.Clients.set_param(_ctx.query, "forceDeletion", force_deletion; style="", is_explode=false)  # type Bool
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
 end
@@ -218,21 +226,23 @@ Params:
 - vm_name::String (required)
 - api_version::String (required)
 - subscription_id::String (required)
+- force_deletion::Bool
 
 Return: Nothing, OpenAPI.Clients.ApiResponse
 """
-function virtual_machines_delete(_api::VirtualMachinesApi, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = _oacinternal_virtual_machines_delete(_api, resource_group_name, vm_name, api_version, subscription_id; _mediaType=_mediaType)
+function virtual_machines_delete(_api::VirtualMachinesApi, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; force_deletion=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_virtual_machines_delete(_api, resource_group_name, vm_name, api_version, subscription_id; force_deletion=force_deletion, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx)
 end
 
-function virtual_machines_delete(_api::VirtualMachinesApi, response_stream::Channel, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = _oacinternal_virtual_machines_delete(_api, resource_group_name, vm_name, api_version, subscription_id; _mediaType=_mediaType)
+function virtual_machines_delete(_api::VirtualMachinesApi, response_stream::Channel, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; force_deletion=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_virtual_machines_delete(_api, resource_group_name, vm_name, api_version, subscription_id; force_deletion=force_deletion, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
 const _returntypes_virtual_machines_generalize_VirtualMachinesApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machines_generalize(_api::VirtualMachinesApi, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
@@ -240,13 +250,13 @@ function _oacinternal_virtual_machines_generalize(_api::VirtualMachinesApi, reso
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmName", vm_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_header_accept(_ctx, [])
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
 end
 
-@doc raw"""Sets the OS state of the virtual machine to generalized. It is recommended to sysprep the virtual machine before performing this operation. <br>For Windows, please refer to [Create a managed image of a generalized VM in Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/capture-image-resource).<br>For Linux, please refer to [How to create an image of a virtual machine or VHD](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/capture-image).
+@doc raw"""Sets the OS state of the virtual machine to generalized. It is recommended to sysprep the virtual machine before performing this operation. <br>For Windows, please refer to [Create a managed image of a generalized VM in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource).<br>For Linux, please refer to [How to create an image of a virtual machine or VHD](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image).
 
 Params:
 - resource_group_name::String (required)
@@ -268,6 +278,7 @@ end
 
 const _returntypes_virtual_machines_get_VirtualMachinesApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => VirtualMachine,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machines_get(_api::VirtualMachinesApi, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; expand=nothing, _mediaType=nothing)
@@ -275,8 +286,8 @@ function _oacinternal_virtual_machines_get(_api::VirtualMachinesApi, resource_gr
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmName", vm_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -303,8 +314,47 @@ function virtual_machines_get(_api::VirtualMachinesApi, response_stream::Channel
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
+const _returntypes_virtual_machines_install_patches_VirtualMachinesApi = Dict{Regex,Type}(
+    Regex("^" * replace("200", "x"=>".") * "\$") => VirtualMachineInstallPatchesResult,
+    Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
+)
+
+function _oacinternal_virtual_machines_install_patches(_api::VirtualMachinesApi, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String, install_patches_input::VirtualMachineInstallPatchesParameters; _mediaType=nothing)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_virtual_machines_install_patches_VirtualMachinesApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/installPatches", ["azure_auth", ], install_patches_input)
+    OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "vmName", vm_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
+    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
+    return _ctx
+end
+
+@doc raw"""Installs patches on the VM.
+
+Params:
+- resource_group_name::String (required)
+- vm_name::String (required)
+- api_version::String (required)
+- subscription_id::String (required)
+- install_patches_input::VirtualMachineInstallPatchesParameters (required)
+
+Return: VirtualMachineInstallPatchesResult, OpenAPI.Clients.ApiResponse
+"""
+function virtual_machines_install_patches(_api::VirtualMachinesApi, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String, install_patches_input::VirtualMachineInstallPatchesParameters; _mediaType=nothing)
+    _ctx = _oacinternal_virtual_machines_install_patches(_api, resource_group_name, vm_name, api_version, subscription_id, install_patches_input; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx)
+end
+
+function virtual_machines_install_patches(_api::VirtualMachinesApi, response_stream::Channel, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String, install_patches_input::VirtualMachineInstallPatchesParameters; _mediaType=nothing)
+    _ctx = _oacinternal_virtual_machines_install_patches(_api, resource_group_name, vm_name, api_version, subscription_id, install_patches_input; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx, response_stream)
+end
+
 const _returntypes_virtual_machines_instance_view_VirtualMachinesApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => VirtualMachineInstanceView,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machines_instance_view(_api::VirtualMachinesApi, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
@@ -312,7 +362,7 @@ function _oacinternal_virtual_machines_instance_view(_api::VirtualMachinesApi, r
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmName", vm_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -340,13 +390,15 @@ end
 
 const _returntypes_virtual_machines_list_VirtualMachinesApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => VirtualMachineListResult,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
-function _oacinternal_virtual_machines_list(_api::VirtualMachinesApi, resource_group_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
+function _oacinternal_virtual_machines_list(_api::VirtualMachinesApi, resource_group_name::String, api_version::String, subscription_id::String; filter=nothing, _mediaType=nothing)
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_virtual_machines_list_VirtualMachinesApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$filter", filter; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -358,28 +410,31 @@ Params:
 - resource_group_name::String (required)
 - api_version::String (required)
 - subscription_id::String (required)
+- filter::String
 
 Return: VirtualMachineListResult, OpenAPI.Clients.ApiResponse
 """
-function virtual_machines_list(_api::VirtualMachinesApi, resource_group_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = _oacinternal_virtual_machines_list(_api, resource_group_name, api_version, subscription_id; _mediaType=_mediaType)
+function virtual_machines_list(_api::VirtualMachinesApi, resource_group_name::String, api_version::String, subscription_id::String; filter=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_virtual_machines_list(_api, resource_group_name, api_version, subscription_id; filter=filter, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx)
 end
 
-function virtual_machines_list(_api::VirtualMachinesApi, response_stream::Channel, resource_group_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = _oacinternal_virtual_machines_list(_api, resource_group_name, api_version, subscription_id; _mediaType=_mediaType)
+function virtual_machines_list(_api::VirtualMachinesApi, response_stream::Channel, resource_group_name::String, api_version::String, subscription_id::String; filter=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_virtual_machines_list(_api, resource_group_name, api_version, subscription_id; filter=filter, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
 const _returntypes_virtual_machines_list_all_VirtualMachinesApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => VirtualMachineListResult,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
-function _oacinternal_virtual_machines_list_all(_api::VirtualMachinesApi, api_version::String, subscription_id::String; status_only=nothing, _mediaType=nothing)
+function _oacinternal_virtual_machines_list_all(_api::VirtualMachinesApi, api_version::String, subscription_id::String; status_only=nothing, filter=nothing, _mediaType=nothing)
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_virtual_machines_list_all_VirtualMachinesApi, "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/virtualMachines", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "statusOnly", status_only)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "statusOnly", status_only; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$filter", filter; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -391,21 +446,23 @@ Params:
 - api_version::String (required)
 - subscription_id::String (required)
 - status_only::String
+- filter::String
 
 Return: VirtualMachineListResult, OpenAPI.Clients.ApiResponse
 """
-function virtual_machines_list_all(_api::VirtualMachinesApi, api_version::String, subscription_id::String; status_only=nothing, _mediaType=nothing)
-    _ctx = _oacinternal_virtual_machines_list_all(_api, api_version, subscription_id; status_only=status_only, _mediaType=_mediaType)
+function virtual_machines_list_all(_api::VirtualMachinesApi, api_version::String, subscription_id::String; status_only=nothing, filter=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_virtual_machines_list_all(_api, api_version, subscription_id; status_only=status_only, filter=filter, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx)
 end
 
-function virtual_machines_list_all(_api::VirtualMachinesApi, response_stream::Channel, api_version::String, subscription_id::String; status_only=nothing, _mediaType=nothing)
-    _ctx = _oacinternal_virtual_machines_list_all(_api, api_version, subscription_id; status_only=status_only, _mediaType=_mediaType)
+function virtual_machines_list_all(_api::VirtualMachinesApi, response_stream::Channel, api_version::String, subscription_id::String; status_only=nothing, filter=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_virtual_machines_list_all(_api, api_version, subscription_id; status_only=status_only, filter=filter, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
 const _returntypes_virtual_machines_list_available_sizes_VirtualMachinesApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => VirtualMachineSizeListResult,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machines_list_available_sizes(_api::VirtualMachinesApi, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
@@ -413,7 +470,7 @@ function _oacinternal_virtual_machines_list_available_sizes(_api::VirtualMachine
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmName", vm_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -441,14 +498,16 @@ end
 
 const _returntypes_virtual_machines_list_by_location_VirtualMachinesApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => VirtualMachineListResult,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machines_list_by_location(_api::VirtualMachinesApi, location::String, api_version::String, subscription_id::String; _mediaType=nothing)
+        OpenAPI.validate_param("location", "virtual_machines_list_by_location", :pattern, location, r"^[-\w\._]+$")
 
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_virtual_machines_list_by_location_VirtualMachinesApi, "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/virtualMachines", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "location", location)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -476,6 +535,7 @@ end
 const _returntypes_virtual_machines_perform_maintenance_VirtualMachinesApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machines_perform_maintenance(_api::VirtualMachinesApi, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
@@ -483,8 +543,8 @@ function _oacinternal_virtual_machines_perform_maintenance(_api::VirtualMachines
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmName", vm_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_header_accept(_ctx, [])
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
 end
@@ -512,6 +572,7 @@ end
 const _returntypes_virtual_machines_power_off_VirtualMachinesApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machines_power_off(_api::VirtualMachinesApi, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; skip_shutdown=nothing, _mediaType=nothing)
@@ -519,9 +580,9 @@ function _oacinternal_virtual_machines_power_off(_api::VirtualMachinesApi, resou
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmName", vm_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "skipShutdown", skip_shutdown)  # type Bool
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_header_accept(_ctx, [])
+    OpenAPI.Clients.set_param(_ctx.query, "skipShutdown", skip_shutdown; style="", is_explode=false)  # type Bool
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
 end
@@ -558,7 +619,7 @@ function _oacinternal_virtual_machines_reapply(_api::VirtualMachinesApi, resourc
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmName", vm_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -587,6 +648,7 @@ end
 const _returntypes_virtual_machines_redeploy_VirtualMachinesApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machines_redeploy(_api::VirtualMachinesApi, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
@@ -594,8 +656,8 @@ function _oacinternal_virtual_machines_redeploy(_api::VirtualMachinesApi, resour
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmName", vm_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_header_accept(_ctx, [])
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
 end
@@ -623,6 +685,7 @@ end
 const _returntypes_virtual_machines_reimage_VirtualMachinesApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machines_reimage(_api::VirtualMachinesApi, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; parameters=nothing, _mediaType=nothing)
@@ -630,8 +693,8 @@ function _oacinternal_virtual_machines_reimage(_api::VirtualMachinesApi, resourc
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmName", vm_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_header_accept(_ctx, [])
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
 end
@@ -660,6 +723,7 @@ end
 const _returntypes_virtual_machines_restart_VirtualMachinesApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machines_restart(_api::VirtualMachinesApi, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
@@ -667,8 +731,8 @@ function _oacinternal_virtual_machines_restart(_api::VirtualMachinesApi, resourc
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmName", vm_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_header_accept(_ctx, [])
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
 end
@@ -703,8 +767,8 @@ function _oacinternal_virtual_machines_retrieve_boot_diagnostics_data(_api::Virt
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmName", vm_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "sasUriExpirationTimeInMinutes", sas_uri_expiration_time_in_minutes)  # type Int64
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "sasUriExpirationTimeInMinutes", sas_uri_expiration_time_in_minutes; style="", is_explode=false)  # type Int64
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -733,6 +797,7 @@ end
 
 const _returntypes_virtual_machines_simulate_eviction_VirtualMachinesApi = Dict{Regex,Type}(
     Regex("^" * replace("204", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machines_simulate_eviction(_api::VirtualMachinesApi, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
@@ -740,13 +805,13 @@ function _oacinternal_virtual_machines_simulate_eviction(_api::VirtualMachinesAp
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmName", vm_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_header_accept(_ctx, [])
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
 end
 
-@doc raw"""The operation to simulate the eviction of spot virtual machine. The eviction will occur within 30 minutes of calling the API
+@doc raw"""The operation to simulate the eviction of spot virtual machine.
 
 Params:
 - resource_group_name::String (required)
@@ -769,6 +834,7 @@ end
 const _returntypes_virtual_machines_start_VirtualMachinesApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machines_start(_api::VirtualMachinesApi, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
@@ -776,8 +842,8 @@ function _oacinternal_virtual_machines_start(_api::VirtualMachinesApi, resource_
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmName", vm_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_header_accept(_ctx, [])
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
 end
@@ -804,7 +870,7 @@ end
 
 const _returntypes_virtual_machines_update_VirtualMachinesApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => VirtualMachine,
-    Regex("^" * replace("201", "x"=>".") * "\$") => VirtualMachine,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machines_update(_api::VirtualMachinesApi, resource_group_name::String, vm_name::String, api_version::String, subscription_id::String, parameters::VirtualMachineUpdate; _mediaType=nothing)
@@ -812,7 +878,7 @@ function _oacinternal_virtual_machines_update(_api::VirtualMachinesApi, resource
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmName", vm_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -847,6 +913,7 @@ export virtual_machines_deallocate
 export virtual_machines_delete
 export virtual_machines_generalize
 export virtual_machines_get
+export virtual_machines_install_patches
 export virtual_machines_instance_view
 export virtual_machines_list
 export virtual_machines_list_all

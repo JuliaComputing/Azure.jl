@@ -6,30 +6,42 @@
 The effective network security group association.
 
     EffectiveNetworkSecurityGroupAssociation(;
+        networkManager=nothing,
         subnet=nothing,
         networkInterface=nothing,
     )
 
+    - networkManager::SubResource
     - subnet::SubResource
     - networkInterface::SubResource
 """
 Base.@kwdef mutable struct EffectiveNetworkSecurityGroupAssociation <: OpenAPI.APIModel
+    networkManager = nothing # spec type: Union{ Nothing, SubResource }
     subnet = nothing # spec type: Union{ Nothing, SubResource }
     networkInterface = nothing # spec type: Union{ Nothing, SubResource }
 
-    function EffectiveNetworkSecurityGroupAssociation(subnet, networkInterface, )
-        OpenAPI.validate_property(EffectiveNetworkSecurityGroupAssociation, Symbol("subnet"), subnet)
-        OpenAPI.validate_property(EffectiveNetworkSecurityGroupAssociation, Symbol("networkInterface"), networkInterface)
-        return new(subnet, networkInterface, )
+    function EffectiveNetworkSecurityGroupAssociation(networkManager, subnet, networkInterface, )
+        o = new(networkManager, subnet, networkInterface, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type EffectiveNetworkSecurityGroupAssociation
 
-const _property_types_EffectiveNetworkSecurityGroupAssociation = Dict{Symbol,String}(Symbol("subnet")=>"SubResource", Symbol("networkInterface")=>"SubResource", )
+const _property_types_EffectiveNetworkSecurityGroupAssociation = Dict{Symbol,String}(Symbol("networkManager")=>"SubResource", Symbol("subnet")=>"SubResource", Symbol("networkInterface")=>"SubResource", )
 OpenAPI.property_type(::Type{ EffectiveNetworkSecurityGroupAssociation }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_EffectiveNetworkSecurityGroupAssociation[name]))}
 
-function check_required(o::EffectiveNetworkSecurityGroupAssociation)
+function OpenAPI.check_required(o::EffectiveNetworkSecurityGroupAssociation)
     true
 end
 
+function OpenAPI.validate_properties(o::EffectiveNetworkSecurityGroupAssociation)
+    OpenAPI.validate_property(EffectiveNetworkSecurityGroupAssociation, Symbol("networkManager"), o.networkManager)
+    OpenAPI.validate_property(EffectiveNetworkSecurityGroupAssociation, Symbol("subnet"), o.subnet)
+    OpenAPI.validate_property(EffectiveNetworkSecurityGroupAssociation, Symbol("networkInterface"), o.networkInterface)
+end
+
 function OpenAPI.validate_property(::Type{ EffectiveNetworkSecurityGroupAssociation }, name::Symbol, val)
+
+
+
 end

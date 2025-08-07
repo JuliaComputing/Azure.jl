@@ -25,11 +25,11 @@ Create or update an image.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ImagesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**image_name** | **String**| The name of the image. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**Image**](Image.md)| Parameters supplied to the Create Image operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**image_name** | **String** | The name of the image. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**Image**](Image.md) | Parameters supplied to the Create Image operation. |
 
 ### Return type
 
@@ -59,10 +59,10 @@ Deletes an Image.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ImagesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**image_name** | **String**| The name of the image. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**image_name** | **String** | The name of the image. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -75,7 +75,7 @@ Nothing
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -92,16 +92,16 @@ Gets an image.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ImagesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**image_name** | **String**| The name of the image. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**image_name** | **String** | The name of the image. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expand** | **String**| The expand expression to apply on the operation. | [default to nothing]
+ **expand** | **String** | The expand expression to apply on the operation. | [default to nothing]
 
 ### Return type
 
@@ -131,8 +131,8 @@ Gets the list of Images in the subscription. Use nextLink property in the respon
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ImagesApi** | API context | 
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -162,9 +162,9 @@ Gets the list of images under a resource group.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ImagesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -194,11 +194,11 @@ Update an image.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ImagesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**image_name** | **String**| The name of the image. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**ImageUpdate**](ImageUpdate.md)| Parameters supplied to the Update Image operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**image_name** | **String** | The name of the image. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**ImageUpdate**](ImageUpdate.md) | Parameters supplied to the Update Image operation. |
 
 ### Return type
 

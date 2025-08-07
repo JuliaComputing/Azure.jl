@@ -18,18 +18,25 @@ Base.@kwdef mutable struct VirtualMachineExtensionUpdate <: OpenAPI.APIModel
     tags::Union{Nothing, Dict{String, String}} = nothing
 
     function VirtualMachineExtensionUpdate(properties, tags, )
-        OpenAPI.validate_property(VirtualMachineExtensionUpdate, Symbol("properties"), properties)
-        OpenAPI.validate_property(VirtualMachineExtensionUpdate, Symbol("tags"), tags)
-        return new(properties, tags, )
+        o = new(properties, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineExtensionUpdate
 
 const _property_types_VirtualMachineExtensionUpdate = Dict{Symbol,String}(Symbol("properties")=>"VirtualMachineExtensionUpdateProperties", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ VirtualMachineExtensionUpdate }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineExtensionUpdate[name]))}
 
-function check_required(o::VirtualMachineExtensionUpdate)
+function OpenAPI.check_required(o::VirtualMachineExtensionUpdate)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineExtensionUpdate)
+    OpenAPI.validate_property(VirtualMachineExtensionUpdate, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(VirtualMachineExtensionUpdate, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineExtensionUpdate }, name::Symbol, val)
+
+
 end

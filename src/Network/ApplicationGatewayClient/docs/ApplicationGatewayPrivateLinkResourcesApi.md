@@ -20,10 +20,10 @@ Lists all private link resources on an application gateway.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ApplicationGatewayPrivateLinkResourcesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**application_gateway_name** | **String**| The name of the application gateway. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**application_gateway_name** | **String** | The name of the application gateway. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 

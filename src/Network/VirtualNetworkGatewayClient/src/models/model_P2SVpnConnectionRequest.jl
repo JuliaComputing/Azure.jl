@@ -15,17 +15,23 @@ Base.@kwdef mutable struct P2SVpnConnectionRequest <: OpenAPI.APIModel
     vpnConnectionIds::Union{Nothing, Vector{String}} = nothing
 
     function P2SVpnConnectionRequest(vpnConnectionIds, )
-        OpenAPI.validate_property(P2SVpnConnectionRequest, Symbol("vpnConnectionIds"), vpnConnectionIds)
-        return new(vpnConnectionIds, )
+        o = new(vpnConnectionIds, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type P2SVpnConnectionRequest
 
 const _property_types_P2SVpnConnectionRequest = Dict{Symbol,String}(Symbol("vpnConnectionIds")=>"Vector{String}", )
 OpenAPI.property_type(::Type{ P2SVpnConnectionRequest }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_P2SVpnConnectionRequest[name]))}
 
-function check_required(o::P2SVpnConnectionRequest)
+function OpenAPI.check_required(o::P2SVpnConnectionRequest)
     true
 end
 
+function OpenAPI.validate_properties(o::P2SVpnConnectionRequest)
+    OpenAPI.validate_property(P2SVpnConnectionRequest, Symbol("vpnConnectionIds"), o.vpnConnectionIds)
+end
+
 function OpenAPI.validate_property(::Type{ P2SVpnConnectionRequest }, name::Symbol, val)
+
 end

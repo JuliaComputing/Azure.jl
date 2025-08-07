@@ -18,18 +18,25 @@ Base.@kwdef mutable struct ApplicationGatewayProbeHealthResponseMatch <: OpenAPI
     statusCodes::Union{Nothing, Vector{String}} = nothing
 
     function ApplicationGatewayProbeHealthResponseMatch(body, statusCodes, )
-        OpenAPI.validate_property(ApplicationGatewayProbeHealthResponseMatch, Symbol("body"), body)
-        OpenAPI.validate_property(ApplicationGatewayProbeHealthResponseMatch, Symbol("statusCodes"), statusCodes)
-        return new(body, statusCodes, )
+        o = new(body, statusCodes, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayProbeHealthResponseMatch
 
 const _property_types_ApplicationGatewayProbeHealthResponseMatch = Dict{Symbol,String}(Symbol("body")=>"String", Symbol("statusCodes")=>"Vector{String}", )
 OpenAPI.property_type(::Type{ ApplicationGatewayProbeHealthResponseMatch }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayProbeHealthResponseMatch[name]))}
 
-function check_required(o::ApplicationGatewayProbeHealthResponseMatch)
+function OpenAPI.check_required(o::ApplicationGatewayProbeHealthResponseMatch)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayProbeHealthResponseMatch)
+    OpenAPI.validate_property(ApplicationGatewayProbeHealthResponseMatch, Symbol("body"), o.body)
+    OpenAPI.validate_property(ApplicationGatewayProbeHealthResponseMatch, Symbol("statusCodes"), o.statusCodes)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayProbeHealthResponseMatch }, name::Symbol, val)
+
+
 end

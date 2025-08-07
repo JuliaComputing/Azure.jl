@@ -27,21 +27,31 @@ Base.@kwdef mutable struct PrivateLinkServiceConnection <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
 
     function PrivateLinkServiceConnection(properties, name, type, etag, id, )
-        OpenAPI.validate_property(PrivateLinkServiceConnection, Symbol("properties"), properties)
-        OpenAPI.validate_property(PrivateLinkServiceConnection, Symbol("name"), name)
-        OpenAPI.validate_property(PrivateLinkServiceConnection, Symbol("type"), type)
-        OpenAPI.validate_property(PrivateLinkServiceConnection, Symbol("etag"), etag)
-        OpenAPI.validate_property(PrivateLinkServiceConnection, Symbol("id"), id)
-        return new(properties, name, type, etag, id, )
+        o = new(properties, name, type, etag, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PrivateLinkServiceConnection
 
 const _property_types_PrivateLinkServiceConnection = Dict{Symbol,String}(Symbol("properties")=>"PrivateLinkServiceConnectionProperties", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("etag")=>"String", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ PrivateLinkServiceConnection }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PrivateLinkServiceConnection[name]))}
 
-function check_required(o::PrivateLinkServiceConnection)
+function OpenAPI.check_required(o::PrivateLinkServiceConnection)
     true
 end
 
+function OpenAPI.validate_properties(o::PrivateLinkServiceConnection)
+    OpenAPI.validate_property(PrivateLinkServiceConnection, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(PrivateLinkServiceConnection, Symbol("name"), o.name)
+    OpenAPI.validate_property(PrivateLinkServiceConnection, Symbol("type"), o.type)
+    OpenAPI.validate_property(PrivateLinkServiceConnection, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(PrivateLinkServiceConnection, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ PrivateLinkServiceConnection }, name::Symbol, val)
+
+
+
+
+
 end

@@ -6,46 +6,67 @@
 Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations. NOTE: Image reference publisher and offer can only be set when you create the scale set.
 
     ImageReference(;
-        id=nothing,
         publisher=nothing,
         offer=nothing,
         sku=nothing,
         version=nothing,
         exactVersion=nothing,
+        sharedGalleryImageId=nothing,
+        communityGalleryImageId=nothing,
+        id=nothing,
     )
 
-    - id::String : Resource Id
     - publisher::String : The image publisher.
     - offer::String : Specifies the offer of the platform image or marketplace image used to create the virtual machine.
     - sku::String : The image SKU.
-    - version::String : Specifies the version of the platform image or marketplace image used to create the virtual machine. The allowed formats are Major.Minor.Build or &#39;latest&#39;. Major, Minor, and Build are decimal numbers. Specify &#39;latest&#39; to use the latest version of an image available at deploy time. Even if you use &#39;latest&#39;, the VM image will not automatically update after deploy time even if a new version becomes available.
+    - version::String : Specifies the version of the platform image or marketplace image used to create the virtual machine. The allowed formats are Major.Minor.Build or &#39;latest&#39;. Major, Minor, and Build are decimal numbers. Specify &#39;latest&#39; to use the latest version of an image available at deploy time. Even if you use &#39;latest&#39;, the VM image will not automatically update after deploy time even if a new version becomes available. Please do not use field &#39;version&#39; for gallery image deployment, gallery image should always use &#39;id&#39; field for deployment, to use &#39;latest&#39; version of gallery image, just set &#39;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageName}&#39; in the &#39;id&#39; field without version input.
     - exactVersion::String : Specifies in decimal numbers, the version of platform image or marketplace image used to create the virtual machine. This readonly field differs from &#39;version&#39;, only if the value specified in &#39;version&#39; field is &#39;latest&#39;.
+    - sharedGalleryImageId::String : Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.
+    - communityGalleryImageId::String : Specified the community gallery image unique id for vm deployment. This can be fetched from community gallery image GET call.
+    - id::String : Resource Id
 """
 Base.@kwdef mutable struct ImageReference <: OpenAPI.APIModel
-    id::Union{Nothing, String} = nothing
     publisher::Union{Nothing, String} = nothing
     offer::Union{Nothing, String} = nothing
     sku::Union{Nothing, String} = nothing
     version::Union{Nothing, String} = nothing
     exactVersion::Union{Nothing, String} = nothing
+    sharedGalleryImageId::Union{Nothing, String} = nothing
+    communityGalleryImageId::Union{Nothing, String} = nothing
+    id::Union{Nothing, String} = nothing
 
-    function ImageReference(id, publisher, offer, sku, version, exactVersion, )
-        OpenAPI.validate_property(ImageReference, Symbol("id"), id)
-        OpenAPI.validate_property(ImageReference, Symbol("publisher"), publisher)
-        OpenAPI.validate_property(ImageReference, Symbol("offer"), offer)
-        OpenAPI.validate_property(ImageReference, Symbol("sku"), sku)
-        OpenAPI.validate_property(ImageReference, Symbol("version"), version)
-        OpenAPI.validate_property(ImageReference, Symbol("exactVersion"), exactVersion)
-        return new(id, publisher, offer, sku, version, exactVersion, )
+    function ImageReference(publisher, offer, sku, version, exactVersion, sharedGalleryImageId, communityGalleryImageId, id, )
+        o = new(publisher, offer, sku, version, exactVersion, sharedGalleryImageId, communityGalleryImageId, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ImageReference
 
-const _property_types_ImageReference = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("publisher")=>"String", Symbol("offer")=>"String", Symbol("sku")=>"String", Symbol("version")=>"String", Symbol("exactVersion")=>"String", )
+const _property_types_ImageReference = Dict{Symbol,String}(Symbol("publisher")=>"String", Symbol("offer")=>"String", Symbol("sku")=>"String", Symbol("version")=>"String", Symbol("exactVersion")=>"String", Symbol("sharedGalleryImageId")=>"String", Symbol("communityGalleryImageId")=>"String", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ ImageReference }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ImageReference[name]))}
 
-function check_required(o::ImageReference)
+function OpenAPI.check_required(o::ImageReference)
     true
 end
 
+function OpenAPI.validate_properties(o::ImageReference)
+    OpenAPI.validate_property(ImageReference, Symbol("publisher"), o.publisher)
+    OpenAPI.validate_property(ImageReference, Symbol("offer"), o.offer)
+    OpenAPI.validate_property(ImageReference, Symbol("sku"), o.sku)
+    OpenAPI.validate_property(ImageReference, Symbol("version"), o.version)
+    OpenAPI.validate_property(ImageReference, Symbol("exactVersion"), o.exactVersion)
+    OpenAPI.validate_property(ImageReference, Symbol("sharedGalleryImageId"), o.sharedGalleryImageId)
+    OpenAPI.validate_property(ImageReference, Symbol("communityGalleryImageId"), o.communityGalleryImageId)
+    OpenAPI.validate_property(ImageReference, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ ImageReference }, name::Symbol, val)
+
+
+
+
+
+
+
+
 end

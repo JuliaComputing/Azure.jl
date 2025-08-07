@@ -15,17 +15,23 @@ Base.@kwdef mutable struct ProtocolConfiguration <: OpenAPI.APIModel
     HTTPConfiguration = nothing # spec type: Union{ Nothing, HTTPConfiguration }
 
     function ProtocolConfiguration(HTTPConfiguration, )
-        OpenAPI.validate_property(ProtocolConfiguration, Symbol("HTTPConfiguration"), HTTPConfiguration)
-        return new(HTTPConfiguration, )
+        o = new(HTTPConfiguration, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ProtocolConfiguration
 
 const _property_types_ProtocolConfiguration = Dict{Symbol,String}(Symbol("HTTPConfiguration")=>"HTTPConfiguration", )
 OpenAPI.property_type(::Type{ ProtocolConfiguration }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ProtocolConfiguration[name]))}
 
-function check_required(o::ProtocolConfiguration)
+function OpenAPI.check_required(o::ProtocolConfiguration)
     true
 end
 
+function OpenAPI.validate_properties(o::ProtocolConfiguration)
+    OpenAPI.validate_property(ProtocolConfiguration, Symbol("HTTPConfiguration"), o.HTTPConfiguration)
+end
+
 function OpenAPI.validate_property(::Type{ ProtocolConfiguration }, name::Symbol, val)
+
 end

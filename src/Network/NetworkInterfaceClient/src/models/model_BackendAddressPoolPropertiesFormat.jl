@@ -6,46 +6,94 @@
 Properties of the backend address pool.
 
     BackendAddressPoolPropertiesFormat(;
-        backendIPConfigurations=nothing,
+        location=nothing,
+        tunnelInterfaces=nothing,
         loadBalancerBackendAddresses=nothing,
+        backendIPConfigurations=nothing,
         loadBalancingRules=nothing,
         outboundRule=nothing,
         outboundRules=nothing,
+        inboundNatRules=nothing,
         provisioningState=nothing,
+        drainPeriodInSeconds=nothing,
+        virtualNetwork=nothing,
+        syncMode=nothing,
     )
 
-    - backendIPConfigurations::Vector{NetworkInterfaceIPConfiguration2} : An array of references to IP addresses defined in network interfaces.
+    - location::String : The location of the backend address pool.
+    - tunnelInterfaces::Vector{GatewayLoadBalancerTunnelInterface} : An array of gateway load balancer tunnel interfaces.
     - loadBalancerBackendAddresses::Vector{LoadBalancerBackendAddress} : An array of backend addresses.
+    - backendIPConfigurations::Vector{NetworkInterfaceIPConfiguration2} : An array of references to IP addresses defined in network interfaces.
     - loadBalancingRules::Vector{SubResource} : An array of references to load balancing rules that use this backend address pool.
     - outboundRule::SubResource
     - outboundRules::Vector{SubResource} : An array of references to outbound rules that use this backend address pool.
+    - inboundNatRules::Vector{SubResource} : An array of references to inbound NAT rules that use this backend address pool.
     - provisioningState::ProvisioningState
+    - drainPeriodInSeconds::Int64 : Amount of seconds Load Balancer waits for before sending RESET to client and backend address.
+    - virtualNetwork::SubResource
+    - syncMode::String : Backend address synchronous mode for the backend pool
 """
 Base.@kwdef mutable struct BackendAddressPoolPropertiesFormat <: OpenAPI.APIModel
-    backendIPConfigurations::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{NetworkInterfaceIPConfiguration2} }
+    location::Union{Nothing, String} = nothing
+    tunnelInterfaces::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{GatewayLoadBalancerTunnelInterface} }
     loadBalancerBackendAddresses::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{LoadBalancerBackendAddress} }
+    backendIPConfigurations::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{NetworkInterfaceIPConfiguration2} }
     loadBalancingRules::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{SubResource} }
     outboundRule = nothing # spec type: Union{ Nothing, SubResource }
     outboundRules::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{SubResource} }
+    inboundNatRules::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{SubResource} }
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
+    drainPeriodInSeconds::Union{Nothing, Int64} = nothing
+    virtualNetwork = nothing # spec type: Union{ Nothing, SubResource }
+    syncMode::Union{Nothing, String} = nothing
 
-    function BackendAddressPoolPropertiesFormat(backendIPConfigurations, loadBalancerBackendAddresses, loadBalancingRules, outboundRule, outboundRules, provisioningState, )
-        OpenAPI.validate_property(BackendAddressPoolPropertiesFormat, Symbol("backendIPConfigurations"), backendIPConfigurations)
-        OpenAPI.validate_property(BackendAddressPoolPropertiesFormat, Symbol("loadBalancerBackendAddresses"), loadBalancerBackendAddresses)
-        OpenAPI.validate_property(BackendAddressPoolPropertiesFormat, Symbol("loadBalancingRules"), loadBalancingRules)
-        OpenAPI.validate_property(BackendAddressPoolPropertiesFormat, Symbol("outboundRule"), outboundRule)
-        OpenAPI.validate_property(BackendAddressPoolPropertiesFormat, Symbol("outboundRules"), outboundRules)
-        OpenAPI.validate_property(BackendAddressPoolPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(backendIPConfigurations, loadBalancerBackendAddresses, loadBalancingRules, outboundRule, outboundRules, provisioningState, )
+    function BackendAddressPoolPropertiesFormat(location, tunnelInterfaces, loadBalancerBackendAddresses, backendIPConfigurations, loadBalancingRules, outboundRule, outboundRules, inboundNatRules, provisioningState, drainPeriodInSeconds, virtualNetwork, syncMode, )
+        o = new(location, tunnelInterfaces, loadBalancerBackendAddresses, backendIPConfigurations, loadBalancingRules, outboundRule, outboundRules, inboundNatRules, provisioningState, drainPeriodInSeconds, virtualNetwork, syncMode, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type BackendAddressPoolPropertiesFormat
 
-const _property_types_BackendAddressPoolPropertiesFormat = Dict{Symbol,String}(Symbol("backendIPConfigurations")=>"Vector{NetworkInterfaceIPConfiguration2}", Symbol("loadBalancerBackendAddresses")=>"Vector{LoadBalancerBackendAddress}", Symbol("loadBalancingRules")=>"Vector{SubResource}", Symbol("outboundRule")=>"SubResource", Symbol("outboundRules")=>"Vector{SubResource}", Symbol("provisioningState")=>"ProvisioningState", )
+const _property_types_BackendAddressPoolPropertiesFormat = Dict{Symbol,String}(Symbol("location")=>"String", Symbol("tunnelInterfaces")=>"Vector{GatewayLoadBalancerTunnelInterface}", Symbol("loadBalancerBackendAddresses")=>"Vector{LoadBalancerBackendAddress}", Symbol("backendIPConfigurations")=>"Vector{NetworkInterfaceIPConfiguration2}", Symbol("loadBalancingRules")=>"Vector{SubResource}", Symbol("outboundRule")=>"SubResource", Symbol("outboundRules")=>"Vector{SubResource}", Symbol("inboundNatRules")=>"Vector{SubResource}", Symbol("provisioningState")=>"ProvisioningState", Symbol("drainPeriodInSeconds")=>"Int64", Symbol("virtualNetwork")=>"SubResource", Symbol("syncMode")=>"String", )
 OpenAPI.property_type(::Type{ BackendAddressPoolPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_BackendAddressPoolPropertiesFormat[name]))}
 
-function check_required(o::BackendAddressPoolPropertiesFormat)
+function OpenAPI.check_required(o::BackendAddressPoolPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::BackendAddressPoolPropertiesFormat)
+    OpenAPI.validate_property(BackendAddressPoolPropertiesFormat, Symbol("location"), o.location)
+    OpenAPI.validate_property(BackendAddressPoolPropertiesFormat, Symbol("tunnelInterfaces"), o.tunnelInterfaces)
+    OpenAPI.validate_property(BackendAddressPoolPropertiesFormat, Symbol("loadBalancerBackendAddresses"), o.loadBalancerBackendAddresses)
+    OpenAPI.validate_property(BackendAddressPoolPropertiesFormat, Symbol("backendIPConfigurations"), o.backendIPConfigurations)
+    OpenAPI.validate_property(BackendAddressPoolPropertiesFormat, Symbol("loadBalancingRules"), o.loadBalancingRules)
+    OpenAPI.validate_property(BackendAddressPoolPropertiesFormat, Symbol("outboundRule"), o.outboundRule)
+    OpenAPI.validate_property(BackendAddressPoolPropertiesFormat, Symbol("outboundRules"), o.outboundRules)
+    OpenAPI.validate_property(BackendAddressPoolPropertiesFormat, Symbol("inboundNatRules"), o.inboundNatRules)
+    OpenAPI.validate_property(BackendAddressPoolPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(BackendAddressPoolPropertiesFormat, Symbol("drainPeriodInSeconds"), o.drainPeriodInSeconds)
+    OpenAPI.validate_property(BackendAddressPoolPropertiesFormat, Symbol("virtualNetwork"), o.virtualNetwork)
+    OpenAPI.validate_property(BackendAddressPoolPropertiesFormat, Symbol("syncMode"), o.syncMode)
+end
+
 function OpenAPI.validate_property(::Type{ BackendAddressPoolPropertiesFormat }, name::Symbol, val)
+
+
+
+
+
+
+
+
+
+
+    if name === Symbol("drainPeriodInSeconds")
+        OpenAPI.validate_param(name, "BackendAddressPoolPropertiesFormat", :format, val, "int32")
+    end
+
+
+    if name === Symbol("syncMode")
+        OpenAPI.validate_param(name, "BackendAddressPoolPropertiesFormat", :enum, val, ["Automatic", "Manual"])
+    end
+
 end

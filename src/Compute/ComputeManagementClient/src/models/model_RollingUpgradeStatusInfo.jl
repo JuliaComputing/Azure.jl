@@ -30,23 +30,34 @@ Base.@kwdef mutable struct RollingUpgradeStatusInfo <: OpenAPI.APIModel
     tags::Union{Nothing, Dict{String, String}} = nothing
 
     function RollingUpgradeStatusInfo(properties, id, name, type, location, tags, )
-        OpenAPI.validate_property(RollingUpgradeStatusInfo, Symbol("properties"), properties)
-        OpenAPI.validate_property(RollingUpgradeStatusInfo, Symbol("id"), id)
-        OpenAPI.validate_property(RollingUpgradeStatusInfo, Symbol("name"), name)
-        OpenAPI.validate_property(RollingUpgradeStatusInfo, Symbol("type"), type)
-        OpenAPI.validate_property(RollingUpgradeStatusInfo, Symbol("location"), location)
-        OpenAPI.validate_property(RollingUpgradeStatusInfo, Symbol("tags"), tags)
-        return new(properties, id, name, type, location, tags, )
+        o = new(properties, id, name, type, location, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type RollingUpgradeStatusInfo
 
 const _property_types_RollingUpgradeStatusInfo = Dict{Symbol,String}(Symbol("properties")=>"RollingUpgradeStatusInfoProperties", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ RollingUpgradeStatusInfo }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RollingUpgradeStatusInfo[name]))}
 
-function check_required(o::RollingUpgradeStatusInfo)
+function OpenAPI.check_required(o::RollingUpgradeStatusInfo)
     o.location === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::RollingUpgradeStatusInfo)
+    OpenAPI.validate_property(RollingUpgradeStatusInfo, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(RollingUpgradeStatusInfo, Symbol("id"), o.id)
+    OpenAPI.validate_property(RollingUpgradeStatusInfo, Symbol("name"), o.name)
+    OpenAPI.validate_property(RollingUpgradeStatusInfo, Symbol("type"), o.type)
+    OpenAPI.validate_property(RollingUpgradeStatusInfo, Symbol("location"), o.location)
+    OpenAPI.validate_property(RollingUpgradeStatusInfo, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ RollingUpgradeStatusInfo }, name::Symbol, val)
+
+
+
+
+
+
 end

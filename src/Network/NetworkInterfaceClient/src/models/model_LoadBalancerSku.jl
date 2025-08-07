@@ -7,28 +7,44 @@ SKU of a load balancer.
 
     LoadBalancerSku(;
         name=nothing,
+        tier=nothing,
     )
 
     - name::String : Name of a load balancer SKU.
+    - tier::String : Tier of a load balancer SKU.
 """
 Base.@kwdef mutable struct LoadBalancerSku <: OpenAPI.APIModel
     name::Union{Nothing, String} = nothing
+    tier::Union{Nothing, String} = nothing
 
-    function LoadBalancerSku(name, )
-        OpenAPI.validate_property(LoadBalancerSku, Symbol("name"), name)
-        return new(name, )
+    function LoadBalancerSku(name, tier, )
+        o = new(name, tier, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type LoadBalancerSku
 
-const _property_types_LoadBalancerSku = Dict{Symbol,String}(Symbol("name")=>"String", )
+const _property_types_LoadBalancerSku = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("tier")=>"String", )
 OpenAPI.property_type(::Type{ LoadBalancerSku }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_LoadBalancerSku[name]))}
 
-function check_required(o::LoadBalancerSku)
+function OpenAPI.check_required(o::LoadBalancerSku)
     true
 end
 
+function OpenAPI.validate_properties(o::LoadBalancerSku)
+    OpenAPI.validate_property(LoadBalancerSku, Symbol("name"), o.name)
+    OpenAPI.validate_property(LoadBalancerSku, Symbol("tier"), o.tier)
+end
+
 function OpenAPI.validate_property(::Type{ LoadBalancerSku }, name::Symbol, val)
+
     if name === Symbol("name")
-        OpenAPI.validate_param(name, "LoadBalancerSku", :enum, val, ["Basic", "Standard"])
+        OpenAPI.validate_param(name, "LoadBalancerSku", :enum, val, ["Basic", "Standard", "Gateway"])
     end
+
+
+    if name === Symbol("tier")
+        OpenAPI.validate_param(name, "LoadBalancerSku", :enum, val, ["Regional", "Global"])
+    end
+
 end

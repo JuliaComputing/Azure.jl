@@ -33,23 +33,35 @@ Base.@kwdef mutable struct ConnectionMonitorResult <: OpenAPI.APIModel
     properties = nothing # spec type: Union{ Nothing, ConnectionMonitorResultProperties }
 
     function ConnectionMonitorResult(name, id, etag, type, location, tags, properties, )
-        OpenAPI.validate_property(ConnectionMonitorResult, Symbol("name"), name)
-        OpenAPI.validate_property(ConnectionMonitorResult, Symbol("id"), id)
-        OpenAPI.validate_property(ConnectionMonitorResult, Symbol("etag"), etag)
-        OpenAPI.validate_property(ConnectionMonitorResult, Symbol("type"), type)
-        OpenAPI.validate_property(ConnectionMonitorResult, Symbol("location"), location)
-        OpenAPI.validate_property(ConnectionMonitorResult, Symbol("tags"), tags)
-        OpenAPI.validate_property(ConnectionMonitorResult, Symbol("properties"), properties)
-        return new(name, id, etag, type, location, tags, properties, )
+        o = new(name, id, etag, type, location, tags, properties, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ConnectionMonitorResult
 
 const _property_types_ConnectionMonitorResult = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("id")=>"String", Symbol("etag")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", Symbol("properties")=>"ConnectionMonitorResultProperties", )
 OpenAPI.property_type(::Type{ ConnectionMonitorResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ConnectionMonitorResult[name]))}
 
-function check_required(o::ConnectionMonitorResult)
+function OpenAPI.check_required(o::ConnectionMonitorResult)
     true
 end
 
+function OpenAPI.validate_properties(o::ConnectionMonitorResult)
+    OpenAPI.validate_property(ConnectionMonitorResult, Symbol("name"), o.name)
+    OpenAPI.validate_property(ConnectionMonitorResult, Symbol("id"), o.id)
+    OpenAPI.validate_property(ConnectionMonitorResult, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(ConnectionMonitorResult, Symbol("type"), o.type)
+    OpenAPI.validate_property(ConnectionMonitorResult, Symbol("location"), o.location)
+    OpenAPI.validate_property(ConnectionMonitorResult, Symbol("tags"), o.tags)
+    OpenAPI.validate_property(ConnectionMonitorResult, Symbol("properties"), o.properties)
+end
+
 function OpenAPI.validate_property(::Type{ ConnectionMonitorResult }, name::Symbol, val)
+
+
+
+
+
+
+
 end

@@ -18,6 +18,8 @@ Describes a data disk.
         toBeDetached=nothing,
         diskIOPSReadWrite=nothing,
         diskMBpsReadWrite=nothing,
+        detachOption=nothing,
+        deleteOption=nothing,
     )
 
     - lun::Int64 : Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM.
@@ -32,6 +34,8 @@ Describes a data disk.
     - toBeDetached::Bool : Specifies whether the data disk is in process of detachment from the VirtualMachine/VirtualMachineScaleset
     - diskIOPSReadWrite::Int64 : Specifies the Read-Write IOPS for the managed disk when StorageAccountType is UltraSSD_LRS. Returned only for VirtualMachine ScaleSet VM disks. Can be updated only via updates to the VirtualMachine Scale Set.
     - diskMBpsReadWrite::Int64 : Specifies the bandwidth in MB per second for the managed disk when StorageAccountType is UltraSSD_LRS. Returned only for VirtualMachine ScaleSet VM disks. Can be updated only via updates to the VirtualMachine Scale Set.
+    - detachOption::DetachOption
+    - deleteOption::DeleteOption
 """
 Base.@kwdef mutable struct DataDisk <: OpenAPI.APIModel
     lun::Union{Nothing, Int64} = nothing
@@ -46,44 +50,67 @@ Base.@kwdef mutable struct DataDisk <: OpenAPI.APIModel
     toBeDetached::Union{Nothing, Bool} = nothing
     diskIOPSReadWrite::Union{Nothing, Int64} = nothing
     diskMBpsReadWrite::Union{Nothing, Int64} = nothing
+    detachOption = nothing # spec type: Union{ Nothing, DetachOption }
+    deleteOption = nothing # spec type: Union{ Nothing, DeleteOption }
 
-    function DataDisk(lun, name, vhd, image, caching, writeAcceleratorEnabled, createOption, diskSizeGB, managedDisk, toBeDetached, diskIOPSReadWrite, diskMBpsReadWrite, )
-        OpenAPI.validate_property(DataDisk, Symbol("lun"), lun)
-        OpenAPI.validate_property(DataDisk, Symbol("name"), name)
-        OpenAPI.validate_property(DataDisk, Symbol("vhd"), vhd)
-        OpenAPI.validate_property(DataDisk, Symbol("image"), image)
-        OpenAPI.validate_property(DataDisk, Symbol("caching"), caching)
-        OpenAPI.validate_property(DataDisk, Symbol("writeAcceleratorEnabled"), writeAcceleratorEnabled)
-        OpenAPI.validate_property(DataDisk, Symbol("createOption"), createOption)
-        OpenAPI.validate_property(DataDisk, Symbol("diskSizeGB"), diskSizeGB)
-        OpenAPI.validate_property(DataDisk, Symbol("managedDisk"), managedDisk)
-        OpenAPI.validate_property(DataDisk, Symbol("toBeDetached"), toBeDetached)
-        OpenAPI.validate_property(DataDisk, Symbol("diskIOPSReadWrite"), diskIOPSReadWrite)
-        OpenAPI.validate_property(DataDisk, Symbol("diskMBpsReadWrite"), diskMBpsReadWrite)
-        return new(lun, name, vhd, image, caching, writeAcceleratorEnabled, createOption, diskSizeGB, managedDisk, toBeDetached, diskIOPSReadWrite, diskMBpsReadWrite, )
+    function DataDisk(lun, name, vhd, image, caching, writeAcceleratorEnabled, createOption, diskSizeGB, managedDisk, toBeDetached, diskIOPSReadWrite, diskMBpsReadWrite, detachOption, deleteOption, )
+        o = new(lun, name, vhd, image, caching, writeAcceleratorEnabled, createOption, diskSizeGB, managedDisk, toBeDetached, diskIOPSReadWrite, diskMBpsReadWrite, detachOption, deleteOption, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type DataDisk
 
-const _property_types_DataDisk = Dict{Symbol,String}(Symbol("lun")=>"Int64", Symbol("name")=>"String", Symbol("vhd")=>"VirtualHardDisk", Symbol("image")=>"VirtualHardDisk", Symbol("caching")=>"Caching", Symbol("writeAcceleratorEnabled")=>"Bool", Symbol("createOption")=>"CreateOption", Symbol("diskSizeGB")=>"Int64", Symbol("managedDisk")=>"ManagedDiskParameters", Symbol("toBeDetached")=>"Bool", Symbol("diskIOPSReadWrite")=>"Int64", Symbol("diskMBpsReadWrite")=>"Int64", )
+const _property_types_DataDisk = Dict{Symbol,String}(Symbol("lun")=>"Int64", Symbol("name")=>"String", Symbol("vhd")=>"VirtualHardDisk", Symbol("image")=>"VirtualHardDisk", Symbol("caching")=>"Caching", Symbol("writeAcceleratorEnabled")=>"Bool", Symbol("createOption")=>"CreateOption", Symbol("diskSizeGB")=>"Int64", Symbol("managedDisk")=>"ManagedDiskParameters", Symbol("toBeDetached")=>"Bool", Symbol("diskIOPSReadWrite")=>"Int64", Symbol("diskMBpsReadWrite")=>"Int64", Symbol("detachOption")=>"DetachOption", Symbol("deleteOption")=>"DeleteOption", )
 OpenAPI.property_type(::Type{ DataDisk }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DataDisk[name]))}
 
-function check_required(o::DataDisk)
+function OpenAPI.check_required(o::DataDisk)
     o.lun === nothing && (return false)
     o.createOption === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::DataDisk)
+    OpenAPI.validate_property(DataDisk, Symbol("lun"), o.lun)
+    OpenAPI.validate_property(DataDisk, Symbol("name"), o.name)
+    OpenAPI.validate_property(DataDisk, Symbol("vhd"), o.vhd)
+    OpenAPI.validate_property(DataDisk, Symbol("image"), o.image)
+    OpenAPI.validate_property(DataDisk, Symbol("caching"), o.caching)
+    OpenAPI.validate_property(DataDisk, Symbol("writeAcceleratorEnabled"), o.writeAcceleratorEnabled)
+    OpenAPI.validate_property(DataDisk, Symbol("createOption"), o.createOption)
+    OpenAPI.validate_property(DataDisk, Symbol("diskSizeGB"), o.diskSizeGB)
+    OpenAPI.validate_property(DataDisk, Symbol("managedDisk"), o.managedDisk)
+    OpenAPI.validate_property(DataDisk, Symbol("toBeDetached"), o.toBeDetached)
+    OpenAPI.validate_property(DataDisk, Symbol("diskIOPSReadWrite"), o.diskIOPSReadWrite)
+    OpenAPI.validate_property(DataDisk, Symbol("diskMBpsReadWrite"), o.diskMBpsReadWrite)
+    OpenAPI.validate_property(DataDisk, Symbol("detachOption"), o.detachOption)
+    OpenAPI.validate_property(DataDisk, Symbol("deleteOption"), o.deleteOption)
+end
+
 function OpenAPI.validate_property(::Type{ DataDisk }, name::Symbol, val)
+
     if name === Symbol("lun")
         OpenAPI.validate_param(name, "DataDisk", :format, val, "int32")
     end
+
+
+
+
+
+
+
     if name === Symbol("diskSizeGB")
         OpenAPI.validate_param(name, "DataDisk", :format, val, "int32")
     end
+
+
+
     if name === Symbol("diskIOPSReadWrite")
         OpenAPI.validate_param(name, "DataDisk", :format, val, "int64")
     end
+
     if name === Symbol("diskMBpsReadWrite")
         OpenAPI.validate_param(name, "DataDisk", :format, val, "int64")
     end
+
+
 end

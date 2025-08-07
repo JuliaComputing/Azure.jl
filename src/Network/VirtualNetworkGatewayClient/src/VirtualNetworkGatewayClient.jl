@@ -7,10 +7,11 @@ using Dates, TimeZones
 using OpenAPI
 using OpenAPI.Clients
 
-const API_VERSION = "2020-05-01"
+const API_VERSION = "2024-07-01"
 
 include("modelincludes.jl")
 
+include("apis/api_DefaultApi.jl")
 include("apis/api_LocalNetworkGatewaysApi.jl")
 include("apis/api_VirtualNetworkGatewayConnectionsApi.jl")
 include("apis/api_VirtualNetworkGatewaysApi.jl")

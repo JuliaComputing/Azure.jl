@@ -21,19 +21,27 @@ Base.@kwdef mutable struct DedicatedHostInstanceView <: OpenAPI.APIModel
     statuses::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{InstanceViewStatus} }
 
     function DedicatedHostInstanceView(assetId, availableCapacity, statuses, )
-        OpenAPI.validate_property(DedicatedHostInstanceView, Symbol("assetId"), assetId)
-        OpenAPI.validate_property(DedicatedHostInstanceView, Symbol("availableCapacity"), availableCapacity)
-        OpenAPI.validate_property(DedicatedHostInstanceView, Symbol("statuses"), statuses)
-        return new(assetId, availableCapacity, statuses, )
+        o = new(assetId, availableCapacity, statuses, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type DedicatedHostInstanceView
 
 const _property_types_DedicatedHostInstanceView = Dict{Symbol,String}(Symbol("assetId")=>"String", Symbol("availableCapacity")=>"DedicatedHostAvailableCapacity", Symbol("statuses")=>"Vector{InstanceViewStatus}", )
 OpenAPI.property_type(::Type{ DedicatedHostInstanceView }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DedicatedHostInstanceView[name]))}
 
-function check_required(o::DedicatedHostInstanceView)
+function OpenAPI.check_required(o::DedicatedHostInstanceView)
     true
 end
 
+function OpenAPI.validate_properties(o::DedicatedHostInstanceView)
+    OpenAPI.validate_property(DedicatedHostInstanceView, Symbol("assetId"), o.assetId)
+    OpenAPI.validate_property(DedicatedHostInstanceView, Symbol("availableCapacity"), o.availableCapacity)
+    OpenAPI.validate_property(DedicatedHostInstanceView, Symbol("statuses"), o.statuses)
+end
+
 function OpenAPI.validate_property(::Type{ DedicatedHostInstanceView }, name::Symbol, val)
+
+
+
 end

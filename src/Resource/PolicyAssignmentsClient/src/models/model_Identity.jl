@@ -3,40 +3,54 @@
 
 
 @doc raw"""Identity
-Identity for the resource.
+Identity for the resource.  Policy assignments support a maximum of one identity.  That is either a system assigned identity or a single user assigned identity.
 
     Identity(;
         principalId=nothing,
         tenantId=nothing,
         type=nothing,
+        userAssignedIdentities=nothing,
     )
 
-    - principalId::String : The principal ID of the resource identity.
-    - tenantId::String : The tenant ID of the resource identity.
-    - type::String : The identity type. This is the only required field when adding a system assigned identity to a resource.
+    - principalId::String : The principal ID of the resource identity.  This property will only be provided for a system assigned identity
+    - tenantId::String : The tenant ID of the resource identity.  This property will only be provided for a system assigned identity
+    - type::String : The identity type. This is the only required field when adding a system or user assigned identity to a resource.
+    - userAssignedIdentities::Dict{String, IdentityUserAssignedIdentitiesValue} : The user identity associated with the policy. The user identity dictionary key references will be ARM resource ids in the form: &#39;/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}&#39;.
 """
 Base.@kwdef mutable struct Identity <: OpenAPI.APIModel
     principalId::Union{Nothing, String} = nothing
     tenantId::Union{Nothing, String} = nothing
     type::Union{Nothing, String} = nothing
+    userAssignedIdentities::Union{Nothing, Dict} = nothing # spec type: Union{ Nothing, Dict{String, IdentityUserAssignedIdentitiesValue} }
 
-    function Identity(principalId, tenantId, type, )
-        OpenAPI.validate_property(Identity, Symbol("principalId"), principalId)
-        OpenAPI.validate_property(Identity, Symbol("tenantId"), tenantId)
-        OpenAPI.validate_property(Identity, Symbol("type"), type)
-        return new(principalId, tenantId, type, )
+    function Identity(principalId, tenantId, type, userAssignedIdentities, )
+        o = new(principalId, tenantId, type, userAssignedIdentities, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type Identity
 
-const _property_types_Identity = Dict{Symbol,String}(Symbol("principalId")=>"String", Symbol("tenantId")=>"String", Symbol("type")=>"String", )
+const _property_types_Identity = Dict{Symbol,String}(Symbol("principalId")=>"String", Symbol("tenantId")=>"String", Symbol("type")=>"String", Symbol("userAssignedIdentities")=>"Dict{String, IdentityUserAssignedIdentitiesValue}", )
 OpenAPI.property_type(::Type{ Identity }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Identity[name]))}
 
-function check_required(o::Identity)
+function OpenAPI.check_required(o::Identity)
     true
 end
 
+function OpenAPI.validate_properties(o::Identity)
+    OpenAPI.validate_property(Identity, Symbol("principalId"), o.principalId)
+    OpenAPI.validate_property(Identity, Symbol("tenantId"), o.tenantId)
+    OpenAPI.validate_property(Identity, Symbol("type"), o.type)
+    OpenAPI.validate_property(Identity, Symbol("userAssignedIdentities"), o.userAssignedIdentities)
+end
+
 function OpenAPI.validate_property(::Type{ Identity }, name::Symbol, val)
+
+
+
     if name === Symbol("type")
-        OpenAPI.validate_param(name, "Identity", :enum, val, ["SystemAssigned", "None"])
+        OpenAPI.validate_param(name, "Identity", :enum, val, ["SystemAssigned", "UserAssigned", "None"])
     end
+
+
 end

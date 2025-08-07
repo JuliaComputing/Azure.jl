@@ -6,63 +6,83 @@
 Disk resource.
 
     Disk(;
+        managedBy=nothing,
+        managedByExtended=nothing,
+        sku=nothing,
+        zones=nothing,
+        extendedLocation=nothing,
+        properties=nothing,
         id=nothing,
         name=nothing,
         type=nothing,
         location=nothing,
         tags=nothing,
-        managedBy=nothing,
-        managedByExtended=nothing,
-        sku=nothing,
-        zones=nothing,
-        properties=nothing,
     )
 
+    - managedBy::String : A relative URI containing the ID of the VM that has the disk attached.
+    - managedByExtended::Vector{String} : List of relative URIs containing the IDs of the VMs that have the disk attached. maxShares should be set to a value greater than one for disks to allow attaching them to multiple VMs.
+    - sku::DiskSku
+    - zones::Vector{String} : The Logical zone list for Disk.
+    - extendedLocation::ExtendedLocation
+    - properties::DiskProperties
     - id::String : Resource Id
     - name::String : Resource name
     - type::String : Resource type
     - location::String : Resource location
     - tags::Dict{String, String} : Resource tags
-    - managedBy::String : A relative URI containing the ID of the VM that has the disk attached.
-    - managedByExtended::Vector{String} : List of relative URIs containing the IDs of the VMs that have the disk attached. maxShares should be set to a value greater than one for disks to allow attaching them to multiple VMs.
-    - sku::DiskSku
-    - zones::Vector{String} : The Logical zone list for Disk.
-    - properties::DiskProperties
 """
 Base.@kwdef mutable struct Disk <: OpenAPI.APIModel
+    managedBy::Union{Nothing, String} = nothing
+    managedByExtended::Union{Nothing, Vector{String}} = nothing
+    sku = nothing # spec type: Union{ Nothing, DiskSku }
+    zones::Union{Nothing, Vector{String}} = nothing
+    extendedLocation = nothing # spec type: Union{ Nothing, ExtendedLocation }
+    properties = nothing # spec type: Union{ Nothing, DiskProperties }
     id::Union{Nothing, String} = nothing
     name::Union{Nothing, String} = nothing
     type::Union{Nothing, String} = nothing
     location::Union{Nothing, String} = nothing
     tags::Union{Nothing, Dict{String, String}} = nothing
-    managedBy::Union{Nothing, String} = nothing
-    managedByExtended::Union{Nothing, Vector{String}} = nothing
-    sku = nothing # spec type: Union{ Nothing, DiskSku }
-    zones::Union{Nothing, Vector{String}} = nothing
-    properties = nothing # spec type: Union{ Nothing, DiskProperties }
 
-    function Disk(id, name, type, location, tags, managedBy, managedByExtended, sku, zones, properties, )
-        OpenAPI.validate_property(Disk, Symbol("id"), id)
-        OpenAPI.validate_property(Disk, Symbol("name"), name)
-        OpenAPI.validate_property(Disk, Symbol("type"), type)
-        OpenAPI.validate_property(Disk, Symbol("location"), location)
-        OpenAPI.validate_property(Disk, Symbol("tags"), tags)
-        OpenAPI.validate_property(Disk, Symbol("managedBy"), managedBy)
-        OpenAPI.validate_property(Disk, Symbol("managedByExtended"), managedByExtended)
-        OpenAPI.validate_property(Disk, Symbol("sku"), sku)
-        OpenAPI.validate_property(Disk, Symbol("zones"), zones)
-        OpenAPI.validate_property(Disk, Symbol("properties"), properties)
-        return new(id, name, type, location, tags, managedBy, managedByExtended, sku, zones, properties, )
+    function Disk(managedBy, managedByExtended, sku, zones, extendedLocation, properties, id, name, type, location, tags, )
+        o = new(managedBy, managedByExtended, sku, zones, extendedLocation, properties, id, name, type, location, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type Disk
 
-const _property_types_Disk = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", Symbol("managedBy")=>"String", Symbol("managedByExtended")=>"Vector{String}", Symbol("sku")=>"DiskSku", Symbol("zones")=>"Vector{String}", Symbol("properties")=>"DiskProperties", )
+const _property_types_Disk = Dict{Symbol,String}(Symbol("managedBy")=>"String", Symbol("managedByExtended")=>"Vector{String}", Symbol("sku")=>"DiskSku", Symbol("zones")=>"Vector{String}", Symbol("extendedLocation")=>"ExtendedLocation", Symbol("properties")=>"DiskProperties", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ Disk }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Disk[name]))}
 
-function check_required(o::Disk)
+function OpenAPI.check_required(o::Disk)
     o.location === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::Disk)
+    OpenAPI.validate_property(Disk, Symbol("managedBy"), o.managedBy)
+    OpenAPI.validate_property(Disk, Symbol("managedByExtended"), o.managedByExtended)
+    OpenAPI.validate_property(Disk, Symbol("sku"), o.sku)
+    OpenAPI.validate_property(Disk, Symbol("zones"), o.zones)
+    OpenAPI.validate_property(Disk, Symbol("extendedLocation"), o.extendedLocation)
+    OpenAPI.validate_property(Disk, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(Disk, Symbol("id"), o.id)
+    OpenAPI.validate_property(Disk, Symbol("name"), o.name)
+    OpenAPI.validate_property(Disk, Symbol("type"), o.type)
+    OpenAPI.validate_property(Disk, Symbol("location"), o.location)
+    OpenAPI.validate_property(Disk, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ Disk }, name::Symbol, val)
+
+
+
+
+
+
+
+
+
+
+
 end

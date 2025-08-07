@@ -27,21 +27,31 @@ Base.@kwdef mutable struct VirtualNetworkGatewayIPConfigurationPropertiesFormat 
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
     function VirtualNetworkGatewayIPConfigurationPropertiesFormat(privateIPAllocationMethod, subnet, publicIPAddress, privateIPAddress, provisioningState, )
-        OpenAPI.validate_property(VirtualNetworkGatewayIPConfigurationPropertiesFormat, Symbol("privateIPAllocationMethod"), privateIPAllocationMethod)
-        OpenAPI.validate_property(VirtualNetworkGatewayIPConfigurationPropertiesFormat, Symbol("subnet"), subnet)
-        OpenAPI.validate_property(VirtualNetworkGatewayIPConfigurationPropertiesFormat, Symbol("publicIPAddress"), publicIPAddress)
-        OpenAPI.validate_property(VirtualNetworkGatewayIPConfigurationPropertiesFormat, Symbol("privateIPAddress"), privateIPAddress)
-        OpenAPI.validate_property(VirtualNetworkGatewayIPConfigurationPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(privateIPAllocationMethod, subnet, publicIPAddress, privateIPAddress, provisioningState, )
+        o = new(privateIPAllocationMethod, subnet, publicIPAddress, privateIPAddress, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualNetworkGatewayIPConfigurationPropertiesFormat
 
 const _property_types_VirtualNetworkGatewayIPConfigurationPropertiesFormat = Dict{Symbol,String}(Symbol("privateIPAllocationMethod")=>"IPAllocationMethod", Symbol("subnet")=>"SubResource", Symbol("publicIPAddress")=>"SubResource", Symbol("privateIPAddress")=>"String", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ VirtualNetworkGatewayIPConfigurationPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualNetworkGatewayIPConfigurationPropertiesFormat[name]))}
 
-function check_required(o::VirtualNetworkGatewayIPConfigurationPropertiesFormat)
+function OpenAPI.check_required(o::VirtualNetworkGatewayIPConfigurationPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualNetworkGatewayIPConfigurationPropertiesFormat)
+    OpenAPI.validate_property(VirtualNetworkGatewayIPConfigurationPropertiesFormat, Symbol("privateIPAllocationMethod"), o.privateIPAllocationMethod)
+    OpenAPI.validate_property(VirtualNetworkGatewayIPConfigurationPropertiesFormat, Symbol("subnet"), o.subnet)
+    OpenAPI.validate_property(VirtualNetworkGatewayIPConfigurationPropertiesFormat, Symbol("publicIPAddress"), o.publicIPAddress)
+    OpenAPI.validate_property(VirtualNetworkGatewayIPConfigurationPropertiesFormat, Symbol("privateIPAddress"), o.privateIPAddress)
+    OpenAPI.validate_property(VirtualNetworkGatewayIPConfigurationPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualNetworkGatewayIPConfigurationPropertiesFormat }, name::Symbol, val)
+
+
+
+
+
 end

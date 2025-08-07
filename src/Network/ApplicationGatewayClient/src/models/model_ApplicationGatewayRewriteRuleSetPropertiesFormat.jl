@@ -18,18 +18,25 @@ Base.@kwdef mutable struct ApplicationGatewayRewriteRuleSetPropertiesFormat <: O
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
     function ApplicationGatewayRewriteRuleSetPropertiesFormat(rewriteRules, provisioningState, )
-        OpenAPI.validate_property(ApplicationGatewayRewriteRuleSetPropertiesFormat, Symbol("rewriteRules"), rewriteRules)
-        OpenAPI.validate_property(ApplicationGatewayRewriteRuleSetPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(rewriteRules, provisioningState, )
+        o = new(rewriteRules, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayRewriteRuleSetPropertiesFormat
 
 const _property_types_ApplicationGatewayRewriteRuleSetPropertiesFormat = Dict{Symbol,String}(Symbol("rewriteRules")=>"Vector{ApplicationGatewayRewriteRule}", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ ApplicationGatewayRewriteRuleSetPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayRewriteRuleSetPropertiesFormat[name]))}
 
-function check_required(o::ApplicationGatewayRewriteRuleSetPropertiesFormat)
+function OpenAPI.check_required(o::ApplicationGatewayRewriteRuleSetPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayRewriteRuleSetPropertiesFormat)
+    OpenAPI.validate_property(ApplicationGatewayRewriteRuleSetPropertiesFormat, Symbol("rewriteRules"), o.rewriteRules)
+    OpenAPI.validate_property(ApplicationGatewayRewriteRuleSetPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayRewriteRuleSetPropertiesFormat }, name::Symbol, val)
+
+
 end

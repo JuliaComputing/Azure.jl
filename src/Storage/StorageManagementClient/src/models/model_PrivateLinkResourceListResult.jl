@@ -15,17 +15,23 @@ Base.@kwdef mutable struct PrivateLinkResourceListResult <: OpenAPI.APIModel
     value::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{PrivateLinkResource} }
 
     function PrivateLinkResourceListResult(value, )
-        OpenAPI.validate_property(PrivateLinkResourceListResult, Symbol("value"), value)
-        return new(value, )
+        o = new(value, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PrivateLinkResourceListResult
 
 const _property_types_PrivateLinkResourceListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{PrivateLinkResource}", )
 OpenAPI.property_type(::Type{ PrivateLinkResourceListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PrivateLinkResourceListResult[name]))}
 
-function check_required(o::PrivateLinkResourceListResult)
+function OpenAPI.check_required(o::PrivateLinkResourceListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::PrivateLinkResourceListResult)
+    OpenAPI.validate_property(PrivateLinkResourceListResult, Symbol("value"), o.value)
+end
+
 function OpenAPI.validate_property(::Type{ PrivateLinkResourceListResult }, name::Symbol, val)
+
 end

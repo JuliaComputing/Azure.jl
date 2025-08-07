@@ -27,21 +27,31 @@ Base.@kwdef mutable struct ApplicationGatewayTrustedRootCertificate <: OpenAPI.A
     id::Union{Nothing, String} = nothing
 
     function ApplicationGatewayTrustedRootCertificate(properties, name, etag, type, id, )
-        OpenAPI.validate_property(ApplicationGatewayTrustedRootCertificate, Symbol("properties"), properties)
-        OpenAPI.validate_property(ApplicationGatewayTrustedRootCertificate, Symbol("name"), name)
-        OpenAPI.validate_property(ApplicationGatewayTrustedRootCertificate, Symbol("etag"), etag)
-        OpenAPI.validate_property(ApplicationGatewayTrustedRootCertificate, Symbol("type"), type)
-        OpenAPI.validate_property(ApplicationGatewayTrustedRootCertificate, Symbol("id"), id)
-        return new(properties, name, etag, type, id, )
+        o = new(properties, name, etag, type, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayTrustedRootCertificate
 
 const _property_types_ApplicationGatewayTrustedRootCertificate = Dict{Symbol,String}(Symbol("properties")=>"ApplicationGatewayTrustedRootCertificatePropertiesFormat", Symbol("name")=>"String", Symbol("etag")=>"String", Symbol("type")=>"String", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ ApplicationGatewayTrustedRootCertificate }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayTrustedRootCertificate[name]))}
 
-function check_required(o::ApplicationGatewayTrustedRootCertificate)
+function OpenAPI.check_required(o::ApplicationGatewayTrustedRootCertificate)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayTrustedRootCertificate)
+    OpenAPI.validate_property(ApplicationGatewayTrustedRootCertificate, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(ApplicationGatewayTrustedRootCertificate, Symbol("name"), o.name)
+    OpenAPI.validate_property(ApplicationGatewayTrustedRootCertificate, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(ApplicationGatewayTrustedRootCertificate, Symbol("type"), o.type)
+    OpenAPI.validate_property(ApplicationGatewayTrustedRootCertificate, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayTrustedRootCertificate }, name::Symbol, val)
+
+
+
+
+
 end

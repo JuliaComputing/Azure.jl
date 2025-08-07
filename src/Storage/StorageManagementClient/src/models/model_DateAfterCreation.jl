@@ -3,33 +3,48 @@
 
 
 @doc raw"""DateAfterCreation
-Object to define the number of days after creation.
+Object to define snapshot and version action conditions.
 
     DateAfterCreation(;
         daysAfterCreationGreaterThan=nothing,
+        daysAfterLastTierChangeGreaterThan=nothing,
     )
 
     - daysAfterCreationGreaterThan::Float64 : Value indicating the age in days after creation
+    - daysAfterLastTierChangeGreaterThan::Float64 : Value indicating the age in days after last blob tier change time. This property is only applicable for tierToArchive actions and requires daysAfterCreationGreaterThan to be set for snapshots and blob version based actions. The blob will be archived if both the conditions are satisfied.
 """
 Base.@kwdef mutable struct DateAfterCreation <: OpenAPI.APIModel
     daysAfterCreationGreaterThan::Union{Nothing, Float64} = nothing
+    daysAfterLastTierChangeGreaterThan::Union{Nothing, Float64} = nothing
 
-    function DateAfterCreation(daysAfterCreationGreaterThan, )
-        OpenAPI.validate_property(DateAfterCreation, Symbol("daysAfterCreationGreaterThan"), daysAfterCreationGreaterThan)
-        return new(daysAfterCreationGreaterThan, )
+    function DateAfterCreation(daysAfterCreationGreaterThan, daysAfterLastTierChangeGreaterThan, )
+        o = new(daysAfterCreationGreaterThan, daysAfterLastTierChangeGreaterThan, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type DateAfterCreation
 
-const _property_types_DateAfterCreation = Dict{Symbol,String}(Symbol("daysAfterCreationGreaterThan")=>"Float64", )
+const _property_types_DateAfterCreation = Dict{Symbol,String}(Symbol("daysAfterCreationGreaterThan")=>"Float64", Symbol("daysAfterLastTierChangeGreaterThan")=>"Float64", )
 OpenAPI.property_type(::Type{ DateAfterCreation }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DateAfterCreation[name]))}
 
-function check_required(o::DateAfterCreation)
+function OpenAPI.check_required(o::DateAfterCreation)
     o.daysAfterCreationGreaterThan === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::DateAfterCreation)
+    OpenAPI.validate_property(DateAfterCreation, Symbol("daysAfterCreationGreaterThan"), o.daysAfterCreationGreaterThan)
+    OpenAPI.validate_property(DateAfterCreation, Symbol("daysAfterLastTierChangeGreaterThan"), o.daysAfterLastTierChangeGreaterThan)
+end
+
 function OpenAPI.validate_property(::Type{ DateAfterCreation }, name::Symbol, val)
+
     if name === Symbol("daysAfterCreationGreaterThan")
+        OpenAPI.validate_param(name, "DateAfterCreation", :minimum, val, 0, false)
+        OpenAPI.validate_param(name, "DateAfterCreation", :multipleOf, val, 1)
+    end
+
+    if name === Symbol("daysAfterLastTierChangeGreaterThan")
         OpenAPI.validate_param(name, "DateAfterCreation", :minimum, val, 0, false)
         OpenAPI.validate_param(name, "DateAfterCreation", :multipleOf, val, 1)
     end

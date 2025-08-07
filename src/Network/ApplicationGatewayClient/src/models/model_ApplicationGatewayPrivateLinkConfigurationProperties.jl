@@ -18,18 +18,25 @@ Base.@kwdef mutable struct ApplicationGatewayPrivateLinkConfigurationProperties 
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
     function ApplicationGatewayPrivateLinkConfigurationProperties(ipConfigurations, provisioningState, )
-        OpenAPI.validate_property(ApplicationGatewayPrivateLinkConfigurationProperties, Symbol("ipConfigurations"), ipConfigurations)
-        OpenAPI.validate_property(ApplicationGatewayPrivateLinkConfigurationProperties, Symbol("provisioningState"), provisioningState)
-        return new(ipConfigurations, provisioningState, )
+        o = new(ipConfigurations, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayPrivateLinkConfigurationProperties
 
 const _property_types_ApplicationGatewayPrivateLinkConfigurationProperties = Dict{Symbol,String}(Symbol("ipConfigurations")=>"Vector{ApplicationGatewayPrivateLinkIpConfiguration}", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ ApplicationGatewayPrivateLinkConfigurationProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayPrivateLinkConfigurationProperties[name]))}
 
-function check_required(o::ApplicationGatewayPrivateLinkConfigurationProperties)
+function OpenAPI.check_required(o::ApplicationGatewayPrivateLinkConfigurationProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayPrivateLinkConfigurationProperties)
+    OpenAPI.validate_property(ApplicationGatewayPrivateLinkConfigurationProperties, Symbol("ipConfigurations"), o.ipConfigurations)
+    OpenAPI.validate_property(ApplicationGatewayPrivateLinkConfigurationProperties, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayPrivateLinkConfigurationProperties }, name::Symbol, val)
+
+
 end

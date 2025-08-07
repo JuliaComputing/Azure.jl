@@ -39,39 +39,56 @@ Base.@kwdef mutable struct ImageOSDisk <: OpenAPI.APIModel
     diskEncryptionSet = nothing # spec type: Union{ Nothing, DiskEncryptionSetParameters }
 
     function ImageOSDisk(osType, osState, snapshot, managedDisk, blobUri, caching, diskSizeGB, storageAccountType, diskEncryptionSet, )
-        OpenAPI.validate_property(ImageOSDisk, Symbol("osType"), osType)
-        OpenAPI.validate_property(ImageOSDisk, Symbol("osState"), osState)
-        OpenAPI.validate_property(ImageOSDisk, Symbol("snapshot"), snapshot)
-        OpenAPI.validate_property(ImageOSDisk, Symbol("managedDisk"), managedDisk)
-        OpenAPI.validate_property(ImageOSDisk, Symbol("blobUri"), blobUri)
-        OpenAPI.validate_property(ImageOSDisk, Symbol("caching"), caching)
-        OpenAPI.validate_property(ImageOSDisk, Symbol("diskSizeGB"), diskSizeGB)
-        OpenAPI.validate_property(ImageOSDisk, Symbol("storageAccountType"), storageAccountType)
-        OpenAPI.validate_property(ImageOSDisk, Symbol("diskEncryptionSet"), diskEncryptionSet)
-        return new(osType, osState, snapshot, managedDisk, blobUri, caching, diskSizeGB, storageAccountType, diskEncryptionSet, )
+        o = new(osType, osState, snapshot, managedDisk, blobUri, caching, diskSizeGB, storageAccountType, diskEncryptionSet, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ImageOSDisk
 
 const _property_types_ImageOSDisk = Dict{Symbol,String}(Symbol("osType")=>"String", Symbol("osState")=>"String", Symbol("snapshot")=>"SubResource", Symbol("managedDisk")=>"SubResource", Symbol("blobUri")=>"String", Symbol("caching")=>"String", Symbol("diskSizeGB")=>"Int64", Symbol("storageAccountType")=>"StorageAccountType", Symbol("diskEncryptionSet")=>"DiskEncryptionSetParameters", )
 OpenAPI.property_type(::Type{ ImageOSDisk }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ImageOSDisk[name]))}
 
-function check_required(o::ImageOSDisk)
+function OpenAPI.check_required(o::ImageOSDisk)
     o.osType === nothing && (return false)
     o.osState === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ImageOSDisk)
+    OpenAPI.validate_property(ImageOSDisk, Symbol("osType"), o.osType)
+    OpenAPI.validate_property(ImageOSDisk, Symbol("osState"), o.osState)
+    OpenAPI.validate_property(ImageOSDisk, Symbol("snapshot"), o.snapshot)
+    OpenAPI.validate_property(ImageOSDisk, Symbol("managedDisk"), o.managedDisk)
+    OpenAPI.validate_property(ImageOSDisk, Symbol("blobUri"), o.blobUri)
+    OpenAPI.validate_property(ImageOSDisk, Symbol("caching"), o.caching)
+    OpenAPI.validate_property(ImageOSDisk, Symbol("diskSizeGB"), o.diskSizeGB)
+    OpenAPI.validate_property(ImageOSDisk, Symbol("storageAccountType"), o.storageAccountType)
+    OpenAPI.validate_property(ImageOSDisk, Symbol("diskEncryptionSet"), o.diskEncryptionSet)
+end
+
 function OpenAPI.validate_property(::Type{ ImageOSDisk }, name::Symbol, val)
+
     if name === Symbol("osType")
         OpenAPI.validate_param(name, "ImageOSDisk", :enum, val, ["Windows", "Linux"])
     end
+
+
     if name === Symbol("osState")
         OpenAPI.validate_param(name, "ImageOSDisk", :enum, val, ["Generalized", "Specialized"])
     end
+
+
+
+
+
     if name === Symbol("caching")
         OpenAPI.validate_param(name, "ImageOSDisk", :enum, val, ["None", "ReadOnly", "ReadWrite"])
     end
+
+
     if name === Symbol("diskSizeGB")
         OpenAPI.validate_param(name, "ImageOSDisk", :format, val, "int32")
     end
+
+
 end

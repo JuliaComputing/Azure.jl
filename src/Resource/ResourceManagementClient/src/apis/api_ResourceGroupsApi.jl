@@ -20,11 +20,12 @@ const _returntypes_resource_groups_check_existence_ResourceGroupsApi = Dict{Rege
 function _oacinternal_resource_groups_check_existence(_api::ResourceGroupsApi, resource_group_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
     OpenAPI.validate_param("resource_group_name", "resource_groups_check_existence", :maxLength, resource_group_name, 90)
     OpenAPI.validate_param("resource_group_name", "resource_groups_check_existence", :minLength, resource_group_name, 1)
+        OpenAPI.validate_param("resource_group_name", "resource_groups_check_existence", :pattern, resource_group_name, r"^[-\w\._\(\)]+$")
 
     _ctx = OpenAPI.Clients.Ctx(_api.client, "HEAD", _returntypes_resource_groups_check_existence_ResourceGroupsApi, "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -58,11 +59,12 @@ const _returntypes_resource_groups_create_or_update_ResourceGroupsApi = Dict{Reg
 function _oacinternal_resource_groups_create_or_update(_api::ResourceGroupsApi, resource_group_name::String, api_version::String, subscription_id::String, parameters::ResourceGroup; _mediaType=nothing)
     OpenAPI.validate_param("resource_group_name", "resource_groups_create_or_update", :maxLength, resource_group_name, 90)
     OpenAPI.validate_param("resource_group_name", "resource_groups_create_or_update", :minLength, resource_group_name, 1)
+        OpenAPI.validate_param("resource_group_name", "resource_groups_create_or_update", :pattern, resource_group_name, r"^[-\w\._\(\)]+$")
 
     _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_resource_groups_create_or_update_ResourceGroupsApi, "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}", ["azure_auth", ], parameters)
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -94,14 +96,16 @@ const _returntypes_resource_groups_delete_ResourceGroupsApi = Dict{Regex,Type}(
     Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
-function _oacinternal_resource_groups_delete(_api::ResourceGroupsApi, resource_group_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
+function _oacinternal_resource_groups_delete(_api::ResourceGroupsApi, resource_group_name::String, api_version::String, subscription_id::String; force_deletion_types=nothing, _mediaType=nothing)
     OpenAPI.validate_param("resource_group_name", "resource_groups_delete", :maxLength, resource_group_name, 90)
     OpenAPI.validate_param("resource_group_name", "resource_groups_delete", :minLength, resource_group_name, 1)
+        OpenAPI.validate_param("resource_group_name", "resource_groups_delete", :pattern, resource_group_name, r"^[-\w\._\(\)]+$")
 
     _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_resource_groups_delete_ResourceGroupsApi, "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "forceDeletionTypes", force_deletion_types; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -115,16 +119,17 @@ Params:
 - resource_group_name::String (required)
 - api_version::String (required)
 - subscription_id::String (required)
+- force_deletion_types::String
 
 Return: Nothing, OpenAPI.Clients.ApiResponse
 """
-function resource_groups_delete(_api::ResourceGroupsApi, resource_group_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = _oacinternal_resource_groups_delete(_api, resource_group_name, api_version, subscription_id; _mediaType=_mediaType)
+function resource_groups_delete(_api::ResourceGroupsApi, resource_group_name::String, api_version::String, subscription_id::String; force_deletion_types=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_resource_groups_delete(_api, resource_group_name, api_version, subscription_id; force_deletion_types=force_deletion_types, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx)
 end
 
-function resource_groups_delete(_api::ResourceGroupsApi, response_stream::Channel, resource_group_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = _oacinternal_resource_groups_delete(_api, resource_group_name, api_version, subscription_id; _mediaType=_mediaType)
+function resource_groups_delete(_api::ResourceGroupsApi, response_stream::Channel, resource_group_name::String, api_version::String, subscription_id::String; force_deletion_types=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_resource_groups_delete(_api, resource_group_name, api_version, subscription_id; force_deletion_types=force_deletion_types, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
@@ -135,17 +140,13 @@ const _returntypes_resource_groups_export_template_ResourceGroupsApi = Dict{Rege
 )
 
 function _oacinternal_resource_groups_export_template(_api::ResourceGroupsApi, subscription_id::String, resource_group_name::String, api_version::String, parameters::ExportTemplateRequest; _mediaType=nothing)
-    OpenAPI.validate_param("subscription_id", "resource_groups_export_template", :minLength, subscription_id, 1)
-
     OpenAPI.validate_param("resource_group_name", "resource_groups_export_template", :maxLength, resource_group_name, 90)
     OpenAPI.validate_param("resource_group_name", "resource_groups_export_template", :minLength, resource_group_name, 1)
-
-    OpenAPI.validate_param("api_version", "resource_groups_export_template", :minLength, api_version, 1)
 
     _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_resource_groups_export_template_ResourceGroupsApi, "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/exportTemplate", ["azure_auth", ], parameters)
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -179,11 +180,12 @@ const _returntypes_resource_groups_get_ResourceGroupsApi = Dict{Regex,Type}(
 function _oacinternal_resource_groups_get(_api::ResourceGroupsApi, resource_group_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
     OpenAPI.validate_param("resource_group_name", "resource_groups_get", :maxLength, resource_group_name, 90)
     OpenAPI.validate_param("resource_group_name", "resource_groups_get", :minLength, resource_group_name, 1)
+        OpenAPI.validate_param("resource_group_name", "resource_groups_get", :pattern, resource_group_name, r"^[-\w\._\(\)]+$")
 
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_resource_groups_get_ResourceGroupsApi, "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -216,9 +218,9 @@ const _returntypes_resource_groups_list_ResourceGroupsApi = Dict{Regex,Type}(
 function _oacinternal_resource_groups_list(_api::ResourceGroupsApi, api_version::String, subscription_id::String; filter=nothing, top=nothing, _mediaType=nothing)
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_resource_groups_list_ResourceGroupsApi, "/subscriptions/{subscriptionId}/resourcegroups", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$filter", filter)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$top", top)  # type Int64
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$filter", filter; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$top", top; style="", is_explode=false)  # type Int64
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -252,11 +254,12 @@ const _returntypes_resource_groups_update_ResourceGroupsApi = Dict{Regex,Type}(
 function _oacinternal_resource_groups_update(_api::ResourceGroupsApi, resource_group_name::String, api_version::String, subscription_id::String, parameters::ResourceGroupPatchable; _mediaType=nothing)
     OpenAPI.validate_param("resource_group_name", "resource_groups_update", :maxLength, resource_group_name, 90)
     OpenAPI.validate_param("resource_group_name", "resource_groups_update", :minLength, resource_group_name, 1)
+        OpenAPI.validate_param("resource_group_name", "resource_groups_update", :pattern, resource_group_name, r"^[-\w\._\(\)]+$")
 
     _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_resource_groups_update_ResourceGroupsApi, "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}", ["azure_auth", ], parameters)
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -292,14 +295,15 @@ const _returntypes_resources_list_by_resource_group_ResourceGroupsApi = Dict{Reg
 function _oacinternal_resources_list_by_resource_group(_api::ResourceGroupsApi, resource_group_name::String, api_version::String, subscription_id::String; filter=nothing, expand=nothing, top=nothing, _mediaType=nothing)
     OpenAPI.validate_param("resource_group_name", "resources_list_by_resource_group", :maxLength, resource_group_name, 90)
     OpenAPI.validate_param("resource_group_name", "resources_list_by_resource_group", :minLength, resource_group_name, 1)
+        OpenAPI.validate_param("resource_group_name", "resources_list_by_resource_group", :pattern, resource_group_name, r"^[-\w\._\(\)]+$")
 
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_resources_list_by_resource_group_ResourceGroupsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/resources", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$filter", filter)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$top", top)  # type Int64
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$filter", filter; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$top", top; style="", is_explode=false)  # type Int64
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx

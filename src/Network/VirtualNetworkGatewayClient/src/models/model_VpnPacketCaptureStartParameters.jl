@@ -15,17 +15,23 @@ Base.@kwdef mutable struct VpnPacketCaptureStartParameters <: OpenAPI.APIModel
     filterData::Union{Nothing, String} = nothing
 
     function VpnPacketCaptureStartParameters(filterData, )
-        OpenAPI.validate_property(VpnPacketCaptureStartParameters, Symbol("filterData"), filterData)
-        return new(filterData, )
+        o = new(filterData, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VpnPacketCaptureStartParameters
 
 const _property_types_VpnPacketCaptureStartParameters = Dict{Symbol,String}(Symbol("filterData")=>"String", )
 OpenAPI.property_type(::Type{ VpnPacketCaptureStartParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VpnPacketCaptureStartParameters[name]))}
 
-function check_required(o::VpnPacketCaptureStartParameters)
+function OpenAPI.check_required(o::VpnPacketCaptureStartParameters)
     true
 end
 
+function OpenAPI.validate_properties(o::VpnPacketCaptureStartParameters)
+    OpenAPI.validate_property(VpnPacketCaptureStartParameters, Symbol("filterData"), o.filterData)
+end
+
 function OpenAPI.validate_property(::Type{ VpnPacketCaptureStartParameters }, name::Symbol, val)
+
 end

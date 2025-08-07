@@ -18,20 +18,27 @@ Base.@kwdef mutable struct ContainerServiceServicePrincipalProfile <: OpenAPI.AP
     secret::Union{Nothing, String} = nothing
 
     function ContainerServiceServicePrincipalProfile(clientId, secret, )
-        OpenAPI.validate_property(ContainerServiceServicePrincipalProfile, Symbol("clientId"), clientId)
-        OpenAPI.validate_property(ContainerServiceServicePrincipalProfile, Symbol("secret"), secret)
-        return new(clientId, secret, )
+        o = new(clientId, secret, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ContainerServiceServicePrincipalProfile
 
 const _property_types_ContainerServiceServicePrincipalProfile = Dict{Symbol,String}(Symbol("clientId")=>"String", Symbol("secret")=>"String", )
 OpenAPI.property_type(::Type{ ContainerServiceServicePrincipalProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ContainerServiceServicePrincipalProfile[name]))}
 
-function check_required(o::ContainerServiceServicePrincipalProfile)
+function OpenAPI.check_required(o::ContainerServiceServicePrincipalProfile)
     o.clientId === nothing && (return false)
     o.secret === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ContainerServiceServicePrincipalProfile)
+    OpenAPI.validate_property(ContainerServiceServicePrincipalProfile, Symbol("clientId"), o.clientId)
+    OpenAPI.validate_property(ContainerServiceServicePrincipalProfile, Symbol("secret"), o.secret)
+end
+
 function OpenAPI.validate_property(::Type{ ContainerServiceServicePrincipalProfile }, name::Symbol, val)
+
+
 end

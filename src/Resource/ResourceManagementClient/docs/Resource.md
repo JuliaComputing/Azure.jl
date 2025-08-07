@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **name** | **String** | Resource name | [optional] [readonly] [default to nothing]
 **type** | **String** | Resource type | [optional] [readonly] [default to nothing]
 **location** | **String** | Resource location | [optional] [default to nothing]
+**extendedLocation** | [***ExtendedLocation**](ExtendedLocation.md) |  | [optional] [default to nothing]
 **tags** | **Dict{String, String}** | Resource tags | [optional] [default to nothing]
 
 

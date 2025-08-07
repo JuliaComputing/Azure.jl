@@ -18,19 +18,26 @@ Base.@kwdef mutable struct VirtualNetworkBgpCommunities <: OpenAPI.APIModel
     regionalCommunity::Union{Nothing, String} = nothing
 
     function VirtualNetworkBgpCommunities(virtualNetworkCommunity, regionalCommunity, )
-        OpenAPI.validate_property(VirtualNetworkBgpCommunities, Symbol("virtualNetworkCommunity"), virtualNetworkCommunity)
-        OpenAPI.validate_property(VirtualNetworkBgpCommunities, Symbol("regionalCommunity"), regionalCommunity)
-        return new(virtualNetworkCommunity, regionalCommunity, )
+        o = new(virtualNetworkCommunity, regionalCommunity, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualNetworkBgpCommunities
 
 const _property_types_VirtualNetworkBgpCommunities = Dict{Symbol,String}(Symbol("virtualNetworkCommunity")=>"String", Symbol("regionalCommunity")=>"String", )
 OpenAPI.property_type(::Type{ VirtualNetworkBgpCommunities }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualNetworkBgpCommunities[name]))}
 
-function check_required(o::VirtualNetworkBgpCommunities)
+function OpenAPI.check_required(o::VirtualNetworkBgpCommunities)
     o.virtualNetworkCommunity === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualNetworkBgpCommunities)
+    OpenAPI.validate_property(VirtualNetworkBgpCommunities, Symbol("virtualNetworkCommunity"), o.virtualNetworkCommunity)
+    OpenAPI.validate_property(VirtualNetworkBgpCommunities, Symbol("regionalCommunity"), o.regionalCommunity)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualNetworkBgpCommunities }, name::Symbol, val)
+
+
 end

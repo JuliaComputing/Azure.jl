@@ -27,21 +27,31 @@ Base.@kwdef mutable struct PeerExpressRouteCircuitConnection <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
 
     function PeerExpressRouteCircuitConnection(properties, name, etag, type, id, )
-        OpenAPI.validate_property(PeerExpressRouteCircuitConnection, Symbol("properties"), properties)
-        OpenAPI.validate_property(PeerExpressRouteCircuitConnection, Symbol("name"), name)
-        OpenAPI.validate_property(PeerExpressRouteCircuitConnection, Symbol("etag"), etag)
-        OpenAPI.validate_property(PeerExpressRouteCircuitConnection, Symbol("type"), type)
-        OpenAPI.validate_property(PeerExpressRouteCircuitConnection, Symbol("id"), id)
-        return new(properties, name, etag, type, id, )
+        o = new(properties, name, etag, type, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PeerExpressRouteCircuitConnection
 
 const _property_types_PeerExpressRouteCircuitConnection = Dict{Symbol,String}(Symbol("properties")=>"PeerExpressRouteCircuitConnectionPropertiesFormat", Symbol("name")=>"String", Symbol("etag")=>"String", Symbol("type")=>"String", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ PeerExpressRouteCircuitConnection }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PeerExpressRouteCircuitConnection[name]))}
 
-function check_required(o::PeerExpressRouteCircuitConnection)
+function OpenAPI.check_required(o::PeerExpressRouteCircuitConnection)
     true
 end
 
+function OpenAPI.validate_properties(o::PeerExpressRouteCircuitConnection)
+    OpenAPI.validate_property(PeerExpressRouteCircuitConnection, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(PeerExpressRouteCircuitConnection, Symbol("name"), o.name)
+    OpenAPI.validate_property(PeerExpressRouteCircuitConnection, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(PeerExpressRouteCircuitConnection, Symbol("type"), o.type)
+    OpenAPI.validate_property(PeerExpressRouteCircuitConnection, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ PeerExpressRouteCircuitConnection }, name::Symbol, val)
+
+
+
+
+
 end

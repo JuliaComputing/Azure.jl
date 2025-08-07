@@ -15,6 +15,15 @@ Name | Type | Description | Notes
 **encryption** | [***Encryption**](Encryption.md) |  | [optional] [default to nothing]
 **networkAccessPolicy** | [***NetworkAccessPolicy**](NetworkAccessPolicy.md) |  | [optional] [default to nothing]
 **diskAccessId** | **String** | ARM id of the DiskAccess resource for using private endpoints on disks. | [optional] [default to nothing]
+**tier** | **String** | Performance tier of the disk (e.g, P4, S10) as described here: https://azure.microsoft.com/en-us/pricing/details/managed-disks/. Does not apply to Ultra disks. | [optional] [default to nothing]
+**burstingEnabled** | **Bool** | Set to true to enable bursting beyond the provisioned performance target of the disk. Bursting is disabled by default. Does not apply to Ultra disks. | [optional] [default to nothing]
+**purchasePlan** | [***PurchasePlan**](PurchasePlan.md) |  | [optional] [default to nothing]
+**supportedCapabilities** | [***SupportedCapabilities**](SupportedCapabilities.md) |  | [optional] [default to nothing]
+**propertyUpdatesInProgress** | [***PropertyUpdatesInProgress**](PropertyUpdatesInProgress.md) |  | [optional] [default to nothing]
+**supportsHibernation** | **Bool** | Indicates the OS on a disk supports hibernation. | [optional] [default to nothing]
+**publicNetworkAccess** | [***PublicNetworkAccess**](PublicNetworkAccess.md) |  | [optional] [default to nothing]
+**dataAccessAuthMode** | [***DataAccessAuthMode**](DataAccessAuthMode.md) |  | [optional] [default to nothing]
+**optimizedForFrequentAttach** | **Bool** | Setting this property to true improves reliability and performance of data disks that are frequently (more than 5 times a day) by detached from one virtual machine and attached to another. This property should not be set for disks that are not detached and attached frequently as it causes the disks to not align with the fault domain of the virtual machine. | [optional] [default to nothing]
 
 
 [[Back to Model list]](../README.md#models) [[Back to API list]](../README.md#api-endpoints) [[Back to README]](../README.md)

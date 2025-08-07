@@ -8,31 +8,52 @@ Describes a virtual machines scale set IP Configuration&#39;s PublicIPAddress co
     VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties(;
         idleTimeoutInMinutes=nothing,
         dnsSettings=nothing,
+        publicIPPrefix=nothing,
+        deleteOption=nothing,
     )
 
     - idleTimeoutInMinutes::Int64 : The idle timeout of the public IP address.
     - dnsSettings::VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings
+    - publicIPPrefix::SubResource
+    - deleteOption::String : Specify what happens to the public IP when the VM is deleted
 """
 Base.@kwdef mutable struct VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties <: OpenAPI.APIModel
     idleTimeoutInMinutes::Union{Nothing, Int64} = nothing
     dnsSettings = nothing # spec type: Union{ Nothing, VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings }
+    publicIPPrefix = nothing # spec type: Union{ Nothing, SubResource }
+    deleteOption::Union{Nothing, String} = nothing
 
-    function VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties(idleTimeoutInMinutes, dnsSettings, )
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties, Symbol("idleTimeoutInMinutes"), idleTimeoutInMinutes)
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties, Symbol("dnsSettings"), dnsSettings)
-        return new(idleTimeoutInMinutes, dnsSettings, )
+    function VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties(idleTimeoutInMinutes, dnsSettings, publicIPPrefix, deleteOption, )
+        o = new(idleTimeoutInMinutes, dnsSettings, publicIPPrefix, deleteOption, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties
 
-const _property_types_VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties = Dict{Symbol,String}(Symbol("idleTimeoutInMinutes")=>"Int64", Symbol("dnsSettings")=>"VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings", )
+const _property_types_VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties = Dict{Symbol,String}(Symbol("idleTimeoutInMinutes")=>"Int64", Symbol("dnsSettings")=>"VirtualMachineScaleSetPublicIPAddressConfigurationDnsSettings", Symbol("publicIPPrefix")=>"SubResource", Symbol("deleteOption")=>"String", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties[name]))}
 
-function check_required(o::VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties)
+function OpenAPI.check_required(o::VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties, Symbol("idleTimeoutInMinutes"), o.idleTimeoutInMinutes)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties, Symbol("dnsSettings"), o.dnsSettings)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties, Symbol("publicIPPrefix"), o.publicIPPrefix)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties, Symbol("deleteOption"), o.deleteOption)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties }, name::Symbol, val)
+
     if name === Symbol("idleTimeoutInMinutes")
         OpenAPI.validate_param(name, "VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties", :format, val, "int32")
     end
+
+
+
+    if name === Symbol("deleteOption")
+        OpenAPI.validate_param(name, "VirtualMachineScaleSetUpdatePublicIPAddressConfigurationProperties", :enum, val, ["Delete", "Detach"])
+    end
+
 end

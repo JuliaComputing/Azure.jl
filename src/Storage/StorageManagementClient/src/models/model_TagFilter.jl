@@ -21,28 +21,36 @@ Base.@kwdef mutable struct TagFilter <: OpenAPI.APIModel
     value::Union{Nothing, String} = nothing
 
     function TagFilter(name, op, value, )
-        OpenAPI.validate_property(TagFilter, Symbol("name"), name)
-        OpenAPI.validate_property(TagFilter, Symbol("op"), op)
-        OpenAPI.validate_property(TagFilter, Symbol("value"), value)
-        return new(name, op, value, )
+        o = new(name, op, value, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type TagFilter
 
 const _property_types_TagFilter = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("op")=>"String", Symbol("value")=>"String", )
 OpenAPI.property_type(::Type{ TagFilter }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TagFilter[name]))}
 
-function check_required(o::TagFilter)
+function OpenAPI.check_required(o::TagFilter)
     o.name === nothing && (return false)
     o.op === nothing && (return false)
     o.value === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::TagFilter)
+    OpenAPI.validate_property(TagFilter, Symbol("name"), o.name)
+    OpenAPI.validate_property(TagFilter, Symbol("op"), o.op)
+    OpenAPI.validate_property(TagFilter, Symbol("value"), o.value)
+end
+
 function OpenAPI.validate_property(::Type{ TagFilter }, name::Symbol, val)
+
     if name === Symbol("name")
         OpenAPI.validate_param(name, "TagFilter", :maxLength, val, 128)
         OpenAPI.validate_param(name, "TagFilter", :minLength, val, 1)
     end
+
+
     if name === Symbol("value")
         OpenAPI.validate_param(name, "TagFilter", :maxLength, val, 256)
         OpenAPI.validate_param(name, "TagFilter", :minLength, val, 0)

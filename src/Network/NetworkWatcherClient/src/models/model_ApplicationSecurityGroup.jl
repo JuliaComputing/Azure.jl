@@ -33,23 +33,35 @@ Base.@kwdef mutable struct ApplicationSecurityGroup <: OpenAPI.APIModel
     tags::Union{Nothing, Dict{String, String}} = nothing
 
     function ApplicationSecurityGroup(properties, etag, id, name, type, location, tags, )
-        OpenAPI.validate_property(ApplicationSecurityGroup, Symbol("properties"), properties)
-        OpenAPI.validate_property(ApplicationSecurityGroup, Symbol("etag"), etag)
-        OpenAPI.validate_property(ApplicationSecurityGroup, Symbol("id"), id)
-        OpenAPI.validate_property(ApplicationSecurityGroup, Symbol("name"), name)
-        OpenAPI.validate_property(ApplicationSecurityGroup, Symbol("type"), type)
-        OpenAPI.validate_property(ApplicationSecurityGroup, Symbol("location"), location)
-        OpenAPI.validate_property(ApplicationSecurityGroup, Symbol("tags"), tags)
-        return new(properties, etag, id, name, type, location, tags, )
+        o = new(properties, etag, id, name, type, location, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationSecurityGroup
 
 const _property_types_ApplicationSecurityGroup = Dict{Symbol,String}(Symbol("properties")=>"ApplicationSecurityGroupPropertiesFormat", Symbol("etag")=>"String", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ ApplicationSecurityGroup }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationSecurityGroup[name]))}
 
-function check_required(o::ApplicationSecurityGroup)
+function OpenAPI.check_required(o::ApplicationSecurityGroup)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationSecurityGroup)
+    OpenAPI.validate_property(ApplicationSecurityGroup, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(ApplicationSecurityGroup, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(ApplicationSecurityGroup, Symbol("id"), o.id)
+    OpenAPI.validate_property(ApplicationSecurityGroup, Symbol("name"), o.name)
+    OpenAPI.validate_property(ApplicationSecurityGroup, Symbol("type"), o.type)
+    OpenAPI.validate_property(ApplicationSecurityGroup, Symbol("location"), o.location)
+    OpenAPI.validate_property(ApplicationSecurityGroup, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationSecurityGroup }, name::Symbol, val)
+
+
+
+
+
+
+
 end

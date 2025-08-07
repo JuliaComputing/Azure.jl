@@ -18,18 +18,25 @@ Base.@kwdef mutable struct FlowLogListResult <: OpenAPI.APIModel
     nextLink::Union{Nothing, String} = nothing
 
     function FlowLogListResult(value, nextLink, )
-        OpenAPI.validate_property(FlowLogListResult, Symbol("value"), value)
-        OpenAPI.validate_property(FlowLogListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type FlowLogListResult
 
 const _property_types_FlowLogListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{FlowLog}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ FlowLogListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_FlowLogListResult[name]))}
 
-function check_required(o::FlowLogListResult)
+function OpenAPI.check_required(o::FlowLogListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::FlowLogListResult)
+    OpenAPI.validate_property(FlowLogListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(FlowLogListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ FlowLogListResult }, name::Symbol, val)
+
+
 end

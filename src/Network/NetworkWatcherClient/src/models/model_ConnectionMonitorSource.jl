@@ -18,19 +18,33 @@ Base.@kwdef mutable struct ConnectionMonitorSource <: OpenAPI.APIModel
     port::Union{Nothing, Int64} = nothing
 
     function ConnectionMonitorSource(resourceId, port, )
-        OpenAPI.validate_property(ConnectionMonitorSource, Symbol("resourceId"), resourceId)
-        OpenAPI.validate_property(ConnectionMonitorSource, Symbol("port"), port)
-        return new(resourceId, port, )
+        o = new(resourceId, port, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ConnectionMonitorSource
 
 const _property_types_ConnectionMonitorSource = Dict{Symbol,String}(Symbol("resourceId")=>"String", Symbol("port")=>"Int64", )
 OpenAPI.property_type(::Type{ ConnectionMonitorSource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ConnectionMonitorSource[name]))}
 
-function check_required(o::ConnectionMonitorSource)
+function OpenAPI.check_required(o::ConnectionMonitorSource)
     o.resourceId === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ConnectionMonitorSource)
+    OpenAPI.validate_property(ConnectionMonitorSource, Symbol("resourceId"), o.resourceId)
+    OpenAPI.validate_property(ConnectionMonitorSource, Symbol("port"), o.port)
+end
+
 function OpenAPI.validate_property(::Type{ ConnectionMonitorSource }, name::Symbol, val)
+
+
+    if name === Symbol("port")
+        OpenAPI.validate_param(name, "ConnectionMonitorSource", :format, val, "int32")
+    end
+    if name === Symbol("port")
+        OpenAPI.validate_param(name, "ConnectionMonitorSource", :maximum, val, 65535, false)
+        OpenAPI.validate_param(name, "ConnectionMonitorSource", :minimum, val, 0, false)
+    end
 end

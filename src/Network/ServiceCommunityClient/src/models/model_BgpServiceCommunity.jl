@@ -30,22 +30,33 @@ Base.@kwdef mutable struct BgpServiceCommunity <: OpenAPI.APIModel
     tags::Union{Nothing, Dict{String, String}} = nothing
 
     function BgpServiceCommunity(properties, id, name, type, location, tags, )
-        OpenAPI.validate_property(BgpServiceCommunity, Symbol("properties"), properties)
-        OpenAPI.validate_property(BgpServiceCommunity, Symbol("id"), id)
-        OpenAPI.validate_property(BgpServiceCommunity, Symbol("name"), name)
-        OpenAPI.validate_property(BgpServiceCommunity, Symbol("type"), type)
-        OpenAPI.validate_property(BgpServiceCommunity, Symbol("location"), location)
-        OpenAPI.validate_property(BgpServiceCommunity, Symbol("tags"), tags)
-        return new(properties, id, name, type, location, tags, )
+        o = new(properties, id, name, type, location, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type BgpServiceCommunity
 
 const _property_types_BgpServiceCommunity = Dict{Symbol,String}(Symbol("properties")=>"BgpServiceCommunityPropertiesFormat", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ BgpServiceCommunity }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_BgpServiceCommunity[name]))}
 
-function check_required(o::BgpServiceCommunity)
+function OpenAPI.check_required(o::BgpServiceCommunity)
     true
 end
 
+function OpenAPI.validate_properties(o::BgpServiceCommunity)
+    OpenAPI.validate_property(BgpServiceCommunity, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(BgpServiceCommunity, Symbol("id"), o.id)
+    OpenAPI.validate_property(BgpServiceCommunity, Symbol("name"), o.name)
+    OpenAPI.validate_property(BgpServiceCommunity, Symbol("type"), o.type)
+    OpenAPI.validate_property(BgpServiceCommunity, Symbol("location"), o.location)
+    OpenAPI.validate_property(BgpServiceCommunity, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ BgpServiceCommunity }, name::Symbol, val)
+
+
+
+
+
+
 end

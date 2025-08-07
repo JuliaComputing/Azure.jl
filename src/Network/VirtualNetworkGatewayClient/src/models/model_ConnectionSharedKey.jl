@@ -18,19 +18,26 @@ Base.@kwdef mutable struct ConnectionSharedKey <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
 
     function ConnectionSharedKey(value, id, )
-        OpenAPI.validate_property(ConnectionSharedKey, Symbol("value"), value)
-        OpenAPI.validate_property(ConnectionSharedKey, Symbol("id"), id)
-        return new(value, id, )
+        o = new(value, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ConnectionSharedKey
 
 const _property_types_ConnectionSharedKey = Dict{Symbol,String}(Symbol("value")=>"String", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ ConnectionSharedKey }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ConnectionSharedKey[name]))}
 
-function check_required(o::ConnectionSharedKey)
+function OpenAPI.check_required(o::ConnectionSharedKey)
     o.value === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ConnectionSharedKey)
+    OpenAPI.validate_property(ConnectionSharedKey, Symbol("value"), o.value)
+    OpenAPI.validate_property(ConnectionSharedKey, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ ConnectionSharedKey }, name::Symbol, val)
+
+
 end

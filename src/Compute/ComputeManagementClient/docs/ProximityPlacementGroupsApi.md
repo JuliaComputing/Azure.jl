@@ -25,11 +25,11 @@ Create or update a proximity placement group.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ProximityPlacementGroupsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**proximity_placement_group_name** | **String**| The name of the proximity placement group. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**ProximityPlacementGroup**](ProximityPlacementGroup.md)| Parameters supplied to the Create Proximity Placement Group operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**proximity_placement_group_name** | **String** | The name of the proximity placement group. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**ProximityPlacementGroup**](ProximityPlacementGroup.md) | Parameters supplied to the Create Proximity Placement Group operation. |
 
 ### Return type
 
@@ -59,10 +59,10 @@ Delete a proximity placement group.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ProximityPlacementGroupsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**proximity_placement_group_name** | **String**| The name of the proximity placement group. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**proximity_placement_group_name** | **String** | The name of the proximity placement group. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -75,7 +75,7 @@ Nothing
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -92,16 +92,16 @@ Retrieves information about a proximity placement group .
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ProximityPlacementGroupsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**proximity_placement_group_name** | **String**| The name of the proximity placement group. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**proximity_placement_group_name** | **String** | The name of the proximity placement group. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **include_colocation_status** | **String**| includeColocationStatus&#x3D;true enables fetching the colocation status of all the resources in the proximity placement group. | [default to nothing]
+ **include_colocation_status** | **String** | includeColocationStatus&#x3D;true enables fetching the colocation status of all the resources in the proximity placement group. | [default to nothing]
 
 ### Return type
 
@@ -131,9 +131,9 @@ Lists all proximity placement groups in a resource group.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ProximityPlacementGroupsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -163,8 +163,8 @@ Lists all proximity placement groups in a subscription.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ProximityPlacementGroupsApi** | API context | 
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -194,11 +194,11 @@ Update a proximity placement group.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ProximityPlacementGroupsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**proximity_placement_group_name** | **String**| The name of the proximity placement group. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**ProximityPlacementGroupUpdate**](ProximityPlacementGroupUpdate.md)| Parameters supplied to the Update Proximity Placement Group operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**proximity_placement_group_name** | **String** | The name of the proximity placement group. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**ProximityPlacementGroupUpdate**](ProximityPlacementGroupUpdate.md) | Parameters supplied to the Update Proximity Placement Group operation. |
 
 ### Return type
 

@@ -18,8 +18,8 @@ Tenant Id information.
         tenantBrandingLogoUrl=nothing,
     )
 
-    - id::String : The fully qualified ID of the tenant. For example, /tenants/00000000-0000-0000-0000-000000000000.
-    - tenantId::String : The tenant ID. For example, 00000000-0000-0000-0000-000000000000.
+    - id::String : The fully qualified ID of the tenant. For example, /tenants/8d65815f-a5b6-402f-9298-045155da7d74
+    - tenantId::String : The tenant ID. For example, 8d65815f-a5b6-402f-9298-045155da7d74
     - tenantCategory::String : Category of the tenant.
     - country::String : Country/region name of the address for the tenant.
     - countryCode::String : Country/region abbreviation for the tenant.
@@ -42,29 +42,45 @@ Base.@kwdef mutable struct TenantIdDescription <: OpenAPI.APIModel
     tenantBrandingLogoUrl::Union{Nothing, String} = nothing
 
     function TenantIdDescription(id, tenantId, tenantCategory, country, countryCode, displayName, domains, defaultDomain, tenantType, tenantBrandingLogoUrl, )
-        OpenAPI.validate_property(TenantIdDescription, Symbol("id"), id)
-        OpenAPI.validate_property(TenantIdDescription, Symbol("tenantId"), tenantId)
-        OpenAPI.validate_property(TenantIdDescription, Symbol("tenantCategory"), tenantCategory)
-        OpenAPI.validate_property(TenantIdDescription, Symbol("country"), country)
-        OpenAPI.validate_property(TenantIdDescription, Symbol("countryCode"), countryCode)
-        OpenAPI.validate_property(TenantIdDescription, Symbol("displayName"), displayName)
-        OpenAPI.validate_property(TenantIdDescription, Symbol("domains"), domains)
-        OpenAPI.validate_property(TenantIdDescription, Symbol("defaultDomain"), defaultDomain)
-        OpenAPI.validate_property(TenantIdDescription, Symbol("tenantType"), tenantType)
-        OpenAPI.validate_property(TenantIdDescription, Symbol("tenantBrandingLogoUrl"), tenantBrandingLogoUrl)
-        return new(id, tenantId, tenantCategory, country, countryCode, displayName, domains, defaultDomain, tenantType, tenantBrandingLogoUrl, )
+        o = new(id, tenantId, tenantCategory, country, countryCode, displayName, domains, defaultDomain, tenantType, tenantBrandingLogoUrl, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type TenantIdDescription
 
 const _property_types_TenantIdDescription = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("tenantId")=>"String", Symbol("tenantCategory")=>"String", Symbol("country")=>"String", Symbol("countryCode")=>"String", Symbol("displayName")=>"String", Symbol("domains")=>"Vector{String}", Symbol("defaultDomain")=>"String", Symbol("tenantType")=>"String", Symbol("tenantBrandingLogoUrl")=>"String", )
 OpenAPI.property_type(::Type{ TenantIdDescription }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TenantIdDescription[name]))}
 
-function check_required(o::TenantIdDescription)
+function OpenAPI.check_required(o::TenantIdDescription)
     true
 end
 
+function OpenAPI.validate_properties(o::TenantIdDescription)
+    OpenAPI.validate_property(TenantIdDescription, Symbol("id"), o.id)
+    OpenAPI.validate_property(TenantIdDescription, Symbol("tenantId"), o.tenantId)
+    OpenAPI.validate_property(TenantIdDescription, Symbol("tenantCategory"), o.tenantCategory)
+    OpenAPI.validate_property(TenantIdDescription, Symbol("country"), o.country)
+    OpenAPI.validate_property(TenantIdDescription, Symbol("countryCode"), o.countryCode)
+    OpenAPI.validate_property(TenantIdDescription, Symbol("displayName"), o.displayName)
+    OpenAPI.validate_property(TenantIdDescription, Symbol("domains"), o.domains)
+    OpenAPI.validate_property(TenantIdDescription, Symbol("defaultDomain"), o.defaultDomain)
+    OpenAPI.validate_property(TenantIdDescription, Symbol("tenantType"), o.tenantType)
+    OpenAPI.validate_property(TenantIdDescription, Symbol("tenantBrandingLogoUrl"), o.tenantBrandingLogoUrl)
+end
+
 function OpenAPI.validate_property(::Type{ TenantIdDescription }, name::Symbol, val)
+
+
+
     if name === Symbol("tenantCategory")
         OpenAPI.validate_param(name, "TenantIdDescription", :enum, val, ["Home", "ProjectedBy", "ManagedBy"])
     end
+
+
+
+
+
+
+
+
 end

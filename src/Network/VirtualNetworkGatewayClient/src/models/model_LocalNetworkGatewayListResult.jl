@@ -18,18 +18,25 @@ Base.@kwdef mutable struct LocalNetworkGatewayListResult <: OpenAPI.APIModel
     nextLink::Union{Nothing, String} = nothing
 
     function LocalNetworkGatewayListResult(value, nextLink, )
-        OpenAPI.validate_property(LocalNetworkGatewayListResult, Symbol("value"), value)
-        OpenAPI.validate_property(LocalNetworkGatewayListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type LocalNetworkGatewayListResult
 
 const _property_types_LocalNetworkGatewayListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{LocalNetworkGateway}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ LocalNetworkGatewayListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_LocalNetworkGatewayListResult[name]))}
 
-function check_required(o::LocalNetworkGatewayListResult)
+function OpenAPI.check_required(o::LocalNetworkGatewayListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::LocalNetworkGatewayListResult)
+    OpenAPI.validate_property(LocalNetworkGatewayListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(LocalNetworkGatewayListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ LocalNetworkGatewayListResult }, name::Symbol, val)
+
+
 end

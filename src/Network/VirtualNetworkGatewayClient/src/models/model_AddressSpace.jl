@@ -7,25 +7,36 @@ AddressSpace contains an array of IP address ranges that can be used by subnets 
 
     AddressSpace(;
         addressPrefixes=nothing,
+        ipamPoolPrefixAllocations=nothing,
     )
 
     - addressPrefixes::Vector{String} : A list of address blocks reserved for this virtual network in CIDR notation.
+    - ipamPoolPrefixAllocations::Vector{IpamPoolPrefixAllocation} : A list of IPAM Pools allocating IP address prefixes.
 """
 Base.@kwdef mutable struct AddressSpace <: OpenAPI.APIModel
     addressPrefixes::Union{Nothing, Vector{String}} = nothing
+    ipamPoolPrefixAllocations::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{IpamPoolPrefixAllocation} }
 
-    function AddressSpace(addressPrefixes, )
-        OpenAPI.validate_property(AddressSpace, Symbol("addressPrefixes"), addressPrefixes)
-        return new(addressPrefixes, )
+    function AddressSpace(addressPrefixes, ipamPoolPrefixAllocations, )
+        o = new(addressPrefixes, ipamPoolPrefixAllocations, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AddressSpace
 
-const _property_types_AddressSpace = Dict{Symbol,String}(Symbol("addressPrefixes")=>"Vector{String}", )
+const _property_types_AddressSpace = Dict{Symbol,String}(Symbol("addressPrefixes")=>"Vector{String}", Symbol("ipamPoolPrefixAllocations")=>"Vector{IpamPoolPrefixAllocation}", )
 OpenAPI.property_type(::Type{ AddressSpace }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AddressSpace[name]))}
 
-function check_required(o::AddressSpace)
+function OpenAPI.check_required(o::AddressSpace)
     true
 end
 
+function OpenAPI.validate_properties(o::AddressSpace)
+    OpenAPI.validate_property(AddressSpace, Symbol("addressPrefixes"), o.addressPrefixes)
+    OpenAPI.validate_property(AddressSpace, Symbol("ipamPoolPrefixAllocations"), o.ipamPoolPrefixAllocations)
+end
+
 function OpenAPI.validate_property(::Type{ AddressSpace }, name::Symbol, val)
+
+
 end

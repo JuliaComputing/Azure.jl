@@ -15,17 +15,23 @@ Base.@kwdef mutable struct PrivateEndpoint <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
 
     function PrivateEndpoint(id, )
-        OpenAPI.validate_property(PrivateEndpoint, Symbol("id"), id)
-        return new(id, )
+        o = new(id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PrivateEndpoint
 
 const _property_types_PrivateEndpoint = Dict{Symbol,String}(Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ PrivateEndpoint }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PrivateEndpoint[name]))}
 
-function check_required(o::PrivateEndpoint)
+function OpenAPI.check_required(o::PrivateEndpoint)
     true
 end
 
+function OpenAPI.validate_properties(o::PrivateEndpoint)
+    OpenAPI.validate_property(PrivateEndpoint, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ PrivateEndpoint }, name::Symbol, val)
+
 end

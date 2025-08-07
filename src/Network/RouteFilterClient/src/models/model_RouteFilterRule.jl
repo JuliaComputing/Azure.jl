@@ -27,21 +27,31 @@ Base.@kwdef mutable struct RouteFilterRule <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
 
     function RouteFilterRule(properties, name, location, etag, id, )
-        OpenAPI.validate_property(RouteFilterRule, Symbol("properties"), properties)
-        OpenAPI.validate_property(RouteFilterRule, Symbol("name"), name)
-        OpenAPI.validate_property(RouteFilterRule, Symbol("location"), location)
-        OpenAPI.validate_property(RouteFilterRule, Symbol("etag"), etag)
-        OpenAPI.validate_property(RouteFilterRule, Symbol("id"), id)
-        return new(properties, name, location, etag, id, )
+        o = new(properties, name, location, etag, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type RouteFilterRule
 
 const _property_types_RouteFilterRule = Dict{Symbol,String}(Symbol("properties")=>"RouteFilterRulePropertiesFormat", Symbol("name")=>"String", Symbol("location")=>"String", Symbol("etag")=>"String", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ RouteFilterRule }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RouteFilterRule[name]))}
 
-function check_required(o::RouteFilterRule)
+function OpenAPI.check_required(o::RouteFilterRule)
     true
 end
 
+function OpenAPI.validate_properties(o::RouteFilterRule)
+    OpenAPI.validate_property(RouteFilterRule, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(RouteFilterRule, Symbol("name"), o.name)
+    OpenAPI.validate_property(RouteFilterRule, Symbol("location"), o.location)
+    OpenAPI.validate_property(RouteFilterRule, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(RouteFilterRule, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ RouteFilterRule }, name::Symbol, val)
+
+
+
+
+
 end

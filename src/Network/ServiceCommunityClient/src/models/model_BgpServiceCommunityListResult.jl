@@ -18,18 +18,25 @@ Base.@kwdef mutable struct BgpServiceCommunityListResult <: OpenAPI.APIModel
     nextLink::Union{Nothing, String} = nothing
 
     function BgpServiceCommunityListResult(value, nextLink, )
-        OpenAPI.validate_property(BgpServiceCommunityListResult, Symbol("value"), value)
-        OpenAPI.validate_property(BgpServiceCommunityListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type BgpServiceCommunityListResult
 
 const _property_types_BgpServiceCommunityListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{BgpServiceCommunity}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ BgpServiceCommunityListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_BgpServiceCommunityListResult[name]))}
 
-function check_required(o::BgpServiceCommunityListResult)
+function OpenAPI.check_required(o::BgpServiceCommunityListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::BgpServiceCommunityListResult)
+    OpenAPI.validate_property(BgpServiceCommunityListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(BgpServiceCommunityListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ BgpServiceCommunityListResult }, name::Symbol, val)
+
+
 end

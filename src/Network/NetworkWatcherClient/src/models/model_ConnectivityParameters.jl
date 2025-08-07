@@ -27,26 +27,37 @@ Base.@kwdef mutable struct ConnectivityParameters <: OpenAPI.APIModel
     preferredIPVersion = nothing # spec type: Union{ Nothing, IPVersion }
 
     function ConnectivityParameters(source, destination, protocol, protocolConfiguration, preferredIPVersion, )
-        OpenAPI.validate_property(ConnectivityParameters, Symbol("source"), source)
-        OpenAPI.validate_property(ConnectivityParameters, Symbol("destination"), destination)
-        OpenAPI.validate_property(ConnectivityParameters, Symbol("protocol"), protocol)
-        OpenAPI.validate_property(ConnectivityParameters, Symbol("protocolConfiguration"), protocolConfiguration)
-        OpenAPI.validate_property(ConnectivityParameters, Symbol("preferredIPVersion"), preferredIPVersion)
-        return new(source, destination, protocol, protocolConfiguration, preferredIPVersion, )
+        o = new(source, destination, protocol, protocolConfiguration, preferredIPVersion, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ConnectivityParameters
 
 const _property_types_ConnectivityParameters = Dict{Symbol,String}(Symbol("source")=>"ConnectivitySource", Symbol("destination")=>"ConnectivityDestination", Symbol("protocol")=>"String", Symbol("protocolConfiguration")=>"ProtocolConfiguration", Symbol("preferredIPVersion")=>"IPVersion", )
 OpenAPI.property_type(::Type{ ConnectivityParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ConnectivityParameters[name]))}
 
-function check_required(o::ConnectivityParameters)
+function OpenAPI.check_required(o::ConnectivityParameters)
     o.source === nothing && (return false)
     o.destination === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ConnectivityParameters)
+    OpenAPI.validate_property(ConnectivityParameters, Symbol("source"), o.source)
+    OpenAPI.validate_property(ConnectivityParameters, Symbol("destination"), o.destination)
+    OpenAPI.validate_property(ConnectivityParameters, Symbol("protocol"), o.protocol)
+    OpenAPI.validate_property(ConnectivityParameters, Symbol("protocolConfiguration"), o.protocolConfiguration)
+    OpenAPI.validate_property(ConnectivityParameters, Symbol("preferredIPVersion"), o.preferredIPVersion)
+end
+
 function OpenAPI.validate_property(::Type{ ConnectivityParameters }, name::Symbol, val)
+
+
+
     if name === Symbol("protocol")
         OpenAPI.validate_param(name, "ConnectivityParameters", :enum, val, ["Tcp", "Http", "Https", "Icmp"])
     end
+
+
+
 end

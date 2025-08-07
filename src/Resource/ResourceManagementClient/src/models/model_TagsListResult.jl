@@ -18,18 +18,25 @@ Base.@kwdef mutable struct TagsListResult <: OpenAPI.APIModel
     nextLink::Union{Nothing, String} = nothing
 
     function TagsListResult(value, nextLink, )
-        OpenAPI.validate_property(TagsListResult, Symbol("value"), value)
-        OpenAPI.validate_property(TagsListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type TagsListResult
 
 const _property_types_TagsListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{TagDetails}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ TagsListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TagsListResult[name]))}
 
-function check_required(o::TagsListResult)
+function OpenAPI.check_required(o::TagsListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::TagsListResult)
+    OpenAPI.validate_property(TagsListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(TagsListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ TagsListResult }, name::Symbol, val)
+
+
 end

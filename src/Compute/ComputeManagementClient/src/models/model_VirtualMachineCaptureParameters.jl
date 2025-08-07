@@ -21,22 +21,30 @@ Base.@kwdef mutable struct VirtualMachineCaptureParameters <: OpenAPI.APIModel
     overwriteVhds::Union{Nothing, Bool} = nothing
 
     function VirtualMachineCaptureParameters(vhdPrefix, destinationContainerName, overwriteVhds, )
-        OpenAPI.validate_property(VirtualMachineCaptureParameters, Symbol("vhdPrefix"), vhdPrefix)
-        OpenAPI.validate_property(VirtualMachineCaptureParameters, Symbol("destinationContainerName"), destinationContainerName)
-        OpenAPI.validate_property(VirtualMachineCaptureParameters, Symbol("overwriteVhds"), overwriteVhds)
-        return new(vhdPrefix, destinationContainerName, overwriteVhds, )
+        o = new(vhdPrefix, destinationContainerName, overwriteVhds, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineCaptureParameters
 
 const _property_types_VirtualMachineCaptureParameters = Dict{Symbol,String}(Symbol("vhdPrefix")=>"String", Symbol("destinationContainerName")=>"String", Symbol("overwriteVhds")=>"Bool", )
 OpenAPI.property_type(::Type{ VirtualMachineCaptureParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineCaptureParameters[name]))}
 
-function check_required(o::VirtualMachineCaptureParameters)
+function OpenAPI.check_required(o::VirtualMachineCaptureParameters)
     o.vhdPrefix === nothing && (return false)
     o.destinationContainerName === nothing && (return false)
     o.overwriteVhds === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineCaptureParameters)
+    OpenAPI.validate_property(VirtualMachineCaptureParameters, Symbol("vhdPrefix"), o.vhdPrefix)
+    OpenAPI.validate_property(VirtualMachineCaptureParameters, Symbol("destinationContainerName"), o.destinationContainerName)
+    OpenAPI.validate_property(VirtualMachineCaptureParameters, Symbol("overwriteVhds"), o.overwriteVhds)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineCaptureParameters }, name::Symbol, val)
+
+
+
 end

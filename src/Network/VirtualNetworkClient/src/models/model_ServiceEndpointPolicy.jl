@@ -8,6 +8,7 @@ Service End point policy resource.
     ServiceEndpointPolicy(;
         properties=nothing,
         etag=nothing,
+        kind=nothing,
         id=nothing,
         name=nothing,
         type=nothing,
@@ -17,6 +18,7 @@ Service End point policy resource.
 
     - properties::ServiceEndpointPolicyPropertiesFormat
     - etag::String : A unique read-only string that changes whenever the resource is updated.
+    - kind::String : Kind of service endpoint policy. This is metadata used for the Azure portal experience.
     - id::String : Resource ID.
     - name::String : Resource name.
     - type::String : Resource type.
@@ -26,30 +28,45 @@ Service End point policy resource.
 Base.@kwdef mutable struct ServiceEndpointPolicy <: OpenAPI.APIModel
     properties = nothing # spec type: Union{ Nothing, ServiceEndpointPolicyPropertiesFormat }
     etag::Union{Nothing, String} = nothing
+    kind::Union{Nothing, String} = nothing
     id::Union{Nothing, String} = nothing
     name::Union{Nothing, String} = nothing
     type::Union{Nothing, String} = nothing
     location::Union{Nothing, String} = nothing
     tags::Union{Nothing, Dict{String, String}} = nothing
 
-    function ServiceEndpointPolicy(properties, etag, id, name, type, location, tags, )
-        OpenAPI.validate_property(ServiceEndpointPolicy, Symbol("properties"), properties)
-        OpenAPI.validate_property(ServiceEndpointPolicy, Symbol("etag"), etag)
-        OpenAPI.validate_property(ServiceEndpointPolicy, Symbol("id"), id)
-        OpenAPI.validate_property(ServiceEndpointPolicy, Symbol("name"), name)
-        OpenAPI.validate_property(ServiceEndpointPolicy, Symbol("type"), type)
-        OpenAPI.validate_property(ServiceEndpointPolicy, Symbol("location"), location)
-        OpenAPI.validate_property(ServiceEndpointPolicy, Symbol("tags"), tags)
-        return new(properties, etag, id, name, type, location, tags, )
+    function ServiceEndpointPolicy(properties, etag, kind, id, name, type, location, tags, )
+        o = new(properties, etag, kind, id, name, type, location, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ServiceEndpointPolicy
 
-const _property_types_ServiceEndpointPolicy = Dict{Symbol,String}(Symbol("properties")=>"ServiceEndpointPolicyPropertiesFormat", Symbol("etag")=>"String", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
+const _property_types_ServiceEndpointPolicy = Dict{Symbol,String}(Symbol("properties")=>"ServiceEndpointPolicyPropertiesFormat", Symbol("etag")=>"String", Symbol("kind")=>"String", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ ServiceEndpointPolicy }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ServiceEndpointPolicy[name]))}
 
-function check_required(o::ServiceEndpointPolicy)
+function OpenAPI.check_required(o::ServiceEndpointPolicy)
     true
 end
 
+function OpenAPI.validate_properties(o::ServiceEndpointPolicy)
+    OpenAPI.validate_property(ServiceEndpointPolicy, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(ServiceEndpointPolicy, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(ServiceEndpointPolicy, Symbol("kind"), o.kind)
+    OpenAPI.validate_property(ServiceEndpointPolicy, Symbol("id"), o.id)
+    OpenAPI.validate_property(ServiceEndpointPolicy, Symbol("name"), o.name)
+    OpenAPI.validate_property(ServiceEndpointPolicy, Symbol("type"), o.type)
+    OpenAPI.validate_property(ServiceEndpointPolicy, Symbol("location"), o.location)
+    OpenAPI.validate_property(ServiceEndpointPolicy, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ ServiceEndpointPolicy }, name::Symbol, val)
+
+
+
+
+
+
+
+
 end

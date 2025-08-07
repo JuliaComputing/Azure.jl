@@ -6,63 +6,83 @@
 Describes a Virtual Machine.
 
     VirtualMachine(;
-        id=nothing,
-        name=nothing,
-        type=nothing,
-        location=nothing,
-        tags=nothing,
         plan=nothing,
         properties=nothing,
         resources=nothing,
         identity=nothing,
         zones=nothing,
+        extendedLocation=nothing,
+        id=nothing,
+        name=nothing,
+        type=nothing,
+        location=nothing,
+        tags=nothing,
     )
 
-    - id::String : Resource Id
-    - name::String : Resource name
-    - type::String : Resource type
-    - location::String : Resource location
-    - tags::Dict{String, String} : Resource tags
     - plan::Plan
     - properties::VirtualMachineProperties
     - resources::Vector{VirtualMachineExtension} : The virtual machine child extension resources.
     - identity::VirtualMachineIdentity
     - zones::Vector{String} : The virtual machine zones.
+    - extendedLocation::ExtendedLocation
+    - id::String : Resource Id
+    - name::String : Resource name
+    - type::String : Resource type
+    - location::String : Resource location
+    - tags::Dict{String, String} : Resource tags
 """
 Base.@kwdef mutable struct VirtualMachine <: OpenAPI.APIModel
-    id::Union{Nothing, String} = nothing
-    name::Union{Nothing, String} = nothing
-    type::Union{Nothing, String} = nothing
-    location::Union{Nothing, String} = nothing
-    tags::Union{Nothing, Dict{String, String}} = nothing
     plan = nothing # spec type: Union{ Nothing, Plan }
     properties = nothing # spec type: Union{ Nothing, VirtualMachineProperties }
     resources::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{VirtualMachineExtension} }
     identity = nothing # spec type: Union{ Nothing, VirtualMachineIdentity }
     zones::Union{Nothing, Vector{String}} = nothing
+    extendedLocation = nothing # spec type: Union{ Nothing, ExtendedLocation }
+    id::Union{Nothing, String} = nothing
+    name::Union{Nothing, String} = nothing
+    type::Union{Nothing, String} = nothing
+    location::Union{Nothing, String} = nothing
+    tags::Union{Nothing, Dict{String, String}} = nothing
 
-    function VirtualMachine(id, name, type, location, tags, plan, properties, resources, identity, zones, )
-        OpenAPI.validate_property(VirtualMachine, Symbol("id"), id)
-        OpenAPI.validate_property(VirtualMachine, Symbol("name"), name)
-        OpenAPI.validate_property(VirtualMachine, Symbol("type"), type)
-        OpenAPI.validate_property(VirtualMachine, Symbol("location"), location)
-        OpenAPI.validate_property(VirtualMachine, Symbol("tags"), tags)
-        OpenAPI.validate_property(VirtualMachine, Symbol("plan"), plan)
-        OpenAPI.validate_property(VirtualMachine, Symbol("properties"), properties)
-        OpenAPI.validate_property(VirtualMachine, Symbol("resources"), resources)
-        OpenAPI.validate_property(VirtualMachine, Symbol("identity"), identity)
-        OpenAPI.validate_property(VirtualMachine, Symbol("zones"), zones)
-        return new(id, name, type, location, tags, plan, properties, resources, identity, zones, )
+    function VirtualMachine(plan, properties, resources, identity, zones, extendedLocation, id, name, type, location, tags, )
+        o = new(plan, properties, resources, identity, zones, extendedLocation, id, name, type, location, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachine
 
-const _property_types_VirtualMachine = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", Symbol("plan")=>"Plan", Symbol("properties")=>"VirtualMachineProperties", Symbol("resources")=>"Vector{VirtualMachineExtension}", Symbol("identity")=>"VirtualMachineIdentity", Symbol("zones")=>"Vector{String}", )
+const _property_types_VirtualMachine = Dict{Symbol,String}(Symbol("plan")=>"Plan", Symbol("properties")=>"VirtualMachineProperties", Symbol("resources")=>"Vector{VirtualMachineExtension}", Symbol("identity")=>"VirtualMachineIdentity", Symbol("zones")=>"Vector{String}", Symbol("extendedLocation")=>"ExtendedLocation", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ VirtualMachine }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachine[name]))}
 
-function check_required(o::VirtualMachine)
+function OpenAPI.check_required(o::VirtualMachine)
     o.location === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachine)
+    OpenAPI.validate_property(VirtualMachine, Symbol("plan"), o.plan)
+    OpenAPI.validate_property(VirtualMachine, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(VirtualMachine, Symbol("resources"), o.resources)
+    OpenAPI.validate_property(VirtualMachine, Symbol("identity"), o.identity)
+    OpenAPI.validate_property(VirtualMachine, Symbol("zones"), o.zones)
+    OpenAPI.validate_property(VirtualMachine, Symbol("extendedLocation"), o.extendedLocation)
+    OpenAPI.validate_property(VirtualMachine, Symbol("id"), o.id)
+    OpenAPI.validate_property(VirtualMachine, Symbol("name"), o.name)
+    OpenAPI.validate_property(VirtualMachine, Symbol("type"), o.type)
+    OpenAPI.validate_property(VirtualMachine, Symbol("location"), o.location)
+    OpenAPI.validate_property(VirtualMachine, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachine }, name::Symbol, val)
+
+
+
+
+
+
+
+
+
+
+
 end

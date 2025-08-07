@@ -20,6 +20,9 @@ Properties of ExpressRouteCircuit.
         provisioningState=nothing,
         gatewayManagerEtag=nothing,
         globalReachEnabled=nothing,
+        authorizationKey=nothing,
+        authorizationStatus=nothing,
+        enableDirectPortRateLimit=nothing,
     )
 
     - allowClassicOperations::Bool : Allow classic operations.
@@ -36,6 +39,9 @@ Properties of ExpressRouteCircuit.
     - provisioningState::ProvisioningState
     - gatewayManagerEtag::String : The GatewayManager Etag.
     - globalReachEnabled::Bool : Flag denoting global reach status.
+    - authorizationKey::String : The authorizationKey.
+    - authorizationStatus::String : The authorization status of the Circuit.
+    - enableDirectPortRateLimit::Bool : Flag denoting rate-limiting status of the ExpressRoute direct-port circuit.
 """
 Base.@kwdef mutable struct ExpressRouteCircuitPropertiesFormat <: OpenAPI.APIModel
     allowClassicOperations::Union{Nothing, Bool} = nothing
@@ -52,35 +58,63 @@ Base.@kwdef mutable struct ExpressRouteCircuitPropertiesFormat <: OpenAPI.APIMod
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
     gatewayManagerEtag::Union{Nothing, String} = nothing
     globalReachEnabled::Union{Nothing, Bool} = nothing
+    authorizationKey::Union{Nothing, String} = nothing
+    authorizationStatus::Union{Nothing, String} = nothing
+    enableDirectPortRateLimit::Union{Nothing, Bool} = nothing
 
-    function ExpressRouteCircuitPropertiesFormat(allowClassicOperations, circuitProvisioningState, serviceProviderProvisioningState, authorizations, peerings, serviceKey, serviceProviderNotes, serviceProviderProperties, expressRoutePort, bandwidthInGbps, stag, provisioningState, gatewayManagerEtag, globalReachEnabled, )
-        OpenAPI.validate_property(ExpressRouteCircuitPropertiesFormat, Symbol("allowClassicOperations"), allowClassicOperations)
-        OpenAPI.validate_property(ExpressRouteCircuitPropertiesFormat, Symbol("circuitProvisioningState"), circuitProvisioningState)
-        OpenAPI.validate_property(ExpressRouteCircuitPropertiesFormat, Symbol("serviceProviderProvisioningState"), serviceProviderProvisioningState)
-        OpenAPI.validate_property(ExpressRouteCircuitPropertiesFormat, Symbol("authorizations"), authorizations)
-        OpenAPI.validate_property(ExpressRouteCircuitPropertiesFormat, Symbol("peerings"), peerings)
-        OpenAPI.validate_property(ExpressRouteCircuitPropertiesFormat, Symbol("serviceKey"), serviceKey)
-        OpenAPI.validate_property(ExpressRouteCircuitPropertiesFormat, Symbol("serviceProviderNotes"), serviceProviderNotes)
-        OpenAPI.validate_property(ExpressRouteCircuitPropertiesFormat, Symbol("serviceProviderProperties"), serviceProviderProperties)
-        OpenAPI.validate_property(ExpressRouteCircuitPropertiesFormat, Symbol("expressRoutePort"), expressRoutePort)
-        OpenAPI.validate_property(ExpressRouteCircuitPropertiesFormat, Symbol("bandwidthInGbps"), bandwidthInGbps)
-        OpenAPI.validate_property(ExpressRouteCircuitPropertiesFormat, Symbol("stag"), stag)
-        OpenAPI.validate_property(ExpressRouteCircuitPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        OpenAPI.validate_property(ExpressRouteCircuitPropertiesFormat, Symbol("gatewayManagerEtag"), gatewayManagerEtag)
-        OpenAPI.validate_property(ExpressRouteCircuitPropertiesFormat, Symbol("globalReachEnabled"), globalReachEnabled)
-        return new(allowClassicOperations, circuitProvisioningState, serviceProviderProvisioningState, authorizations, peerings, serviceKey, serviceProviderNotes, serviceProviderProperties, expressRoutePort, bandwidthInGbps, stag, provisioningState, gatewayManagerEtag, globalReachEnabled, )
+    function ExpressRouteCircuitPropertiesFormat(allowClassicOperations, circuitProvisioningState, serviceProviderProvisioningState, authorizations, peerings, serviceKey, serviceProviderNotes, serviceProviderProperties, expressRoutePort, bandwidthInGbps, stag, provisioningState, gatewayManagerEtag, globalReachEnabled, authorizationKey, authorizationStatus, enableDirectPortRateLimit, )
+        o = new(allowClassicOperations, circuitProvisioningState, serviceProviderProvisioningState, authorizations, peerings, serviceKey, serviceProviderNotes, serviceProviderProperties, expressRoutePort, bandwidthInGbps, stag, provisioningState, gatewayManagerEtag, globalReachEnabled, authorizationKey, authorizationStatus, enableDirectPortRateLimit, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ExpressRouteCircuitPropertiesFormat
 
-const _property_types_ExpressRouteCircuitPropertiesFormat = Dict{Symbol,String}(Symbol("allowClassicOperations")=>"Bool", Symbol("circuitProvisioningState")=>"String", Symbol("serviceProviderProvisioningState")=>"ServiceProviderProvisioningState", Symbol("authorizations")=>"Vector{ExpressRouteCircuitAuthorization}", Symbol("peerings")=>"Vector{ExpressRouteCircuitPeering}", Symbol("serviceKey")=>"String", Symbol("serviceProviderNotes")=>"String", Symbol("serviceProviderProperties")=>"ExpressRouteCircuitServiceProviderProperties", Symbol("expressRoutePort")=>"SubResource", Symbol("bandwidthInGbps")=>"Float64", Symbol("stag")=>"Int64", Symbol("provisioningState")=>"ProvisioningState", Symbol("gatewayManagerEtag")=>"String", Symbol("globalReachEnabled")=>"Bool", )
+const _property_types_ExpressRouteCircuitPropertiesFormat = Dict{Symbol,String}(Symbol("allowClassicOperations")=>"Bool", Symbol("circuitProvisioningState")=>"String", Symbol("serviceProviderProvisioningState")=>"ServiceProviderProvisioningState", Symbol("authorizations")=>"Vector{ExpressRouteCircuitAuthorization}", Symbol("peerings")=>"Vector{ExpressRouteCircuitPeering}", Symbol("serviceKey")=>"String", Symbol("serviceProviderNotes")=>"String", Symbol("serviceProviderProperties")=>"ExpressRouteCircuitServiceProviderProperties", Symbol("expressRoutePort")=>"SubResource", Symbol("bandwidthInGbps")=>"Float64", Symbol("stag")=>"Int64", Symbol("provisioningState")=>"ProvisioningState", Symbol("gatewayManagerEtag")=>"String", Symbol("globalReachEnabled")=>"Bool", Symbol("authorizationKey")=>"String", Symbol("authorizationStatus")=>"String", Symbol("enableDirectPortRateLimit")=>"Bool", )
 OpenAPI.property_type(::Type{ ExpressRouteCircuitPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExpressRouteCircuitPropertiesFormat[name]))}
 
-function check_required(o::ExpressRouteCircuitPropertiesFormat)
+function OpenAPI.check_required(o::ExpressRouteCircuitPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::ExpressRouteCircuitPropertiesFormat)
+    OpenAPI.validate_property(ExpressRouteCircuitPropertiesFormat, Symbol("allowClassicOperations"), o.allowClassicOperations)
+    OpenAPI.validate_property(ExpressRouteCircuitPropertiesFormat, Symbol("circuitProvisioningState"), o.circuitProvisioningState)
+    OpenAPI.validate_property(ExpressRouteCircuitPropertiesFormat, Symbol("serviceProviderProvisioningState"), o.serviceProviderProvisioningState)
+    OpenAPI.validate_property(ExpressRouteCircuitPropertiesFormat, Symbol("authorizations"), o.authorizations)
+    OpenAPI.validate_property(ExpressRouteCircuitPropertiesFormat, Symbol("peerings"), o.peerings)
+    OpenAPI.validate_property(ExpressRouteCircuitPropertiesFormat, Symbol("serviceKey"), o.serviceKey)
+    OpenAPI.validate_property(ExpressRouteCircuitPropertiesFormat, Symbol("serviceProviderNotes"), o.serviceProviderNotes)
+    OpenAPI.validate_property(ExpressRouteCircuitPropertiesFormat, Symbol("serviceProviderProperties"), o.serviceProviderProperties)
+    OpenAPI.validate_property(ExpressRouteCircuitPropertiesFormat, Symbol("expressRoutePort"), o.expressRoutePort)
+    OpenAPI.validate_property(ExpressRouteCircuitPropertiesFormat, Symbol("bandwidthInGbps"), o.bandwidthInGbps)
+    OpenAPI.validate_property(ExpressRouteCircuitPropertiesFormat, Symbol("stag"), o.stag)
+    OpenAPI.validate_property(ExpressRouteCircuitPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(ExpressRouteCircuitPropertiesFormat, Symbol("gatewayManagerEtag"), o.gatewayManagerEtag)
+    OpenAPI.validate_property(ExpressRouteCircuitPropertiesFormat, Symbol("globalReachEnabled"), o.globalReachEnabled)
+    OpenAPI.validate_property(ExpressRouteCircuitPropertiesFormat, Symbol("authorizationKey"), o.authorizationKey)
+    OpenAPI.validate_property(ExpressRouteCircuitPropertiesFormat, Symbol("authorizationStatus"), o.authorizationStatus)
+    OpenAPI.validate_property(ExpressRouteCircuitPropertiesFormat, Symbol("enableDirectPortRateLimit"), o.enableDirectPortRateLimit)
+end
+
 function OpenAPI.validate_property(::Type{ ExpressRouteCircuitPropertiesFormat }, name::Symbol, val)
+
+
+
+
+
+
+
+
+
+
+
     if name === Symbol("stag")
         OpenAPI.validate_param(name, "ExpressRouteCircuitPropertiesFormat", :format, val, "int32")
     end
+
+
+
+
+
+
 end

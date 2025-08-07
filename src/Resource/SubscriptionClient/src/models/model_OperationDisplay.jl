@@ -3,7 +3,7 @@
 
 
 @doc raw"""Operation_display
-The object that represents the operation.
+Localized display information for this particular operation.
 
     OperationDisplay(;
         provider=nothing,
@@ -24,20 +24,29 @@ Base.@kwdef mutable struct OperationDisplay <: OpenAPI.APIModel
     description::Union{Nothing, String} = nothing
 
     function OperationDisplay(provider, resource, operation, description, )
-        OpenAPI.validate_property(OperationDisplay, Symbol("provider"), provider)
-        OpenAPI.validate_property(OperationDisplay, Symbol("resource"), resource)
-        OpenAPI.validate_property(OperationDisplay, Symbol("operation"), operation)
-        OpenAPI.validate_property(OperationDisplay, Symbol("description"), description)
-        return new(provider, resource, operation, description, )
+        o = new(provider, resource, operation, description, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type OperationDisplay
 
 const _property_types_OperationDisplay = Dict{Symbol,String}(Symbol("provider")=>"String", Symbol("resource")=>"String", Symbol("operation")=>"String", Symbol("description")=>"String", )
 OpenAPI.property_type(::Type{ OperationDisplay }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_OperationDisplay[name]))}
 
-function check_required(o::OperationDisplay)
+function OpenAPI.check_required(o::OperationDisplay)
     true
 end
 
+function OpenAPI.validate_properties(o::OperationDisplay)
+    OpenAPI.validate_property(OperationDisplay, Symbol("provider"), o.provider)
+    OpenAPI.validate_property(OperationDisplay, Symbol("resource"), o.resource)
+    OpenAPI.validate_property(OperationDisplay, Symbol("operation"), o.operation)
+    OpenAPI.validate_property(OperationDisplay, Symbol("description"), o.description)
+end
+
 function OpenAPI.validate_property(::Type{ OperationDisplay }, name::Symbol, val)
+
+
+
+
 end

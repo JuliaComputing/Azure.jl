@@ -30,22 +30,33 @@ Base.@kwdef mutable struct ApplicationGatewayFirewallRuleSet <: OpenAPI.APIModel
     tags::Union{Nothing, Dict{String, String}} = nothing
 
     function ApplicationGatewayFirewallRuleSet(properties, id, name, type, location, tags, )
-        OpenAPI.validate_property(ApplicationGatewayFirewallRuleSet, Symbol("properties"), properties)
-        OpenAPI.validate_property(ApplicationGatewayFirewallRuleSet, Symbol("id"), id)
-        OpenAPI.validate_property(ApplicationGatewayFirewallRuleSet, Symbol("name"), name)
-        OpenAPI.validate_property(ApplicationGatewayFirewallRuleSet, Symbol("type"), type)
-        OpenAPI.validate_property(ApplicationGatewayFirewallRuleSet, Symbol("location"), location)
-        OpenAPI.validate_property(ApplicationGatewayFirewallRuleSet, Symbol("tags"), tags)
-        return new(properties, id, name, type, location, tags, )
+        o = new(properties, id, name, type, location, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayFirewallRuleSet
 
 const _property_types_ApplicationGatewayFirewallRuleSet = Dict{Symbol,String}(Symbol("properties")=>"ApplicationGatewayFirewallRuleSetPropertiesFormat", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ ApplicationGatewayFirewallRuleSet }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayFirewallRuleSet[name]))}
 
-function check_required(o::ApplicationGatewayFirewallRuleSet)
+function OpenAPI.check_required(o::ApplicationGatewayFirewallRuleSet)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayFirewallRuleSet)
+    OpenAPI.validate_property(ApplicationGatewayFirewallRuleSet, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(ApplicationGatewayFirewallRuleSet, Symbol("id"), o.id)
+    OpenAPI.validate_property(ApplicationGatewayFirewallRuleSet, Symbol("name"), o.name)
+    OpenAPI.validate_property(ApplicationGatewayFirewallRuleSet, Symbol("type"), o.type)
+    OpenAPI.validate_property(ApplicationGatewayFirewallRuleSet, Symbol("location"), o.location)
+    OpenAPI.validate_property(ApplicationGatewayFirewallRuleSet, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayFirewallRuleSet }, name::Symbol, val)
+
+
+
+
+
+
 end

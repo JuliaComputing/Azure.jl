@@ -24,20 +24,29 @@ Base.@kwdef mutable struct ApplicationGatewayAvailableSslOptionsPropertiesFormat
     availableProtocols::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ProtocolsEnum} }
 
     function ApplicationGatewayAvailableSslOptionsPropertiesFormat(predefinedPolicies, defaultPolicy, availableCipherSuites, availableProtocols, )
-        OpenAPI.validate_property(ApplicationGatewayAvailableSslOptionsPropertiesFormat, Symbol("predefinedPolicies"), predefinedPolicies)
-        OpenAPI.validate_property(ApplicationGatewayAvailableSslOptionsPropertiesFormat, Symbol("defaultPolicy"), defaultPolicy)
-        OpenAPI.validate_property(ApplicationGatewayAvailableSslOptionsPropertiesFormat, Symbol("availableCipherSuites"), availableCipherSuites)
-        OpenAPI.validate_property(ApplicationGatewayAvailableSslOptionsPropertiesFormat, Symbol("availableProtocols"), availableProtocols)
-        return new(predefinedPolicies, defaultPolicy, availableCipherSuites, availableProtocols, )
+        o = new(predefinedPolicies, defaultPolicy, availableCipherSuites, availableProtocols, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayAvailableSslOptionsPropertiesFormat
 
 const _property_types_ApplicationGatewayAvailableSslOptionsPropertiesFormat = Dict{Symbol,String}(Symbol("predefinedPolicies")=>"Vector{SubResource}", Symbol("defaultPolicy")=>"PolicyNameEnum", Symbol("availableCipherSuites")=>"Vector{CipherSuitesEnum}", Symbol("availableProtocols")=>"Vector{ProtocolsEnum}", )
 OpenAPI.property_type(::Type{ ApplicationGatewayAvailableSslOptionsPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayAvailableSslOptionsPropertiesFormat[name]))}
 
-function check_required(o::ApplicationGatewayAvailableSslOptionsPropertiesFormat)
+function OpenAPI.check_required(o::ApplicationGatewayAvailableSslOptionsPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayAvailableSslOptionsPropertiesFormat)
+    OpenAPI.validate_property(ApplicationGatewayAvailableSslOptionsPropertiesFormat, Symbol("predefinedPolicies"), o.predefinedPolicies)
+    OpenAPI.validate_property(ApplicationGatewayAvailableSslOptionsPropertiesFormat, Symbol("defaultPolicy"), o.defaultPolicy)
+    OpenAPI.validate_property(ApplicationGatewayAvailableSslOptionsPropertiesFormat, Symbol("availableCipherSuites"), o.availableCipherSuites)
+    OpenAPI.validate_property(ApplicationGatewayAvailableSslOptionsPropertiesFormat, Symbol("availableProtocols"), o.availableProtocols)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayAvailableSslOptionsPropertiesFormat }, name::Symbol, val)
+
+
+
+
 end

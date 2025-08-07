@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **dfs** | **String** | Gets the dfs endpoint. | [optional] [readonly] [default to nothing]
 **microsoftEndpoints** | [***StorageAccountMicrosoftEndpoints**](StorageAccountMicrosoftEndpoints.md) |  | [optional] [default to nothing]
 **internetEndpoints** | [***StorageAccountInternetEndpoints**](StorageAccountInternetEndpoints.md) |  | [optional] [default to nothing]
+**ipv6Endpoints** | [***StorageAccountIpv6Endpoints**](StorageAccountIpv6Endpoints.md) |  | [optional] [default to nothing]
 
 
 [[Back to Model list]](../README.md#models) [[Back to API list]](../README.md#api-endpoints) [[Back to README]](../README.md)

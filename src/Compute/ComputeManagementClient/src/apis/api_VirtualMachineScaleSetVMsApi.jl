@@ -14,16 +14,17 @@ basepath(::Type{ VirtualMachineScaleSetVMsApi }) = "https://management.azure.com
 const _returntypes_virtual_machine_scale_set_v_ms_deallocate_VirtualMachineScaleSetVMsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machine_scale_set_v_ms_deallocate(_api::VirtualMachineScaleSetVMsApi, resource_group_name::String, vm_scale_set_name::String, instance_id::String, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_virtual_machine_scale_set_v_ms_deallocate_VirtualMachineScaleSetVMsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/deallocate", ["azure_auth", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_virtual_machine_scale_set_v_ms_deallocate_VirtualMachineScaleSetVMsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/deallocate", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmScaleSetName", vm_scale_set_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "instanceId", instance_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_header_accept(_ctx, [])
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
 end
@@ -53,16 +54,18 @@ const _returntypes_virtual_machine_scale_set_v_ms_delete_VirtualMachineScaleSetV
     Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("204", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
-function _oacinternal_virtual_machine_scale_set_v_ms_delete(_api::VirtualMachineScaleSetVMsApi, resource_group_name::String, vm_scale_set_name::String, instance_id::String, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_virtual_machine_scale_set_v_ms_delete_VirtualMachineScaleSetVMsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}", ["azure_auth", ])
+function _oacinternal_virtual_machine_scale_set_v_ms_delete(_api::VirtualMachineScaleSetVMsApi, resource_group_name::String, vm_scale_set_name::String, instance_id::String, api_version::String, subscription_id::String; force_deletion=nothing, _mediaType=nothing)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_virtual_machine_scale_set_v_ms_delete_VirtualMachineScaleSetVMsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmScaleSetName", vm_scale_set_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "instanceId", instance_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_header_accept(_ctx, [])
+    OpenAPI.Clients.set_param(_ctx.query, "forceDeletion", force_deletion; style="", is_explode=false)  # type Bool
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
 end
@@ -75,31 +78,33 @@ Params:
 - instance_id::String (required)
 - api_version::String (required)
 - subscription_id::String (required)
+- force_deletion::Bool
 
 Return: Nothing, OpenAPI.Clients.ApiResponse
 """
-function virtual_machine_scale_set_v_ms_delete(_api::VirtualMachineScaleSetVMsApi, resource_group_name::String, vm_scale_set_name::String, instance_id::String, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = _oacinternal_virtual_machine_scale_set_v_ms_delete(_api, resource_group_name, vm_scale_set_name, instance_id, api_version, subscription_id; _mediaType=_mediaType)
+function virtual_machine_scale_set_v_ms_delete(_api::VirtualMachineScaleSetVMsApi, resource_group_name::String, vm_scale_set_name::String, instance_id::String, api_version::String, subscription_id::String; force_deletion=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_virtual_machine_scale_set_v_ms_delete(_api, resource_group_name, vm_scale_set_name, instance_id, api_version, subscription_id; force_deletion=force_deletion, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx)
 end
 
-function virtual_machine_scale_set_v_ms_delete(_api::VirtualMachineScaleSetVMsApi, response_stream::Channel, resource_group_name::String, vm_scale_set_name::String, instance_id::String, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = _oacinternal_virtual_machine_scale_set_v_ms_delete(_api, resource_group_name, vm_scale_set_name, instance_id, api_version, subscription_id; _mediaType=_mediaType)
+function virtual_machine_scale_set_v_ms_delete(_api::VirtualMachineScaleSetVMsApi, response_stream::Channel, resource_group_name::String, vm_scale_set_name::String, instance_id::String, api_version::String, subscription_id::String; force_deletion=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_virtual_machine_scale_set_v_ms_delete(_api, resource_group_name, vm_scale_set_name, instance_id, api_version, subscription_id; force_deletion=force_deletion, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
 const _returntypes_virtual_machine_scale_set_v_ms_get_VirtualMachineScaleSetVMsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => VirtualMachineScaleSetVM,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machine_scale_set_v_ms_get(_api::VirtualMachineScaleSetVMsApi, resource_group_name::String, vm_scale_set_name::String, instance_id::String, api_version::String, subscription_id::String; expand=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_virtual_machine_scale_set_v_ms_get_VirtualMachineScaleSetVMsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}", ["azure_auth", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_virtual_machine_scale_set_v_ms_get_VirtualMachineScaleSetVMsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmScaleSetName", vm_scale_set_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "instanceId", instance_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -129,15 +134,16 @@ end
 
 const _returntypes_virtual_machine_scale_set_v_ms_get_instance_view_VirtualMachineScaleSetVMsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => VirtualMachineScaleSetVMInstanceView,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machine_scale_set_v_ms_get_instance_view(_api::VirtualMachineScaleSetVMsApi, resource_group_name::String, vm_scale_set_name::String, instance_id::String, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_virtual_machine_scale_set_v_ms_get_instance_view_VirtualMachineScaleSetVMsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/instanceView", ["azure_auth", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_virtual_machine_scale_set_v_ms_get_instance_view_VirtualMachineScaleSetVMsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/instanceView", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmScaleSetName", vm_scale_set_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "instanceId", instance_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -166,6 +172,7 @@ end
 
 const _returntypes_virtual_machine_scale_set_v_ms_list_VirtualMachineScaleSetVMsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => VirtualMachineScaleSetVMListResult,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machine_scale_set_v_ms_list(_api::VirtualMachineScaleSetVMsApi, resource_group_name::String, virtual_machine_scale_set_name::String, api_version::String, subscription_id::String; filter=nothing, select=nothing, expand=nothing, _mediaType=nothing)
@@ -173,10 +180,10 @@ function _oacinternal_virtual_machine_scale_set_v_ms_list(_api::VirtualMachineSc
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualMachineScaleSetName", virtual_machine_scale_set_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$filter", filter)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$select", select)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$filter", filter; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$select", select; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -208,6 +215,7 @@ end
 const _returntypes_virtual_machine_scale_set_v_ms_perform_maintenance_VirtualMachineScaleSetVMsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machine_scale_set_v_ms_perform_maintenance(_api::VirtualMachineScaleSetVMsApi, resource_group_name::String, vm_scale_set_name::String, instance_id::String, api_version::String, subscription_id::String; _mediaType=nothing)
@@ -216,8 +224,8 @@ function _oacinternal_virtual_machine_scale_set_v_ms_perform_maintenance(_api::V
     OpenAPI.Clients.set_param(_ctx.path, "vmScaleSetName", vm_scale_set_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "instanceId", instance_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_header_accept(_ctx, [])
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
 end
@@ -246,6 +254,7 @@ end
 const _returntypes_virtual_machine_scale_set_v_ms_power_off_VirtualMachineScaleSetVMsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machine_scale_set_v_ms_power_off(_api::VirtualMachineScaleSetVMsApi, resource_group_name::String, vm_scale_set_name::String, instance_id::String, api_version::String, subscription_id::String; skip_shutdown=nothing, _mediaType=nothing)
@@ -254,9 +263,9 @@ function _oacinternal_virtual_machine_scale_set_v_ms_power_off(_api::VirtualMach
     OpenAPI.Clients.set_param(_ctx.path, "vmScaleSetName", vm_scale_set_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "instanceId", instance_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "skipShutdown", skip_shutdown)  # type Bool
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_header_accept(_ctx, [])
+    OpenAPI.Clients.set_param(_ctx.query, "skipShutdown", skip_shutdown; style="", is_explode=false)  # type Bool
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
 end
@@ -286,6 +295,7 @@ end
 const _returntypes_virtual_machine_scale_set_v_ms_redeploy_VirtualMachineScaleSetVMsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machine_scale_set_v_ms_redeploy(_api::VirtualMachineScaleSetVMsApi, resource_group_name::String, vm_scale_set_name::String, instance_id::String, api_version::String, subscription_id::String; _mediaType=nothing)
@@ -294,8 +304,8 @@ function _oacinternal_virtual_machine_scale_set_v_ms_redeploy(_api::VirtualMachi
     OpenAPI.Clients.set_param(_ctx.path, "vmScaleSetName", vm_scale_set_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "instanceId", instance_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_header_accept(_ctx, [])
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
 end
@@ -324,16 +334,17 @@ end
 const _returntypes_virtual_machine_scale_set_v_ms_reimage_VirtualMachineScaleSetVMsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machine_scale_set_v_ms_reimage(_api::VirtualMachineScaleSetVMsApi, resource_group_name::String, vm_scale_set_name::String, instance_id::String, api_version::String, subscription_id::String; vm_scale_set_v_m_reimage_input=nothing, _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_virtual_machine_scale_set_v_ms_reimage_VirtualMachineScaleSetVMsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/reimage", ["azure_auth", ], vm_scale_set_v_m_reimage_input)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_virtual_machine_scale_set_v_ms_reimage_VirtualMachineScaleSetVMsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/reimage", ["azure_auth", ], vm_scale_set_v_m_reimage_input)
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmScaleSetName", vm_scale_set_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "instanceId", instance_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_header_accept(_ctx, [])
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
 end
@@ -363,16 +374,17 @@ end
 const _returntypes_virtual_machine_scale_set_v_ms_reimage_all_VirtualMachineScaleSetVMsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machine_scale_set_v_ms_reimage_all(_api::VirtualMachineScaleSetVMsApi, resource_group_name::String, vm_scale_set_name::String, instance_id::String, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_virtual_machine_scale_set_v_ms_reimage_all_VirtualMachineScaleSetVMsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/reimageall", ["azure_auth", ])
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_virtual_machine_scale_set_v_ms_reimage_all_VirtualMachineScaleSetVMsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}/reimageall", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmScaleSetName", vm_scale_set_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "instanceId", instance_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_header_accept(_ctx, [])
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
 end
@@ -401,6 +413,7 @@ end
 const _returntypes_virtual_machine_scale_set_v_ms_restart_VirtualMachineScaleSetVMsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machine_scale_set_v_ms_restart(_api::VirtualMachineScaleSetVMsApi, resource_group_name::String, vm_scale_set_name::String, instance_id::String, api_version::String, subscription_id::String; _mediaType=nothing)
@@ -409,8 +422,8 @@ function _oacinternal_virtual_machine_scale_set_v_ms_restart(_api::VirtualMachin
     OpenAPI.Clients.set_param(_ctx.path, "vmScaleSetName", vm_scale_set_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "instanceId", instance_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_header_accept(_ctx, [])
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
 end
@@ -447,8 +460,8 @@ function _oacinternal_virtual_machine_scale_set_v_ms_retrieve_boot_diagnostics_d
     OpenAPI.Clients.set_param(_ctx.path, "vmScaleSetName", vm_scale_set_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "instanceId", instance_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "sasUriExpirationTimeInMinutes", sas_uri_expiration_time_in_minutes)  # type Int64
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "sasUriExpirationTimeInMinutes", sas_uri_expiration_time_in_minutes; style="", is_explode=false)  # type Int64
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -478,6 +491,7 @@ end
 
 const _returntypes_virtual_machine_scale_set_v_ms_simulate_eviction_VirtualMachineScaleSetVMsApi = Dict{Regex,Type}(
     Regex("^" * replace("204", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machine_scale_set_v_ms_simulate_eviction(_api::VirtualMachineScaleSetVMsApi, resource_group_name::String, vm_scale_set_name::String, instance_id::String, api_version::String, subscription_id::String; _mediaType=nothing)
@@ -486,13 +500,13 @@ function _oacinternal_virtual_machine_scale_set_v_ms_simulate_eviction(_api::Vir
     OpenAPI.Clients.set_param(_ctx.path, "vmScaleSetName", vm_scale_set_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "instanceId", instance_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_header_accept(_ctx, [])
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
 end
 
-@doc raw"""The operation to simulate the eviction of spot virtual machine in a VM scale set. The eviction will occur within 30 minutes of calling the API
+@doc raw"""The operation to simulate the eviction of spot virtual machine in a VM scale set.
 
 Params:
 - resource_group_name::String (required)
@@ -516,6 +530,7 @@ end
 const _returntypes_virtual_machine_scale_set_v_ms_start_VirtualMachineScaleSetVMsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machine_scale_set_v_ms_start(_api::VirtualMachineScaleSetVMsApi, resource_group_name::String, vm_scale_set_name::String, instance_id::String, api_version::String, subscription_id::String; _mediaType=nothing)
@@ -524,8 +539,8 @@ function _oacinternal_virtual_machine_scale_set_v_ms_start(_api::VirtualMachineS
     OpenAPI.Clients.set_param(_ctx.path, "vmScaleSetName", vm_scale_set_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "instanceId", instance_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_header_accept(_ctx, [])
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
 end
@@ -554,15 +569,16 @@ end
 const _returntypes_virtual_machine_scale_set_v_ms_update_VirtualMachineScaleSetVMsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => VirtualMachineScaleSetVM,
     Regex("^" * replace("202", "x"=>".") * "\$") => VirtualMachineScaleSetVM,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_virtual_machine_scale_set_v_ms_update(_api::VirtualMachineScaleSetVMsApi, resource_group_name::String, vm_scale_set_name::String, instance_id::String, api_version::String, subscription_id::String, parameters::VirtualMachineScaleSetVM; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_virtual_machine_scale_set_v_ms_update_VirtualMachineScaleSetVMsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}", ["azure_auth", ], parameters)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_virtual_machine_scale_set_v_ms_update_VirtualMachineScaleSetVMsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instanceId}", ["azure_auth", ], parameters)
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "vmScaleSetName", vm_scale_set_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "instanceId", instance_id)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx

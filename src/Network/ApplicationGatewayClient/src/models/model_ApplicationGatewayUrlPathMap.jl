@@ -27,21 +27,31 @@ Base.@kwdef mutable struct ApplicationGatewayUrlPathMap <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
 
     function ApplicationGatewayUrlPathMap(properties, name, etag, type, id, )
-        OpenAPI.validate_property(ApplicationGatewayUrlPathMap, Symbol("properties"), properties)
-        OpenAPI.validate_property(ApplicationGatewayUrlPathMap, Symbol("name"), name)
-        OpenAPI.validate_property(ApplicationGatewayUrlPathMap, Symbol("etag"), etag)
-        OpenAPI.validate_property(ApplicationGatewayUrlPathMap, Symbol("type"), type)
-        OpenAPI.validate_property(ApplicationGatewayUrlPathMap, Symbol("id"), id)
-        return new(properties, name, etag, type, id, )
+        o = new(properties, name, etag, type, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayUrlPathMap
 
 const _property_types_ApplicationGatewayUrlPathMap = Dict{Symbol,String}(Symbol("properties")=>"ApplicationGatewayUrlPathMapPropertiesFormat", Symbol("name")=>"String", Symbol("etag")=>"String", Symbol("type")=>"String", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ ApplicationGatewayUrlPathMap }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayUrlPathMap[name]))}
 
-function check_required(o::ApplicationGatewayUrlPathMap)
+function OpenAPI.check_required(o::ApplicationGatewayUrlPathMap)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayUrlPathMap)
+    OpenAPI.validate_property(ApplicationGatewayUrlPathMap, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(ApplicationGatewayUrlPathMap, Symbol("name"), o.name)
+    OpenAPI.validate_property(ApplicationGatewayUrlPathMap, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(ApplicationGatewayUrlPathMap, Symbol("type"), o.type)
+    OpenAPI.validate_property(ApplicationGatewayUrlPathMap, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayUrlPathMap }, name::Symbol, val)
+
+
+
+
+
 end

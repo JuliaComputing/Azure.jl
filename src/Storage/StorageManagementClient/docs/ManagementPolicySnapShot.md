@@ -4,6 +4,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**tierToCool** | [***DateAfterCreation**](DateAfterCreation.md) |  | [optional] [default to nothing]
+**tierToArchive** | [***DateAfterCreation**](DateAfterCreation.md) |  | [optional] [default to nothing]
+**tierToCold** | [***DateAfterCreation**](DateAfterCreation.md) |  | [optional] [default to nothing]
+**tierToHot** | [***DateAfterCreation**](DateAfterCreation.md) |  | [optional] [default to nothing]
 **delete** | [***DateAfterCreation**](DateAfterCreation.md) |  | [optional] [default to nothing]
 
 

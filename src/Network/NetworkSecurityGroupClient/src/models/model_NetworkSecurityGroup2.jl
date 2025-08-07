@@ -33,23 +33,35 @@ Base.@kwdef mutable struct NetworkSecurityGroup2 <: OpenAPI.APIModel
     tags::Union{Nothing, Dict{String, String}} = nothing
 
     function NetworkSecurityGroup2(properties, etag, id, name, type, location, tags, )
-        OpenAPI.validate_property(NetworkSecurityGroup2, Symbol("properties"), properties)
-        OpenAPI.validate_property(NetworkSecurityGroup2, Symbol("etag"), etag)
-        OpenAPI.validate_property(NetworkSecurityGroup2, Symbol("id"), id)
-        OpenAPI.validate_property(NetworkSecurityGroup2, Symbol("name"), name)
-        OpenAPI.validate_property(NetworkSecurityGroup2, Symbol("type"), type)
-        OpenAPI.validate_property(NetworkSecurityGroup2, Symbol("location"), location)
-        OpenAPI.validate_property(NetworkSecurityGroup2, Symbol("tags"), tags)
-        return new(properties, etag, id, name, type, location, tags, )
+        o = new(properties, etag, id, name, type, location, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type NetworkSecurityGroup2
 
 const _property_types_NetworkSecurityGroup2 = Dict{Symbol,String}(Symbol("properties")=>"NetworkSecurityGroupPropertiesFormat2", Symbol("etag")=>"String", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ NetworkSecurityGroup2 }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkSecurityGroup2[name]))}
 
-function check_required(o::NetworkSecurityGroup2)
+function OpenAPI.check_required(o::NetworkSecurityGroup2)
     true
 end
 
+function OpenAPI.validate_properties(o::NetworkSecurityGroup2)
+    OpenAPI.validate_property(NetworkSecurityGroup2, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(NetworkSecurityGroup2, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(NetworkSecurityGroup2, Symbol("id"), o.id)
+    OpenAPI.validate_property(NetworkSecurityGroup2, Symbol("name"), o.name)
+    OpenAPI.validate_property(NetworkSecurityGroup2, Symbol("type"), o.type)
+    OpenAPI.validate_property(NetworkSecurityGroup2, Symbol("location"), o.location)
+    OpenAPI.validate_property(NetworkSecurityGroup2, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ NetworkSecurityGroup2 }, name::Symbol, val)
+
+
+
+
+
+
+
 end

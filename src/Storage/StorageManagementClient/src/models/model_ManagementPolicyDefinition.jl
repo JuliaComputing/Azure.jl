@@ -18,19 +18,26 @@ Base.@kwdef mutable struct ManagementPolicyDefinition <: OpenAPI.APIModel
     filters = nothing # spec type: Union{ Nothing, ManagementPolicyFilter }
 
     function ManagementPolicyDefinition(actions, filters, )
-        OpenAPI.validate_property(ManagementPolicyDefinition, Symbol("actions"), actions)
-        OpenAPI.validate_property(ManagementPolicyDefinition, Symbol("filters"), filters)
-        return new(actions, filters, )
+        o = new(actions, filters, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ManagementPolicyDefinition
 
 const _property_types_ManagementPolicyDefinition = Dict{Symbol,String}(Symbol("actions")=>"ManagementPolicyAction", Symbol("filters")=>"ManagementPolicyFilter", )
 OpenAPI.property_type(::Type{ ManagementPolicyDefinition }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ManagementPolicyDefinition[name]))}
 
-function check_required(o::ManagementPolicyDefinition)
+function OpenAPI.check_required(o::ManagementPolicyDefinition)
     o.actions === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ManagementPolicyDefinition)
+    OpenAPI.validate_property(ManagementPolicyDefinition, Symbol("actions"), o.actions)
+    OpenAPI.validate_property(ManagementPolicyDefinition, Symbol("filters"), o.filters)
+end
+
 function OpenAPI.validate_property(::Type{ ManagementPolicyDefinition }, name::Symbol, val)
+
+
 end

@@ -21,21 +21,29 @@ Base.@kwdef mutable struct ExpressRouteCircuitServiceProviderProperties <: OpenA
     bandwidthInMbps::Union{Nothing, Int64} = nothing
 
     function ExpressRouteCircuitServiceProviderProperties(serviceProviderName, peeringLocation, bandwidthInMbps, )
-        OpenAPI.validate_property(ExpressRouteCircuitServiceProviderProperties, Symbol("serviceProviderName"), serviceProviderName)
-        OpenAPI.validate_property(ExpressRouteCircuitServiceProviderProperties, Symbol("peeringLocation"), peeringLocation)
-        OpenAPI.validate_property(ExpressRouteCircuitServiceProviderProperties, Symbol("bandwidthInMbps"), bandwidthInMbps)
-        return new(serviceProviderName, peeringLocation, bandwidthInMbps, )
+        o = new(serviceProviderName, peeringLocation, bandwidthInMbps, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ExpressRouteCircuitServiceProviderProperties
 
 const _property_types_ExpressRouteCircuitServiceProviderProperties = Dict{Symbol,String}(Symbol("serviceProviderName")=>"String", Symbol("peeringLocation")=>"String", Symbol("bandwidthInMbps")=>"Int64", )
 OpenAPI.property_type(::Type{ ExpressRouteCircuitServiceProviderProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExpressRouteCircuitServiceProviderProperties[name]))}
 
-function check_required(o::ExpressRouteCircuitServiceProviderProperties)
+function OpenAPI.check_required(o::ExpressRouteCircuitServiceProviderProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::ExpressRouteCircuitServiceProviderProperties)
+    OpenAPI.validate_property(ExpressRouteCircuitServiceProviderProperties, Symbol("serviceProviderName"), o.serviceProviderName)
+    OpenAPI.validate_property(ExpressRouteCircuitServiceProviderProperties, Symbol("peeringLocation"), o.peeringLocation)
+    OpenAPI.validate_property(ExpressRouteCircuitServiceProviderProperties, Symbol("bandwidthInMbps"), o.bandwidthInMbps)
+end
+
 function OpenAPI.validate_property(::Type{ ExpressRouteCircuitServiceProviderProperties }, name::Symbol, val)
+
+
+
     if name === Symbol("bandwidthInMbps")
         OpenAPI.validate_param(name, "ExpressRouteCircuitServiceProviderProperties", :format, val, "int32")
     end

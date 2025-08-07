@@ -33,32 +33,45 @@ Base.@kwdef mutable struct OutboundRulePropertiesFormat <: OpenAPI.APIModel
     idleTimeoutInMinutes::Union{Nothing, Int64} = nothing
 
     function OutboundRulePropertiesFormat(allocatedOutboundPorts, frontendIPConfigurations, backendAddressPool, provisioningState, protocol, enableTcpReset, idleTimeoutInMinutes, )
-        OpenAPI.validate_property(OutboundRulePropertiesFormat, Symbol("allocatedOutboundPorts"), allocatedOutboundPorts)
-        OpenAPI.validate_property(OutboundRulePropertiesFormat, Symbol("frontendIPConfigurations"), frontendIPConfigurations)
-        OpenAPI.validate_property(OutboundRulePropertiesFormat, Symbol("backendAddressPool"), backendAddressPool)
-        OpenAPI.validate_property(OutboundRulePropertiesFormat, Symbol("provisioningState"), provisioningState)
-        OpenAPI.validate_property(OutboundRulePropertiesFormat, Symbol("protocol"), protocol)
-        OpenAPI.validate_property(OutboundRulePropertiesFormat, Symbol("enableTcpReset"), enableTcpReset)
-        OpenAPI.validate_property(OutboundRulePropertiesFormat, Symbol("idleTimeoutInMinutes"), idleTimeoutInMinutes)
-        return new(allocatedOutboundPorts, frontendIPConfigurations, backendAddressPool, provisioningState, protocol, enableTcpReset, idleTimeoutInMinutes, )
+        o = new(allocatedOutboundPorts, frontendIPConfigurations, backendAddressPool, provisioningState, protocol, enableTcpReset, idleTimeoutInMinutes, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type OutboundRulePropertiesFormat
 
 const _property_types_OutboundRulePropertiesFormat = Dict{Symbol,String}(Symbol("allocatedOutboundPorts")=>"Int64", Symbol("frontendIPConfigurations")=>"Vector{SubResource}", Symbol("backendAddressPool")=>"SubResource", Symbol("provisioningState")=>"ProvisioningState", Symbol("protocol")=>"String", Symbol("enableTcpReset")=>"Bool", Symbol("idleTimeoutInMinutes")=>"Int64", )
 OpenAPI.property_type(::Type{ OutboundRulePropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_OutboundRulePropertiesFormat[name]))}
 
-function check_required(o::OutboundRulePropertiesFormat)
+function OpenAPI.check_required(o::OutboundRulePropertiesFormat)
     o.frontendIPConfigurations === nothing && (return false)
     o.backendAddressPool === nothing && (return false)
     o.protocol === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::OutboundRulePropertiesFormat)
+    OpenAPI.validate_property(OutboundRulePropertiesFormat, Symbol("allocatedOutboundPorts"), o.allocatedOutboundPorts)
+    OpenAPI.validate_property(OutboundRulePropertiesFormat, Symbol("frontendIPConfigurations"), o.frontendIPConfigurations)
+    OpenAPI.validate_property(OutboundRulePropertiesFormat, Symbol("backendAddressPool"), o.backendAddressPool)
+    OpenAPI.validate_property(OutboundRulePropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(OutboundRulePropertiesFormat, Symbol("protocol"), o.protocol)
+    OpenAPI.validate_property(OutboundRulePropertiesFormat, Symbol("enableTcpReset"), o.enableTcpReset)
+    OpenAPI.validate_property(OutboundRulePropertiesFormat, Symbol("idleTimeoutInMinutes"), o.idleTimeoutInMinutes)
+end
+
 function OpenAPI.validate_property(::Type{ OutboundRulePropertiesFormat }, name::Symbol, val)
+
     if name === Symbol("allocatedOutboundPorts")
         OpenAPI.validate_param(name, "OutboundRulePropertiesFormat", :format, val, "int32")
     end
+
+
+
+
     if name === Symbol("protocol")
         OpenAPI.validate_param(name, "OutboundRulePropertiesFormat", :enum, val, ["Tcp", "Udp", "All"])
     end
+
+
+
 end

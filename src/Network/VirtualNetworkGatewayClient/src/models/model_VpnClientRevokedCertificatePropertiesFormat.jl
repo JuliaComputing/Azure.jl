@@ -18,18 +18,25 @@ Base.@kwdef mutable struct VpnClientRevokedCertificatePropertiesFormat <: OpenAP
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
     function VpnClientRevokedCertificatePropertiesFormat(thumbprint, provisioningState, )
-        OpenAPI.validate_property(VpnClientRevokedCertificatePropertiesFormat, Symbol("thumbprint"), thumbprint)
-        OpenAPI.validate_property(VpnClientRevokedCertificatePropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(thumbprint, provisioningState, )
+        o = new(thumbprint, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VpnClientRevokedCertificatePropertiesFormat
 
 const _property_types_VpnClientRevokedCertificatePropertiesFormat = Dict{Symbol,String}(Symbol("thumbprint")=>"String", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ VpnClientRevokedCertificatePropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VpnClientRevokedCertificatePropertiesFormat[name]))}
 
-function check_required(o::VpnClientRevokedCertificatePropertiesFormat)
+function OpenAPI.check_required(o::VpnClientRevokedCertificatePropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::VpnClientRevokedCertificatePropertiesFormat)
+    OpenAPI.validate_property(VpnClientRevokedCertificatePropertiesFormat, Symbol("thumbprint"), o.thumbprint)
+    OpenAPI.validate_property(VpnClientRevokedCertificatePropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ VpnClientRevokedCertificatePropertiesFormat }, name::Symbol, val)
+
+
 end

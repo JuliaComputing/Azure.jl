@@ -24,12 +24,12 @@ Creates or updates the specified virtual network rule. During update, the virtua
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualNetworkRulesApi** | API context | 
-**subscription_id** | **String**| Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**resource_group_name** | **String**| The name of the Azure resource group. | [default to nothing]
-**account_name** | **String**| The name of the Data Lake Store account. | [default to nothing]
-**virtual_network_rule_name** | **String**| The name of the virtual network rule to create or update. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**parameters** | [**CreateOrUpdateVirtualNetworkRuleParameters**](CreateOrUpdateVirtualNetworkRuleParameters.md)| Parameters supplied to create or update the virtual network rule. | 
+**subscription_id** | **String** | Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**resource_group_name** | **String** | The name of the Azure resource group. |
+**account_name** | **String** | The name of the Data Lake Store account. |
+**virtual_network_rule_name** | **String** | The name of the virtual network rule to create or update. |
+**api_version** | **String** | Client Api Version. |
+**parameters** | [**CreateOrUpdateVirtualNetworkRuleParameters**](CreateOrUpdateVirtualNetworkRuleParameters.md) | Parameters supplied to create or update the virtual network rule. |
 
 ### Return type
 
@@ -59,11 +59,11 @@ Deletes the specified virtual network rule from the specified Data Lake Store ac
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualNetworkRulesApi** | API context | 
-**subscription_id** | **String**| Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**resource_group_name** | **String**| The name of the Azure resource group. | [default to nothing]
-**account_name** | **String**| The name of the Data Lake Store account. | [default to nothing]
-**virtual_network_rule_name** | **String**| The name of the virtual network rule to delete. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
+**subscription_id** | **String** | Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**resource_group_name** | **String** | The name of the Azure resource group. |
+**account_name** | **String** | The name of the Data Lake Store account. |
+**virtual_network_rule_name** | **String** | The name of the virtual network rule to delete. |
+**api_version** | **String** | Client Api Version. |
 
 ### Return type
 
@@ -93,11 +93,11 @@ Gets the specified Data Lake Store virtual network rule.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualNetworkRulesApi** | API context | 
-**subscription_id** | **String**| Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**resource_group_name** | **String**| The name of the Azure resource group. | [default to nothing]
-**account_name** | **String**| The name of the Data Lake Store account. | [default to nothing]
-**virtual_network_rule_name** | **String**| The name of the virtual network rule to retrieve. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
+**subscription_id** | **String** | Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**resource_group_name** | **String** | The name of the Azure resource group. |
+**account_name** | **String** | The name of the Data Lake Store account. |
+**virtual_network_rule_name** | **String** | The name of the virtual network rule to retrieve. |
+**api_version** | **String** | Client Api Version. |
 
 ### Return type
 
@@ -127,10 +127,10 @@ Lists the Data Lake Store virtual network rules within the specified Data Lake S
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualNetworkRulesApi** | API context | 
-**subscription_id** | **String**| Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**resource_group_name** | **String**| The name of the Azure resource group. | [default to nothing]
-**account_name** | **String**| The name of the Data Lake Store account. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
+**subscription_id** | **String** | Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**resource_group_name** | **String** | The name of the Azure resource group. |
+**account_name** | **String** | The name of the Data Lake Store account. |
+**api_version** | **String** | Client Api Version. |
 
 ### Return type
 
@@ -160,17 +160,17 @@ Updates the specified virtual network rule.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualNetworkRulesApi** | API context | 
-**subscription_id** | **String**| Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**resource_group_name** | **String**| The name of the Azure resource group. | [default to nothing]
-**account_name** | **String**| The name of the Data Lake Store account. | [default to nothing]
-**virtual_network_rule_name** | **String**| The name of the virtual network rule to update. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
+**subscription_id** | **String** | Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**resource_group_name** | **String** | The name of the Azure resource group. |
+**account_name** | **String** | The name of the Data Lake Store account. |
+**virtual_network_rule_name** | **String** | The name of the virtual network rule to update. |
+**api_version** | **String** | Client Api Version. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **parameters** | [**UpdateVirtualNetworkRuleParameters**](UpdateVirtualNetworkRuleParameters.md)| Parameters supplied to update the virtual network rule. | 
+ **parameters** | [**UpdateVirtualNetworkRuleParameters**](UpdateVirtualNetworkRuleParameters.md) | Parameters supplied to update the virtual network rule. | 
 
 ### Return type
 

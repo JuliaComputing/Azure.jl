@@ -33,24 +33,36 @@ Base.@kwdef mutable struct VirtualNetworkGatewayConnection <: OpenAPI.APIModel
     tags::Union{Nothing, Dict{String, String}} = nothing
 
     function VirtualNetworkGatewayConnection(properties, etag, id, name, type, location, tags, )
-        OpenAPI.validate_property(VirtualNetworkGatewayConnection, Symbol("properties"), properties)
-        OpenAPI.validate_property(VirtualNetworkGatewayConnection, Symbol("etag"), etag)
-        OpenAPI.validate_property(VirtualNetworkGatewayConnection, Symbol("id"), id)
-        OpenAPI.validate_property(VirtualNetworkGatewayConnection, Symbol("name"), name)
-        OpenAPI.validate_property(VirtualNetworkGatewayConnection, Symbol("type"), type)
-        OpenAPI.validate_property(VirtualNetworkGatewayConnection, Symbol("location"), location)
-        OpenAPI.validate_property(VirtualNetworkGatewayConnection, Symbol("tags"), tags)
-        return new(properties, etag, id, name, type, location, tags, )
+        o = new(properties, etag, id, name, type, location, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualNetworkGatewayConnection
 
 const _property_types_VirtualNetworkGatewayConnection = Dict{Symbol,String}(Symbol("properties")=>"VirtualNetworkGatewayConnectionPropertiesFormat", Symbol("etag")=>"String", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ VirtualNetworkGatewayConnection }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualNetworkGatewayConnection[name]))}
 
-function check_required(o::VirtualNetworkGatewayConnection)
+function OpenAPI.check_required(o::VirtualNetworkGatewayConnection)
     o.properties === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualNetworkGatewayConnection)
+    OpenAPI.validate_property(VirtualNetworkGatewayConnection, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(VirtualNetworkGatewayConnection, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(VirtualNetworkGatewayConnection, Symbol("id"), o.id)
+    OpenAPI.validate_property(VirtualNetworkGatewayConnection, Symbol("name"), o.name)
+    OpenAPI.validate_property(VirtualNetworkGatewayConnection, Symbol("type"), o.type)
+    OpenAPI.validate_property(VirtualNetworkGatewayConnection, Symbol("location"), o.location)
+    OpenAPI.validate_property(VirtualNetworkGatewayConnection, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualNetworkGatewayConnection }, name::Symbol, val)
+
+
+
+
+
+
+
 end

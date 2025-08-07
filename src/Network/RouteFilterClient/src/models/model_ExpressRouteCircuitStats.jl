@@ -24,31 +24,40 @@ Base.@kwdef mutable struct ExpressRouteCircuitStats <: OpenAPI.APIModel
     secondarybytesOut::Union{Nothing, Int64} = nothing
 
     function ExpressRouteCircuitStats(primarybytesIn, primarybytesOut, secondarybytesIn, secondarybytesOut, )
-        OpenAPI.validate_property(ExpressRouteCircuitStats, Symbol("primarybytesIn"), primarybytesIn)
-        OpenAPI.validate_property(ExpressRouteCircuitStats, Symbol("primarybytesOut"), primarybytesOut)
-        OpenAPI.validate_property(ExpressRouteCircuitStats, Symbol("secondarybytesIn"), secondarybytesIn)
-        OpenAPI.validate_property(ExpressRouteCircuitStats, Symbol("secondarybytesOut"), secondarybytesOut)
-        return new(primarybytesIn, primarybytesOut, secondarybytesIn, secondarybytesOut, )
+        o = new(primarybytesIn, primarybytesOut, secondarybytesIn, secondarybytesOut, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ExpressRouteCircuitStats
 
 const _property_types_ExpressRouteCircuitStats = Dict{Symbol,String}(Symbol("primarybytesIn")=>"Int64", Symbol("primarybytesOut")=>"Int64", Symbol("secondarybytesIn")=>"Int64", Symbol("secondarybytesOut")=>"Int64", )
 OpenAPI.property_type(::Type{ ExpressRouteCircuitStats }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExpressRouteCircuitStats[name]))}
 
-function check_required(o::ExpressRouteCircuitStats)
+function OpenAPI.check_required(o::ExpressRouteCircuitStats)
     true
 end
 
+function OpenAPI.validate_properties(o::ExpressRouteCircuitStats)
+    OpenAPI.validate_property(ExpressRouteCircuitStats, Symbol("primarybytesIn"), o.primarybytesIn)
+    OpenAPI.validate_property(ExpressRouteCircuitStats, Symbol("primarybytesOut"), o.primarybytesOut)
+    OpenAPI.validate_property(ExpressRouteCircuitStats, Symbol("secondarybytesIn"), o.secondarybytesIn)
+    OpenAPI.validate_property(ExpressRouteCircuitStats, Symbol("secondarybytesOut"), o.secondarybytesOut)
+end
+
 function OpenAPI.validate_property(::Type{ ExpressRouteCircuitStats }, name::Symbol, val)
+
     if name === Symbol("primarybytesIn")
         OpenAPI.validate_param(name, "ExpressRouteCircuitStats", :format, val, "int64")
     end
+
     if name === Symbol("primarybytesOut")
         OpenAPI.validate_param(name, "ExpressRouteCircuitStats", :format, val, "int64")
     end
+
     if name === Symbol("secondarybytesIn")
         OpenAPI.validate_param(name, "ExpressRouteCircuitStats", :format, val, "int64")
     end
+
     if name === Symbol("secondarybytesOut")
         OpenAPI.validate_param(name, "ExpressRouteCircuitStats", :format, val, "int64")
     end

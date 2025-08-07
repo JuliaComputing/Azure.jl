@@ -18,9 +18,11 @@ const _returntypes_private_link_resources_list_by_storage_account_PrivateLinkRes
 function _oacinternal_private_link_resources_list_by_storage_account(_api::PrivateLinkResourcesApi, resource_group_name::String, account_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
     OpenAPI.validate_param("resource_group_name", "private_link_resources_list_by_storage_account", :maxLength, resource_group_name, 90)
     OpenAPI.validate_param("resource_group_name", "private_link_resources_list_by_storage_account", :minLength, resource_group_name, 1)
+        OpenAPI.validate_param("resource_group_name", "private_link_resources_list_by_storage_account", :pattern, resource_group_name, r"^[-\w\._\(\)]+$")
 
     OpenAPI.validate_param("account_name", "private_link_resources_list_by_storage_account", :maxLength, account_name, 24)
     OpenAPI.validate_param("account_name", "private_link_resources_list_by_storage_account", :minLength, account_name, 3)
+        OpenAPI.validate_param("account_name", "private_link_resources_list_by_storage_account", :pattern, account_name, r"^[a-z0-9]+$")
 
     OpenAPI.validate_param("api_version", "private_link_resources_list_by_storage_account", :minLength, api_version, 1)
 
@@ -30,7 +32,7 @@ function _oacinternal_private_link_resources_list_by_storage_account(_api::Priva
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "accountName", account_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx

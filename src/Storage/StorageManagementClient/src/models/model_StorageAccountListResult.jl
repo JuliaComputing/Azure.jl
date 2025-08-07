@@ -18,18 +18,25 @@ Base.@kwdef mutable struct StorageAccountListResult <: OpenAPI.APIModel
     nextLink::Union{Nothing, String} = nothing
 
     function StorageAccountListResult(value, nextLink, )
-        OpenAPI.validate_property(StorageAccountListResult, Symbol("value"), value)
-        OpenAPI.validate_property(StorageAccountListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type StorageAccountListResult
 
 const _property_types_StorageAccountListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{StorageAccount}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ StorageAccountListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_StorageAccountListResult[name]))}
 
-function check_required(o::StorageAccountListResult)
+function OpenAPI.check_required(o::StorageAccountListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::StorageAccountListResult)
+    OpenAPI.validate_property(StorageAccountListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(StorageAccountListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ StorageAccountListResult }, name::Symbol, val)
+
+
 end

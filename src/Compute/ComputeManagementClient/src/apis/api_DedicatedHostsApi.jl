@@ -14,6 +14,7 @@ basepath(::Type{ DedicatedHostsApi }) = "https://management.azure.com"
 const _returntypes_dedicated_hosts_create_or_update_DedicatedHostsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => DedicatedHost,
     Regex("^" * replace("201", "x"=>".") * "\$") => DedicatedHost,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_dedicated_hosts_create_or_update(_api::DedicatedHostsApi, resource_group_name::String, host_group_name::String, host_name::String, api_version::String, subscription_id::String, parameters::DedicatedHost; _mediaType=nothing)
@@ -22,7 +23,7 @@ function _oacinternal_dedicated_hosts_create_or_update(_api::DedicatedHostsApi, 
     OpenAPI.Clients.set_param(_ctx.path, "hostGroupName", host_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "hostName", host_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -54,6 +55,7 @@ const _returntypes_dedicated_hosts_delete_DedicatedHostsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("204", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_dedicated_hosts_delete(_api::DedicatedHostsApi, resource_group_name::String, host_group_name::String, host_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
@@ -62,8 +64,8 @@ function _oacinternal_dedicated_hosts_delete(_api::DedicatedHostsApi, resource_g
     OpenAPI.Clients.set_param(_ctx.path, "hostGroupName", host_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "hostName", host_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_header_accept(_ctx, [])
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
 end
@@ -91,6 +93,7 @@ end
 
 const _returntypes_dedicated_hosts_get_DedicatedHostsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => DedicatedHost,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_dedicated_hosts_get(_api::DedicatedHostsApi, resource_group_name::String, host_group_name::String, host_name::String, api_version::String, subscription_id::String; expand=nothing, _mediaType=nothing)
@@ -99,8 +102,8 @@ function _oacinternal_dedicated_hosts_get(_api::DedicatedHostsApi, resource_grou
     OpenAPI.Clients.set_param(_ctx.path, "hostGroupName", host_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "hostName", host_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "\$expand", expand; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -130,6 +133,7 @@ end
 
 const _returntypes_dedicated_hosts_update_DedicatedHostsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => DedicatedHost,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_dedicated_hosts_update(_api::DedicatedHostsApi, resource_group_name::String, host_group_name::String, host_name::String, api_version::String, subscription_id::String, parameters::DedicatedHostUpdate; _mediaType=nothing)
@@ -138,7 +142,7 @@ function _oacinternal_dedicated_hosts_update(_api::DedicatedHostsApi, resource_g
     OpenAPI.Clients.set_param(_ctx.path, "hostGroupName", host_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "hostName", host_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx

@@ -24,12 +24,12 @@ Creates or updates the specified firewall rule. During update, the firewall rule
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **FirewallRulesApi** | API context | 
-**subscription_id** | **String**| Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**resource_group_name** | **String**| The name of the Azure resource group. | [default to nothing]
-**account_name** | **String**| The name of the Data Lake Store account. | [default to nothing]
-**firewall_rule_name** | **String**| The name of the firewall rule to create or update. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**parameters** | [**CreateOrUpdateFirewallRuleParameters**](CreateOrUpdateFirewallRuleParameters.md)| Parameters supplied to create or update the firewall rule. | 
+**subscription_id** | **String** | Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**resource_group_name** | **String** | The name of the Azure resource group. |
+**account_name** | **String** | The name of the Data Lake Store account. |
+**firewall_rule_name** | **String** | The name of the firewall rule to create or update. |
+**api_version** | **String** | Client Api Version. |
+**parameters** | [**CreateOrUpdateFirewallRuleParameters**](CreateOrUpdateFirewallRuleParameters.md) | Parameters supplied to create or update the firewall rule. |
 
 ### Return type
 
@@ -59,11 +59,11 @@ Deletes the specified firewall rule from the specified Data Lake Store account.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **FirewallRulesApi** | API context | 
-**subscription_id** | **String**| Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**resource_group_name** | **String**| The name of the Azure resource group. | [default to nothing]
-**account_name** | **String**| The name of the Data Lake Store account. | [default to nothing]
-**firewall_rule_name** | **String**| The name of the firewall rule to delete. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
+**subscription_id** | **String** | Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**resource_group_name** | **String** | The name of the Azure resource group. |
+**account_name** | **String** | The name of the Data Lake Store account. |
+**firewall_rule_name** | **String** | The name of the firewall rule to delete. |
+**api_version** | **String** | Client Api Version. |
 
 ### Return type
 
@@ -93,11 +93,11 @@ Gets the specified Data Lake Store firewall rule.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **FirewallRulesApi** | API context | 
-**subscription_id** | **String**| Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**resource_group_name** | **String**| The name of the Azure resource group. | [default to nothing]
-**account_name** | **String**| The name of the Data Lake Store account. | [default to nothing]
-**firewall_rule_name** | **String**| The name of the firewall rule to retrieve. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
+**subscription_id** | **String** | Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**resource_group_name** | **String** | The name of the Azure resource group. |
+**account_name** | **String** | The name of the Data Lake Store account. |
+**firewall_rule_name** | **String** | The name of the firewall rule to retrieve. |
+**api_version** | **String** | Client Api Version. |
 
 ### Return type
 
@@ -127,10 +127,10 @@ Lists the Data Lake Store firewall rules within the specified Data Lake Store ac
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **FirewallRulesApi** | API context | 
-**subscription_id** | **String**| Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**resource_group_name** | **String**| The name of the Azure resource group. | [default to nothing]
-**account_name** | **String**| The name of the Data Lake Store account. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
+**subscription_id** | **String** | Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**resource_group_name** | **String** | The name of the Azure resource group. |
+**account_name** | **String** | The name of the Data Lake Store account. |
+**api_version** | **String** | Client Api Version. |
 
 ### Return type
 
@@ -160,17 +160,17 @@ Updates the specified firewall rule.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **FirewallRulesApi** | API context | 
-**subscription_id** | **String**| Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**resource_group_name** | **String**| The name of the Azure resource group. | [default to nothing]
-**account_name** | **String**| The name of the Data Lake Store account. | [default to nothing]
-**firewall_rule_name** | **String**| The name of the firewall rule to update. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
+**subscription_id** | **String** | Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**resource_group_name** | **String** | The name of the Azure resource group. |
+**account_name** | **String** | The name of the Data Lake Store account. |
+**firewall_rule_name** | **String** | The name of the firewall rule to update. |
+**api_version** | **String** | Client Api Version. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **parameters** | [**UpdateFirewallRuleParameters**](UpdateFirewallRuleParameters.md)| Parameters supplied to update the firewall rule. | 
+ **parameters** | [**UpdateFirewallRuleParameters**](UpdateFirewallRuleParameters.md) | Parameters supplied to update the firewall rule. | 
 
 ### Return type
 

@@ -17,18 +17,25 @@ Base.@kwdef mutable struct TerminateNotificationProfile <: OpenAPI.APIModel
     enable::Union{Nothing, Bool} = nothing
 
     function TerminateNotificationProfile(notBeforeTimeout, enable, )
-        OpenAPI.validate_property(TerminateNotificationProfile, Symbol("notBeforeTimeout"), notBeforeTimeout)
-        OpenAPI.validate_property(TerminateNotificationProfile, Symbol("enable"), enable)
-        return new(notBeforeTimeout, enable, )
+        o = new(notBeforeTimeout, enable, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type TerminateNotificationProfile
 
 const _property_types_TerminateNotificationProfile = Dict{Symbol,String}(Symbol("notBeforeTimeout")=>"String", Symbol("enable")=>"Bool", )
 OpenAPI.property_type(::Type{ TerminateNotificationProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TerminateNotificationProfile[name]))}
 
-function check_required(o::TerminateNotificationProfile)
+function OpenAPI.check_required(o::TerminateNotificationProfile)
     true
 end
 
+function OpenAPI.validate_properties(o::TerminateNotificationProfile)
+    OpenAPI.validate_property(TerminateNotificationProfile, Symbol("notBeforeTimeout"), o.notBeforeTimeout)
+    OpenAPI.validate_property(TerminateNotificationProfile, Symbol("enable"), o.enable)
+end
+
 function OpenAPI.validate_property(::Type{ TerminateNotificationProfile }, name::Symbol, val)
+
+
 end

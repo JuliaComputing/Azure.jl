@@ -21,22 +21,30 @@ Base.@kwdef mutable struct KeyVaultMetaInfo <: OpenAPI.APIModel
     encryptionKeyVersion::Union{Nothing, String} = nothing
 
     function KeyVaultMetaInfo(keyVaultResourceId, encryptionKeyName, encryptionKeyVersion, )
-        OpenAPI.validate_property(KeyVaultMetaInfo, Symbol("keyVaultResourceId"), keyVaultResourceId)
-        OpenAPI.validate_property(KeyVaultMetaInfo, Symbol("encryptionKeyName"), encryptionKeyName)
-        OpenAPI.validate_property(KeyVaultMetaInfo, Symbol("encryptionKeyVersion"), encryptionKeyVersion)
-        return new(keyVaultResourceId, encryptionKeyName, encryptionKeyVersion, )
+        o = new(keyVaultResourceId, encryptionKeyName, encryptionKeyVersion, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type KeyVaultMetaInfo
 
 const _property_types_KeyVaultMetaInfo = Dict{Symbol,String}(Symbol("keyVaultResourceId")=>"String", Symbol("encryptionKeyName")=>"String", Symbol("encryptionKeyVersion")=>"String", )
 OpenAPI.property_type(::Type{ KeyVaultMetaInfo }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_KeyVaultMetaInfo[name]))}
 
-function check_required(o::KeyVaultMetaInfo)
+function OpenAPI.check_required(o::KeyVaultMetaInfo)
     o.keyVaultResourceId === nothing && (return false)
     o.encryptionKeyName === nothing && (return false)
     o.encryptionKeyVersion === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::KeyVaultMetaInfo)
+    OpenAPI.validate_property(KeyVaultMetaInfo, Symbol("keyVaultResourceId"), o.keyVaultResourceId)
+    OpenAPI.validate_property(KeyVaultMetaInfo, Symbol("encryptionKeyName"), o.encryptionKeyName)
+    OpenAPI.validate_property(KeyVaultMetaInfo, Symbol("encryptionKeyVersion"), o.encryptionKeyVersion)
+end
+
 function OpenAPI.validate_property(::Type{ KeyVaultMetaInfo }, name::Symbol, val)
+
+
+
 end

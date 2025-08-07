@@ -18,18 +18,25 @@ Base.@kwdef mutable struct RetrieveBootDiagnosticsDataResult <: OpenAPI.APIModel
     serialConsoleLogBlobUri::Union{Nothing, String} = nothing
 
     function RetrieveBootDiagnosticsDataResult(consoleScreenshotBlobUri, serialConsoleLogBlobUri, )
-        OpenAPI.validate_property(RetrieveBootDiagnosticsDataResult, Symbol("consoleScreenshotBlobUri"), consoleScreenshotBlobUri)
-        OpenAPI.validate_property(RetrieveBootDiagnosticsDataResult, Symbol("serialConsoleLogBlobUri"), serialConsoleLogBlobUri)
-        return new(consoleScreenshotBlobUri, serialConsoleLogBlobUri, )
+        o = new(consoleScreenshotBlobUri, serialConsoleLogBlobUri, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type RetrieveBootDiagnosticsDataResult
 
 const _property_types_RetrieveBootDiagnosticsDataResult = Dict{Symbol,String}(Symbol("consoleScreenshotBlobUri")=>"String", Symbol("serialConsoleLogBlobUri")=>"String", )
 OpenAPI.property_type(::Type{ RetrieveBootDiagnosticsDataResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RetrieveBootDiagnosticsDataResult[name]))}
 
-function check_required(o::RetrieveBootDiagnosticsDataResult)
+function OpenAPI.check_required(o::RetrieveBootDiagnosticsDataResult)
     true
 end
 
+function OpenAPI.validate_properties(o::RetrieveBootDiagnosticsDataResult)
+    OpenAPI.validate_property(RetrieveBootDiagnosticsDataResult, Symbol("consoleScreenshotBlobUri"), o.consoleScreenshotBlobUri)
+    OpenAPI.validate_property(RetrieveBootDiagnosticsDataResult, Symbol("serialConsoleLogBlobUri"), o.serialConsoleLogBlobUri)
+end
+
 function OpenAPI.validate_property(::Type{ RetrieveBootDiagnosticsDataResult }, name::Symbol, val)
+
+
 end

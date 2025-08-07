@@ -27,21 +27,31 @@ Base.@kwdef mutable struct VirtualMachineScaleSetUpdate <: OpenAPI.APIModel
     tags::Union{Nothing, Dict{String, String}} = nothing
 
     function VirtualMachineScaleSetUpdate(sku, plan, properties, identity, tags, )
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdate, Symbol("sku"), sku)
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdate, Symbol("plan"), plan)
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdate, Symbol("properties"), properties)
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdate, Symbol("identity"), identity)
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdate, Symbol("tags"), tags)
-        return new(sku, plan, properties, identity, tags, )
+        o = new(sku, plan, properties, identity, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetUpdate
 
 const _property_types_VirtualMachineScaleSetUpdate = Dict{Symbol,String}(Symbol("sku")=>"Sku", Symbol("plan")=>"Plan", Symbol("properties")=>"VirtualMachineScaleSetUpdateProperties", Symbol("identity")=>"VirtualMachineScaleSetIdentity", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetUpdate }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetUpdate[name]))}
 
-function check_required(o::VirtualMachineScaleSetUpdate)
+function OpenAPI.check_required(o::VirtualMachineScaleSetUpdate)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetUpdate)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdate, Symbol("sku"), o.sku)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdate, Symbol("plan"), o.plan)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdate, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdate, Symbol("identity"), o.identity)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdate, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetUpdate }, name::Symbol, val)
+
+
+
+
+
 end

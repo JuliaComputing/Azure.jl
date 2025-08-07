@@ -21,20 +21,28 @@ Base.@kwdef mutable struct PrivateEndpointConnectionProperties <: OpenAPI.APIMod
     provisioningState = nothing # spec type: Union{ Nothing, PrivateEndpointConnectionProvisioningState }
 
     function PrivateEndpointConnectionProperties(privateEndpoint, privateLinkServiceConnectionState, provisioningState, )
-        OpenAPI.validate_property(PrivateEndpointConnectionProperties, Symbol("privateEndpoint"), privateEndpoint)
-        OpenAPI.validate_property(PrivateEndpointConnectionProperties, Symbol("privateLinkServiceConnectionState"), privateLinkServiceConnectionState)
-        OpenAPI.validate_property(PrivateEndpointConnectionProperties, Symbol("provisioningState"), provisioningState)
-        return new(privateEndpoint, privateLinkServiceConnectionState, provisioningState, )
+        o = new(privateEndpoint, privateLinkServiceConnectionState, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PrivateEndpointConnectionProperties
 
 const _property_types_PrivateEndpointConnectionProperties = Dict{Symbol,String}(Symbol("privateEndpoint")=>"PrivateEndpoint", Symbol("privateLinkServiceConnectionState")=>"PrivateLinkServiceConnectionState", Symbol("provisioningState")=>"PrivateEndpointConnectionProvisioningState", )
 OpenAPI.property_type(::Type{ PrivateEndpointConnectionProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PrivateEndpointConnectionProperties[name]))}
 
-function check_required(o::PrivateEndpointConnectionProperties)
+function OpenAPI.check_required(o::PrivateEndpointConnectionProperties)
     o.privateLinkServiceConnectionState === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::PrivateEndpointConnectionProperties)
+    OpenAPI.validate_property(PrivateEndpointConnectionProperties, Symbol("privateEndpoint"), o.privateEndpoint)
+    OpenAPI.validate_property(PrivateEndpointConnectionProperties, Symbol("privateLinkServiceConnectionState"), o.privateLinkServiceConnectionState)
+    OpenAPI.validate_property(PrivateEndpointConnectionProperties, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ PrivateEndpointConnectionProperties }, name::Symbol, val)
+
+
+
 end

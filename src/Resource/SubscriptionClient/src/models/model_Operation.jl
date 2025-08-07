@@ -3,33 +3,63 @@
 
 
 @doc raw"""Operation
-Microsoft.Resources operation
+Details of a REST API operation, returned from the Resource Provider Operations API
 
     Operation(;
         name=nothing,
+        isDataAction=nothing,
         display=nothing,
+        origin=nothing,
+        actionType=nothing,
     )
 
     - name::String : Operation name: {provider}/{resource}/{operation}
+    - isDataAction::Bool : Whether the operation applies to data-plane. This is \&quot;true\&quot; for data-plane operations and \&quot;false\&quot; for ARM/control-plane operations.
     - display::OperationDisplay
+    - origin::String : The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is \&quot;user,system\&quot;
+    - actionType::String : Enum. Indicates the action type. \&quot;Internal\&quot; refers to actions that are for internal only APIs.
 """
 Base.@kwdef mutable struct Operation <: OpenAPI.APIModel
     name::Union{Nothing, String} = nothing
+    isDataAction::Union{Nothing, Bool} = nothing
     display = nothing # spec type: Union{ Nothing, OperationDisplay }
+    origin::Union{Nothing, String} = nothing
+    actionType::Union{Nothing, String} = nothing
 
-    function Operation(name, display, )
-        OpenAPI.validate_property(Operation, Symbol("name"), name)
-        OpenAPI.validate_property(Operation, Symbol("display"), display)
-        return new(name, display, )
+    function Operation(name, isDataAction, display, origin, actionType, )
+        o = new(name, isDataAction, display, origin, actionType, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type Operation
 
-const _property_types_Operation = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("display")=>"OperationDisplay", )
+const _property_types_Operation = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("isDataAction")=>"Bool", Symbol("display")=>"OperationDisplay", Symbol("origin")=>"String", Symbol("actionType")=>"String", )
 OpenAPI.property_type(::Type{ Operation }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Operation[name]))}
 
-function check_required(o::Operation)
+function OpenAPI.check_required(o::Operation)
     true
 end
 
+function OpenAPI.validate_properties(o::Operation)
+    OpenAPI.validate_property(Operation, Symbol("name"), o.name)
+    OpenAPI.validate_property(Operation, Symbol("isDataAction"), o.isDataAction)
+    OpenAPI.validate_property(Operation, Symbol("display"), o.display)
+    OpenAPI.validate_property(Operation, Symbol("origin"), o.origin)
+    OpenAPI.validate_property(Operation, Symbol("actionType"), o.actionType)
+end
+
 function OpenAPI.validate_property(::Type{ Operation }, name::Symbol, val)
+
+
+
+
+    if name === Symbol("origin")
+        OpenAPI.validate_param(name, "Operation", :enum, val, ["user", "system", "user,system"])
+    end
+
+
+    if name === Symbol("actionType")
+        OpenAPI.validate_param(name, "Operation", :enum, val, ["Internal"])
+    end
+
 end

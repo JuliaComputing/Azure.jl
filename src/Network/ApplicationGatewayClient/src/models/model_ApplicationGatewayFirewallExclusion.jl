@@ -21,22 +21,30 @@ Base.@kwdef mutable struct ApplicationGatewayFirewallExclusion <: OpenAPI.APIMod
     selector::Union{Nothing, String} = nothing
 
     function ApplicationGatewayFirewallExclusion(matchVariable, selectorMatchOperator, selector, )
-        OpenAPI.validate_property(ApplicationGatewayFirewallExclusion, Symbol("matchVariable"), matchVariable)
-        OpenAPI.validate_property(ApplicationGatewayFirewallExclusion, Symbol("selectorMatchOperator"), selectorMatchOperator)
-        OpenAPI.validate_property(ApplicationGatewayFirewallExclusion, Symbol("selector"), selector)
-        return new(matchVariable, selectorMatchOperator, selector, )
+        o = new(matchVariable, selectorMatchOperator, selector, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayFirewallExclusion
 
 const _property_types_ApplicationGatewayFirewallExclusion = Dict{Symbol,String}(Symbol("matchVariable")=>"String", Symbol("selectorMatchOperator")=>"String", Symbol("selector")=>"String", )
 OpenAPI.property_type(::Type{ ApplicationGatewayFirewallExclusion }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayFirewallExclusion[name]))}
 
-function check_required(o::ApplicationGatewayFirewallExclusion)
+function OpenAPI.check_required(o::ApplicationGatewayFirewallExclusion)
     o.matchVariable === nothing && (return false)
     o.selectorMatchOperator === nothing && (return false)
     o.selector === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayFirewallExclusion)
+    OpenAPI.validate_property(ApplicationGatewayFirewallExclusion, Symbol("matchVariable"), o.matchVariable)
+    OpenAPI.validate_property(ApplicationGatewayFirewallExclusion, Symbol("selectorMatchOperator"), o.selectorMatchOperator)
+    OpenAPI.validate_property(ApplicationGatewayFirewallExclusion, Symbol("selector"), o.selector)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayFirewallExclusion }, name::Symbol, val)
+
+
+
 end

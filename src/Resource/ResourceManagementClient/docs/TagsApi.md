@@ -28,9 +28,9 @@ This operation allows adding a name to the list of predefined tag names for the 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **TagsApi** | API context | 
-**tag_name** | **String**| The name of the tag to create. | [default to nothing]
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
+**tag_name** | **String** | The name of the tag to create. |
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The Microsoft Azure subscription ID. |
 
 ### Return type
 
@@ -60,9 +60,9 @@ This operation allows adding or replacing the entire set of tags on the specifie
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **TagsApi** | API context | 
-**scope** | **String**| The resource scope. | [default to nothing]
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**parameters** | [**TagsResource**](TagsResource.md)|  | 
+**scope** | **String** | The resource scope. |
+**api_version** | **String** | The API version to use for this operation. |
+**parameters** | [**TagsResource**](TagsResource.md) |  |
 
 ### Return type
 
@@ -92,10 +92,10 @@ This operation allows adding a value to the list of predefined values for an exi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **TagsApi** | API context | 
-**tag_name** | **String**| The name of the tag. | [default to nothing]
-**tag_value** | **String**| The value of the tag to create. | [default to nothing]
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
+**tag_name** | **String** | The name of the tag. |
+**tag_value** | **String** | The value of the tag to create. |
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The Microsoft Azure subscription ID. |
 
 ### Return type
 
@@ -125,9 +125,9 @@ This operation allows deleting a name from the list of predefined tag names for 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **TagsApi** | API context | 
-**tag_name** | **String**| The name of the tag. | [default to nothing]
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
+**tag_name** | **String** | The name of the tag. |
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The Microsoft Azure subscription ID. |
 
 ### Return type
 
@@ -155,8 +155,8 @@ Deletes the entire set of tags on a resource or subscription.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **TagsApi** | API context | 
-**scope** | **String**| The resource scope. | [default to nothing]
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
+**scope** | **String** | The resource scope. |
+**api_version** | **String** | The API version to use for this operation. |
 
 ### Return type
 
@@ -186,10 +186,10 @@ This operation allows deleting a value from the list of predefined values for an
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **TagsApi** | API context | 
-**tag_name** | **String**| The name of the tag. | [default to nothing]
-**tag_value** | **String**| The value of the tag to delete. | [default to nothing]
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
+**tag_name** | **String** | The name of the tag. |
+**tag_value** | **String** | The value of the tag to delete. |
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The Microsoft Azure subscription ID. |
 
 ### Return type
 
@@ -217,8 +217,8 @@ Gets the entire set of tags on a resource or subscription.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **TagsApi** | API context | 
-**scope** | **String**| The resource scope. | [default to nothing]
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
+**scope** | **String** | The resource scope. |
+**api_version** | **String** | The API version to use for this operation. |
 
 ### Return type
 
@@ -248,8 +248,8 @@ This operation performs a union of predefined tags, resource tags, resource grou
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **TagsApi** | API context | 
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The Microsoft Azure subscription ID. |
 
 ### Return type
 
@@ -279,9 +279,9 @@ This operation allows replacing, merging or selectively deleting tags on the spe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **TagsApi** | API context | 
-**scope** | **String**| The resource scope. | [default to nothing]
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**parameters** | [**TagsPatchResource**](TagsPatchResource.md)|  | 
+**scope** | **String** | The resource scope. |
+**api_version** | **String** | The API version to use for this operation. |
+**parameters** | [**TagsPatchResource**](TagsPatchResource.md) |  |
 
 ### Return type
 

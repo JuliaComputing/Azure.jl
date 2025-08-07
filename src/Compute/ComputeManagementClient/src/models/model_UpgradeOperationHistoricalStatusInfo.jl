@@ -21,19 +21,27 @@ Base.@kwdef mutable struct UpgradeOperationHistoricalStatusInfo <: OpenAPI.APIMo
     location::Union{Nothing, String} = nothing
 
     function UpgradeOperationHistoricalStatusInfo(properties, type, location, )
-        OpenAPI.validate_property(UpgradeOperationHistoricalStatusInfo, Symbol("properties"), properties)
-        OpenAPI.validate_property(UpgradeOperationHistoricalStatusInfo, Symbol("type"), type)
-        OpenAPI.validate_property(UpgradeOperationHistoricalStatusInfo, Symbol("location"), location)
-        return new(properties, type, location, )
+        o = new(properties, type, location, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type UpgradeOperationHistoricalStatusInfo
 
 const _property_types_UpgradeOperationHistoricalStatusInfo = Dict{Symbol,String}(Symbol("properties")=>"UpgradeOperationHistoricalStatusInfoProperties", Symbol("type")=>"String", Symbol("location")=>"String", )
 OpenAPI.property_type(::Type{ UpgradeOperationHistoricalStatusInfo }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_UpgradeOperationHistoricalStatusInfo[name]))}
 
-function check_required(o::UpgradeOperationHistoricalStatusInfo)
+function OpenAPI.check_required(o::UpgradeOperationHistoricalStatusInfo)
     true
 end
 
+function OpenAPI.validate_properties(o::UpgradeOperationHistoricalStatusInfo)
+    OpenAPI.validate_property(UpgradeOperationHistoricalStatusInfo, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(UpgradeOperationHistoricalStatusInfo, Symbol("type"), o.type)
+    OpenAPI.validate_property(UpgradeOperationHistoricalStatusInfo, Symbol("location"), o.location)
+end
+
 function OpenAPI.validate_property(::Type{ UpgradeOperationHistoricalStatusInfo }, name::Symbol, val)
+
+
+
 end

@@ -21,22 +21,31 @@ Base.@kwdef mutable struct Restriction <: OpenAPI.APIModel
     reasonCode::Union{Nothing, String} = nothing
 
     function Restriction(type, values, reasonCode, )
-        OpenAPI.validate_property(Restriction, Symbol("type"), type)
-        OpenAPI.validate_property(Restriction, Symbol("values"), values)
-        OpenAPI.validate_property(Restriction, Symbol("reasonCode"), reasonCode)
-        return new(type, values, reasonCode, )
+        o = new(type, values, reasonCode, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type Restriction
 
 const _property_types_Restriction = Dict{Symbol,String}(Symbol("type")=>"String", Symbol("values")=>"Vector{String}", Symbol("reasonCode")=>"String", )
 OpenAPI.property_type(::Type{ Restriction }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Restriction[name]))}
 
-function check_required(o::Restriction)
+function OpenAPI.check_required(o::Restriction)
     true
 end
 
+function OpenAPI.validate_properties(o::Restriction)
+    OpenAPI.validate_property(Restriction, Symbol("type"), o.type)
+    OpenAPI.validate_property(Restriction, Symbol("values"), o.values)
+    OpenAPI.validate_property(Restriction, Symbol("reasonCode"), o.reasonCode)
+end
+
 function OpenAPI.validate_property(::Type{ Restriction }, name::Symbol, val)
+
+
+
     if name === Symbol("reasonCode")
         OpenAPI.validate_param(name, "Restriction", :enum, val, ["QuotaId", "NotAvailableForSubscription"])
     end
+
 end

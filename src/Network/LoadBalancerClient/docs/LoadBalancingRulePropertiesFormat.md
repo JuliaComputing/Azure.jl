@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **frontendIPConfiguration** | [***SubResource**](SubResource.md) |  | [optional] [default to nothing]
 **backendAddressPool** | [***SubResource**](SubResource.md) |  | [optional] [default to nothing]
+**backendAddressPools** | [**Vector{SubResource}**](SubResource.md) | An array of references to pool of DIPs. | [optional] [default to nothing]
 **probe** | [***SubResource**](SubResource.md) |  | [optional] [default to nothing]
 **protocol** | [***TransportProtocol**](TransportProtocol.md) |  | [default to nothing]
 **loadDistribution** | **String** | The load distribution policy for this rule. | [optional] [default to nothing]
@@ -15,6 +16,7 @@ Name | Type | Description | Notes
 **enableFloatingIP** | **Bool** | Configures a virtual machine&#39;s endpoint for the floating IP capability required to configure a SQL AlwaysOn Availability Group. This setting is required when using the SQL AlwaysOn Availability Groups in SQL server. This setting can&#39;t be changed after you create the endpoint. | [optional] [default to nothing]
 **enableTcpReset** | **Bool** | Receive bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination. This element is only used when the protocol is set to TCP. | [optional] [default to nothing]
 **disableOutboundSnat** | **Bool** | Configures SNAT for the VMs in the backend pool to use the publicIP address specified in the frontend of the load balancing rule. | [optional] [default to nothing]
+**enableConnectionTracking** | **Bool** | Defines whether connections between 2 communicating endpoints can be tracked and associated to the same backend VM over its lifetime when using UDP protocol. | [optional] [default to nothing]
 **provisioningState** | [***ProvisioningState**](ProvisioningState.md) |  | [optional] [default to nothing]
 
 

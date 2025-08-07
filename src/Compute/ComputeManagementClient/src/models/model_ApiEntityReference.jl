@@ -15,17 +15,23 @@ Base.@kwdef mutable struct ApiEntityReference <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
 
     function ApiEntityReference(id, )
-        OpenAPI.validate_property(ApiEntityReference, Symbol("id"), id)
-        return new(id, )
+        o = new(id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApiEntityReference
 
 const _property_types_ApiEntityReference = Dict{Symbol,String}(Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ ApiEntityReference }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApiEntityReference[name]))}
 
-function check_required(o::ApiEntityReference)
+function OpenAPI.check_required(o::ApiEntityReference)
     true
 end
 
+function OpenAPI.validate_properties(o::ApiEntityReference)
+    OpenAPI.validate_property(ApiEntityReference, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ ApiEntityReference }, name::Symbol, val)
+
 end

@@ -21,20 +21,28 @@ Base.@kwdef mutable struct ConnectionMonitor <: OpenAPI.APIModel
     properties = nothing # spec type: Union{ Nothing, ConnectionMonitorParameters }
 
     function ConnectionMonitor(location, tags, properties, )
-        OpenAPI.validate_property(ConnectionMonitor, Symbol("location"), location)
-        OpenAPI.validate_property(ConnectionMonitor, Symbol("tags"), tags)
-        OpenAPI.validate_property(ConnectionMonitor, Symbol("properties"), properties)
-        return new(location, tags, properties, )
+        o = new(location, tags, properties, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ConnectionMonitor
 
 const _property_types_ConnectionMonitor = Dict{Symbol,String}(Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", Symbol("properties")=>"ConnectionMonitorParameters", )
 OpenAPI.property_type(::Type{ ConnectionMonitor }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ConnectionMonitor[name]))}
 
-function check_required(o::ConnectionMonitor)
+function OpenAPI.check_required(o::ConnectionMonitor)
     o.properties === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ConnectionMonitor)
+    OpenAPI.validate_property(ConnectionMonitor, Symbol("location"), o.location)
+    OpenAPI.validate_property(ConnectionMonitor, Symbol("tags"), o.tags)
+    OpenAPI.validate_property(ConnectionMonitor, Symbol("properties"), o.properties)
+end
+
 function OpenAPI.validate_property(::Type{ ConnectionMonitor }, name::Symbol, val)
+
+
+
 end

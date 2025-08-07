@@ -21,19 +21,27 @@ Base.@kwdef mutable struct VpnDeviceScriptParameters <: OpenAPI.APIModel
     firmwareVersion::Union{Nothing, String} = nothing
 
     function VpnDeviceScriptParameters(vendor, deviceFamily, firmwareVersion, )
-        OpenAPI.validate_property(VpnDeviceScriptParameters, Symbol("vendor"), vendor)
-        OpenAPI.validate_property(VpnDeviceScriptParameters, Symbol("deviceFamily"), deviceFamily)
-        OpenAPI.validate_property(VpnDeviceScriptParameters, Symbol("firmwareVersion"), firmwareVersion)
-        return new(vendor, deviceFamily, firmwareVersion, )
+        o = new(vendor, deviceFamily, firmwareVersion, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VpnDeviceScriptParameters
 
 const _property_types_VpnDeviceScriptParameters = Dict{Symbol,String}(Symbol("vendor")=>"String", Symbol("deviceFamily")=>"String", Symbol("firmwareVersion")=>"String", )
 OpenAPI.property_type(::Type{ VpnDeviceScriptParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VpnDeviceScriptParameters[name]))}
 
-function check_required(o::VpnDeviceScriptParameters)
+function OpenAPI.check_required(o::VpnDeviceScriptParameters)
     true
 end
 
+function OpenAPI.validate_properties(o::VpnDeviceScriptParameters)
+    OpenAPI.validate_property(VpnDeviceScriptParameters, Symbol("vendor"), o.vendor)
+    OpenAPI.validate_property(VpnDeviceScriptParameters, Symbol("deviceFamily"), o.deviceFamily)
+    OpenAPI.validate_property(VpnDeviceScriptParameters, Symbol("firmwareVersion"), o.firmwareVersion)
+end
+
 function OpenAPI.validate_property(::Type{ VpnDeviceScriptParameters }, name::Symbol, val)
+
+
+
 end

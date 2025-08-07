@@ -15,18 +15,24 @@ Base.@kwdef mutable struct ContainerServiceSshConfiguration <: OpenAPI.APIModel
     publicKeys::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ContainerServiceSshPublicKey} }
 
     function ContainerServiceSshConfiguration(publicKeys, )
-        OpenAPI.validate_property(ContainerServiceSshConfiguration, Symbol("publicKeys"), publicKeys)
-        return new(publicKeys, )
+        o = new(publicKeys, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ContainerServiceSshConfiguration
 
 const _property_types_ContainerServiceSshConfiguration = Dict{Symbol,String}(Symbol("publicKeys")=>"Vector{ContainerServiceSshPublicKey}", )
 OpenAPI.property_type(::Type{ ContainerServiceSshConfiguration }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ContainerServiceSshConfiguration[name]))}
 
-function check_required(o::ContainerServiceSshConfiguration)
+function OpenAPI.check_required(o::ContainerServiceSshConfiguration)
     o.publicKeys === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ContainerServiceSshConfiguration)
+    OpenAPI.validate_property(ContainerServiceSshConfiguration, Symbol("publicKeys"), o.publicKeys)
+end
+
 function OpenAPI.validate_property(::Type{ ContainerServiceSshConfiguration }, name::Symbol, val)
+
 end

@@ -11,6 +11,7 @@ The alias type.
         type=nothing,
         defaultPath=nothing,
         defaultPattern=nothing,
+        defaultMetadata=nothing,
     )
 
     - name::String : The alias name.
@@ -18,6 +19,7 @@ The alias type.
     - type::String : The type of the alias.
     - defaultPath::String : The default path for an alias.
     - defaultPattern::AliasPattern
+    - defaultMetadata::AliasPathMetadata
 """
 Base.@kwdef mutable struct Alias <: OpenAPI.APIModel
     name::Union{Nothing, String} = nothing
@@ -25,26 +27,40 @@ Base.@kwdef mutable struct Alias <: OpenAPI.APIModel
     type::Union{Nothing, String} = nothing
     defaultPath::Union{Nothing, String} = nothing
     defaultPattern = nothing # spec type: Union{ Nothing, AliasPattern }
+    defaultMetadata = nothing # spec type: Union{ Nothing, AliasPathMetadata }
 
-    function Alias(name, paths, type, defaultPath, defaultPattern, )
-        OpenAPI.validate_property(Alias, Symbol("name"), name)
-        OpenAPI.validate_property(Alias, Symbol("paths"), paths)
-        OpenAPI.validate_property(Alias, Symbol("type"), type)
-        OpenAPI.validate_property(Alias, Symbol("defaultPath"), defaultPath)
-        OpenAPI.validate_property(Alias, Symbol("defaultPattern"), defaultPattern)
-        return new(name, paths, type, defaultPath, defaultPattern, )
+    function Alias(name, paths, type, defaultPath, defaultPattern, defaultMetadata, )
+        o = new(name, paths, type, defaultPath, defaultPattern, defaultMetadata, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type Alias
 
-const _property_types_Alias = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("paths")=>"Vector{AliasPath}", Symbol("type")=>"String", Symbol("defaultPath")=>"String", Symbol("defaultPattern")=>"AliasPattern", )
+const _property_types_Alias = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("paths")=>"Vector{AliasPath}", Symbol("type")=>"String", Symbol("defaultPath")=>"String", Symbol("defaultPattern")=>"AliasPattern", Symbol("defaultMetadata")=>"AliasPathMetadata", )
 OpenAPI.property_type(::Type{ Alias }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Alias[name]))}
 
-function check_required(o::Alias)
+function OpenAPI.check_required(o::Alias)
     true
 end
 
+function OpenAPI.validate_properties(o::Alias)
+    OpenAPI.validate_property(Alias, Symbol("name"), o.name)
+    OpenAPI.validate_property(Alias, Symbol("paths"), o.paths)
+    OpenAPI.validate_property(Alias, Symbol("type"), o.type)
+    OpenAPI.validate_property(Alias, Symbol("defaultPath"), o.defaultPath)
+    OpenAPI.validate_property(Alias, Symbol("defaultPattern"), o.defaultPattern)
+    OpenAPI.validate_property(Alias, Symbol("defaultMetadata"), o.defaultMetadata)
+end
+
 function OpenAPI.validate_property(::Type{ Alias }, name::Symbol, val)
+
+
+
     if name === Symbol("type")
         OpenAPI.validate_param(name, "Alias", :enum, val, ["NotSpecified", "PlainText", "Mask"])
     end
+
+
+
+
 end

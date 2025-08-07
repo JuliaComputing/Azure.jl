@@ -9,7 +9,7 @@ Parameters that define the operation to create a connection monitor.
         source=nothing,
         destination=nothing,
         autoStart=true,
-        monitoringIntervalInSeconds=nothing,
+        monitoringIntervalInSeconds=60,
         endpoints=nothing,
         testConfigurations=nothing,
         testGroups=nothing,
@@ -31,7 +31,7 @@ Base.@kwdef mutable struct ConnectionMonitorParameters <: OpenAPI.APIModel
     source = nothing # spec type: Union{ Nothing, ConnectionMonitorSource }
     destination = nothing # spec type: Union{ Nothing, ConnectionMonitorDestination }
     autoStart::Union{Nothing, Bool} = true
-    monitoringIntervalInSeconds::Union{Nothing, Int64} = nothing
+    monitoringIntervalInSeconds::Union{Nothing, Int64} = 60
     endpoints::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ConnectionMonitorEndpoint} }
     testConfigurations::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ConnectionMonitorTestConfiguration} }
     testGroups::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ConnectionMonitorTestGroup} }
@@ -39,25 +39,46 @@ Base.@kwdef mutable struct ConnectionMonitorParameters <: OpenAPI.APIModel
     notes::Union{Nothing, String} = nothing
 
     function ConnectionMonitorParameters(source, destination, autoStart, monitoringIntervalInSeconds, endpoints, testConfigurations, testGroups, outputs, notes, )
-        OpenAPI.validate_property(ConnectionMonitorParameters, Symbol("source"), source)
-        OpenAPI.validate_property(ConnectionMonitorParameters, Symbol("destination"), destination)
-        OpenAPI.validate_property(ConnectionMonitorParameters, Symbol("autoStart"), autoStart)
-        OpenAPI.validate_property(ConnectionMonitorParameters, Symbol("monitoringIntervalInSeconds"), monitoringIntervalInSeconds)
-        OpenAPI.validate_property(ConnectionMonitorParameters, Symbol("endpoints"), endpoints)
-        OpenAPI.validate_property(ConnectionMonitorParameters, Symbol("testConfigurations"), testConfigurations)
-        OpenAPI.validate_property(ConnectionMonitorParameters, Symbol("testGroups"), testGroups)
-        OpenAPI.validate_property(ConnectionMonitorParameters, Symbol("outputs"), outputs)
-        OpenAPI.validate_property(ConnectionMonitorParameters, Symbol("notes"), notes)
-        return new(source, destination, autoStart, monitoringIntervalInSeconds, endpoints, testConfigurations, testGroups, outputs, notes, )
+        o = new(source, destination, autoStart, monitoringIntervalInSeconds, endpoints, testConfigurations, testGroups, outputs, notes, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ConnectionMonitorParameters
 
 const _property_types_ConnectionMonitorParameters = Dict{Symbol,String}(Symbol("source")=>"ConnectionMonitorSource", Symbol("destination")=>"ConnectionMonitorDestination", Symbol("autoStart")=>"Bool", Symbol("monitoringIntervalInSeconds")=>"Int64", Symbol("endpoints")=>"Vector{ConnectionMonitorEndpoint}", Symbol("testConfigurations")=>"Vector{ConnectionMonitorTestConfiguration}", Symbol("testGroups")=>"Vector{ConnectionMonitorTestGroup}", Symbol("outputs")=>"Vector{ConnectionMonitorOutput}", Symbol("notes")=>"String", )
 OpenAPI.property_type(::Type{ ConnectionMonitorParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ConnectionMonitorParameters[name]))}
 
-function check_required(o::ConnectionMonitorParameters)
+function OpenAPI.check_required(o::ConnectionMonitorParameters)
     true
 end
 
+function OpenAPI.validate_properties(o::ConnectionMonitorParameters)
+    OpenAPI.validate_property(ConnectionMonitorParameters, Symbol("source"), o.source)
+    OpenAPI.validate_property(ConnectionMonitorParameters, Symbol("destination"), o.destination)
+    OpenAPI.validate_property(ConnectionMonitorParameters, Symbol("autoStart"), o.autoStart)
+    OpenAPI.validate_property(ConnectionMonitorParameters, Symbol("monitoringIntervalInSeconds"), o.monitoringIntervalInSeconds)
+    OpenAPI.validate_property(ConnectionMonitorParameters, Symbol("endpoints"), o.endpoints)
+    OpenAPI.validate_property(ConnectionMonitorParameters, Symbol("testConfigurations"), o.testConfigurations)
+    OpenAPI.validate_property(ConnectionMonitorParameters, Symbol("testGroups"), o.testGroups)
+    OpenAPI.validate_property(ConnectionMonitorParameters, Symbol("outputs"), o.outputs)
+    OpenAPI.validate_property(ConnectionMonitorParameters, Symbol("notes"), o.notes)
+end
+
 function OpenAPI.validate_property(::Type{ ConnectionMonitorParameters }, name::Symbol, val)
+
+
+
+
+    if name === Symbol("monitoringIntervalInSeconds")
+        OpenAPI.validate_param(name, "ConnectionMonitorParameters", :format, val, "int32")
+    end
+    if name === Symbol("monitoringIntervalInSeconds")
+        OpenAPI.validate_param(name, "ConnectionMonitorParameters", :maximum, val, 1800, false)
+        OpenAPI.validate_param(name, "ConnectionMonitorParameters", :minimum, val, 30, false)
+    end
+
+
+
+
+
 end

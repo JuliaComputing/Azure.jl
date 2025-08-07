@@ -7,7 +7,7 @@ Parameters that define the flow log format.
 
     FlowLogFormatParameters(;
         type=nothing,
-        version=nothing,
+        version=0,
     )
 
     - type::String : The file type of flow log.
@@ -15,24 +15,35 @@ Parameters that define the flow log format.
 """
 Base.@kwdef mutable struct FlowLogFormatParameters <: OpenAPI.APIModel
     type::Union{Nothing, String} = nothing
-    version::Union{Nothing, Int64} = nothing
+    version::Union{Nothing, Int64} = 0
 
     function FlowLogFormatParameters(type, version, )
-        OpenAPI.validate_property(FlowLogFormatParameters, Symbol("type"), type)
-        OpenAPI.validate_property(FlowLogFormatParameters, Symbol("version"), version)
-        return new(type, version, )
+        o = new(type, version, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type FlowLogFormatParameters
 
 const _property_types_FlowLogFormatParameters = Dict{Symbol,String}(Symbol("type")=>"String", Symbol("version")=>"Int64", )
 OpenAPI.property_type(::Type{ FlowLogFormatParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_FlowLogFormatParameters[name]))}
 
-function check_required(o::FlowLogFormatParameters)
+function OpenAPI.check_required(o::FlowLogFormatParameters)
     true
 end
 
+function OpenAPI.validate_properties(o::FlowLogFormatParameters)
+    OpenAPI.validate_property(FlowLogFormatParameters, Symbol("type"), o.type)
+    OpenAPI.validate_property(FlowLogFormatParameters, Symbol("version"), o.version)
+end
+
 function OpenAPI.validate_property(::Type{ FlowLogFormatParameters }, name::Symbol, val)
+
     if name === Symbol("type")
         OpenAPI.validate_param(name, "FlowLogFormatParameters", :enum, val, ["JSON"])
+    end
+
+
+    if name === Symbol("version")
+        OpenAPI.validate_param(name, "FlowLogFormatParameters", :format, val, "int32")
     end
 end

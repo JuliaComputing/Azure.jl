@@ -15,17 +15,23 @@ Base.@kwdef mutable struct AclStatusResult <: OpenAPI.APIModel
     aclStatus = nothing # spec type: Union{ Nothing, AclStatus }
 
     function AclStatusResult(aclStatus, )
-        OpenAPI.validate_property(AclStatusResult, Symbol("aclStatus"), aclStatus)
-        return new(aclStatus, )
+        o = new(aclStatus, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AclStatusResult
 
 const _property_types_AclStatusResult = Dict{Symbol,String}(Symbol("aclStatus")=>"AclStatus", )
 OpenAPI.property_type(::Type{ AclStatusResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AclStatusResult[name]))}
 
-function check_required(o::AclStatusResult)
+function OpenAPI.check_required(o::AclStatusResult)
     true
 end
 
+function OpenAPI.validate_properties(o::AclStatusResult)
+    OpenAPI.validate_property(AclStatusResult, Symbol("aclStatus"), o.aclStatus)
+end
+
 function OpenAPI.validate_property(::Type{ AclStatusResult }, name::Symbol, val)
+
 end

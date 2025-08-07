@@ -25,11 +25,11 @@ Get the specified default network security rule.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **SecurityRulesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_security_group_name** | **String**| The name of the network security group. | [default to nothing]
-**default_security_rule_name** | **String**| The name of the default security rule. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**network_security_group_name** | **String** | The name of the network security group. |
+**default_security_rule_name** | **String** | The name of the default security rule. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -59,10 +59,10 @@ Gets all default security rules in a network security group.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **SecurityRulesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_security_group_name** | **String**| The name of the network security group. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**network_security_group_name** | **String** | The name of the network security group. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -92,12 +92,12 @@ Creates or updates a security rule in the specified network security group.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **SecurityRulesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_security_group_name** | **String**| The name of the network security group. | [default to nothing]
-**security_rule_name** | **String**| The name of the security rule. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**security_rule_parameters** | [**SecurityRule**](SecurityRule.md)| Parameters supplied to the create or update network security rule operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**network_security_group_name** | **String** | The name of the network security group. |
+**security_rule_name** | **String** | The name of the security rule. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**security_rule_parameters** | [**SecurityRule**](SecurityRule.md) | Parameters supplied to the create or update network security rule operation. |
 
 ### Return type
 
@@ -127,11 +127,11 @@ Deletes the specified network security rule.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **SecurityRulesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_security_group_name** | **String**| The name of the network security group. | [default to nothing]
-**security_rule_name** | **String**| The name of the security rule. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**network_security_group_name** | **String** | The name of the network security group. |
+**security_rule_name** | **String** | The name of the security rule. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -161,11 +161,11 @@ Get the specified network security rule.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **SecurityRulesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_security_group_name** | **String**| The name of the network security group. | [default to nothing]
-**security_rule_name** | **String**| The name of the security rule. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**network_security_group_name** | **String** | The name of the network security group. |
+**security_rule_name** | **String** | The name of the security rule. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -195,10 +195,10 @@ Gets all security rules in a network security group.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **SecurityRulesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**network_security_group_name** | **String**| The name of the network security group. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**network_security_group_name** | **String** | The name of the network security group. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 

@@ -27,19 +27,16 @@ Base.@kwdef mutable struct ConnectionMonitorTestGroup <: OpenAPI.APIModel
     destinations::Union{Nothing, Vector{String}} = nothing
 
     function ConnectionMonitorTestGroup(name, disable, testConfigurations, sources, destinations, )
-        OpenAPI.validate_property(ConnectionMonitorTestGroup, Symbol("name"), name)
-        OpenAPI.validate_property(ConnectionMonitorTestGroup, Symbol("disable"), disable)
-        OpenAPI.validate_property(ConnectionMonitorTestGroup, Symbol("testConfigurations"), testConfigurations)
-        OpenAPI.validate_property(ConnectionMonitorTestGroup, Symbol("sources"), sources)
-        OpenAPI.validate_property(ConnectionMonitorTestGroup, Symbol("destinations"), destinations)
-        return new(name, disable, testConfigurations, sources, destinations, )
+        o = new(name, disable, testConfigurations, sources, destinations, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ConnectionMonitorTestGroup
 
 const _property_types_ConnectionMonitorTestGroup = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("disable")=>"Bool", Symbol("testConfigurations")=>"Vector{String}", Symbol("sources")=>"Vector{String}", Symbol("destinations")=>"Vector{String}", )
 OpenAPI.property_type(::Type{ ConnectionMonitorTestGroup }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ConnectionMonitorTestGroup[name]))}
 
-function check_required(o::ConnectionMonitorTestGroup)
+function OpenAPI.check_required(o::ConnectionMonitorTestGroup)
     o.name === nothing && (return false)
     o.testConfigurations === nothing && (return false)
     o.sources === nothing && (return false)
@@ -47,5 +44,18 @@ function check_required(o::ConnectionMonitorTestGroup)
     true
 end
 
+function OpenAPI.validate_properties(o::ConnectionMonitorTestGroup)
+    OpenAPI.validate_property(ConnectionMonitorTestGroup, Symbol("name"), o.name)
+    OpenAPI.validate_property(ConnectionMonitorTestGroup, Symbol("disable"), o.disable)
+    OpenAPI.validate_property(ConnectionMonitorTestGroup, Symbol("testConfigurations"), o.testConfigurations)
+    OpenAPI.validate_property(ConnectionMonitorTestGroup, Symbol("sources"), o.sources)
+    OpenAPI.validate_property(ConnectionMonitorTestGroup, Symbol("destinations"), o.destinations)
+end
+
 function OpenAPI.validate_property(::Type{ ConnectionMonitorTestGroup }, name::Symbol, val)
+
+
+
+
+
 end

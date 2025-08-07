@@ -9,31 +9,44 @@ The type of the paths for alias.
         path=nothing,
         apiVersions=nothing,
         pattern=nothing,
+        metadata=nothing,
     )
 
     - path::String : The path of an alias.
     - apiVersions::Vector{String} : The API versions.
     - pattern::AliasPattern
+    - metadata::AliasPathMetadata
 """
 Base.@kwdef mutable struct AliasPath <: OpenAPI.APIModel
     path::Union{Nothing, String} = nothing
     apiVersions::Union{Nothing, Vector{String}} = nothing
     pattern = nothing # spec type: Union{ Nothing, AliasPattern }
+    metadata = nothing # spec type: Union{ Nothing, AliasPathMetadata }
 
-    function AliasPath(path, apiVersions, pattern, )
-        OpenAPI.validate_property(AliasPath, Symbol("path"), path)
-        OpenAPI.validate_property(AliasPath, Symbol("apiVersions"), apiVersions)
-        OpenAPI.validate_property(AliasPath, Symbol("pattern"), pattern)
-        return new(path, apiVersions, pattern, )
+    function AliasPath(path, apiVersions, pattern, metadata, )
+        o = new(path, apiVersions, pattern, metadata, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AliasPath
 
-const _property_types_AliasPath = Dict{Symbol,String}(Symbol("path")=>"String", Symbol("apiVersions")=>"Vector{String}", Symbol("pattern")=>"AliasPattern", )
+const _property_types_AliasPath = Dict{Symbol,String}(Symbol("path")=>"String", Symbol("apiVersions")=>"Vector{String}", Symbol("pattern")=>"AliasPattern", Symbol("metadata")=>"AliasPathMetadata", )
 OpenAPI.property_type(::Type{ AliasPath }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AliasPath[name]))}
 
-function check_required(o::AliasPath)
+function OpenAPI.check_required(o::AliasPath)
     true
 end
 
+function OpenAPI.validate_properties(o::AliasPath)
+    OpenAPI.validate_property(AliasPath, Symbol("path"), o.path)
+    OpenAPI.validate_property(AliasPath, Symbol("apiVersions"), o.apiVersions)
+    OpenAPI.validate_property(AliasPath, Symbol("pattern"), o.pattern)
+    OpenAPI.validate_property(AliasPath, Symbol("metadata"), o.metadata)
+end
+
 function OpenAPI.validate_property(::Type{ AliasPath }, name::Symbol, val)
+
+
+
+
 end

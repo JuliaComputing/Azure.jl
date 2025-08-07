@@ -12,7 +12,7 @@ Filters limit rule actions to a subset of blobs within the storage account. If m
     )
 
     - prefixMatch::Vector{String} : An array of strings for prefixes to be match.
-    - blobTypes::Vector{String} : An array of predefined enum values. Only blockBlob is supported.
+    - blobTypes::Vector{String} : An array of predefined enum values. Currently blockBlob supports all tiering and delete actions. Only delete actions are supported for appendBlob.
     - blobIndexMatch::Vector{TagFilter} : An array of blob index tag based filters, there can be at most 10 tag filters
 """
 Base.@kwdef mutable struct ManagementPolicyFilter <: OpenAPI.APIModel
@@ -21,20 +21,28 @@ Base.@kwdef mutable struct ManagementPolicyFilter <: OpenAPI.APIModel
     blobIndexMatch::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{TagFilter} }
 
     function ManagementPolicyFilter(prefixMatch, blobTypes, blobIndexMatch, )
-        OpenAPI.validate_property(ManagementPolicyFilter, Symbol("prefixMatch"), prefixMatch)
-        OpenAPI.validate_property(ManagementPolicyFilter, Symbol("blobTypes"), blobTypes)
-        OpenAPI.validate_property(ManagementPolicyFilter, Symbol("blobIndexMatch"), blobIndexMatch)
-        return new(prefixMatch, blobTypes, blobIndexMatch, )
+        o = new(prefixMatch, blobTypes, blobIndexMatch, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ManagementPolicyFilter
 
 const _property_types_ManagementPolicyFilter = Dict{Symbol,String}(Symbol("prefixMatch")=>"Vector{String}", Symbol("blobTypes")=>"Vector{String}", Symbol("blobIndexMatch")=>"Vector{TagFilter}", )
 OpenAPI.property_type(::Type{ ManagementPolicyFilter }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ManagementPolicyFilter[name]))}
 
-function check_required(o::ManagementPolicyFilter)
+function OpenAPI.check_required(o::ManagementPolicyFilter)
     o.blobTypes === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ManagementPolicyFilter)
+    OpenAPI.validate_property(ManagementPolicyFilter, Symbol("prefixMatch"), o.prefixMatch)
+    OpenAPI.validate_property(ManagementPolicyFilter, Symbol("blobTypes"), o.blobTypes)
+    OpenAPI.validate_property(ManagementPolicyFilter, Symbol("blobIndexMatch"), o.blobIndexMatch)
+end
+
 function OpenAPI.validate_property(::Type{ ManagementPolicyFilter }, name::Symbol, val)
+
+
+
 end

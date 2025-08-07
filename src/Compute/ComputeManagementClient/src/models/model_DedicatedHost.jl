@@ -33,25 +33,37 @@ Base.@kwdef mutable struct DedicatedHost <: OpenAPI.APIModel
     tags::Union{Nothing, Dict{String, String}} = nothing
 
     function DedicatedHost(properties, sku, id, name, type, location, tags, )
-        OpenAPI.validate_property(DedicatedHost, Symbol("properties"), properties)
-        OpenAPI.validate_property(DedicatedHost, Symbol("sku"), sku)
-        OpenAPI.validate_property(DedicatedHost, Symbol("id"), id)
-        OpenAPI.validate_property(DedicatedHost, Symbol("name"), name)
-        OpenAPI.validate_property(DedicatedHost, Symbol("type"), type)
-        OpenAPI.validate_property(DedicatedHost, Symbol("location"), location)
-        OpenAPI.validate_property(DedicatedHost, Symbol("tags"), tags)
-        return new(properties, sku, id, name, type, location, tags, )
+        o = new(properties, sku, id, name, type, location, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type DedicatedHost
 
 const _property_types_DedicatedHost = Dict{Symbol,String}(Symbol("properties")=>"DedicatedHostProperties", Symbol("sku")=>"Sku", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ DedicatedHost }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DedicatedHost[name]))}
 
-function check_required(o::DedicatedHost)
+function OpenAPI.check_required(o::DedicatedHost)
     o.sku === nothing && (return false)
     o.location === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::DedicatedHost)
+    OpenAPI.validate_property(DedicatedHost, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(DedicatedHost, Symbol("sku"), o.sku)
+    OpenAPI.validate_property(DedicatedHost, Symbol("id"), o.id)
+    OpenAPI.validate_property(DedicatedHost, Symbol("name"), o.name)
+    OpenAPI.validate_property(DedicatedHost, Symbol("type"), o.type)
+    OpenAPI.validate_property(DedicatedHost, Symbol("location"), o.location)
+    OpenAPI.validate_property(DedicatedHost, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ DedicatedHost }, name::Symbol, val)
+
+
+
+
+
+
+
 end

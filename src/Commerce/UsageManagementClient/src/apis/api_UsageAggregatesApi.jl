@@ -13,18 +13,19 @@ basepath(::Type{ UsageAggregatesApi }) = "https://management.azure.com"
 
 const _returntypes_usage_aggregates_list_UsageAggregatesApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => UsageAggregationListResult,
-    Regex("^" * replace("0", "x"=>".") * "\$") => ErrorResponse,
+    Regex("^" * replace("202", "x"=>".") * "\$") => ErrorObjectResponse,
+    Regex("^" * replace("0", "x"=>".") * "\$") => ErrorObjectResponse,
 )
 
 function _oacinternal_usage_aggregates_list(_api::UsageAggregatesApi, reported_start_time::ZonedDateTime, reported_end_time::ZonedDateTime, api_version::String, subscription_id::String; show_details=nothing, aggregation_granularity=nothing, continuation_token=nothing, _mediaType=nothing)
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_usage_aggregates_list_UsageAggregatesApi, "/subscriptions/{subscriptionId}/providers/Microsoft.Commerce/UsageAggregates", [])
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "reportedStartTime", reported_start_time)  # type ZonedDateTime
-    OpenAPI.Clients.set_param(_ctx.query, "reportedEndTime", reported_end_time)  # type ZonedDateTime
-    OpenAPI.Clients.set_param(_ctx.query, "showDetails", show_details)  # type Bool
-    OpenAPI.Clients.set_param(_ctx.query, "aggregationGranularity", aggregation_granularity)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "continuationToken", continuation_token)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "reportedStartTime", reported_start_time; style="", is_explode=false)  # type ZonedDateTime
+    OpenAPI.Clients.set_param(_ctx.query, "reportedEndTime", reported_end_time; style="", is_explode=false)  # type ZonedDateTime
+    OpenAPI.Clients.set_param(_ctx.query, "showDetails", show_details; style="", is_explode=false)  # type Bool
+    OpenAPI.Clients.set_param(_ctx.query, "aggregationGranularity", aggregation_granularity; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "continuationToken", continuation_token; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", "text/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx

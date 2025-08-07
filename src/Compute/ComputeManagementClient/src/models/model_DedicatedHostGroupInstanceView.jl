@@ -14,17 +14,23 @@ Base.@kwdef mutable struct DedicatedHostGroupInstanceView <: OpenAPI.APIModel
     hosts::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{DedicatedHostInstanceViewWithName} }
 
     function DedicatedHostGroupInstanceView(hosts, )
-        OpenAPI.validate_property(DedicatedHostGroupInstanceView, Symbol("hosts"), hosts)
-        return new(hosts, )
+        o = new(hosts, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type DedicatedHostGroupInstanceView
 
 const _property_types_DedicatedHostGroupInstanceView = Dict{Symbol,String}(Symbol("hosts")=>"Vector{DedicatedHostInstanceViewWithName}", )
 OpenAPI.property_type(::Type{ DedicatedHostGroupInstanceView }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DedicatedHostGroupInstanceView[name]))}
 
-function check_required(o::DedicatedHostGroupInstanceView)
+function OpenAPI.check_required(o::DedicatedHostGroupInstanceView)
     true
 end
 
+function OpenAPI.validate_properties(o::DedicatedHostGroupInstanceView)
+    OpenAPI.validate_property(DedicatedHostGroupInstanceView, Symbol("hosts"), o.hosts)
+end
+
 function OpenAPI.validate_property(::Type{ DedicatedHostGroupInstanceView }, name::Symbol, val)
+
 end

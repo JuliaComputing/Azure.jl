@@ -18,18 +18,25 @@ Base.@kwdef mutable struct UsageName <: OpenAPI.APIModel
     localizedValue::Union{Nothing, String} = nothing
 
     function UsageName(value, localizedValue, )
-        OpenAPI.validate_property(UsageName, Symbol("value"), value)
-        OpenAPI.validate_property(UsageName, Symbol("localizedValue"), localizedValue)
-        return new(value, localizedValue, )
+        o = new(value, localizedValue, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type UsageName
 
 const _property_types_UsageName = Dict{Symbol,String}(Symbol("value")=>"String", Symbol("localizedValue")=>"String", )
 OpenAPI.property_type(::Type{ UsageName }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_UsageName[name]))}
 
-function check_required(o::UsageName)
+function OpenAPI.check_required(o::UsageName)
     true
 end
 
+function OpenAPI.validate_properties(o::UsageName)
+    OpenAPI.validate_property(UsageName, Symbol("value"), o.value)
+    OpenAPI.validate_property(UsageName, Symbol("localizedValue"), o.localizedValue)
+end
+
 function OpenAPI.validate_property(::Type{ UsageName }, name::Symbol, val)
+
+
 end

@@ -15,18 +15,24 @@ Base.@kwdef mutable struct StorageAccountRegenerateKeyParameters <: OpenAPI.APIM
     keyName::Union{Nothing, String} = nothing
 
     function StorageAccountRegenerateKeyParameters(keyName, )
-        OpenAPI.validate_property(StorageAccountRegenerateKeyParameters, Symbol("keyName"), keyName)
-        return new(keyName, )
+        o = new(keyName, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type StorageAccountRegenerateKeyParameters
 
 const _property_types_StorageAccountRegenerateKeyParameters = Dict{Symbol,String}(Symbol("keyName")=>"String", )
 OpenAPI.property_type(::Type{ StorageAccountRegenerateKeyParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_StorageAccountRegenerateKeyParameters[name]))}
 
-function check_required(o::StorageAccountRegenerateKeyParameters)
+function OpenAPI.check_required(o::StorageAccountRegenerateKeyParameters)
     o.keyName === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::StorageAccountRegenerateKeyParameters)
+    OpenAPI.validate_property(StorageAccountRegenerateKeyParameters, Symbol("keyName"), o.keyName)
+end
+
 function OpenAPI.validate_property(::Type{ StorageAccountRegenerateKeyParameters }, name::Symbol, val)
+
 end

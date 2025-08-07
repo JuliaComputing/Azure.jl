@@ -9,38 +9,53 @@ The definition of a parameter that can be provided to the policy.
         type=nothing,
         allowedValues=nothing,
         defaultValue=nothing,
+        schema=nothing,
         metadata=nothing,
     )
 
     - type::String : The data type of the parameter.
     - allowedValues::Vector{Any} : The allowed values for the parameter.
     - defaultValue::Any : The default value for the parameter if no value is provided.
+    - schema::Any : Provides validation of parameter inputs during assignment using a self-defined JSON schema. This property is only supported for object-type parameters and follows the Json.NET Schema 2019-09 implementation. You can learn more about using schemas at https://json-schema.org/ and test draft schemas at https://www.jsonschemavalidator.net/.
     - metadata::Dict{String, Any} : General metadata for the parameter.
 """
 Base.@kwdef mutable struct ParameterDefinitionsValue <: OpenAPI.APIModel
     type::Union{Nothing, String} = nothing
     allowedValues::Union{Nothing, Vector{Any}} = nothing
     defaultValue::Union{Nothing, Any} = nothing
+    schema::Union{Nothing, Any} = nothing
     metadata::Union{Nothing, Dict{String, Any}} = nothing
 
-    function ParameterDefinitionsValue(type, allowedValues, defaultValue, metadata, )
-        OpenAPI.validate_property(ParameterDefinitionsValue, Symbol("type"), type)
-        OpenAPI.validate_property(ParameterDefinitionsValue, Symbol("allowedValues"), allowedValues)
-        OpenAPI.validate_property(ParameterDefinitionsValue, Symbol("defaultValue"), defaultValue)
-        OpenAPI.validate_property(ParameterDefinitionsValue, Symbol("metadata"), metadata)
-        return new(type, allowedValues, defaultValue, metadata, )
+    function ParameterDefinitionsValue(type, allowedValues, defaultValue, schema, metadata, )
+        o = new(type, allowedValues, defaultValue, schema, metadata, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ParameterDefinitionsValue
 
-const _property_types_ParameterDefinitionsValue = Dict{Symbol,String}(Symbol("type")=>"String", Symbol("allowedValues")=>"Vector{Any}", Symbol("defaultValue")=>"Any", Symbol("metadata")=>"Dict{String, Any}", )
+const _property_types_ParameterDefinitionsValue = Dict{Symbol,String}(Symbol("type")=>"String", Symbol("allowedValues")=>"Vector{Any}", Symbol("defaultValue")=>"Any", Symbol("schema")=>"Any", Symbol("metadata")=>"Dict{String, Any}", )
 OpenAPI.property_type(::Type{ ParameterDefinitionsValue }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ParameterDefinitionsValue[name]))}
 
-function check_required(o::ParameterDefinitionsValue)
+function OpenAPI.check_required(o::ParameterDefinitionsValue)
     true
 end
 
+function OpenAPI.validate_properties(o::ParameterDefinitionsValue)
+    OpenAPI.validate_property(ParameterDefinitionsValue, Symbol("type"), o.type)
+    OpenAPI.validate_property(ParameterDefinitionsValue, Symbol("allowedValues"), o.allowedValues)
+    OpenAPI.validate_property(ParameterDefinitionsValue, Symbol("defaultValue"), o.defaultValue)
+    OpenAPI.validate_property(ParameterDefinitionsValue, Symbol("schema"), o.schema)
+    OpenAPI.validate_property(ParameterDefinitionsValue, Symbol("metadata"), o.metadata)
+end
+
 function OpenAPI.validate_property(::Type{ ParameterDefinitionsValue }, name::Symbol, val)
+
     if name === Symbol("type")
         OpenAPI.validate_param(name, "ParameterDefinitionsValue", :enum, val, ["String", "Array", "Object", "Boolean", "Integer", "Float", "DateTime"])
     end
+
+
+
+
+
 end

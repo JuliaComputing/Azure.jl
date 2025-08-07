@@ -30,25 +30,37 @@ Base.@kwdef mutable struct UpgradeOperationHistoricalStatusInfoProperties <: Ope
     rollbackInfo = nothing # spec type: Union{ Nothing, RollbackStatusInfo }
 
     function UpgradeOperationHistoricalStatusInfoProperties(runningStatus, progress, error, startedBy, targetImageReference, rollbackInfo, )
-        OpenAPI.validate_property(UpgradeOperationHistoricalStatusInfoProperties, Symbol("runningStatus"), runningStatus)
-        OpenAPI.validate_property(UpgradeOperationHistoricalStatusInfoProperties, Symbol("progress"), progress)
-        OpenAPI.validate_property(UpgradeOperationHistoricalStatusInfoProperties, Symbol("error"), error)
-        OpenAPI.validate_property(UpgradeOperationHistoricalStatusInfoProperties, Symbol("startedBy"), startedBy)
-        OpenAPI.validate_property(UpgradeOperationHistoricalStatusInfoProperties, Symbol("targetImageReference"), targetImageReference)
-        OpenAPI.validate_property(UpgradeOperationHistoricalStatusInfoProperties, Symbol("rollbackInfo"), rollbackInfo)
-        return new(runningStatus, progress, error, startedBy, targetImageReference, rollbackInfo, )
+        o = new(runningStatus, progress, error, startedBy, targetImageReference, rollbackInfo, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type UpgradeOperationHistoricalStatusInfoProperties
 
 const _property_types_UpgradeOperationHistoricalStatusInfoProperties = Dict{Symbol,String}(Symbol("runningStatus")=>"UpgradeOperationHistoryStatus", Symbol("progress")=>"RollingUpgradeProgressInfo", Symbol("error")=>"ApiError", Symbol("startedBy")=>"String", Symbol("targetImageReference")=>"ImageReference", Symbol("rollbackInfo")=>"RollbackStatusInfo", )
 OpenAPI.property_type(::Type{ UpgradeOperationHistoricalStatusInfoProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_UpgradeOperationHistoricalStatusInfoProperties[name]))}
 
-function check_required(o::UpgradeOperationHistoricalStatusInfoProperties)
+function OpenAPI.check_required(o::UpgradeOperationHistoricalStatusInfoProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::UpgradeOperationHistoricalStatusInfoProperties)
+    OpenAPI.validate_property(UpgradeOperationHistoricalStatusInfoProperties, Symbol("runningStatus"), o.runningStatus)
+    OpenAPI.validate_property(UpgradeOperationHistoricalStatusInfoProperties, Symbol("progress"), o.progress)
+    OpenAPI.validate_property(UpgradeOperationHistoricalStatusInfoProperties, Symbol("error"), o.error)
+    OpenAPI.validate_property(UpgradeOperationHistoricalStatusInfoProperties, Symbol("startedBy"), o.startedBy)
+    OpenAPI.validate_property(UpgradeOperationHistoricalStatusInfoProperties, Symbol("targetImageReference"), o.targetImageReference)
+    OpenAPI.validate_property(UpgradeOperationHistoricalStatusInfoProperties, Symbol("rollbackInfo"), o.rollbackInfo)
+end
+
 function OpenAPI.validate_property(::Type{ UpgradeOperationHistoricalStatusInfoProperties }, name::Symbol, val)
+
+
+
+
     if name === Symbol("startedBy")
         OpenAPI.validate_param(name, "UpgradeOperationHistoricalStatusInfoProperties", :enum, val, ["Unknown", "User", "Platform"])
     end
+
+
+
 end

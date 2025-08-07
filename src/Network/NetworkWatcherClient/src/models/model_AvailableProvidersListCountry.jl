@@ -21,19 +21,27 @@ Base.@kwdef mutable struct AvailableProvidersListCountry <: OpenAPI.APIModel
     states::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{AvailableProvidersListState} }
 
     function AvailableProvidersListCountry(countryName, providers, states, )
-        OpenAPI.validate_property(AvailableProvidersListCountry, Symbol("countryName"), countryName)
-        OpenAPI.validate_property(AvailableProvidersListCountry, Symbol("providers"), providers)
-        OpenAPI.validate_property(AvailableProvidersListCountry, Symbol("states"), states)
-        return new(countryName, providers, states, )
+        o = new(countryName, providers, states, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AvailableProvidersListCountry
 
 const _property_types_AvailableProvidersListCountry = Dict{Symbol,String}(Symbol("countryName")=>"String", Symbol("providers")=>"Vector{String}", Symbol("states")=>"Vector{AvailableProvidersListState}", )
 OpenAPI.property_type(::Type{ AvailableProvidersListCountry }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AvailableProvidersListCountry[name]))}
 
-function check_required(o::AvailableProvidersListCountry)
+function OpenAPI.check_required(o::AvailableProvidersListCountry)
     true
 end
 
+function OpenAPI.validate_properties(o::AvailableProvidersListCountry)
+    OpenAPI.validate_property(AvailableProvidersListCountry, Symbol("countryName"), o.countryName)
+    OpenAPI.validate_property(AvailableProvidersListCountry, Symbol("providers"), o.providers)
+    OpenAPI.validate_property(AvailableProvidersListCountry, Symbol("states"), o.states)
+end
+
 function OpenAPI.validate_property(::Type{ AvailableProvidersListCountry }, name::Symbol, val)
+
+
+
 end

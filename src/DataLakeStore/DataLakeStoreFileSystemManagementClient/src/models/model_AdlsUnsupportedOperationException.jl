@@ -21,20 +21,28 @@ Base.@kwdef mutable struct AdlsUnsupportedOperationException <: OpenAPI.APIModel
     message::Union{Nothing, String} = nothing
 
     function AdlsUnsupportedOperationException(exception, javaClassName, message, )
-        OpenAPI.validate_property(AdlsUnsupportedOperationException, Symbol("exception"), exception)
-        OpenAPI.validate_property(AdlsUnsupportedOperationException, Symbol("javaClassName"), javaClassName)
-        OpenAPI.validate_property(AdlsUnsupportedOperationException, Symbol("message"), message)
-        return new(exception, javaClassName, message, )
+        o = new(exception, javaClassName, message, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AdlsUnsupportedOperationException
 
 const _property_types_AdlsUnsupportedOperationException = Dict{Symbol,String}(Symbol("exception")=>"String", Symbol("javaClassName")=>"String", Symbol("message")=>"String", )
 OpenAPI.property_type(::Type{ AdlsUnsupportedOperationException }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AdlsUnsupportedOperationException[name]))}
 
-function check_required(o::AdlsUnsupportedOperationException)
+function OpenAPI.check_required(o::AdlsUnsupportedOperationException)
     o.exception === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::AdlsUnsupportedOperationException)
+    OpenAPI.validate_property(AdlsUnsupportedOperationException, Symbol("exception"), o.exception)
+    OpenAPI.validate_property(AdlsUnsupportedOperationException, Symbol("javaClassName"), o.javaClassName)
+    OpenAPI.validate_property(AdlsUnsupportedOperationException, Symbol("message"), o.message)
+end
+
 function OpenAPI.validate_property(::Type{ AdlsUnsupportedOperationException }, name::Symbol, val)
+
+
+
 end

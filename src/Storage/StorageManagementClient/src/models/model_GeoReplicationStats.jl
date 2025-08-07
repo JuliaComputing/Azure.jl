@@ -9,37 +9,69 @@ Statistics related to replication for storage account&#39;s Blob, Table, Queue a
         status=nothing,
         lastSyncTime=nothing,
         canFailover=nothing,
+        canPlannedFailover=nothing,
+        postFailoverRedundancy=nothing,
+        postPlannedFailoverRedundancy=nothing,
     )
 
     - status::String : The status of the secondary location. Possible values are: - Live: Indicates that the secondary location is active and operational. - Bootstrap: Indicates initial synchronization from the primary location to the secondary location is in progress.This typically occurs when replication is first enabled. - Unavailable: Indicates that the secondary location is temporarily unavailable.
     - lastSyncTime::ZonedDateTime : All primary writes preceding this UTC date/time value are guaranteed to be available for read operations. Primary writes following this point in time may or may not be available for reads. Element may be default value if value of LastSyncTime is not available, this can happen if secondary is offline or we are in bootstrap.
     - canFailover::Bool : A boolean flag which indicates whether or not account failover is supported for the account.
+    - canPlannedFailover::Bool : A boolean flag which indicates whether or not planned account failover is supported for the account.
+    - postFailoverRedundancy::String : The redundancy type of the account after an account failover is performed.
+    - postPlannedFailoverRedundancy::String : The redundancy type of the account after a planned account failover is performed.
 """
 Base.@kwdef mutable struct GeoReplicationStats <: OpenAPI.APIModel
     status::Union{Nothing, String} = nothing
     lastSyncTime::Union{Nothing, ZonedDateTime} = nothing
     canFailover::Union{Nothing, Bool} = nothing
+    canPlannedFailover::Union{Nothing, Bool} = nothing
+    postFailoverRedundancy::Union{Nothing, String} = nothing
+    postPlannedFailoverRedundancy::Union{Nothing, String} = nothing
 
-    function GeoReplicationStats(status, lastSyncTime, canFailover, )
-        OpenAPI.validate_property(GeoReplicationStats, Symbol("status"), status)
-        OpenAPI.validate_property(GeoReplicationStats, Symbol("lastSyncTime"), lastSyncTime)
-        OpenAPI.validate_property(GeoReplicationStats, Symbol("canFailover"), canFailover)
-        return new(status, lastSyncTime, canFailover, )
+    function GeoReplicationStats(status, lastSyncTime, canFailover, canPlannedFailover, postFailoverRedundancy, postPlannedFailoverRedundancy, )
+        o = new(status, lastSyncTime, canFailover, canPlannedFailover, postFailoverRedundancy, postPlannedFailoverRedundancy, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type GeoReplicationStats
 
-const _property_types_GeoReplicationStats = Dict{Symbol,String}(Symbol("status")=>"String", Symbol("lastSyncTime")=>"ZonedDateTime", Symbol("canFailover")=>"Bool", )
+const _property_types_GeoReplicationStats = Dict{Symbol,String}(Symbol("status")=>"String", Symbol("lastSyncTime")=>"ZonedDateTime", Symbol("canFailover")=>"Bool", Symbol("canPlannedFailover")=>"Bool", Symbol("postFailoverRedundancy")=>"String", Symbol("postPlannedFailoverRedundancy")=>"String", )
 OpenAPI.property_type(::Type{ GeoReplicationStats }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_GeoReplicationStats[name]))}
 
-function check_required(o::GeoReplicationStats)
+function OpenAPI.check_required(o::GeoReplicationStats)
     true
 end
 
+function OpenAPI.validate_properties(o::GeoReplicationStats)
+    OpenAPI.validate_property(GeoReplicationStats, Symbol("status"), o.status)
+    OpenAPI.validate_property(GeoReplicationStats, Symbol("lastSyncTime"), o.lastSyncTime)
+    OpenAPI.validate_property(GeoReplicationStats, Symbol("canFailover"), o.canFailover)
+    OpenAPI.validate_property(GeoReplicationStats, Symbol("canPlannedFailover"), o.canPlannedFailover)
+    OpenAPI.validate_property(GeoReplicationStats, Symbol("postFailoverRedundancy"), o.postFailoverRedundancy)
+    OpenAPI.validate_property(GeoReplicationStats, Symbol("postPlannedFailoverRedundancy"), o.postPlannedFailoverRedundancy)
+end
+
 function OpenAPI.validate_property(::Type{ GeoReplicationStats }, name::Symbol, val)
+
     if name === Symbol("status")
         OpenAPI.validate_param(name, "GeoReplicationStats", :enum, val, ["Live", "Bootstrap", "Unavailable"])
     end
+
+
     if name === Symbol("lastSyncTime")
         OpenAPI.validate_param(name, "GeoReplicationStats", :format, val, "date-time")
     end
+
+
+
+    if name === Symbol("postFailoverRedundancy")
+        OpenAPI.validate_param(name, "GeoReplicationStats", :enum, val, ["Standard_LRS", "Standard_ZRS"])
+    end
+
+
+    if name === Symbol("postPlannedFailoverRedundancy")
+        OpenAPI.validate_param(name, "GeoReplicationStats", :enum, val, ["Standard_GRS", "Standard_GZRS", "Standard_RAGRS", "Standard_RAGZRS"])
+    end
+
 end

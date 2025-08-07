@@ -23,13 +23,13 @@ Creates or updates a Express Route Circuit Connection in the specified express r
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ExpressRouteCircuitConnectionsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**circuit_name** | **String**| The name of the express route circuit. | [default to nothing]
-**peering_name** | **String**| The name of the peering. | [default to nothing]
-**connection_name** | **String**| The name of the express route circuit connection. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**express_route_circuit_connection_parameters** | [**ExpressRouteCircuitConnection**](ExpressRouteCircuitConnection.md)| Parameters supplied to the create or update express route circuit connection operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**circuit_name** | **String** | The name of the express route circuit. |
+**peering_name** | **String** | The name of the peering. |
+**connection_name** | **String** | The name of the express route circuit connection. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**express_route_circuit_connection_parameters** | [**ExpressRouteCircuitConnection**](ExpressRouteCircuitConnection.md) | Parameters supplied to the create or update express route circuit connection operation. |
 
 ### Return type
 
@@ -59,12 +59,12 @@ Deletes the specified Express Route Circuit Connection from the specified expres
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ExpressRouteCircuitConnectionsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**circuit_name** | **String**| The name of the express route circuit. | [default to nothing]
-**peering_name** | **String**| The name of the peering. | [default to nothing]
-**connection_name** | **String**| The name of the express route circuit connection. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**circuit_name** | **String** | The name of the express route circuit. |
+**peering_name** | **String** | The name of the peering. |
+**connection_name** | **String** | The name of the express route circuit connection. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -94,12 +94,12 @@ Gets the specified Express Route Circuit Connection from the specified express r
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ExpressRouteCircuitConnectionsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**circuit_name** | **String**| The name of the express route circuit. | [default to nothing]
-**peering_name** | **String**| The name of the peering. | [default to nothing]
-**connection_name** | **String**| The name of the express route circuit connection. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**circuit_name** | **String** | The name of the express route circuit. |
+**peering_name** | **String** | The name of the peering. |
+**connection_name** | **String** | The name of the express route circuit connection. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -129,11 +129,11 @@ Gets all global reach connections associated with a private peering in an expres
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ExpressRouteCircuitConnectionsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**circuit_name** | **String**| The name of the circuit. | [default to nothing]
-**peering_name** | **String**| The name of the peering. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**circuit_name** | **String** | The name of the circuit. |
+**peering_name** | **String** | The name of the peering. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 

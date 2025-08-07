@@ -15,17 +15,23 @@ Base.@kwdef mutable struct DiskEncryptionSetParameters <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
 
     function DiskEncryptionSetParameters(id, )
-        OpenAPI.validate_property(DiskEncryptionSetParameters, Symbol("id"), id)
-        return new(id, )
+        o = new(id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type DiskEncryptionSetParameters
 
 const _property_types_DiskEncryptionSetParameters = Dict{Symbol,String}(Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ DiskEncryptionSetParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DiskEncryptionSetParameters[name]))}
 
-function check_required(o::DiskEncryptionSetParameters)
+function OpenAPI.check_required(o::DiskEncryptionSetParameters)
     true
 end
 
+function OpenAPI.validate_properties(o::DiskEncryptionSetParameters)
+    OpenAPI.validate_property(DiskEncryptionSetParameters, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ DiskEncryptionSetParameters }, name::Symbol, val)
+
 end

@@ -27,19 +27,16 @@ Base.@kwdef mutable struct NetworkConfigurationDiagnosticProfile <: OpenAPI.APIM
     destinationPort::Union{Nothing, String} = nothing
 
     function NetworkConfigurationDiagnosticProfile(direction, protocol, source, destination, destinationPort, )
-        OpenAPI.validate_property(NetworkConfigurationDiagnosticProfile, Symbol("direction"), direction)
-        OpenAPI.validate_property(NetworkConfigurationDiagnosticProfile, Symbol("protocol"), protocol)
-        OpenAPI.validate_property(NetworkConfigurationDiagnosticProfile, Symbol("source"), source)
-        OpenAPI.validate_property(NetworkConfigurationDiagnosticProfile, Symbol("destination"), destination)
-        OpenAPI.validate_property(NetworkConfigurationDiagnosticProfile, Symbol("destinationPort"), destinationPort)
-        return new(direction, protocol, source, destination, destinationPort, )
+        o = new(direction, protocol, source, destination, destinationPort, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type NetworkConfigurationDiagnosticProfile
 
 const _property_types_NetworkConfigurationDiagnosticProfile = Dict{Symbol,String}(Symbol("direction")=>"Direction", Symbol("protocol")=>"String", Symbol("source")=>"String", Symbol("destination")=>"String", Symbol("destinationPort")=>"String", )
 OpenAPI.property_type(::Type{ NetworkConfigurationDiagnosticProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkConfigurationDiagnosticProfile[name]))}
 
-function check_required(o::NetworkConfigurationDiagnosticProfile)
+function OpenAPI.check_required(o::NetworkConfigurationDiagnosticProfile)
     o.direction === nothing && (return false)
     o.protocol === nothing && (return false)
     o.source === nothing && (return false)
@@ -48,5 +45,18 @@ function check_required(o::NetworkConfigurationDiagnosticProfile)
     true
 end
 
+function OpenAPI.validate_properties(o::NetworkConfigurationDiagnosticProfile)
+    OpenAPI.validate_property(NetworkConfigurationDiagnosticProfile, Symbol("direction"), o.direction)
+    OpenAPI.validate_property(NetworkConfigurationDiagnosticProfile, Symbol("protocol"), o.protocol)
+    OpenAPI.validate_property(NetworkConfigurationDiagnosticProfile, Symbol("source"), o.source)
+    OpenAPI.validate_property(NetworkConfigurationDiagnosticProfile, Symbol("destination"), o.destination)
+    OpenAPI.validate_property(NetworkConfigurationDiagnosticProfile, Symbol("destinationPort"), o.destinationPort)
+end
+
 function OpenAPI.validate_property(::Type{ NetworkConfigurationDiagnosticProfile }, name::Symbol, val)
+
+
+
+
+
 end

@@ -18,19 +18,26 @@ Base.@kwdef mutable struct ProximityPlacementGroupListResult <: OpenAPI.APIModel
     nextLink::Union{Nothing, String} = nothing
 
     function ProximityPlacementGroupListResult(value, nextLink, )
-        OpenAPI.validate_property(ProximityPlacementGroupListResult, Symbol("value"), value)
-        OpenAPI.validate_property(ProximityPlacementGroupListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ProximityPlacementGroupListResult
 
 const _property_types_ProximityPlacementGroupListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{ProximityPlacementGroup}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ ProximityPlacementGroupListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ProximityPlacementGroupListResult[name]))}
 
-function check_required(o::ProximityPlacementGroupListResult)
+function OpenAPI.check_required(o::ProximityPlacementGroupListResult)
     o.value === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ProximityPlacementGroupListResult)
+    OpenAPI.validate_property(ProximityPlacementGroupListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(ProximityPlacementGroupListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ ProximityPlacementGroupListResult }, name::Symbol, val)
+
+
 end

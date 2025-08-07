@@ -21,19 +21,27 @@ Base.@kwdef mutable struct NetworkInterfaceIPConfigurationPrivateLinkConnectionP
     fqdns::Union{Nothing, Vector{String}} = nothing
 
     function NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties(groupId, requiredMemberName, fqdns, )
-        OpenAPI.validate_property(NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties, Symbol("groupId"), groupId)
-        OpenAPI.validate_property(NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties, Symbol("requiredMemberName"), requiredMemberName)
-        OpenAPI.validate_property(NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties, Symbol("fqdns"), fqdns)
-        return new(groupId, requiredMemberName, fqdns, )
+        o = new(groupId, requiredMemberName, fqdns, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties
 
 const _property_types_NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties = Dict{Symbol,String}(Symbol("groupId")=>"String", Symbol("requiredMemberName")=>"String", Symbol("fqdns")=>"Vector{String}", )
 OpenAPI.property_type(::Type{ NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties[name]))}
 
-function check_required(o::NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties)
+function OpenAPI.check_required(o::NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties)
+    OpenAPI.validate_property(NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties, Symbol("groupId"), o.groupId)
+    OpenAPI.validate_property(NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties, Symbol("requiredMemberName"), o.requiredMemberName)
+    OpenAPI.validate_property(NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties, Symbol("fqdns"), o.fqdns)
+end
+
 function OpenAPI.validate_property(::Type{ NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties }, name::Symbol, val)
+
+
+
 end

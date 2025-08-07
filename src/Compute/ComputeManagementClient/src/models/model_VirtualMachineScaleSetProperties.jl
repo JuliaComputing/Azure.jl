@@ -20,6 +20,9 @@ Describes the properties of a Virtual Machine Scale Set.
         hostGroup=nothing,
         additionalCapabilities=nothing,
         scaleInPolicy=nothing,
+        orchestrationMode=nothing,
+        spotRestorePolicy=nothing,
+        timeCreated=nothing,
     )
 
     - upgradePolicy::UpgradePolicy
@@ -30,12 +33,15 @@ Describes the properties of a Virtual Machine Scale Set.
     - doNotRunExtensionsOnOverprovisionedVMs::Bool : When Overprovision is enabled, extensions are launched only on the requested number of VMs which are finally kept. This property will hence ensure that the extensions do not run on the extra overprovisioned VMs.
     - uniqueId::String : Specifies the ID which uniquely identifies a Virtual Machine Scale Set.
     - singlePlacementGroup::Bool : When true this limits the scale set to a single placement group, of max size 100 virtual machines. NOTE: If singlePlacementGroup is true, it may be modified to false. However, if singlePlacementGroup is false, it may not be modified to true.
-    - zoneBalance::Bool : Whether to force strictly even Virtual Machine distribution cross x-zones in case there is zone outage.
+    - zoneBalance::Bool : Whether to force strictly even Virtual Machine distribution cross x-zones in case there is zone outage. zoneBalance property can only be set if the zones property of the scale set contains more than one zone. If there are no zones or only one zone specified, then zoneBalance property should not be set.
     - platformFaultDomainCount::Int64 : Fault Domain count for each placement group.
     - proximityPlacementGroup::SubResource
     - hostGroup::SubResource
     - additionalCapabilities::AdditionalCapabilities
     - scaleInPolicy::ScaleInPolicy
+    - orchestrationMode::OrchestrationMode
+    - spotRestorePolicy::SpotRestorePolicy
+    - timeCreated::ZonedDateTime : Specifies the time at which the Virtual Machine Scale Set resource was created.&lt;br&gt;&lt;br&gt;Minimum api-version: 2021-11-01.
 """
 Base.@kwdef mutable struct VirtualMachineScaleSetProperties <: OpenAPI.APIModel
     upgradePolicy = nothing # spec type: Union{ Nothing, UpgradePolicy }
@@ -52,35 +58,66 @@ Base.@kwdef mutable struct VirtualMachineScaleSetProperties <: OpenAPI.APIModel
     hostGroup = nothing # spec type: Union{ Nothing, SubResource }
     additionalCapabilities = nothing # spec type: Union{ Nothing, AdditionalCapabilities }
     scaleInPolicy = nothing # spec type: Union{ Nothing, ScaleInPolicy }
+    orchestrationMode = nothing # spec type: Union{ Nothing, OrchestrationMode }
+    spotRestorePolicy = nothing # spec type: Union{ Nothing, SpotRestorePolicy }
+    timeCreated::Union{Nothing, ZonedDateTime} = nothing
 
-    function VirtualMachineScaleSetProperties(upgradePolicy, automaticRepairsPolicy, virtualMachineProfile, provisioningState, overprovision, doNotRunExtensionsOnOverprovisionedVMs, uniqueId, singlePlacementGroup, zoneBalance, platformFaultDomainCount, proximityPlacementGroup, hostGroup, additionalCapabilities, scaleInPolicy, )
-        OpenAPI.validate_property(VirtualMachineScaleSetProperties, Symbol("upgradePolicy"), upgradePolicy)
-        OpenAPI.validate_property(VirtualMachineScaleSetProperties, Symbol("automaticRepairsPolicy"), automaticRepairsPolicy)
-        OpenAPI.validate_property(VirtualMachineScaleSetProperties, Symbol("virtualMachineProfile"), virtualMachineProfile)
-        OpenAPI.validate_property(VirtualMachineScaleSetProperties, Symbol("provisioningState"), provisioningState)
-        OpenAPI.validate_property(VirtualMachineScaleSetProperties, Symbol("overprovision"), overprovision)
-        OpenAPI.validate_property(VirtualMachineScaleSetProperties, Symbol("doNotRunExtensionsOnOverprovisionedVMs"), doNotRunExtensionsOnOverprovisionedVMs)
-        OpenAPI.validate_property(VirtualMachineScaleSetProperties, Symbol("uniqueId"), uniqueId)
-        OpenAPI.validate_property(VirtualMachineScaleSetProperties, Symbol("singlePlacementGroup"), singlePlacementGroup)
-        OpenAPI.validate_property(VirtualMachineScaleSetProperties, Symbol("zoneBalance"), zoneBalance)
-        OpenAPI.validate_property(VirtualMachineScaleSetProperties, Symbol("platformFaultDomainCount"), platformFaultDomainCount)
-        OpenAPI.validate_property(VirtualMachineScaleSetProperties, Symbol("proximityPlacementGroup"), proximityPlacementGroup)
-        OpenAPI.validate_property(VirtualMachineScaleSetProperties, Symbol("hostGroup"), hostGroup)
-        OpenAPI.validate_property(VirtualMachineScaleSetProperties, Symbol("additionalCapabilities"), additionalCapabilities)
-        OpenAPI.validate_property(VirtualMachineScaleSetProperties, Symbol("scaleInPolicy"), scaleInPolicy)
-        return new(upgradePolicy, automaticRepairsPolicy, virtualMachineProfile, provisioningState, overprovision, doNotRunExtensionsOnOverprovisionedVMs, uniqueId, singlePlacementGroup, zoneBalance, platformFaultDomainCount, proximityPlacementGroup, hostGroup, additionalCapabilities, scaleInPolicy, )
+    function VirtualMachineScaleSetProperties(upgradePolicy, automaticRepairsPolicy, virtualMachineProfile, provisioningState, overprovision, doNotRunExtensionsOnOverprovisionedVMs, uniqueId, singlePlacementGroup, zoneBalance, platformFaultDomainCount, proximityPlacementGroup, hostGroup, additionalCapabilities, scaleInPolicy, orchestrationMode, spotRestorePolicy, timeCreated, )
+        o = new(upgradePolicy, automaticRepairsPolicy, virtualMachineProfile, provisioningState, overprovision, doNotRunExtensionsOnOverprovisionedVMs, uniqueId, singlePlacementGroup, zoneBalance, platformFaultDomainCount, proximityPlacementGroup, hostGroup, additionalCapabilities, scaleInPolicy, orchestrationMode, spotRestorePolicy, timeCreated, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetProperties
 
-const _property_types_VirtualMachineScaleSetProperties = Dict{Symbol,String}(Symbol("upgradePolicy")=>"UpgradePolicy", Symbol("automaticRepairsPolicy")=>"AutomaticRepairsPolicy", Symbol("virtualMachineProfile")=>"VirtualMachineScaleSetVMProfile", Symbol("provisioningState")=>"String", Symbol("overprovision")=>"Bool", Symbol("doNotRunExtensionsOnOverprovisionedVMs")=>"Bool", Symbol("uniqueId")=>"String", Symbol("singlePlacementGroup")=>"Bool", Symbol("zoneBalance")=>"Bool", Symbol("platformFaultDomainCount")=>"Int64", Symbol("proximityPlacementGroup")=>"SubResource", Symbol("hostGroup")=>"SubResource", Symbol("additionalCapabilities")=>"AdditionalCapabilities", Symbol("scaleInPolicy")=>"ScaleInPolicy", )
+const _property_types_VirtualMachineScaleSetProperties = Dict{Symbol,String}(Symbol("upgradePolicy")=>"UpgradePolicy", Symbol("automaticRepairsPolicy")=>"AutomaticRepairsPolicy", Symbol("virtualMachineProfile")=>"VirtualMachineScaleSetVMProfile", Symbol("provisioningState")=>"String", Symbol("overprovision")=>"Bool", Symbol("doNotRunExtensionsOnOverprovisionedVMs")=>"Bool", Symbol("uniqueId")=>"String", Symbol("singlePlacementGroup")=>"Bool", Symbol("zoneBalance")=>"Bool", Symbol("platformFaultDomainCount")=>"Int64", Symbol("proximityPlacementGroup")=>"SubResource", Symbol("hostGroup")=>"SubResource", Symbol("additionalCapabilities")=>"AdditionalCapabilities", Symbol("scaleInPolicy")=>"ScaleInPolicy", Symbol("orchestrationMode")=>"OrchestrationMode", Symbol("spotRestorePolicy")=>"SpotRestorePolicy", Symbol("timeCreated")=>"ZonedDateTime", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetProperties[name]))}
 
-function check_required(o::VirtualMachineScaleSetProperties)
+function OpenAPI.check_required(o::VirtualMachineScaleSetProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetProperties)
+    OpenAPI.validate_property(VirtualMachineScaleSetProperties, Symbol("upgradePolicy"), o.upgradePolicy)
+    OpenAPI.validate_property(VirtualMachineScaleSetProperties, Symbol("automaticRepairsPolicy"), o.automaticRepairsPolicy)
+    OpenAPI.validate_property(VirtualMachineScaleSetProperties, Symbol("virtualMachineProfile"), o.virtualMachineProfile)
+    OpenAPI.validate_property(VirtualMachineScaleSetProperties, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(VirtualMachineScaleSetProperties, Symbol("overprovision"), o.overprovision)
+    OpenAPI.validate_property(VirtualMachineScaleSetProperties, Symbol("doNotRunExtensionsOnOverprovisionedVMs"), o.doNotRunExtensionsOnOverprovisionedVMs)
+    OpenAPI.validate_property(VirtualMachineScaleSetProperties, Symbol("uniqueId"), o.uniqueId)
+    OpenAPI.validate_property(VirtualMachineScaleSetProperties, Symbol("singlePlacementGroup"), o.singlePlacementGroup)
+    OpenAPI.validate_property(VirtualMachineScaleSetProperties, Symbol("zoneBalance"), o.zoneBalance)
+    OpenAPI.validate_property(VirtualMachineScaleSetProperties, Symbol("platformFaultDomainCount"), o.platformFaultDomainCount)
+    OpenAPI.validate_property(VirtualMachineScaleSetProperties, Symbol("proximityPlacementGroup"), o.proximityPlacementGroup)
+    OpenAPI.validate_property(VirtualMachineScaleSetProperties, Symbol("hostGroup"), o.hostGroup)
+    OpenAPI.validate_property(VirtualMachineScaleSetProperties, Symbol("additionalCapabilities"), o.additionalCapabilities)
+    OpenAPI.validate_property(VirtualMachineScaleSetProperties, Symbol("scaleInPolicy"), o.scaleInPolicy)
+    OpenAPI.validate_property(VirtualMachineScaleSetProperties, Symbol("orchestrationMode"), o.orchestrationMode)
+    OpenAPI.validate_property(VirtualMachineScaleSetProperties, Symbol("spotRestorePolicy"), o.spotRestorePolicy)
+    OpenAPI.validate_property(VirtualMachineScaleSetProperties, Symbol("timeCreated"), o.timeCreated)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetProperties }, name::Symbol, val)
+
+
+
+
+
+
+
+
+
+
     if name === Symbol("platformFaultDomainCount")
         OpenAPI.validate_param(name, "VirtualMachineScaleSetProperties", :format, val, "int32")
+    end
+
+
+
+
+
+
+
+    if name === Symbol("timeCreated")
+        OpenAPI.validate_param(name, "VirtualMachineScaleSetProperties", :format, val, "date-time")
     end
 end

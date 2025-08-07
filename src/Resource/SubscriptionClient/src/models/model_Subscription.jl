@@ -17,7 +17,7 @@ Subscription information.
         tags=nothing,
     )
 
-    - id::String : The fully qualified ID for the subscription. For example, /subscriptions/00000000-0000-0000-0000-000000000000.
+    - id::String : The fully qualified ID for the subscription. For example, /subscriptions/8d65815f-a5b6-402f-9298-045155da7d74
     - subscriptionId::String : The subscription ID.
     - displayName::String : The subscription display name.
     - tenantId::String : The subscription tenant ID.
@@ -39,28 +39,43 @@ Base.@kwdef mutable struct Subscription <: OpenAPI.APIModel
     tags::Union{Nothing, Dict{String, String}} = nothing
 
     function Subscription(id, subscriptionId, displayName, tenantId, state, subscriptionPolicies, authorizationSource, managedByTenants, tags, )
-        OpenAPI.validate_property(Subscription, Symbol("id"), id)
-        OpenAPI.validate_property(Subscription, Symbol("subscriptionId"), subscriptionId)
-        OpenAPI.validate_property(Subscription, Symbol("displayName"), displayName)
-        OpenAPI.validate_property(Subscription, Symbol("tenantId"), tenantId)
-        OpenAPI.validate_property(Subscription, Symbol("state"), state)
-        OpenAPI.validate_property(Subscription, Symbol("subscriptionPolicies"), subscriptionPolicies)
-        OpenAPI.validate_property(Subscription, Symbol("authorizationSource"), authorizationSource)
-        OpenAPI.validate_property(Subscription, Symbol("managedByTenants"), managedByTenants)
-        OpenAPI.validate_property(Subscription, Symbol("tags"), tags)
-        return new(id, subscriptionId, displayName, tenantId, state, subscriptionPolicies, authorizationSource, managedByTenants, tags, )
+        o = new(id, subscriptionId, displayName, tenantId, state, subscriptionPolicies, authorizationSource, managedByTenants, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type Subscription
 
 const _property_types_Subscription = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("subscriptionId")=>"String", Symbol("displayName")=>"String", Symbol("tenantId")=>"String", Symbol("state")=>"String", Symbol("subscriptionPolicies")=>"SubscriptionPolicies", Symbol("authorizationSource")=>"String", Symbol("managedByTenants")=>"Vector{ManagedByTenant}", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ Subscription }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Subscription[name]))}
 
-function check_required(o::Subscription)
+function OpenAPI.check_required(o::Subscription)
     true
 end
 
+function OpenAPI.validate_properties(o::Subscription)
+    OpenAPI.validate_property(Subscription, Symbol("id"), o.id)
+    OpenAPI.validate_property(Subscription, Symbol("subscriptionId"), o.subscriptionId)
+    OpenAPI.validate_property(Subscription, Symbol("displayName"), o.displayName)
+    OpenAPI.validate_property(Subscription, Symbol("tenantId"), o.tenantId)
+    OpenAPI.validate_property(Subscription, Symbol("state"), o.state)
+    OpenAPI.validate_property(Subscription, Symbol("subscriptionPolicies"), o.subscriptionPolicies)
+    OpenAPI.validate_property(Subscription, Symbol("authorizationSource"), o.authorizationSource)
+    OpenAPI.validate_property(Subscription, Symbol("managedByTenants"), o.managedByTenants)
+    OpenAPI.validate_property(Subscription, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ Subscription }, name::Symbol, val)
+
+
+
+
+
     if name === Symbol("state")
         OpenAPI.validate_param(name, "Subscription", :enum, val, ["Enabled", "Warned", "PastDue", "Disabled", "Deleted"])
     end
+
+
+
+
+
 end

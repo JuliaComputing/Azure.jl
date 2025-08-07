@@ -24,20 +24,29 @@ Base.@kwdef mutable struct EvaluatedNetworkSecurityGroup <: OpenAPI.APIModel
     rulesEvaluationResult::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{NetworkSecurityRulesEvaluationResult} }
 
     function EvaluatedNetworkSecurityGroup(networkSecurityGroupId, appliedTo, matchedRule, rulesEvaluationResult, )
-        OpenAPI.validate_property(EvaluatedNetworkSecurityGroup, Symbol("networkSecurityGroupId"), networkSecurityGroupId)
-        OpenAPI.validate_property(EvaluatedNetworkSecurityGroup, Symbol("appliedTo"), appliedTo)
-        OpenAPI.validate_property(EvaluatedNetworkSecurityGroup, Symbol("matchedRule"), matchedRule)
-        OpenAPI.validate_property(EvaluatedNetworkSecurityGroup, Symbol("rulesEvaluationResult"), rulesEvaluationResult)
-        return new(networkSecurityGroupId, appliedTo, matchedRule, rulesEvaluationResult, )
+        o = new(networkSecurityGroupId, appliedTo, matchedRule, rulesEvaluationResult, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type EvaluatedNetworkSecurityGroup
 
 const _property_types_EvaluatedNetworkSecurityGroup = Dict{Symbol,String}(Symbol("networkSecurityGroupId")=>"String", Symbol("appliedTo")=>"String", Symbol("matchedRule")=>"MatchedRule", Symbol("rulesEvaluationResult")=>"Vector{NetworkSecurityRulesEvaluationResult}", )
 OpenAPI.property_type(::Type{ EvaluatedNetworkSecurityGroup }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_EvaluatedNetworkSecurityGroup[name]))}
 
-function check_required(o::EvaluatedNetworkSecurityGroup)
+function OpenAPI.check_required(o::EvaluatedNetworkSecurityGroup)
     true
 end
 
+function OpenAPI.validate_properties(o::EvaluatedNetworkSecurityGroup)
+    OpenAPI.validate_property(EvaluatedNetworkSecurityGroup, Symbol("networkSecurityGroupId"), o.networkSecurityGroupId)
+    OpenAPI.validate_property(EvaluatedNetworkSecurityGroup, Symbol("appliedTo"), o.appliedTo)
+    OpenAPI.validate_property(EvaluatedNetworkSecurityGroup, Symbol("matchedRule"), o.matchedRule)
+    OpenAPI.validate_property(EvaluatedNetworkSecurityGroup, Symbol("rulesEvaluationResult"), o.rulesEvaluationResult)
+end
+
 function OpenAPI.validate_property(::Type{ EvaluatedNetworkSecurityGroup }, name::Symbol, val)
+
+
+
+
 end

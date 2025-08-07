@@ -24,12 +24,12 @@ Creates or updates the specified trusted identity provider. During update, the t
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **TrustedIdProvidersApi** | API context | 
-**subscription_id** | **String**| Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**resource_group_name** | **String**| The name of the Azure resource group. | [default to nothing]
-**account_name** | **String**| The name of the Data Lake Store account. | [default to nothing]
-**trusted_id_provider_name** | **String**| The name of the trusted identity provider. This is used for differentiation of providers in the account. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**parameters** | [**CreateOrUpdateTrustedIdProviderParameters**](CreateOrUpdateTrustedIdProviderParameters.md)| Parameters supplied to create or replace the trusted identity provider. | 
+**subscription_id** | **String** | Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**resource_group_name** | **String** | The name of the Azure resource group. |
+**account_name** | **String** | The name of the Data Lake Store account. |
+**trusted_id_provider_name** | **String** | The name of the trusted identity provider. This is used for differentiation of providers in the account. |
+**api_version** | **String** | Client Api Version. |
+**parameters** | [**CreateOrUpdateTrustedIdProviderParameters**](CreateOrUpdateTrustedIdProviderParameters.md) | Parameters supplied to create or replace the trusted identity provider. |
 
 ### Return type
 
@@ -59,11 +59,11 @@ Deletes the specified trusted identity provider from the specified Data Lake Sto
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **TrustedIdProvidersApi** | API context | 
-**subscription_id** | **String**| Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**resource_group_name** | **String**| The name of the Azure resource group. | [default to nothing]
-**account_name** | **String**| The name of the Data Lake Store account. | [default to nothing]
-**trusted_id_provider_name** | **String**| The name of the trusted identity provider to delete. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
+**subscription_id** | **String** | Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**resource_group_name** | **String** | The name of the Azure resource group. |
+**account_name** | **String** | The name of the Data Lake Store account. |
+**trusted_id_provider_name** | **String** | The name of the trusted identity provider to delete. |
+**api_version** | **String** | Client Api Version. |
 
 ### Return type
 
@@ -93,11 +93,11 @@ Gets the specified Data Lake Store trusted identity provider.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **TrustedIdProvidersApi** | API context | 
-**subscription_id** | **String**| Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**resource_group_name** | **String**| The name of the Azure resource group. | [default to nothing]
-**account_name** | **String**| The name of the Data Lake Store account. | [default to nothing]
-**trusted_id_provider_name** | **String**| The name of the trusted identity provider to retrieve. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
+**subscription_id** | **String** | Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**resource_group_name** | **String** | The name of the Azure resource group. |
+**account_name** | **String** | The name of the Data Lake Store account. |
+**trusted_id_provider_name** | **String** | The name of the trusted identity provider to retrieve. |
+**api_version** | **String** | Client Api Version. |
 
 ### Return type
 
@@ -127,10 +127,10 @@ Lists the Data Lake Store trusted identity providers within the specified Data L
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **TrustedIdProvidersApi** | API context | 
-**subscription_id** | **String**| Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**resource_group_name** | **String**| The name of the Azure resource group. | [default to nothing]
-**account_name** | **String**| The name of the Data Lake Store account. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
+**subscription_id** | **String** | Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**resource_group_name** | **String** | The name of the Azure resource group. |
+**account_name** | **String** | The name of the Data Lake Store account. |
+**api_version** | **String** | Client Api Version. |
 
 ### Return type
 
@@ -160,17 +160,17 @@ Updates the specified trusted identity provider.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **TrustedIdProvidersApi** | API context | 
-**subscription_id** | **String**| Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**resource_group_name** | **String**| The name of the Azure resource group. | [default to nothing]
-**account_name** | **String**| The name of the Data Lake Store account. | [default to nothing]
-**trusted_id_provider_name** | **String**| The name of the trusted identity provider. This is used for differentiation of providers in the account. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
+**subscription_id** | **String** | Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**resource_group_name** | **String** | The name of the Azure resource group. |
+**account_name** | **String** | The name of the Data Lake Store account. |
+**trusted_id_provider_name** | **String** | The name of the trusted identity provider. This is used for differentiation of providers in the account. |
+**api_version** | **String** | Client Api Version. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **parameters** | [**UpdateTrustedIdProviderParameters**](UpdateTrustedIdProviderParameters.md)| Parameters supplied to update the trusted identity provider. | 
+ **parameters** | [**UpdateTrustedIdProviderParameters**](UpdateTrustedIdProviderParameters.md) | Parameters supplied to update the trusted identity provider. | 
 
 ### Return type
 

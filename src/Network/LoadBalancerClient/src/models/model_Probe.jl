@@ -27,21 +27,31 @@ Base.@kwdef mutable struct Probe <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
 
     function Probe(properties, name, etag, type, id, )
-        OpenAPI.validate_property(Probe, Symbol("properties"), properties)
-        OpenAPI.validate_property(Probe, Symbol("name"), name)
-        OpenAPI.validate_property(Probe, Symbol("etag"), etag)
-        OpenAPI.validate_property(Probe, Symbol("type"), type)
-        OpenAPI.validate_property(Probe, Symbol("id"), id)
-        return new(properties, name, etag, type, id, )
+        o = new(properties, name, etag, type, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type Probe
 
 const _property_types_Probe = Dict{Symbol,String}(Symbol("properties")=>"ProbePropertiesFormat", Symbol("name")=>"String", Symbol("etag")=>"String", Symbol("type")=>"String", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ Probe }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Probe[name]))}
 
-function check_required(o::Probe)
+function OpenAPI.check_required(o::Probe)
     true
 end
 
+function OpenAPI.validate_properties(o::Probe)
+    OpenAPI.validate_property(Probe, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(Probe, Symbol("name"), o.name)
+    OpenAPI.validate_property(Probe, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(Probe, Symbol("type"), o.type)
+    OpenAPI.validate_property(Probe, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ Probe }, name::Symbol, val)
+
+
+
+
+
 end

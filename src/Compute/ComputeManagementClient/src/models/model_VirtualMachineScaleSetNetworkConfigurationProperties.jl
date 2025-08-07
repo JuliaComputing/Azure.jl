@@ -8,45 +8,70 @@ Describes a virtual machine scale set network profile&#39;s IP configuration.
     VirtualMachineScaleSetNetworkConfigurationProperties(;
         primary=nothing,
         enableAcceleratedNetworking=nothing,
+        enableFpga=nothing,
         networkSecurityGroup=nothing,
         dnsSettings=nothing,
         ipConfigurations=nothing,
         enableIPForwarding=nothing,
+        deleteOption=nothing,
     )
 
     - primary::Bool : Specifies the primary network interface in case the virtual machine has more than 1 network interface.
     - enableAcceleratedNetworking::Bool : Specifies whether the network interface is accelerated networking-enabled.
+    - enableFpga::Bool : Specifies whether the network interface is FPGA networking-enabled.
     - networkSecurityGroup::SubResource
     - dnsSettings::VirtualMachineScaleSetNetworkConfigurationDnsSettings
     - ipConfigurations::Vector{VirtualMachineScaleSetIPConfiguration} : Specifies the IP configurations of the network interface.
     - enableIPForwarding::Bool : Whether IP forwarding enabled on this NIC.
+    - deleteOption::String : Specify what happens to the network interface when the VM is deleted
 """
 Base.@kwdef mutable struct VirtualMachineScaleSetNetworkConfigurationProperties <: OpenAPI.APIModel
     primary::Union{Nothing, Bool} = nothing
     enableAcceleratedNetworking::Union{Nothing, Bool} = nothing
+    enableFpga::Union{Nothing, Bool} = nothing
     networkSecurityGroup = nothing # spec type: Union{ Nothing, SubResource }
     dnsSettings = nothing # spec type: Union{ Nothing, VirtualMachineScaleSetNetworkConfigurationDnsSettings }
     ipConfigurations::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{VirtualMachineScaleSetIPConfiguration} }
     enableIPForwarding::Union{Nothing, Bool} = nothing
+    deleteOption::Union{Nothing, String} = nothing
 
-    function VirtualMachineScaleSetNetworkConfigurationProperties(primary, enableAcceleratedNetworking, networkSecurityGroup, dnsSettings, ipConfigurations, enableIPForwarding, )
-        OpenAPI.validate_property(VirtualMachineScaleSetNetworkConfigurationProperties, Symbol("primary"), primary)
-        OpenAPI.validate_property(VirtualMachineScaleSetNetworkConfigurationProperties, Symbol("enableAcceleratedNetworking"), enableAcceleratedNetworking)
-        OpenAPI.validate_property(VirtualMachineScaleSetNetworkConfigurationProperties, Symbol("networkSecurityGroup"), networkSecurityGroup)
-        OpenAPI.validate_property(VirtualMachineScaleSetNetworkConfigurationProperties, Symbol("dnsSettings"), dnsSettings)
-        OpenAPI.validate_property(VirtualMachineScaleSetNetworkConfigurationProperties, Symbol("ipConfigurations"), ipConfigurations)
-        OpenAPI.validate_property(VirtualMachineScaleSetNetworkConfigurationProperties, Symbol("enableIPForwarding"), enableIPForwarding)
-        return new(primary, enableAcceleratedNetworking, networkSecurityGroup, dnsSettings, ipConfigurations, enableIPForwarding, )
+    function VirtualMachineScaleSetNetworkConfigurationProperties(primary, enableAcceleratedNetworking, enableFpga, networkSecurityGroup, dnsSettings, ipConfigurations, enableIPForwarding, deleteOption, )
+        o = new(primary, enableAcceleratedNetworking, enableFpga, networkSecurityGroup, dnsSettings, ipConfigurations, enableIPForwarding, deleteOption, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetNetworkConfigurationProperties
 
-const _property_types_VirtualMachineScaleSetNetworkConfigurationProperties = Dict{Symbol,String}(Symbol("primary")=>"Bool", Symbol("enableAcceleratedNetworking")=>"Bool", Symbol("networkSecurityGroup")=>"SubResource", Symbol("dnsSettings")=>"VirtualMachineScaleSetNetworkConfigurationDnsSettings", Symbol("ipConfigurations")=>"Vector{VirtualMachineScaleSetIPConfiguration}", Symbol("enableIPForwarding")=>"Bool", )
+const _property_types_VirtualMachineScaleSetNetworkConfigurationProperties = Dict{Symbol,String}(Symbol("primary")=>"Bool", Symbol("enableAcceleratedNetworking")=>"Bool", Symbol("enableFpga")=>"Bool", Symbol("networkSecurityGroup")=>"SubResource", Symbol("dnsSettings")=>"VirtualMachineScaleSetNetworkConfigurationDnsSettings", Symbol("ipConfigurations")=>"Vector{VirtualMachineScaleSetIPConfiguration}", Symbol("enableIPForwarding")=>"Bool", Symbol("deleteOption")=>"String", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetNetworkConfigurationProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetNetworkConfigurationProperties[name]))}
 
-function check_required(o::VirtualMachineScaleSetNetworkConfigurationProperties)
+function OpenAPI.check_required(o::VirtualMachineScaleSetNetworkConfigurationProperties)
     o.ipConfigurations === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetNetworkConfigurationProperties)
+    OpenAPI.validate_property(VirtualMachineScaleSetNetworkConfigurationProperties, Symbol("primary"), o.primary)
+    OpenAPI.validate_property(VirtualMachineScaleSetNetworkConfigurationProperties, Symbol("enableAcceleratedNetworking"), o.enableAcceleratedNetworking)
+    OpenAPI.validate_property(VirtualMachineScaleSetNetworkConfigurationProperties, Symbol("enableFpga"), o.enableFpga)
+    OpenAPI.validate_property(VirtualMachineScaleSetNetworkConfigurationProperties, Symbol("networkSecurityGroup"), o.networkSecurityGroup)
+    OpenAPI.validate_property(VirtualMachineScaleSetNetworkConfigurationProperties, Symbol("dnsSettings"), o.dnsSettings)
+    OpenAPI.validate_property(VirtualMachineScaleSetNetworkConfigurationProperties, Symbol("ipConfigurations"), o.ipConfigurations)
+    OpenAPI.validate_property(VirtualMachineScaleSetNetworkConfigurationProperties, Symbol("enableIPForwarding"), o.enableIPForwarding)
+    OpenAPI.validate_property(VirtualMachineScaleSetNetworkConfigurationProperties, Symbol("deleteOption"), o.deleteOption)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetNetworkConfigurationProperties }, name::Symbol, val)
+
+
+
+
+
+
+
+
+    if name === Symbol("deleteOption")
+        OpenAPI.validate_param(name, "VirtualMachineScaleSetNetworkConfigurationProperties", :enum, val, ["Delete", "Detach"])
+    end
+
 end

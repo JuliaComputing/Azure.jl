@@ -39,38 +39,52 @@ Base.@kwdef mutable struct VirtualMachineScaleSetDataDisk <: OpenAPI.APIModel
     diskMBpsReadWrite::Union{Nothing, Int64} = nothing
 
     function VirtualMachineScaleSetDataDisk(name, lun, caching, writeAcceleratorEnabled, createOption, diskSizeGB, managedDisk, diskIOPSReadWrite, diskMBpsReadWrite, )
-        OpenAPI.validate_property(VirtualMachineScaleSetDataDisk, Symbol("name"), name)
-        OpenAPI.validate_property(VirtualMachineScaleSetDataDisk, Symbol("lun"), lun)
-        OpenAPI.validate_property(VirtualMachineScaleSetDataDisk, Symbol("caching"), caching)
-        OpenAPI.validate_property(VirtualMachineScaleSetDataDisk, Symbol("writeAcceleratorEnabled"), writeAcceleratorEnabled)
-        OpenAPI.validate_property(VirtualMachineScaleSetDataDisk, Symbol("createOption"), createOption)
-        OpenAPI.validate_property(VirtualMachineScaleSetDataDisk, Symbol("diskSizeGB"), diskSizeGB)
-        OpenAPI.validate_property(VirtualMachineScaleSetDataDisk, Symbol("managedDisk"), managedDisk)
-        OpenAPI.validate_property(VirtualMachineScaleSetDataDisk, Symbol("diskIOPSReadWrite"), diskIOPSReadWrite)
-        OpenAPI.validate_property(VirtualMachineScaleSetDataDisk, Symbol("diskMBpsReadWrite"), diskMBpsReadWrite)
-        return new(name, lun, caching, writeAcceleratorEnabled, createOption, diskSizeGB, managedDisk, diskIOPSReadWrite, diskMBpsReadWrite, )
+        o = new(name, lun, caching, writeAcceleratorEnabled, createOption, diskSizeGB, managedDisk, diskIOPSReadWrite, diskMBpsReadWrite, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetDataDisk
 
 const _property_types_VirtualMachineScaleSetDataDisk = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("lun")=>"Int64", Symbol("caching")=>"Caching", Symbol("writeAcceleratorEnabled")=>"Bool", Symbol("createOption")=>"CreateOption", Symbol("diskSizeGB")=>"Int64", Symbol("managedDisk")=>"VirtualMachineScaleSetManagedDiskParameters", Symbol("diskIOPSReadWrite")=>"Int64", Symbol("diskMBpsReadWrite")=>"Int64", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetDataDisk }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetDataDisk[name]))}
 
-function check_required(o::VirtualMachineScaleSetDataDisk)
+function OpenAPI.check_required(o::VirtualMachineScaleSetDataDisk)
     o.lun === nothing && (return false)
     o.createOption === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetDataDisk)
+    OpenAPI.validate_property(VirtualMachineScaleSetDataDisk, Symbol("name"), o.name)
+    OpenAPI.validate_property(VirtualMachineScaleSetDataDisk, Symbol("lun"), o.lun)
+    OpenAPI.validate_property(VirtualMachineScaleSetDataDisk, Symbol("caching"), o.caching)
+    OpenAPI.validate_property(VirtualMachineScaleSetDataDisk, Symbol("writeAcceleratorEnabled"), o.writeAcceleratorEnabled)
+    OpenAPI.validate_property(VirtualMachineScaleSetDataDisk, Symbol("createOption"), o.createOption)
+    OpenAPI.validate_property(VirtualMachineScaleSetDataDisk, Symbol("diskSizeGB"), o.diskSizeGB)
+    OpenAPI.validate_property(VirtualMachineScaleSetDataDisk, Symbol("managedDisk"), o.managedDisk)
+    OpenAPI.validate_property(VirtualMachineScaleSetDataDisk, Symbol("diskIOPSReadWrite"), o.diskIOPSReadWrite)
+    OpenAPI.validate_property(VirtualMachineScaleSetDataDisk, Symbol("diskMBpsReadWrite"), o.diskMBpsReadWrite)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetDataDisk }, name::Symbol, val)
+
+
     if name === Symbol("lun")
         OpenAPI.validate_param(name, "VirtualMachineScaleSetDataDisk", :format, val, "int32")
     end
+
+
+
+
     if name === Symbol("diskSizeGB")
         OpenAPI.validate_param(name, "VirtualMachineScaleSetDataDisk", :format, val, "int32")
     end
+
+
     if name === Symbol("diskIOPSReadWrite")
         OpenAPI.validate_param(name, "VirtualMachineScaleSetDataDisk", :format, val, "int64")
     end
+
     if name === Symbol("diskMBpsReadWrite")
         OpenAPI.validate_param(name, "VirtualMachineScaleSetDataDisk", :format, val, "int64")
     end

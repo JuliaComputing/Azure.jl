@@ -10,34 +10,48 @@ The policy definition.
         id=nothing,
         name=nothing,
         type=nothing,
+        systemData=nothing,
     )
 
     - properties::PolicyDefinitionProperties
     - id::String : The ID of the policy definition.
     - name::String : The name of the policy definition.
     - type::String : The type of the resource (Microsoft.Authorization/policyDefinitions).
+    - systemData::SystemData
 """
 Base.@kwdef mutable struct PolicyDefinition <: OpenAPI.APIModel
     properties = nothing # spec type: Union{ Nothing, PolicyDefinitionProperties }
     id::Union{Nothing, String} = nothing
     name::Union{Nothing, String} = nothing
     type::Union{Nothing, String} = nothing
+    systemData = nothing # spec type: Union{ Nothing, SystemData }
 
-    function PolicyDefinition(properties, id, name, type, )
-        OpenAPI.validate_property(PolicyDefinition, Symbol("properties"), properties)
-        OpenAPI.validate_property(PolicyDefinition, Symbol("id"), id)
-        OpenAPI.validate_property(PolicyDefinition, Symbol("name"), name)
-        OpenAPI.validate_property(PolicyDefinition, Symbol("type"), type)
-        return new(properties, id, name, type, )
+    function PolicyDefinition(properties, id, name, type, systemData, )
+        o = new(properties, id, name, type, systemData, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PolicyDefinition
 
-const _property_types_PolicyDefinition = Dict{Symbol,String}(Symbol("properties")=>"PolicyDefinitionProperties", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", )
+const _property_types_PolicyDefinition = Dict{Symbol,String}(Symbol("properties")=>"PolicyDefinitionProperties", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("systemData")=>"SystemData", )
 OpenAPI.property_type(::Type{ PolicyDefinition }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PolicyDefinition[name]))}
 
-function check_required(o::PolicyDefinition)
+function OpenAPI.check_required(o::PolicyDefinition)
     true
 end
 
+function OpenAPI.validate_properties(o::PolicyDefinition)
+    OpenAPI.validate_property(PolicyDefinition, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(PolicyDefinition, Symbol("id"), o.id)
+    OpenAPI.validate_property(PolicyDefinition, Symbol("name"), o.name)
+    OpenAPI.validate_property(PolicyDefinition, Symbol("type"), o.type)
+    OpenAPI.validate_property(PolicyDefinition, Symbol("systemData"), o.systemData)
+end
+
 function OpenAPI.validate_property(::Type{ PolicyDefinition }, name::Symbol, val)
+
+
+
+
+
 end

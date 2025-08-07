@@ -11,6 +11,7 @@ Resource provider information.
         registrationState=nothing,
         registrationPolicy=nothing,
         resourceTypes=nothing,
+        providerAuthorizationConsentState=nothing,
     )
 
     - id::String : The provider ID.
@@ -18,6 +19,7 @@ Resource provider information.
     - registrationState::String : The registration state of the resource provider.
     - registrationPolicy::String : The registration policy of the resource provider.
     - resourceTypes::Vector{ProviderResourceType} : The collection of provider resource types.
+    - providerAuthorizationConsentState::String : The provider authorization consent state.
 """
 Base.@kwdef mutable struct Provider <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
@@ -25,23 +27,40 @@ Base.@kwdef mutable struct Provider <: OpenAPI.APIModel
     registrationState::Union{Nothing, String} = nothing
     registrationPolicy::Union{Nothing, String} = nothing
     resourceTypes::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ProviderResourceType} }
+    providerAuthorizationConsentState::Union{Nothing, String} = nothing
 
-    function Provider(id, namespace, registrationState, registrationPolicy, resourceTypes, )
-        OpenAPI.validate_property(Provider, Symbol("id"), id)
-        OpenAPI.validate_property(Provider, Symbol("namespace"), namespace)
-        OpenAPI.validate_property(Provider, Symbol("registrationState"), registrationState)
-        OpenAPI.validate_property(Provider, Symbol("registrationPolicy"), registrationPolicy)
-        OpenAPI.validate_property(Provider, Symbol("resourceTypes"), resourceTypes)
-        return new(id, namespace, registrationState, registrationPolicy, resourceTypes, )
+    function Provider(id, namespace, registrationState, registrationPolicy, resourceTypes, providerAuthorizationConsentState, )
+        o = new(id, namespace, registrationState, registrationPolicy, resourceTypes, providerAuthorizationConsentState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type Provider
 
-const _property_types_Provider = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("namespace")=>"String", Symbol("registrationState")=>"String", Symbol("registrationPolicy")=>"String", Symbol("resourceTypes")=>"Vector{ProviderResourceType}", )
+const _property_types_Provider = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("namespace")=>"String", Symbol("registrationState")=>"String", Symbol("registrationPolicy")=>"String", Symbol("resourceTypes")=>"Vector{ProviderResourceType}", Symbol("providerAuthorizationConsentState")=>"String", )
 OpenAPI.property_type(::Type{ Provider }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Provider[name]))}
 
-function check_required(o::Provider)
+function OpenAPI.check_required(o::Provider)
     true
 end
 
+function OpenAPI.validate_properties(o::Provider)
+    OpenAPI.validate_property(Provider, Symbol("id"), o.id)
+    OpenAPI.validate_property(Provider, Symbol("namespace"), o.namespace)
+    OpenAPI.validate_property(Provider, Symbol("registrationState"), o.registrationState)
+    OpenAPI.validate_property(Provider, Symbol("registrationPolicy"), o.registrationPolicy)
+    OpenAPI.validate_property(Provider, Symbol("resourceTypes"), o.resourceTypes)
+    OpenAPI.validate_property(Provider, Symbol("providerAuthorizationConsentState"), o.providerAuthorizationConsentState)
+end
+
 function OpenAPI.validate_property(::Type{ Provider }, name::Symbol, val)
+
+
+
+
+
+
+    if name === Symbol("providerAuthorizationConsentState")
+        OpenAPI.validate_param(name, "Provider", :enum, val, ["NotSpecified", "Required", "NotRequired", "Consented"])
+    end
+
 end

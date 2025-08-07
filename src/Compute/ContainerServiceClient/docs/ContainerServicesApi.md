@@ -21,11 +21,11 @@ Creates or updates a container service with the specified configuration of orche
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ContainerServicesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**container_service_name** | **String**| The name of the container service in the specified subscription and resource group. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**ContainerService**](ContainerService.md)| Parameters supplied to the Create or Update a Container Service operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**container_service_name** | **String** | The name of the container service in the specified subscription and resource group. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**ContainerService**](ContainerService.md) | Parameters supplied to the Create or Update a Container Service operation. |
 
 ### Return type
 
@@ -55,8 +55,8 @@ Gets a list of container services in the specified subscription. The operation r
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ContainerServicesApi** | API context | 
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 

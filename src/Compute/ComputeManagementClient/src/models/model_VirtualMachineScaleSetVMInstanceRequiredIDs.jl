@@ -15,18 +15,24 @@ Base.@kwdef mutable struct VirtualMachineScaleSetVMInstanceRequiredIDs <: OpenAP
     instanceIds::Union{Nothing, Vector{String}} = nothing
 
     function VirtualMachineScaleSetVMInstanceRequiredIDs(instanceIds, )
-        OpenAPI.validate_property(VirtualMachineScaleSetVMInstanceRequiredIDs, Symbol("instanceIds"), instanceIds)
-        return new(instanceIds, )
+        o = new(instanceIds, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetVMInstanceRequiredIDs
 
 const _property_types_VirtualMachineScaleSetVMInstanceRequiredIDs = Dict{Symbol,String}(Symbol("instanceIds")=>"Vector{String}", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetVMInstanceRequiredIDs }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetVMInstanceRequiredIDs[name]))}
 
-function check_required(o::VirtualMachineScaleSetVMInstanceRequiredIDs)
+function OpenAPI.check_required(o::VirtualMachineScaleSetVMInstanceRequiredIDs)
     o.instanceIds === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetVMInstanceRequiredIDs)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMInstanceRequiredIDs, Symbol("instanceIds"), o.instanceIds)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetVMInstanceRequiredIDs }, name::Symbol, val)
+
 end

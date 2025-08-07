@@ -30,22 +30,33 @@ Base.@kwdef mutable struct LocalNetworkGatewayPropertiesFormat <: OpenAPI.APIMod
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
     function LocalNetworkGatewayPropertiesFormat(localNetworkAddressSpace, gatewayIpAddress, fqdn, bgpSettings, resourceGuid, provisioningState, )
-        OpenAPI.validate_property(LocalNetworkGatewayPropertiesFormat, Symbol("localNetworkAddressSpace"), localNetworkAddressSpace)
-        OpenAPI.validate_property(LocalNetworkGatewayPropertiesFormat, Symbol("gatewayIpAddress"), gatewayIpAddress)
-        OpenAPI.validate_property(LocalNetworkGatewayPropertiesFormat, Symbol("fqdn"), fqdn)
-        OpenAPI.validate_property(LocalNetworkGatewayPropertiesFormat, Symbol("bgpSettings"), bgpSettings)
-        OpenAPI.validate_property(LocalNetworkGatewayPropertiesFormat, Symbol("resourceGuid"), resourceGuid)
-        OpenAPI.validate_property(LocalNetworkGatewayPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(localNetworkAddressSpace, gatewayIpAddress, fqdn, bgpSettings, resourceGuid, provisioningState, )
+        o = new(localNetworkAddressSpace, gatewayIpAddress, fqdn, bgpSettings, resourceGuid, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type LocalNetworkGatewayPropertiesFormat
 
 const _property_types_LocalNetworkGatewayPropertiesFormat = Dict{Symbol,String}(Symbol("localNetworkAddressSpace")=>"AddressSpace", Symbol("gatewayIpAddress")=>"String", Symbol("fqdn")=>"String", Symbol("bgpSettings")=>"BgpSettings", Symbol("resourceGuid")=>"String", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ LocalNetworkGatewayPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_LocalNetworkGatewayPropertiesFormat[name]))}
 
-function check_required(o::LocalNetworkGatewayPropertiesFormat)
+function OpenAPI.check_required(o::LocalNetworkGatewayPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::LocalNetworkGatewayPropertiesFormat)
+    OpenAPI.validate_property(LocalNetworkGatewayPropertiesFormat, Symbol("localNetworkAddressSpace"), o.localNetworkAddressSpace)
+    OpenAPI.validate_property(LocalNetworkGatewayPropertiesFormat, Symbol("gatewayIpAddress"), o.gatewayIpAddress)
+    OpenAPI.validate_property(LocalNetworkGatewayPropertiesFormat, Symbol("fqdn"), o.fqdn)
+    OpenAPI.validate_property(LocalNetworkGatewayPropertiesFormat, Symbol("bgpSettings"), o.bgpSettings)
+    OpenAPI.validate_property(LocalNetworkGatewayPropertiesFormat, Symbol("resourceGuid"), o.resourceGuid)
+    OpenAPI.validate_property(LocalNetworkGatewayPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ LocalNetworkGatewayPropertiesFormat }, name::Symbol, val)
+
+
+
+
+
+
 end

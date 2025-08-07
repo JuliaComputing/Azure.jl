@@ -7,38 +7,80 @@ Describes the connection monitor endpoint.
 
     ConnectionMonitorEndpoint(;
         name=nothing,
+        type=nothing,
         resourceId=nothing,
         address=nothing,
         filter=nothing,
+        scope=nothing,
+        coverageLevel=nothing,
+        locationDetails=nothing,
+        subscriptionId=nothing,
     )
 
     - name::String : The name of the connection monitor endpoint.
-    - resourceId::String : Resource ID of the connection monitor endpoint.
-    - address::String : Address of the connection monitor endpoint (IP or domain name).
+    - type::String : The endpoint type.
+    - resourceId::String : Resource ID of the connection monitor endpoint are supported for AzureVM, AzureVMSS, AzureVNet, AzureSubnet, MMAWorkspaceMachine, MMAWorkspaceNetwork, AzureArcVM endpoint type.
+    - address::String : Address of the connection monitor endpoint. Supported for AzureVM, ExternalAddress, ArcMachine, MMAWorkspaceMachine endpoint type.
     - filter::ConnectionMonitorEndpointFilter
+    - scope::ConnectionMonitorEndpointScope
+    - coverageLevel::String : Test coverage for the endpoint.
+    - locationDetails::ConnectionMonitorEndpointLocationDetails
+    - subscriptionId::String : Subscription ID for connection monitor endpoint. It&#39;s an optional parameter which is being used for &#39;AzureArcNetwork&#39; type endpoint.
 """
 Base.@kwdef mutable struct ConnectionMonitorEndpoint <: OpenAPI.APIModel
     name::Union{Nothing, String} = nothing
+    type::Union{Nothing, String} = nothing
     resourceId::Union{Nothing, String} = nothing
     address::Union{Nothing, String} = nothing
     filter = nothing # spec type: Union{ Nothing, ConnectionMonitorEndpointFilter }
+    scope = nothing # spec type: Union{ Nothing, ConnectionMonitorEndpointScope }
+    coverageLevel::Union{Nothing, String} = nothing
+    locationDetails = nothing # spec type: Union{ Nothing, ConnectionMonitorEndpointLocationDetails }
+    subscriptionId::Union{Nothing, String} = nothing
 
-    function ConnectionMonitorEndpoint(name, resourceId, address, filter, )
-        OpenAPI.validate_property(ConnectionMonitorEndpoint, Symbol("name"), name)
-        OpenAPI.validate_property(ConnectionMonitorEndpoint, Symbol("resourceId"), resourceId)
-        OpenAPI.validate_property(ConnectionMonitorEndpoint, Symbol("address"), address)
-        OpenAPI.validate_property(ConnectionMonitorEndpoint, Symbol("filter"), filter)
-        return new(name, resourceId, address, filter, )
+    function ConnectionMonitorEndpoint(name, type, resourceId, address, filter, scope, coverageLevel, locationDetails, subscriptionId, )
+        o = new(name, type, resourceId, address, filter, scope, coverageLevel, locationDetails, subscriptionId, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ConnectionMonitorEndpoint
 
-const _property_types_ConnectionMonitorEndpoint = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("resourceId")=>"String", Symbol("address")=>"String", Symbol("filter")=>"ConnectionMonitorEndpointFilter", )
+const _property_types_ConnectionMonitorEndpoint = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("type")=>"String", Symbol("resourceId")=>"String", Symbol("address")=>"String", Symbol("filter")=>"ConnectionMonitorEndpointFilter", Symbol("scope")=>"ConnectionMonitorEndpointScope", Symbol("coverageLevel")=>"String", Symbol("locationDetails")=>"ConnectionMonitorEndpointLocationDetails", Symbol("subscriptionId")=>"String", )
 OpenAPI.property_type(::Type{ ConnectionMonitorEndpoint }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ConnectionMonitorEndpoint[name]))}
 
-function check_required(o::ConnectionMonitorEndpoint)
+function OpenAPI.check_required(o::ConnectionMonitorEndpoint)
     o.name === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ConnectionMonitorEndpoint)
+    OpenAPI.validate_property(ConnectionMonitorEndpoint, Symbol("name"), o.name)
+    OpenAPI.validate_property(ConnectionMonitorEndpoint, Symbol("type"), o.type)
+    OpenAPI.validate_property(ConnectionMonitorEndpoint, Symbol("resourceId"), o.resourceId)
+    OpenAPI.validate_property(ConnectionMonitorEndpoint, Symbol("address"), o.address)
+    OpenAPI.validate_property(ConnectionMonitorEndpoint, Symbol("filter"), o.filter)
+    OpenAPI.validate_property(ConnectionMonitorEndpoint, Symbol("scope"), o.scope)
+    OpenAPI.validate_property(ConnectionMonitorEndpoint, Symbol("coverageLevel"), o.coverageLevel)
+    OpenAPI.validate_property(ConnectionMonitorEndpoint, Symbol("locationDetails"), o.locationDetails)
+    OpenAPI.validate_property(ConnectionMonitorEndpoint, Symbol("subscriptionId"), o.subscriptionId)
+end
+
 function OpenAPI.validate_property(::Type{ ConnectionMonitorEndpoint }, name::Symbol, val)
+
+
+    if name === Symbol("type")
+        OpenAPI.validate_param(name, "ConnectionMonitorEndpoint", :enum, val, ["AzureVM", "AzureVNet", "AzureSubnet", "ExternalAddress", "MMAWorkspaceMachine", "MMAWorkspaceNetwork", "AzureArcVM", "AzureVMSS", "AzureArcNetwork"])
+    end
+
+
+
+
+
+
+    if name === Symbol("coverageLevel")
+        OpenAPI.validate_param(name, "ConnectionMonitorEndpoint", :enum, val, ["Default", "Low", "BelowAverage", "Average", "AboveAverage", "Full"])
+    end
+
+
+
 end

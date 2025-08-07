@@ -20,10 +20,10 @@ Gets the private link resources that need to be created for a storage account.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **PrivateLinkResourcesApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group within the user&#39;s subscription. The name is case insensitive. | [default to nothing]
-**account_name** | **String**| The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. | [default to nothing]
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group within the user&#39;s subscription. The name is case insensitive. |
+**account_name** | **String** | The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. |
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The ID of the target subscription. |
 
 ### Return type
 

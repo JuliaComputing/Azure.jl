@@ -27,21 +27,31 @@ Base.@kwdef mutable struct IPConfigurationPropertiesFormat <: OpenAPI.APIModel
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
     function IPConfigurationPropertiesFormat(privateIPAddress, privateIPAllocationMethod, subnet, publicIPAddress, provisioningState, )
-        OpenAPI.validate_property(IPConfigurationPropertiesFormat, Symbol("privateIPAddress"), privateIPAddress)
-        OpenAPI.validate_property(IPConfigurationPropertiesFormat, Symbol("privateIPAllocationMethod"), privateIPAllocationMethod)
-        OpenAPI.validate_property(IPConfigurationPropertiesFormat, Symbol("subnet"), subnet)
-        OpenAPI.validate_property(IPConfigurationPropertiesFormat, Symbol("publicIPAddress"), publicIPAddress)
-        OpenAPI.validate_property(IPConfigurationPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(privateIPAddress, privateIPAllocationMethod, subnet, publicIPAddress, provisioningState, )
+        o = new(privateIPAddress, privateIPAllocationMethod, subnet, publicIPAddress, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type IPConfigurationPropertiesFormat
 
 const _property_types_IPConfigurationPropertiesFormat = Dict{Symbol,String}(Symbol("privateIPAddress")=>"String", Symbol("privateIPAllocationMethod")=>"IPAllocationMethod", Symbol("subnet")=>"Subnet2", Symbol("publicIPAddress")=>"PublicIPAddress", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ IPConfigurationPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_IPConfigurationPropertiesFormat[name]))}
 
-function check_required(o::IPConfigurationPropertiesFormat)
+function OpenAPI.check_required(o::IPConfigurationPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::IPConfigurationPropertiesFormat)
+    OpenAPI.validate_property(IPConfigurationPropertiesFormat, Symbol("privateIPAddress"), o.privateIPAddress)
+    OpenAPI.validate_property(IPConfigurationPropertiesFormat, Symbol("privateIPAllocationMethod"), o.privateIPAllocationMethod)
+    OpenAPI.validate_property(IPConfigurationPropertiesFormat, Symbol("subnet"), o.subnet)
+    OpenAPI.validate_property(IPConfigurationPropertiesFormat, Symbol("publicIPAddress"), o.publicIPAddress)
+    OpenAPI.validate_property(IPConfigurationPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ IPConfigurationPropertiesFormat }, name::Symbol, val)
+
+
+
+
+
 end

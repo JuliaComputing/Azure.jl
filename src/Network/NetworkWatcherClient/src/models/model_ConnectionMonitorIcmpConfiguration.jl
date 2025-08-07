@@ -15,17 +15,23 @@ Base.@kwdef mutable struct ConnectionMonitorIcmpConfiguration <: OpenAPI.APIMode
     disableTraceRoute::Union{Nothing, Bool} = nothing
 
     function ConnectionMonitorIcmpConfiguration(disableTraceRoute, )
-        OpenAPI.validate_property(ConnectionMonitorIcmpConfiguration, Symbol("disableTraceRoute"), disableTraceRoute)
-        return new(disableTraceRoute, )
+        o = new(disableTraceRoute, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ConnectionMonitorIcmpConfiguration
 
 const _property_types_ConnectionMonitorIcmpConfiguration = Dict{Symbol,String}(Symbol("disableTraceRoute")=>"Bool", )
 OpenAPI.property_type(::Type{ ConnectionMonitorIcmpConfiguration }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ConnectionMonitorIcmpConfiguration[name]))}
 
-function check_required(o::ConnectionMonitorIcmpConfiguration)
+function OpenAPI.check_required(o::ConnectionMonitorIcmpConfiguration)
     true
 end
 
+function OpenAPI.validate_properties(o::ConnectionMonitorIcmpConfiguration)
+    OpenAPI.validate_property(ConnectionMonitorIcmpConfiguration, Symbol("disableTraceRoute"), o.disableTraceRoute)
+end
+
 function OpenAPI.validate_property(::Type{ ConnectionMonitorIcmpConfiguration }, name::Symbol, val)
+
 end

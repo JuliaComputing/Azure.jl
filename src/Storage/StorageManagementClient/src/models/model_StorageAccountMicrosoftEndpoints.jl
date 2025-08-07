@@ -30,22 +30,33 @@ Base.@kwdef mutable struct StorageAccountMicrosoftEndpoints <: OpenAPI.APIModel
     dfs::Union{Nothing, String} = nothing
 
     function StorageAccountMicrosoftEndpoints(blob, queue, table, file, web, dfs, )
-        OpenAPI.validate_property(StorageAccountMicrosoftEndpoints, Symbol("blob"), blob)
-        OpenAPI.validate_property(StorageAccountMicrosoftEndpoints, Symbol("queue"), queue)
-        OpenAPI.validate_property(StorageAccountMicrosoftEndpoints, Symbol("table"), table)
-        OpenAPI.validate_property(StorageAccountMicrosoftEndpoints, Symbol("file"), file)
-        OpenAPI.validate_property(StorageAccountMicrosoftEndpoints, Symbol("web"), web)
-        OpenAPI.validate_property(StorageAccountMicrosoftEndpoints, Symbol("dfs"), dfs)
-        return new(blob, queue, table, file, web, dfs, )
+        o = new(blob, queue, table, file, web, dfs, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type StorageAccountMicrosoftEndpoints
 
 const _property_types_StorageAccountMicrosoftEndpoints = Dict{Symbol,String}(Symbol("blob")=>"String", Symbol("queue")=>"String", Symbol("table")=>"String", Symbol("file")=>"String", Symbol("web")=>"String", Symbol("dfs")=>"String", )
 OpenAPI.property_type(::Type{ StorageAccountMicrosoftEndpoints }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_StorageAccountMicrosoftEndpoints[name]))}
 
-function check_required(o::StorageAccountMicrosoftEndpoints)
+function OpenAPI.check_required(o::StorageAccountMicrosoftEndpoints)
     true
 end
 
+function OpenAPI.validate_properties(o::StorageAccountMicrosoftEndpoints)
+    OpenAPI.validate_property(StorageAccountMicrosoftEndpoints, Symbol("blob"), o.blob)
+    OpenAPI.validate_property(StorageAccountMicrosoftEndpoints, Symbol("queue"), o.queue)
+    OpenAPI.validate_property(StorageAccountMicrosoftEndpoints, Symbol("table"), o.table)
+    OpenAPI.validate_property(StorageAccountMicrosoftEndpoints, Symbol("file"), o.file)
+    OpenAPI.validate_property(StorageAccountMicrosoftEndpoints, Symbol("web"), o.web)
+    OpenAPI.validate_property(StorageAccountMicrosoftEndpoints, Symbol("dfs"), o.dfs)
+end
+
 function OpenAPI.validate_property(::Type{ StorageAccountMicrosoftEndpoints }, name::Symbol, val)
+
+
+
+
+
+
 end

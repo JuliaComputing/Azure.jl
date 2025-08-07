@@ -21,20 +21,28 @@ Base.@kwdef mutable struct AdlsFileNotFoundException <: OpenAPI.APIModel
     message::Union{Nothing, String} = nothing
 
     function AdlsFileNotFoundException(exception, javaClassName, message, )
-        OpenAPI.validate_property(AdlsFileNotFoundException, Symbol("exception"), exception)
-        OpenAPI.validate_property(AdlsFileNotFoundException, Symbol("javaClassName"), javaClassName)
-        OpenAPI.validate_property(AdlsFileNotFoundException, Symbol("message"), message)
-        return new(exception, javaClassName, message, )
+        o = new(exception, javaClassName, message, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AdlsFileNotFoundException
 
 const _property_types_AdlsFileNotFoundException = Dict{Symbol,String}(Symbol("exception")=>"String", Symbol("javaClassName")=>"String", Symbol("message")=>"String", )
 OpenAPI.property_type(::Type{ AdlsFileNotFoundException }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AdlsFileNotFoundException[name]))}
 
-function check_required(o::AdlsFileNotFoundException)
+function OpenAPI.check_required(o::AdlsFileNotFoundException)
     o.exception === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::AdlsFileNotFoundException)
+    OpenAPI.validate_property(AdlsFileNotFoundException, Symbol("exception"), o.exception)
+    OpenAPI.validate_property(AdlsFileNotFoundException, Symbol("javaClassName"), o.javaClassName)
+    OpenAPI.validate_property(AdlsFileNotFoundException, Symbol("message"), o.message)
+end
+
 function OpenAPI.validate_property(::Type{ AdlsFileNotFoundException }, name::Symbol, val)
+
+
+
 end

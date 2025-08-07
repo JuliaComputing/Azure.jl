@@ -12,12 +12,15 @@ This can be used to construct the `OpenAPI.Clients.Client` instance.
 basepath(::Type{ OperationsApi }) = "https://management.azure.com"
 
 const _returntypes_operations_list_OperationsApi = Dict{Regex,Type}(
-    Regex("^" * replace("200", "x"=>".") * "\$") => OperationListResult,
+    Regex("^" * replace("200", "x"=>".") * "\$") => OperationListResult2,
+    Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_operations_list(_api::OperationsApi, api_version::String; _mediaType=nothing)
+    OpenAPI.validate_param("api_version", "operations_list", :minLength, api_version, 1)
+
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_operations_list_OperationsApi, "/providers/Microsoft.Resources/operations", ["azure_auth", ])
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -28,7 +31,7 @@ end
 Params:
 - api_version::String (required)
 
-Return: OperationListResult, OpenAPI.Clients.ApiResponse
+Return: OperationListResult2, OpenAPI.Clients.ApiResponse
 """
 function operations_list(_api::OperationsApi, api_version::String; _mediaType=nothing)
     _ctx = _oacinternal_operations_list(_api, api_version; _mediaType=_mediaType)

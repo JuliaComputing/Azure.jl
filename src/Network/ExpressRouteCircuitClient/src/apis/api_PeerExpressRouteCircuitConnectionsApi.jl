@@ -23,7 +23,7 @@ function _oacinternal_peer_express_route_circuit_connections_get(_api::PeerExpre
     OpenAPI.Clients.set_param(_ctx.path, "peeringName", peering_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "connectionName", connection_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -62,7 +62,7 @@ function _oacinternal_peer_express_route_circuit_connections_list(_api::PeerExpr
     OpenAPI.Clients.set_param(_ctx.path, "circuitName", circuit_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "peeringName", peering_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx

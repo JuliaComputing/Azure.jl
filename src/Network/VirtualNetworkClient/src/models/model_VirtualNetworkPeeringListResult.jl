@@ -18,18 +18,25 @@ Base.@kwdef mutable struct VirtualNetworkPeeringListResult <: OpenAPI.APIModel
     nextLink::Union{Nothing, String} = nothing
 
     function VirtualNetworkPeeringListResult(value, nextLink, )
-        OpenAPI.validate_property(VirtualNetworkPeeringListResult, Symbol("value"), value)
-        OpenAPI.validate_property(VirtualNetworkPeeringListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualNetworkPeeringListResult
 
 const _property_types_VirtualNetworkPeeringListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{VirtualNetworkPeering}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ VirtualNetworkPeeringListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualNetworkPeeringListResult[name]))}
 
-function check_required(o::VirtualNetworkPeeringListResult)
+function OpenAPI.check_required(o::VirtualNetworkPeeringListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualNetworkPeeringListResult)
+    OpenAPI.validate_property(VirtualNetworkPeeringListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(VirtualNetworkPeeringListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualNetworkPeeringListResult }, name::Symbol, val)
+
+
 end

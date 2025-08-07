@@ -18,20 +18,27 @@ Base.@kwdef mutable struct CreateOrUpdateFirewallRuleProperties <: OpenAPI.APIMo
     endIpAddress::Union{Nothing, String} = nothing
 
     function CreateOrUpdateFirewallRuleProperties(startIpAddress, endIpAddress, )
-        OpenAPI.validate_property(CreateOrUpdateFirewallRuleProperties, Symbol("startIpAddress"), startIpAddress)
-        OpenAPI.validate_property(CreateOrUpdateFirewallRuleProperties, Symbol("endIpAddress"), endIpAddress)
-        return new(startIpAddress, endIpAddress, )
+        o = new(startIpAddress, endIpAddress, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type CreateOrUpdateFirewallRuleProperties
 
 const _property_types_CreateOrUpdateFirewallRuleProperties = Dict{Symbol,String}(Symbol("startIpAddress")=>"String", Symbol("endIpAddress")=>"String", )
 OpenAPI.property_type(::Type{ CreateOrUpdateFirewallRuleProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_CreateOrUpdateFirewallRuleProperties[name]))}
 
-function check_required(o::CreateOrUpdateFirewallRuleProperties)
+function OpenAPI.check_required(o::CreateOrUpdateFirewallRuleProperties)
     o.startIpAddress === nothing && (return false)
     o.endIpAddress === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::CreateOrUpdateFirewallRuleProperties)
+    OpenAPI.validate_property(CreateOrUpdateFirewallRuleProperties, Symbol("startIpAddress"), o.startIpAddress)
+    OpenAPI.validate_property(CreateOrUpdateFirewallRuleProperties, Symbol("endIpAddress"), o.endIpAddress)
+end
+
 function OpenAPI.validate_property(::Type{ CreateOrUpdateFirewallRuleProperties }, name::Symbol, val)
+
+
 end

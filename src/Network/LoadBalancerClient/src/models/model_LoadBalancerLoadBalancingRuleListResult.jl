@@ -18,18 +18,25 @@ Base.@kwdef mutable struct LoadBalancerLoadBalancingRuleListResult <: OpenAPI.AP
     nextLink::Union{Nothing, String} = nothing
 
     function LoadBalancerLoadBalancingRuleListResult(value, nextLink, )
-        OpenAPI.validate_property(LoadBalancerLoadBalancingRuleListResult, Symbol("value"), value)
-        OpenAPI.validate_property(LoadBalancerLoadBalancingRuleListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type LoadBalancerLoadBalancingRuleListResult
 
 const _property_types_LoadBalancerLoadBalancingRuleListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{LoadBalancingRule}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ LoadBalancerLoadBalancingRuleListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_LoadBalancerLoadBalancingRuleListResult[name]))}
 
-function check_required(o::LoadBalancerLoadBalancingRuleListResult)
+function OpenAPI.check_required(o::LoadBalancerLoadBalancingRuleListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::LoadBalancerLoadBalancingRuleListResult)
+    OpenAPI.validate_property(LoadBalancerLoadBalancingRuleListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(LoadBalancerLoadBalancingRuleListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ LoadBalancerLoadBalancingRuleListResult }, name::Symbol, val)
+
+
 end

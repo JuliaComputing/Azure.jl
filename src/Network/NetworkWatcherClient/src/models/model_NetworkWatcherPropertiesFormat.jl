@@ -15,17 +15,23 @@ Base.@kwdef mutable struct NetworkWatcherPropertiesFormat <: OpenAPI.APIModel
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
     function NetworkWatcherPropertiesFormat(provisioningState, )
-        OpenAPI.validate_property(NetworkWatcherPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(provisioningState, )
+        o = new(provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type NetworkWatcherPropertiesFormat
 
 const _property_types_NetworkWatcherPropertiesFormat = Dict{Symbol,String}(Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ NetworkWatcherPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkWatcherPropertiesFormat[name]))}
 
-function check_required(o::NetworkWatcherPropertiesFormat)
+function OpenAPI.check_required(o::NetworkWatcherPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::NetworkWatcherPropertiesFormat)
+    OpenAPI.validate_property(NetworkWatcherPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ NetworkWatcherPropertiesFormat }, name::Symbol, val)
+
 end

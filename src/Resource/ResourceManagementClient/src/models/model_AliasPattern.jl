@@ -21,22 +21,31 @@ Base.@kwdef mutable struct AliasPattern <: OpenAPI.APIModel
     type::Union{Nothing, String} = nothing
 
     function AliasPattern(phrase, variable, type, )
-        OpenAPI.validate_property(AliasPattern, Symbol("phrase"), phrase)
-        OpenAPI.validate_property(AliasPattern, Symbol("variable"), variable)
-        OpenAPI.validate_property(AliasPattern, Symbol("type"), type)
-        return new(phrase, variable, type, )
+        o = new(phrase, variable, type, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AliasPattern
 
 const _property_types_AliasPattern = Dict{Symbol,String}(Symbol("phrase")=>"String", Symbol("variable")=>"String", Symbol("type")=>"String", )
 OpenAPI.property_type(::Type{ AliasPattern }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AliasPattern[name]))}
 
-function check_required(o::AliasPattern)
+function OpenAPI.check_required(o::AliasPattern)
     true
 end
 
+function OpenAPI.validate_properties(o::AliasPattern)
+    OpenAPI.validate_property(AliasPattern, Symbol("phrase"), o.phrase)
+    OpenAPI.validate_property(AliasPattern, Symbol("variable"), o.variable)
+    OpenAPI.validate_property(AliasPattern, Symbol("type"), o.type)
+end
+
 function OpenAPI.validate_property(::Type{ AliasPattern }, name::Symbol, val)
+
+
+
     if name === Symbol("type")
         OpenAPI.validate_param(name, "AliasPattern", :enum, val, ["NotSpecified", "Extract"])
     end
+
 end

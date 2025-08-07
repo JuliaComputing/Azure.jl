@@ -26,11 +26,11 @@ Create or update an availability set.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **AvailabilitySetsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**availability_set_name** | **String**| The name of the availability set. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**AvailabilitySet**](AvailabilitySet.md)| Parameters supplied to the Create Availability Set operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**availability_set_name** | **String** | The name of the availability set. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**AvailabilitySet**](AvailabilitySet.md) | Parameters supplied to the Create Availability Set operation. |
 
 ### Return type
 
@@ -60,10 +60,10 @@ Delete an availability set.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **AvailabilitySetsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**availability_set_name** | **String**| The name of the availability set. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**availability_set_name** | **String** | The name of the availability set. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -76,7 +76,7 @@ Nothing
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -93,10 +93,10 @@ Retrieves information about an availability set.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **AvailabilitySetsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**availability_set_name** | **String**| The name of the availability set. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**availability_set_name** | **String** | The name of the availability set. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -126,9 +126,9 @@ Lists all availability sets in a resource group.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **AvailabilitySetsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -158,10 +158,10 @@ Lists all available virtual machine sizes that can be used to create a new virtu
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **AvailabilitySetsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**availability_set_name** | **String**| The name of the availability set. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**availability_set_name** | **String** | The name of the availability set. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -191,14 +191,14 @@ Lists all availability sets in a subscription.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **AvailabilitySetsApi** | API context | 
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expand** | **String**| The expand expression to apply to the operation. Allowed values are &#39;instanceView&#39;. | [default to nothing]
+ **expand** | **String** | The expand expression to apply to the operation. Allowed values are &#39;instanceView&#39;. | [default to nothing]
 
 ### Return type
 
@@ -228,11 +228,11 @@ Update an availability set.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **AvailabilitySetsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**availability_set_name** | **String**| The name of the availability set. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**AvailabilitySetUpdate**](AvailabilitySetUpdate.md)| Parameters supplied to the Update Availability Set operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**availability_set_name** | **String** | The name of the availability set. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**AvailabilitySetUpdate**](AvailabilitySetUpdate.md) | Parameters supplied to the Update Availability Set operation. |
 
 ### Return type
 

@@ -22,7 +22,7 @@ function _oacinternal_virtual_network_gateway_connections_create_or_update(_api:
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayConnectionName", virtual_network_gateway_connection_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -61,7 +61,7 @@ function _oacinternal_virtual_network_gateway_connections_delete(_api::VirtualNe
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayConnectionName", virtual_network_gateway_connection_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -97,7 +97,7 @@ function _oacinternal_virtual_network_gateway_connections_get(_api::VirtualNetwo
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayConnectionName", virtual_network_gateway_connection_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -123,6 +123,43 @@ function virtual_network_gateway_connections_get(_api::VirtualNetworkGatewayConn
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
+const _returntypes_virtual_network_gateway_connections_get_ike_sas_VirtualNetworkGatewayConnectionsApi = Dict{Regex,Type}(
+    Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("200", "x"=>".") * "\$") => String,
+    Regex("^" * replace("0", "x"=>".") * "\$") => ErrorResponse,
+)
+
+function _oacinternal_virtual_network_gateway_connections_get_ike_sas(_api::VirtualNetworkGatewayConnectionsApi, resource_group_name::String, virtual_network_gateway_connection_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_virtual_network_gateway_connections_get_ike_sas_VirtualNetworkGatewayConnectionsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/getikesas", ["azure_auth", ])
+    OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayConnectionName", virtual_network_gateway_connection_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
+    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
+    return _ctx
+end
+
+@doc raw"""Lists IKE Security Associations for the virtual network gateway connection in the specified resource group.
+
+Params:
+- resource_group_name::String (required)
+- virtual_network_gateway_connection_name::String (required)
+- api_version::String (required)
+- subscription_id::String (required)
+
+Return: String, OpenAPI.Clients.ApiResponse
+"""
+function virtual_network_gateway_connections_get_ike_sas(_api::VirtualNetworkGatewayConnectionsApi, resource_group_name::String, virtual_network_gateway_connection_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
+    _ctx = _oacinternal_virtual_network_gateway_connections_get_ike_sas(_api, resource_group_name, virtual_network_gateway_connection_name, api_version, subscription_id; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx)
+end
+
+function virtual_network_gateway_connections_get_ike_sas(_api::VirtualNetworkGatewayConnectionsApi, response_stream::Channel, resource_group_name::String, virtual_network_gateway_connection_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
+    _ctx = _oacinternal_virtual_network_gateway_connections_get_ike_sas(_api, resource_group_name, virtual_network_gateway_connection_name, api_version, subscription_id; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx, response_stream)
+end
+
 const _returntypes_virtual_network_gateway_connections_get_shared_key_VirtualNetworkGatewayConnectionsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => ConnectionSharedKey,
     Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
@@ -133,7 +170,7 @@ function _oacinternal_virtual_network_gateway_connections_get_shared_key(_api::V
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayConnectionName", virtual_network_gateway_connection_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -168,7 +205,7 @@ function _oacinternal_virtual_network_gateway_connections_list(_api::VirtualNetw
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_virtual_network_gateway_connections_list_VirtualNetworkGatewayConnectionsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -193,6 +230,42 @@ function virtual_network_gateway_connections_list(_api::VirtualNetworkGatewayCon
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
+const _returntypes_virtual_network_gateway_connections_reset_connection_VirtualNetworkGatewayConnectionsApi = Dict{Regex,Type}(
+    Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("0", "x"=>".") * "\$") => ErrorResponse,
+)
+
+function _oacinternal_virtual_network_gateway_connections_reset_connection(_api::VirtualNetworkGatewayConnectionsApi, resource_group_name::String, virtual_network_gateway_connection_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
+    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_virtual_network_gateway_connections_reset_connection_VirtualNetworkGatewayConnectionsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/connections/{virtualNetworkGatewayConnectionName}/resetconnection", ["azure_auth", ])
+    OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayConnectionName", virtual_network_gateway_connection_name)  # type String
+    OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
+    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
+    return _ctx
+end
+
+@doc raw"""Resets the virtual network gateway connection specified.
+
+Params:
+- resource_group_name::String (required)
+- virtual_network_gateway_connection_name::String (required)
+- api_version::String (required)
+- subscription_id::String (required)
+
+Return: Nothing, OpenAPI.Clients.ApiResponse
+"""
+function virtual_network_gateway_connections_reset_connection(_api::VirtualNetworkGatewayConnectionsApi, resource_group_name::String, virtual_network_gateway_connection_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
+    _ctx = _oacinternal_virtual_network_gateway_connections_reset_connection(_api, resource_group_name, virtual_network_gateway_connection_name, api_version, subscription_id; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx)
+end
+
+function virtual_network_gateway_connections_reset_connection(_api::VirtualNetworkGatewayConnectionsApi, response_stream::Channel, resource_group_name::String, virtual_network_gateway_connection_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
+    _ctx = _oacinternal_virtual_network_gateway_connections_reset_connection(_api, resource_group_name, virtual_network_gateway_connection_name, api_version, subscription_id; _mediaType=_mediaType)
+    return OpenAPI.Clients.exec(_ctx, response_stream)
+end
+
 const _returntypes_virtual_network_gateway_connections_reset_shared_key_VirtualNetworkGatewayConnectionsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => ConnectionResetSharedKey,
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
@@ -204,7 +277,7 @@ function _oacinternal_virtual_network_gateway_connections_reset_shared_key(_api:
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayConnectionName", virtual_network_gateway_connection_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -242,7 +315,7 @@ function _oacinternal_virtual_network_gateway_connections_set_shared_key(_api::V
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayConnectionName", virtual_network_gateway_connection_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -280,7 +353,7 @@ function _oacinternal_virtual_network_gateway_connections_start_packet_capture(_
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayConnectionName", virtual_network_gateway_connection_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -318,7 +391,7 @@ function _oacinternal_virtual_network_gateway_connections_stop_packet_capture(_a
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayConnectionName", virtual_network_gateway_connection_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -356,7 +429,7 @@ function _oacinternal_virtual_network_gateway_connections_update_tags(_api::Virt
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "virtualNetworkGatewayConnectionName", virtual_network_gateway_connection_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -386,8 +459,10 @@ end
 export virtual_network_gateway_connections_create_or_update
 export virtual_network_gateway_connections_delete
 export virtual_network_gateway_connections_get
+export virtual_network_gateway_connections_get_ike_sas
 export virtual_network_gateway_connections_get_shared_key
 export virtual_network_gateway_connections_list
+export virtual_network_gateway_connections_reset_connection
 export virtual_network_gateway_connections_reset_shared_key
 export virtual_network_gateway_connections_set_shared_key
 export virtual_network_gateway_connections_start_packet_capture

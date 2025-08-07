@@ -21,19 +21,27 @@ Base.@kwdef mutable struct VirtualMachineExtensionHandlerInstanceView <: OpenAPI
     status = nothing # spec type: Union{ Nothing, InstanceViewStatus }
 
     function VirtualMachineExtensionHandlerInstanceView(type, typeHandlerVersion, status, )
-        OpenAPI.validate_property(VirtualMachineExtensionHandlerInstanceView, Symbol("type"), type)
-        OpenAPI.validate_property(VirtualMachineExtensionHandlerInstanceView, Symbol("typeHandlerVersion"), typeHandlerVersion)
-        OpenAPI.validate_property(VirtualMachineExtensionHandlerInstanceView, Symbol("status"), status)
-        return new(type, typeHandlerVersion, status, )
+        o = new(type, typeHandlerVersion, status, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineExtensionHandlerInstanceView
 
 const _property_types_VirtualMachineExtensionHandlerInstanceView = Dict{Symbol,String}(Symbol("type")=>"String", Symbol("typeHandlerVersion")=>"String", Symbol("status")=>"InstanceViewStatus", )
 OpenAPI.property_type(::Type{ VirtualMachineExtensionHandlerInstanceView }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineExtensionHandlerInstanceView[name]))}
 
-function check_required(o::VirtualMachineExtensionHandlerInstanceView)
+function OpenAPI.check_required(o::VirtualMachineExtensionHandlerInstanceView)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineExtensionHandlerInstanceView)
+    OpenAPI.validate_property(VirtualMachineExtensionHandlerInstanceView, Symbol("type"), o.type)
+    OpenAPI.validate_property(VirtualMachineExtensionHandlerInstanceView, Symbol("typeHandlerVersion"), o.typeHandlerVersion)
+    OpenAPI.validate_property(VirtualMachineExtensionHandlerInstanceView, Symbol("status"), o.status)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineExtensionHandlerInstanceView }, name::Symbol, val)
+
+
+
 end

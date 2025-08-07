@@ -18,7 +18,7 @@ const _returntypes_operations_list_OperationsApi = Dict{Regex,Type}(
 
 function _oacinternal_operations_list(_api::OperationsApi, api_version::String; _mediaType=nothing)
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_operations_list_OperationsApi, "/providers/Microsoft.Resources/operations", ["azure_auth", ])
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx

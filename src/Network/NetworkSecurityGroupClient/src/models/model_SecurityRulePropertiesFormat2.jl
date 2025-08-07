@@ -60,41 +60,64 @@ Base.@kwdef mutable struct SecurityRulePropertiesFormat2 <: OpenAPI.APIModel
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
     function SecurityRulePropertiesFormat2(description, protocol, sourcePortRange, destinationPortRange, sourceAddressPrefix, sourceAddressPrefixes, sourceApplicationSecurityGroups, destinationAddressPrefix, destinationAddressPrefixes, destinationApplicationSecurityGroups, sourcePortRanges, destinationPortRanges, access, priority, direction, provisioningState, )
-        OpenAPI.validate_property(SecurityRulePropertiesFormat2, Symbol("description"), description)
-        OpenAPI.validate_property(SecurityRulePropertiesFormat2, Symbol("protocol"), protocol)
-        OpenAPI.validate_property(SecurityRulePropertiesFormat2, Symbol("sourcePortRange"), sourcePortRange)
-        OpenAPI.validate_property(SecurityRulePropertiesFormat2, Symbol("destinationPortRange"), destinationPortRange)
-        OpenAPI.validate_property(SecurityRulePropertiesFormat2, Symbol("sourceAddressPrefix"), sourceAddressPrefix)
-        OpenAPI.validate_property(SecurityRulePropertiesFormat2, Symbol("sourceAddressPrefixes"), sourceAddressPrefixes)
-        OpenAPI.validate_property(SecurityRulePropertiesFormat2, Symbol("sourceApplicationSecurityGroups"), sourceApplicationSecurityGroups)
-        OpenAPI.validate_property(SecurityRulePropertiesFormat2, Symbol("destinationAddressPrefix"), destinationAddressPrefix)
-        OpenAPI.validate_property(SecurityRulePropertiesFormat2, Symbol("destinationAddressPrefixes"), destinationAddressPrefixes)
-        OpenAPI.validate_property(SecurityRulePropertiesFormat2, Symbol("destinationApplicationSecurityGroups"), destinationApplicationSecurityGroups)
-        OpenAPI.validate_property(SecurityRulePropertiesFormat2, Symbol("sourcePortRanges"), sourcePortRanges)
-        OpenAPI.validate_property(SecurityRulePropertiesFormat2, Symbol("destinationPortRanges"), destinationPortRanges)
-        OpenAPI.validate_property(SecurityRulePropertiesFormat2, Symbol("access"), access)
-        OpenAPI.validate_property(SecurityRulePropertiesFormat2, Symbol("priority"), priority)
-        OpenAPI.validate_property(SecurityRulePropertiesFormat2, Symbol("direction"), direction)
-        OpenAPI.validate_property(SecurityRulePropertiesFormat2, Symbol("provisioningState"), provisioningState)
-        return new(description, protocol, sourcePortRange, destinationPortRange, sourceAddressPrefix, sourceAddressPrefixes, sourceApplicationSecurityGroups, destinationAddressPrefix, destinationAddressPrefixes, destinationApplicationSecurityGroups, sourcePortRanges, destinationPortRanges, access, priority, direction, provisioningState, )
+        o = new(description, protocol, sourcePortRange, destinationPortRange, sourceAddressPrefix, sourceAddressPrefixes, sourceApplicationSecurityGroups, destinationAddressPrefix, destinationAddressPrefixes, destinationApplicationSecurityGroups, sourcePortRanges, destinationPortRanges, access, priority, direction, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type SecurityRulePropertiesFormat2
 
 const _property_types_SecurityRulePropertiesFormat2 = Dict{Symbol,String}(Symbol("description")=>"String", Symbol("protocol")=>"String", Symbol("sourcePortRange")=>"String", Symbol("destinationPortRange")=>"String", Symbol("sourceAddressPrefix")=>"String", Symbol("sourceAddressPrefixes")=>"Vector{String}", Symbol("sourceApplicationSecurityGroups")=>"Vector{ApplicationSecurityGroup}", Symbol("destinationAddressPrefix")=>"String", Symbol("destinationAddressPrefixes")=>"Vector{String}", Symbol("destinationApplicationSecurityGroups")=>"Vector{ApplicationSecurityGroup}", Symbol("sourcePortRanges")=>"Vector{String}", Symbol("destinationPortRanges")=>"Vector{String}", Symbol("access")=>"SecurityRuleAccess2", Symbol("priority")=>"Int64", Symbol("direction")=>"SecurityRuleDirection2", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ SecurityRulePropertiesFormat2 }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SecurityRulePropertiesFormat2[name]))}
 
-function check_required(o::SecurityRulePropertiesFormat2)
+function OpenAPI.check_required(o::SecurityRulePropertiesFormat2)
     o.protocol === nothing && (return false)
     o.access === nothing && (return false)
+    o.priority === nothing && (return false)
     o.direction === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::SecurityRulePropertiesFormat2)
+    OpenAPI.validate_property(SecurityRulePropertiesFormat2, Symbol("description"), o.description)
+    OpenAPI.validate_property(SecurityRulePropertiesFormat2, Symbol("protocol"), o.protocol)
+    OpenAPI.validate_property(SecurityRulePropertiesFormat2, Symbol("sourcePortRange"), o.sourcePortRange)
+    OpenAPI.validate_property(SecurityRulePropertiesFormat2, Symbol("destinationPortRange"), o.destinationPortRange)
+    OpenAPI.validate_property(SecurityRulePropertiesFormat2, Symbol("sourceAddressPrefix"), o.sourceAddressPrefix)
+    OpenAPI.validate_property(SecurityRulePropertiesFormat2, Symbol("sourceAddressPrefixes"), o.sourceAddressPrefixes)
+    OpenAPI.validate_property(SecurityRulePropertiesFormat2, Symbol("sourceApplicationSecurityGroups"), o.sourceApplicationSecurityGroups)
+    OpenAPI.validate_property(SecurityRulePropertiesFormat2, Symbol("destinationAddressPrefix"), o.destinationAddressPrefix)
+    OpenAPI.validate_property(SecurityRulePropertiesFormat2, Symbol("destinationAddressPrefixes"), o.destinationAddressPrefixes)
+    OpenAPI.validate_property(SecurityRulePropertiesFormat2, Symbol("destinationApplicationSecurityGroups"), o.destinationApplicationSecurityGroups)
+    OpenAPI.validate_property(SecurityRulePropertiesFormat2, Symbol("sourcePortRanges"), o.sourcePortRanges)
+    OpenAPI.validate_property(SecurityRulePropertiesFormat2, Symbol("destinationPortRanges"), o.destinationPortRanges)
+    OpenAPI.validate_property(SecurityRulePropertiesFormat2, Symbol("access"), o.access)
+    OpenAPI.validate_property(SecurityRulePropertiesFormat2, Symbol("priority"), o.priority)
+    OpenAPI.validate_property(SecurityRulePropertiesFormat2, Symbol("direction"), o.direction)
+    OpenAPI.validate_property(SecurityRulePropertiesFormat2, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ SecurityRulePropertiesFormat2 }, name::Symbol, val)
+
+
     if name === Symbol("protocol")
         OpenAPI.validate_param(name, "SecurityRulePropertiesFormat2", :enum, val, ["Tcp", "Udp", "Icmp", "Esp", "*", "Ah"])
     end
+
+
+
+
+
+
+
+
+
+
+
+
+
     if name === Symbol("priority")
         OpenAPI.validate_param(name, "SecurityRulePropertiesFormat2", :format, val, "int32")
     end
+
+
 end

@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | The fully qualified ID for the subscription. For example, /subscriptions/00000000-0000-0000-0000-000000000000. | [optional] [readonly] [default to nothing]
+**id** | **String** | The fully qualified ID for the subscription. For example, /subscriptions/8d65815f-a5b6-402f-9298-045155da7d74 | [optional] [readonly] [default to nothing]
 **subscriptionId** | **String** | The subscription ID. | [optional] [readonly] [default to nothing]
 **displayName** | **String** | The subscription display name. | [optional] [readonly] [default to nothing]
 **tenantId** | **String** | The subscription tenant ID. | [optional] [readonly] [default to nothing]

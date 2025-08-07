@@ -41,41 +41,61 @@ Base.@kwdef mutable struct CreateDataLakeStoreAccountProperties <: OpenAPI.APIMo
     newTier::Union{Nothing, String} = nothing
 
     function CreateDataLakeStoreAccountProperties(defaultGroup, encryptionConfig, encryptionState, firewallRules, virtualNetworkRules, firewallState, firewallAllowAzureIps, trustedIdProviders, trustedIdProviderState, newTier, )
-        OpenAPI.validate_property(CreateDataLakeStoreAccountProperties, Symbol("defaultGroup"), defaultGroup)
-        OpenAPI.validate_property(CreateDataLakeStoreAccountProperties, Symbol("encryptionConfig"), encryptionConfig)
-        OpenAPI.validate_property(CreateDataLakeStoreAccountProperties, Symbol("encryptionState"), encryptionState)
-        OpenAPI.validate_property(CreateDataLakeStoreAccountProperties, Symbol("firewallRules"), firewallRules)
-        OpenAPI.validate_property(CreateDataLakeStoreAccountProperties, Symbol("virtualNetworkRules"), virtualNetworkRules)
-        OpenAPI.validate_property(CreateDataLakeStoreAccountProperties, Symbol("firewallState"), firewallState)
-        OpenAPI.validate_property(CreateDataLakeStoreAccountProperties, Symbol("firewallAllowAzureIps"), firewallAllowAzureIps)
-        OpenAPI.validate_property(CreateDataLakeStoreAccountProperties, Symbol("trustedIdProviders"), trustedIdProviders)
-        OpenAPI.validate_property(CreateDataLakeStoreAccountProperties, Symbol("trustedIdProviderState"), trustedIdProviderState)
-        OpenAPI.validate_property(CreateDataLakeStoreAccountProperties, Symbol("newTier"), newTier)
-        return new(defaultGroup, encryptionConfig, encryptionState, firewallRules, virtualNetworkRules, firewallState, firewallAllowAzureIps, trustedIdProviders, trustedIdProviderState, newTier, )
+        o = new(defaultGroup, encryptionConfig, encryptionState, firewallRules, virtualNetworkRules, firewallState, firewallAllowAzureIps, trustedIdProviders, trustedIdProviderState, newTier, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type CreateDataLakeStoreAccountProperties
 
 const _property_types_CreateDataLakeStoreAccountProperties = Dict{Symbol,String}(Symbol("defaultGroup")=>"String", Symbol("encryptionConfig")=>"EncryptionConfig", Symbol("encryptionState")=>"String", Symbol("firewallRules")=>"Vector{CreateFirewallRuleWithAccountParameters}", Symbol("virtualNetworkRules")=>"Vector{CreateVirtualNetworkRuleWithAccountParameters}", Symbol("firewallState")=>"String", Symbol("firewallAllowAzureIps")=>"String", Symbol("trustedIdProviders")=>"Vector{CreateTrustedIdProviderWithAccountParameters}", Symbol("trustedIdProviderState")=>"String", Symbol("newTier")=>"String", )
 OpenAPI.property_type(::Type{ CreateDataLakeStoreAccountProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_CreateDataLakeStoreAccountProperties[name]))}
 
-function check_required(o::CreateDataLakeStoreAccountProperties)
+function OpenAPI.check_required(o::CreateDataLakeStoreAccountProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::CreateDataLakeStoreAccountProperties)
+    OpenAPI.validate_property(CreateDataLakeStoreAccountProperties, Symbol("defaultGroup"), o.defaultGroup)
+    OpenAPI.validate_property(CreateDataLakeStoreAccountProperties, Symbol("encryptionConfig"), o.encryptionConfig)
+    OpenAPI.validate_property(CreateDataLakeStoreAccountProperties, Symbol("encryptionState"), o.encryptionState)
+    OpenAPI.validate_property(CreateDataLakeStoreAccountProperties, Symbol("firewallRules"), o.firewallRules)
+    OpenAPI.validate_property(CreateDataLakeStoreAccountProperties, Symbol("virtualNetworkRules"), o.virtualNetworkRules)
+    OpenAPI.validate_property(CreateDataLakeStoreAccountProperties, Symbol("firewallState"), o.firewallState)
+    OpenAPI.validate_property(CreateDataLakeStoreAccountProperties, Symbol("firewallAllowAzureIps"), o.firewallAllowAzureIps)
+    OpenAPI.validate_property(CreateDataLakeStoreAccountProperties, Symbol("trustedIdProviders"), o.trustedIdProviders)
+    OpenAPI.validate_property(CreateDataLakeStoreAccountProperties, Symbol("trustedIdProviderState"), o.trustedIdProviderState)
+    OpenAPI.validate_property(CreateDataLakeStoreAccountProperties, Symbol("newTier"), o.newTier)
+end
+
 function OpenAPI.validate_property(::Type{ CreateDataLakeStoreAccountProperties }, name::Symbol, val)
+
+
+
     if name === Symbol("encryptionState")
         OpenAPI.validate_param(name, "CreateDataLakeStoreAccountProperties", :enum, val, ["Enabled", "Disabled"])
     end
+
+
+
+
     if name === Symbol("firewallState")
         OpenAPI.validate_param(name, "CreateDataLakeStoreAccountProperties", :enum, val, ["Enabled", "Disabled"])
     end
+
+
     if name === Symbol("firewallAllowAzureIps")
         OpenAPI.validate_param(name, "CreateDataLakeStoreAccountProperties", :enum, val, ["Enabled", "Disabled"])
     end
+
+
+
     if name === Symbol("trustedIdProviderState")
         OpenAPI.validate_param(name, "CreateDataLakeStoreAccountProperties", :enum, val, ["Enabled", "Disabled"])
     end
+
+
     if name === Symbol("newTier")
         OpenAPI.validate_param(name, "CreateDataLakeStoreAccountProperties", :enum, val, ["Consumption", "Commitment_1TB", "Commitment_10TB", "Commitment_100TB", "Commitment_500TB", "Commitment_1PB", "Commitment_5PB"])
     end
+
 end

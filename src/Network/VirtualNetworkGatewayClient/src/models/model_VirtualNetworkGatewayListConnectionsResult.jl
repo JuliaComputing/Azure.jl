@@ -18,18 +18,25 @@ Base.@kwdef mutable struct VirtualNetworkGatewayListConnectionsResult <: OpenAPI
     nextLink::Union{Nothing, String} = nothing
 
     function VirtualNetworkGatewayListConnectionsResult(value, nextLink, )
-        OpenAPI.validate_property(VirtualNetworkGatewayListConnectionsResult, Symbol("value"), value)
-        OpenAPI.validate_property(VirtualNetworkGatewayListConnectionsResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualNetworkGatewayListConnectionsResult
 
 const _property_types_VirtualNetworkGatewayListConnectionsResult = Dict{Symbol,String}(Symbol("value")=>"Vector{VirtualNetworkGatewayConnectionListEntity}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ VirtualNetworkGatewayListConnectionsResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualNetworkGatewayListConnectionsResult[name]))}
 
-function check_required(o::VirtualNetworkGatewayListConnectionsResult)
+function OpenAPI.check_required(o::VirtualNetworkGatewayListConnectionsResult)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualNetworkGatewayListConnectionsResult)
+    OpenAPI.validate_property(VirtualNetworkGatewayListConnectionsResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(VirtualNetworkGatewayListConnectionsResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualNetworkGatewayListConnectionsResult }, name::Symbol, val)
+
+
 end

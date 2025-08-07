@@ -66,53 +66,79 @@ Base.@kwdef mutable struct ServiceSasParameters <: OpenAPI.APIModel
     rsct::Union{Nothing, String} = nothing
 
     function ServiceSasParameters(canonicalizedResource, signedResource, signedPermission, signedIp, signedProtocol, signedStart, signedExpiry, signedIdentifier, startPk, endPk, startRk, endRk, keyToSign, rscc, rscd, rsce, rscl, rsct, )
-        OpenAPI.validate_property(ServiceSasParameters, Symbol("canonicalizedResource"), canonicalizedResource)
-        OpenAPI.validate_property(ServiceSasParameters, Symbol("signedResource"), signedResource)
-        OpenAPI.validate_property(ServiceSasParameters, Symbol("signedPermission"), signedPermission)
-        OpenAPI.validate_property(ServiceSasParameters, Symbol("signedIp"), signedIp)
-        OpenAPI.validate_property(ServiceSasParameters, Symbol("signedProtocol"), signedProtocol)
-        OpenAPI.validate_property(ServiceSasParameters, Symbol("signedStart"), signedStart)
-        OpenAPI.validate_property(ServiceSasParameters, Symbol("signedExpiry"), signedExpiry)
-        OpenAPI.validate_property(ServiceSasParameters, Symbol("signedIdentifier"), signedIdentifier)
-        OpenAPI.validate_property(ServiceSasParameters, Symbol("startPk"), startPk)
-        OpenAPI.validate_property(ServiceSasParameters, Symbol("endPk"), endPk)
-        OpenAPI.validate_property(ServiceSasParameters, Symbol("startRk"), startRk)
-        OpenAPI.validate_property(ServiceSasParameters, Symbol("endRk"), endRk)
-        OpenAPI.validate_property(ServiceSasParameters, Symbol("keyToSign"), keyToSign)
-        OpenAPI.validate_property(ServiceSasParameters, Symbol("rscc"), rscc)
-        OpenAPI.validate_property(ServiceSasParameters, Symbol("rscd"), rscd)
-        OpenAPI.validate_property(ServiceSasParameters, Symbol("rsce"), rsce)
-        OpenAPI.validate_property(ServiceSasParameters, Symbol("rscl"), rscl)
-        OpenAPI.validate_property(ServiceSasParameters, Symbol("rsct"), rsct)
-        return new(canonicalizedResource, signedResource, signedPermission, signedIp, signedProtocol, signedStart, signedExpiry, signedIdentifier, startPk, endPk, startRk, endRk, keyToSign, rscc, rscd, rsce, rscl, rsct, )
+        o = new(canonicalizedResource, signedResource, signedPermission, signedIp, signedProtocol, signedStart, signedExpiry, signedIdentifier, startPk, endPk, startRk, endRk, keyToSign, rscc, rscd, rsce, rscl, rsct, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ServiceSasParameters
 
 const _property_types_ServiceSasParameters = Dict{Symbol,String}(Symbol("canonicalizedResource")=>"String", Symbol("signedResource")=>"String", Symbol("signedPermission")=>"String", Symbol("signedIp")=>"String", Symbol("signedProtocol")=>"String", Symbol("signedStart")=>"ZonedDateTime", Symbol("signedExpiry")=>"ZonedDateTime", Symbol("signedIdentifier")=>"String", Symbol("startPk")=>"String", Symbol("endPk")=>"String", Symbol("startRk")=>"String", Symbol("endRk")=>"String", Symbol("keyToSign")=>"String", Symbol("rscc")=>"String", Symbol("rscd")=>"String", Symbol("rsce")=>"String", Symbol("rscl")=>"String", Symbol("rsct")=>"String", )
 OpenAPI.property_type(::Type{ ServiceSasParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ServiceSasParameters[name]))}
 
-function check_required(o::ServiceSasParameters)
+function OpenAPI.check_required(o::ServiceSasParameters)
     o.canonicalizedResource === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ServiceSasParameters)
+    OpenAPI.validate_property(ServiceSasParameters, Symbol("canonicalizedResource"), o.canonicalizedResource)
+    OpenAPI.validate_property(ServiceSasParameters, Symbol("signedResource"), o.signedResource)
+    OpenAPI.validate_property(ServiceSasParameters, Symbol("signedPermission"), o.signedPermission)
+    OpenAPI.validate_property(ServiceSasParameters, Symbol("signedIp"), o.signedIp)
+    OpenAPI.validate_property(ServiceSasParameters, Symbol("signedProtocol"), o.signedProtocol)
+    OpenAPI.validate_property(ServiceSasParameters, Symbol("signedStart"), o.signedStart)
+    OpenAPI.validate_property(ServiceSasParameters, Symbol("signedExpiry"), o.signedExpiry)
+    OpenAPI.validate_property(ServiceSasParameters, Symbol("signedIdentifier"), o.signedIdentifier)
+    OpenAPI.validate_property(ServiceSasParameters, Symbol("startPk"), o.startPk)
+    OpenAPI.validate_property(ServiceSasParameters, Symbol("endPk"), o.endPk)
+    OpenAPI.validate_property(ServiceSasParameters, Symbol("startRk"), o.startRk)
+    OpenAPI.validate_property(ServiceSasParameters, Symbol("endRk"), o.endRk)
+    OpenAPI.validate_property(ServiceSasParameters, Symbol("keyToSign"), o.keyToSign)
+    OpenAPI.validate_property(ServiceSasParameters, Symbol("rscc"), o.rscc)
+    OpenAPI.validate_property(ServiceSasParameters, Symbol("rscd"), o.rscd)
+    OpenAPI.validate_property(ServiceSasParameters, Symbol("rsce"), o.rsce)
+    OpenAPI.validate_property(ServiceSasParameters, Symbol("rscl"), o.rscl)
+    OpenAPI.validate_property(ServiceSasParameters, Symbol("rsct"), o.rsct)
+end
+
 function OpenAPI.validate_property(::Type{ ServiceSasParameters }, name::Symbol, val)
+
+
     if name === Symbol("signedResource")
         OpenAPI.validate_param(name, "ServiceSasParameters", :enum, val, ["b", "c", "f", "s"])
     end
+
+
     if name === Symbol("signedPermission")
         OpenAPI.validate_param(name, "ServiceSasParameters", :enum, val, ["r", "d", "w", "l", "a", "c", "u", "p"])
     end
+
+
+
     if name === Symbol("signedProtocol")
         OpenAPI.validate_param(name, "ServiceSasParameters", :enum, val, ["https,http", "https"])
     end
+
+
     if name === Symbol("signedStart")
         OpenAPI.validate_param(name, "ServiceSasParameters", :format, val, "date-time")
     end
+
     if name === Symbol("signedExpiry")
         OpenAPI.validate_param(name, "ServiceSasParameters", :format, val, "date-time")
     end
+
     if name === Symbol("signedIdentifier")
         OpenAPI.validate_param(name, "ServiceSasParameters", :maxLength, val, 64)
     end
+
+
+
+
+
+
+
+
+
+
 end

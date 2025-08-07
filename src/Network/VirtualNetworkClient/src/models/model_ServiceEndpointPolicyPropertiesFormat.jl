@@ -10,34 +10,53 @@ Service Endpoint Policy resource.
         subnets=nothing,
         resourceGuid=nothing,
         provisioningState=nothing,
+        serviceAlias=nothing,
+        contextualServiceEndpointPolicies=nothing,
     )
 
     - serviceEndpointPolicyDefinitions::Vector{ServiceEndpointPolicyDefinition} : A collection of service endpoint policy definitions of the service endpoint policy.
     - subnets::Vector{Subnet2} : A collection of references to subnets.
     - resourceGuid::String : The resource GUID property of the service endpoint policy resource.
     - provisioningState::ProvisioningState
+    - serviceAlias::String : The alias indicating if the policy belongs to a service
+    - contextualServiceEndpointPolicies::Vector{String} : A collection of contextual service endpoint policy.
 """
 Base.@kwdef mutable struct ServiceEndpointPolicyPropertiesFormat <: OpenAPI.APIModel
     serviceEndpointPolicyDefinitions::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ServiceEndpointPolicyDefinition} }
     subnets::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{Subnet2} }
     resourceGuid::Union{Nothing, String} = nothing
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
+    serviceAlias::Union{Nothing, String} = nothing
+    contextualServiceEndpointPolicies::Union{Nothing, Vector{String}} = nothing
 
-    function ServiceEndpointPolicyPropertiesFormat(serviceEndpointPolicyDefinitions, subnets, resourceGuid, provisioningState, )
-        OpenAPI.validate_property(ServiceEndpointPolicyPropertiesFormat, Symbol("serviceEndpointPolicyDefinitions"), serviceEndpointPolicyDefinitions)
-        OpenAPI.validate_property(ServiceEndpointPolicyPropertiesFormat, Symbol("subnets"), subnets)
-        OpenAPI.validate_property(ServiceEndpointPolicyPropertiesFormat, Symbol("resourceGuid"), resourceGuid)
-        OpenAPI.validate_property(ServiceEndpointPolicyPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(serviceEndpointPolicyDefinitions, subnets, resourceGuid, provisioningState, )
+    function ServiceEndpointPolicyPropertiesFormat(serviceEndpointPolicyDefinitions, subnets, resourceGuid, provisioningState, serviceAlias, contextualServiceEndpointPolicies, )
+        o = new(serviceEndpointPolicyDefinitions, subnets, resourceGuid, provisioningState, serviceAlias, contextualServiceEndpointPolicies, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ServiceEndpointPolicyPropertiesFormat
 
-const _property_types_ServiceEndpointPolicyPropertiesFormat = Dict{Symbol,String}(Symbol("serviceEndpointPolicyDefinitions")=>"Vector{ServiceEndpointPolicyDefinition}", Symbol("subnets")=>"Vector{Subnet2}", Symbol("resourceGuid")=>"String", Symbol("provisioningState")=>"ProvisioningState", )
+const _property_types_ServiceEndpointPolicyPropertiesFormat = Dict{Symbol,String}(Symbol("serviceEndpointPolicyDefinitions")=>"Vector{ServiceEndpointPolicyDefinition}", Symbol("subnets")=>"Vector{Subnet2}", Symbol("resourceGuid")=>"String", Symbol("provisioningState")=>"ProvisioningState", Symbol("serviceAlias")=>"String", Symbol("contextualServiceEndpointPolicies")=>"Vector{String}", )
 OpenAPI.property_type(::Type{ ServiceEndpointPolicyPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ServiceEndpointPolicyPropertiesFormat[name]))}
 
-function check_required(o::ServiceEndpointPolicyPropertiesFormat)
+function OpenAPI.check_required(o::ServiceEndpointPolicyPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::ServiceEndpointPolicyPropertiesFormat)
+    OpenAPI.validate_property(ServiceEndpointPolicyPropertiesFormat, Symbol("serviceEndpointPolicyDefinitions"), o.serviceEndpointPolicyDefinitions)
+    OpenAPI.validate_property(ServiceEndpointPolicyPropertiesFormat, Symbol("subnets"), o.subnets)
+    OpenAPI.validate_property(ServiceEndpointPolicyPropertiesFormat, Symbol("resourceGuid"), o.resourceGuid)
+    OpenAPI.validate_property(ServiceEndpointPolicyPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(ServiceEndpointPolicyPropertiesFormat, Symbol("serviceAlias"), o.serviceAlias)
+    OpenAPI.validate_property(ServiceEndpointPolicyPropertiesFormat, Symbol("contextualServiceEndpointPolicies"), o.contextualServiceEndpointPolicies)
+end
+
 function OpenAPI.validate_property(::Type{ ServiceEndpointPolicyPropertiesFormat }, name::Symbol, val)
+
+
+
+
+
+
 end

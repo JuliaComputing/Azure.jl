@@ -15,17 +15,23 @@ Base.@kwdef mutable struct UpdateFirewallRuleParameters <: OpenAPI.APIModel
     properties = nothing # spec type: Union{ Nothing, UpdateFirewallRuleProperties }
 
     function UpdateFirewallRuleParameters(properties, )
-        OpenAPI.validate_property(UpdateFirewallRuleParameters, Symbol("properties"), properties)
-        return new(properties, )
+        o = new(properties, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type UpdateFirewallRuleParameters
 
 const _property_types_UpdateFirewallRuleParameters = Dict{Symbol,String}(Symbol("properties")=>"UpdateFirewallRuleProperties", )
 OpenAPI.property_type(::Type{ UpdateFirewallRuleParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_UpdateFirewallRuleParameters[name]))}
 
-function check_required(o::UpdateFirewallRuleParameters)
+function OpenAPI.check_required(o::UpdateFirewallRuleParameters)
     true
 end
 
+function OpenAPI.validate_properties(o::UpdateFirewallRuleParameters)
+    OpenAPI.validate_property(UpdateFirewallRuleParameters, Symbol("properties"), o.properties)
+end
+
 function OpenAPI.validate_property(::Type{ UpdateFirewallRuleParameters }, name::Symbol, val)
+
 end

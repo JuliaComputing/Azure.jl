@@ -27,19 +27,16 @@ Base.@kwdef mutable struct ContainerServiceAgentPoolProfile <: OpenAPI.APIModel
     fqdn::Union{Nothing, String} = nothing
 
     function ContainerServiceAgentPoolProfile(name, count, vmSize, dnsPrefix, fqdn, )
-        OpenAPI.validate_property(ContainerServiceAgentPoolProfile, Symbol("name"), name)
-        OpenAPI.validate_property(ContainerServiceAgentPoolProfile, Symbol("count"), count)
-        OpenAPI.validate_property(ContainerServiceAgentPoolProfile, Symbol("vmSize"), vmSize)
-        OpenAPI.validate_property(ContainerServiceAgentPoolProfile, Symbol("dnsPrefix"), dnsPrefix)
-        OpenAPI.validate_property(ContainerServiceAgentPoolProfile, Symbol("fqdn"), fqdn)
-        return new(name, count, vmSize, dnsPrefix, fqdn, )
+        o = new(name, count, vmSize, dnsPrefix, fqdn, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ContainerServiceAgentPoolProfile
 
 const _property_types_ContainerServiceAgentPoolProfile = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("count")=>"Int64", Symbol("vmSize")=>"String", Symbol("dnsPrefix")=>"String", Symbol("fqdn")=>"String", )
 OpenAPI.property_type(::Type{ ContainerServiceAgentPoolProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ContainerServiceAgentPoolProfile[name]))}
 
-function check_required(o::ContainerServiceAgentPoolProfile)
+function OpenAPI.check_required(o::ContainerServiceAgentPoolProfile)
     o.name === nothing && (return false)
     o.count === nothing && (return false)
     o.vmSize === nothing && (return false)
@@ -47,7 +44,17 @@ function check_required(o::ContainerServiceAgentPoolProfile)
     true
 end
 
+function OpenAPI.validate_properties(o::ContainerServiceAgentPoolProfile)
+    OpenAPI.validate_property(ContainerServiceAgentPoolProfile, Symbol("name"), o.name)
+    OpenAPI.validate_property(ContainerServiceAgentPoolProfile, Symbol("count"), o.count)
+    OpenAPI.validate_property(ContainerServiceAgentPoolProfile, Symbol("vmSize"), o.vmSize)
+    OpenAPI.validate_property(ContainerServiceAgentPoolProfile, Symbol("dnsPrefix"), o.dnsPrefix)
+    OpenAPI.validate_property(ContainerServiceAgentPoolProfile, Symbol("fqdn"), o.fqdn)
+end
+
 function OpenAPI.validate_property(::Type{ ContainerServiceAgentPoolProfile }, name::Symbol, val)
+
+
     if name === Symbol("count")
         OpenAPI.validate_param(name, "ContainerServiceAgentPoolProfile", :format, val, "int32")
     end
@@ -55,7 +62,11 @@ function OpenAPI.validate_property(::Type{ ContainerServiceAgentPoolProfile }, n
         OpenAPI.validate_param(name, "ContainerServiceAgentPoolProfile", :maximum, val, 100, false)
         OpenAPI.validate_param(name, "ContainerServiceAgentPoolProfile", :minimum, val, 1, false)
     end
+
     if name === Symbol("vmSize")
         OpenAPI.validate_param(name, "ContainerServiceAgentPoolProfile", :enum, val, ["Standard_A0", "Standard_A1", "Standard_A2", "Standard_A3", "Standard_A4", "Standard_A5", "Standard_A6", "Standard_A7", "Standard_A8", "Standard_A9", "Standard_A10", "Standard_A11", "Standard_D1", "Standard_D2", "Standard_D3", "Standard_D4", "Standard_D11", "Standard_D12", "Standard_D13", "Standard_D14", "Standard_D1_v2", "Standard_D2_v2", "Standard_D3_v2", "Standard_D4_v2", "Standard_D5_v2", "Standard_D11_v2", "Standard_D12_v2", "Standard_D13_v2", "Standard_D14_v2", "Standard_G1", "Standard_G2", "Standard_G3", "Standard_G4", "Standard_G5", "Standard_DS1", "Standard_DS2", "Standard_DS3", "Standard_DS4", "Standard_DS11", "Standard_DS12", "Standard_DS13", "Standard_DS14", "Standard_GS1", "Standard_GS2", "Standard_GS3", "Standard_GS4", "Standard_GS5"])
     end
+
+
+
 end

@@ -9,35 +9,49 @@ Peerings in a virtual network resource.
         properties=nothing,
         name=nothing,
         etag=nothing,
+        type=nothing,
         id=nothing,
     )
 
     - properties::VirtualNetworkPeeringPropertiesFormat
     - name::String : The name of the resource that is unique within a resource group. This name can be used to access the resource.
     - etag::String : A unique read-only string that changes whenever the resource is updated.
+    - type::String : Resource type.
     - id::String : Resource ID.
 """
 Base.@kwdef mutable struct VirtualNetworkPeering <: OpenAPI.APIModel
     properties = nothing # spec type: Union{ Nothing, VirtualNetworkPeeringPropertiesFormat }
     name::Union{Nothing, String} = nothing
     etag::Union{Nothing, String} = nothing
+    type::Union{Nothing, String} = nothing
     id::Union{Nothing, String} = nothing
 
-    function VirtualNetworkPeering(properties, name, etag, id, )
-        OpenAPI.validate_property(VirtualNetworkPeering, Symbol("properties"), properties)
-        OpenAPI.validate_property(VirtualNetworkPeering, Symbol("name"), name)
-        OpenAPI.validate_property(VirtualNetworkPeering, Symbol("etag"), etag)
-        OpenAPI.validate_property(VirtualNetworkPeering, Symbol("id"), id)
-        return new(properties, name, etag, id, )
+    function VirtualNetworkPeering(properties, name, etag, type, id, )
+        o = new(properties, name, etag, type, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualNetworkPeering
 
-const _property_types_VirtualNetworkPeering = Dict{Symbol,String}(Symbol("properties")=>"VirtualNetworkPeeringPropertiesFormat", Symbol("name")=>"String", Symbol("etag")=>"String", Symbol("id")=>"String", )
+const _property_types_VirtualNetworkPeering = Dict{Symbol,String}(Symbol("properties")=>"VirtualNetworkPeeringPropertiesFormat", Symbol("name")=>"String", Symbol("etag")=>"String", Symbol("type")=>"String", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ VirtualNetworkPeering }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualNetworkPeering[name]))}
 
-function check_required(o::VirtualNetworkPeering)
+function OpenAPI.check_required(o::VirtualNetworkPeering)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualNetworkPeering)
+    OpenAPI.validate_property(VirtualNetworkPeering, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(VirtualNetworkPeering, Symbol("name"), o.name)
+    OpenAPI.validate_property(VirtualNetworkPeering, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(VirtualNetworkPeering, Symbol("type"), o.type)
+    OpenAPI.validate_property(VirtualNetworkPeering, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualNetworkPeering }, name::Symbol, val)
+
+
+
+
+
 end

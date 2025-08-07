@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **subnet** | [***Subnet**](Subnet.md) |  | [optional] [default to nothing]
 **publicIPAddress** | [***PublicIPAddress2**](PublicIPAddress2.md) |  | [optional] [default to nothing]
 **publicIPPrefix** | [***SubResource**](SubResource.md) |  | [optional] [default to nothing]
+**gatewayLoadBalancer** | [***SubResource**](SubResource.md) |  | [optional] [default to nothing]
 **provisioningState** | [***ProvisioningState**](ProvisioningState.md) |  | [optional] [default to nothing]
 
 

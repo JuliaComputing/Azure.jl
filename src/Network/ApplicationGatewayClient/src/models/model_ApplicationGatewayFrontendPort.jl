@@ -27,21 +27,31 @@ Base.@kwdef mutable struct ApplicationGatewayFrontendPort <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
 
     function ApplicationGatewayFrontendPort(properties, name, etag, type, id, )
-        OpenAPI.validate_property(ApplicationGatewayFrontendPort, Symbol("properties"), properties)
-        OpenAPI.validate_property(ApplicationGatewayFrontendPort, Symbol("name"), name)
-        OpenAPI.validate_property(ApplicationGatewayFrontendPort, Symbol("etag"), etag)
-        OpenAPI.validate_property(ApplicationGatewayFrontendPort, Symbol("type"), type)
-        OpenAPI.validate_property(ApplicationGatewayFrontendPort, Symbol("id"), id)
-        return new(properties, name, etag, type, id, )
+        o = new(properties, name, etag, type, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayFrontendPort
 
 const _property_types_ApplicationGatewayFrontendPort = Dict{Symbol,String}(Symbol("properties")=>"ApplicationGatewayFrontendPortPropertiesFormat", Symbol("name")=>"String", Symbol("etag")=>"String", Symbol("type")=>"String", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ ApplicationGatewayFrontendPort }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayFrontendPort[name]))}
 
-function check_required(o::ApplicationGatewayFrontendPort)
+function OpenAPI.check_required(o::ApplicationGatewayFrontendPort)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayFrontendPort)
+    OpenAPI.validate_property(ApplicationGatewayFrontendPort, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(ApplicationGatewayFrontendPort, Symbol("name"), o.name)
+    OpenAPI.validate_property(ApplicationGatewayFrontendPort, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(ApplicationGatewayFrontendPort, Symbol("type"), o.type)
+    OpenAPI.validate_property(ApplicationGatewayFrontendPort, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayFrontendPort }, name::Symbol, val)
+
+
+
+
+
 end

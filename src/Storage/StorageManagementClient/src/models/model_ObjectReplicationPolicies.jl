@@ -15,17 +15,23 @@ Base.@kwdef mutable struct ObjectReplicationPolicies <: OpenAPI.APIModel
     value::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ObjectReplicationPolicy} }
 
     function ObjectReplicationPolicies(value, )
-        OpenAPI.validate_property(ObjectReplicationPolicies, Symbol("value"), value)
-        return new(value, )
+        o = new(value, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ObjectReplicationPolicies
 
 const _property_types_ObjectReplicationPolicies = Dict{Symbol,String}(Symbol("value")=>"Vector{ObjectReplicationPolicy}", )
 OpenAPI.property_type(::Type{ ObjectReplicationPolicies }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ObjectReplicationPolicies[name]))}
 
-function check_required(o::ObjectReplicationPolicies)
+function OpenAPI.check_required(o::ObjectReplicationPolicies)
     true
 end
 
+function OpenAPI.validate_properties(o::ObjectReplicationPolicies)
+    OpenAPI.validate_property(ObjectReplicationPolicies, Symbol("value"), o.value)
+end
+
 function OpenAPI.validate_property(::Type{ ObjectReplicationPolicies }, name::Symbol, val)
+
 end

@@ -18,20 +18,27 @@ Base.@kwdef mutable struct TroubleshootingProperties <: OpenAPI.APIModel
     storagePath::Union{Nothing, String} = nothing
 
     function TroubleshootingProperties(storageId, storagePath, )
-        OpenAPI.validate_property(TroubleshootingProperties, Symbol("storageId"), storageId)
-        OpenAPI.validate_property(TroubleshootingProperties, Symbol("storagePath"), storagePath)
-        return new(storageId, storagePath, )
+        o = new(storageId, storagePath, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type TroubleshootingProperties
 
 const _property_types_TroubleshootingProperties = Dict{Symbol,String}(Symbol("storageId")=>"String", Symbol("storagePath")=>"String", )
 OpenAPI.property_type(::Type{ TroubleshootingProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TroubleshootingProperties[name]))}
 
-function check_required(o::TroubleshootingProperties)
+function OpenAPI.check_required(o::TroubleshootingProperties)
     o.storageId === nothing && (return false)
     o.storagePath === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::TroubleshootingProperties)
+    OpenAPI.validate_property(TroubleshootingProperties, Symbol("storageId"), o.storageId)
+    OpenAPI.validate_property(TroubleshootingProperties, Symbol("storagePath"), o.storagePath)
+end
+
 function OpenAPI.validate_property(::Type{ TroubleshootingProperties }, name::Symbol, val)
+
+
 end

@@ -15,17 +15,23 @@ Base.@kwdef mutable struct VirtualMachineScaleSetInstanceViewStatusesSummary <: 
     statusesSummary::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{VirtualMachineStatusCodeCount} }
 
     function VirtualMachineScaleSetInstanceViewStatusesSummary(statusesSummary, )
-        OpenAPI.validate_property(VirtualMachineScaleSetInstanceViewStatusesSummary, Symbol("statusesSummary"), statusesSummary)
-        return new(statusesSummary, )
+        o = new(statusesSummary, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetInstanceViewStatusesSummary
 
 const _property_types_VirtualMachineScaleSetInstanceViewStatusesSummary = Dict{Symbol,String}(Symbol("statusesSummary")=>"Vector{VirtualMachineStatusCodeCount}", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetInstanceViewStatusesSummary }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetInstanceViewStatusesSummary[name]))}
 
-function check_required(o::VirtualMachineScaleSetInstanceViewStatusesSummary)
+function OpenAPI.check_required(o::VirtualMachineScaleSetInstanceViewStatusesSummary)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetInstanceViewStatusesSummary)
+    OpenAPI.validate_property(VirtualMachineScaleSetInstanceViewStatusesSummary, Symbol("statusesSummary"), o.statusesSummary)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetInstanceViewStatusesSummary }, name::Symbol, val)
+
 end

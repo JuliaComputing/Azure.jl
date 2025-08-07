@@ -14,6 +14,11 @@ Data used when creating a disk.
         sourceResourceId=nothing,
         sourceUniqueId=nothing,
         uploadSizeBytes=nothing,
+        logicalSectorSize=nothing,
+        securityDataUri=nothing,
+        performancePlus=nothing,
+        elasticSanResourceId=nothing,
+        provisionedBandwidthCopySpeed=nothing,
     )
 
     - createOption::String : This enumerates the possible sources of a disk&#39;s creation.
@@ -24,6 +29,11 @@ Data used when creating a disk.
     - sourceResourceId::String : If createOption is Copy, this is the ARM id of the source snapshot or disk.
     - sourceUniqueId::String : If this field is set, this is the unique id identifying the source of this resource.
     - uploadSizeBytes::Int64 : If createOption is Upload, this is the size of the contents of the upload including the VHD footer. This value should be between 20972032 (20 MiB + 512 bytes for the VHD footer) and 35183298347520 bytes (32 TiB + 512 bytes for the VHD footer).
+    - logicalSectorSize::Int64 : Logical sector size in bytes for Ultra disks. Supported values are 512 ad 4096. 4096 is the default.
+    - securityDataUri::String : If createOption is ImportSecure, this is the URI of a blob to be imported into VM guest state.
+    - performancePlus::Bool : Set this flag to true to get a boost on the performance target of the disk deployed, see here on the respective performance target. This flag can only be set on disk creation time and cannot be disabled after enabled.
+    - elasticSanResourceId::String : Required if createOption is CopyFromSanSnapshot. This is the ARM id of the source elastic san volume snapshot.
+    - provisionedBandwidthCopySpeed::String : If this field is set on a snapshot and createOption is CopyStart, the snapshot will be copied at a quicker speed.
 """
 Base.@kwdef mutable struct CreationData <: OpenAPI.APIModel
     createOption::Union{Nothing, String} = nothing
@@ -34,33 +44,69 @@ Base.@kwdef mutable struct CreationData <: OpenAPI.APIModel
     sourceResourceId::Union{Nothing, String} = nothing
     sourceUniqueId::Union{Nothing, String} = nothing
     uploadSizeBytes::Union{Nothing, Int64} = nothing
+    logicalSectorSize::Union{Nothing, Int64} = nothing
+    securityDataUri::Union{Nothing, String} = nothing
+    performancePlus::Union{Nothing, Bool} = nothing
+    elasticSanResourceId::Union{Nothing, String} = nothing
+    provisionedBandwidthCopySpeed::Union{Nothing, String} = nothing
 
-    function CreationData(createOption, storageAccountId, imageReference, galleryImageReference, sourceUri, sourceResourceId, sourceUniqueId, uploadSizeBytes, )
-        OpenAPI.validate_property(CreationData, Symbol("createOption"), createOption)
-        OpenAPI.validate_property(CreationData, Symbol("storageAccountId"), storageAccountId)
-        OpenAPI.validate_property(CreationData, Symbol("imageReference"), imageReference)
-        OpenAPI.validate_property(CreationData, Symbol("galleryImageReference"), galleryImageReference)
-        OpenAPI.validate_property(CreationData, Symbol("sourceUri"), sourceUri)
-        OpenAPI.validate_property(CreationData, Symbol("sourceResourceId"), sourceResourceId)
-        OpenAPI.validate_property(CreationData, Symbol("sourceUniqueId"), sourceUniqueId)
-        OpenAPI.validate_property(CreationData, Symbol("uploadSizeBytes"), uploadSizeBytes)
-        return new(createOption, storageAccountId, imageReference, galleryImageReference, sourceUri, sourceResourceId, sourceUniqueId, uploadSizeBytes, )
+    function CreationData(createOption, storageAccountId, imageReference, galleryImageReference, sourceUri, sourceResourceId, sourceUniqueId, uploadSizeBytes, logicalSectorSize, securityDataUri, performancePlus, elasticSanResourceId, provisionedBandwidthCopySpeed, )
+        o = new(createOption, storageAccountId, imageReference, galleryImageReference, sourceUri, sourceResourceId, sourceUniqueId, uploadSizeBytes, logicalSectorSize, securityDataUri, performancePlus, elasticSanResourceId, provisionedBandwidthCopySpeed, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type CreationData
 
-const _property_types_CreationData = Dict{Symbol,String}(Symbol("createOption")=>"String", Symbol("storageAccountId")=>"String", Symbol("imageReference")=>"ImageDiskReference", Symbol("galleryImageReference")=>"ImageDiskReference", Symbol("sourceUri")=>"String", Symbol("sourceResourceId")=>"String", Symbol("sourceUniqueId")=>"String", Symbol("uploadSizeBytes")=>"Int64", )
+const _property_types_CreationData = Dict{Symbol,String}(Symbol("createOption")=>"String", Symbol("storageAccountId")=>"String", Symbol("imageReference")=>"ImageDiskReference", Symbol("galleryImageReference")=>"ImageDiskReference", Symbol("sourceUri")=>"String", Symbol("sourceResourceId")=>"String", Symbol("sourceUniqueId")=>"String", Symbol("uploadSizeBytes")=>"Int64", Symbol("logicalSectorSize")=>"Int64", Symbol("securityDataUri")=>"String", Symbol("performancePlus")=>"Bool", Symbol("elasticSanResourceId")=>"String", Symbol("provisionedBandwidthCopySpeed")=>"String", )
 OpenAPI.property_type(::Type{ CreationData }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_CreationData[name]))}
 
-function check_required(o::CreationData)
+function OpenAPI.check_required(o::CreationData)
     o.createOption === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::CreationData)
+    OpenAPI.validate_property(CreationData, Symbol("createOption"), o.createOption)
+    OpenAPI.validate_property(CreationData, Symbol("storageAccountId"), o.storageAccountId)
+    OpenAPI.validate_property(CreationData, Symbol("imageReference"), o.imageReference)
+    OpenAPI.validate_property(CreationData, Symbol("galleryImageReference"), o.galleryImageReference)
+    OpenAPI.validate_property(CreationData, Symbol("sourceUri"), o.sourceUri)
+    OpenAPI.validate_property(CreationData, Symbol("sourceResourceId"), o.sourceResourceId)
+    OpenAPI.validate_property(CreationData, Symbol("sourceUniqueId"), o.sourceUniqueId)
+    OpenAPI.validate_property(CreationData, Symbol("uploadSizeBytes"), o.uploadSizeBytes)
+    OpenAPI.validate_property(CreationData, Symbol("logicalSectorSize"), o.logicalSectorSize)
+    OpenAPI.validate_property(CreationData, Symbol("securityDataUri"), o.securityDataUri)
+    OpenAPI.validate_property(CreationData, Symbol("performancePlus"), o.performancePlus)
+    OpenAPI.validate_property(CreationData, Symbol("elasticSanResourceId"), o.elasticSanResourceId)
+    OpenAPI.validate_property(CreationData, Symbol("provisionedBandwidthCopySpeed"), o.provisionedBandwidthCopySpeed)
+end
+
 function OpenAPI.validate_property(::Type{ CreationData }, name::Symbol, val)
+
     if name === Symbol("createOption")
-        OpenAPI.validate_param(name, "CreationData", :enum, val, ["Empty", "Attach", "FromImage", "Import", "Copy", "Restore", "Upload"])
+        OpenAPI.validate_param(name, "CreationData", :enum, val, ["Empty", "Attach", "FromImage", "Import", "Copy", "Restore", "Upload", "CopyStart", "ImportSecure", "UploadPreparedSecure", "CopyFromSanSnapshot"])
     end
+
+
+
+
+
+
+
+
     if name === Symbol("uploadSizeBytes")
         OpenAPI.validate_param(name, "CreationData", :format, val, "int64")
     end
+
+    if name === Symbol("logicalSectorSize")
+        OpenAPI.validate_param(name, "CreationData", :format, val, "int32")
+    end
+
+
+
+
+    if name === Symbol("provisionedBandwidthCopySpeed")
+        OpenAPI.validate_param(name, "CreationData", :enum, val, ["None", "Enhanced"])
+    end
+
 end

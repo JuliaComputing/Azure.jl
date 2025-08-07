@@ -7,7 +7,9 @@ A common class for general resource information.
 
     VirtualNetworkGateway(;
         properties=nothing,
+        extendedLocation=nothing,
         etag=nothing,
+        identity=nothing,
         id=nothing,
         name=nothing,
         type=nothing,
@@ -16,7 +18,9 @@ A common class for general resource information.
     )
 
     - properties::VirtualNetworkGatewayPropertiesFormat
+    - extendedLocation::ExtendedLocation
     - etag::String : A unique read-only string that changes whenever the resource is updated.
+    - identity::ManagedServiceIdentity
     - id::String : Resource ID.
     - name::String : Resource name.
     - type::String : Resource type.
@@ -25,32 +29,50 @@ A common class for general resource information.
 """
 Base.@kwdef mutable struct VirtualNetworkGateway <: OpenAPI.APIModel
     properties = nothing # spec type: Union{ Nothing, VirtualNetworkGatewayPropertiesFormat }
+    extendedLocation = nothing # spec type: Union{ Nothing, ExtendedLocation }
     etag::Union{Nothing, String} = nothing
+    identity = nothing # spec type: Union{ Nothing, ManagedServiceIdentity }
     id::Union{Nothing, String} = nothing
     name::Union{Nothing, String} = nothing
     type::Union{Nothing, String} = nothing
     location::Union{Nothing, String} = nothing
     tags::Union{Nothing, Dict{String, String}} = nothing
 
-    function VirtualNetworkGateway(properties, etag, id, name, type, location, tags, )
-        OpenAPI.validate_property(VirtualNetworkGateway, Symbol("properties"), properties)
-        OpenAPI.validate_property(VirtualNetworkGateway, Symbol("etag"), etag)
-        OpenAPI.validate_property(VirtualNetworkGateway, Symbol("id"), id)
-        OpenAPI.validate_property(VirtualNetworkGateway, Symbol("name"), name)
-        OpenAPI.validate_property(VirtualNetworkGateway, Symbol("type"), type)
-        OpenAPI.validate_property(VirtualNetworkGateway, Symbol("location"), location)
-        OpenAPI.validate_property(VirtualNetworkGateway, Symbol("tags"), tags)
-        return new(properties, etag, id, name, type, location, tags, )
+    function VirtualNetworkGateway(properties, extendedLocation, etag, identity, id, name, type, location, tags, )
+        o = new(properties, extendedLocation, etag, identity, id, name, type, location, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualNetworkGateway
 
-const _property_types_VirtualNetworkGateway = Dict{Symbol,String}(Symbol("properties")=>"VirtualNetworkGatewayPropertiesFormat", Symbol("etag")=>"String", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
+const _property_types_VirtualNetworkGateway = Dict{Symbol,String}(Symbol("properties")=>"VirtualNetworkGatewayPropertiesFormat", Symbol("extendedLocation")=>"ExtendedLocation", Symbol("etag")=>"String", Symbol("identity")=>"ManagedServiceIdentity", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ VirtualNetworkGateway }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualNetworkGateway[name]))}
 
-function check_required(o::VirtualNetworkGateway)
+function OpenAPI.check_required(o::VirtualNetworkGateway)
     o.properties === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualNetworkGateway)
+    OpenAPI.validate_property(VirtualNetworkGateway, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(VirtualNetworkGateway, Symbol("extendedLocation"), o.extendedLocation)
+    OpenAPI.validate_property(VirtualNetworkGateway, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(VirtualNetworkGateway, Symbol("identity"), o.identity)
+    OpenAPI.validate_property(VirtualNetworkGateway, Symbol("id"), o.id)
+    OpenAPI.validate_property(VirtualNetworkGateway, Symbol("name"), o.name)
+    OpenAPI.validate_property(VirtualNetworkGateway, Symbol("type"), o.type)
+    OpenAPI.validate_property(VirtualNetworkGateway, Symbol("location"), o.location)
+    OpenAPI.validate_property(VirtualNetworkGateway, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualNetworkGateway }, name::Symbol, val)
+
+
+
+
+
+
+
+
+
 end

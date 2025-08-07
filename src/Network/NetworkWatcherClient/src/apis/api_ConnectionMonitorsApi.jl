@@ -17,13 +17,14 @@ const _returntypes_connection_monitors_create_or_update_ConnectionMonitorsApi = 
     Regex("^" * replace("0", "x"=>".") * "\$") => ErrorResponse2,
 )
 
-function _oacinternal_connection_monitors_create_or_update(_api::ConnectionMonitorsApi, resource_group_name::String, network_watcher_name::String, connection_monitor_name::String, api_version::String, subscription_id::String, parameters::ConnectionMonitor; _mediaType=nothing)
+function _oacinternal_connection_monitors_create_or_update(_api::ConnectionMonitorsApi, resource_group_name::String, network_watcher_name::String, connection_monitor_name::String, api_version::String, subscription_id::String, parameters::ConnectionMonitor; migrate=nothing, _mediaType=nothing)
     _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_connection_monitors_create_or_update_ConnectionMonitorsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}", ["azure_auth", ], parameters)
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "networkWatcherName", network_watcher_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "connectionMonitorName", connection_monitor_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "migrate", migrate; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -38,16 +39,17 @@ Params:
 - api_version::String (required)
 - subscription_id::String (required)
 - parameters::ConnectionMonitor (required)
+- migrate::String
 
 Return: ConnectionMonitorResult, OpenAPI.Clients.ApiResponse
 """
-function connection_monitors_create_or_update(_api::ConnectionMonitorsApi, resource_group_name::String, network_watcher_name::String, connection_monitor_name::String, api_version::String, subscription_id::String, parameters::ConnectionMonitor; _mediaType=nothing)
-    _ctx = _oacinternal_connection_monitors_create_or_update(_api, resource_group_name, network_watcher_name, connection_monitor_name, api_version, subscription_id, parameters; _mediaType=_mediaType)
+function connection_monitors_create_or_update(_api::ConnectionMonitorsApi, resource_group_name::String, network_watcher_name::String, connection_monitor_name::String, api_version::String, subscription_id::String, parameters::ConnectionMonitor; migrate=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_connection_monitors_create_or_update(_api, resource_group_name, network_watcher_name, connection_monitor_name, api_version, subscription_id, parameters; migrate=migrate, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx)
 end
 
-function connection_monitors_create_or_update(_api::ConnectionMonitorsApi, response_stream::Channel, resource_group_name::String, network_watcher_name::String, connection_monitor_name::String, api_version::String, subscription_id::String, parameters::ConnectionMonitor; _mediaType=nothing)
-    _ctx = _oacinternal_connection_monitors_create_or_update(_api, resource_group_name, network_watcher_name, connection_monitor_name, api_version, subscription_id, parameters; _mediaType=_mediaType)
+function connection_monitors_create_or_update(_api::ConnectionMonitorsApi, response_stream::Channel, resource_group_name::String, network_watcher_name::String, connection_monitor_name::String, api_version::String, subscription_id::String, parameters::ConnectionMonitor; migrate=nothing, _mediaType=nothing)
+    _ctx = _oacinternal_connection_monitors_create_or_update(_api, resource_group_name, network_watcher_name, connection_monitor_name, api_version, subscription_id, parameters; migrate=migrate, _mediaType=_mediaType)
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
@@ -63,7 +65,7 @@ function _oacinternal_connection_monitors_delete(_api::ConnectionMonitorsApi, re
     OpenAPI.Clients.set_param(_ctx.path, "networkWatcherName", network_watcher_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "connectionMonitorName", connection_monitor_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -101,7 +103,7 @@ function _oacinternal_connection_monitors_get(_api::ConnectionMonitorsApi, resou
     OpenAPI.Clients.set_param(_ctx.path, "networkWatcherName", network_watcher_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "connectionMonitorName", connection_monitor_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -138,7 +140,7 @@ function _oacinternal_connection_monitors_list(_api::ConnectionMonitorsApi, reso
     OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "networkWatcherName", network_watcher_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -164,84 +166,6 @@ function connection_monitors_list(_api::ConnectionMonitorsApi, response_stream::
     return OpenAPI.Clients.exec(_ctx, response_stream)
 end
 
-const _returntypes_connection_monitors_query_ConnectionMonitorsApi = Dict{Regex,Type}(
-    Regex("^" * replace("200", "x"=>".") * "\$") => ConnectionMonitorQueryResult,
-    Regex("^" * replace("202", "x"=>".") * "\$") => ConnectionMonitorQueryResult,
-    Regex("^" * replace("0", "x"=>".") * "\$") => ErrorResponse2,
-)
-
-function _oacinternal_connection_monitors_query(_api::ConnectionMonitorsApi, resource_group_name::String, network_watcher_name::String, connection_monitor_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_connection_monitors_query_ConnectionMonitorsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}/query", ["azure_auth", ])
-    OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
-    OpenAPI.Clients.set_param(_ctx.path, "networkWatcherName", network_watcher_name)  # type String
-    OpenAPI.Clients.set_param(_ctx.path, "connectionMonitorName", connection_monitor_name)  # type String
-    OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
-    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
-    return _ctx
-end
-
-@doc raw"""Query a snapshot of the most recent connection states.
-
-Params:
-- resource_group_name::String (required)
-- network_watcher_name::String (required)
-- connection_monitor_name::String (required)
-- api_version::String (required)
-- subscription_id::String (required)
-
-Return: ConnectionMonitorQueryResult, OpenAPI.Clients.ApiResponse
-"""
-function connection_monitors_query(_api::ConnectionMonitorsApi, resource_group_name::String, network_watcher_name::String, connection_monitor_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = _oacinternal_connection_monitors_query(_api, resource_group_name, network_watcher_name, connection_monitor_name, api_version, subscription_id; _mediaType=_mediaType)
-    return OpenAPI.Clients.exec(_ctx)
-end
-
-function connection_monitors_query(_api::ConnectionMonitorsApi, response_stream::Channel, resource_group_name::String, network_watcher_name::String, connection_monitor_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = _oacinternal_connection_monitors_query(_api, resource_group_name, network_watcher_name, connection_monitor_name, api_version, subscription_id; _mediaType=_mediaType)
-    return OpenAPI.Clients.exec(_ctx, response_stream)
-end
-
-const _returntypes_connection_monitors_start_ConnectionMonitorsApi = Dict{Regex,Type}(
-    Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
-    Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
-    Regex("^" * replace("0", "x"=>".") * "\$") => ErrorResponse2,
-)
-
-function _oacinternal_connection_monitors_start(_api::ConnectionMonitorsApi, resource_group_name::String, network_watcher_name::String, connection_monitor_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = OpenAPI.Clients.Ctx(_api.client, "POST", _returntypes_connection_monitors_start_ConnectionMonitorsApi, "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/connectionMonitors/{connectionMonitorName}/start", ["azure_auth", ])
-    OpenAPI.Clients.set_param(_ctx.path, "resourceGroupName", resource_group_name)  # type String
-    OpenAPI.Clients.set_param(_ctx.path, "networkWatcherName", network_watcher_name)  # type String
-    OpenAPI.Clients.set_param(_ctx.path, "connectionMonitorName", connection_monitor_name)  # type String
-    OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
-    OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
-    OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
-    return _ctx
-end
-
-@doc raw"""Starts the specified connection monitor.
-
-Params:
-- resource_group_name::String (required)
-- network_watcher_name::String (required)
-- connection_monitor_name::String (required)
-- api_version::String (required)
-- subscription_id::String (required)
-
-Return: Nothing, OpenAPI.Clients.ApiResponse
-"""
-function connection_monitors_start(_api::ConnectionMonitorsApi, resource_group_name::String, network_watcher_name::String, connection_monitor_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = _oacinternal_connection_monitors_start(_api, resource_group_name, network_watcher_name, connection_monitor_name, api_version, subscription_id; _mediaType=_mediaType)
-    return OpenAPI.Clients.exec(_ctx)
-end
-
-function connection_monitors_start(_api::ConnectionMonitorsApi, response_stream::Channel, resource_group_name::String, network_watcher_name::String, connection_monitor_name::String, api_version::String, subscription_id::String; _mediaType=nothing)
-    _ctx = _oacinternal_connection_monitors_start(_api, resource_group_name, network_watcher_name, connection_monitor_name, api_version, subscription_id; _mediaType=_mediaType)
-    return OpenAPI.Clients.exec(_ctx, response_stream)
-end
-
 const _returntypes_connection_monitors_stop_ConnectionMonitorsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
@@ -254,7 +178,7 @@ function _oacinternal_connection_monitors_stop(_api::ConnectionMonitorsApi, reso
     OpenAPI.Clients.set_param(_ctx.path, "networkWatcherName", network_watcher_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "connectionMonitorName", connection_monitor_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -292,7 +216,7 @@ function _oacinternal_connection_monitors_update_tags(_api::ConnectionMonitorsAp
     OpenAPI.Clients.set_param(_ctx.path, "networkWatcherName", network_watcher_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "connectionMonitorName", connection_monitor_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -324,7 +248,5 @@ export connection_monitors_create_or_update
 export connection_monitors_delete
 export connection_monitors_get
 export connection_monitors_list
-export connection_monitors_query
-export connection_monitors_start
 export connection_monitors_stop
 export connection_monitors_update_tags

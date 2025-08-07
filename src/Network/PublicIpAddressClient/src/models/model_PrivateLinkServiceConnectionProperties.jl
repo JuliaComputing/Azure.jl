@@ -27,21 +27,31 @@ Base.@kwdef mutable struct PrivateLinkServiceConnectionProperties <: OpenAPI.API
     privateLinkServiceConnectionState = nothing # spec type: Union{ Nothing, PrivateLinkServiceConnectionState }
 
     function PrivateLinkServiceConnectionProperties(provisioningState, privateLinkServiceId, groupIds, requestMessage, privateLinkServiceConnectionState, )
-        OpenAPI.validate_property(PrivateLinkServiceConnectionProperties, Symbol("provisioningState"), provisioningState)
-        OpenAPI.validate_property(PrivateLinkServiceConnectionProperties, Symbol("privateLinkServiceId"), privateLinkServiceId)
-        OpenAPI.validate_property(PrivateLinkServiceConnectionProperties, Symbol("groupIds"), groupIds)
-        OpenAPI.validate_property(PrivateLinkServiceConnectionProperties, Symbol("requestMessage"), requestMessage)
-        OpenAPI.validate_property(PrivateLinkServiceConnectionProperties, Symbol("privateLinkServiceConnectionState"), privateLinkServiceConnectionState)
-        return new(provisioningState, privateLinkServiceId, groupIds, requestMessage, privateLinkServiceConnectionState, )
+        o = new(provisioningState, privateLinkServiceId, groupIds, requestMessage, privateLinkServiceConnectionState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PrivateLinkServiceConnectionProperties
 
 const _property_types_PrivateLinkServiceConnectionProperties = Dict{Symbol,String}(Symbol("provisioningState")=>"ProvisioningState", Symbol("privateLinkServiceId")=>"String", Symbol("groupIds")=>"Vector{String}", Symbol("requestMessage")=>"String", Symbol("privateLinkServiceConnectionState")=>"PrivateLinkServiceConnectionState", )
 OpenAPI.property_type(::Type{ PrivateLinkServiceConnectionProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PrivateLinkServiceConnectionProperties[name]))}
 
-function check_required(o::PrivateLinkServiceConnectionProperties)
+function OpenAPI.check_required(o::PrivateLinkServiceConnectionProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::PrivateLinkServiceConnectionProperties)
+    OpenAPI.validate_property(PrivateLinkServiceConnectionProperties, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(PrivateLinkServiceConnectionProperties, Symbol("privateLinkServiceId"), o.privateLinkServiceId)
+    OpenAPI.validate_property(PrivateLinkServiceConnectionProperties, Symbol("groupIds"), o.groupIds)
+    OpenAPI.validate_property(PrivateLinkServiceConnectionProperties, Symbol("requestMessage"), o.requestMessage)
+    OpenAPI.validate_property(PrivateLinkServiceConnectionProperties, Symbol("privateLinkServiceConnectionState"), o.privateLinkServiceConnectionState)
+end
+
 function OpenAPI.validate_property(::Type{ PrivateLinkServiceConnectionProperties }, name::Symbol, val)
+
+
+
+
+
 end

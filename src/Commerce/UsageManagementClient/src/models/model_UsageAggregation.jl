@@ -24,20 +24,29 @@ Base.@kwdef mutable struct UsageAggregation <: OpenAPI.APIModel
     properties = nothing # spec type: Union{ Nothing, UsageSample }
 
     function UsageAggregation(id, name, type, properties, )
-        OpenAPI.validate_property(UsageAggregation, Symbol("id"), id)
-        OpenAPI.validate_property(UsageAggregation, Symbol("name"), name)
-        OpenAPI.validate_property(UsageAggregation, Symbol("type"), type)
-        OpenAPI.validate_property(UsageAggregation, Symbol("properties"), properties)
-        return new(id, name, type, properties, )
+        o = new(id, name, type, properties, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type UsageAggregation
 
 const _property_types_UsageAggregation = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("properties")=>"UsageSample", )
 OpenAPI.property_type(::Type{ UsageAggregation }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_UsageAggregation[name]))}
 
-function check_required(o::UsageAggregation)
+function OpenAPI.check_required(o::UsageAggregation)
     true
 end
 
+function OpenAPI.validate_properties(o::UsageAggregation)
+    OpenAPI.validate_property(UsageAggregation, Symbol("id"), o.id)
+    OpenAPI.validate_property(UsageAggregation, Symbol("name"), o.name)
+    OpenAPI.validate_property(UsageAggregation, Symbol("type"), o.type)
+    OpenAPI.validate_property(UsageAggregation, Symbol("properties"), o.properties)
+end
+
 function OpenAPI.validate_property(::Type{ UsageAggregation }, name::Symbol, val)
+
+
+
+
 end

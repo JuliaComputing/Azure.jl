@@ -26,11 +26,11 @@ Creates a new SSH public key resource.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **SshPublicKeysApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**ssh_public_key_name** | **String**| The name of the SSH public key. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**SshPublicKeyResource**](SshPublicKeyResource.md)| Parameters supplied to create the SSH public key. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**ssh_public_key_name** | **String** | The name of the SSH public key. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**SshPublicKeyResource**](SshPublicKeyResource.md) | Parameters supplied to create the SSH public key. |
 
 ### Return type
 
@@ -60,10 +60,10 @@ Delete an SSH public key.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **SshPublicKeysApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**ssh_public_key_name** | **String**| The name of the SSH public key. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**ssh_public_key_name** | **String** | The name of the SSH public key. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -76,7 +76,7 @@ Nothing
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
@@ -93,10 +93,10 @@ Generates and returns a public/private key pair and populates the SSH public key
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **SshPublicKeysApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**ssh_public_key_name** | **String**| The name of the SSH public key. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**ssh_public_key_name** | **String** | The name of the SSH public key. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -126,10 +126,10 @@ Retrieves information about an SSH public key.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **SshPublicKeysApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**ssh_public_key_name** | **String**| The name of the SSH public key. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**ssh_public_key_name** | **String** | The name of the SSH public key. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -159,9 +159,9 @@ Lists all of the SSH public keys in the specified resource group. Use the nextLi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **SshPublicKeysApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -191,8 +191,8 @@ Lists all of the SSH public keys in the subscription. Use the nextLink property 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **SshPublicKeysApi** | API context | 
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -222,11 +222,11 @@ Updates a new SSH public key resource.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **SshPublicKeysApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**ssh_public_key_name** | **String**| The name of the SSH public key. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**SshPublicKeyUpdateResource**](SshPublicKeyUpdateResource.md)| Parameters supplied to update the SSH public key. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**ssh_public_key_name** | **String** | The name of the SSH public key. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**SshPublicKeyUpdateResource**](SshPublicKeyUpdateResource.md) | Parameters supplied to update the SSH public key. |
 
 ### Return type
 

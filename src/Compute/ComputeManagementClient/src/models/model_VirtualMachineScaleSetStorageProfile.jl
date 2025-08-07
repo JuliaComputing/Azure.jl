@@ -13,7 +13,7 @@ Describes a virtual machine scale set storage profile.
 
     - imageReference::ImageReference
     - osDisk::VirtualMachineScaleSetOSDisk
-    - dataDisks::Vector{VirtualMachineScaleSetDataDisk} : Specifies the parameters that are used to add data disks to the virtual machines in the scale set. &lt;br&gt;&lt;br&gt; For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc&#x3D;%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+    - dataDisks::Vector{VirtualMachineScaleSetDataDisk} : Specifies the parameters that are used to add data disks to the virtual machines in the scale set. &lt;br&gt;&lt;br&gt; For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
 """
 Base.@kwdef mutable struct VirtualMachineScaleSetStorageProfile <: OpenAPI.APIModel
     imageReference = nothing # spec type: Union{ Nothing, ImageReference }
@@ -21,19 +21,27 @@ Base.@kwdef mutable struct VirtualMachineScaleSetStorageProfile <: OpenAPI.APIMo
     dataDisks::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{VirtualMachineScaleSetDataDisk} }
 
     function VirtualMachineScaleSetStorageProfile(imageReference, osDisk, dataDisks, )
-        OpenAPI.validate_property(VirtualMachineScaleSetStorageProfile, Symbol("imageReference"), imageReference)
-        OpenAPI.validate_property(VirtualMachineScaleSetStorageProfile, Symbol("osDisk"), osDisk)
-        OpenAPI.validate_property(VirtualMachineScaleSetStorageProfile, Symbol("dataDisks"), dataDisks)
-        return new(imageReference, osDisk, dataDisks, )
+        o = new(imageReference, osDisk, dataDisks, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetStorageProfile
 
 const _property_types_VirtualMachineScaleSetStorageProfile = Dict{Symbol,String}(Symbol("imageReference")=>"ImageReference", Symbol("osDisk")=>"VirtualMachineScaleSetOSDisk", Symbol("dataDisks")=>"Vector{VirtualMachineScaleSetDataDisk}", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetStorageProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetStorageProfile[name]))}
 
-function check_required(o::VirtualMachineScaleSetStorageProfile)
+function OpenAPI.check_required(o::VirtualMachineScaleSetStorageProfile)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetStorageProfile)
+    OpenAPI.validate_property(VirtualMachineScaleSetStorageProfile, Symbol("imageReference"), o.imageReference)
+    OpenAPI.validate_property(VirtualMachineScaleSetStorageProfile, Symbol("osDisk"), o.osDisk)
+    OpenAPI.validate_property(VirtualMachineScaleSetStorageProfile, Symbol("dataDisks"), o.dataDisks)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetStorageProfile }, name::Symbol, val)
+
+
+
 end

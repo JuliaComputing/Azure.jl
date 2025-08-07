@@ -24,23 +24,33 @@ Base.@kwdef mutable struct VirtualMachineIdentity <: OpenAPI.APIModel
     userAssignedIdentities::Union{Nothing, Dict} = nothing # spec type: Union{ Nothing, Dict{String, VirtualMachineIdentityUserAssignedIdentitiesValue} }
 
     function VirtualMachineIdentity(principalId, tenantId, type, userAssignedIdentities, )
-        OpenAPI.validate_property(VirtualMachineIdentity, Symbol("principalId"), principalId)
-        OpenAPI.validate_property(VirtualMachineIdentity, Symbol("tenantId"), tenantId)
-        OpenAPI.validate_property(VirtualMachineIdentity, Symbol("type"), type)
-        OpenAPI.validate_property(VirtualMachineIdentity, Symbol("userAssignedIdentities"), userAssignedIdentities)
-        return new(principalId, tenantId, type, userAssignedIdentities, )
+        o = new(principalId, tenantId, type, userAssignedIdentities, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineIdentity
 
 const _property_types_VirtualMachineIdentity = Dict{Symbol,String}(Symbol("principalId")=>"String", Symbol("tenantId")=>"String", Symbol("type")=>"String", Symbol("userAssignedIdentities")=>"Dict{String, VirtualMachineIdentityUserAssignedIdentitiesValue}", )
 OpenAPI.property_type(::Type{ VirtualMachineIdentity }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineIdentity[name]))}
 
-function check_required(o::VirtualMachineIdentity)
+function OpenAPI.check_required(o::VirtualMachineIdentity)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineIdentity)
+    OpenAPI.validate_property(VirtualMachineIdentity, Symbol("principalId"), o.principalId)
+    OpenAPI.validate_property(VirtualMachineIdentity, Symbol("tenantId"), o.tenantId)
+    OpenAPI.validate_property(VirtualMachineIdentity, Symbol("type"), o.type)
+    OpenAPI.validate_property(VirtualMachineIdentity, Symbol("userAssignedIdentities"), o.userAssignedIdentities)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineIdentity }, name::Symbol, val)
+
+
+
     if name === Symbol("type")
         OpenAPI.validate_param(name, "VirtualMachineIdentity", :enum, val, ["SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned", "None"])
     end
+
+
 end

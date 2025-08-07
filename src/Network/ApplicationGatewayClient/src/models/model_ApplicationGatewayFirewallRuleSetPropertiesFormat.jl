@@ -10,37 +10,55 @@ Properties of the web application firewall rule set.
         ruleSetType=nothing,
         ruleSetVersion=nothing,
         ruleGroups=nothing,
+        tiers=nothing,
     )
 
     - provisioningState::ProvisioningState
     - ruleSetType::String : The type of the web application firewall rule set.
     - ruleSetVersion::String : The version of the web application firewall rule set type.
     - ruleGroups::Vector{ApplicationGatewayFirewallRuleGroup} : The rule groups of the web application firewall rule set.
+    - tiers::Vector{String} : Tier of an application gateway that support the rule set.
 """
 Base.@kwdef mutable struct ApplicationGatewayFirewallRuleSetPropertiesFormat <: OpenAPI.APIModel
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
     ruleSetType::Union{Nothing, String} = nothing
     ruleSetVersion::Union{Nothing, String} = nothing
     ruleGroups::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ApplicationGatewayFirewallRuleGroup} }
+    tiers::Union{Nothing, Vector{String}} = nothing
 
-    function ApplicationGatewayFirewallRuleSetPropertiesFormat(provisioningState, ruleSetType, ruleSetVersion, ruleGroups, )
-        OpenAPI.validate_property(ApplicationGatewayFirewallRuleSetPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        OpenAPI.validate_property(ApplicationGatewayFirewallRuleSetPropertiesFormat, Symbol("ruleSetType"), ruleSetType)
-        OpenAPI.validate_property(ApplicationGatewayFirewallRuleSetPropertiesFormat, Symbol("ruleSetVersion"), ruleSetVersion)
-        OpenAPI.validate_property(ApplicationGatewayFirewallRuleSetPropertiesFormat, Symbol("ruleGroups"), ruleGroups)
-        return new(provisioningState, ruleSetType, ruleSetVersion, ruleGroups, )
+    function ApplicationGatewayFirewallRuleSetPropertiesFormat(provisioningState, ruleSetType, ruleSetVersion, ruleGroups, tiers, )
+        o = new(provisioningState, ruleSetType, ruleSetVersion, ruleGroups, tiers, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayFirewallRuleSetPropertiesFormat
 
-const _property_types_ApplicationGatewayFirewallRuleSetPropertiesFormat = Dict{Symbol,String}(Symbol("provisioningState")=>"ProvisioningState", Symbol("ruleSetType")=>"String", Symbol("ruleSetVersion")=>"String", Symbol("ruleGroups")=>"Vector{ApplicationGatewayFirewallRuleGroup}", )
+const _property_types_ApplicationGatewayFirewallRuleSetPropertiesFormat = Dict{Symbol,String}(Symbol("provisioningState")=>"ProvisioningState", Symbol("ruleSetType")=>"String", Symbol("ruleSetVersion")=>"String", Symbol("ruleGroups")=>"Vector{ApplicationGatewayFirewallRuleGroup}", Symbol("tiers")=>"Vector{String}", )
 OpenAPI.property_type(::Type{ ApplicationGatewayFirewallRuleSetPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayFirewallRuleSetPropertiesFormat[name]))}
 
-function check_required(o::ApplicationGatewayFirewallRuleSetPropertiesFormat)
+function OpenAPI.check_required(o::ApplicationGatewayFirewallRuleSetPropertiesFormat)
     o.ruleSetType === nothing && (return false)
     o.ruleSetVersion === nothing && (return false)
     o.ruleGroups === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayFirewallRuleSetPropertiesFormat)
+    OpenAPI.validate_property(ApplicationGatewayFirewallRuleSetPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(ApplicationGatewayFirewallRuleSetPropertiesFormat, Symbol("ruleSetType"), o.ruleSetType)
+    OpenAPI.validate_property(ApplicationGatewayFirewallRuleSetPropertiesFormat, Symbol("ruleSetVersion"), o.ruleSetVersion)
+    OpenAPI.validate_property(ApplicationGatewayFirewallRuleSetPropertiesFormat, Symbol("ruleGroups"), o.ruleGroups)
+    OpenAPI.validate_property(ApplicationGatewayFirewallRuleSetPropertiesFormat, Symbol("tiers"), o.tiers)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayFirewallRuleSetPropertiesFormat }, name::Symbol, val)
+
+
+
+
+
+    if name === Symbol("tiers")
+        OpenAPI.validate_param(name, "ApplicationGatewayFirewallRuleSetPropertiesFormat", :enum, val, ["Standard", "WAF", "Standard_v2", "WAF_v2"])
+    end
+
 end

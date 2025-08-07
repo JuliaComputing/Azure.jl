@@ -6,6 +6,7 @@
 Virtual Network resource.
 
     VirtualNetwork(;
+        extendedLocation=nothing,
         properties=nothing,
         etag=nothing,
         id=nothing,
@@ -15,6 +16,7 @@ Virtual Network resource.
         tags=nothing,
     )
 
+    - extendedLocation::ExtendedLocation
     - properties::VirtualNetworkPropertiesFormat
     - etag::String : A unique read-only string that changes whenever the resource is updated.
     - id::String : Resource ID.
@@ -24,6 +26,7 @@ Virtual Network resource.
     - tags::Dict{String, String} : Resource tags.
 """
 Base.@kwdef mutable struct VirtualNetwork <: OpenAPI.APIModel
+    extendedLocation = nothing # spec type: Union{ Nothing, ExtendedLocation }
     properties = nothing # spec type: Union{ Nothing, VirtualNetworkPropertiesFormat }
     etag::Union{Nothing, String} = nothing
     id::Union{Nothing, String} = nothing
@@ -32,24 +35,38 @@ Base.@kwdef mutable struct VirtualNetwork <: OpenAPI.APIModel
     location::Union{Nothing, String} = nothing
     tags::Union{Nothing, Dict{String, String}} = nothing
 
-    function VirtualNetwork(properties, etag, id, name, type, location, tags, )
-        OpenAPI.validate_property(VirtualNetwork, Symbol("properties"), properties)
-        OpenAPI.validate_property(VirtualNetwork, Symbol("etag"), etag)
-        OpenAPI.validate_property(VirtualNetwork, Symbol("id"), id)
-        OpenAPI.validate_property(VirtualNetwork, Symbol("name"), name)
-        OpenAPI.validate_property(VirtualNetwork, Symbol("type"), type)
-        OpenAPI.validate_property(VirtualNetwork, Symbol("location"), location)
-        OpenAPI.validate_property(VirtualNetwork, Symbol("tags"), tags)
-        return new(properties, etag, id, name, type, location, tags, )
+    function VirtualNetwork(extendedLocation, properties, etag, id, name, type, location, tags, )
+        o = new(extendedLocation, properties, etag, id, name, type, location, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualNetwork
 
-const _property_types_VirtualNetwork = Dict{Symbol,String}(Symbol("properties")=>"VirtualNetworkPropertiesFormat", Symbol("etag")=>"String", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
+const _property_types_VirtualNetwork = Dict{Symbol,String}(Symbol("extendedLocation")=>"ExtendedLocation", Symbol("properties")=>"VirtualNetworkPropertiesFormat", Symbol("etag")=>"String", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ VirtualNetwork }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualNetwork[name]))}
 
-function check_required(o::VirtualNetwork)
+function OpenAPI.check_required(o::VirtualNetwork)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualNetwork)
+    OpenAPI.validate_property(VirtualNetwork, Symbol("extendedLocation"), o.extendedLocation)
+    OpenAPI.validate_property(VirtualNetwork, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(VirtualNetwork, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(VirtualNetwork, Symbol("id"), o.id)
+    OpenAPI.validate_property(VirtualNetwork, Symbol("name"), o.name)
+    OpenAPI.validate_property(VirtualNetwork, Symbol("type"), o.type)
+    OpenAPI.validate_property(VirtualNetwork, Symbol("location"), o.location)
+    OpenAPI.validate_property(VirtualNetwork, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualNetwork }, name::Symbol, val)
+
+
+
+
+
+
+
+
 end

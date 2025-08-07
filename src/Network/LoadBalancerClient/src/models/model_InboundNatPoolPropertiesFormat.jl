@@ -39,23 +39,16 @@ Base.@kwdef mutable struct InboundNatPoolPropertiesFormat <: OpenAPI.APIModel
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
     function InboundNatPoolPropertiesFormat(frontendIPConfiguration, protocol, frontendPortRangeStart, frontendPortRangeEnd, backendPort, idleTimeoutInMinutes, enableFloatingIP, enableTcpReset, provisioningState, )
-        OpenAPI.validate_property(InboundNatPoolPropertiesFormat, Symbol("frontendIPConfiguration"), frontendIPConfiguration)
-        OpenAPI.validate_property(InboundNatPoolPropertiesFormat, Symbol("protocol"), protocol)
-        OpenAPI.validate_property(InboundNatPoolPropertiesFormat, Symbol("frontendPortRangeStart"), frontendPortRangeStart)
-        OpenAPI.validate_property(InboundNatPoolPropertiesFormat, Symbol("frontendPortRangeEnd"), frontendPortRangeEnd)
-        OpenAPI.validate_property(InboundNatPoolPropertiesFormat, Symbol("backendPort"), backendPort)
-        OpenAPI.validate_property(InboundNatPoolPropertiesFormat, Symbol("idleTimeoutInMinutes"), idleTimeoutInMinutes)
-        OpenAPI.validate_property(InboundNatPoolPropertiesFormat, Symbol("enableFloatingIP"), enableFloatingIP)
-        OpenAPI.validate_property(InboundNatPoolPropertiesFormat, Symbol("enableTcpReset"), enableTcpReset)
-        OpenAPI.validate_property(InboundNatPoolPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(frontendIPConfiguration, protocol, frontendPortRangeStart, frontendPortRangeEnd, backendPort, idleTimeoutInMinutes, enableFloatingIP, enableTcpReset, provisioningState, )
+        o = new(frontendIPConfiguration, protocol, frontendPortRangeStart, frontendPortRangeEnd, backendPort, idleTimeoutInMinutes, enableFloatingIP, enableTcpReset, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type InboundNatPoolPropertiesFormat
 
 const _property_types_InboundNatPoolPropertiesFormat = Dict{Symbol,String}(Symbol("frontendIPConfiguration")=>"SubResource", Symbol("protocol")=>"TransportProtocol", Symbol("frontendPortRangeStart")=>"Int64", Symbol("frontendPortRangeEnd")=>"Int64", Symbol("backendPort")=>"Int64", Symbol("idleTimeoutInMinutes")=>"Int64", Symbol("enableFloatingIP")=>"Bool", Symbol("enableTcpReset")=>"Bool", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ InboundNatPoolPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_InboundNatPoolPropertiesFormat[name]))}
 
-function check_required(o::InboundNatPoolPropertiesFormat)
+function OpenAPI.check_required(o::InboundNatPoolPropertiesFormat)
     o.protocol === nothing && (return false)
     o.frontendPortRangeStart === nothing && (return false)
     o.frontendPortRangeEnd === nothing && (return false)
@@ -63,17 +56,38 @@ function check_required(o::InboundNatPoolPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::InboundNatPoolPropertiesFormat)
+    OpenAPI.validate_property(InboundNatPoolPropertiesFormat, Symbol("frontendIPConfiguration"), o.frontendIPConfiguration)
+    OpenAPI.validate_property(InboundNatPoolPropertiesFormat, Symbol("protocol"), o.protocol)
+    OpenAPI.validate_property(InboundNatPoolPropertiesFormat, Symbol("frontendPortRangeStart"), o.frontendPortRangeStart)
+    OpenAPI.validate_property(InboundNatPoolPropertiesFormat, Symbol("frontendPortRangeEnd"), o.frontendPortRangeEnd)
+    OpenAPI.validate_property(InboundNatPoolPropertiesFormat, Symbol("backendPort"), o.backendPort)
+    OpenAPI.validate_property(InboundNatPoolPropertiesFormat, Symbol("idleTimeoutInMinutes"), o.idleTimeoutInMinutes)
+    OpenAPI.validate_property(InboundNatPoolPropertiesFormat, Symbol("enableFloatingIP"), o.enableFloatingIP)
+    OpenAPI.validate_property(InboundNatPoolPropertiesFormat, Symbol("enableTcpReset"), o.enableTcpReset)
+    OpenAPI.validate_property(InboundNatPoolPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ InboundNatPoolPropertiesFormat }, name::Symbol, val)
+
+
+
     if name === Symbol("frontendPortRangeStart")
         OpenAPI.validate_param(name, "InboundNatPoolPropertiesFormat", :format, val, "int32")
     end
+
     if name === Symbol("frontendPortRangeEnd")
         OpenAPI.validate_param(name, "InboundNatPoolPropertiesFormat", :format, val, "int32")
     end
+
     if name === Symbol("backendPort")
         OpenAPI.validate_param(name, "InboundNatPoolPropertiesFormat", :format, val, "int32")
     end
+
     if name === Symbol("idleTimeoutInMinutes")
         OpenAPI.validate_param(name, "InboundNatPoolPropertiesFormat", :format, val, "int32")
     end
+
+
+
 end

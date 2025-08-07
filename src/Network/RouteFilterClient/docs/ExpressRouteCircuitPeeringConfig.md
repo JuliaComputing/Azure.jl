@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **legacyMode** | **Int64** | The legacy mode of the peering. | [optional] [default to nothing]
 **customerASN** | **Int64** | The CustomerASN of the peering. | [optional] [default to nothing]
 **routingRegistryName** | **String** | The RoutingRegistryName of the configuration. | [optional] [default to nothing]
+**advertisedPublicPrefixInfo** | [**Vector{AdvertisedPublicPrefixProperties}**](AdvertisedPublicPrefixProperties.md) | List of Prefix information required to perform validation. | [optional] [default to nothing]
 
 
 [[Back to Model list]](../README.md#models) [[Back to API list]](../README.md#api-endpoints) [[Back to README]](../README.md)

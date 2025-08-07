@@ -11,8 +11,8 @@ A service that allows server-side encryption to be used.
         keyType=nothing,
     )
 
-    - enabled::Bool : A boolean indicating whether or not the service encrypts the data as it is stored.
-    - lastEnabledTime::ZonedDateTime : Gets a rough estimate of the date/time when the encryption was last enabled by the user. Only returned when encryption is enabled. There might be some unencrypted blobs which were written after this time, as it is just a rough estimate.
+    - enabled::Bool : A boolean indicating whether or not the service encrypts the data as it is stored. Encryption at rest is enabled by default today and cannot be disabled.
+    - lastEnabledTime::ZonedDateTime : Gets a rough estimate of the date/time when the encryption was last enabled by the user. Data is encrypted at rest by default today and cannot be disabled.
     - keyType::String : Encryption key type to be used for the encryption service. &#39;Account&#39; key type implies that an account-scoped encryption key will be used. &#39;Service&#39; key type implies that a default service key is used.
 """
 Base.@kwdef mutable struct EncryptionService <: OpenAPI.APIModel
@@ -21,25 +21,34 @@ Base.@kwdef mutable struct EncryptionService <: OpenAPI.APIModel
     keyType::Union{Nothing, String} = nothing
 
     function EncryptionService(enabled, lastEnabledTime, keyType, )
-        OpenAPI.validate_property(EncryptionService, Symbol("enabled"), enabled)
-        OpenAPI.validate_property(EncryptionService, Symbol("lastEnabledTime"), lastEnabledTime)
-        OpenAPI.validate_property(EncryptionService, Symbol("keyType"), keyType)
-        return new(enabled, lastEnabledTime, keyType, )
+        o = new(enabled, lastEnabledTime, keyType, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type EncryptionService
 
 const _property_types_EncryptionService = Dict{Symbol,String}(Symbol("enabled")=>"Bool", Symbol("lastEnabledTime")=>"ZonedDateTime", Symbol("keyType")=>"String", )
 OpenAPI.property_type(::Type{ EncryptionService }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_EncryptionService[name]))}
 
-function check_required(o::EncryptionService)
+function OpenAPI.check_required(o::EncryptionService)
     true
 end
 
+function OpenAPI.validate_properties(o::EncryptionService)
+    OpenAPI.validate_property(EncryptionService, Symbol("enabled"), o.enabled)
+    OpenAPI.validate_property(EncryptionService, Symbol("lastEnabledTime"), o.lastEnabledTime)
+    OpenAPI.validate_property(EncryptionService, Symbol("keyType"), o.keyType)
+end
+
 function OpenAPI.validate_property(::Type{ EncryptionService }, name::Symbol, val)
+
+
     if name === Symbol("lastEnabledTime")
         OpenAPI.validate_param(name, "EncryptionService", :format, val, "date-time")
     end
+
     if name === Symbol("keyType")
         OpenAPI.validate_param(name, "EncryptionService", :enum, val, ["Service", "Account"])
     end
+
 end

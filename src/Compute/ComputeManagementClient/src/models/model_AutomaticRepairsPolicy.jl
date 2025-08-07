@@ -8,28 +8,44 @@ Specifies the configuration parameters for automatic repairs on the virtual mach
     AutomaticRepairsPolicy(;
         enabled=nothing,
         gracePeriod=nothing,
+        repairAction=nothing,
     )
 
     - enabled::Bool : Specifies whether automatic repairs should be enabled on the virtual machine scale set. The default value is false.
-    - gracePeriod::String : The amount of time for which automatic repairs are suspended due to a state change on VM. The grace time starts after the state change has completed. This helps avoid premature or accidental repairs. The time duration should be specified in ISO 8601 format. The minimum allowed grace period is 30 minutes (PT30M), which is also the default value. The maximum allowed grace period is 90 minutes (PT90M).
+    - gracePeriod::String : The amount of time for which automatic repairs are suspended due to a state change on VM. The grace time starts after the state change has completed. This helps avoid premature or accidental repairs. The time duration should be specified in ISO 8601 format. The minimum allowed grace period is 10 minutes (PT10M), which is also the default value. The maximum allowed grace period is 90 minutes (PT90M).
+    - repairAction::String : Type of repair action (replace, restart, reimage) that will be used for repairing unhealthy virtual machines in the scale set. Default value is replace.
 """
 Base.@kwdef mutable struct AutomaticRepairsPolicy <: OpenAPI.APIModel
     enabled::Union{Nothing, Bool} = nothing
     gracePeriod::Union{Nothing, String} = nothing
+    repairAction::Union{Nothing, String} = nothing
 
-    function AutomaticRepairsPolicy(enabled, gracePeriod, )
-        OpenAPI.validate_property(AutomaticRepairsPolicy, Symbol("enabled"), enabled)
-        OpenAPI.validate_property(AutomaticRepairsPolicy, Symbol("gracePeriod"), gracePeriod)
-        return new(enabled, gracePeriod, )
+    function AutomaticRepairsPolicy(enabled, gracePeriod, repairAction, )
+        o = new(enabled, gracePeriod, repairAction, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AutomaticRepairsPolicy
 
-const _property_types_AutomaticRepairsPolicy = Dict{Symbol,String}(Symbol("enabled")=>"Bool", Symbol("gracePeriod")=>"String", )
+const _property_types_AutomaticRepairsPolicy = Dict{Symbol,String}(Symbol("enabled")=>"Bool", Symbol("gracePeriod")=>"String", Symbol("repairAction")=>"String", )
 OpenAPI.property_type(::Type{ AutomaticRepairsPolicy }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AutomaticRepairsPolicy[name]))}
 
-function check_required(o::AutomaticRepairsPolicy)
+function OpenAPI.check_required(o::AutomaticRepairsPolicy)
     true
 end
 
+function OpenAPI.validate_properties(o::AutomaticRepairsPolicy)
+    OpenAPI.validate_property(AutomaticRepairsPolicy, Symbol("enabled"), o.enabled)
+    OpenAPI.validate_property(AutomaticRepairsPolicy, Symbol("gracePeriod"), o.gracePeriod)
+    OpenAPI.validate_property(AutomaticRepairsPolicy, Symbol("repairAction"), o.repairAction)
+end
+
 function OpenAPI.validate_property(::Type{ AutomaticRepairsPolicy }, name::Symbol, val)
+
+
+
+    if name === Symbol("repairAction")
+        OpenAPI.validate_param(name, "AutomaticRepairsPolicy", :enum, val, ["Replace", "Restart", "Reimage"])
+    end
+
 end

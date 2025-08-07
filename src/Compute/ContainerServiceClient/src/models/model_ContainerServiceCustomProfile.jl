@@ -15,18 +15,24 @@ Base.@kwdef mutable struct ContainerServiceCustomProfile <: OpenAPI.APIModel
     orchestrator::Union{Nothing, String} = nothing
 
     function ContainerServiceCustomProfile(orchestrator, )
-        OpenAPI.validate_property(ContainerServiceCustomProfile, Symbol("orchestrator"), orchestrator)
-        return new(orchestrator, )
+        o = new(orchestrator, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ContainerServiceCustomProfile
 
 const _property_types_ContainerServiceCustomProfile = Dict{Symbol,String}(Symbol("orchestrator")=>"String", )
 OpenAPI.property_type(::Type{ ContainerServiceCustomProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ContainerServiceCustomProfile[name]))}
 
-function check_required(o::ContainerServiceCustomProfile)
+function OpenAPI.check_required(o::ContainerServiceCustomProfile)
     o.orchestrator === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ContainerServiceCustomProfile)
+    OpenAPI.validate_property(ContainerServiceCustomProfile, Symbol("orchestrator"), o.orchestrator)
+end
+
 function OpenAPI.validate_property(::Type{ ContainerServiceCustomProfile }, name::Symbol, val)
+
 end

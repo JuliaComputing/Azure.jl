@@ -16,6 +16,7 @@ Resource information.
         name=nothing,
         type=nothing,
         location=nothing,
+        extendedLocation=nothing,
         tags=nothing,
     )
 
@@ -29,6 +30,7 @@ Resource information.
     - name::String : Resource name
     - type::String : Resource type
     - location::String : Resource location
+    - extendedLocation::ExtendedLocation
     - tags::Dict{String, String} : Resource tags
 """
 Base.@kwdef mutable struct GenericResource <: OpenAPI.APIModel
@@ -42,33 +44,52 @@ Base.@kwdef mutable struct GenericResource <: OpenAPI.APIModel
     name::Union{Nothing, String} = nothing
     type::Union{Nothing, String} = nothing
     location::Union{Nothing, String} = nothing
+    extendedLocation = nothing # spec type: Union{ Nothing, ExtendedLocation }
     tags::Union{Nothing, Dict{String, String}} = nothing
 
-    function GenericResource(plan, properties, kind, managedBy, sku, identity, id, name, type, location, tags, )
-        OpenAPI.validate_property(GenericResource, Symbol("plan"), plan)
-        OpenAPI.validate_property(GenericResource, Symbol("properties"), properties)
-        OpenAPI.validate_property(GenericResource, Symbol("kind"), kind)
-        OpenAPI.validate_property(GenericResource, Symbol("managedBy"), managedBy)
-        OpenAPI.validate_property(GenericResource, Symbol("sku"), sku)
-        OpenAPI.validate_property(GenericResource, Symbol("identity"), identity)
-        OpenAPI.validate_property(GenericResource, Symbol("id"), id)
-        OpenAPI.validate_property(GenericResource, Symbol("name"), name)
-        OpenAPI.validate_property(GenericResource, Symbol("type"), type)
-        OpenAPI.validate_property(GenericResource, Symbol("location"), location)
-        OpenAPI.validate_property(GenericResource, Symbol("tags"), tags)
-        return new(plan, properties, kind, managedBy, sku, identity, id, name, type, location, tags, )
+    function GenericResource(plan, properties, kind, managedBy, sku, identity, id, name, type, location, extendedLocation, tags, )
+        o = new(plan, properties, kind, managedBy, sku, identity, id, name, type, location, extendedLocation, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type GenericResource
 
-const _property_types_GenericResource = Dict{Symbol,String}(Symbol("plan")=>"Plan", Symbol("properties")=>"Any", Symbol("kind")=>"String", Symbol("managedBy")=>"String", Symbol("sku")=>"Sku", Symbol("identity")=>"Identity", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
+const _property_types_GenericResource = Dict{Symbol,String}(Symbol("plan")=>"Plan", Symbol("properties")=>"Any", Symbol("kind")=>"String", Symbol("managedBy")=>"String", Symbol("sku")=>"Sku", Symbol("identity")=>"Identity", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("extendedLocation")=>"ExtendedLocation", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ GenericResource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_GenericResource[name]))}
 
-function check_required(o::GenericResource)
+function OpenAPI.check_required(o::GenericResource)
     true
 end
 
+function OpenAPI.validate_properties(o::GenericResource)
+    OpenAPI.validate_property(GenericResource, Symbol("plan"), o.plan)
+    OpenAPI.validate_property(GenericResource, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(GenericResource, Symbol("kind"), o.kind)
+    OpenAPI.validate_property(GenericResource, Symbol("managedBy"), o.managedBy)
+    OpenAPI.validate_property(GenericResource, Symbol("sku"), o.sku)
+    OpenAPI.validate_property(GenericResource, Symbol("identity"), o.identity)
+    OpenAPI.validate_property(GenericResource, Symbol("id"), o.id)
+    OpenAPI.validate_property(GenericResource, Symbol("name"), o.name)
+    OpenAPI.validate_property(GenericResource, Symbol("type"), o.type)
+    OpenAPI.validate_property(GenericResource, Symbol("location"), o.location)
+    OpenAPI.validate_property(GenericResource, Symbol("extendedLocation"), o.extendedLocation)
+    OpenAPI.validate_property(GenericResource, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ GenericResource }, name::Symbol, val)
+
+
+
     if name === Symbol("kind")
         OpenAPI.validate_param(name, "GenericResource", :pattern, val, r"^[-\w\._,\(\)]+$")
     end
+
+
+
+
+
+
+
+
+
 end

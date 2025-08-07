@@ -14,7 +14,7 @@ Set of conditions in the Rewrite Rule in Application Gateway.
 
     - variable::String : The condition parameter of the RewriteRuleCondition.
     - pattern::String : The pattern, either fixed string or regular expression, that evaluates the truthfulness of the condition.
-    - ignoreCase::Bool : Setting this paramter to truth value with force the pattern to do a case in-sensitive comparison.
+    - ignoreCase::Bool : Setting this parameter to truth value with force the pattern to do a case in-sensitive comparison.
     - negate::Bool : Setting this value as truth will force to check the negation of the condition given by the user.
 """
 Base.@kwdef mutable struct ApplicationGatewayRewriteRuleCondition <: OpenAPI.APIModel
@@ -24,20 +24,29 @@ Base.@kwdef mutable struct ApplicationGatewayRewriteRuleCondition <: OpenAPI.API
     negate::Union{Nothing, Bool} = nothing
 
     function ApplicationGatewayRewriteRuleCondition(variable, pattern, ignoreCase, negate, )
-        OpenAPI.validate_property(ApplicationGatewayRewriteRuleCondition, Symbol("variable"), variable)
-        OpenAPI.validate_property(ApplicationGatewayRewriteRuleCondition, Symbol("pattern"), pattern)
-        OpenAPI.validate_property(ApplicationGatewayRewriteRuleCondition, Symbol("ignoreCase"), ignoreCase)
-        OpenAPI.validate_property(ApplicationGatewayRewriteRuleCondition, Symbol("negate"), negate)
-        return new(variable, pattern, ignoreCase, negate, )
+        o = new(variable, pattern, ignoreCase, negate, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayRewriteRuleCondition
 
 const _property_types_ApplicationGatewayRewriteRuleCondition = Dict{Symbol,String}(Symbol("variable")=>"String", Symbol("pattern")=>"String", Symbol("ignoreCase")=>"Bool", Symbol("negate")=>"Bool", )
 OpenAPI.property_type(::Type{ ApplicationGatewayRewriteRuleCondition }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayRewriteRuleCondition[name]))}
 
-function check_required(o::ApplicationGatewayRewriteRuleCondition)
+function OpenAPI.check_required(o::ApplicationGatewayRewriteRuleCondition)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayRewriteRuleCondition)
+    OpenAPI.validate_property(ApplicationGatewayRewriteRuleCondition, Symbol("variable"), o.variable)
+    OpenAPI.validate_property(ApplicationGatewayRewriteRuleCondition, Symbol("pattern"), o.pattern)
+    OpenAPI.validate_property(ApplicationGatewayRewriteRuleCondition, Symbol("ignoreCase"), o.ignoreCase)
+    OpenAPI.validate_property(ApplicationGatewayRewriteRuleCondition, Symbol("negate"), o.negate)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayRewriteRuleCondition }, name::Symbol, val)
+
+
+
+
 end

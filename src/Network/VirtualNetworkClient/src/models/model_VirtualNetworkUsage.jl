@@ -27,27 +27,37 @@ Base.@kwdef mutable struct VirtualNetworkUsage <: OpenAPI.APIModel
     unit::Union{Nothing, String} = nothing
 
     function VirtualNetworkUsage(currentValue, id, limit, name, unit, )
-        OpenAPI.validate_property(VirtualNetworkUsage, Symbol("currentValue"), currentValue)
-        OpenAPI.validate_property(VirtualNetworkUsage, Symbol("id"), id)
-        OpenAPI.validate_property(VirtualNetworkUsage, Symbol("limit"), limit)
-        OpenAPI.validate_property(VirtualNetworkUsage, Symbol("name"), name)
-        OpenAPI.validate_property(VirtualNetworkUsage, Symbol("unit"), unit)
-        return new(currentValue, id, limit, name, unit, )
+        o = new(currentValue, id, limit, name, unit, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualNetworkUsage
 
 const _property_types_VirtualNetworkUsage = Dict{Symbol,String}(Symbol("currentValue")=>"Float64", Symbol("id")=>"String", Symbol("limit")=>"Float64", Symbol("name")=>"VirtualNetworkUsageName", Symbol("unit")=>"String", )
 OpenAPI.property_type(::Type{ VirtualNetworkUsage }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualNetworkUsage[name]))}
 
-function check_required(o::VirtualNetworkUsage)
+function OpenAPI.check_required(o::VirtualNetworkUsage)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualNetworkUsage)
+    OpenAPI.validate_property(VirtualNetworkUsage, Symbol("currentValue"), o.currentValue)
+    OpenAPI.validate_property(VirtualNetworkUsage, Symbol("id"), o.id)
+    OpenAPI.validate_property(VirtualNetworkUsage, Symbol("limit"), o.limit)
+    OpenAPI.validate_property(VirtualNetworkUsage, Symbol("name"), o.name)
+    OpenAPI.validate_property(VirtualNetworkUsage, Symbol("unit"), o.unit)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualNetworkUsage }, name::Symbol, val)
+
     if name === Symbol("currentValue")
         OpenAPI.validate_param(name, "VirtualNetworkUsage", :format, val, "double")
     end
+
+
     if name === Symbol("limit")
         OpenAPI.validate_param(name, "VirtualNetworkUsage", :format, val, "double")
     end
+
+
 end

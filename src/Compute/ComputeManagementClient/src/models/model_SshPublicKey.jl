@@ -11,25 +11,32 @@ Contains information about SSH certificate public key and the path on the Linux 
     )
 
     - path::String : Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
-    - keyData::String : SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. &lt;br&gt;&lt;br&gt; For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys?toc&#x3D;%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+    - keyData::String : SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. &lt;br&gt;&lt;br&gt; For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
 """
 Base.@kwdef mutable struct SshPublicKey <: OpenAPI.APIModel
     path::Union{Nothing, String} = nothing
     keyData::Union{Nothing, String} = nothing
 
     function SshPublicKey(path, keyData, )
-        OpenAPI.validate_property(SshPublicKey, Symbol("path"), path)
-        OpenAPI.validate_property(SshPublicKey, Symbol("keyData"), keyData)
-        return new(path, keyData, )
+        o = new(path, keyData, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type SshPublicKey
 
 const _property_types_SshPublicKey = Dict{Symbol,String}(Symbol("path")=>"String", Symbol("keyData")=>"String", )
 OpenAPI.property_type(::Type{ SshPublicKey }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SshPublicKey[name]))}
 
-function check_required(o::SshPublicKey)
+function OpenAPI.check_required(o::SshPublicKey)
     true
 end
 
+function OpenAPI.validate_properties(o::SshPublicKey)
+    OpenAPI.validate_property(SshPublicKey, Symbol("path"), o.path)
+    OpenAPI.validate_property(SshPublicKey, Symbol("keyData"), o.keyData)
+end
+
 function OpenAPI.validate_property(::Type{ SshPublicKey }, name::Symbol, val)
+
+
 end

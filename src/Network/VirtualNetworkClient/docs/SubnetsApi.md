@@ -23,12 +23,12 @@ Creates or updates a subnet in the specified virtual network.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **SubnetsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**virtual_network_name** | **String**| The name of the virtual network. | [default to nothing]
-**subnet_name** | **String**| The name of the subnet. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**subnet_parameters** | [**Subnet**](Subnet.md)| Parameters supplied to the create or update subnet operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**virtual_network_name** | **String** | The name of the virtual network. |
+**subnet_name** | **String** | The name of the subnet. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**subnet_parameters** | [**Subnet**](Subnet.md) | Parameters supplied to the create or update subnet operation. |
 
 ### Return type
 
@@ -58,11 +58,11 @@ Deletes the specified subnet.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **SubnetsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**virtual_network_name** | **String**| The name of the virtual network. | [default to nothing]
-**subnet_name** | **String**| The name of the subnet. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**virtual_network_name** | **String** | The name of the virtual network. |
+**subnet_name** | **String** | The name of the subnet. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -92,17 +92,17 @@ Gets the specified subnet by virtual network and resource group.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **SubnetsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**virtual_network_name** | **String**| The name of the virtual network. | [default to nothing]
-**subnet_name** | **String**| The name of the subnet. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**virtual_network_name** | **String** | The name of the virtual network. |
+**subnet_name** | **String** | The name of the subnet. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expand** | **String**| Expands referenced resources. | [default to nothing]
+ **expand** | **String** | Expands referenced resources. | [default to nothing]
 
 ### Return type
 
@@ -132,10 +132,10 @@ Gets all subnets in a virtual network.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **SubnetsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**virtual_network_name** | **String**| The name of the virtual network. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**virtual_network_name** | **String** | The name of the virtual network. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 

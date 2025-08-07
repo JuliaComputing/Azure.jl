@@ -6,44 +6,59 @@
 Describes a Virtual Machine Image.
 
     VirtualMachineImage(;
-        id=nothing,
+        properties=nothing,
         name=nothing,
         location=nothing,
         tags=nothing,
-        properties=nothing,
+        extendedLocation=nothing,
+        id=nothing,
     )
 
-    - id::String : Resource Id
+    - properties::VirtualMachineImageProperties
     - name::String : The name of the resource.
     - location::String : The supported Azure location of the resource.
     - tags::Dict{String, String} : Specifies the tags that are assigned to the virtual machine. For more information about using tags, see [Using tags to organize your Azure resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags.md).
-    - properties::VirtualMachineImageProperties
+    - extendedLocation::ExtendedLocation
+    - id::String : Resource Id
 """
 Base.@kwdef mutable struct VirtualMachineImage <: OpenAPI.APIModel
-    id::Union{Nothing, String} = nothing
+    properties = nothing # spec type: Union{ Nothing, VirtualMachineImageProperties }
     name::Union{Nothing, String} = nothing
     location::Union{Nothing, String} = nothing
     tags::Union{Nothing, Dict{String, String}} = nothing
-    properties = nothing # spec type: Union{ Nothing, VirtualMachineImageProperties }
+    extendedLocation = nothing # spec type: Union{ Nothing, ExtendedLocation }
+    id::Union{Nothing, String} = nothing
 
-    function VirtualMachineImage(id, name, location, tags, properties, )
-        OpenAPI.validate_property(VirtualMachineImage, Symbol("id"), id)
-        OpenAPI.validate_property(VirtualMachineImage, Symbol("name"), name)
-        OpenAPI.validate_property(VirtualMachineImage, Symbol("location"), location)
-        OpenAPI.validate_property(VirtualMachineImage, Symbol("tags"), tags)
-        OpenAPI.validate_property(VirtualMachineImage, Symbol("properties"), properties)
-        return new(id, name, location, tags, properties, )
+    function VirtualMachineImage(properties, name, location, tags, extendedLocation, id, )
+        o = new(properties, name, location, tags, extendedLocation, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineImage
 
-const _property_types_VirtualMachineImage = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", Symbol("properties")=>"VirtualMachineImageProperties", )
+const _property_types_VirtualMachineImage = Dict{Symbol,String}(Symbol("properties")=>"VirtualMachineImageProperties", Symbol("name")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", Symbol("extendedLocation")=>"ExtendedLocation", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ VirtualMachineImage }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineImage[name]))}
 
-function check_required(o::VirtualMachineImage)
+function OpenAPI.check_required(o::VirtualMachineImage)
     o.name === nothing && (return false)
     o.location === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineImage)
+    OpenAPI.validate_property(VirtualMachineImage, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(VirtualMachineImage, Symbol("name"), o.name)
+    OpenAPI.validate_property(VirtualMachineImage, Symbol("location"), o.location)
+    OpenAPI.validate_property(VirtualMachineImage, Symbol("tags"), o.tags)
+    OpenAPI.validate_property(VirtualMachineImage, Symbol("extendedLocation"), o.extendedLocation)
+    OpenAPI.validate_property(VirtualMachineImage, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineImage }, name::Symbol, val)
+
+
+
+
+
+
 end

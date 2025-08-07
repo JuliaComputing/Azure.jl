@@ -21,19 +21,27 @@ Base.@kwdef mutable struct AvailabilitySetUpdate <: OpenAPI.APIModel
     tags::Union{Nothing, Dict{String, String}} = nothing
 
     function AvailabilitySetUpdate(properties, sku, tags, )
-        OpenAPI.validate_property(AvailabilitySetUpdate, Symbol("properties"), properties)
-        OpenAPI.validate_property(AvailabilitySetUpdate, Symbol("sku"), sku)
-        OpenAPI.validate_property(AvailabilitySetUpdate, Symbol("tags"), tags)
-        return new(properties, sku, tags, )
+        o = new(properties, sku, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AvailabilitySetUpdate
 
 const _property_types_AvailabilitySetUpdate = Dict{Symbol,String}(Symbol("properties")=>"AvailabilitySetProperties", Symbol("sku")=>"Sku", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ AvailabilitySetUpdate }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AvailabilitySetUpdate[name]))}
 
-function check_required(o::AvailabilitySetUpdate)
+function OpenAPI.check_required(o::AvailabilitySetUpdate)
     true
 end
 
+function OpenAPI.validate_properties(o::AvailabilitySetUpdate)
+    OpenAPI.validate_property(AvailabilitySetUpdate, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(AvailabilitySetUpdate, Symbol("sku"), o.sku)
+    OpenAPI.validate_property(AvailabilitySetUpdate, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ AvailabilitySetUpdate }, name::Symbol, val)
+
+
+
 end

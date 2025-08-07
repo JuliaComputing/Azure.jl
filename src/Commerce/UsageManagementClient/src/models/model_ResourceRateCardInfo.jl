@@ -27,21 +27,31 @@ Base.@kwdef mutable struct ResourceRateCardInfo <: OpenAPI.APIModel
     Meters::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{MeterInfo} }
 
     function ResourceRateCardInfo(Currency, Locale, IsTaxIncluded, OfferTerms, Meters, )
-        OpenAPI.validate_property(ResourceRateCardInfo, Symbol("Currency"), Currency)
-        OpenAPI.validate_property(ResourceRateCardInfo, Symbol("Locale"), Locale)
-        OpenAPI.validate_property(ResourceRateCardInfo, Symbol("IsTaxIncluded"), IsTaxIncluded)
-        OpenAPI.validate_property(ResourceRateCardInfo, Symbol("OfferTerms"), OfferTerms)
-        OpenAPI.validate_property(ResourceRateCardInfo, Symbol("Meters"), Meters)
-        return new(Currency, Locale, IsTaxIncluded, OfferTerms, Meters, )
+        o = new(Currency, Locale, IsTaxIncluded, OfferTerms, Meters, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ResourceRateCardInfo
 
 const _property_types_ResourceRateCardInfo = Dict{Symbol,String}(Symbol("Currency")=>"String", Symbol("Locale")=>"String", Symbol("IsTaxIncluded")=>"Bool", Symbol("OfferTerms")=>"Vector{OfferTermInfo}", Symbol("Meters")=>"Vector{MeterInfo}", )
 OpenAPI.property_type(::Type{ ResourceRateCardInfo }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ResourceRateCardInfo[name]))}
 
-function check_required(o::ResourceRateCardInfo)
+function OpenAPI.check_required(o::ResourceRateCardInfo)
     true
 end
 
+function OpenAPI.validate_properties(o::ResourceRateCardInfo)
+    OpenAPI.validate_property(ResourceRateCardInfo, Symbol("Currency"), o.Currency)
+    OpenAPI.validate_property(ResourceRateCardInfo, Symbol("Locale"), o.Locale)
+    OpenAPI.validate_property(ResourceRateCardInfo, Symbol("IsTaxIncluded"), o.IsTaxIncluded)
+    OpenAPI.validate_property(ResourceRateCardInfo, Symbol("OfferTerms"), o.OfferTerms)
+    OpenAPI.validate_property(ResourceRateCardInfo, Symbol("Meters"), o.Meters)
+end
+
 function OpenAPI.validate_property(::Type{ ResourceRateCardInfo }, name::Symbol, val)
+
+
+
+
+
 end

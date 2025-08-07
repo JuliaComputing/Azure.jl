@@ -15,17 +15,23 @@ Base.@kwdef mutable struct TrafficAnalyticsProperties <: OpenAPI.APIModel
     networkWatcherFlowAnalyticsConfiguration = nothing # spec type: Union{ Nothing, TrafficAnalyticsConfigurationProperties }
 
     function TrafficAnalyticsProperties(networkWatcherFlowAnalyticsConfiguration, )
-        OpenAPI.validate_property(TrafficAnalyticsProperties, Symbol("networkWatcherFlowAnalyticsConfiguration"), networkWatcherFlowAnalyticsConfiguration)
-        return new(networkWatcherFlowAnalyticsConfiguration, )
+        o = new(networkWatcherFlowAnalyticsConfiguration, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type TrafficAnalyticsProperties
 
 const _property_types_TrafficAnalyticsProperties = Dict{Symbol,String}(Symbol("networkWatcherFlowAnalyticsConfiguration")=>"TrafficAnalyticsConfigurationProperties", )
 OpenAPI.property_type(::Type{ TrafficAnalyticsProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TrafficAnalyticsProperties[name]))}
 
-function check_required(o::TrafficAnalyticsProperties)
+function OpenAPI.check_required(o::TrafficAnalyticsProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::TrafficAnalyticsProperties)
+    OpenAPI.validate_property(TrafficAnalyticsProperties, Symbol("networkWatcherFlowAnalyticsConfiguration"), o.networkWatcherFlowAnalyticsConfiguration)
+end
+
 function OpenAPI.validate_property(::Type{ TrafficAnalyticsProperties }, name::Symbol, val)
+
 end

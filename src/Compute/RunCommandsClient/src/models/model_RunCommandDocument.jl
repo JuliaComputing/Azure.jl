@@ -6,59 +6,72 @@
 Describes the properties of a Run Command.
 
     RunCommandDocument(;
+        script=nothing,
+        parameters=nothing,
         var"$schema"=nothing,
         id=nothing,
         osType=nothing,
         label=nothing,
         description=nothing,
-        script=nothing,
-        parameters=nothing,
     )
 
+    - script::Vector{String} : The script to be executed.
+    - parameters::Vector{RunCommandParameterDefinition} : The parameters used by the script.
     - var"$schema"::String : The VM run command schema.
     - id::String : The VM run command id.
     - osType::String : The Operating System type.
     - label::String : The VM run command label.
     - description::String : The VM run command description.
-    - script::Vector{String} : The script to be executed.
-    - parameters::Vector{RunCommandParameterDefinition} : The parameters used by the script.
 """
 Base.@kwdef mutable struct RunCommandDocument <: OpenAPI.APIModel
+    script::Union{Nothing, Vector{String}} = nothing
+    parameters::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{RunCommandParameterDefinition} }
     var"$schema"::Union{Nothing, String} = nothing
     id::Union{Nothing, String} = nothing
     osType::Union{Nothing, String} = nothing
     label::Union{Nothing, String} = nothing
     description::Union{Nothing, String} = nothing
-    script::Union{Nothing, Vector{String}} = nothing
-    parameters::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{RunCommandParameterDefinition} }
 
-    function RunCommandDocument(var"$schema", id, osType, label, description, script, parameters, )
-        OpenAPI.validate_property(RunCommandDocument, Symbol("\$schema"), var"$schema")
-        OpenAPI.validate_property(RunCommandDocument, Symbol("id"), id)
-        OpenAPI.validate_property(RunCommandDocument, Symbol("osType"), osType)
-        OpenAPI.validate_property(RunCommandDocument, Symbol("label"), label)
-        OpenAPI.validate_property(RunCommandDocument, Symbol("description"), description)
-        OpenAPI.validate_property(RunCommandDocument, Symbol("script"), script)
-        OpenAPI.validate_property(RunCommandDocument, Symbol("parameters"), parameters)
-        return new(var"$schema", id, osType, label, description, script, parameters, )
+    function RunCommandDocument(script, parameters, var"$schema", id, osType, label, description, )
+        o = new(script, parameters, var"$schema", id, osType, label, description, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type RunCommandDocument
 
-const _property_types_RunCommandDocument = Dict{Symbol,String}(Symbol("\$schema")=>"String", Symbol("id")=>"String", Symbol("osType")=>"String", Symbol("label")=>"String", Symbol("description")=>"String", Symbol("script")=>"Vector{String}", Symbol("parameters")=>"Vector{RunCommandParameterDefinition}", )
+const _property_types_RunCommandDocument = Dict{Symbol,String}(Symbol("script")=>"Vector{String}", Symbol("parameters")=>"Vector{RunCommandParameterDefinition}", Symbol("\$schema")=>"String", Symbol("id")=>"String", Symbol("osType")=>"String", Symbol("label")=>"String", Symbol("description")=>"String", )
 OpenAPI.property_type(::Type{ RunCommandDocument }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RunCommandDocument[name]))}
 
-function check_required(o::RunCommandDocument)
+function OpenAPI.check_required(o::RunCommandDocument)
+    o.script === nothing && (return false)
     o.var"$schema" === nothing && (return false)
     o.id === nothing && (return false)
     o.osType === nothing && (return false)
     o.label === nothing && (return false)
     o.description === nothing && (return false)
-    o.script === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::RunCommandDocument)
+    OpenAPI.validate_property(RunCommandDocument, Symbol("script"), o.script)
+    OpenAPI.validate_property(RunCommandDocument, Symbol("parameters"), o.parameters)
+    OpenAPI.validate_property(RunCommandDocument, Symbol("\$schema"), o.var"$schema")
+    OpenAPI.validate_property(RunCommandDocument, Symbol("id"), o.id)
+    OpenAPI.validate_property(RunCommandDocument, Symbol("osType"), o.osType)
+    OpenAPI.validate_property(RunCommandDocument, Symbol("label"), o.label)
+    OpenAPI.validate_property(RunCommandDocument, Symbol("description"), o.description)
+end
+
 function OpenAPI.validate_property(::Type{ RunCommandDocument }, name::Symbol, val)
+
+
+
+
+
     if name === Symbol("osType")
         OpenAPI.validate_param(name, "RunCommandDocument", :enum, val, ["Windows", "Linux"])
     end
+
+
+
 end

@@ -21,19 +21,27 @@ Base.@kwdef mutable struct ErrorDetails <: OpenAPI.APIModel
     message::Union{Nothing, String} = nothing
 
     function ErrorDetails(code, target, message, )
-        OpenAPI.validate_property(ErrorDetails, Symbol("code"), code)
-        OpenAPI.validate_property(ErrorDetails, Symbol("target"), target)
-        OpenAPI.validate_property(ErrorDetails, Symbol("message"), message)
-        return new(code, target, message, )
+        o = new(code, target, message, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ErrorDetails
 
 const _property_types_ErrorDetails = Dict{Symbol,String}(Symbol("code")=>"String", Symbol("target")=>"String", Symbol("message")=>"String", )
 OpenAPI.property_type(::Type{ ErrorDetails }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ErrorDetails[name]))}
 
-function check_required(o::ErrorDetails)
+function OpenAPI.check_required(o::ErrorDetails)
     true
 end
 
+function OpenAPI.validate_properties(o::ErrorDetails)
+    OpenAPI.validate_property(ErrorDetails, Symbol("code"), o.code)
+    OpenAPI.validate_property(ErrorDetails, Symbol("target"), o.target)
+    OpenAPI.validate_property(ErrorDetails, Symbol("message"), o.message)
+end
+
 function OpenAPI.validate_property(::Type{ ErrorDetails }, name::Symbol, val)
+
+
+
 end

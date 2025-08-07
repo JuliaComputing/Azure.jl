@@ -33,26 +33,54 @@ Base.@kwdef mutable struct ConnectivityInformation <: OpenAPI.APIModel
     probesFailed::Union{Nothing, Int64} = nothing
 
     function ConnectivityInformation(hops, connectionStatus, avgLatencyInMs, minLatencyInMs, maxLatencyInMs, probesSent, probesFailed, )
-        OpenAPI.validate_property(ConnectivityInformation, Symbol("hops"), hops)
-        OpenAPI.validate_property(ConnectivityInformation, Symbol("connectionStatus"), connectionStatus)
-        OpenAPI.validate_property(ConnectivityInformation, Symbol("avgLatencyInMs"), avgLatencyInMs)
-        OpenAPI.validate_property(ConnectivityInformation, Symbol("minLatencyInMs"), minLatencyInMs)
-        OpenAPI.validate_property(ConnectivityInformation, Symbol("maxLatencyInMs"), maxLatencyInMs)
-        OpenAPI.validate_property(ConnectivityInformation, Symbol("probesSent"), probesSent)
-        OpenAPI.validate_property(ConnectivityInformation, Symbol("probesFailed"), probesFailed)
-        return new(hops, connectionStatus, avgLatencyInMs, minLatencyInMs, maxLatencyInMs, probesSent, probesFailed, )
+        o = new(hops, connectionStatus, avgLatencyInMs, minLatencyInMs, maxLatencyInMs, probesSent, probesFailed, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ConnectivityInformation
 
 const _property_types_ConnectivityInformation = Dict{Symbol,String}(Symbol("hops")=>"Vector{ConnectivityHop}", Symbol("connectionStatus")=>"String", Symbol("avgLatencyInMs")=>"Int64", Symbol("minLatencyInMs")=>"Int64", Symbol("maxLatencyInMs")=>"Int64", Symbol("probesSent")=>"Int64", Symbol("probesFailed")=>"Int64", )
 OpenAPI.property_type(::Type{ ConnectivityInformation }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ConnectivityInformation[name]))}
 
-function check_required(o::ConnectivityInformation)
+function OpenAPI.check_required(o::ConnectivityInformation)
     true
 end
 
+function OpenAPI.validate_properties(o::ConnectivityInformation)
+    OpenAPI.validate_property(ConnectivityInformation, Symbol("hops"), o.hops)
+    OpenAPI.validate_property(ConnectivityInformation, Symbol("connectionStatus"), o.connectionStatus)
+    OpenAPI.validate_property(ConnectivityInformation, Symbol("avgLatencyInMs"), o.avgLatencyInMs)
+    OpenAPI.validate_property(ConnectivityInformation, Symbol("minLatencyInMs"), o.minLatencyInMs)
+    OpenAPI.validate_property(ConnectivityInformation, Symbol("maxLatencyInMs"), o.maxLatencyInMs)
+    OpenAPI.validate_property(ConnectivityInformation, Symbol("probesSent"), o.probesSent)
+    OpenAPI.validate_property(ConnectivityInformation, Symbol("probesFailed"), o.probesFailed)
+end
+
 function OpenAPI.validate_property(::Type{ ConnectivityInformation }, name::Symbol, val)
+
+
     if name === Symbol("connectionStatus")
         OpenAPI.validate_param(name, "ConnectivityInformation", :enum, val, ["Unknown", "Connected", "Disconnected", "Degraded"])
+    end
+
+
+    if name === Symbol("avgLatencyInMs")
+        OpenAPI.validate_param(name, "ConnectivityInformation", :format, val, "int32")
+    end
+
+    if name === Symbol("minLatencyInMs")
+        OpenAPI.validate_param(name, "ConnectivityInformation", :format, val, "int32")
+    end
+
+    if name === Symbol("maxLatencyInMs")
+        OpenAPI.validate_param(name, "ConnectivityInformation", :format, val, "int32")
+    end
+
+    if name === Symbol("probesSent")
+        OpenAPI.validate_param(name, "ConnectivityInformation", :format, val, "int32")
+    end
+
+    if name === Symbol("probesFailed")
+        OpenAPI.validate_param(name, "ConnectivityInformation", :format, val, "int32")
     end
 end

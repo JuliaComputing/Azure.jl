@@ -23,12 +23,12 @@ Creates or updates an authorization in the specified express route circuit.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ExpressRouteCircuitAuthorizationsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**circuit_name** | **String**| The name of the express route circuit. | [default to nothing]
-**authorization_name** | **String**| The name of the authorization. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**authorization_parameters** | [**ExpressRouteCircuitAuthorization**](ExpressRouteCircuitAuthorization.md)| Parameters supplied to the create or update express route circuit authorization operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**circuit_name** | **String** | The name of the express route circuit. |
+**authorization_name** | **String** | The name of the authorization. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**authorization_parameters** | [**ExpressRouteCircuitAuthorization**](ExpressRouteCircuitAuthorization.md) | Parameters supplied to the create or update express route circuit authorization operation. |
 
 ### Return type
 
@@ -58,11 +58,11 @@ Deletes the specified authorization from the specified express route circuit.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ExpressRouteCircuitAuthorizationsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**circuit_name** | **String**| The name of the express route circuit. | [default to nothing]
-**authorization_name** | **String**| The name of the authorization. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**circuit_name** | **String** | The name of the express route circuit. |
+**authorization_name** | **String** | The name of the authorization. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -92,11 +92,11 @@ Gets the specified authorization from the specified express route circuit.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ExpressRouteCircuitAuthorizationsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**circuit_name** | **String**| The name of the express route circuit. | [default to nothing]
-**authorization_name** | **String**| The name of the authorization. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**circuit_name** | **String** | The name of the express route circuit. |
+**authorization_name** | **String** | The name of the authorization. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -126,10 +126,10 @@ Gets all authorizations in an express route circuit.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **ExpressRouteCircuitAuthorizationsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**circuit_name** | **String**| The name of the circuit. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**circuit_name** | **String** | The name of the circuit. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 

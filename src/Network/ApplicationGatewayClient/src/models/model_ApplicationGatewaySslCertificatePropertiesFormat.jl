@@ -27,21 +27,31 @@ Base.@kwdef mutable struct ApplicationGatewaySslCertificatePropertiesFormat <: O
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
     function ApplicationGatewaySslCertificatePropertiesFormat(data, password, publicCertData, keyVaultSecretId, provisioningState, )
-        OpenAPI.validate_property(ApplicationGatewaySslCertificatePropertiesFormat, Symbol("data"), data)
-        OpenAPI.validate_property(ApplicationGatewaySslCertificatePropertiesFormat, Symbol("password"), password)
-        OpenAPI.validate_property(ApplicationGatewaySslCertificatePropertiesFormat, Symbol("publicCertData"), publicCertData)
-        OpenAPI.validate_property(ApplicationGatewaySslCertificatePropertiesFormat, Symbol("keyVaultSecretId"), keyVaultSecretId)
-        OpenAPI.validate_property(ApplicationGatewaySslCertificatePropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(data, password, publicCertData, keyVaultSecretId, provisioningState, )
+        o = new(data, password, publicCertData, keyVaultSecretId, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewaySslCertificatePropertiesFormat
 
 const _property_types_ApplicationGatewaySslCertificatePropertiesFormat = Dict{Symbol,String}(Symbol("data")=>"String", Symbol("password")=>"String", Symbol("publicCertData")=>"String", Symbol("keyVaultSecretId")=>"String", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ ApplicationGatewaySslCertificatePropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewaySslCertificatePropertiesFormat[name]))}
 
-function check_required(o::ApplicationGatewaySslCertificatePropertiesFormat)
+function OpenAPI.check_required(o::ApplicationGatewaySslCertificatePropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewaySslCertificatePropertiesFormat)
+    OpenAPI.validate_property(ApplicationGatewaySslCertificatePropertiesFormat, Symbol("data"), o.data)
+    OpenAPI.validate_property(ApplicationGatewaySslCertificatePropertiesFormat, Symbol("password"), o.password)
+    OpenAPI.validate_property(ApplicationGatewaySslCertificatePropertiesFormat, Symbol("publicCertData"), o.publicCertData)
+    OpenAPI.validate_property(ApplicationGatewaySslCertificatePropertiesFormat, Symbol("keyVaultSecretId"), o.keyVaultSecretId)
+    OpenAPI.validate_property(ApplicationGatewaySslCertificatePropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewaySslCertificatePropertiesFormat }, name::Symbol, val)
+
+
+
+
+
 end

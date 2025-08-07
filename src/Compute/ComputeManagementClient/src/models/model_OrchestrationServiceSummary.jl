@@ -18,24 +18,33 @@ Base.@kwdef mutable struct OrchestrationServiceSummary <: OpenAPI.APIModel
     serviceState::Union{Nothing, String} = nothing
 
     function OrchestrationServiceSummary(serviceName, serviceState, )
-        OpenAPI.validate_property(OrchestrationServiceSummary, Symbol("serviceName"), serviceName)
-        OpenAPI.validate_property(OrchestrationServiceSummary, Symbol("serviceState"), serviceState)
-        return new(serviceName, serviceState, )
+        o = new(serviceName, serviceState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type OrchestrationServiceSummary
 
 const _property_types_OrchestrationServiceSummary = Dict{Symbol,String}(Symbol("serviceName")=>"String", Symbol("serviceState")=>"String", )
 OpenAPI.property_type(::Type{ OrchestrationServiceSummary }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_OrchestrationServiceSummary[name]))}
 
-function check_required(o::OrchestrationServiceSummary)
+function OpenAPI.check_required(o::OrchestrationServiceSummary)
     true
 end
 
+function OpenAPI.validate_properties(o::OrchestrationServiceSummary)
+    OpenAPI.validate_property(OrchestrationServiceSummary, Symbol("serviceName"), o.serviceName)
+    OpenAPI.validate_property(OrchestrationServiceSummary, Symbol("serviceState"), o.serviceState)
+end
+
 function OpenAPI.validate_property(::Type{ OrchestrationServiceSummary }, name::Symbol, val)
+
     if name === Symbol("serviceName")
         OpenAPI.validate_param(name, "OrchestrationServiceSummary", :enum, val, ["AutomaticRepairs"])
     end
+
+
     if name === Symbol("serviceState")
         OpenAPI.validate_param(name, "OrchestrationServiceSummary", :enum, val, ["NotRunning", "Running", "Suspended"])
     end
+
 end

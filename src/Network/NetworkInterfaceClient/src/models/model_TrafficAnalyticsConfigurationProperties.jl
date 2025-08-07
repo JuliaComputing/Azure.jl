@@ -27,21 +27,34 @@ Base.@kwdef mutable struct TrafficAnalyticsConfigurationProperties <: OpenAPI.AP
     trafficAnalyticsInterval::Union{Nothing, Int64} = nothing
 
     function TrafficAnalyticsConfigurationProperties(enabled, workspaceId, workspaceRegion, workspaceResourceId, trafficAnalyticsInterval, )
-        OpenAPI.validate_property(TrafficAnalyticsConfigurationProperties, Symbol("enabled"), enabled)
-        OpenAPI.validate_property(TrafficAnalyticsConfigurationProperties, Symbol("workspaceId"), workspaceId)
-        OpenAPI.validate_property(TrafficAnalyticsConfigurationProperties, Symbol("workspaceRegion"), workspaceRegion)
-        OpenAPI.validate_property(TrafficAnalyticsConfigurationProperties, Symbol("workspaceResourceId"), workspaceResourceId)
-        OpenAPI.validate_property(TrafficAnalyticsConfigurationProperties, Symbol("trafficAnalyticsInterval"), trafficAnalyticsInterval)
-        return new(enabled, workspaceId, workspaceRegion, workspaceResourceId, trafficAnalyticsInterval, )
+        o = new(enabled, workspaceId, workspaceRegion, workspaceResourceId, trafficAnalyticsInterval, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type TrafficAnalyticsConfigurationProperties
 
 const _property_types_TrafficAnalyticsConfigurationProperties = Dict{Symbol,String}(Symbol("enabled")=>"Bool", Symbol("workspaceId")=>"String", Symbol("workspaceRegion")=>"String", Symbol("workspaceResourceId")=>"String", Symbol("trafficAnalyticsInterval")=>"Int64", )
 OpenAPI.property_type(::Type{ TrafficAnalyticsConfigurationProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TrafficAnalyticsConfigurationProperties[name]))}
 
-function check_required(o::TrafficAnalyticsConfigurationProperties)
+function OpenAPI.check_required(o::TrafficAnalyticsConfigurationProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::TrafficAnalyticsConfigurationProperties)
+    OpenAPI.validate_property(TrafficAnalyticsConfigurationProperties, Symbol("enabled"), o.enabled)
+    OpenAPI.validate_property(TrafficAnalyticsConfigurationProperties, Symbol("workspaceId"), o.workspaceId)
+    OpenAPI.validate_property(TrafficAnalyticsConfigurationProperties, Symbol("workspaceRegion"), o.workspaceRegion)
+    OpenAPI.validate_property(TrafficAnalyticsConfigurationProperties, Symbol("workspaceResourceId"), o.workspaceResourceId)
+    OpenAPI.validate_property(TrafficAnalyticsConfigurationProperties, Symbol("trafficAnalyticsInterval"), o.trafficAnalyticsInterval)
+end
+
 function OpenAPI.validate_property(::Type{ TrafficAnalyticsConfigurationProperties }, name::Symbol, val)
+
+
+
+
+
+    if name === Symbol("trafficAnalyticsInterval")
+        OpenAPI.validate_param(name, "TrafficAnalyticsConfigurationProperties", :format, val, "int32")
+    end
 end

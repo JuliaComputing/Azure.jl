@@ -15,17 +15,23 @@ Base.@kwdef mutable struct ConnectionMonitorWorkspaceSettings <: OpenAPI.APIMode
     workspaceResourceId::Union{Nothing, String} = nothing
 
     function ConnectionMonitorWorkspaceSettings(workspaceResourceId, )
-        OpenAPI.validate_property(ConnectionMonitorWorkspaceSettings, Symbol("workspaceResourceId"), workspaceResourceId)
-        return new(workspaceResourceId, )
+        o = new(workspaceResourceId, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ConnectionMonitorWorkspaceSettings
 
 const _property_types_ConnectionMonitorWorkspaceSettings = Dict{Symbol,String}(Symbol("workspaceResourceId")=>"String", )
 OpenAPI.property_type(::Type{ ConnectionMonitorWorkspaceSettings }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ConnectionMonitorWorkspaceSettings[name]))}
 
-function check_required(o::ConnectionMonitorWorkspaceSettings)
+function OpenAPI.check_required(o::ConnectionMonitorWorkspaceSettings)
     true
 end
 
+function OpenAPI.validate_properties(o::ConnectionMonitorWorkspaceSettings)
+    OpenAPI.validate_property(ConnectionMonitorWorkspaceSettings, Symbol("workspaceResourceId"), o.workspaceResourceId)
+end
+
 function OpenAPI.validate_property(::Type{ ConnectionMonitorWorkspaceSettings }, name::Symbol, val)
+
 end

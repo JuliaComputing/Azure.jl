@@ -7,7 +7,7 @@ Virtual Network rule.
 
     VirtualNetworkRule(;
         id=nothing,
-        action=Allow,
+        action="Allow",
         state=nothing,
     )
 
@@ -17,30 +17,40 @@ Virtual Network rule.
 """
 Base.@kwdef mutable struct VirtualNetworkRule <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
-    action::Union{Nothing, String} = Allow
+    action::Union{Nothing, String} = "Allow"
     state::Union{Nothing, String} = nothing
 
     function VirtualNetworkRule(id, action, state, )
-        OpenAPI.validate_property(VirtualNetworkRule, Symbol("id"), id)
-        OpenAPI.validate_property(VirtualNetworkRule, Symbol("action"), action)
-        OpenAPI.validate_property(VirtualNetworkRule, Symbol("state"), state)
-        return new(id, action, state, )
+        o = new(id, action, state, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualNetworkRule
 
 const _property_types_VirtualNetworkRule = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("action")=>"String", Symbol("state")=>"String", )
 OpenAPI.property_type(::Type{ VirtualNetworkRule }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualNetworkRule[name]))}
 
-function check_required(o::VirtualNetworkRule)
+function OpenAPI.check_required(o::VirtualNetworkRule)
     o.id === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualNetworkRule)
+    OpenAPI.validate_property(VirtualNetworkRule, Symbol("id"), o.id)
+    OpenAPI.validate_property(VirtualNetworkRule, Symbol("action"), o.action)
+    OpenAPI.validate_property(VirtualNetworkRule, Symbol("state"), o.state)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualNetworkRule }, name::Symbol, val)
+
+
     if name === Symbol("action")
         OpenAPI.validate_param(name, "VirtualNetworkRule", :enum, val, ["Allow"])
     end
+
+
     if name === Symbol("state")
-        OpenAPI.validate_param(name, "VirtualNetworkRule", :enum, val, ["provisioning", "deprovisioning", "succeeded", "failed", "networkSourceDeleted"])
+        OpenAPI.validate_param(name, "VirtualNetworkRule", :enum, val, ["Provisioning", "Deprovisioning", "Succeeded", "Failed", "NetworkSourceDeleted"])
     end
+
 end

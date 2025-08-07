@@ -6,30 +6,32 @@
 An error response from the storage resource provider.
 
     ErrorResponse(;
-        code=nothing,
-        message=nothing,
+        error=nothing,
     )
 
-    - code::String : An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
-    - message::String : A message describing the error, intended to be suitable for display in a user interface.
+    - error::ErrorResponseBody
 """
 Base.@kwdef mutable struct ErrorResponse <: OpenAPI.APIModel
-    code::Union{Nothing, String} = nothing
-    message::Union{Nothing, String} = nothing
+    error = nothing # spec type: Union{ Nothing, ErrorResponseBody }
 
-    function ErrorResponse(code, message, )
-        OpenAPI.validate_property(ErrorResponse, Symbol("code"), code)
-        OpenAPI.validate_property(ErrorResponse, Symbol("message"), message)
-        return new(code, message, )
+    function ErrorResponse(error, )
+        o = new(error, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ErrorResponse
 
-const _property_types_ErrorResponse = Dict{Symbol,String}(Symbol("code")=>"String", Symbol("message")=>"String", )
+const _property_types_ErrorResponse = Dict{Symbol,String}(Symbol("error")=>"ErrorResponseBody", )
 OpenAPI.property_type(::Type{ ErrorResponse }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ErrorResponse[name]))}
 
-function check_required(o::ErrorResponse)
+function OpenAPI.check_required(o::ErrorResponse)
     true
 end
 
+function OpenAPI.validate_properties(o::ErrorResponse)
+    OpenAPI.validate_property(ErrorResponse, Symbol("error"), o.error)
+end
+
 function OpenAPI.validate_property(::Type{ ErrorResponse }, name::Symbol, val)
+
 end

@@ -27,21 +27,31 @@ Base.@kwdef mutable struct ResourceNavigationLink2 <: OpenAPI.APIModel
     type::Union{Nothing, String} = nothing
 
     function ResourceNavigationLink2(properties, name, id, etag, type, )
-        OpenAPI.validate_property(ResourceNavigationLink2, Symbol("properties"), properties)
-        OpenAPI.validate_property(ResourceNavigationLink2, Symbol("name"), name)
-        OpenAPI.validate_property(ResourceNavigationLink2, Symbol("id"), id)
-        OpenAPI.validate_property(ResourceNavigationLink2, Symbol("etag"), etag)
-        OpenAPI.validate_property(ResourceNavigationLink2, Symbol("type"), type)
-        return new(properties, name, id, etag, type, )
+        o = new(properties, name, id, etag, type, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ResourceNavigationLink2
 
 const _property_types_ResourceNavigationLink2 = Dict{Symbol,String}(Symbol("properties")=>"ResourceNavigationLinkFormat2", Symbol("name")=>"String", Symbol("id")=>"String", Symbol("etag")=>"String", Symbol("type")=>"String", )
 OpenAPI.property_type(::Type{ ResourceNavigationLink2 }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ResourceNavigationLink2[name]))}
 
-function check_required(o::ResourceNavigationLink2)
+function OpenAPI.check_required(o::ResourceNavigationLink2)
     true
 end
 
+function OpenAPI.validate_properties(o::ResourceNavigationLink2)
+    OpenAPI.validate_property(ResourceNavigationLink2, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(ResourceNavigationLink2, Symbol("name"), o.name)
+    OpenAPI.validate_property(ResourceNavigationLink2, Symbol("id"), o.id)
+    OpenAPI.validate_property(ResourceNavigationLink2, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(ResourceNavigationLink2, Symbol("type"), o.type)
+end
+
 function OpenAPI.validate_property(::Type{ ResourceNavigationLink2 }, name::Symbol, val)
+
+
+
+
+
 end

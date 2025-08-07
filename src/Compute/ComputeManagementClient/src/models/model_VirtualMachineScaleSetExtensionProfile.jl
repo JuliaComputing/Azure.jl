@@ -18,18 +18,25 @@ Base.@kwdef mutable struct VirtualMachineScaleSetExtensionProfile <: OpenAPI.API
     extensionsTimeBudget::Union{Nothing, String} = nothing
 
     function VirtualMachineScaleSetExtensionProfile(extensions, extensionsTimeBudget, )
-        OpenAPI.validate_property(VirtualMachineScaleSetExtensionProfile, Symbol("extensions"), extensions)
-        OpenAPI.validate_property(VirtualMachineScaleSetExtensionProfile, Symbol("extensionsTimeBudget"), extensionsTimeBudget)
-        return new(extensions, extensionsTimeBudget, )
+        o = new(extensions, extensionsTimeBudget, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetExtensionProfile
 
 const _property_types_VirtualMachineScaleSetExtensionProfile = Dict{Symbol,String}(Symbol("extensions")=>"Vector{VirtualMachineScaleSetExtension}", Symbol("extensionsTimeBudget")=>"String", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetExtensionProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetExtensionProfile[name]))}
 
-function check_required(o::VirtualMachineScaleSetExtensionProfile)
+function OpenAPI.check_required(o::VirtualMachineScaleSetExtensionProfile)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetExtensionProfile)
+    OpenAPI.validate_property(VirtualMachineScaleSetExtensionProfile, Symbol("extensions"), o.extensions)
+    OpenAPI.validate_property(VirtualMachineScaleSetExtensionProfile, Symbol("extensionsTimeBudget"), o.extensionsTimeBudget)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetExtensionProfile }, name::Symbol, val)
+
+
 end

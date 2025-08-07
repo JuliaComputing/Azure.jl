@@ -15,17 +15,23 @@ Base.@kwdef mutable struct GatewayRouteListResult <: OpenAPI.APIModel
     value::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{GatewayRoute} }
 
     function GatewayRouteListResult(value, )
-        OpenAPI.validate_property(GatewayRouteListResult, Symbol("value"), value)
-        return new(value, )
+        o = new(value, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type GatewayRouteListResult
 
 const _property_types_GatewayRouteListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{GatewayRoute}", )
 OpenAPI.property_type(::Type{ GatewayRouteListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_GatewayRouteListResult[name]))}
 
-function check_required(o::GatewayRouteListResult)
+function OpenAPI.check_required(o::GatewayRouteListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::GatewayRouteListResult)
+    OpenAPI.validate_property(GatewayRouteListResult, Symbol("value"), o.value)
+end
+
 function OpenAPI.validate_property(::Type{ GatewayRouteListResult }, name::Symbol, val)
+
 end

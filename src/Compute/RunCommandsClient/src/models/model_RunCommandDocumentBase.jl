@@ -27,19 +27,16 @@ Base.@kwdef mutable struct RunCommandDocumentBase <: OpenAPI.APIModel
     description::Union{Nothing, String} = nothing
 
     function RunCommandDocumentBase(var"$schema", id, osType, label, description, )
-        OpenAPI.validate_property(RunCommandDocumentBase, Symbol("\$schema"), var"$schema")
-        OpenAPI.validate_property(RunCommandDocumentBase, Symbol("id"), id)
-        OpenAPI.validate_property(RunCommandDocumentBase, Symbol("osType"), osType)
-        OpenAPI.validate_property(RunCommandDocumentBase, Symbol("label"), label)
-        OpenAPI.validate_property(RunCommandDocumentBase, Symbol("description"), description)
-        return new(var"$schema", id, osType, label, description, )
+        o = new(var"$schema", id, osType, label, description, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type RunCommandDocumentBase
 
 const _property_types_RunCommandDocumentBase = Dict{Symbol,String}(Symbol("\$schema")=>"String", Symbol("id")=>"String", Symbol("osType")=>"String", Symbol("label")=>"String", Symbol("description")=>"String", )
 OpenAPI.property_type(::Type{ RunCommandDocumentBase }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RunCommandDocumentBase[name]))}
 
-function check_required(o::RunCommandDocumentBase)
+function OpenAPI.check_required(o::RunCommandDocumentBase)
     o.var"$schema" === nothing && (return false)
     o.id === nothing && (return false)
     o.osType === nothing && (return false)
@@ -48,8 +45,22 @@ function check_required(o::RunCommandDocumentBase)
     true
 end
 
+function OpenAPI.validate_properties(o::RunCommandDocumentBase)
+    OpenAPI.validate_property(RunCommandDocumentBase, Symbol("\$schema"), o.var"$schema")
+    OpenAPI.validate_property(RunCommandDocumentBase, Symbol("id"), o.id)
+    OpenAPI.validate_property(RunCommandDocumentBase, Symbol("osType"), o.osType)
+    OpenAPI.validate_property(RunCommandDocumentBase, Symbol("label"), o.label)
+    OpenAPI.validate_property(RunCommandDocumentBase, Symbol("description"), o.description)
+end
+
 function OpenAPI.validate_property(::Type{ RunCommandDocumentBase }, name::Symbol, val)
+
+
+
     if name === Symbol("osType")
         OpenAPI.validate_param(name, "RunCommandDocumentBase", :enum, val, ["Windows", "Linux"])
     end
+
+
+
 end

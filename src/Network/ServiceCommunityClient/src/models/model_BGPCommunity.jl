@@ -30,22 +30,33 @@ Base.@kwdef mutable struct BGPCommunity <: OpenAPI.APIModel
     serviceGroup::Union{Nothing, String} = nothing
 
     function BGPCommunity(serviceSupportedRegion, communityName, communityValue, communityPrefixes, isAuthorizedToUse, serviceGroup, )
-        OpenAPI.validate_property(BGPCommunity, Symbol("serviceSupportedRegion"), serviceSupportedRegion)
-        OpenAPI.validate_property(BGPCommunity, Symbol("communityName"), communityName)
-        OpenAPI.validate_property(BGPCommunity, Symbol("communityValue"), communityValue)
-        OpenAPI.validate_property(BGPCommunity, Symbol("communityPrefixes"), communityPrefixes)
-        OpenAPI.validate_property(BGPCommunity, Symbol("isAuthorizedToUse"), isAuthorizedToUse)
-        OpenAPI.validate_property(BGPCommunity, Symbol("serviceGroup"), serviceGroup)
-        return new(serviceSupportedRegion, communityName, communityValue, communityPrefixes, isAuthorizedToUse, serviceGroup, )
+        o = new(serviceSupportedRegion, communityName, communityValue, communityPrefixes, isAuthorizedToUse, serviceGroup, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type BGPCommunity
 
 const _property_types_BGPCommunity = Dict{Symbol,String}(Symbol("serviceSupportedRegion")=>"String", Symbol("communityName")=>"String", Symbol("communityValue")=>"String", Symbol("communityPrefixes")=>"Vector{String}", Symbol("isAuthorizedToUse")=>"Bool", Symbol("serviceGroup")=>"String", )
 OpenAPI.property_type(::Type{ BGPCommunity }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_BGPCommunity[name]))}
 
-function check_required(o::BGPCommunity)
+function OpenAPI.check_required(o::BGPCommunity)
     true
 end
 
+function OpenAPI.validate_properties(o::BGPCommunity)
+    OpenAPI.validate_property(BGPCommunity, Symbol("serviceSupportedRegion"), o.serviceSupportedRegion)
+    OpenAPI.validate_property(BGPCommunity, Symbol("communityName"), o.communityName)
+    OpenAPI.validate_property(BGPCommunity, Symbol("communityValue"), o.communityValue)
+    OpenAPI.validate_property(BGPCommunity, Symbol("communityPrefixes"), o.communityPrefixes)
+    OpenAPI.validate_property(BGPCommunity, Symbol("isAuthorizedToUse"), o.isAuthorizedToUse)
+    OpenAPI.validate_property(BGPCommunity, Symbol("serviceGroup"), o.serviceGroup)
+end
+
 function OpenAPI.validate_property(::Type{ BGPCommunity }, name::Symbol, val)
+
+
+
+
+
+
 end

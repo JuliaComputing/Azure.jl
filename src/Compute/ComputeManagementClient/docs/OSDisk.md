@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **createOption** | [***CreateOption**](CreateOption.md) |  | [default to nothing]
 **diskSizeGB** | **Int64** | Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image. &lt;br&gt;&lt;br&gt; This value cannot be larger than 1023 GB | [optional] [default to nothing]
 **managedDisk** | [***ManagedDiskParameters**](ManagedDiskParameters.md) |  | [optional] [default to nothing]
+**deleteOption** | [***DeleteOption**](DeleteOption.md) |  | [optional] [default to nothing]
 
 
 [[Back to Model list]](../README.md#models) [[Back to API list]](../README.md#api-endpoints) [[Back to README]](../README.md)

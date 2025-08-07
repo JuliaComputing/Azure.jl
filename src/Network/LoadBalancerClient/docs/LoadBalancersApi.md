@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**load_balancer_frontend_i_p_configurations_get**](LoadBalancersApi.md#load_balancer_frontend_i_p_configurations_get) | **GET** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/frontendIPConfigurations/{frontendIPConfigurationName} | 
 [**load_balancer_frontend_i_p_configurations_list**](LoadBalancersApi.md#load_balancer_frontend_i_p_configurations_list) | **GET** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/frontendIPConfigurations | 
 [**load_balancer_load_balancing_rules_get**](LoadBalancersApi.md#load_balancer_load_balancing_rules_get) | **GET** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/loadBalancingRules/{loadBalancingRuleName} | 
+[**load_balancer_load_balancing_rules_health**](LoadBalancersApi.md#load_balancer_load_balancing_rules_health) | **POST** /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/loadBalancingRules/{loadBalancingRuleName}/health | 
 [**load_balancer_load_balancing_rules_list**](LoadBalancersApi.md#load_balancer_load_balancing_rules_list) | **GET** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/loadBalancingRules | 
 [**load_balancer_network_interfaces_list**](LoadBalancersApi.md#load_balancer_network_interfaces_list) | **GET** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/networkInterfaces | 
 [**load_balancer_outbound_rules_get**](LoadBalancersApi.md#load_balancer_outbound_rules_get) | **GET** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/outboundRules/{outboundRuleName} | 
@@ -26,6 +27,9 @@ Method | HTTP request | Description
 [**load_balancers_get**](LoadBalancersApi.md#load_balancers_get) | **GET** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName} | 
 [**load_balancers_list**](LoadBalancersApi.md#load_balancers_list) | **GET** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers | 
 [**load_balancers_list_all**](LoadBalancersApi.md#load_balancers_list_all) | **GET** /subscriptions/{subscriptionId}/providers/Microsoft.Network/loadBalancers | 
+[**load_balancers_list_inbound_nat_rule_port_mappings**](LoadBalancersApi.md#load_balancers_list_inbound_nat_rule_port_mappings) | **POST** /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendPoolName}/queryInboundNatRulePortMapping | 
+[**load_balancers_migrate_to_ip_based**](LoadBalancersApi.md#load_balancers_migrate_to_ip_based) | **POST** /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/migrateToIpBased | 
+[**load_balancers_swap_public_ip_addresses**](LoadBalancersApi.md#load_balancers_swap_public_ip_addresses) | **POST** /subscriptions/{subscriptionId}/providers/Microsoft.Network/locations/{location}/setLoadBalancerFrontendPublicIpAddresses | 
 [**load_balancers_update_tags**](LoadBalancersApi.md#load_balancers_update_tags) | **PATCH** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName} | 
 
 
@@ -35,19 +39,19 @@ Method | HTTP request | Description
 
 
 
-Creates or updates a load balancer inbound nat rule.
+Creates or updates a load balancer inbound NAT rule.
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LoadBalancersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**load_balancer_name** | **String**| The name of the load balancer. | [default to nothing]
-**inbound_nat_rule_name** | **String**| The name of the inbound nat rule. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**inbound_nat_rule_parameters** | [**InboundNatRule**](InboundNatRule.md)| Parameters supplied to the create or update inbound nat rule operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**load_balancer_name** | **String** | The name of the load balancer. |
+**inbound_nat_rule_name** | **String** | The name of the inbound NAT rule. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**inbound_nat_rule_parameters** | [**InboundNatRule**](InboundNatRule.md) | Parameters supplied to the create or update inbound NAT rule operation. |
 
 ### Return type
 
@@ -70,18 +74,18 @@ Name | Type | Description  | Notes
 
 
 
-Deletes the specified load balancer inbound nat rule.
+Deletes the specified load balancer inbound NAT rule.
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LoadBalancersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**load_balancer_name** | **String**| The name of the load balancer. | [default to nothing]
-**inbound_nat_rule_name** | **String**| The name of the inbound nat rule. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**load_balancer_name** | **String** | The name of the load balancer. |
+**inbound_nat_rule_name** | **String** | The name of the inbound NAT rule. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -104,24 +108,24 @@ Nothing
 
 
 
-Gets the specified load balancer inbound nat rule.
+Gets the specified load balancer inbound NAT rule.
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LoadBalancersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**load_balancer_name** | **String**| The name of the load balancer. | [default to nothing]
-**inbound_nat_rule_name** | **String**| The name of the inbound nat rule. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**load_balancer_name** | **String** | The name of the load balancer. |
+**inbound_nat_rule_name** | **String** | The name of the inbound NAT rule. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expand** | **String**| Expands referenced resources. | [default to nothing]
+ **expand** | **String** | Expands referenced resources. | [default to nothing]
 
 ### Return type
 
@@ -144,17 +148,17 @@ Name | Type | Description  | Notes
 
 
 
-Gets all the inbound nat rules in a load balancer.
+Gets all the inbound NAT rules in a load balancer.
 
 ### Required Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LoadBalancersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**load_balancer_name** | **String**| The name of the load balancer. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**load_balancer_name** | **String** | The name of the load balancer. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -184,12 +188,12 @@ Creates or updates a load balancer backend address pool.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LoadBalancersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**load_balancer_name** | **String**| The name of the load balancer. | [default to nothing]
-**backend_address_pool_name** | **String**| The name of the backend address pool. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**BackendAddressPool**](BackendAddressPool.md)| Parameters supplied to the create or update load balancer backend address pool operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**load_balancer_name** | **String** | The name of the load balancer. |
+**backend_address_pool_name** | **String** | The name of the backend address pool. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**BackendAddressPool**](BackendAddressPool.md) | Parameters supplied to the create or update load balancer backend address pool operation. |
 
 ### Return type
 
@@ -219,11 +223,11 @@ Deletes the specified load balancer backend address pool.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LoadBalancersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**load_balancer_name** | **String**| The name of the load balancer. | [default to nothing]
-**backend_address_pool_name** | **String**| The name of the backend address pool. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**load_balancer_name** | **String** | The name of the load balancer. |
+**backend_address_pool_name** | **String** | The name of the backend address pool. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -253,11 +257,11 @@ Gets load balancer backend address pool.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LoadBalancersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**load_balancer_name** | **String**| The name of the load balancer. | [default to nothing]
-**backend_address_pool_name** | **String**| The name of the backend address pool. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**load_balancer_name** | **String** | The name of the load balancer. |
+**backend_address_pool_name** | **String** | The name of the backend address pool. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -287,10 +291,10 @@ Gets all the load balancer backed address pools.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LoadBalancersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**load_balancer_name** | **String**| The name of the load balancer. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**load_balancer_name** | **String** | The name of the load balancer. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -320,11 +324,11 @@ Gets load balancer frontend IP configuration.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LoadBalancersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**load_balancer_name** | **String**| The name of the load balancer. | [default to nothing]
-**frontend_i_p_configuration_name** | **String**| The name of the frontend IP configuration. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**load_balancer_name** | **String** | The name of the load balancer. |
+**frontend_i_p_configuration_name** | **String** | The name of the frontend IP configuration. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -354,10 +358,10 @@ Gets all the load balancer frontend IP configurations.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LoadBalancersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**load_balancer_name** | **String**| The name of the load balancer. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**load_balancer_name** | **String** | The name of the load balancer. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -387,15 +391,49 @@ Gets the specified load balancer load balancing rule.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LoadBalancersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**load_balancer_name** | **String**| The name of the load balancer. | [default to nothing]
-**load_balancing_rule_name** | **String**| The name of the load balancing rule. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**load_balancer_name** | **String** | The name of the load balancer. |
+**load_balancing_rule_name** | **String** | The name of the load balancing rule. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
 [**LoadBalancingRule**](LoadBalancingRule.md)
+
+### Authorization
+
+[azure_auth](../README.md#azure_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+# **load_balancer_load_balancing_rules_health**
+> load_balancer_load_balancing_rules_health(_api::LoadBalancersApi, group_name::String, load_balancer_name::String, load_balancing_rule_name::String, api_version::String, subscription_id::String; _mediaType=nothing) -> LoadBalancerHealthPerRule, OpenAPI.Clients.ApiResponse <br/>
+> load_balancer_load_balancing_rules_health(_api::LoadBalancersApi, response_stream::Channel, group_name::String, load_balancer_name::String, load_balancing_rule_name::String, api_version::String, subscription_id::String; _mediaType=nothing) -> Channel{ LoadBalancerHealthPerRule }, OpenAPI.Clients.ApiResponse
+
+
+
+Get health details of a load balancing rule.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **_api** | **LoadBalancersApi** | API context | 
+**group_name** | **String** | The name of the resource group. |
+**load_balancer_name** | **String** | The name of the load balancer. |
+**load_balancing_rule_name** | **String** | The name of the load balancing rule. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+
+### Return type
+
+[**LoadBalancerHealthPerRule**](LoadBalancerHealthPerRule.md)
 
 ### Authorization
 
@@ -421,10 +459,10 @@ Gets all the load balancing rules in a load balancer.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LoadBalancersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**load_balancer_name** | **String**| The name of the load balancer. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**load_balancer_name** | **String** | The name of the load balancer. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -454,10 +492,10 @@ Gets associated load balancer network interfaces.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LoadBalancersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**load_balancer_name** | **String**| The name of the load balancer. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**load_balancer_name** | **String** | The name of the load balancer. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -487,11 +525,11 @@ Gets the specified load balancer outbound rule.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LoadBalancersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**load_balancer_name** | **String**| The name of the load balancer. | [default to nothing]
-**outbound_rule_name** | **String**| The name of the outbound rule. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**load_balancer_name** | **String** | The name of the load balancer. |
+**outbound_rule_name** | **String** | The name of the outbound rule. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -521,10 +559,10 @@ Gets all the outbound rules in a load balancer.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LoadBalancersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**load_balancer_name** | **String**| The name of the load balancer. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**load_balancer_name** | **String** | The name of the load balancer. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -554,11 +592,11 @@ Gets load balancer probe.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LoadBalancersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**load_balancer_name** | **String**| The name of the load balancer. | [default to nothing]
-**probe_name** | **String**| The name of the probe. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**load_balancer_name** | **String** | The name of the load balancer. |
+**probe_name** | **String** | The name of the probe. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -588,10 +626,10 @@ Gets all the load balancer probes.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LoadBalancersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**load_balancer_name** | **String**| The name of the load balancer. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**load_balancer_name** | **String** | The name of the load balancer. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -621,11 +659,11 @@ Creates or updates a load balancer.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LoadBalancersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**load_balancer_name** | **String**| The name of the load balancer. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**LoadBalancer**](LoadBalancer.md)| Parameters supplied to the create or update load balancer operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**load_balancer_name** | **String** | The name of the load balancer. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**LoadBalancer**](LoadBalancer.md) | Parameters supplied to the create or update load balancer operation. |
 
 ### Return type
 
@@ -655,10 +693,10 @@ Deletes the specified load balancer.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LoadBalancersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**load_balancer_name** | **String**| The name of the load balancer. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**load_balancer_name** | **String** | The name of the load balancer. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -688,16 +726,16 @@ Gets the specified load balancer.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LoadBalancersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**load_balancer_name** | **String**| The name of the load balancer. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**load_balancer_name** | **String** | The name of the load balancer. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expand** | **String**| Expands referenced resources. | [default to nothing]
+ **expand** | **String** | Expands referenced resources. | [default to nothing]
 
 ### Return type
 
@@ -727,9 +765,9 @@ Gets all the load balancers in a resource group.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LoadBalancersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -759,8 +797,8 @@ Gets all the load balancers in a subscription.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LoadBalancersApi** | API context | 
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -773,6 +811,113 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+# **load_balancers_list_inbound_nat_rule_port_mappings**
+> load_balancers_list_inbound_nat_rule_port_mappings(_api::LoadBalancersApi, group_name::String, load_balancer_name::String, backend_pool_name::String, api_version::String, subscription_id::String, parameters::QueryInboundNatRulePortMappingRequest; _mediaType=nothing) -> BackendAddressInboundNatRulePortMappings, OpenAPI.Clients.ApiResponse <br/>
+> load_balancers_list_inbound_nat_rule_port_mappings(_api::LoadBalancersApi, response_stream::Channel, group_name::String, load_balancer_name::String, backend_pool_name::String, api_version::String, subscription_id::String, parameters::QueryInboundNatRulePortMappingRequest; _mediaType=nothing) -> Channel{ BackendAddressInboundNatRulePortMappings }, OpenAPI.Clients.ApiResponse
+
+
+
+List of inbound NAT rule port mappings.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **_api** | **LoadBalancersApi** | API context | 
+**group_name** | **String** | The name of the resource group. |
+**load_balancer_name** | **String** | The name of the load balancer. |
+**backend_pool_name** | **String** | The name of the load balancer backend address pool. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**QueryInboundNatRulePortMappingRequest**](QueryInboundNatRulePortMappingRequest.md) | Query inbound NAT rule port mapping request. |
+
+### Return type
+
+[**BackendAddressInboundNatRulePortMappings**](BackendAddressInboundNatRulePortMappings.md)
+
+### Authorization
+
+[azure_auth](../README.md#azure_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+# **load_balancers_migrate_to_ip_based**
+> load_balancers_migrate_to_ip_based(_api::LoadBalancersApi, group_name::String, load_balancer_name::String, api_version::String, subscription_id::String; parameters=nothing, _mediaType=nothing) -> MigratedPools, OpenAPI.Clients.ApiResponse <br/>
+> load_balancers_migrate_to_ip_based(_api::LoadBalancersApi, response_stream::Channel, group_name::String, load_balancer_name::String, api_version::String, subscription_id::String; parameters=nothing, _mediaType=nothing) -> Channel{ MigratedPools }, OpenAPI.Clients.ApiResponse
+
+
+
+Migrate load balancer to IP Based
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **_api** | **LoadBalancersApi** | API context | 
+**group_name** | **String** | The name of the resource group. |
+**load_balancer_name** | **String** | The name of the load balancer. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+
+### Optional Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **parameters** | [**MigrateLoadBalancerToIpBasedRequest**](MigrateLoadBalancerToIpBasedRequest.md) | Parameters supplied to the migrateToIpBased Api. | 
+
+### Return type
+
+[**MigratedPools**](MigratedPools.md)
+
+### Authorization
+
+[azure_auth](../README.md#azure_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+# **load_balancers_swap_public_ip_addresses**
+> load_balancers_swap_public_ip_addresses(_api::LoadBalancersApi, location::String, api_version::String, subscription_id::String, parameters::LoadBalancerVipSwapRequest; _mediaType=nothing) -> Nothing, OpenAPI.Clients.ApiResponse <br/>
+> load_balancers_swap_public_ip_addresses(_api::LoadBalancersApi, response_stream::Channel, location::String, api_version::String, subscription_id::String, parameters::LoadBalancerVipSwapRequest; _mediaType=nothing) -> Channel{ Nothing }, OpenAPI.Clients.ApiResponse
+
+
+
+Swaps VIPs between two load balancers.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **_api** | **LoadBalancersApi** | API context | 
+**location** | **String** | The region where load balancers are located at. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**LoadBalancerVipSwapRequest**](LoadBalancerVipSwapRequest.md) | Parameters that define which VIPs should be swapped. |
+
+### Return type
+
+Nothing
+
+### Authorization
+
+[azure_auth](../README.md#azure_auth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
@@ -790,11 +935,11 @@ Updates a load balancer tags.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LoadBalancersApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**load_balancer_name** | **String**| The name of the load balancer. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**TagsObject**](TagsObject.md)| Parameters supplied to update load balancer tags. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**load_balancer_name** | **String** | The name of the load balancer. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**TagsObject**](TagsObject.md) | Parameters supplied to update load balancer tags. |
 
 ### Return type
 

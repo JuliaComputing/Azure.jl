@@ -24,20 +24,29 @@ Base.@kwdef mutable struct AvailableProvidersListParameters <: OpenAPI.APIModel
     city::Union{Nothing, String} = nothing
 
     function AvailableProvidersListParameters(azureLocations, country, state, city, )
-        OpenAPI.validate_property(AvailableProvidersListParameters, Symbol("azureLocations"), azureLocations)
-        OpenAPI.validate_property(AvailableProvidersListParameters, Symbol("country"), country)
-        OpenAPI.validate_property(AvailableProvidersListParameters, Symbol("state"), state)
-        OpenAPI.validate_property(AvailableProvidersListParameters, Symbol("city"), city)
-        return new(azureLocations, country, state, city, )
+        o = new(azureLocations, country, state, city, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AvailableProvidersListParameters
 
 const _property_types_AvailableProvidersListParameters = Dict{Symbol,String}(Symbol("azureLocations")=>"Vector{String}", Symbol("country")=>"String", Symbol("state")=>"String", Symbol("city")=>"String", )
 OpenAPI.property_type(::Type{ AvailableProvidersListParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AvailableProvidersListParameters[name]))}
 
-function check_required(o::AvailableProvidersListParameters)
+function OpenAPI.check_required(o::AvailableProvidersListParameters)
     true
 end
 
+function OpenAPI.validate_properties(o::AvailableProvidersListParameters)
+    OpenAPI.validate_property(AvailableProvidersListParameters, Symbol("azureLocations"), o.azureLocations)
+    OpenAPI.validate_property(AvailableProvidersListParameters, Symbol("country"), o.country)
+    OpenAPI.validate_property(AvailableProvidersListParameters, Symbol("state"), o.state)
+    OpenAPI.validate_property(AvailableProvidersListParameters, Symbol("city"), o.city)
+end
+
 function OpenAPI.validate_property(::Type{ AvailableProvidersListParameters }, name::Symbol, val)
+
+
+
+
 end

@@ -18,18 +18,25 @@ Base.@kwdef mutable struct VirtualMachineScaleSetVMProtectionPolicy <: OpenAPI.A
     protectFromScaleSetActions::Union{Nothing, Bool} = nothing
 
     function VirtualMachineScaleSetVMProtectionPolicy(protectFromScaleIn, protectFromScaleSetActions, )
-        OpenAPI.validate_property(VirtualMachineScaleSetVMProtectionPolicy, Symbol("protectFromScaleIn"), protectFromScaleIn)
-        OpenAPI.validate_property(VirtualMachineScaleSetVMProtectionPolicy, Symbol("protectFromScaleSetActions"), protectFromScaleSetActions)
-        return new(protectFromScaleIn, protectFromScaleSetActions, )
+        o = new(protectFromScaleIn, protectFromScaleSetActions, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetVMProtectionPolicy
 
 const _property_types_VirtualMachineScaleSetVMProtectionPolicy = Dict{Symbol,String}(Symbol("protectFromScaleIn")=>"Bool", Symbol("protectFromScaleSetActions")=>"Bool", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetVMProtectionPolicy }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetVMProtectionPolicy[name]))}
 
-function check_required(o::VirtualMachineScaleSetVMProtectionPolicy)
+function OpenAPI.check_required(o::VirtualMachineScaleSetVMProtectionPolicy)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetVMProtectionPolicy)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProtectionPolicy, Symbol("protectFromScaleIn"), o.protectFromScaleIn)
+    OpenAPI.validate_property(VirtualMachineScaleSetVMProtectionPolicy, Symbol("protectFromScaleSetActions"), o.protectFromScaleSetActions)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetVMProtectionPolicy }, name::Symbol, val)
+
+
 end

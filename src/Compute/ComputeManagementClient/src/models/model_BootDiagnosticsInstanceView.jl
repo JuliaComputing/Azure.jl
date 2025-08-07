@@ -21,19 +21,27 @@ Base.@kwdef mutable struct BootDiagnosticsInstanceView <: OpenAPI.APIModel
     status = nothing # spec type: Union{ Nothing, InstanceViewStatus }
 
     function BootDiagnosticsInstanceView(consoleScreenshotBlobUri, serialConsoleLogBlobUri, status, )
-        OpenAPI.validate_property(BootDiagnosticsInstanceView, Symbol("consoleScreenshotBlobUri"), consoleScreenshotBlobUri)
-        OpenAPI.validate_property(BootDiagnosticsInstanceView, Symbol("serialConsoleLogBlobUri"), serialConsoleLogBlobUri)
-        OpenAPI.validate_property(BootDiagnosticsInstanceView, Symbol("status"), status)
-        return new(consoleScreenshotBlobUri, serialConsoleLogBlobUri, status, )
+        o = new(consoleScreenshotBlobUri, serialConsoleLogBlobUri, status, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type BootDiagnosticsInstanceView
 
 const _property_types_BootDiagnosticsInstanceView = Dict{Symbol,String}(Symbol("consoleScreenshotBlobUri")=>"String", Symbol("serialConsoleLogBlobUri")=>"String", Symbol("status")=>"InstanceViewStatus", )
 OpenAPI.property_type(::Type{ BootDiagnosticsInstanceView }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_BootDiagnosticsInstanceView[name]))}
 
-function check_required(o::BootDiagnosticsInstanceView)
+function OpenAPI.check_required(o::BootDiagnosticsInstanceView)
     true
 end
 
+function OpenAPI.validate_properties(o::BootDiagnosticsInstanceView)
+    OpenAPI.validate_property(BootDiagnosticsInstanceView, Symbol("consoleScreenshotBlobUri"), o.consoleScreenshotBlobUri)
+    OpenAPI.validate_property(BootDiagnosticsInstanceView, Symbol("serialConsoleLogBlobUri"), o.serialConsoleLogBlobUri)
+    OpenAPI.validate_property(BootDiagnosticsInstanceView, Symbol("status"), o.status)
+end
+
 function OpenAPI.validate_property(::Type{ BootDiagnosticsInstanceView }, name::Symbol, val)
+
+
+
 end

@@ -57,37 +57,58 @@ Base.@kwdef mutable struct EffectiveNetworkSecurityRule <: OpenAPI.APIModel
     direction = nothing # spec type: Union{ Nothing, SecurityRuleDirection }
 
     function EffectiveNetworkSecurityRule(name, protocol, sourcePortRange, destinationPortRange, sourcePortRanges, destinationPortRanges, sourceAddressPrefix, destinationAddressPrefix, sourceAddressPrefixes, destinationAddressPrefixes, expandedSourceAddressPrefix, expandedDestinationAddressPrefix, access, priority, direction, )
-        OpenAPI.validate_property(EffectiveNetworkSecurityRule, Symbol("name"), name)
-        OpenAPI.validate_property(EffectiveNetworkSecurityRule, Symbol("protocol"), protocol)
-        OpenAPI.validate_property(EffectiveNetworkSecurityRule, Symbol("sourcePortRange"), sourcePortRange)
-        OpenAPI.validate_property(EffectiveNetworkSecurityRule, Symbol("destinationPortRange"), destinationPortRange)
-        OpenAPI.validate_property(EffectiveNetworkSecurityRule, Symbol("sourcePortRanges"), sourcePortRanges)
-        OpenAPI.validate_property(EffectiveNetworkSecurityRule, Symbol("destinationPortRanges"), destinationPortRanges)
-        OpenAPI.validate_property(EffectiveNetworkSecurityRule, Symbol("sourceAddressPrefix"), sourceAddressPrefix)
-        OpenAPI.validate_property(EffectiveNetworkSecurityRule, Symbol("destinationAddressPrefix"), destinationAddressPrefix)
-        OpenAPI.validate_property(EffectiveNetworkSecurityRule, Symbol("sourceAddressPrefixes"), sourceAddressPrefixes)
-        OpenAPI.validate_property(EffectiveNetworkSecurityRule, Symbol("destinationAddressPrefixes"), destinationAddressPrefixes)
-        OpenAPI.validate_property(EffectiveNetworkSecurityRule, Symbol("expandedSourceAddressPrefix"), expandedSourceAddressPrefix)
-        OpenAPI.validate_property(EffectiveNetworkSecurityRule, Symbol("expandedDestinationAddressPrefix"), expandedDestinationAddressPrefix)
-        OpenAPI.validate_property(EffectiveNetworkSecurityRule, Symbol("access"), access)
-        OpenAPI.validate_property(EffectiveNetworkSecurityRule, Symbol("priority"), priority)
-        OpenAPI.validate_property(EffectiveNetworkSecurityRule, Symbol("direction"), direction)
-        return new(name, protocol, sourcePortRange, destinationPortRange, sourcePortRanges, destinationPortRanges, sourceAddressPrefix, destinationAddressPrefix, sourceAddressPrefixes, destinationAddressPrefixes, expandedSourceAddressPrefix, expandedDestinationAddressPrefix, access, priority, direction, )
+        o = new(name, protocol, sourcePortRange, destinationPortRange, sourcePortRanges, destinationPortRanges, sourceAddressPrefix, destinationAddressPrefix, sourceAddressPrefixes, destinationAddressPrefixes, expandedSourceAddressPrefix, expandedDestinationAddressPrefix, access, priority, direction, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type EffectiveNetworkSecurityRule
 
 const _property_types_EffectiveNetworkSecurityRule = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("protocol")=>"String", Symbol("sourcePortRange")=>"String", Symbol("destinationPortRange")=>"String", Symbol("sourcePortRanges")=>"Vector{String}", Symbol("destinationPortRanges")=>"Vector{String}", Symbol("sourceAddressPrefix")=>"String", Symbol("destinationAddressPrefix")=>"String", Symbol("sourceAddressPrefixes")=>"Vector{String}", Symbol("destinationAddressPrefixes")=>"Vector{String}", Symbol("expandedSourceAddressPrefix")=>"Vector{String}", Symbol("expandedDestinationAddressPrefix")=>"Vector{String}", Symbol("access")=>"SecurityRuleAccess", Symbol("priority")=>"Int64", Symbol("direction")=>"SecurityRuleDirection", )
 OpenAPI.property_type(::Type{ EffectiveNetworkSecurityRule }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_EffectiveNetworkSecurityRule[name]))}
 
-function check_required(o::EffectiveNetworkSecurityRule)
+function OpenAPI.check_required(o::EffectiveNetworkSecurityRule)
     true
 end
 
+function OpenAPI.validate_properties(o::EffectiveNetworkSecurityRule)
+    OpenAPI.validate_property(EffectiveNetworkSecurityRule, Symbol("name"), o.name)
+    OpenAPI.validate_property(EffectiveNetworkSecurityRule, Symbol("protocol"), o.protocol)
+    OpenAPI.validate_property(EffectiveNetworkSecurityRule, Symbol("sourcePortRange"), o.sourcePortRange)
+    OpenAPI.validate_property(EffectiveNetworkSecurityRule, Symbol("destinationPortRange"), o.destinationPortRange)
+    OpenAPI.validate_property(EffectiveNetworkSecurityRule, Symbol("sourcePortRanges"), o.sourcePortRanges)
+    OpenAPI.validate_property(EffectiveNetworkSecurityRule, Symbol("destinationPortRanges"), o.destinationPortRanges)
+    OpenAPI.validate_property(EffectiveNetworkSecurityRule, Symbol("sourceAddressPrefix"), o.sourceAddressPrefix)
+    OpenAPI.validate_property(EffectiveNetworkSecurityRule, Symbol("destinationAddressPrefix"), o.destinationAddressPrefix)
+    OpenAPI.validate_property(EffectiveNetworkSecurityRule, Symbol("sourceAddressPrefixes"), o.sourceAddressPrefixes)
+    OpenAPI.validate_property(EffectiveNetworkSecurityRule, Symbol("destinationAddressPrefixes"), o.destinationAddressPrefixes)
+    OpenAPI.validate_property(EffectiveNetworkSecurityRule, Symbol("expandedSourceAddressPrefix"), o.expandedSourceAddressPrefix)
+    OpenAPI.validate_property(EffectiveNetworkSecurityRule, Symbol("expandedDestinationAddressPrefix"), o.expandedDestinationAddressPrefix)
+    OpenAPI.validate_property(EffectiveNetworkSecurityRule, Symbol("access"), o.access)
+    OpenAPI.validate_property(EffectiveNetworkSecurityRule, Symbol("priority"), o.priority)
+    OpenAPI.validate_property(EffectiveNetworkSecurityRule, Symbol("direction"), o.direction)
+end
+
 function OpenAPI.validate_property(::Type{ EffectiveNetworkSecurityRule }, name::Symbol, val)
+
+
     if name === Symbol("protocol")
         OpenAPI.validate_param(name, "EffectiveNetworkSecurityRule", :enum, val, ["Tcp", "Udp", "All"])
     end
+
+
+
+
+
+
+
+
+
+
+
+
+
     if name === Symbol("priority")
         OpenAPI.validate_param(name, "EffectiveNetworkSecurityRule", :format, val, "int32")
     end
+
 end

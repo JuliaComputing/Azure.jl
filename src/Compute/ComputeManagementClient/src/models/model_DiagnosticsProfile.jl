@@ -15,17 +15,23 @@ Base.@kwdef mutable struct DiagnosticsProfile <: OpenAPI.APIModel
     bootDiagnostics = nothing # spec type: Union{ Nothing, BootDiagnostics }
 
     function DiagnosticsProfile(bootDiagnostics, )
-        OpenAPI.validate_property(DiagnosticsProfile, Symbol("bootDiagnostics"), bootDiagnostics)
-        return new(bootDiagnostics, )
+        o = new(bootDiagnostics, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type DiagnosticsProfile
 
 const _property_types_DiagnosticsProfile = Dict{Symbol,String}(Symbol("bootDiagnostics")=>"BootDiagnostics", )
 OpenAPI.property_type(::Type{ DiagnosticsProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DiagnosticsProfile[name]))}
 
-function check_required(o::DiagnosticsProfile)
+function OpenAPI.check_required(o::DiagnosticsProfile)
     true
 end
 
+function OpenAPI.validate_properties(o::DiagnosticsProfile)
+    OpenAPI.validate_property(DiagnosticsProfile, Symbol("bootDiagnostics"), o.bootDiagnostics)
+end
+
 function OpenAPI.validate_property(::Type{ DiagnosticsProfile }, name::Symbol, val)
+
 end

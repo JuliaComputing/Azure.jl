@@ -27,33 +27,44 @@ Base.@kwdef mutable struct CapabilityInformation <: OpenAPI.APIModel
     migrationState::Union{Nothing, Bool} = nothing
 
     function CapabilityInformation(subscriptionId, state, maxAccountCount, accountCount, migrationState, )
-        OpenAPI.validate_property(CapabilityInformation, Symbol("subscriptionId"), subscriptionId)
-        OpenAPI.validate_property(CapabilityInformation, Symbol("state"), state)
-        OpenAPI.validate_property(CapabilityInformation, Symbol("maxAccountCount"), maxAccountCount)
-        OpenAPI.validate_property(CapabilityInformation, Symbol("accountCount"), accountCount)
-        OpenAPI.validate_property(CapabilityInformation, Symbol("migrationState"), migrationState)
-        return new(subscriptionId, state, maxAccountCount, accountCount, migrationState, )
+        o = new(subscriptionId, state, maxAccountCount, accountCount, migrationState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type CapabilityInformation
 
 const _property_types_CapabilityInformation = Dict{Symbol,String}(Symbol("subscriptionId")=>"String", Symbol("state")=>"String", Symbol("maxAccountCount")=>"Int64", Symbol("accountCount")=>"Int64", Symbol("migrationState")=>"Bool", )
 OpenAPI.property_type(::Type{ CapabilityInformation }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_CapabilityInformation[name]))}
 
-function check_required(o::CapabilityInformation)
+function OpenAPI.check_required(o::CapabilityInformation)
     true
 end
 
+function OpenAPI.validate_properties(o::CapabilityInformation)
+    OpenAPI.validate_property(CapabilityInformation, Symbol("subscriptionId"), o.subscriptionId)
+    OpenAPI.validate_property(CapabilityInformation, Symbol("state"), o.state)
+    OpenAPI.validate_property(CapabilityInformation, Symbol("maxAccountCount"), o.maxAccountCount)
+    OpenAPI.validate_property(CapabilityInformation, Symbol("accountCount"), o.accountCount)
+    OpenAPI.validate_property(CapabilityInformation, Symbol("migrationState"), o.migrationState)
+end
+
 function OpenAPI.validate_property(::Type{ CapabilityInformation }, name::Symbol, val)
+
     if name === Symbol("subscriptionId")
         OpenAPI.validate_param(name, "CapabilityInformation", :format, val, "uuid")
     end
+
     if name === Symbol("state")
         OpenAPI.validate_param(name, "CapabilityInformation", :enum, val, ["Registered", "Suspended", "Deleted", "Unregistered", "Warned"])
     end
+
+
     if name === Symbol("maxAccountCount")
         OpenAPI.validate_param(name, "CapabilityInformation", :format, val, "int32")
     end
+
     if name === Symbol("accountCount")
         OpenAPI.validate_param(name, "CapabilityInformation", :format, val, "int32")
     end
+
 end

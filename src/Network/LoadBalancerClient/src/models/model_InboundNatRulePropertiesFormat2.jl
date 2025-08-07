@@ -14,6 +14,9 @@ Properties of the inbound NAT rule.
         idleTimeoutInMinutes=nothing,
         enableFloatingIP=nothing,
         enableTcpReset=nothing,
+        frontendPortRangeStart=nothing,
+        frontendPortRangeEnd=nothing,
+        backendAddressPool=nothing,
         provisioningState=nothing,
     )
 
@@ -25,6 +28,9 @@ Properties of the inbound NAT rule.
     - idleTimeoutInMinutes::Int64 : The timeout for the TCP idle connection. The value can be set between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the protocol is set to TCP.
     - enableFloatingIP::Bool : Configures a virtual machine&#39;s endpoint for the floating IP capability required to configure a SQL AlwaysOn Availability Group. This setting is required when using the SQL AlwaysOn Availability Groups in SQL server. This setting can&#39;t be changed after you create the endpoint.
     - enableTcpReset::Bool : Receive bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination. This element is only used when the protocol is set to TCP.
+    - frontendPortRangeStart::Int64 : The port range start for the external endpoint. This property is used together with BackendAddressPool and FrontendPortRangeEnd. Individual inbound NAT rule port mappings will be created for each backend address from BackendAddressPool. Acceptable values range from 1 to 65534.
+    - frontendPortRangeEnd::Int64 : The port range end for the external endpoint. This property is used together with BackendAddressPool and FrontendPortRangeStart. Individual inbound NAT rule port mappings will be created for each backend address from BackendAddressPool. Acceptable values range from 1 to 65534.
+    - backendAddressPool::SubResource
     - provisioningState::ProvisioningState
 """
 Base.@kwdef mutable struct InboundNatRulePropertiesFormat2 <: OpenAPI.APIModel
@@ -36,37 +42,66 @@ Base.@kwdef mutable struct InboundNatRulePropertiesFormat2 <: OpenAPI.APIModel
     idleTimeoutInMinutes::Union{Nothing, Int64} = nothing
     enableFloatingIP::Union{Nothing, Bool} = nothing
     enableTcpReset::Union{Nothing, Bool} = nothing
+    frontendPortRangeStart::Union{Nothing, Int64} = nothing
+    frontendPortRangeEnd::Union{Nothing, Int64} = nothing
+    backendAddressPool = nothing # spec type: Union{ Nothing, SubResource }
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
-    function InboundNatRulePropertiesFormat2(frontendIPConfiguration, backendIPConfiguration, protocol, frontendPort, backendPort, idleTimeoutInMinutes, enableFloatingIP, enableTcpReset, provisioningState, )
-        OpenAPI.validate_property(InboundNatRulePropertiesFormat2, Symbol("frontendIPConfiguration"), frontendIPConfiguration)
-        OpenAPI.validate_property(InboundNatRulePropertiesFormat2, Symbol("backendIPConfiguration"), backendIPConfiguration)
-        OpenAPI.validate_property(InboundNatRulePropertiesFormat2, Symbol("protocol"), protocol)
-        OpenAPI.validate_property(InboundNatRulePropertiesFormat2, Symbol("frontendPort"), frontendPort)
-        OpenAPI.validate_property(InboundNatRulePropertiesFormat2, Symbol("backendPort"), backendPort)
-        OpenAPI.validate_property(InboundNatRulePropertiesFormat2, Symbol("idleTimeoutInMinutes"), idleTimeoutInMinutes)
-        OpenAPI.validate_property(InboundNatRulePropertiesFormat2, Symbol("enableFloatingIP"), enableFloatingIP)
-        OpenAPI.validate_property(InboundNatRulePropertiesFormat2, Symbol("enableTcpReset"), enableTcpReset)
-        OpenAPI.validate_property(InboundNatRulePropertiesFormat2, Symbol("provisioningState"), provisioningState)
-        return new(frontendIPConfiguration, backendIPConfiguration, protocol, frontendPort, backendPort, idleTimeoutInMinutes, enableFloatingIP, enableTcpReset, provisioningState, )
+    function InboundNatRulePropertiesFormat2(frontendIPConfiguration, backendIPConfiguration, protocol, frontendPort, backendPort, idleTimeoutInMinutes, enableFloatingIP, enableTcpReset, frontendPortRangeStart, frontendPortRangeEnd, backendAddressPool, provisioningState, )
+        o = new(frontendIPConfiguration, backendIPConfiguration, protocol, frontendPort, backendPort, idleTimeoutInMinutes, enableFloatingIP, enableTcpReset, frontendPortRangeStart, frontendPortRangeEnd, backendAddressPool, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type InboundNatRulePropertiesFormat2
 
-const _property_types_InboundNatRulePropertiesFormat2 = Dict{Symbol,String}(Symbol("frontendIPConfiguration")=>"SubResource", Symbol("backendIPConfiguration")=>"NetworkInterfaceIPConfiguration", Symbol("protocol")=>"TransportProtocol2", Symbol("frontendPort")=>"Int64", Symbol("backendPort")=>"Int64", Symbol("idleTimeoutInMinutes")=>"Int64", Symbol("enableFloatingIP")=>"Bool", Symbol("enableTcpReset")=>"Bool", Symbol("provisioningState")=>"ProvisioningState", )
+const _property_types_InboundNatRulePropertiesFormat2 = Dict{Symbol,String}(Symbol("frontendIPConfiguration")=>"SubResource", Symbol("backendIPConfiguration")=>"NetworkInterfaceIPConfiguration", Symbol("protocol")=>"TransportProtocol2", Symbol("frontendPort")=>"Int64", Symbol("backendPort")=>"Int64", Symbol("idleTimeoutInMinutes")=>"Int64", Symbol("enableFloatingIP")=>"Bool", Symbol("enableTcpReset")=>"Bool", Symbol("frontendPortRangeStart")=>"Int64", Symbol("frontendPortRangeEnd")=>"Int64", Symbol("backendAddressPool")=>"SubResource", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ InboundNatRulePropertiesFormat2 }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_InboundNatRulePropertiesFormat2[name]))}
 
-function check_required(o::InboundNatRulePropertiesFormat2)
+function OpenAPI.check_required(o::InboundNatRulePropertiesFormat2)
     true
 end
 
+function OpenAPI.validate_properties(o::InboundNatRulePropertiesFormat2)
+    OpenAPI.validate_property(InboundNatRulePropertiesFormat2, Symbol("frontendIPConfiguration"), o.frontendIPConfiguration)
+    OpenAPI.validate_property(InboundNatRulePropertiesFormat2, Symbol("backendIPConfiguration"), o.backendIPConfiguration)
+    OpenAPI.validate_property(InboundNatRulePropertiesFormat2, Symbol("protocol"), o.protocol)
+    OpenAPI.validate_property(InboundNatRulePropertiesFormat2, Symbol("frontendPort"), o.frontendPort)
+    OpenAPI.validate_property(InboundNatRulePropertiesFormat2, Symbol("backendPort"), o.backendPort)
+    OpenAPI.validate_property(InboundNatRulePropertiesFormat2, Symbol("idleTimeoutInMinutes"), o.idleTimeoutInMinutes)
+    OpenAPI.validate_property(InboundNatRulePropertiesFormat2, Symbol("enableFloatingIP"), o.enableFloatingIP)
+    OpenAPI.validate_property(InboundNatRulePropertiesFormat2, Symbol("enableTcpReset"), o.enableTcpReset)
+    OpenAPI.validate_property(InboundNatRulePropertiesFormat2, Symbol("frontendPortRangeStart"), o.frontendPortRangeStart)
+    OpenAPI.validate_property(InboundNatRulePropertiesFormat2, Symbol("frontendPortRangeEnd"), o.frontendPortRangeEnd)
+    OpenAPI.validate_property(InboundNatRulePropertiesFormat2, Symbol("backendAddressPool"), o.backendAddressPool)
+    OpenAPI.validate_property(InboundNatRulePropertiesFormat2, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ InboundNatRulePropertiesFormat2 }, name::Symbol, val)
+
+
+
+
     if name === Symbol("frontendPort")
         OpenAPI.validate_param(name, "InboundNatRulePropertiesFormat2", :format, val, "int32")
     end
+
     if name === Symbol("backendPort")
         OpenAPI.validate_param(name, "InboundNatRulePropertiesFormat2", :format, val, "int32")
     end
+
     if name === Symbol("idleTimeoutInMinutes")
         OpenAPI.validate_param(name, "InboundNatRulePropertiesFormat2", :format, val, "int32")
     end
+
+
+
+    if name === Symbol("frontendPortRangeStart")
+        OpenAPI.validate_param(name, "InboundNatRulePropertiesFormat2", :format, val, "int32")
+    end
+
+    if name === Symbol("frontendPortRangeEnd")
+        OpenAPI.validate_param(name, "InboundNatRulePropertiesFormat2", :format, val, "int32")
+    end
+
+
 end

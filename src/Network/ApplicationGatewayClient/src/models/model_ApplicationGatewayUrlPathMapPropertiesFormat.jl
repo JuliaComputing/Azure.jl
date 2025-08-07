@@ -10,6 +10,7 @@ Properties of UrlPathMap of the application gateway.
         defaultBackendHttpSettings=nothing,
         defaultRewriteRuleSet=nothing,
         defaultRedirectConfiguration=nothing,
+        defaultLoadDistributionPolicy=nothing,
         pathRules=nothing,
         provisioningState=nothing,
     )
@@ -18,6 +19,7 @@ Properties of UrlPathMap of the application gateway.
     - defaultBackendHttpSettings::SubResource
     - defaultRewriteRuleSet::SubResource
     - defaultRedirectConfiguration::SubResource
+    - defaultLoadDistributionPolicy::SubResource
     - pathRules::Vector{ApplicationGatewayPathRule} : Path rule of URL path map resource.
     - provisioningState::ProvisioningState
 """
@@ -26,26 +28,40 @@ Base.@kwdef mutable struct ApplicationGatewayUrlPathMapPropertiesFormat <: OpenA
     defaultBackendHttpSettings = nothing # spec type: Union{ Nothing, SubResource }
     defaultRewriteRuleSet = nothing # spec type: Union{ Nothing, SubResource }
     defaultRedirectConfiguration = nothing # spec type: Union{ Nothing, SubResource }
+    defaultLoadDistributionPolicy = nothing # spec type: Union{ Nothing, SubResource }
     pathRules::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ApplicationGatewayPathRule} }
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
-    function ApplicationGatewayUrlPathMapPropertiesFormat(defaultBackendAddressPool, defaultBackendHttpSettings, defaultRewriteRuleSet, defaultRedirectConfiguration, pathRules, provisioningState, )
-        OpenAPI.validate_property(ApplicationGatewayUrlPathMapPropertiesFormat, Symbol("defaultBackendAddressPool"), defaultBackendAddressPool)
-        OpenAPI.validate_property(ApplicationGatewayUrlPathMapPropertiesFormat, Symbol("defaultBackendHttpSettings"), defaultBackendHttpSettings)
-        OpenAPI.validate_property(ApplicationGatewayUrlPathMapPropertiesFormat, Symbol("defaultRewriteRuleSet"), defaultRewriteRuleSet)
-        OpenAPI.validate_property(ApplicationGatewayUrlPathMapPropertiesFormat, Symbol("defaultRedirectConfiguration"), defaultRedirectConfiguration)
-        OpenAPI.validate_property(ApplicationGatewayUrlPathMapPropertiesFormat, Symbol("pathRules"), pathRules)
-        OpenAPI.validate_property(ApplicationGatewayUrlPathMapPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(defaultBackendAddressPool, defaultBackendHttpSettings, defaultRewriteRuleSet, defaultRedirectConfiguration, pathRules, provisioningState, )
+    function ApplicationGatewayUrlPathMapPropertiesFormat(defaultBackendAddressPool, defaultBackendHttpSettings, defaultRewriteRuleSet, defaultRedirectConfiguration, defaultLoadDistributionPolicy, pathRules, provisioningState, )
+        o = new(defaultBackendAddressPool, defaultBackendHttpSettings, defaultRewriteRuleSet, defaultRedirectConfiguration, defaultLoadDistributionPolicy, pathRules, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayUrlPathMapPropertiesFormat
 
-const _property_types_ApplicationGatewayUrlPathMapPropertiesFormat = Dict{Symbol,String}(Symbol("defaultBackendAddressPool")=>"SubResource", Symbol("defaultBackendHttpSettings")=>"SubResource", Symbol("defaultRewriteRuleSet")=>"SubResource", Symbol("defaultRedirectConfiguration")=>"SubResource", Symbol("pathRules")=>"Vector{ApplicationGatewayPathRule}", Symbol("provisioningState")=>"ProvisioningState", )
+const _property_types_ApplicationGatewayUrlPathMapPropertiesFormat = Dict{Symbol,String}(Symbol("defaultBackendAddressPool")=>"SubResource", Symbol("defaultBackendHttpSettings")=>"SubResource", Symbol("defaultRewriteRuleSet")=>"SubResource", Symbol("defaultRedirectConfiguration")=>"SubResource", Symbol("defaultLoadDistributionPolicy")=>"SubResource", Symbol("pathRules")=>"Vector{ApplicationGatewayPathRule}", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ ApplicationGatewayUrlPathMapPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayUrlPathMapPropertiesFormat[name]))}
 
-function check_required(o::ApplicationGatewayUrlPathMapPropertiesFormat)
+function OpenAPI.check_required(o::ApplicationGatewayUrlPathMapPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayUrlPathMapPropertiesFormat)
+    OpenAPI.validate_property(ApplicationGatewayUrlPathMapPropertiesFormat, Symbol("defaultBackendAddressPool"), o.defaultBackendAddressPool)
+    OpenAPI.validate_property(ApplicationGatewayUrlPathMapPropertiesFormat, Symbol("defaultBackendHttpSettings"), o.defaultBackendHttpSettings)
+    OpenAPI.validate_property(ApplicationGatewayUrlPathMapPropertiesFormat, Symbol("defaultRewriteRuleSet"), o.defaultRewriteRuleSet)
+    OpenAPI.validate_property(ApplicationGatewayUrlPathMapPropertiesFormat, Symbol("defaultRedirectConfiguration"), o.defaultRedirectConfiguration)
+    OpenAPI.validate_property(ApplicationGatewayUrlPathMapPropertiesFormat, Symbol("defaultLoadDistributionPolicy"), o.defaultLoadDistributionPolicy)
+    OpenAPI.validate_property(ApplicationGatewayUrlPathMapPropertiesFormat, Symbol("pathRules"), o.pathRules)
+    OpenAPI.validate_property(ApplicationGatewayUrlPathMapPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayUrlPathMapPropertiesFormat }, name::Symbol, val)
+
+
+
+
+
+
+
 end

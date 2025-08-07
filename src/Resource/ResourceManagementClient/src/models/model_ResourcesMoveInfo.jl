@@ -18,18 +18,25 @@ Base.@kwdef mutable struct ResourcesMoveInfo <: OpenAPI.APIModel
     targetResourceGroup::Union{Nothing, String} = nothing
 
     function ResourcesMoveInfo(resources, targetResourceGroup, )
-        OpenAPI.validate_property(ResourcesMoveInfo, Symbol("resources"), resources)
-        OpenAPI.validate_property(ResourcesMoveInfo, Symbol("targetResourceGroup"), targetResourceGroup)
-        return new(resources, targetResourceGroup, )
+        o = new(resources, targetResourceGroup, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ResourcesMoveInfo
 
 const _property_types_ResourcesMoveInfo = Dict{Symbol,String}(Symbol("resources")=>"Vector{String}", Symbol("targetResourceGroup")=>"String", )
 OpenAPI.property_type(::Type{ ResourcesMoveInfo }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ResourcesMoveInfo[name]))}
 
-function check_required(o::ResourcesMoveInfo)
+function OpenAPI.check_required(o::ResourcesMoveInfo)
     true
 end
 
+function OpenAPI.validate_properties(o::ResourcesMoveInfo)
+    OpenAPI.validate_property(ResourcesMoveInfo, Symbol("resources"), o.resources)
+    OpenAPI.validate_property(ResourcesMoveInfo, Symbol("targetResourceGroup"), o.targetResourceGroup)
+end
+
 function OpenAPI.validate_property(::Type{ ResourcesMoveInfo }, name::Symbol, val)
+
+
 end

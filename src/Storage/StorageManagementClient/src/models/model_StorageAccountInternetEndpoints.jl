@@ -24,20 +24,29 @@ Base.@kwdef mutable struct StorageAccountInternetEndpoints <: OpenAPI.APIModel
     dfs::Union{Nothing, String} = nothing
 
     function StorageAccountInternetEndpoints(blob, file, web, dfs, )
-        OpenAPI.validate_property(StorageAccountInternetEndpoints, Symbol("blob"), blob)
-        OpenAPI.validate_property(StorageAccountInternetEndpoints, Symbol("file"), file)
-        OpenAPI.validate_property(StorageAccountInternetEndpoints, Symbol("web"), web)
-        OpenAPI.validate_property(StorageAccountInternetEndpoints, Symbol("dfs"), dfs)
-        return new(blob, file, web, dfs, )
+        o = new(blob, file, web, dfs, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type StorageAccountInternetEndpoints
 
 const _property_types_StorageAccountInternetEndpoints = Dict{Symbol,String}(Symbol("blob")=>"String", Symbol("file")=>"String", Symbol("web")=>"String", Symbol("dfs")=>"String", )
 OpenAPI.property_type(::Type{ StorageAccountInternetEndpoints }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_StorageAccountInternetEndpoints[name]))}
 
-function check_required(o::StorageAccountInternetEndpoints)
+function OpenAPI.check_required(o::StorageAccountInternetEndpoints)
     true
 end
 
+function OpenAPI.validate_properties(o::StorageAccountInternetEndpoints)
+    OpenAPI.validate_property(StorageAccountInternetEndpoints, Symbol("blob"), o.blob)
+    OpenAPI.validate_property(StorageAccountInternetEndpoints, Symbol("file"), o.file)
+    OpenAPI.validate_property(StorageAccountInternetEndpoints, Symbol("web"), o.web)
+    OpenAPI.validate_property(StorageAccountInternetEndpoints, Symbol("dfs"), o.dfs)
+end
+
 function OpenAPI.validate_property(::Type{ StorageAccountInternetEndpoints }, name::Symbol, val)
+
+
+
+
 end

@@ -18,18 +18,25 @@ Base.@kwdef mutable struct ImageUpdate <: OpenAPI.APIModel
     tags::Union{Nothing, Dict{String, String}} = nothing
 
     function ImageUpdate(properties, tags, )
-        OpenAPI.validate_property(ImageUpdate, Symbol("properties"), properties)
-        OpenAPI.validate_property(ImageUpdate, Symbol("tags"), tags)
-        return new(properties, tags, )
+        o = new(properties, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ImageUpdate
 
 const _property_types_ImageUpdate = Dict{Symbol,String}(Symbol("properties")=>"ImageProperties", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ ImageUpdate }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ImageUpdate[name]))}
 
-function check_required(o::ImageUpdate)
+function OpenAPI.check_required(o::ImageUpdate)
     true
 end
 
+function OpenAPI.validate_properties(o::ImageUpdate)
+    OpenAPI.validate_property(ImageUpdate, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(ImageUpdate, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ ImageUpdate }, name::Symbol, val)
+
+
 end

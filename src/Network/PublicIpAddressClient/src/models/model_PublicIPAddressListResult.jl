@@ -18,18 +18,25 @@ Base.@kwdef mutable struct PublicIPAddressListResult <: OpenAPI.APIModel
     nextLink::Union{Nothing, String} = nothing
 
     function PublicIPAddressListResult(value, nextLink, )
-        OpenAPI.validate_property(PublicIPAddressListResult, Symbol("value"), value)
-        OpenAPI.validate_property(PublicIPAddressListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PublicIPAddressListResult
 
 const _property_types_PublicIPAddressListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{PublicIPAddress}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ PublicIPAddressListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PublicIPAddressListResult[name]))}
 
-function check_required(o::PublicIPAddressListResult)
+function OpenAPI.check_required(o::PublicIPAddressListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::PublicIPAddressListResult)
+    OpenAPI.validate_property(PublicIPAddressListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(PublicIPAddressListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ PublicIPAddressListResult }, name::Symbol, val)
+
+
 end

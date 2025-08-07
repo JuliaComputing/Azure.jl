@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **toBeDetached** | **Bool** | Specifies whether the data disk is in process of detachment from the VirtualMachine/VirtualMachineScaleset | [optional] [default to nothing]
 **diskIOPSReadWrite** | **Int64** | Specifies the Read-Write IOPS for the managed disk when StorageAccountType is UltraSSD_LRS. Returned only for VirtualMachine ScaleSet VM disks. Can be updated only via updates to the VirtualMachine Scale Set. | [optional] [readonly] [default to nothing]
 **diskMBpsReadWrite** | **Int64** | Specifies the bandwidth in MB per second for the managed disk when StorageAccountType is UltraSSD_LRS. Returned only for VirtualMachine ScaleSet VM disks. Can be updated only via updates to the VirtualMachine Scale Set. | [optional] [readonly] [default to nothing]
+**detachOption** | [***DetachOption**](DetachOption.md) |  | [optional] [default to nothing]
+**deleteOption** | [***DeleteOption**](DeleteOption.md) |  | [optional] [default to nothing]
 
 
 [[Back to Model list]](../README.md#models) [[Back to API list]](../README.md#api-endpoints) [[Back to README]](../README.md)

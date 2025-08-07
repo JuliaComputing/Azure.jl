@@ -21,19 +21,27 @@ Base.@kwdef mutable struct TagValue <: OpenAPI.APIModel
     count = nothing # spec type: Union{ Nothing, TagCount }
 
     function TagValue(id, tagValue, count, )
-        OpenAPI.validate_property(TagValue, Symbol("id"), id)
-        OpenAPI.validate_property(TagValue, Symbol("tagValue"), tagValue)
-        OpenAPI.validate_property(TagValue, Symbol("count"), count)
-        return new(id, tagValue, count, )
+        o = new(id, tagValue, count, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type TagValue
 
 const _property_types_TagValue = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("tagValue")=>"String", Symbol("count")=>"TagCount", )
 OpenAPI.property_type(::Type{ TagValue }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TagValue[name]))}
 
-function check_required(o::TagValue)
+function OpenAPI.check_required(o::TagValue)
     true
 end
 
+function OpenAPI.validate_properties(o::TagValue)
+    OpenAPI.validate_property(TagValue, Symbol("id"), o.id)
+    OpenAPI.validate_property(TagValue, Symbol("tagValue"), o.tagValue)
+    OpenAPI.validate_property(TagValue, Symbol("count"), o.count)
+end
+
 function OpenAPI.validate_property(::Type{ TagValue }, name::Symbol, val)
+
+
+
 end

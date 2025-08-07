@@ -27,22 +27,32 @@ Base.@kwdef mutable struct PolicyDefinitionGroup <: OpenAPI.APIModel
     additionalMetadataId::Union{Nothing, String} = nothing
 
     function PolicyDefinitionGroup(name, displayName, category, description, additionalMetadataId, )
-        OpenAPI.validate_property(PolicyDefinitionGroup, Symbol("name"), name)
-        OpenAPI.validate_property(PolicyDefinitionGroup, Symbol("displayName"), displayName)
-        OpenAPI.validate_property(PolicyDefinitionGroup, Symbol("category"), category)
-        OpenAPI.validate_property(PolicyDefinitionGroup, Symbol("description"), description)
-        OpenAPI.validate_property(PolicyDefinitionGroup, Symbol("additionalMetadataId"), additionalMetadataId)
-        return new(name, displayName, category, description, additionalMetadataId, )
+        o = new(name, displayName, category, description, additionalMetadataId, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PolicyDefinitionGroup
 
 const _property_types_PolicyDefinitionGroup = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("displayName")=>"String", Symbol("category")=>"String", Symbol("description")=>"String", Symbol("additionalMetadataId")=>"String", )
 OpenAPI.property_type(::Type{ PolicyDefinitionGroup }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PolicyDefinitionGroup[name]))}
 
-function check_required(o::PolicyDefinitionGroup)
+function OpenAPI.check_required(o::PolicyDefinitionGroup)
     o.name === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::PolicyDefinitionGroup)
+    OpenAPI.validate_property(PolicyDefinitionGroup, Symbol("name"), o.name)
+    OpenAPI.validate_property(PolicyDefinitionGroup, Symbol("displayName"), o.displayName)
+    OpenAPI.validate_property(PolicyDefinitionGroup, Symbol("category"), o.category)
+    OpenAPI.validate_property(PolicyDefinitionGroup, Symbol("description"), o.description)
+    OpenAPI.validate_property(PolicyDefinitionGroup, Symbol("additionalMetadataId"), o.additionalMetadataId)
+end
+
 function OpenAPI.validate_property(::Type{ PolicyDefinitionGroup }, name::Symbol, val)
+
+
+
+
+
 end

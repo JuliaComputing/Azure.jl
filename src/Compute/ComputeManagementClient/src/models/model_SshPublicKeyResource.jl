@@ -30,23 +30,34 @@ Base.@kwdef mutable struct SshPublicKeyResource <: OpenAPI.APIModel
     tags::Union{Nothing, Dict{String, String}} = nothing
 
     function SshPublicKeyResource(properties, id, name, type, location, tags, )
-        OpenAPI.validate_property(SshPublicKeyResource, Symbol("properties"), properties)
-        OpenAPI.validate_property(SshPublicKeyResource, Symbol("id"), id)
-        OpenAPI.validate_property(SshPublicKeyResource, Symbol("name"), name)
-        OpenAPI.validate_property(SshPublicKeyResource, Symbol("type"), type)
-        OpenAPI.validate_property(SshPublicKeyResource, Symbol("location"), location)
-        OpenAPI.validate_property(SshPublicKeyResource, Symbol("tags"), tags)
-        return new(properties, id, name, type, location, tags, )
+        o = new(properties, id, name, type, location, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type SshPublicKeyResource
 
 const _property_types_SshPublicKeyResource = Dict{Symbol,String}(Symbol("properties")=>"SshPublicKeyResourceProperties", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ SshPublicKeyResource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SshPublicKeyResource[name]))}
 
-function check_required(o::SshPublicKeyResource)
+function OpenAPI.check_required(o::SshPublicKeyResource)
     o.location === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::SshPublicKeyResource)
+    OpenAPI.validate_property(SshPublicKeyResource, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(SshPublicKeyResource, Symbol("id"), o.id)
+    OpenAPI.validate_property(SshPublicKeyResource, Symbol("name"), o.name)
+    OpenAPI.validate_property(SshPublicKeyResource, Symbol("type"), o.type)
+    OpenAPI.validate_property(SshPublicKeyResource, Symbol("location"), o.location)
+    OpenAPI.validate_property(SshPublicKeyResource, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ SshPublicKeyResource }, name::Symbol, val)
+
+
+
+
+
+
 end

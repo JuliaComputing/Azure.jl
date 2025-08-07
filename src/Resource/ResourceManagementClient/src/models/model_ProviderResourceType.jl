@@ -8,44 +8,75 @@ Resource type managed by the resource provider.
     ProviderResourceType(;
         resourceType=nothing,
         locations=nothing,
+        locationMappings=nothing,
         aliases=nothing,
         apiVersions=nothing,
+        defaultApiVersion=nothing,
+        zoneMappings=nothing,
+        apiProfiles=nothing,
         capabilities=nothing,
         properties=nothing,
     )
 
     - resourceType::String : The resource type.
     - locations::Vector{String} : The collection of locations where this resource type can be created.
+    - locationMappings::Vector{ProviderExtendedLocation} : The location mappings that are supported by this resource type.
     - aliases::Vector{Alias} : The aliases that are supported by this resource type.
     - apiVersions::Vector{String} : The API version.
+    - defaultApiVersion::String : The default API version.
+    - zoneMappings::Vector{ZoneMapping}
+    - apiProfiles::Vector{ApiProfile} : The API profiles for the resource provider.
     - capabilities::String : The additional capabilities offered by this resource type.
     - properties::Dict{String, String} : The properties.
 """
 Base.@kwdef mutable struct ProviderResourceType <: OpenAPI.APIModel
     resourceType::Union{Nothing, String} = nothing
     locations::Union{Nothing, Vector{String}} = nothing
+    locationMappings::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ProviderExtendedLocation} }
     aliases::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{Alias} }
     apiVersions::Union{Nothing, Vector{String}} = nothing
+    defaultApiVersion::Union{Nothing, String} = nothing
+    zoneMappings::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ZoneMapping} }
+    apiProfiles::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ApiProfile} }
     capabilities::Union{Nothing, String} = nothing
     properties::Union{Nothing, Dict{String, String}} = nothing
 
-    function ProviderResourceType(resourceType, locations, aliases, apiVersions, capabilities, properties, )
-        OpenAPI.validate_property(ProviderResourceType, Symbol("resourceType"), resourceType)
-        OpenAPI.validate_property(ProviderResourceType, Symbol("locations"), locations)
-        OpenAPI.validate_property(ProviderResourceType, Symbol("aliases"), aliases)
-        OpenAPI.validate_property(ProviderResourceType, Symbol("apiVersions"), apiVersions)
-        OpenAPI.validate_property(ProviderResourceType, Symbol("capabilities"), capabilities)
-        OpenAPI.validate_property(ProviderResourceType, Symbol("properties"), properties)
-        return new(resourceType, locations, aliases, apiVersions, capabilities, properties, )
+    function ProviderResourceType(resourceType, locations, locationMappings, aliases, apiVersions, defaultApiVersion, zoneMappings, apiProfiles, capabilities, properties, )
+        o = new(resourceType, locations, locationMappings, aliases, apiVersions, defaultApiVersion, zoneMappings, apiProfiles, capabilities, properties, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ProviderResourceType
 
-const _property_types_ProviderResourceType = Dict{Symbol,String}(Symbol("resourceType")=>"String", Symbol("locations")=>"Vector{String}", Symbol("aliases")=>"Vector{Alias}", Symbol("apiVersions")=>"Vector{String}", Symbol("capabilities")=>"String", Symbol("properties")=>"Dict{String, String}", )
+const _property_types_ProviderResourceType = Dict{Symbol,String}(Symbol("resourceType")=>"String", Symbol("locations")=>"Vector{String}", Symbol("locationMappings")=>"Vector{ProviderExtendedLocation}", Symbol("aliases")=>"Vector{Alias}", Symbol("apiVersions")=>"Vector{String}", Symbol("defaultApiVersion")=>"String", Symbol("zoneMappings")=>"Vector{ZoneMapping}", Symbol("apiProfiles")=>"Vector{ApiProfile}", Symbol("capabilities")=>"String", Symbol("properties")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ ProviderResourceType }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ProviderResourceType[name]))}
 
-function check_required(o::ProviderResourceType)
+function OpenAPI.check_required(o::ProviderResourceType)
     true
 end
 
+function OpenAPI.validate_properties(o::ProviderResourceType)
+    OpenAPI.validate_property(ProviderResourceType, Symbol("resourceType"), o.resourceType)
+    OpenAPI.validate_property(ProviderResourceType, Symbol("locations"), o.locations)
+    OpenAPI.validate_property(ProviderResourceType, Symbol("locationMappings"), o.locationMappings)
+    OpenAPI.validate_property(ProviderResourceType, Symbol("aliases"), o.aliases)
+    OpenAPI.validate_property(ProviderResourceType, Symbol("apiVersions"), o.apiVersions)
+    OpenAPI.validate_property(ProviderResourceType, Symbol("defaultApiVersion"), o.defaultApiVersion)
+    OpenAPI.validate_property(ProviderResourceType, Symbol("zoneMappings"), o.zoneMappings)
+    OpenAPI.validate_property(ProviderResourceType, Symbol("apiProfiles"), o.apiProfiles)
+    OpenAPI.validate_property(ProviderResourceType, Symbol("capabilities"), o.capabilities)
+    OpenAPI.validate_property(ProviderResourceType, Symbol("properties"), o.properties)
+end
+
 function OpenAPI.validate_property(::Type{ ProviderResourceType }, name::Symbol, val)
+
+
+
+
+
+
+
+
+
+
 end

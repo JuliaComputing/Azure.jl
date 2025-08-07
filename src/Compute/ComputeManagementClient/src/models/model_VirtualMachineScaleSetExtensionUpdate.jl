@@ -24,20 +24,29 @@ Base.@kwdef mutable struct VirtualMachineScaleSetExtensionUpdate <: OpenAPI.APIM
     id::Union{Nothing, String} = nothing
 
     function VirtualMachineScaleSetExtensionUpdate(name, type, properties, id, )
-        OpenAPI.validate_property(VirtualMachineScaleSetExtensionUpdate, Symbol("name"), name)
-        OpenAPI.validate_property(VirtualMachineScaleSetExtensionUpdate, Symbol("type"), type)
-        OpenAPI.validate_property(VirtualMachineScaleSetExtensionUpdate, Symbol("properties"), properties)
-        OpenAPI.validate_property(VirtualMachineScaleSetExtensionUpdate, Symbol("id"), id)
-        return new(name, type, properties, id, )
+        o = new(name, type, properties, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetExtensionUpdate
 
 const _property_types_VirtualMachineScaleSetExtensionUpdate = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("type")=>"String", Symbol("properties")=>"VirtualMachineScaleSetExtensionProperties", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetExtensionUpdate }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetExtensionUpdate[name]))}
 
-function check_required(o::VirtualMachineScaleSetExtensionUpdate)
+function OpenAPI.check_required(o::VirtualMachineScaleSetExtensionUpdate)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetExtensionUpdate)
+    OpenAPI.validate_property(VirtualMachineScaleSetExtensionUpdate, Symbol("name"), o.name)
+    OpenAPI.validate_property(VirtualMachineScaleSetExtensionUpdate, Symbol("type"), o.type)
+    OpenAPI.validate_property(VirtualMachineScaleSetExtensionUpdate, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(VirtualMachineScaleSetExtensionUpdate, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetExtensionUpdate }, name::Symbol, val)
+
+
+
+
 end

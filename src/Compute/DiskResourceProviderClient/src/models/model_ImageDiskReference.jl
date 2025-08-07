@@ -7,32 +7,48 @@ The source image used for creating the disk.
 
     ImageDiskReference(;
         id=nothing,
+        sharedGalleryImageId=nothing,
+        communityGalleryImageId=nothing,
         lun=nothing,
     )
 
-    - id::String : A relative uri containing either a Platform Image Repository or user image reference.
+    - id::String : A relative uri containing either a Platform Image Repository, user image, or Azure Compute Gallery image reference.
+    - sharedGalleryImageId::String : A relative uri containing a direct shared Azure Compute Gallery image reference.
+    - communityGalleryImageId::String : A relative uri containing a community Azure Compute Gallery image reference.
     - lun::Int64 : If the disk is created from an image&#39;s data disk, this is an index that indicates which of the data disks in the image to use. For OS disks, this field is null.
 """
 Base.@kwdef mutable struct ImageDiskReference <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
+    sharedGalleryImageId::Union{Nothing, String} = nothing
+    communityGalleryImageId::Union{Nothing, String} = nothing
     lun::Union{Nothing, Int64} = nothing
 
-    function ImageDiskReference(id, lun, )
-        OpenAPI.validate_property(ImageDiskReference, Symbol("id"), id)
-        OpenAPI.validate_property(ImageDiskReference, Symbol("lun"), lun)
-        return new(id, lun, )
+    function ImageDiskReference(id, sharedGalleryImageId, communityGalleryImageId, lun, )
+        o = new(id, sharedGalleryImageId, communityGalleryImageId, lun, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ImageDiskReference
 
-const _property_types_ImageDiskReference = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("lun")=>"Int64", )
+const _property_types_ImageDiskReference = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("sharedGalleryImageId")=>"String", Symbol("communityGalleryImageId")=>"String", Symbol("lun")=>"Int64", )
 OpenAPI.property_type(::Type{ ImageDiskReference }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ImageDiskReference[name]))}
 
-function check_required(o::ImageDiskReference)
-    o.id === nothing && (return false)
+function OpenAPI.check_required(o::ImageDiskReference)
     true
 end
 
+function OpenAPI.validate_properties(o::ImageDiskReference)
+    OpenAPI.validate_property(ImageDiskReference, Symbol("id"), o.id)
+    OpenAPI.validate_property(ImageDiskReference, Symbol("sharedGalleryImageId"), o.sharedGalleryImageId)
+    OpenAPI.validate_property(ImageDiskReference, Symbol("communityGalleryImageId"), o.communityGalleryImageId)
+    OpenAPI.validate_property(ImageDiskReference, Symbol("lun"), o.lun)
+end
+
 function OpenAPI.validate_property(::Type{ ImageDiskReference }, name::Symbol, val)
+
+
+
+
     if name === Symbol("lun")
         OpenAPI.validate_param(name, "ImageDiskReference", :format, val, "int32")
     end

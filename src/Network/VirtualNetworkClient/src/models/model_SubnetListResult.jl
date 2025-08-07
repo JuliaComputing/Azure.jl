@@ -18,18 +18,25 @@ Base.@kwdef mutable struct SubnetListResult <: OpenAPI.APIModel
     nextLink::Union{Nothing, String} = nothing
 
     function SubnetListResult(value, nextLink, )
-        OpenAPI.validate_property(SubnetListResult, Symbol("value"), value)
-        OpenAPI.validate_property(SubnetListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type SubnetListResult
 
 const _property_types_SubnetListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{Subnet}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ SubnetListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SubnetListResult[name]))}
 
-function check_required(o::SubnetListResult)
+function OpenAPI.check_required(o::SubnetListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::SubnetListResult)
+    OpenAPI.validate_property(SubnetListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(SubnetListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ SubnetListResult }, name::Symbol, val)
+
+
 end

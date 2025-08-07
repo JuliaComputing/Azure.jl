@@ -15,7 +15,7 @@ Dedicated Host Group Properties.
     - platformFaultDomainCount::Int64 : Number of fault domains that the host group can span.
     - hosts::Vector{SubResourceReadOnly} : A list of references to all dedicated hosts in the dedicated host group.
     - instanceView::DedicatedHostGroupInstanceView
-    - supportAutomaticPlacement::Bool : Specifies whether virtual machines or virtual machine scale sets can be placed automatically on the dedicated host group. Automatic placement means resources are allocated on dedicated hosts, that are chosen by Azure, under the dedicated host group. The value is defaulted to &#39;true&#39; when not provided. &lt;br&gt;&lt;br&gt;Minimum api-version: 2020-06-01.
+    - supportAutomaticPlacement::Bool : Specifies whether virtual machines or virtual machine scale sets can be placed automatically on the dedicated host group. Automatic placement means resources are allocated on dedicated hosts, that are chosen by Azure, under the dedicated host group. The value is defaulted to &#39;false&#39; when not provided. &lt;br&gt;&lt;br&gt;Minimum api-version: 2020-06-01.
 """
 Base.@kwdef mutable struct DedicatedHostGroupProperties <: OpenAPI.APIModel
     platformFaultDomainCount::Union{Nothing, Int64} = nothing
@@ -24,28 +24,36 @@ Base.@kwdef mutable struct DedicatedHostGroupProperties <: OpenAPI.APIModel
     supportAutomaticPlacement::Union{Nothing, Bool} = nothing
 
     function DedicatedHostGroupProperties(platformFaultDomainCount, hosts, instanceView, supportAutomaticPlacement, )
-        OpenAPI.validate_property(DedicatedHostGroupProperties, Symbol("platformFaultDomainCount"), platformFaultDomainCount)
-        OpenAPI.validate_property(DedicatedHostGroupProperties, Symbol("hosts"), hosts)
-        OpenAPI.validate_property(DedicatedHostGroupProperties, Symbol("instanceView"), instanceView)
-        OpenAPI.validate_property(DedicatedHostGroupProperties, Symbol("supportAutomaticPlacement"), supportAutomaticPlacement)
-        return new(platformFaultDomainCount, hosts, instanceView, supportAutomaticPlacement, )
+        o = new(platformFaultDomainCount, hosts, instanceView, supportAutomaticPlacement, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type DedicatedHostGroupProperties
 
 const _property_types_DedicatedHostGroupProperties = Dict{Symbol,String}(Symbol("platformFaultDomainCount")=>"Int64", Symbol("hosts")=>"Vector{SubResourceReadOnly}", Symbol("instanceView")=>"DedicatedHostGroupInstanceView", Symbol("supportAutomaticPlacement")=>"Bool", )
 OpenAPI.property_type(::Type{ DedicatedHostGroupProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DedicatedHostGroupProperties[name]))}
 
-function check_required(o::DedicatedHostGroupProperties)
+function OpenAPI.check_required(o::DedicatedHostGroupProperties)
     o.platformFaultDomainCount === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::DedicatedHostGroupProperties)
+    OpenAPI.validate_property(DedicatedHostGroupProperties, Symbol("platformFaultDomainCount"), o.platformFaultDomainCount)
+    OpenAPI.validate_property(DedicatedHostGroupProperties, Symbol("hosts"), o.hosts)
+    OpenAPI.validate_property(DedicatedHostGroupProperties, Symbol("instanceView"), o.instanceView)
+    OpenAPI.validate_property(DedicatedHostGroupProperties, Symbol("supportAutomaticPlacement"), o.supportAutomaticPlacement)
+end
+
 function OpenAPI.validate_property(::Type{ DedicatedHostGroupProperties }, name::Symbol, val)
+
     if name === Symbol("platformFaultDomainCount")
         OpenAPI.validate_param(name, "DedicatedHostGroupProperties", :format, val, "int32")
     end
     if name === Symbol("platformFaultDomainCount")
-        OpenAPI.validate_param(name, "DedicatedHostGroupProperties", :maximum, val, 3, false)
         OpenAPI.validate_param(name, "DedicatedHostGroupProperties", :minimum, val, 1, false)
     end
+
+
+
 end

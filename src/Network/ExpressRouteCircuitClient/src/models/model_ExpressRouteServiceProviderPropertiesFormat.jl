@@ -21,19 +21,27 @@ Base.@kwdef mutable struct ExpressRouteServiceProviderPropertiesFormat <: OpenAP
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
     function ExpressRouteServiceProviderPropertiesFormat(peeringLocations, bandwidthsOffered, provisioningState, )
-        OpenAPI.validate_property(ExpressRouteServiceProviderPropertiesFormat, Symbol("peeringLocations"), peeringLocations)
-        OpenAPI.validate_property(ExpressRouteServiceProviderPropertiesFormat, Symbol("bandwidthsOffered"), bandwidthsOffered)
-        OpenAPI.validate_property(ExpressRouteServiceProviderPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(peeringLocations, bandwidthsOffered, provisioningState, )
+        o = new(peeringLocations, bandwidthsOffered, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ExpressRouteServiceProviderPropertiesFormat
 
 const _property_types_ExpressRouteServiceProviderPropertiesFormat = Dict{Symbol,String}(Symbol("peeringLocations")=>"Vector{String}", Symbol("bandwidthsOffered")=>"Vector{ExpressRouteServiceProviderBandwidthsOffered}", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ ExpressRouteServiceProviderPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExpressRouteServiceProviderPropertiesFormat[name]))}
 
-function check_required(o::ExpressRouteServiceProviderPropertiesFormat)
+function OpenAPI.check_required(o::ExpressRouteServiceProviderPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::ExpressRouteServiceProviderPropertiesFormat)
+    OpenAPI.validate_property(ExpressRouteServiceProviderPropertiesFormat, Symbol("peeringLocations"), o.peeringLocations)
+    OpenAPI.validate_property(ExpressRouteServiceProviderPropertiesFormat, Symbol("bandwidthsOffered"), o.bandwidthsOffered)
+    OpenAPI.validate_property(ExpressRouteServiceProviderPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ ExpressRouteServiceProviderPropertiesFormat }, name::Symbol, val)
+
+
+
 end

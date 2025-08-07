@@ -15,17 +15,23 @@ Base.@kwdef mutable struct ConnectionMonitorListResult <: OpenAPI.APIModel
     value::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ConnectionMonitorResult} }
 
     function ConnectionMonitorListResult(value, )
-        OpenAPI.validate_property(ConnectionMonitorListResult, Symbol("value"), value)
-        return new(value, )
+        o = new(value, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ConnectionMonitorListResult
 
 const _property_types_ConnectionMonitorListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{ConnectionMonitorResult}", )
 OpenAPI.property_type(::Type{ ConnectionMonitorListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ConnectionMonitorListResult[name]))}
 
-function check_required(o::ConnectionMonitorListResult)
+function OpenAPI.check_required(o::ConnectionMonitorListResult)
     true
 end
 
+function OpenAPI.validate_properties(o::ConnectionMonitorListResult)
+    OpenAPI.validate_property(ConnectionMonitorListResult, Symbol("value"), o.value)
+end
+
 function OpenAPI.validate_property(::Type{ ConnectionMonitorListResult }, name::Symbol, val)
+
 end

@@ -18,20 +18,27 @@ Base.@kwdef mutable struct BlobRestoreRange <: OpenAPI.APIModel
     endRange::Union{Nothing, String} = nothing
 
     function BlobRestoreRange(startRange, endRange, )
-        OpenAPI.validate_property(BlobRestoreRange, Symbol("startRange"), startRange)
-        OpenAPI.validate_property(BlobRestoreRange, Symbol("endRange"), endRange)
-        return new(startRange, endRange, )
+        o = new(startRange, endRange, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type BlobRestoreRange
 
 const _property_types_BlobRestoreRange = Dict{Symbol,String}(Symbol("startRange")=>"String", Symbol("endRange")=>"String", )
 OpenAPI.property_type(::Type{ BlobRestoreRange }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_BlobRestoreRange[name]))}
 
-function check_required(o::BlobRestoreRange)
+function OpenAPI.check_required(o::BlobRestoreRange)
     o.startRange === nothing && (return false)
     o.endRange === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::BlobRestoreRange)
+    OpenAPI.validate_property(BlobRestoreRange, Symbol("startRange"), o.startRange)
+    OpenAPI.validate_property(BlobRestoreRange, Symbol("endRange"), o.endRange)
+end
+
 function OpenAPI.validate_property(::Type{ BlobRestoreRange }, name::Symbol, val)
+
+
 end

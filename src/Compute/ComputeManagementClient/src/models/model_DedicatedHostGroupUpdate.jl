@@ -21,19 +21,27 @@ Base.@kwdef mutable struct DedicatedHostGroupUpdate <: OpenAPI.APIModel
     tags::Union{Nothing, Dict{String, String}} = nothing
 
     function DedicatedHostGroupUpdate(properties, zones, tags, )
-        OpenAPI.validate_property(DedicatedHostGroupUpdate, Symbol("properties"), properties)
-        OpenAPI.validate_property(DedicatedHostGroupUpdate, Symbol("zones"), zones)
-        OpenAPI.validate_property(DedicatedHostGroupUpdate, Symbol("tags"), tags)
-        return new(properties, zones, tags, )
+        o = new(properties, zones, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type DedicatedHostGroupUpdate
 
 const _property_types_DedicatedHostGroupUpdate = Dict{Symbol,String}(Symbol("properties")=>"DedicatedHostGroupProperties", Symbol("zones")=>"Vector{String}", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ DedicatedHostGroupUpdate }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DedicatedHostGroupUpdate[name]))}
 
-function check_required(o::DedicatedHostGroupUpdate)
+function OpenAPI.check_required(o::DedicatedHostGroupUpdate)
     true
 end
 
+function OpenAPI.validate_properties(o::DedicatedHostGroupUpdate)
+    OpenAPI.validate_property(DedicatedHostGroupUpdate, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(DedicatedHostGroupUpdate, Symbol("zones"), o.zones)
+    OpenAPI.validate_property(DedicatedHostGroupUpdate, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ DedicatedHostGroupUpdate }, name::Symbol, val)
+
+
+
 end

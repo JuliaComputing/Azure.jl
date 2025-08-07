@@ -12,7 +12,7 @@ Information regarding paired region.
     )
 
     - name::String : The name of the paired region.
-    - id::String : The fully qualified ID of the location. For example, /subscriptions/00000000-0000-0000-0000-000000000000/locations/westus.
+    - id::String : The fully qualified ID of the location. For example, /subscriptions/8d65815f-a5b6-402f-9298-045155da7d74/locations/westus.
     - subscriptionId::String : The subscription ID.
 """
 Base.@kwdef mutable struct PairedRegion <: OpenAPI.APIModel
@@ -21,19 +21,27 @@ Base.@kwdef mutable struct PairedRegion <: OpenAPI.APIModel
     subscriptionId::Union{Nothing, String} = nothing
 
     function PairedRegion(name, id, subscriptionId, )
-        OpenAPI.validate_property(PairedRegion, Symbol("name"), name)
-        OpenAPI.validate_property(PairedRegion, Symbol("id"), id)
-        OpenAPI.validate_property(PairedRegion, Symbol("subscriptionId"), subscriptionId)
-        return new(name, id, subscriptionId, )
+        o = new(name, id, subscriptionId, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PairedRegion
 
 const _property_types_PairedRegion = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("id")=>"String", Symbol("subscriptionId")=>"String", )
 OpenAPI.property_type(::Type{ PairedRegion }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PairedRegion[name]))}
 
-function check_required(o::PairedRegion)
+function OpenAPI.check_required(o::PairedRegion)
     true
 end
 
+function OpenAPI.validate_properties(o::PairedRegion)
+    OpenAPI.validate_property(PairedRegion, Symbol("name"), o.name)
+    OpenAPI.validate_property(PairedRegion, Symbol("id"), o.id)
+    OpenAPI.validate_property(PairedRegion, Symbol("subscriptionId"), o.subscriptionId)
+end
+
 function OpenAPI.validate_property(::Type{ PairedRegion }, name::Symbol, val)
+
+
+
 end

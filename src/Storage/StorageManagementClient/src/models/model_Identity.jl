@@ -9,35 +9,49 @@ Identity for the resource.
         principalId=nothing,
         tenantId=nothing,
         type=nothing,
+        userAssignedIdentities=nothing,
     )
 
     - principalId::String : The principal ID of resource identity.
     - tenantId::String : The tenant ID of resource.
     - type::String : The identity type.
+    - userAssignedIdentities::Dict{String, UserAssignedIdentity} : Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this storage account. The key is the ARM resource identifier of the identity. Only 1 User Assigned identity is permitted here.
 """
 Base.@kwdef mutable struct Identity <: OpenAPI.APIModel
     principalId::Union{Nothing, String} = nothing
     tenantId::Union{Nothing, String} = nothing
     type::Union{Nothing, String} = nothing
+    userAssignedIdentities::Union{Nothing, Dict} = nothing # spec type: Union{ Nothing, Dict{String, UserAssignedIdentity} }
 
-    function Identity(principalId, tenantId, type, )
-        OpenAPI.validate_property(Identity, Symbol("principalId"), principalId)
-        OpenAPI.validate_property(Identity, Symbol("tenantId"), tenantId)
-        OpenAPI.validate_property(Identity, Symbol("type"), type)
-        return new(principalId, tenantId, type, )
+    function Identity(principalId, tenantId, type, userAssignedIdentities, )
+        o = new(principalId, tenantId, type, userAssignedIdentities, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type Identity
 
-const _property_types_Identity = Dict{Symbol,String}(Symbol("principalId")=>"String", Symbol("tenantId")=>"String", Symbol("type")=>"String", )
+const _property_types_Identity = Dict{Symbol,String}(Symbol("principalId")=>"String", Symbol("tenantId")=>"String", Symbol("type")=>"String", Symbol("userAssignedIdentities")=>"Dict{String, UserAssignedIdentity}", )
 OpenAPI.property_type(::Type{ Identity }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Identity[name]))}
 
-function check_required(o::Identity)
+function OpenAPI.check_required(o::Identity)
     o.type === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::Identity)
+    OpenAPI.validate_property(Identity, Symbol("principalId"), o.principalId)
+    OpenAPI.validate_property(Identity, Symbol("tenantId"), o.tenantId)
+    OpenAPI.validate_property(Identity, Symbol("type"), o.type)
+    OpenAPI.validate_property(Identity, Symbol("userAssignedIdentities"), o.userAssignedIdentities)
+end
+
 function OpenAPI.validate_property(::Type{ Identity }, name::Symbol, val)
+
+
+
     if name === Symbol("type")
-        OpenAPI.validate_param(name, "Identity", :enum, val, ["SystemAssigned"])
+        OpenAPI.validate_param(name, "Identity", :enum, val, ["None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned"])
     end
+
+
 end

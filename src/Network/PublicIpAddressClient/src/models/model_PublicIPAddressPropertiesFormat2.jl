@@ -17,6 +17,11 @@ Public IP address properties.
         idleTimeoutInMinutes=nothing,
         resourceGuid=nothing,
         provisioningState=nothing,
+        servicePublicIPAddress=nothing,
+        natGateway=nothing,
+        migrationPhase=nothing,
+        linkedPublicIPAddress=nothing,
+        deleteOption=nothing,
     )
 
     - publicIPAllocationMethod::IPAllocationMethod
@@ -30,6 +35,11 @@ Public IP address properties.
     - idleTimeoutInMinutes::Int64 : The idle timeout of the public IP address.
     - resourceGuid::String : The resource GUID property of the public IP address resource.
     - provisioningState::ProvisioningState
+    - servicePublicIPAddress::PublicIPAddress2
+    - natGateway::NatGateway
+    - migrationPhase::String : Migration phase of Public IP Address.
+    - linkedPublicIPAddress::PublicIPAddress2
+    - deleteOption::String : Specify what happens to the public IP address when the VM using it is deleted
 """
 Base.@kwdef mutable struct PublicIPAddressPropertiesFormat2 <: OpenAPI.APIModel
     publicIPAllocationMethod = nothing # spec type: Union{ Nothing, IPAllocationMethod }
@@ -43,32 +53,71 @@ Base.@kwdef mutable struct PublicIPAddressPropertiesFormat2 <: OpenAPI.APIModel
     idleTimeoutInMinutes::Union{Nothing, Int64} = nothing
     resourceGuid::Union{Nothing, String} = nothing
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
+    servicePublicIPAddress = nothing # spec type: Union{ Nothing, PublicIPAddress2 }
+    natGateway = nothing # spec type: Union{ Nothing, NatGateway }
+    migrationPhase::Union{Nothing, String} = nothing
+    linkedPublicIPAddress = nothing # spec type: Union{ Nothing, PublicIPAddress2 }
+    deleteOption::Union{Nothing, String} = nothing
 
-    function PublicIPAddressPropertiesFormat2(publicIPAllocationMethod, publicIPAddressVersion, ipConfiguration, dnsSettings, ddosSettings, ipTags, ipAddress, publicIPPrefix, idleTimeoutInMinutes, resourceGuid, provisioningState, )
-        OpenAPI.validate_property(PublicIPAddressPropertiesFormat2, Symbol("publicIPAllocationMethod"), publicIPAllocationMethod)
-        OpenAPI.validate_property(PublicIPAddressPropertiesFormat2, Symbol("publicIPAddressVersion"), publicIPAddressVersion)
-        OpenAPI.validate_property(PublicIPAddressPropertiesFormat2, Symbol("ipConfiguration"), ipConfiguration)
-        OpenAPI.validate_property(PublicIPAddressPropertiesFormat2, Symbol("dnsSettings"), dnsSettings)
-        OpenAPI.validate_property(PublicIPAddressPropertiesFormat2, Symbol("ddosSettings"), ddosSettings)
-        OpenAPI.validate_property(PublicIPAddressPropertiesFormat2, Symbol("ipTags"), ipTags)
-        OpenAPI.validate_property(PublicIPAddressPropertiesFormat2, Symbol("ipAddress"), ipAddress)
-        OpenAPI.validate_property(PublicIPAddressPropertiesFormat2, Symbol("publicIPPrefix"), publicIPPrefix)
-        OpenAPI.validate_property(PublicIPAddressPropertiesFormat2, Symbol("idleTimeoutInMinutes"), idleTimeoutInMinutes)
-        OpenAPI.validate_property(PublicIPAddressPropertiesFormat2, Symbol("resourceGuid"), resourceGuid)
-        OpenAPI.validate_property(PublicIPAddressPropertiesFormat2, Symbol("provisioningState"), provisioningState)
-        return new(publicIPAllocationMethod, publicIPAddressVersion, ipConfiguration, dnsSettings, ddosSettings, ipTags, ipAddress, publicIPPrefix, idleTimeoutInMinutes, resourceGuid, provisioningState, )
+    function PublicIPAddressPropertiesFormat2(publicIPAllocationMethod, publicIPAddressVersion, ipConfiguration, dnsSettings, ddosSettings, ipTags, ipAddress, publicIPPrefix, idleTimeoutInMinutes, resourceGuid, provisioningState, servicePublicIPAddress, natGateway, migrationPhase, linkedPublicIPAddress, deleteOption, )
+        o = new(publicIPAllocationMethod, publicIPAddressVersion, ipConfiguration, dnsSettings, ddosSettings, ipTags, ipAddress, publicIPPrefix, idleTimeoutInMinutes, resourceGuid, provisioningState, servicePublicIPAddress, natGateway, migrationPhase, linkedPublicIPAddress, deleteOption, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PublicIPAddressPropertiesFormat2
 
-const _property_types_PublicIPAddressPropertiesFormat2 = Dict{Symbol,String}(Symbol("publicIPAllocationMethod")=>"IPAllocationMethod", Symbol("publicIPAddressVersion")=>"IPVersion", Symbol("ipConfiguration")=>"IPConfiguration", Symbol("dnsSettings")=>"PublicIPAddressDnsSettings2", Symbol("ddosSettings")=>"DdosSettings2", Symbol("ipTags")=>"Vector{IpTag2}", Symbol("ipAddress")=>"String", Symbol("publicIPPrefix")=>"SubResource", Symbol("idleTimeoutInMinutes")=>"Int64", Symbol("resourceGuid")=>"String", Symbol("provisioningState")=>"ProvisioningState", )
+const _property_types_PublicIPAddressPropertiesFormat2 = Dict{Symbol,String}(Symbol("publicIPAllocationMethod")=>"IPAllocationMethod", Symbol("publicIPAddressVersion")=>"IPVersion", Symbol("ipConfiguration")=>"IPConfiguration", Symbol("dnsSettings")=>"PublicIPAddressDnsSettings2", Symbol("ddosSettings")=>"DdosSettings2", Symbol("ipTags")=>"Vector{IpTag2}", Symbol("ipAddress")=>"String", Symbol("publicIPPrefix")=>"SubResource", Symbol("idleTimeoutInMinutes")=>"Int64", Symbol("resourceGuid")=>"String", Symbol("provisioningState")=>"ProvisioningState", Symbol("servicePublicIPAddress")=>"PublicIPAddress2", Symbol("natGateway")=>"NatGateway", Symbol("migrationPhase")=>"String", Symbol("linkedPublicIPAddress")=>"PublicIPAddress2", Symbol("deleteOption")=>"String", )
 OpenAPI.property_type(::Type{ PublicIPAddressPropertiesFormat2 }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PublicIPAddressPropertiesFormat2[name]))}
 
-function check_required(o::PublicIPAddressPropertiesFormat2)
+function OpenAPI.check_required(o::PublicIPAddressPropertiesFormat2)
     true
 end
 
+function OpenAPI.validate_properties(o::PublicIPAddressPropertiesFormat2)
+    OpenAPI.validate_property(PublicIPAddressPropertiesFormat2, Symbol("publicIPAllocationMethod"), o.publicIPAllocationMethod)
+    OpenAPI.validate_property(PublicIPAddressPropertiesFormat2, Symbol("publicIPAddressVersion"), o.publicIPAddressVersion)
+    OpenAPI.validate_property(PublicIPAddressPropertiesFormat2, Symbol("ipConfiguration"), o.ipConfiguration)
+    OpenAPI.validate_property(PublicIPAddressPropertiesFormat2, Symbol("dnsSettings"), o.dnsSettings)
+    OpenAPI.validate_property(PublicIPAddressPropertiesFormat2, Symbol("ddosSettings"), o.ddosSettings)
+    OpenAPI.validate_property(PublicIPAddressPropertiesFormat2, Symbol("ipTags"), o.ipTags)
+    OpenAPI.validate_property(PublicIPAddressPropertiesFormat2, Symbol("ipAddress"), o.ipAddress)
+    OpenAPI.validate_property(PublicIPAddressPropertiesFormat2, Symbol("publicIPPrefix"), o.publicIPPrefix)
+    OpenAPI.validate_property(PublicIPAddressPropertiesFormat2, Symbol("idleTimeoutInMinutes"), o.idleTimeoutInMinutes)
+    OpenAPI.validate_property(PublicIPAddressPropertiesFormat2, Symbol("resourceGuid"), o.resourceGuid)
+    OpenAPI.validate_property(PublicIPAddressPropertiesFormat2, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(PublicIPAddressPropertiesFormat2, Symbol("servicePublicIPAddress"), o.servicePublicIPAddress)
+    OpenAPI.validate_property(PublicIPAddressPropertiesFormat2, Symbol("natGateway"), o.natGateway)
+    OpenAPI.validate_property(PublicIPAddressPropertiesFormat2, Symbol("migrationPhase"), o.migrationPhase)
+    OpenAPI.validate_property(PublicIPAddressPropertiesFormat2, Symbol("linkedPublicIPAddress"), o.linkedPublicIPAddress)
+    OpenAPI.validate_property(PublicIPAddressPropertiesFormat2, Symbol("deleteOption"), o.deleteOption)
+end
+
 function OpenAPI.validate_property(::Type{ PublicIPAddressPropertiesFormat2 }, name::Symbol, val)
+
+
+
+
+
+
+
+
+
     if name === Symbol("idleTimeoutInMinutes")
         OpenAPI.validate_param(name, "PublicIPAddressPropertiesFormat2", :format, val, "int32")
     end
+
+
+
+
+
+    if name === Symbol("migrationPhase")
+        OpenAPI.validate_param(name, "PublicIPAddressPropertiesFormat2", :enum, val, ["None", "Prepare", "Commit", "Abort", "Committed"])
+    end
+
+
+
+    if name === Symbol("deleteOption")
+        OpenAPI.validate_param(name, "PublicIPAddressPropertiesFormat2", :enum, val, ["Delete", "Detach"])
+    end
+
 end

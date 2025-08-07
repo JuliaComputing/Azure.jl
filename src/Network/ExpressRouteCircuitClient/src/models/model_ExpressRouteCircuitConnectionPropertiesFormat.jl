@@ -33,23 +33,35 @@ Base.@kwdef mutable struct ExpressRouteCircuitConnectionPropertiesFormat <: Open
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
     function ExpressRouteCircuitConnectionPropertiesFormat(expressRouteCircuitPeering, peerExpressRouteCircuitPeering, addressPrefix, authorizationKey, ipv6CircuitConnectionConfig, circuitConnectionStatus, provisioningState, )
-        OpenAPI.validate_property(ExpressRouteCircuitConnectionPropertiesFormat, Symbol("expressRouteCircuitPeering"), expressRouteCircuitPeering)
-        OpenAPI.validate_property(ExpressRouteCircuitConnectionPropertiesFormat, Symbol("peerExpressRouteCircuitPeering"), peerExpressRouteCircuitPeering)
-        OpenAPI.validate_property(ExpressRouteCircuitConnectionPropertiesFormat, Symbol("addressPrefix"), addressPrefix)
-        OpenAPI.validate_property(ExpressRouteCircuitConnectionPropertiesFormat, Symbol("authorizationKey"), authorizationKey)
-        OpenAPI.validate_property(ExpressRouteCircuitConnectionPropertiesFormat, Symbol("ipv6CircuitConnectionConfig"), ipv6CircuitConnectionConfig)
-        OpenAPI.validate_property(ExpressRouteCircuitConnectionPropertiesFormat, Symbol("circuitConnectionStatus"), circuitConnectionStatus)
-        OpenAPI.validate_property(ExpressRouteCircuitConnectionPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(expressRouteCircuitPeering, peerExpressRouteCircuitPeering, addressPrefix, authorizationKey, ipv6CircuitConnectionConfig, circuitConnectionStatus, provisioningState, )
+        o = new(expressRouteCircuitPeering, peerExpressRouteCircuitPeering, addressPrefix, authorizationKey, ipv6CircuitConnectionConfig, circuitConnectionStatus, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ExpressRouteCircuitConnectionPropertiesFormat
 
 const _property_types_ExpressRouteCircuitConnectionPropertiesFormat = Dict{Symbol,String}(Symbol("expressRouteCircuitPeering")=>"SubResource", Symbol("peerExpressRouteCircuitPeering")=>"SubResource", Symbol("addressPrefix")=>"String", Symbol("authorizationKey")=>"String", Symbol("ipv6CircuitConnectionConfig")=>"Ipv6CircuitConnectionConfig", Symbol("circuitConnectionStatus")=>"CircuitConnectionStatus", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ ExpressRouteCircuitConnectionPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExpressRouteCircuitConnectionPropertiesFormat[name]))}
 
-function check_required(o::ExpressRouteCircuitConnectionPropertiesFormat)
+function OpenAPI.check_required(o::ExpressRouteCircuitConnectionPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::ExpressRouteCircuitConnectionPropertiesFormat)
+    OpenAPI.validate_property(ExpressRouteCircuitConnectionPropertiesFormat, Symbol("expressRouteCircuitPeering"), o.expressRouteCircuitPeering)
+    OpenAPI.validate_property(ExpressRouteCircuitConnectionPropertiesFormat, Symbol("peerExpressRouteCircuitPeering"), o.peerExpressRouteCircuitPeering)
+    OpenAPI.validate_property(ExpressRouteCircuitConnectionPropertiesFormat, Symbol("addressPrefix"), o.addressPrefix)
+    OpenAPI.validate_property(ExpressRouteCircuitConnectionPropertiesFormat, Symbol("authorizationKey"), o.authorizationKey)
+    OpenAPI.validate_property(ExpressRouteCircuitConnectionPropertiesFormat, Symbol("ipv6CircuitConnectionConfig"), o.ipv6CircuitConnectionConfig)
+    OpenAPI.validate_property(ExpressRouteCircuitConnectionPropertiesFormat, Symbol("circuitConnectionStatus"), o.circuitConnectionStatus)
+    OpenAPI.validate_property(ExpressRouteCircuitConnectionPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ ExpressRouteCircuitConnectionPropertiesFormat }, name::Symbol, val)
+
+
+
+
+
+
+
 end

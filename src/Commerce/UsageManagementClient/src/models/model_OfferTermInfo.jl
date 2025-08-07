@@ -18,24 +18,32 @@ Base.@kwdef mutable struct OfferTermInfo <: OpenAPI.APIModel
     EffectiveDate::Union{Nothing, ZonedDateTime} = nothing
 
     function OfferTermInfo(Name, EffectiveDate, )
-        OpenAPI.validate_property(OfferTermInfo, Symbol("Name"), Name)
-        OpenAPI.validate_property(OfferTermInfo, Symbol("EffectiveDate"), EffectiveDate)
-        return new(Name, EffectiveDate, )
+        o = new(Name, EffectiveDate, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type OfferTermInfo
 
 const _property_types_OfferTermInfo = Dict{Symbol,String}(Symbol("Name")=>"String", Symbol("EffectiveDate")=>"ZonedDateTime", )
 OpenAPI.property_type(::Type{ OfferTermInfo }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_OfferTermInfo[name]))}
 
-function check_required(o::OfferTermInfo)
+function OpenAPI.check_required(o::OfferTermInfo)
     o.Name === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::OfferTermInfo)
+    OpenAPI.validate_property(OfferTermInfo, Symbol("Name"), o.Name)
+    OpenAPI.validate_property(OfferTermInfo, Symbol("EffectiveDate"), o.EffectiveDate)
+end
+
 function OpenAPI.validate_property(::Type{ OfferTermInfo }, name::Symbol, val)
+
     if name === Symbol("Name")
         OpenAPI.validate_param(name, "OfferTermInfo", :enum, val, ["Recurring Charge", "Monetary Commitment", "Monetary Credit"])
     end
+
+
     if name === Symbol("EffectiveDate")
         OpenAPI.validate_param(name, "OfferTermInfo", :format, val, "date-time")
     end

@@ -27,21 +27,31 @@ Base.@kwdef mutable struct ApplicationGatewayAuthenticationCertificate <: OpenAP
     id::Union{Nothing, String} = nothing
 
     function ApplicationGatewayAuthenticationCertificate(properties, name, etag, type, id, )
-        OpenAPI.validate_property(ApplicationGatewayAuthenticationCertificate, Symbol("properties"), properties)
-        OpenAPI.validate_property(ApplicationGatewayAuthenticationCertificate, Symbol("name"), name)
-        OpenAPI.validate_property(ApplicationGatewayAuthenticationCertificate, Symbol("etag"), etag)
-        OpenAPI.validate_property(ApplicationGatewayAuthenticationCertificate, Symbol("type"), type)
-        OpenAPI.validate_property(ApplicationGatewayAuthenticationCertificate, Symbol("id"), id)
-        return new(properties, name, etag, type, id, )
+        o = new(properties, name, etag, type, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayAuthenticationCertificate
 
 const _property_types_ApplicationGatewayAuthenticationCertificate = Dict{Symbol,String}(Symbol("properties")=>"ApplicationGatewayAuthenticationCertificatePropertiesFormat", Symbol("name")=>"String", Symbol("etag")=>"String", Symbol("type")=>"String", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ ApplicationGatewayAuthenticationCertificate }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayAuthenticationCertificate[name]))}
 
-function check_required(o::ApplicationGatewayAuthenticationCertificate)
+function OpenAPI.check_required(o::ApplicationGatewayAuthenticationCertificate)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayAuthenticationCertificate)
+    OpenAPI.validate_property(ApplicationGatewayAuthenticationCertificate, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(ApplicationGatewayAuthenticationCertificate, Symbol("name"), o.name)
+    OpenAPI.validate_property(ApplicationGatewayAuthenticationCertificate, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(ApplicationGatewayAuthenticationCertificate, Symbol("type"), o.type)
+    OpenAPI.validate_property(ApplicationGatewayAuthenticationCertificate, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayAuthenticationCertificate }, name::Symbol, val)
+
+
+
+
+
 end

@@ -14,17 +14,23 @@ Base.@kwdef mutable struct ShareInfoElement <: OpenAPI.APIModel
     vmUri::Union{Nothing, String} = nothing
 
     function ShareInfoElement(vmUri, )
-        OpenAPI.validate_property(ShareInfoElement, Symbol("vmUri"), vmUri)
-        return new(vmUri, )
+        o = new(vmUri, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ShareInfoElement
 
 const _property_types_ShareInfoElement = Dict{Symbol,String}(Symbol("vmUri")=>"String", )
 OpenAPI.property_type(::Type{ ShareInfoElement }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ShareInfoElement[name]))}
 
-function check_required(o::ShareInfoElement)
+function OpenAPI.check_required(o::ShareInfoElement)
     true
 end
 
+function OpenAPI.validate_properties(o::ShareInfoElement)
+    OpenAPI.validate_property(ShareInfoElement, Symbol("vmUri"), o.vmUri)
+end
+
 function OpenAPI.validate_property(::Type{ ShareInfoElement }, name::Symbol, val)
+
 end

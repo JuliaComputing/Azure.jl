@@ -24,21 +24,30 @@ Base.@kwdef mutable struct VpnClientRootCertificate <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
 
     function VpnClientRootCertificate(properties, name, etag, id, )
-        OpenAPI.validate_property(VpnClientRootCertificate, Symbol("properties"), properties)
-        OpenAPI.validate_property(VpnClientRootCertificate, Symbol("name"), name)
-        OpenAPI.validate_property(VpnClientRootCertificate, Symbol("etag"), etag)
-        OpenAPI.validate_property(VpnClientRootCertificate, Symbol("id"), id)
-        return new(properties, name, etag, id, )
+        o = new(properties, name, etag, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VpnClientRootCertificate
 
 const _property_types_VpnClientRootCertificate = Dict{Symbol,String}(Symbol("properties")=>"VpnClientRootCertificatePropertiesFormat", Symbol("name")=>"String", Symbol("etag")=>"String", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ VpnClientRootCertificate }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VpnClientRootCertificate[name]))}
 
-function check_required(o::VpnClientRootCertificate)
+function OpenAPI.check_required(o::VpnClientRootCertificate)
     o.properties === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::VpnClientRootCertificate)
+    OpenAPI.validate_property(VpnClientRootCertificate, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(VpnClientRootCertificate, Symbol("name"), o.name)
+    OpenAPI.validate_property(VpnClientRootCertificate, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(VpnClientRootCertificate, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ VpnClientRootCertificate }, name::Symbol, val)
+
+
+
+
 end

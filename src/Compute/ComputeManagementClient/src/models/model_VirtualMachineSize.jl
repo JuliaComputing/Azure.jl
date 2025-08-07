@@ -15,7 +15,7 @@ Describes the properties of a VM size.
     )
 
     - name::String : The name of the virtual machine size.
-    - numberOfCores::Int64 : The number of cores supported by the virtual machine size.
+    - numberOfCores::Int64 : The number of cores supported by the virtual machine size. For Constrained vCPU capable VM sizes, this number represents the total vCPUs of quota that the VM uses. For accurate vCPU count, please refer to https://docs.microsoft.com/azure/virtual-machines/constrained-vcpu or https://docs.microsoft.com/rest/api/compute/resourceskus/list
     - osDiskSizeInMB::Int64 : The OS disk size, in MB, allowed by the virtual machine size.
     - resourceDiskSizeInMB::Int64 : The resource disk size, in MB, allowed by the virtual machine size.
     - memoryInMB::Int64 : The amount of memory, in MB, supported by the virtual machine size.
@@ -30,36 +30,47 @@ Base.@kwdef mutable struct VirtualMachineSize <: OpenAPI.APIModel
     maxDataDiskCount::Union{Nothing, Int64} = nothing
 
     function VirtualMachineSize(name, numberOfCores, osDiskSizeInMB, resourceDiskSizeInMB, memoryInMB, maxDataDiskCount, )
-        OpenAPI.validate_property(VirtualMachineSize, Symbol("name"), name)
-        OpenAPI.validate_property(VirtualMachineSize, Symbol("numberOfCores"), numberOfCores)
-        OpenAPI.validate_property(VirtualMachineSize, Symbol("osDiskSizeInMB"), osDiskSizeInMB)
-        OpenAPI.validate_property(VirtualMachineSize, Symbol("resourceDiskSizeInMB"), resourceDiskSizeInMB)
-        OpenAPI.validate_property(VirtualMachineSize, Symbol("memoryInMB"), memoryInMB)
-        OpenAPI.validate_property(VirtualMachineSize, Symbol("maxDataDiskCount"), maxDataDiskCount)
-        return new(name, numberOfCores, osDiskSizeInMB, resourceDiskSizeInMB, memoryInMB, maxDataDiskCount, )
+        o = new(name, numberOfCores, osDiskSizeInMB, resourceDiskSizeInMB, memoryInMB, maxDataDiskCount, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineSize
 
 const _property_types_VirtualMachineSize = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("numberOfCores")=>"Int64", Symbol("osDiskSizeInMB")=>"Int64", Symbol("resourceDiskSizeInMB")=>"Int64", Symbol("memoryInMB")=>"Int64", Symbol("maxDataDiskCount")=>"Int64", )
 OpenAPI.property_type(::Type{ VirtualMachineSize }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineSize[name]))}
 
-function check_required(o::VirtualMachineSize)
+function OpenAPI.check_required(o::VirtualMachineSize)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineSize)
+    OpenAPI.validate_property(VirtualMachineSize, Symbol("name"), o.name)
+    OpenAPI.validate_property(VirtualMachineSize, Symbol("numberOfCores"), o.numberOfCores)
+    OpenAPI.validate_property(VirtualMachineSize, Symbol("osDiskSizeInMB"), o.osDiskSizeInMB)
+    OpenAPI.validate_property(VirtualMachineSize, Symbol("resourceDiskSizeInMB"), o.resourceDiskSizeInMB)
+    OpenAPI.validate_property(VirtualMachineSize, Symbol("memoryInMB"), o.memoryInMB)
+    OpenAPI.validate_property(VirtualMachineSize, Symbol("maxDataDiskCount"), o.maxDataDiskCount)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineSize }, name::Symbol, val)
+
+
     if name === Symbol("numberOfCores")
         OpenAPI.validate_param(name, "VirtualMachineSize", :format, val, "int32")
     end
+
     if name === Symbol("osDiskSizeInMB")
         OpenAPI.validate_param(name, "VirtualMachineSize", :format, val, "int32")
     end
+
     if name === Symbol("resourceDiskSizeInMB")
         OpenAPI.validate_param(name, "VirtualMachineSize", :format, val, "int32")
     end
+
     if name === Symbol("memoryInMB")
         OpenAPI.validate_param(name, "VirtualMachineSize", :format, val, "int32")
     end
+
     if name === Symbol("maxDataDiskCount")
         OpenAPI.validate_param(name, "VirtualMachineSize", :format, val, "int32")
     end

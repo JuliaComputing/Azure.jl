@@ -18,19 +18,26 @@ Base.@kwdef mutable struct SubscriptionListResult <: OpenAPI.APIModel
     nextLink::Union{Nothing, String} = nothing
 
     function SubscriptionListResult(value, nextLink, )
-        OpenAPI.validate_property(SubscriptionListResult, Symbol("value"), value)
-        OpenAPI.validate_property(SubscriptionListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type SubscriptionListResult
 
 const _property_types_SubscriptionListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{Subscription}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ SubscriptionListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SubscriptionListResult[name]))}
 
-function check_required(o::SubscriptionListResult)
+function OpenAPI.check_required(o::SubscriptionListResult)
     o.nextLink === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::SubscriptionListResult)
+    OpenAPI.validate_property(SubscriptionListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(SubscriptionListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ SubscriptionListResult }, name::Symbol, val)
+
+
 end

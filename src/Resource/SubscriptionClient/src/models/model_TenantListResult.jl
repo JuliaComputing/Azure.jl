@@ -18,19 +18,26 @@ Base.@kwdef mutable struct TenantListResult <: OpenAPI.APIModel
     nextLink::Union{Nothing, String} = nothing
 
     function TenantListResult(value, nextLink, )
-        OpenAPI.validate_property(TenantListResult, Symbol("value"), value)
-        OpenAPI.validate_property(TenantListResult, Symbol("nextLink"), nextLink)
-        return new(value, nextLink, )
+        o = new(value, nextLink, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type TenantListResult
 
 const _property_types_TenantListResult = Dict{Symbol,String}(Symbol("value")=>"Vector{TenantIdDescription}", Symbol("nextLink")=>"String", )
 OpenAPI.property_type(::Type{ TenantListResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TenantListResult[name]))}
 
-function check_required(o::TenantListResult)
+function OpenAPI.check_required(o::TenantListResult)
     o.nextLink === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::TenantListResult)
+    OpenAPI.validate_property(TenantListResult, Symbol("value"), o.value)
+    OpenAPI.validate_property(TenantListResult, Symbol("nextLink"), o.nextLink)
+end
+
 function OpenAPI.validate_property(::Type{ TenantListResult }, name::Symbol, val)
+
+
 end

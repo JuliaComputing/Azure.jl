@@ -24,20 +24,29 @@ Base.@kwdef mutable struct EffectiveNetworkSecurityGroup <: OpenAPI.APIModel
     tagMap::Union{Nothing, String} = nothing
 
     function EffectiveNetworkSecurityGroup(networkSecurityGroup, association, effectiveSecurityRules, tagMap, )
-        OpenAPI.validate_property(EffectiveNetworkSecurityGroup, Symbol("networkSecurityGroup"), networkSecurityGroup)
-        OpenAPI.validate_property(EffectiveNetworkSecurityGroup, Symbol("association"), association)
-        OpenAPI.validate_property(EffectiveNetworkSecurityGroup, Symbol("effectiveSecurityRules"), effectiveSecurityRules)
-        OpenAPI.validate_property(EffectiveNetworkSecurityGroup, Symbol("tagMap"), tagMap)
-        return new(networkSecurityGroup, association, effectiveSecurityRules, tagMap, )
+        o = new(networkSecurityGroup, association, effectiveSecurityRules, tagMap, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type EffectiveNetworkSecurityGroup
 
 const _property_types_EffectiveNetworkSecurityGroup = Dict{Symbol,String}(Symbol("networkSecurityGroup")=>"SubResource", Symbol("association")=>"EffectiveNetworkSecurityGroupAssociation", Symbol("effectiveSecurityRules")=>"Vector{EffectiveNetworkSecurityRule}", Symbol("tagMap")=>"String", )
 OpenAPI.property_type(::Type{ EffectiveNetworkSecurityGroup }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_EffectiveNetworkSecurityGroup[name]))}
 
-function check_required(o::EffectiveNetworkSecurityGroup)
+function OpenAPI.check_required(o::EffectiveNetworkSecurityGroup)
     true
 end
 
+function OpenAPI.validate_properties(o::EffectiveNetworkSecurityGroup)
+    OpenAPI.validate_property(EffectiveNetworkSecurityGroup, Symbol("networkSecurityGroup"), o.networkSecurityGroup)
+    OpenAPI.validate_property(EffectiveNetworkSecurityGroup, Symbol("association"), o.association)
+    OpenAPI.validate_property(EffectiveNetworkSecurityGroup, Symbol("effectiveSecurityRules"), o.effectiveSecurityRules)
+    OpenAPI.validate_property(EffectiveNetworkSecurityGroup, Symbol("tagMap"), o.tagMap)
+end
+
 function OpenAPI.validate_property(::Type{ EffectiveNetworkSecurityGroup }, name::Symbol, val)
+
+
+
+
 end

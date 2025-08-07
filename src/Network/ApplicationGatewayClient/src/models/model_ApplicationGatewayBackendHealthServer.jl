@@ -24,23 +24,33 @@ Base.@kwdef mutable struct ApplicationGatewayBackendHealthServer <: OpenAPI.APIM
     healthProbeLog::Union{Nothing, String} = nothing
 
     function ApplicationGatewayBackendHealthServer(address, ipConfiguration, health, healthProbeLog, )
-        OpenAPI.validate_property(ApplicationGatewayBackendHealthServer, Symbol("address"), address)
-        OpenAPI.validate_property(ApplicationGatewayBackendHealthServer, Symbol("ipConfiguration"), ipConfiguration)
-        OpenAPI.validate_property(ApplicationGatewayBackendHealthServer, Symbol("health"), health)
-        OpenAPI.validate_property(ApplicationGatewayBackendHealthServer, Symbol("healthProbeLog"), healthProbeLog)
-        return new(address, ipConfiguration, health, healthProbeLog, )
+        o = new(address, ipConfiguration, health, healthProbeLog, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayBackendHealthServer
 
 const _property_types_ApplicationGatewayBackendHealthServer = Dict{Symbol,String}(Symbol("address")=>"String", Symbol("ipConfiguration")=>"NetworkInterfaceIPConfiguration", Symbol("health")=>"String", Symbol("healthProbeLog")=>"String", )
 OpenAPI.property_type(::Type{ ApplicationGatewayBackendHealthServer }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayBackendHealthServer[name]))}
 
-function check_required(o::ApplicationGatewayBackendHealthServer)
+function OpenAPI.check_required(o::ApplicationGatewayBackendHealthServer)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayBackendHealthServer)
+    OpenAPI.validate_property(ApplicationGatewayBackendHealthServer, Symbol("address"), o.address)
+    OpenAPI.validate_property(ApplicationGatewayBackendHealthServer, Symbol("ipConfiguration"), o.ipConfiguration)
+    OpenAPI.validate_property(ApplicationGatewayBackendHealthServer, Symbol("health"), o.health)
+    OpenAPI.validate_property(ApplicationGatewayBackendHealthServer, Symbol("healthProbeLog"), o.healthProbeLog)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayBackendHealthServer }, name::Symbol, val)
+
+
+
     if name === Symbol("health")
         OpenAPI.validate_param(name, "ApplicationGatewayBackendHealthServer", :enum, val, ["Unknown", "Up", "Down", "Partial", "Draining"])
     end
+
+
 end

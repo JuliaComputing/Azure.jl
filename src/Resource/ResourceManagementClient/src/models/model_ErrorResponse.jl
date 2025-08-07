@@ -3,7 +3,7 @@
 
 
 @doc raw"""ErrorResponse
-The resource management error response.
+Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.)
 
     ErrorResponse(;
         code=nothing,
@@ -27,21 +27,31 @@ Base.@kwdef mutable struct ErrorResponse <: OpenAPI.APIModel
     additionalInfo::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ErrorAdditionalInfo} }
 
     function ErrorResponse(code, message, target, details, additionalInfo, )
-        OpenAPI.validate_property(ErrorResponse, Symbol("code"), code)
-        OpenAPI.validate_property(ErrorResponse, Symbol("message"), message)
-        OpenAPI.validate_property(ErrorResponse, Symbol("target"), target)
-        OpenAPI.validate_property(ErrorResponse, Symbol("details"), details)
-        OpenAPI.validate_property(ErrorResponse, Symbol("additionalInfo"), additionalInfo)
-        return new(code, message, target, details, additionalInfo, )
+        o = new(code, message, target, details, additionalInfo, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ErrorResponse
 
 const _property_types_ErrorResponse = Dict{Symbol,String}(Symbol("code")=>"String", Symbol("message")=>"String", Symbol("target")=>"String", Symbol("details")=>"Vector{ErrorResponse}", Symbol("additionalInfo")=>"Vector{ErrorAdditionalInfo}", )
 OpenAPI.property_type(::Type{ ErrorResponse }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ErrorResponse[name]))}
 
-function check_required(o::ErrorResponse)
+function OpenAPI.check_required(o::ErrorResponse)
     true
 end
 
+function OpenAPI.validate_properties(o::ErrorResponse)
+    OpenAPI.validate_property(ErrorResponse, Symbol("code"), o.code)
+    OpenAPI.validate_property(ErrorResponse, Symbol("message"), o.message)
+    OpenAPI.validate_property(ErrorResponse, Symbol("target"), o.target)
+    OpenAPI.validate_property(ErrorResponse, Symbol("details"), o.details)
+    OpenAPI.validate_property(ErrorResponse, Symbol("additionalInfo"), o.additionalInfo)
+end
+
 function OpenAPI.validate_property(::Type{ ErrorResponse }, name::Symbol, val)
+
+
+
+
+
 end

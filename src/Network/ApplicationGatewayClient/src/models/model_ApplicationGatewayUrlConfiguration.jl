@@ -21,19 +21,27 @@ Base.@kwdef mutable struct ApplicationGatewayUrlConfiguration <: OpenAPI.APIMode
     reroute::Union{Nothing, Bool} = nothing
 
     function ApplicationGatewayUrlConfiguration(modifiedPath, modifiedQueryString, reroute, )
-        OpenAPI.validate_property(ApplicationGatewayUrlConfiguration, Symbol("modifiedPath"), modifiedPath)
-        OpenAPI.validate_property(ApplicationGatewayUrlConfiguration, Symbol("modifiedQueryString"), modifiedQueryString)
-        OpenAPI.validate_property(ApplicationGatewayUrlConfiguration, Symbol("reroute"), reroute)
-        return new(modifiedPath, modifiedQueryString, reroute, )
+        o = new(modifiedPath, modifiedQueryString, reroute, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayUrlConfiguration
 
 const _property_types_ApplicationGatewayUrlConfiguration = Dict{Symbol,String}(Symbol("modifiedPath")=>"String", Symbol("modifiedQueryString")=>"String", Symbol("reroute")=>"Bool", )
 OpenAPI.property_type(::Type{ ApplicationGatewayUrlConfiguration }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayUrlConfiguration[name]))}
 
-function check_required(o::ApplicationGatewayUrlConfiguration)
+function OpenAPI.check_required(o::ApplicationGatewayUrlConfiguration)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayUrlConfiguration)
+    OpenAPI.validate_property(ApplicationGatewayUrlConfiguration, Symbol("modifiedPath"), o.modifiedPath)
+    OpenAPI.validate_property(ApplicationGatewayUrlConfiguration, Symbol("modifiedQueryString"), o.modifiedQueryString)
+    OpenAPI.validate_property(ApplicationGatewayUrlConfiguration, Symbol("reroute"), o.reroute)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayUrlConfiguration }, name::Symbol, val)
+
+
+
 end

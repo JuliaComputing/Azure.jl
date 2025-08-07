@@ -4,11 +4,13 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**gatewayLoadBalancer** | [***SubResource**](SubResource.md) |  | [optional] [default to nothing]
 **virtualNetworkTaps** | [**Vector{VirtualNetworkTap}**](VirtualNetworkTap.md) | The reference to Virtual Network Taps. | [optional] [default to nothing]
 **applicationGatewayBackendAddressPools** | [**Vector{ApplicationGatewayBackendAddressPool}**](ApplicationGatewayBackendAddressPool.md) | The reference to ApplicationGatewayBackendAddressPool resource. | [optional] [default to nothing]
 **loadBalancerBackendAddressPools** | [**Vector{BackendAddressPool2}**](BackendAddressPool2.md) | The reference to LoadBalancerBackendAddressPool resource. | [optional] [default to nothing]
 **loadBalancerInboundNatRules** | [**Vector{InboundNatRule2}**](InboundNatRule2.md) | A list of references of LoadBalancerInboundNatRules. | [optional] [default to nothing]
-**privateIPAddress** | **String** | Private IP address of the IP configuration. | [optional] [default to nothing]
+**privateIPAddress** | **String** | Private IP address of the IP configuration. It can be a single IP address or a CIDR block in the format &lt;address&gt;/&lt;prefix-length&gt;. | [optional] [default to nothing]
+**privateIPAddressPrefixLength** | **Int64** | The private IP address prefix length. If specified and the allocation method is dynamic, the service will allocate a CIDR block instead of a single IP address. | [optional] [default to nothing]
 **privateIPAllocationMethod** | [***IPAllocationMethod**](IPAllocationMethod.md) |  | [optional] [default to nothing]
 **privateIPAddressVersion** | [***IPVersion**](IPVersion.md) |  | [optional] [default to nothing]
 **subnet** | [***Subnet**](Subnet.md) |  | [optional] [default to nothing]

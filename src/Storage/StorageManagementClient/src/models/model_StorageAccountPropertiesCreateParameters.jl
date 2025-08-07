@@ -6,75 +6,172 @@
 The parameters used to create the storage account.
 
     StorageAccountPropertiesCreateParameters(;
+        allowedCopyScope=nothing,
+        publicNetworkAccess=nothing,
+        sasPolicy=nothing,
+        keyPolicy=nothing,
         customDomain=nothing,
         encryption=nothing,
         networkAcls=nothing,
         accessTier=nothing,
         azureFilesIdentityBasedAuthentication=nothing,
         supportsHttpsTrafficOnly=nothing,
+        isSftpEnabled=nothing,
+        isLocalUserEnabled=nothing,
+        enableExtendedGroups=nothing,
         isHnsEnabled=nothing,
         largeFileSharesState=nothing,
         routingPreference=nothing,
+        dualStackEndpointPreference=nothing,
         allowBlobPublicAccess=nothing,
         minimumTlsVersion=nothing,
+        allowSharedKeyAccess=nothing,
+        isNfsV3Enabled=nothing,
+        allowCrossTenantReplication=nothing,
+        defaultToOAuthAuthentication=nothing,
+        immutableStorageWithVersioning=nothing,
+        dnsEndpointType=nothing,
     )
 
+    - allowedCopyScope::String : Restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet.
+    - publicNetworkAccess::PublicNetworkAccess
+    - sasPolicy::SasPolicy
+    - keyPolicy::KeyPolicy
     - customDomain::CustomDomain
     - encryption::Encryption
     - networkAcls::NetworkRuleSet
-    - accessTier::String : Required for storage accounts where kind &#x3D; BlobStorage. The access tier used for billing.
+    - accessTier::String : Required for storage accounts where kind &#x3D; BlobStorage. The access tier is used for billing. The &#39;Premium&#39; access tier is the default value for premium block blobs storage account type and it cannot be changed for the premium block blobs storage account type.
     - azureFilesIdentityBasedAuthentication::AzureFilesIdentityBasedAuthentication
     - supportsHttpsTrafficOnly::Bool : Allows https traffic only to storage service if sets to true. The default value is true since API version 2019-04-01.
+    - isSftpEnabled::Bool : Enables Secure File Transfer Protocol, if set to true
+    - isLocalUserEnabled::Bool : Enables local users feature, if set to true
+    - enableExtendedGroups::Bool : Enables extended group support with local users feature, if set to true
     - isHnsEnabled::Bool : Account HierarchicalNamespace enabled if sets to true.
     - largeFileSharesState::String : Allow large file shares if sets to Enabled. It cannot be disabled once it is enabled.
     - routingPreference::RoutingPreference
-    - allowBlobPublicAccess::Bool : Allow or disallow public access to all blobs or containers in the storage account. The default interpretation is true for this property.
+    - dualStackEndpointPreference::DualStackEndpointPreference
+    - allowBlobPublicAccess::Bool : Allow or disallow public access to all blobs or containers in the storage account. The default interpretation is false for this property.
     - minimumTlsVersion::String : Set the minimum TLS version to be permitted on requests to storage. The default interpretation is TLS 1.0 for this property.
+    - allowSharedKeyAccess::Bool : Indicates whether the storage account permits requests to be authorized with the account access key via Shared Key. If false, then all requests, including shared access signatures, must be authorized with Azure Active Directory (Azure AD). The default value is null, which is equivalent to true.
+    - isNfsV3Enabled::Bool : NFS 3.0 protocol support enabled if set to true.
+    - allowCrossTenantReplication::Bool : Allow or disallow cross AAD tenant object replication. Set this property to true for new or existing accounts only if object replication policies will involve storage accounts in different AAD tenants. The default interpretation is false for new accounts to follow best security practices by default.
+    - defaultToOAuthAuthentication::Bool : A boolean flag which indicates whether the default authentication is OAuth or not. The default interpretation is false for this property.
+    - immutableStorageWithVersioning::ImmutableStorageAccount
+    - dnsEndpointType::String : Allows you to specify the type of endpoint. Set this to AzureDNSZone to create a large number of accounts in a single subscription, which creates accounts in an Azure DNS Zone and the endpoint URL will have an alphanumeric DNS Zone identifier.
 """
 Base.@kwdef mutable struct StorageAccountPropertiesCreateParameters <: OpenAPI.APIModel
+    allowedCopyScope::Union{Nothing, String} = nothing
+    publicNetworkAccess = nothing # spec type: Union{ Nothing, PublicNetworkAccess }
+    sasPolicy = nothing # spec type: Union{ Nothing, SasPolicy }
+    keyPolicy = nothing # spec type: Union{ Nothing, KeyPolicy }
     customDomain = nothing # spec type: Union{ Nothing, CustomDomain }
     encryption = nothing # spec type: Union{ Nothing, Encryption }
     networkAcls = nothing # spec type: Union{ Nothing, NetworkRuleSet }
     accessTier::Union{Nothing, String} = nothing
     azureFilesIdentityBasedAuthentication = nothing # spec type: Union{ Nothing, AzureFilesIdentityBasedAuthentication }
     supportsHttpsTrafficOnly::Union{Nothing, Bool} = nothing
+    isSftpEnabled::Union{Nothing, Bool} = nothing
+    isLocalUserEnabled::Union{Nothing, Bool} = nothing
+    enableExtendedGroups::Union{Nothing, Bool} = nothing
     isHnsEnabled::Union{Nothing, Bool} = nothing
     largeFileSharesState::Union{Nothing, String} = nothing
     routingPreference = nothing # spec type: Union{ Nothing, RoutingPreference }
+    dualStackEndpointPreference = nothing # spec type: Union{ Nothing, DualStackEndpointPreference }
     allowBlobPublicAccess::Union{Nothing, Bool} = nothing
     minimumTlsVersion::Union{Nothing, String} = nothing
+    allowSharedKeyAccess::Union{Nothing, Bool} = nothing
+    isNfsV3Enabled::Union{Nothing, Bool} = nothing
+    allowCrossTenantReplication::Union{Nothing, Bool} = nothing
+    defaultToOAuthAuthentication::Union{Nothing, Bool} = nothing
+    immutableStorageWithVersioning = nothing # spec type: Union{ Nothing, ImmutableStorageAccount }
+    dnsEndpointType::Union{Nothing, String} = nothing
 
-    function StorageAccountPropertiesCreateParameters(customDomain, encryption, networkAcls, accessTier, azureFilesIdentityBasedAuthentication, supportsHttpsTrafficOnly, isHnsEnabled, largeFileSharesState, routingPreference, allowBlobPublicAccess, minimumTlsVersion, )
-        OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("customDomain"), customDomain)
-        OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("encryption"), encryption)
-        OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("networkAcls"), networkAcls)
-        OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("accessTier"), accessTier)
-        OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("azureFilesIdentityBasedAuthentication"), azureFilesIdentityBasedAuthentication)
-        OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("supportsHttpsTrafficOnly"), supportsHttpsTrafficOnly)
-        OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("isHnsEnabled"), isHnsEnabled)
-        OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("largeFileSharesState"), largeFileSharesState)
-        OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("routingPreference"), routingPreference)
-        OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("allowBlobPublicAccess"), allowBlobPublicAccess)
-        OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("minimumTlsVersion"), minimumTlsVersion)
-        return new(customDomain, encryption, networkAcls, accessTier, azureFilesIdentityBasedAuthentication, supportsHttpsTrafficOnly, isHnsEnabled, largeFileSharesState, routingPreference, allowBlobPublicAccess, minimumTlsVersion, )
+    function StorageAccountPropertiesCreateParameters(allowedCopyScope, publicNetworkAccess, sasPolicy, keyPolicy, customDomain, encryption, networkAcls, accessTier, azureFilesIdentityBasedAuthentication, supportsHttpsTrafficOnly, isSftpEnabled, isLocalUserEnabled, enableExtendedGroups, isHnsEnabled, largeFileSharesState, routingPreference, dualStackEndpointPreference, allowBlobPublicAccess, minimumTlsVersion, allowSharedKeyAccess, isNfsV3Enabled, allowCrossTenantReplication, defaultToOAuthAuthentication, immutableStorageWithVersioning, dnsEndpointType, )
+        o = new(allowedCopyScope, publicNetworkAccess, sasPolicy, keyPolicy, customDomain, encryption, networkAcls, accessTier, azureFilesIdentityBasedAuthentication, supportsHttpsTrafficOnly, isSftpEnabled, isLocalUserEnabled, enableExtendedGroups, isHnsEnabled, largeFileSharesState, routingPreference, dualStackEndpointPreference, allowBlobPublicAccess, minimumTlsVersion, allowSharedKeyAccess, isNfsV3Enabled, allowCrossTenantReplication, defaultToOAuthAuthentication, immutableStorageWithVersioning, dnsEndpointType, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type StorageAccountPropertiesCreateParameters
 
-const _property_types_StorageAccountPropertiesCreateParameters = Dict{Symbol,String}(Symbol("customDomain")=>"CustomDomain", Symbol("encryption")=>"Encryption", Symbol("networkAcls")=>"NetworkRuleSet", Symbol("accessTier")=>"String", Symbol("azureFilesIdentityBasedAuthentication")=>"AzureFilesIdentityBasedAuthentication", Symbol("supportsHttpsTrafficOnly")=>"Bool", Symbol("isHnsEnabled")=>"Bool", Symbol("largeFileSharesState")=>"String", Symbol("routingPreference")=>"RoutingPreference", Symbol("allowBlobPublicAccess")=>"Bool", Symbol("minimumTlsVersion")=>"String", )
+const _property_types_StorageAccountPropertiesCreateParameters = Dict{Symbol,String}(Symbol("allowedCopyScope")=>"String", Symbol("publicNetworkAccess")=>"PublicNetworkAccess", Symbol("sasPolicy")=>"SasPolicy", Symbol("keyPolicy")=>"KeyPolicy", Symbol("customDomain")=>"CustomDomain", Symbol("encryption")=>"Encryption", Symbol("networkAcls")=>"NetworkRuleSet", Symbol("accessTier")=>"String", Symbol("azureFilesIdentityBasedAuthentication")=>"AzureFilesIdentityBasedAuthentication", Symbol("supportsHttpsTrafficOnly")=>"Bool", Symbol("isSftpEnabled")=>"Bool", Symbol("isLocalUserEnabled")=>"Bool", Symbol("enableExtendedGroups")=>"Bool", Symbol("isHnsEnabled")=>"Bool", Symbol("largeFileSharesState")=>"String", Symbol("routingPreference")=>"RoutingPreference", Symbol("dualStackEndpointPreference")=>"DualStackEndpointPreference", Symbol("allowBlobPublicAccess")=>"Bool", Symbol("minimumTlsVersion")=>"String", Symbol("allowSharedKeyAccess")=>"Bool", Symbol("isNfsV3Enabled")=>"Bool", Symbol("allowCrossTenantReplication")=>"Bool", Symbol("defaultToOAuthAuthentication")=>"Bool", Symbol("immutableStorageWithVersioning")=>"ImmutableStorageAccount", Symbol("dnsEndpointType")=>"String", )
 OpenAPI.property_type(::Type{ StorageAccountPropertiesCreateParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_StorageAccountPropertiesCreateParameters[name]))}
 
-function check_required(o::StorageAccountPropertiesCreateParameters)
+function OpenAPI.check_required(o::StorageAccountPropertiesCreateParameters)
     true
 end
 
+function OpenAPI.validate_properties(o::StorageAccountPropertiesCreateParameters)
+    OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("allowedCopyScope"), o.allowedCopyScope)
+    OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("publicNetworkAccess"), o.publicNetworkAccess)
+    OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("sasPolicy"), o.sasPolicy)
+    OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("keyPolicy"), o.keyPolicy)
+    OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("customDomain"), o.customDomain)
+    OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("encryption"), o.encryption)
+    OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("networkAcls"), o.networkAcls)
+    OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("accessTier"), o.accessTier)
+    OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("azureFilesIdentityBasedAuthentication"), o.azureFilesIdentityBasedAuthentication)
+    OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("supportsHttpsTrafficOnly"), o.supportsHttpsTrafficOnly)
+    OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("isSftpEnabled"), o.isSftpEnabled)
+    OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("isLocalUserEnabled"), o.isLocalUserEnabled)
+    OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("enableExtendedGroups"), o.enableExtendedGroups)
+    OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("isHnsEnabled"), o.isHnsEnabled)
+    OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("largeFileSharesState"), o.largeFileSharesState)
+    OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("routingPreference"), o.routingPreference)
+    OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("dualStackEndpointPreference"), o.dualStackEndpointPreference)
+    OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("allowBlobPublicAccess"), o.allowBlobPublicAccess)
+    OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("minimumTlsVersion"), o.minimumTlsVersion)
+    OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("allowSharedKeyAccess"), o.allowSharedKeyAccess)
+    OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("isNfsV3Enabled"), o.isNfsV3Enabled)
+    OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("allowCrossTenantReplication"), o.allowCrossTenantReplication)
+    OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("defaultToOAuthAuthentication"), o.defaultToOAuthAuthentication)
+    OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("immutableStorageWithVersioning"), o.immutableStorageWithVersioning)
+    OpenAPI.validate_property(StorageAccountPropertiesCreateParameters, Symbol("dnsEndpointType"), o.dnsEndpointType)
+end
+
 function OpenAPI.validate_property(::Type{ StorageAccountPropertiesCreateParameters }, name::Symbol, val)
-    if name === Symbol("accessTier")
-        OpenAPI.validate_param(name, "StorageAccountPropertiesCreateParameters", :enum, val, ["Hot", "Cool"])
+
+    if name === Symbol("allowedCopyScope")
+        OpenAPI.validate_param(name, "StorageAccountPropertiesCreateParameters", :enum, val, ["PrivateLink", "AAD"])
     end
+
+
+
+
+
+
+
+
+    if name === Symbol("accessTier")
+        OpenAPI.validate_param(name, "StorageAccountPropertiesCreateParameters", :enum, val, ["Hot", "Cool", "Premium", "Cold"])
+    end
+
+
+
+
+
+
+
+
     if name === Symbol("largeFileSharesState")
         OpenAPI.validate_param(name, "StorageAccountPropertiesCreateParameters", :enum, val, ["Disabled", "Enabled"])
     end
+
+
+
+
+
     if name === Symbol("minimumTlsVersion")
-        OpenAPI.validate_param(name, "StorageAccountPropertiesCreateParameters", :enum, val, ["TLS1_0", "TLS1_1", "TLS1_2"])
+        OpenAPI.validate_param(name, "StorageAccountPropertiesCreateParameters", :enum, val, ["TLS1_0", "TLS1_1", "TLS1_2", "TLS1_3"])
     end
+
+
+
+
+
+
+
+    if name === Symbol("dnsEndpointType")
+        OpenAPI.validate_param(name, "StorageAccountPropertiesCreateParameters", :enum, val, ["Standard", "AzureDnsZone"])
+    end
+
 end

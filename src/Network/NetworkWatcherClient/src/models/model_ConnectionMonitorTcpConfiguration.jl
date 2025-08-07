@@ -8,28 +8,51 @@ Describes the TCP configuration.
     ConnectionMonitorTcpConfiguration(;
         port=nothing,
         disableTraceRoute=nothing,
+        destinationPortBehavior=nothing,
     )
 
     - port::Int64 : The port to connect to.
     - disableTraceRoute::Bool : Value indicating whether path evaluation with trace route should be disabled.
+    - destinationPortBehavior::String : Destination port behavior.
 """
 Base.@kwdef mutable struct ConnectionMonitorTcpConfiguration <: OpenAPI.APIModel
     port::Union{Nothing, Int64} = nothing
     disableTraceRoute::Union{Nothing, Bool} = nothing
+    destinationPortBehavior::Union{Nothing, String} = nothing
 
-    function ConnectionMonitorTcpConfiguration(port, disableTraceRoute, )
-        OpenAPI.validate_property(ConnectionMonitorTcpConfiguration, Symbol("port"), port)
-        OpenAPI.validate_property(ConnectionMonitorTcpConfiguration, Symbol("disableTraceRoute"), disableTraceRoute)
-        return new(port, disableTraceRoute, )
+    function ConnectionMonitorTcpConfiguration(port, disableTraceRoute, destinationPortBehavior, )
+        o = new(port, disableTraceRoute, destinationPortBehavior, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ConnectionMonitorTcpConfiguration
 
-const _property_types_ConnectionMonitorTcpConfiguration = Dict{Symbol,String}(Symbol("port")=>"Int64", Symbol("disableTraceRoute")=>"Bool", )
+const _property_types_ConnectionMonitorTcpConfiguration = Dict{Symbol,String}(Symbol("port")=>"Int64", Symbol("disableTraceRoute")=>"Bool", Symbol("destinationPortBehavior")=>"String", )
 OpenAPI.property_type(::Type{ ConnectionMonitorTcpConfiguration }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ConnectionMonitorTcpConfiguration[name]))}
 
-function check_required(o::ConnectionMonitorTcpConfiguration)
+function OpenAPI.check_required(o::ConnectionMonitorTcpConfiguration)
     true
 end
 
+function OpenAPI.validate_properties(o::ConnectionMonitorTcpConfiguration)
+    OpenAPI.validate_property(ConnectionMonitorTcpConfiguration, Symbol("port"), o.port)
+    OpenAPI.validate_property(ConnectionMonitorTcpConfiguration, Symbol("disableTraceRoute"), o.disableTraceRoute)
+    OpenAPI.validate_property(ConnectionMonitorTcpConfiguration, Symbol("destinationPortBehavior"), o.destinationPortBehavior)
+end
+
 function OpenAPI.validate_property(::Type{ ConnectionMonitorTcpConfiguration }, name::Symbol, val)
+
+    if name === Symbol("port")
+        OpenAPI.validate_param(name, "ConnectionMonitorTcpConfiguration", :format, val, "int32")
+    end
+    if name === Symbol("port")
+        OpenAPI.validate_param(name, "ConnectionMonitorTcpConfiguration", :maximum, val, 65535, false)
+        OpenAPI.validate_param(name, "ConnectionMonitorTcpConfiguration", :minimum, val, 0, false)
+    end
+
+
+    if name === Symbol("destinationPortBehavior")
+        OpenAPI.validate_param(name, "ConnectionMonitorTcpConfiguration", :enum, val, ["None", "ListenIfAvailable"])
+    end
+
 end

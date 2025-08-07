@@ -21,19 +21,27 @@ Base.@kwdef mutable struct GenericResourceFilter <: OpenAPI.APIModel
     tagvalue::Union{Nothing, String} = nothing
 
     function GenericResourceFilter(resourceType, tagname, tagvalue, )
-        OpenAPI.validate_property(GenericResourceFilter, Symbol("resourceType"), resourceType)
-        OpenAPI.validate_property(GenericResourceFilter, Symbol("tagname"), tagname)
-        OpenAPI.validate_property(GenericResourceFilter, Symbol("tagvalue"), tagvalue)
-        return new(resourceType, tagname, tagvalue, )
+        o = new(resourceType, tagname, tagvalue, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type GenericResourceFilter
 
 const _property_types_GenericResourceFilter = Dict{Symbol,String}(Symbol("resourceType")=>"String", Symbol("tagname")=>"String", Symbol("tagvalue")=>"String", )
 OpenAPI.property_type(::Type{ GenericResourceFilter }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_GenericResourceFilter[name]))}
 
-function check_required(o::GenericResourceFilter)
+function OpenAPI.check_required(o::GenericResourceFilter)
     true
 end
 
+function OpenAPI.validate_properties(o::GenericResourceFilter)
+    OpenAPI.validate_property(GenericResourceFilter, Symbol("resourceType"), o.resourceType)
+    OpenAPI.validate_property(GenericResourceFilter, Symbol("tagname"), o.tagname)
+    OpenAPI.validate_property(GenericResourceFilter, Symbol("tagvalue"), o.tagvalue)
+end
+
 function OpenAPI.validate_property(::Type{ GenericResourceFilter }, name::Symbol, val)
+
+
+
 end

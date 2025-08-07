@@ -6,11 +6,13 @@
 Properties of IP configuration.
 
     NetworkInterfaceIPConfigurationPropertiesFormat2(;
+        gatewayLoadBalancer=nothing,
         virtualNetworkTaps=nothing,
         applicationGatewayBackendAddressPools=nothing,
         loadBalancerBackendAddressPools=nothing,
         loadBalancerInboundNatRules=nothing,
         privateIPAddress=nothing,
+        privateIPAddressPrefixLength=nothing,
         privateIPAllocationMethod=nothing,
         privateIPAddressVersion=nothing,
         subnet=nothing,
@@ -21,11 +23,13 @@ Properties of IP configuration.
         privateLinkConnectionProperties=nothing,
     )
 
+    - gatewayLoadBalancer::SubResource
     - virtualNetworkTaps::Vector{VirtualNetworkTap} : The reference to Virtual Network Taps.
     - applicationGatewayBackendAddressPools::Vector{ApplicationGatewayBackendAddressPool} : The reference to ApplicationGatewayBackendAddressPool resource.
     - loadBalancerBackendAddressPools::Vector{BackendAddressPool} : The reference to LoadBalancerBackendAddressPool resource.
     - loadBalancerInboundNatRules::Vector{InboundNatRule} : A list of references of LoadBalancerInboundNatRules.
-    - privateIPAddress::String : Private IP address of the IP configuration.
+    - privateIPAddress::String : Private IP address of the IP configuration. It can be a single IP address or a CIDR block in the format &lt;address&gt;/&lt;prefix-length&gt;.
+    - privateIPAddressPrefixLength::Int64 : The private IP address prefix length. If specified and the allocation method is dynamic, the service will allocate a CIDR block instead of a single IP address.
     - privateIPAllocationMethod::IPAllocationMethod
     - privateIPAddressVersion::IPVersion
     - subnet::Subnet
@@ -36,11 +40,13 @@ Properties of IP configuration.
     - privateLinkConnectionProperties::NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties2
 """
 Base.@kwdef mutable struct NetworkInterfaceIPConfigurationPropertiesFormat2 <: OpenAPI.APIModel
+    gatewayLoadBalancer = nothing # spec type: Union{ Nothing, SubResource }
     virtualNetworkTaps::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{VirtualNetworkTap} }
     applicationGatewayBackendAddressPools::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ApplicationGatewayBackendAddressPool} }
     loadBalancerBackendAddressPools::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{BackendAddressPool} }
     loadBalancerInboundNatRules::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{InboundNatRule} }
     privateIPAddress::Union{Nothing, String} = nothing
+    privateIPAddressPrefixLength::Union{Nothing, Int64} = nothing
     privateIPAllocationMethod = nothing # spec type: Union{ Nothing, IPAllocationMethod }
     privateIPAddressVersion = nothing # spec type: Union{ Nothing, IPVersion }
     subnet = nothing # spec type: Union{ Nothing, Subnet }
@@ -50,30 +56,59 @@ Base.@kwdef mutable struct NetworkInterfaceIPConfigurationPropertiesFormat2 <: O
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
     privateLinkConnectionProperties = nothing # spec type: Union{ Nothing, NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties2 }
 
-    function NetworkInterfaceIPConfigurationPropertiesFormat2(virtualNetworkTaps, applicationGatewayBackendAddressPools, loadBalancerBackendAddressPools, loadBalancerInboundNatRules, privateIPAddress, privateIPAllocationMethod, privateIPAddressVersion, subnet, primary, publicIPAddress, applicationSecurityGroups, provisioningState, privateLinkConnectionProperties, )
-        OpenAPI.validate_property(NetworkInterfaceIPConfigurationPropertiesFormat2, Symbol("virtualNetworkTaps"), virtualNetworkTaps)
-        OpenAPI.validate_property(NetworkInterfaceIPConfigurationPropertiesFormat2, Symbol("applicationGatewayBackendAddressPools"), applicationGatewayBackendAddressPools)
-        OpenAPI.validate_property(NetworkInterfaceIPConfigurationPropertiesFormat2, Symbol("loadBalancerBackendAddressPools"), loadBalancerBackendAddressPools)
-        OpenAPI.validate_property(NetworkInterfaceIPConfigurationPropertiesFormat2, Symbol("loadBalancerInboundNatRules"), loadBalancerInboundNatRules)
-        OpenAPI.validate_property(NetworkInterfaceIPConfigurationPropertiesFormat2, Symbol("privateIPAddress"), privateIPAddress)
-        OpenAPI.validate_property(NetworkInterfaceIPConfigurationPropertiesFormat2, Symbol("privateIPAllocationMethod"), privateIPAllocationMethod)
-        OpenAPI.validate_property(NetworkInterfaceIPConfigurationPropertiesFormat2, Symbol("privateIPAddressVersion"), privateIPAddressVersion)
-        OpenAPI.validate_property(NetworkInterfaceIPConfigurationPropertiesFormat2, Symbol("subnet"), subnet)
-        OpenAPI.validate_property(NetworkInterfaceIPConfigurationPropertiesFormat2, Symbol("primary"), primary)
-        OpenAPI.validate_property(NetworkInterfaceIPConfigurationPropertiesFormat2, Symbol("publicIPAddress"), publicIPAddress)
-        OpenAPI.validate_property(NetworkInterfaceIPConfigurationPropertiesFormat2, Symbol("applicationSecurityGroups"), applicationSecurityGroups)
-        OpenAPI.validate_property(NetworkInterfaceIPConfigurationPropertiesFormat2, Symbol("provisioningState"), provisioningState)
-        OpenAPI.validate_property(NetworkInterfaceIPConfigurationPropertiesFormat2, Symbol("privateLinkConnectionProperties"), privateLinkConnectionProperties)
-        return new(virtualNetworkTaps, applicationGatewayBackendAddressPools, loadBalancerBackendAddressPools, loadBalancerInboundNatRules, privateIPAddress, privateIPAllocationMethod, privateIPAddressVersion, subnet, primary, publicIPAddress, applicationSecurityGroups, provisioningState, privateLinkConnectionProperties, )
+    function NetworkInterfaceIPConfigurationPropertiesFormat2(gatewayLoadBalancer, virtualNetworkTaps, applicationGatewayBackendAddressPools, loadBalancerBackendAddressPools, loadBalancerInboundNatRules, privateIPAddress, privateIPAddressPrefixLength, privateIPAllocationMethod, privateIPAddressVersion, subnet, primary, publicIPAddress, applicationSecurityGroups, provisioningState, privateLinkConnectionProperties, )
+        o = new(gatewayLoadBalancer, virtualNetworkTaps, applicationGatewayBackendAddressPools, loadBalancerBackendAddressPools, loadBalancerInboundNatRules, privateIPAddress, privateIPAddressPrefixLength, privateIPAllocationMethod, privateIPAddressVersion, subnet, primary, publicIPAddress, applicationSecurityGroups, provisioningState, privateLinkConnectionProperties, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type NetworkInterfaceIPConfigurationPropertiesFormat2
 
-const _property_types_NetworkInterfaceIPConfigurationPropertiesFormat2 = Dict{Symbol,String}(Symbol("virtualNetworkTaps")=>"Vector{VirtualNetworkTap}", Symbol("applicationGatewayBackendAddressPools")=>"Vector{ApplicationGatewayBackendAddressPool}", Symbol("loadBalancerBackendAddressPools")=>"Vector{BackendAddressPool}", Symbol("loadBalancerInboundNatRules")=>"Vector{InboundNatRule}", Symbol("privateIPAddress")=>"String", Symbol("privateIPAllocationMethod")=>"IPAllocationMethod", Symbol("privateIPAddressVersion")=>"IPVersion", Symbol("subnet")=>"Subnet", Symbol("primary")=>"Bool", Symbol("publicIPAddress")=>"PublicIPAddress", Symbol("applicationSecurityGroups")=>"Vector{ApplicationSecurityGroup}", Symbol("provisioningState")=>"ProvisioningState", Symbol("privateLinkConnectionProperties")=>"NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties2", )
+const _property_types_NetworkInterfaceIPConfigurationPropertiesFormat2 = Dict{Symbol,String}(Symbol("gatewayLoadBalancer")=>"SubResource", Symbol("virtualNetworkTaps")=>"Vector{VirtualNetworkTap}", Symbol("applicationGatewayBackendAddressPools")=>"Vector{ApplicationGatewayBackendAddressPool}", Symbol("loadBalancerBackendAddressPools")=>"Vector{BackendAddressPool}", Symbol("loadBalancerInboundNatRules")=>"Vector{InboundNatRule}", Symbol("privateIPAddress")=>"String", Symbol("privateIPAddressPrefixLength")=>"Int64", Symbol("privateIPAllocationMethod")=>"IPAllocationMethod", Symbol("privateIPAddressVersion")=>"IPVersion", Symbol("subnet")=>"Subnet", Symbol("primary")=>"Bool", Symbol("publicIPAddress")=>"PublicIPAddress", Symbol("applicationSecurityGroups")=>"Vector{ApplicationSecurityGroup}", Symbol("provisioningState")=>"ProvisioningState", Symbol("privateLinkConnectionProperties")=>"NetworkInterfaceIPConfigurationPrivateLinkConnectionProperties2", )
 OpenAPI.property_type(::Type{ NetworkInterfaceIPConfigurationPropertiesFormat2 }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkInterfaceIPConfigurationPropertiesFormat2[name]))}
 
-function check_required(o::NetworkInterfaceIPConfigurationPropertiesFormat2)
+function OpenAPI.check_required(o::NetworkInterfaceIPConfigurationPropertiesFormat2)
     true
 end
 
+function OpenAPI.validate_properties(o::NetworkInterfaceIPConfigurationPropertiesFormat2)
+    OpenAPI.validate_property(NetworkInterfaceIPConfigurationPropertiesFormat2, Symbol("gatewayLoadBalancer"), o.gatewayLoadBalancer)
+    OpenAPI.validate_property(NetworkInterfaceIPConfigurationPropertiesFormat2, Symbol("virtualNetworkTaps"), o.virtualNetworkTaps)
+    OpenAPI.validate_property(NetworkInterfaceIPConfigurationPropertiesFormat2, Symbol("applicationGatewayBackendAddressPools"), o.applicationGatewayBackendAddressPools)
+    OpenAPI.validate_property(NetworkInterfaceIPConfigurationPropertiesFormat2, Symbol("loadBalancerBackendAddressPools"), o.loadBalancerBackendAddressPools)
+    OpenAPI.validate_property(NetworkInterfaceIPConfigurationPropertiesFormat2, Symbol("loadBalancerInboundNatRules"), o.loadBalancerInboundNatRules)
+    OpenAPI.validate_property(NetworkInterfaceIPConfigurationPropertiesFormat2, Symbol("privateIPAddress"), o.privateIPAddress)
+    OpenAPI.validate_property(NetworkInterfaceIPConfigurationPropertiesFormat2, Symbol("privateIPAddressPrefixLength"), o.privateIPAddressPrefixLength)
+    OpenAPI.validate_property(NetworkInterfaceIPConfigurationPropertiesFormat2, Symbol("privateIPAllocationMethod"), o.privateIPAllocationMethod)
+    OpenAPI.validate_property(NetworkInterfaceIPConfigurationPropertiesFormat2, Symbol("privateIPAddressVersion"), o.privateIPAddressVersion)
+    OpenAPI.validate_property(NetworkInterfaceIPConfigurationPropertiesFormat2, Symbol("subnet"), o.subnet)
+    OpenAPI.validate_property(NetworkInterfaceIPConfigurationPropertiesFormat2, Symbol("primary"), o.primary)
+    OpenAPI.validate_property(NetworkInterfaceIPConfigurationPropertiesFormat2, Symbol("publicIPAddress"), o.publicIPAddress)
+    OpenAPI.validate_property(NetworkInterfaceIPConfigurationPropertiesFormat2, Symbol("applicationSecurityGroups"), o.applicationSecurityGroups)
+    OpenAPI.validate_property(NetworkInterfaceIPConfigurationPropertiesFormat2, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(NetworkInterfaceIPConfigurationPropertiesFormat2, Symbol("privateLinkConnectionProperties"), o.privateLinkConnectionProperties)
+end
+
 function OpenAPI.validate_property(::Type{ NetworkInterfaceIPConfigurationPropertiesFormat2 }, name::Symbol, val)
+
+
+
+
+
+
+
+    if name === Symbol("privateIPAddressPrefixLength")
+        OpenAPI.validate_param(name, "NetworkInterfaceIPConfigurationPropertiesFormat2", :format, val, "int32")
+    end
+    if name === Symbol("privateIPAddressPrefixLength")
+        OpenAPI.validate_param(name, "NetworkInterfaceIPConfigurationPropertiesFormat2", :maximum, val, 128, false)
+        OpenAPI.validate_param(name, "NetworkInterfaceIPConfigurationPropertiesFormat2", :minimum, val, 1, false)
+    end
+
+
+
+
+
+
+
+
 end

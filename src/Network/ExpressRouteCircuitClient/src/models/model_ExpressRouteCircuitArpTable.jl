@@ -24,23 +24,32 @@ Base.@kwdef mutable struct ExpressRouteCircuitArpTable <: OpenAPI.APIModel
     macAddress::Union{Nothing, String} = nothing
 
     function ExpressRouteCircuitArpTable(age, interface, ipAddress, macAddress, )
-        OpenAPI.validate_property(ExpressRouteCircuitArpTable, Symbol("age"), age)
-        OpenAPI.validate_property(ExpressRouteCircuitArpTable, Symbol("interface"), interface)
-        OpenAPI.validate_property(ExpressRouteCircuitArpTable, Symbol("ipAddress"), ipAddress)
-        OpenAPI.validate_property(ExpressRouteCircuitArpTable, Symbol("macAddress"), macAddress)
-        return new(age, interface, ipAddress, macAddress, )
+        o = new(age, interface, ipAddress, macAddress, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ExpressRouteCircuitArpTable
 
 const _property_types_ExpressRouteCircuitArpTable = Dict{Symbol,String}(Symbol("age")=>"Int64", Symbol("interface")=>"String", Symbol("ipAddress")=>"String", Symbol("macAddress")=>"String", )
 OpenAPI.property_type(::Type{ ExpressRouteCircuitArpTable }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExpressRouteCircuitArpTable[name]))}
 
-function check_required(o::ExpressRouteCircuitArpTable)
+function OpenAPI.check_required(o::ExpressRouteCircuitArpTable)
     true
 end
 
+function OpenAPI.validate_properties(o::ExpressRouteCircuitArpTable)
+    OpenAPI.validate_property(ExpressRouteCircuitArpTable, Symbol("age"), o.age)
+    OpenAPI.validate_property(ExpressRouteCircuitArpTable, Symbol("interface"), o.interface)
+    OpenAPI.validate_property(ExpressRouteCircuitArpTable, Symbol("ipAddress"), o.ipAddress)
+    OpenAPI.validate_property(ExpressRouteCircuitArpTable, Symbol("macAddress"), o.macAddress)
+end
+
 function OpenAPI.validate_property(::Type{ ExpressRouteCircuitArpTable }, name::Symbol, val)
+
     if name === Symbol("age")
         OpenAPI.validate_param(name, "ExpressRouteCircuitArpTable", :format, val, "int32")
     end
+
+
+
 end

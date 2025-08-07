@@ -18,18 +18,25 @@ Base.@kwdef mutable struct AvailableProvidersListCity <: OpenAPI.APIModel
     providers::Union{Nothing, Vector{String}} = nothing
 
     function AvailableProvidersListCity(cityName, providers, )
-        OpenAPI.validate_property(AvailableProvidersListCity, Symbol("cityName"), cityName)
-        OpenAPI.validate_property(AvailableProvidersListCity, Symbol("providers"), providers)
-        return new(cityName, providers, )
+        o = new(cityName, providers, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AvailableProvidersListCity
 
 const _property_types_AvailableProvidersListCity = Dict{Symbol,String}(Symbol("cityName")=>"String", Symbol("providers")=>"Vector{String}", )
 OpenAPI.property_type(::Type{ AvailableProvidersListCity }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AvailableProvidersListCity[name]))}
 
-function check_required(o::AvailableProvidersListCity)
+function OpenAPI.check_required(o::AvailableProvidersListCity)
     true
 end
 
+function OpenAPI.validate_properties(o::AvailableProvidersListCity)
+    OpenAPI.validate_property(AvailableProvidersListCity, Symbol("cityName"), o.cityName)
+    OpenAPI.validate_property(AvailableProvidersListCity, Symbol("providers"), o.providers)
+end
+
 function OpenAPI.validate_property(::Type{ AvailableProvidersListCity }, name::Symbol, val)
+
+
 end

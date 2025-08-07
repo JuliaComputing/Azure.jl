@@ -27,21 +27,31 @@ Base.@kwdef mutable struct Error <: OpenAPI.APIModel
     innerError::Union{Nothing, String} = nothing
 
     function Error(code, message, target, details, innerError, )
-        OpenAPI.validate_property(Error, Symbol("code"), code)
-        OpenAPI.validate_property(Error, Symbol("message"), message)
-        OpenAPI.validate_property(Error, Symbol("target"), target)
-        OpenAPI.validate_property(Error, Symbol("details"), details)
-        OpenAPI.validate_property(Error, Symbol("innerError"), innerError)
-        return new(code, message, target, details, innerError, )
+        o = new(code, message, target, details, innerError, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type Error
 
 const _property_types_Error = Dict{Symbol,String}(Symbol("code")=>"String", Symbol("message")=>"String", Symbol("target")=>"String", Symbol("details")=>"Vector{ErrorDetails}", Symbol("innerError")=>"String", )
 OpenAPI.property_type(::Type{ Error }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Error[name]))}
 
-function check_required(o::Error)
+function OpenAPI.check_required(o::Error)
     true
 end
 
+function OpenAPI.validate_properties(o::Error)
+    OpenAPI.validate_property(Error, Symbol("code"), o.code)
+    OpenAPI.validate_property(Error, Symbol("message"), o.message)
+    OpenAPI.validate_property(Error, Symbol("target"), o.target)
+    OpenAPI.validate_property(Error, Symbol("details"), o.details)
+    OpenAPI.validate_property(Error, Symbol("innerError"), o.innerError)
+end
+
 function OpenAPI.validate_property(::Type{ Error }, name::Symbol, val)
+
+
+
+
+
 end

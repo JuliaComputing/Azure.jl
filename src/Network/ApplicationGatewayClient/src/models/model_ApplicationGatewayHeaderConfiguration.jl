@@ -7,29 +7,41 @@ Header configuration of the Actions set in Application Gateway.
 
     ApplicationGatewayHeaderConfiguration(;
         headerName=nothing,
+        headerValueMatcher=nothing,
         headerValue=nothing,
     )
 
     - headerName::String : Header name of the header configuration.
+    - headerValueMatcher::HeaderValueMatcher
     - headerValue::String : Header value of the header configuration.
 """
 Base.@kwdef mutable struct ApplicationGatewayHeaderConfiguration <: OpenAPI.APIModel
     headerName::Union{Nothing, String} = nothing
+    headerValueMatcher = nothing # spec type: Union{ Nothing, HeaderValueMatcher }
     headerValue::Union{Nothing, String} = nothing
 
-    function ApplicationGatewayHeaderConfiguration(headerName, headerValue, )
-        OpenAPI.validate_property(ApplicationGatewayHeaderConfiguration, Symbol("headerName"), headerName)
-        OpenAPI.validate_property(ApplicationGatewayHeaderConfiguration, Symbol("headerValue"), headerValue)
-        return new(headerName, headerValue, )
+    function ApplicationGatewayHeaderConfiguration(headerName, headerValueMatcher, headerValue, )
+        o = new(headerName, headerValueMatcher, headerValue, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayHeaderConfiguration
 
-const _property_types_ApplicationGatewayHeaderConfiguration = Dict{Symbol,String}(Symbol("headerName")=>"String", Symbol("headerValue")=>"String", )
+const _property_types_ApplicationGatewayHeaderConfiguration = Dict{Symbol,String}(Symbol("headerName")=>"String", Symbol("headerValueMatcher")=>"HeaderValueMatcher", Symbol("headerValue")=>"String", )
 OpenAPI.property_type(::Type{ ApplicationGatewayHeaderConfiguration }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayHeaderConfiguration[name]))}
 
-function check_required(o::ApplicationGatewayHeaderConfiguration)
+function OpenAPI.check_required(o::ApplicationGatewayHeaderConfiguration)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayHeaderConfiguration)
+    OpenAPI.validate_property(ApplicationGatewayHeaderConfiguration, Symbol("headerName"), o.headerName)
+    OpenAPI.validate_property(ApplicationGatewayHeaderConfiguration, Symbol("headerValueMatcher"), o.headerValueMatcher)
+    OpenAPI.validate_property(ApplicationGatewayHeaderConfiguration, Symbol("headerValue"), o.headerValue)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayHeaderConfiguration }, name::Symbol, val)
+
+
+
 end

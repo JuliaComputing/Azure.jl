@@ -10,7 +10,9 @@ Load balancer probe resource.
         protocol=nothing,
         port=nothing,
         intervalInSeconds=nothing,
+        noHealthyBackendsBehavior=nothing,
         numberOfProbes=nothing,
+        probeThreshold=nothing,
         requestPath=nothing,
         provisioningState=nothing,
     )
@@ -19,7 +21,9 @@ Load balancer probe resource.
     - protocol::String : The protocol of the end point. If &#39;Tcp&#39; is specified, a received ACK is required for the probe to be successful. If &#39;Http&#39; or &#39;Https&#39; is specified, a 200 OK response from the specifies URI is required for the probe to be successful.
     - port::Int64 : The port for communicating the probe. Possible values range from 1 to 65535, inclusive.
     - intervalInSeconds::Int64 : The interval, in seconds, for how frequently to probe the endpoint for health status. Typically, the interval is slightly less than half the allocated timeout period (in seconds) which allows two full probes before taking the instance out of rotation. The default value is 15, the minimum value is 5.
+    - noHealthyBackendsBehavior::String : Determines how new connections are handled by the load balancer when all backend instances are probed down.
     - numberOfProbes::Int64 : The number of probes where if no response, will result in stopping further traffic from being delivered to the endpoint. This values allows endpoints to be taken out of rotation faster or slower than the typical times used in Azure.
+    - probeThreshold::Int64 : The number of consecutive successful or failed probes in order to allow or deny traffic from being delivered to this endpoint. After failing the number of consecutive probes equal to this value, the endpoint will be taken out of rotation and require the same number of successful consecutive probes to be placed back in rotation.
     - requestPath::String : The URI used for requesting health status from the VM. Path is required if a protocol is set to http. Otherwise, it is not allowed. There is no default value.
     - provisioningState::ProvisioningState
 """
@@ -28,42 +32,68 @@ Base.@kwdef mutable struct ProbePropertiesFormat <: OpenAPI.APIModel
     protocol::Union{Nothing, String} = nothing
     port::Union{Nothing, Int64} = nothing
     intervalInSeconds::Union{Nothing, Int64} = nothing
+    noHealthyBackendsBehavior::Union{Nothing, String} = nothing
     numberOfProbes::Union{Nothing, Int64} = nothing
+    probeThreshold::Union{Nothing, Int64} = nothing
     requestPath::Union{Nothing, String} = nothing
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
-    function ProbePropertiesFormat(loadBalancingRules, protocol, port, intervalInSeconds, numberOfProbes, requestPath, provisioningState, )
-        OpenAPI.validate_property(ProbePropertiesFormat, Symbol("loadBalancingRules"), loadBalancingRules)
-        OpenAPI.validate_property(ProbePropertiesFormat, Symbol("protocol"), protocol)
-        OpenAPI.validate_property(ProbePropertiesFormat, Symbol("port"), port)
-        OpenAPI.validate_property(ProbePropertiesFormat, Symbol("intervalInSeconds"), intervalInSeconds)
-        OpenAPI.validate_property(ProbePropertiesFormat, Symbol("numberOfProbes"), numberOfProbes)
-        OpenAPI.validate_property(ProbePropertiesFormat, Symbol("requestPath"), requestPath)
-        OpenAPI.validate_property(ProbePropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(loadBalancingRules, protocol, port, intervalInSeconds, numberOfProbes, requestPath, provisioningState, )
+    function ProbePropertiesFormat(loadBalancingRules, protocol, port, intervalInSeconds, noHealthyBackendsBehavior, numberOfProbes, probeThreshold, requestPath, provisioningState, )
+        o = new(loadBalancingRules, protocol, port, intervalInSeconds, noHealthyBackendsBehavior, numberOfProbes, probeThreshold, requestPath, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ProbePropertiesFormat
 
-const _property_types_ProbePropertiesFormat = Dict{Symbol,String}(Symbol("loadBalancingRules")=>"Vector{SubResource}", Symbol("protocol")=>"String", Symbol("port")=>"Int64", Symbol("intervalInSeconds")=>"Int64", Symbol("numberOfProbes")=>"Int64", Symbol("requestPath")=>"String", Symbol("provisioningState")=>"ProvisioningState", )
+const _property_types_ProbePropertiesFormat = Dict{Symbol,String}(Symbol("loadBalancingRules")=>"Vector{SubResource}", Symbol("protocol")=>"String", Symbol("port")=>"Int64", Symbol("intervalInSeconds")=>"Int64", Symbol("noHealthyBackendsBehavior")=>"String", Symbol("numberOfProbes")=>"Int64", Symbol("probeThreshold")=>"Int64", Symbol("requestPath")=>"String", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ ProbePropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ProbePropertiesFormat[name]))}
 
-function check_required(o::ProbePropertiesFormat)
+function OpenAPI.check_required(o::ProbePropertiesFormat)
     o.protocol === nothing && (return false)
     o.port === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ProbePropertiesFormat)
+    OpenAPI.validate_property(ProbePropertiesFormat, Symbol("loadBalancingRules"), o.loadBalancingRules)
+    OpenAPI.validate_property(ProbePropertiesFormat, Symbol("protocol"), o.protocol)
+    OpenAPI.validate_property(ProbePropertiesFormat, Symbol("port"), o.port)
+    OpenAPI.validate_property(ProbePropertiesFormat, Symbol("intervalInSeconds"), o.intervalInSeconds)
+    OpenAPI.validate_property(ProbePropertiesFormat, Symbol("noHealthyBackendsBehavior"), o.noHealthyBackendsBehavior)
+    OpenAPI.validate_property(ProbePropertiesFormat, Symbol("numberOfProbes"), o.numberOfProbes)
+    OpenAPI.validate_property(ProbePropertiesFormat, Symbol("probeThreshold"), o.probeThreshold)
+    OpenAPI.validate_property(ProbePropertiesFormat, Symbol("requestPath"), o.requestPath)
+    OpenAPI.validate_property(ProbePropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ ProbePropertiesFormat }, name::Symbol, val)
+
+
     if name === Symbol("protocol")
         OpenAPI.validate_param(name, "ProbePropertiesFormat", :enum, val, ["Http", "Tcp", "Https"])
     end
+
+
     if name === Symbol("port")
         OpenAPI.validate_param(name, "ProbePropertiesFormat", :format, val, "int32")
     end
+
     if name === Symbol("intervalInSeconds")
         OpenAPI.validate_param(name, "ProbePropertiesFormat", :format, val, "int32")
     end
+
+    if name === Symbol("noHealthyBackendsBehavior")
+        OpenAPI.validate_param(name, "ProbePropertiesFormat", :enum, val, ["AllProbedDown", "AllProbedUp"])
+    end
+
+
     if name === Symbol("numberOfProbes")
         OpenAPI.validate_param(name, "ProbePropertiesFormat", :format, val, "int32")
     end
+
+    if name === Symbol("probeThreshold")
+        OpenAPI.validate_param(name, "ProbePropertiesFormat", :format, val, "int32")
+    end
+
+
 end

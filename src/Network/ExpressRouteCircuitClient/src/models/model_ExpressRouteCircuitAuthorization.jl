@@ -27,21 +27,31 @@ Base.@kwdef mutable struct ExpressRouteCircuitAuthorization <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
 
     function ExpressRouteCircuitAuthorization(properties, name, etag, type, id, )
-        OpenAPI.validate_property(ExpressRouteCircuitAuthorization, Symbol("properties"), properties)
-        OpenAPI.validate_property(ExpressRouteCircuitAuthorization, Symbol("name"), name)
-        OpenAPI.validate_property(ExpressRouteCircuitAuthorization, Symbol("etag"), etag)
-        OpenAPI.validate_property(ExpressRouteCircuitAuthorization, Symbol("type"), type)
-        OpenAPI.validate_property(ExpressRouteCircuitAuthorization, Symbol("id"), id)
-        return new(properties, name, etag, type, id, )
+        o = new(properties, name, etag, type, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ExpressRouteCircuitAuthorization
 
 const _property_types_ExpressRouteCircuitAuthorization = Dict{Symbol,String}(Symbol("properties")=>"AuthorizationPropertiesFormat", Symbol("name")=>"String", Symbol("etag")=>"String", Symbol("type")=>"String", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ ExpressRouteCircuitAuthorization }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ExpressRouteCircuitAuthorization[name]))}
 
-function check_required(o::ExpressRouteCircuitAuthorization)
+function OpenAPI.check_required(o::ExpressRouteCircuitAuthorization)
     true
 end
 
+function OpenAPI.validate_properties(o::ExpressRouteCircuitAuthorization)
+    OpenAPI.validate_property(ExpressRouteCircuitAuthorization, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(ExpressRouteCircuitAuthorization, Symbol("name"), o.name)
+    OpenAPI.validate_property(ExpressRouteCircuitAuthorization, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(ExpressRouteCircuitAuthorization, Symbol("type"), o.type)
+    OpenAPI.validate_property(ExpressRouteCircuitAuthorization, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ ExpressRouteCircuitAuthorization }, name::Symbol, val)
+
+
+
+
+
 end

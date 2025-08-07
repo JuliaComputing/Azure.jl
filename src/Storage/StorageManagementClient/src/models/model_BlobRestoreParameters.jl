@@ -18,23 +18,30 @@ Base.@kwdef mutable struct BlobRestoreParameters <: OpenAPI.APIModel
     blobRanges::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{BlobRestoreRange} }
 
     function BlobRestoreParameters(timeToRestore, blobRanges, )
-        OpenAPI.validate_property(BlobRestoreParameters, Symbol("timeToRestore"), timeToRestore)
-        OpenAPI.validate_property(BlobRestoreParameters, Symbol("blobRanges"), blobRanges)
-        return new(timeToRestore, blobRanges, )
+        o = new(timeToRestore, blobRanges, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type BlobRestoreParameters
 
 const _property_types_BlobRestoreParameters = Dict{Symbol,String}(Symbol("timeToRestore")=>"ZonedDateTime", Symbol("blobRanges")=>"Vector{BlobRestoreRange}", )
 OpenAPI.property_type(::Type{ BlobRestoreParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_BlobRestoreParameters[name]))}
 
-function check_required(o::BlobRestoreParameters)
+function OpenAPI.check_required(o::BlobRestoreParameters)
     o.timeToRestore === nothing && (return false)
     o.blobRanges === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::BlobRestoreParameters)
+    OpenAPI.validate_property(BlobRestoreParameters, Symbol("timeToRestore"), o.timeToRestore)
+    OpenAPI.validate_property(BlobRestoreParameters, Symbol("blobRanges"), o.blobRanges)
+end
+
 function OpenAPI.validate_property(::Type{ BlobRestoreParameters }, name::Symbol, val)
+
     if name === Symbol("timeToRestore")
         OpenAPI.validate_param(name, "BlobRestoreParameters", :format, val, "date-time")
     end
+
 end

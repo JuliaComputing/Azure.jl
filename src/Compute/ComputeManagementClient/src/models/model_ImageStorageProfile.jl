@@ -12,7 +12,7 @@ Describes a storage profile.
     )
 
     - osDisk::ImageOSDisk
-    - dataDisks::Vector{ImageDataDisk} : Specifies the parameters that are used to add a data disk to a virtual machine. &lt;br&gt;&lt;br&gt; For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc&#x3D;%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+    - dataDisks::Vector{ImageDataDisk} : Specifies the parameters that are used to add a data disk to a virtual machine. &lt;br&gt;&lt;br&gt; For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
     - zoneResilient::Bool : Specifies whether an image is zone resilient or not. Default is false. Zone resilient images can be created only in regions that provide Zone Redundant Storage (ZRS).
 """
 Base.@kwdef mutable struct ImageStorageProfile <: OpenAPI.APIModel
@@ -21,19 +21,27 @@ Base.@kwdef mutable struct ImageStorageProfile <: OpenAPI.APIModel
     zoneResilient::Union{Nothing, Bool} = nothing
 
     function ImageStorageProfile(osDisk, dataDisks, zoneResilient, )
-        OpenAPI.validate_property(ImageStorageProfile, Symbol("osDisk"), osDisk)
-        OpenAPI.validate_property(ImageStorageProfile, Symbol("dataDisks"), dataDisks)
-        OpenAPI.validate_property(ImageStorageProfile, Symbol("zoneResilient"), zoneResilient)
-        return new(osDisk, dataDisks, zoneResilient, )
+        o = new(osDisk, dataDisks, zoneResilient, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ImageStorageProfile
 
 const _property_types_ImageStorageProfile = Dict{Symbol,String}(Symbol("osDisk")=>"ImageOSDisk", Symbol("dataDisks")=>"Vector{ImageDataDisk}", Symbol("zoneResilient")=>"Bool", )
 OpenAPI.property_type(::Type{ ImageStorageProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ImageStorageProfile[name]))}
 
-function check_required(o::ImageStorageProfile)
+function OpenAPI.check_required(o::ImageStorageProfile)
     true
 end
 
+function OpenAPI.validate_properties(o::ImageStorageProfile)
+    OpenAPI.validate_property(ImageStorageProfile, Symbol("osDisk"), o.osDisk)
+    OpenAPI.validate_property(ImageStorageProfile, Symbol("dataDisks"), o.dataDisks)
+    OpenAPI.validate_property(ImageStorageProfile, Symbol("zoneResilient"), o.zoneResilient)
+end
+
 function OpenAPI.validate_property(::Type{ ImageStorageProfile }, name::Symbol, val)
+
+
+
 end

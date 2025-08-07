@@ -54,39 +54,59 @@ Base.@kwdef mutable struct ApplicationGatewayBackendHttpSettingsPropertiesFormat
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
 
     function ApplicationGatewayBackendHttpSettingsPropertiesFormat(port, protocol, cookieBasedAffinity, requestTimeout, probe, authenticationCertificates, trustedRootCertificates, connectionDraining, hostName, pickHostNameFromBackendAddress, affinityCookieName, probeEnabled, path, provisioningState, )
-        OpenAPI.validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("port"), port)
-        OpenAPI.validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("protocol"), protocol)
-        OpenAPI.validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("cookieBasedAffinity"), cookieBasedAffinity)
-        OpenAPI.validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("requestTimeout"), requestTimeout)
-        OpenAPI.validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("probe"), probe)
-        OpenAPI.validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("authenticationCertificates"), authenticationCertificates)
-        OpenAPI.validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("trustedRootCertificates"), trustedRootCertificates)
-        OpenAPI.validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("connectionDraining"), connectionDraining)
-        OpenAPI.validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("hostName"), hostName)
-        OpenAPI.validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("pickHostNameFromBackendAddress"), pickHostNameFromBackendAddress)
-        OpenAPI.validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("affinityCookieName"), affinityCookieName)
-        OpenAPI.validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("probeEnabled"), probeEnabled)
-        OpenAPI.validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("path"), path)
-        OpenAPI.validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("provisioningState"), provisioningState)
-        return new(port, protocol, cookieBasedAffinity, requestTimeout, probe, authenticationCertificates, trustedRootCertificates, connectionDraining, hostName, pickHostNameFromBackendAddress, affinityCookieName, probeEnabled, path, provisioningState, )
+        o = new(port, protocol, cookieBasedAffinity, requestTimeout, probe, authenticationCertificates, trustedRootCertificates, connectionDraining, hostName, pickHostNameFromBackendAddress, affinityCookieName, probeEnabled, path, provisioningState, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayBackendHttpSettingsPropertiesFormat
 
 const _property_types_ApplicationGatewayBackendHttpSettingsPropertiesFormat = Dict{Symbol,String}(Symbol("port")=>"Int64", Symbol("protocol")=>"ApplicationGatewayProtocol", Symbol("cookieBasedAffinity")=>"String", Symbol("requestTimeout")=>"Int64", Symbol("probe")=>"SubResource", Symbol("authenticationCertificates")=>"Vector{SubResource}", Symbol("trustedRootCertificates")=>"Vector{SubResource}", Symbol("connectionDraining")=>"ApplicationGatewayConnectionDraining", Symbol("hostName")=>"String", Symbol("pickHostNameFromBackendAddress")=>"Bool", Symbol("affinityCookieName")=>"String", Symbol("probeEnabled")=>"Bool", Symbol("path")=>"String", Symbol("provisioningState")=>"ProvisioningState", )
 OpenAPI.property_type(::Type{ ApplicationGatewayBackendHttpSettingsPropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayBackendHttpSettingsPropertiesFormat[name]))}
 
-function check_required(o::ApplicationGatewayBackendHttpSettingsPropertiesFormat)
+function OpenAPI.check_required(o::ApplicationGatewayBackendHttpSettingsPropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayBackendHttpSettingsPropertiesFormat)
+    OpenAPI.validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("port"), o.port)
+    OpenAPI.validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("protocol"), o.protocol)
+    OpenAPI.validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("cookieBasedAffinity"), o.cookieBasedAffinity)
+    OpenAPI.validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("requestTimeout"), o.requestTimeout)
+    OpenAPI.validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("probe"), o.probe)
+    OpenAPI.validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("authenticationCertificates"), o.authenticationCertificates)
+    OpenAPI.validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("trustedRootCertificates"), o.trustedRootCertificates)
+    OpenAPI.validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("connectionDraining"), o.connectionDraining)
+    OpenAPI.validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("hostName"), o.hostName)
+    OpenAPI.validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("pickHostNameFromBackendAddress"), o.pickHostNameFromBackendAddress)
+    OpenAPI.validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("affinityCookieName"), o.affinityCookieName)
+    OpenAPI.validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("probeEnabled"), o.probeEnabled)
+    OpenAPI.validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("path"), o.path)
+    OpenAPI.validate_property(ApplicationGatewayBackendHttpSettingsPropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayBackendHttpSettingsPropertiesFormat }, name::Symbol, val)
+
     if name === Symbol("port")
         OpenAPI.validate_param(name, "ApplicationGatewayBackendHttpSettingsPropertiesFormat", :format, val, "int32")
     end
+
+
     if name === Symbol("cookieBasedAffinity")
         OpenAPI.validate_param(name, "ApplicationGatewayBackendHttpSettingsPropertiesFormat", :enum, val, ["Enabled", "Disabled"])
     end
+
+
     if name === Symbol("requestTimeout")
         OpenAPI.validate_param(name, "ApplicationGatewayBackendHttpSettingsPropertiesFormat", :format, val, "int32")
     end
+
+
+
+
+
+
+
+
+
+
 end

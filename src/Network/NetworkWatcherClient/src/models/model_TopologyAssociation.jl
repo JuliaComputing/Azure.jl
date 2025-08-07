@@ -21,22 +21,31 @@ Base.@kwdef mutable struct TopologyAssociation <: OpenAPI.APIModel
     associationType::Union{Nothing, String} = nothing
 
     function TopologyAssociation(name, resourceId, associationType, )
-        OpenAPI.validate_property(TopologyAssociation, Symbol("name"), name)
-        OpenAPI.validate_property(TopologyAssociation, Symbol("resourceId"), resourceId)
-        OpenAPI.validate_property(TopologyAssociation, Symbol("associationType"), associationType)
-        return new(name, resourceId, associationType, )
+        o = new(name, resourceId, associationType, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type TopologyAssociation
 
 const _property_types_TopologyAssociation = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("resourceId")=>"String", Symbol("associationType")=>"String", )
 OpenAPI.property_type(::Type{ TopologyAssociation }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_TopologyAssociation[name]))}
 
-function check_required(o::TopologyAssociation)
+function OpenAPI.check_required(o::TopologyAssociation)
     true
 end
 
+function OpenAPI.validate_properties(o::TopologyAssociation)
+    OpenAPI.validate_property(TopologyAssociation, Symbol("name"), o.name)
+    OpenAPI.validate_property(TopologyAssociation, Symbol("resourceId"), o.resourceId)
+    OpenAPI.validate_property(TopologyAssociation, Symbol("associationType"), o.associationType)
+end
+
 function OpenAPI.validate_property(::Type{ TopologyAssociation }, name::Symbol, val)
+
+
+
     if name === Symbol("associationType")
         OpenAPI.validate_param(name, "TopologyAssociation", :enum, val, ["Associated", "Contains"])
     end
+
 end

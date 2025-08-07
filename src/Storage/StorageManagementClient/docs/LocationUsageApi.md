@@ -20,9 +20,9 @@ Gets the current usage count and the limit for the resources of the location und
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LocationUsageApi** | API context | 
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
-**location** | **String**| The location of the Azure Storage resource. | [default to nothing]
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The ID of the target subscription. |
+**location** | **String** | The location of the Azure Storage resource. |
 
 ### Return type
 

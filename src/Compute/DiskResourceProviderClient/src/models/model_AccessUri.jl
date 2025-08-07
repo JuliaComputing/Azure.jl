@@ -7,25 +7,36 @@ A disk access SAS uri.
 
     AccessUri(;
         accessSAS=nothing,
+        securityDataAccessSAS=nothing,
     )
 
     - accessSAS::String : A SAS uri for accessing a disk.
+    - securityDataAccessSAS::String : A SAS uri for accessing a VM guest state.
 """
 Base.@kwdef mutable struct AccessUri <: OpenAPI.APIModel
     accessSAS::Union{Nothing, String} = nothing
+    securityDataAccessSAS::Union{Nothing, String} = nothing
 
-    function AccessUri(accessSAS, )
-        OpenAPI.validate_property(AccessUri, Symbol("accessSAS"), accessSAS)
-        return new(accessSAS, )
+    function AccessUri(accessSAS, securityDataAccessSAS, )
+        o = new(accessSAS, securityDataAccessSAS, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AccessUri
 
-const _property_types_AccessUri = Dict{Symbol,String}(Symbol("accessSAS")=>"String", )
+const _property_types_AccessUri = Dict{Symbol,String}(Symbol("accessSAS")=>"String", Symbol("securityDataAccessSAS")=>"String", )
 OpenAPI.property_type(::Type{ AccessUri }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AccessUri[name]))}
 
-function check_required(o::AccessUri)
+function OpenAPI.check_required(o::AccessUri)
     true
 end
 
+function OpenAPI.validate_properties(o::AccessUri)
+    OpenAPI.validate_property(AccessUri, Symbol("accessSAS"), o.accessSAS)
+    OpenAPI.validate_property(AccessUri, Symbol("securityDataAccessSAS"), o.securityDataAccessSAS)
+end
+
 function OpenAPI.validate_property(::Type{ AccessUri }, name::Symbol, val)
+
+
 end

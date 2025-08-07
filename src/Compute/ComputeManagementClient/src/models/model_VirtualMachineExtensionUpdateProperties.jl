@@ -11,8 +11,11 @@ Describes the properties of a Virtual Machine Extension.
         type=nothing,
         typeHandlerVersion=nothing,
         autoUpgradeMinorVersion=nothing,
+        enableAutomaticUpgrade=nothing,
         settings=nothing,
         protectedSettings=nothing,
+        suppressFailures=nothing,
+        protectedSettingsFromKeyVault=nothing,
     )
 
     - forceUpdateTag::String : How the extension handler should be forced to update even if the extension configuration has not changed.
@@ -20,8 +23,11 @@ Describes the properties of a Virtual Machine Extension.
     - type::String : Specifies the type of the extension; an example is \&quot;CustomScriptExtension\&quot;.
     - typeHandlerVersion::String : Specifies the version of the script handler.
     - autoUpgradeMinorVersion::Bool : Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
+    - enableAutomaticUpgrade::Bool : Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
     - settings::Any : Json formatted public settings for the extension.
     - protectedSettings::Any : The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
+    - suppressFailures::Bool : Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
+    - protectedSettingsFromKeyVault::Any : The extensions protected settings that are passed by reference, and consumed from key vault
 """
 Base.@kwdef mutable struct VirtualMachineExtensionUpdateProperties <: OpenAPI.APIModel
     forceUpdateTag::Union{Nothing, String} = nothing
@@ -29,27 +35,48 @@ Base.@kwdef mutable struct VirtualMachineExtensionUpdateProperties <: OpenAPI.AP
     type::Union{Nothing, String} = nothing
     typeHandlerVersion::Union{Nothing, String} = nothing
     autoUpgradeMinorVersion::Union{Nothing, Bool} = nothing
+    enableAutomaticUpgrade::Union{Nothing, Bool} = nothing
     settings::Union{Nothing, Any} = nothing
     protectedSettings::Union{Nothing, Any} = nothing
+    suppressFailures::Union{Nothing, Bool} = nothing
+    protectedSettingsFromKeyVault::Union{Nothing, Any} = nothing
 
-    function VirtualMachineExtensionUpdateProperties(forceUpdateTag, publisher, type, typeHandlerVersion, autoUpgradeMinorVersion, settings, protectedSettings, )
-        OpenAPI.validate_property(VirtualMachineExtensionUpdateProperties, Symbol("forceUpdateTag"), forceUpdateTag)
-        OpenAPI.validate_property(VirtualMachineExtensionUpdateProperties, Symbol("publisher"), publisher)
-        OpenAPI.validate_property(VirtualMachineExtensionUpdateProperties, Symbol("type"), type)
-        OpenAPI.validate_property(VirtualMachineExtensionUpdateProperties, Symbol("typeHandlerVersion"), typeHandlerVersion)
-        OpenAPI.validate_property(VirtualMachineExtensionUpdateProperties, Symbol("autoUpgradeMinorVersion"), autoUpgradeMinorVersion)
-        OpenAPI.validate_property(VirtualMachineExtensionUpdateProperties, Symbol("settings"), settings)
-        OpenAPI.validate_property(VirtualMachineExtensionUpdateProperties, Symbol("protectedSettings"), protectedSettings)
-        return new(forceUpdateTag, publisher, type, typeHandlerVersion, autoUpgradeMinorVersion, settings, protectedSettings, )
+    function VirtualMachineExtensionUpdateProperties(forceUpdateTag, publisher, type, typeHandlerVersion, autoUpgradeMinorVersion, enableAutomaticUpgrade, settings, protectedSettings, suppressFailures, protectedSettingsFromKeyVault, )
+        o = new(forceUpdateTag, publisher, type, typeHandlerVersion, autoUpgradeMinorVersion, enableAutomaticUpgrade, settings, protectedSettings, suppressFailures, protectedSettingsFromKeyVault, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineExtensionUpdateProperties
 
-const _property_types_VirtualMachineExtensionUpdateProperties = Dict{Symbol,String}(Symbol("forceUpdateTag")=>"String", Symbol("publisher")=>"String", Symbol("type")=>"String", Symbol("typeHandlerVersion")=>"String", Symbol("autoUpgradeMinorVersion")=>"Bool", Symbol("settings")=>"Any", Symbol("protectedSettings")=>"Any", )
+const _property_types_VirtualMachineExtensionUpdateProperties = Dict{Symbol,String}(Symbol("forceUpdateTag")=>"String", Symbol("publisher")=>"String", Symbol("type")=>"String", Symbol("typeHandlerVersion")=>"String", Symbol("autoUpgradeMinorVersion")=>"Bool", Symbol("enableAutomaticUpgrade")=>"Bool", Symbol("settings")=>"Any", Symbol("protectedSettings")=>"Any", Symbol("suppressFailures")=>"Bool", Symbol("protectedSettingsFromKeyVault")=>"Any", )
 OpenAPI.property_type(::Type{ VirtualMachineExtensionUpdateProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineExtensionUpdateProperties[name]))}
 
-function check_required(o::VirtualMachineExtensionUpdateProperties)
+function OpenAPI.check_required(o::VirtualMachineExtensionUpdateProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineExtensionUpdateProperties)
+    OpenAPI.validate_property(VirtualMachineExtensionUpdateProperties, Symbol("forceUpdateTag"), o.forceUpdateTag)
+    OpenAPI.validate_property(VirtualMachineExtensionUpdateProperties, Symbol("publisher"), o.publisher)
+    OpenAPI.validate_property(VirtualMachineExtensionUpdateProperties, Symbol("type"), o.type)
+    OpenAPI.validate_property(VirtualMachineExtensionUpdateProperties, Symbol("typeHandlerVersion"), o.typeHandlerVersion)
+    OpenAPI.validate_property(VirtualMachineExtensionUpdateProperties, Symbol("autoUpgradeMinorVersion"), o.autoUpgradeMinorVersion)
+    OpenAPI.validate_property(VirtualMachineExtensionUpdateProperties, Symbol("enableAutomaticUpgrade"), o.enableAutomaticUpgrade)
+    OpenAPI.validate_property(VirtualMachineExtensionUpdateProperties, Symbol("settings"), o.settings)
+    OpenAPI.validate_property(VirtualMachineExtensionUpdateProperties, Symbol("protectedSettings"), o.protectedSettings)
+    OpenAPI.validate_property(VirtualMachineExtensionUpdateProperties, Symbol("suppressFailures"), o.suppressFailures)
+    OpenAPI.validate_property(VirtualMachineExtensionUpdateProperties, Symbol("protectedSettingsFromKeyVault"), o.protectedSettingsFromKeyVault)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineExtensionUpdateProperties }, name::Symbol, val)
+
+
+
+
+
+
+
+
+
+
 end

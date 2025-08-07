@@ -11,13 +11,15 @@ The Storage Account ObjectReplicationPolicy properties.
         sourceAccount=nothing,
         destinationAccount=nothing,
         rules=nothing,
+        metrics=nothing,
     )
 
     - policyId::String : A unique id for object replication policy.
     - enabledTime::ZonedDateTime : Indicates when the policy is enabled on the source account.
-    - sourceAccount::String : Required. Source account name.
-    - destinationAccount::String : Required. Destination account name.
+    - sourceAccount::String : Required. Source account name. It should be full resource id if allowCrossTenantReplication set to false.
+    - destinationAccount::String : Required. Destination account name. It should be full resource id if allowCrossTenantReplication set to false.
     - rules::Vector{ObjectReplicationPolicyRule} : The storage account object replication rules.
+    - metrics::ObjectReplicationPolicyPropertiesMetrics
 """
 Base.@kwdef mutable struct ObjectReplicationPolicyProperties <: OpenAPI.APIModel
     policyId::Union{Nothing, String} = nothing
@@ -25,28 +27,41 @@ Base.@kwdef mutable struct ObjectReplicationPolicyProperties <: OpenAPI.APIModel
     sourceAccount::Union{Nothing, String} = nothing
     destinationAccount::Union{Nothing, String} = nothing
     rules::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{ObjectReplicationPolicyRule} }
+    metrics = nothing # spec type: Union{ Nothing, ObjectReplicationPolicyPropertiesMetrics }
 
-    function ObjectReplicationPolicyProperties(policyId, enabledTime, sourceAccount, destinationAccount, rules, )
-        OpenAPI.validate_property(ObjectReplicationPolicyProperties, Symbol("policyId"), policyId)
-        OpenAPI.validate_property(ObjectReplicationPolicyProperties, Symbol("enabledTime"), enabledTime)
-        OpenAPI.validate_property(ObjectReplicationPolicyProperties, Symbol("sourceAccount"), sourceAccount)
-        OpenAPI.validate_property(ObjectReplicationPolicyProperties, Symbol("destinationAccount"), destinationAccount)
-        OpenAPI.validate_property(ObjectReplicationPolicyProperties, Symbol("rules"), rules)
-        return new(policyId, enabledTime, sourceAccount, destinationAccount, rules, )
+    function ObjectReplicationPolicyProperties(policyId, enabledTime, sourceAccount, destinationAccount, rules, metrics, )
+        o = new(policyId, enabledTime, sourceAccount, destinationAccount, rules, metrics, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ObjectReplicationPolicyProperties
 
-const _property_types_ObjectReplicationPolicyProperties = Dict{Symbol,String}(Symbol("policyId")=>"String", Symbol("enabledTime")=>"ZonedDateTime", Symbol("sourceAccount")=>"String", Symbol("destinationAccount")=>"String", Symbol("rules")=>"Vector{ObjectReplicationPolicyRule}", )
+const _property_types_ObjectReplicationPolicyProperties = Dict{Symbol,String}(Symbol("policyId")=>"String", Symbol("enabledTime")=>"ZonedDateTime", Symbol("sourceAccount")=>"String", Symbol("destinationAccount")=>"String", Symbol("rules")=>"Vector{ObjectReplicationPolicyRule}", Symbol("metrics")=>"ObjectReplicationPolicyPropertiesMetrics", )
 OpenAPI.property_type(::Type{ ObjectReplicationPolicyProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ObjectReplicationPolicyProperties[name]))}
 
-function check_required(o::ObjectReplicationPolicyProperties)
+function OpenAPI.check_required(o::ObjectReplicationPolicyProperties)
     o.sourceAccount === nothing && (return false)
     o.destinationAccount === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ObjectReplicationPolicyProperties)
+    OpenAPI.validate_property(ObjectReplicationPolicyProperties, Symbol("policyId"), o.policyId)
+    OpenAPI.validate_property(ObjectReplicationPolicyProperties, Symbol("enabledTime"), o.enabledTime)
+    OpenAPI.validate_property(ObjectReplicationPolicyProperties, Symbol("sourceAccount"), o.sourceAccount)
+    OpenAPI.validate_property(ObjectReplicationPolicyProperties, Symbol("destinationAccount"), o.destinationAccount)
+    OpenAPI.validate_property(ObjectReplicationPolicyProperties, Symbol("rules"), o.rules)
+    OpenAPI.validate_property(ObjectReplicationPolicyProperties, Symbol("metrics"), o.metrics)
+end
+
 function OpenAPI.validate_property(::Type{ ObjectReplicationPolicyProperties }, name::Symbol, val)
+
+
     if name === Symbol("enabledTime")
         OpenAPI.validate_param(name, "ObjectReplicationPolicyProperties", :format, val, "date-time")
     end
+
+
+
+
 end

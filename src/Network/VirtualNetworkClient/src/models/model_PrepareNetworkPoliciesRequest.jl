@@ -18,18 +18,25 @@ Base.@kwdef mutable struct PrepareNetworkPoliciesRequest <: OpenAPI.APIModel
     networkIntentPolicyConfigurations::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{NetworkIntentPolicyConfiguration} }
 
     function PrepareNetworkPoliciesRequest(serviceName, networkIntentPolicyConfigurations, )
-        OpenAPI.validate_property(PrepareNetworkPoliciesRequest, Symbol("serviceName"), serviceName)
-        OpenAPI.validate_property(PrepareNetworkPoliciesRequest, Symbol("networkIntentPolicyConfigurations"), networkIntentPolicyConfigurations)
-        return new(serviceName, networkIntentPolicyConfigurations, )
+        o = new(serviceName, networkIntentPolicyConfigurations, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PrepareNetworkPoliciesRequest
 
 const _property_types_PrepareNetworkPoliciesRequest = Dict{Symbol,String}(Symbol("serviceName")=>"String", Symbol("networkIntentPolicyConfigurations")=>"Vector{NetworkIntentPolicyConfiguration}", )
 OpenAPI.property_type(::Type{ PrepareNetworkPoliciesRequest }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PrepareNetworkPoliciesRequest[name]))}
 
-function check_required(o::PrepareNetworkPoliciesRequest)
+function OpenAPI.check_required(o::PrepareNetworkPoliciesRequest)
     true
 end
 
+function OpenAPI.validate_properties(o::PrepareNetworkPoliciesRequest)
+    OpenAPI.validate_property(PrepareNetworkPoliciesRequest, Symbol("serviceName"), o.serviceName)
+    OpenAPI.validate_property(PrepareNetworkPoliciesRequest, Symbol("networkIntentPolicyConfigurations"), o.networkIntentPolicyConfigurations)
+end
+
 function OpenAPI.validate_property(::Type{ PrepareNetworkPoliciesRequest }, name::Symbol, val)
+
+
 end

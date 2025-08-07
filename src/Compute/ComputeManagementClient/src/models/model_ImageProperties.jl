@@ -24,20 +24,29 @@ Base.@kwdef mutable struct ImageProperties <: OpenAPI.APIModel
     hyperVGeneration = nothing # spec type: Union{ Nothing, HyperVGenerationType }
 
     function ImageProperties(sourceVirtualMachine, storageProfile, provisioningState, hyperVGeneration, )
-        OpenAPI.validate_property(ImageProperties, Symbol("sourceVirtualMachine"), sourceVirtualMachine)
-        OpenAPI.validate_property(ImageProperties, Symbol("storageProfile"), storageProfile)
-        OpenAPI.validate_property(ImageProperties, Symbol("provisioningState"), provisioningState)
-        OpenAPI.validate_property(ImageProperties, Symbol("hyperVGeneration"), hyperVGeneration)
-        return new(sourceVirtualMachine, storageProfile, provisioningState, hyperVGeneration, )
+        o = new(sourceVirtualMachine, storageProfile, provisioningState, hyperVGeneration, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ImageProperties
 
 const _property_types_ImageProperties = Dict{Symbol,String}(Symbol("sourceVirtualMachine")=>"SubResource", Symbol("storageProfile")=>"ImageStorageProfile", Symbol("provisioningState")=>"String", Symbol("hyperVGeneration")=>"HyperVGenerationType", )
 OpenAPI.property_type(::Type{ ImageProperties }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ImageProperties[name]))}
 
-function check_required(o::ImageProperties)
+function OpenAPI.check_required(o::ImageProperties)
     true
 end
 
+function OpenAPI.validate_properties(o::ImageProperties)
+    OpenAPI.validate_property(ImageProperties, Symbol("sourceVirtualMachine"), o.sourceVirtualMachine)
+    OpenAPI.validate_property(ImageProperties, Symbol("storageProfile"), o.storageProfile)
+    OpenAPI.validate_property(ImageProperties, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(ImageProperties, Symbol("hyperVGeneration"), o.hyperVGeneration)
+end
+
 function OpenAPI.validate_property(::Type{ ImageProperties }, name::Symbol, val)
+
+
+
+
 end

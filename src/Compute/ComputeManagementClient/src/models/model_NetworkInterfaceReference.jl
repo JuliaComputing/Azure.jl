@@ -6,30 +6,37 @@
 Describes a network interface reference.
 
     NetworkInterfaceReference(;
-        id=nothing,
         properties=nothing,
+        id=nothing,
     )
 
-    - id::String : Resource Id
     - properties::NetworkInterfaceReferenceProperties
+    - id::String : Resource Id
 """
 Base.@kwdef mutable struct NetworkInterfaceReference <: OpenAPI.APIModel
-    id::Union{Nothing, String} = nothing
     properties = nothing # spec type: Union{ Nothing, NetworkInterfaceReferenceProperties }
+    id::Union{Nothing, String} = nothing
 
-    function NetworkInterfaceReference(id, properties, )
-        OpenAPI.validate_property(NetworkInterfaceReference, Symbol("id"), id)
-        OpenAPI.validate_property(NetworkInterfaceReference, Symbol("properties"), properties)
-        return new(id, properties, )
+    function NetworkInterfaceReference(properties, id, )
+        o = new(properties, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type NetworkInterfaceReference
 
-const _property_types_NetworkInterfaceReference = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("properties")=>"NetworkInterfaceReferenceProperties", )
+const _property_types_NetworkInterfaceReference = Dict{Symbol,String}(Symbol("properties")=>"NetworkInterfaceReferenceProperties", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ NetworkInterfaceReference }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkInterfaceReference[name]))}
 
-function check_required(o::NetworkInterfaceReference)
+function OpenAPI.check_required(o::NetworkInterfaceReference)
     true
 end
 
+function OpenAPI.validate_properties(o::NetworkInterfaceReference)
+    OpenAPI.validate_property(NetworkInterfaceReference, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(NetworkInterfaceReference, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ NetworkInterfaceReference }, name::Symbol, val)
+
+
 end

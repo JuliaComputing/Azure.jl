@@ -9,35 +9,49 @@ IPConfiguration in a network interface.
         properties=nothing,
         name=nothing,
         etag=nothing,
+        type=nothing,
         id=nothing,
     )
 
     - properties::NetworkInterfaceIPConfigurationPropertiesFormat
     - name::String : The name of the resource that is unique within a resource group. This name can be used to access the resource.
     - etag::String : A unique read-only string that changes whenever the resource is updated.
+    - type::String : Resource type.
     - id::String : Resource ID.
 """
 Base.@kwdef mutable struct NetworkInterfaceIPConfiguration <: OpenAPI.APIModel
     properties = nothing # spec type: Union{ Nothing, NetworkInterfaceIPConfigurationPropertiesFormat }
     name::Union{Nothing, String} = nothing
     etag::Union{Nothing, String} = nothing
+    type::Union{Nothing, String} = nothing
     id::Union{Nothing, String} = nothing
 
-    function NetworkInterfaceIPConfiguration(properties, name, etag, id, )
-        OpenAPI.validate_property(NetworkInterfaceIPConfiguration, Symbol("properties"), properties)
-        OpenAPI.validate_property(NetworkInterfaceIPConfiguration, Symbol("name"), name)
-        OpenAPI.validate_property(NetworkInterfaceIPConfiguration, Symbol("etag"), etag)
-        OpenAPI.validate_property(NetworkInterfaceIPConfiguration, Symbol("id"), id)
-        return new(properties, name, etag, id, )
+    function NetworkInterfaceIPConfiguration(properties, name, etag, type, id, )
+        o = new(properties, name, etag, type, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type NetworkInterfaceIPConfiguration
 
-const _property_types_NetworkInterfaceIPConfiguration = Dict{Symbol,String}(Symbol("properties")=>"NetworkInterfaceIPConfigurationPropertiesFormat", Symbol("name")=>"String", Symbol("etag")=>"String", Symbol("id")=>"String", )
+const _property_types_NetworkInterfaceIPConfiguration = Dict{Symbol,String}(Symbol("properties")=>"NetworkInterfaceIPConfigurationPropertiesFormat", Symbol("name")=>"String", Symbol("etag")=>"String", Symbol("type")=>"String", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ NetworkInterfaceIPConfiguration }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkInterfaceIPConfiguration[name]))}
 
-function check_required(o::NetworkInterfaceIPConfiguration)
+function OpenAPI.check_required(o::NetworkInterfaceIPConfiguration)
     true
 end
 
+function OpenAPI.validate_properties(o::NetworkInterfaceIPConfiguration)
+    OpenAPI.validate_property(NetworkInterfaceIPConfiguration, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(NetworkInterfaceIPConfiguration, Symbol("name"), o.name)
+    OpenAPI.validate_property(NetworkInterfaceIPConfiguration, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(NetworkInterfaceIPConfiguration, Symbol("type"), o.type)
+    OpenAPI.validate_property(NetworkInterfaceIPConfiguration, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ NetworkInterfaceIPConfiguration }, name::Symbol, val)
+
+
+
+
+
 end

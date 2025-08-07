@@ -7,28 +7,44 @@ SKU of a public IP address.
 
     PublicIPAddressSku2(;
         name=nothing,
+        tier=nothing,
     )
 
     - name::String : Name of a public IP address SKU.
+    - tier::String : Tier of a public IP address SKU.
 """
 Base.@kwdef mutable struct PublicIPAddressSku2 <: OpenAPI.APIModel
     name::Union{Nothing, String} = nothing
+    tier::Union{Nothing, String} = nothing
 
-    function PublicIPAddressSku2(name, )
-        OpenAPI.validate_property(PublicIPAddressSku2, Symbol("name"), name)
-        return new(name, )
+    function PublicIPAddressSku2(name, tier, )
+        o = new(name, tier, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type PublicIPAddressSku2
 
-const _property_types_PublicIPAddressSku2 = Dict{Symbol,String}(Symbol("name")=>"String", )
+const _property_types_PublicIPAddressSku2 = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("tier")=>"String", )
 OpenAPI.property_type(::Type{ PublicIPAddressSku2 }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_PublicIPAddressSku2[name]))}
 
-function check_required(o::PublicIPAddressSku2)
+function OpenAPI.check_required(o::PublicIPAddressSku2)
     true
 end
 
+function OpenAPI.validate_properties(o::PublicIPAddressSku2)
+    OpenAPI.validate_property(PublicIPAddressSku2, Symbol("name"), o.name)
+    OpenAPI.validate_property(PublicIPAddressSku2, Symbol("tier"), o.tier)
+end
+
 function OpenAPI.validate_property(::Type{ PublicIPAddressSku2 }, name::Symbol, val)
+
     if name === Symbol("name")
-        OpenAPI.validate_param(name, "PublicIPAddressSku2", :enum, val, ["Basic", "Standard"])
+        OpenAPI.validate_param(name, "PublicIPAddressSku2", :enum, val, ["Basic", "Standard", "StandardV2"])
     end
+
+
+    if name === Symbol("tier")
+        OpenAPI.validate_param(name, "PublicIPAddressSku2", :enum, val, ["Regional", "Global"])
+    end
+
 end

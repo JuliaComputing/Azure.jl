@@ -21,19 +21,27 @@ Base.@kwdef mutable struct DiskUpdate <: OpenAPI.APIModel
     sku = nothing # spec type: Union{ Nothing, DiskSku }
 
     function DiskUpdate(properties, tags, sku, )
-        OpenAPI.validate_property(DiskUpdate, Symbol("properties"), properties)
-        OpenAPI.validate_property(DiskUpdate, Symbol("tags"), tags)
-        OpenAPI.validate_property(DiskUpdate, Symbol("sku"), sku)
-        return new(properties, tags, sku, )
+        o = new(properties, tags, sku, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type DiskUpdate
 
 const _property_types_DiskUpdate = Dict{Symbol,String}(Symbol("properties")=>"DiskUpdateProperties", Symbol("tags")=>"Dict{String, String}", Symbol("sku")=>"DiskSku", )
 OpenAPI.property_type(::Type{ DiskUpdate }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DiskUpdate[name]))}
 
-function check_required(o::DiskUpdate)
+function OpenAPI.check_required(o::DiskUpdate)
     true
 end
 
+function OpenAPI.validate_properties(o::DiskUpdate)
+    OpenAPI.validate_property(DiskUpdate, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(DiskUpdate, Symbol("tags"), o.tags)
+    OpenAPI.validate_property(DiskUpdate, Symbol("sku"), o.sku)
+end
+
 function OpenAPI.validate_property(::Type{ DiskUpdate }, name::Symbol, val)
+
+
+
 end

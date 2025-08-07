@@ -18,19 +18,26 @@ Base.@kwdef mutable struct ApplicationGatewayFirewallDisabledRuleGroup <: OpenAP
     rules::Union{Nothing, Vector{Int64}} = nothing
 
     function ApplicationGatewayFirewallDisabledRuleGroup(ruleGroupName, rules, )
-        OpenAPI.validate_property(ApplicationGatewayFirewallDisabledRuleGroup, Symbol("ruleGroupName"), ruleGroupName)
-        OpenAPI.validate_property(ApplicationGatewayFirewallDisabledRuleGroup, Symbol("rules"), rules)
-        return new(ruleGroupName, rules, )
+        o = new(ruleGroupName, rules, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayFirewallDisabledRuleGroup
 
 const _property_types_ApplicationGatewayFirewallDisabledRuleGroup = Dict{Symbol,String}(Symbol("ruleGroupName")=>"String", Symbol("rules")=>"Vector{Int64}", )
 OpenAPI.property_type(::Type{ ApplicationGatewayFirewallDisabledRuleGroup }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayFirewallDisabledRuleGroup[name]))}
 
-function check_required(o::ApplicationGatewayFirewallDisabledRuleGroup)
+function OpenAPI.check_required(o::ApplicationGatewayFirewallDisabledRuleGroup)
     o.ruleGroupName === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayFirewallDisabledRuleGroup)
+    OpenAPI.validate_property(ApplicationGatewayFirewallDisabledRuleGroup, Symbol("ruleGroupName"), o.ruleGroupName)
+    OpenAPI.validate_property(ApplicationGatewayFirewallDisabledRuleGroup, Symbol("rules"), o.rules)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayFirewallDisabledRuleGroup }, name::Symbol, val)
+
+
 end

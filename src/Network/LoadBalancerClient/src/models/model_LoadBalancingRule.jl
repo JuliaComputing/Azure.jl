@@ -27,21 +27,31 @@ Base.@kwdef mutable struct LoadBalancingRule <: OpenAPI.APIModel
     id::Union{Nothing, String} = nothing
 
     function LoadBalancingRule(properties, name, etag, type, id, )
-        OpenAPI.validate_property(LoadBalancingRule, Symbol("properties"), properties)
-        OpenAPI.validate_property(LoadBalancingRule, Symbol("name"), name)
-        OpenAPI.validate_property(LoadBalancingRule, Symbol("etag"), etag)
-        OpenAPI.validate_property(LoadBalancingRule, Symbol("type"), type)
-        OpenAPI.validate_property(LoadBalancingRule, Symbol("id"), id)
-        return new(properties, name, etag, type, id, )
+        o = new(properties, name, etag, type, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type LoadBalancingRule
 
 const _property_types_LoadBalancingRule = Dict{Symbol,String}(Symbol("properties")=>"LoadBalancingRulePropertiesFormat", Symbol("name")=>"String", Symbol("etag")=>"String", Symbol("type")=>"String", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ LoadBalancingRule }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_LoadBalancingRule[name]))}
 
-function check_required(o::LoadBalancingRule)
+function OpenAPI.check_required(o::LoadBalancingRule)
     true
 end
 
+function OpenAPI.validate_properties(o::LoadBalancingRule)
+    OpenAPI.validate_property(LoadBalancingRule, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(LoadBalancingRule, Symbol("name"), o.name)
+    OpenAPI.validate_property(LoadBalancingRule, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(LoadBalancingRule, Symbol("type"), o.type)
+    OpenAPI.validate_property(LoadBalancingRule, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ LoadBalancingRule }, name::Symbol, val)
+
+
+
+
+
 end

@@ -15,17 +15,23 @@ Base.@kwdef mutable struct DnsNameAvailabilityResult <: OpenAPI.APIModel
     available::Union{Nothing, Bool} = nothing
 
     function DnsNameAvailabilityResult(available, )
-        OpenAPI.validate_property(DnsNameAvailabilityResult, Symbol("available"), available)
-        return new(available, )
+        o = new(available, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type DnsNameAvailabilityResult
 
 const _property_types_DnsNameAvailabilityResult = Dict{Symbol,String}(Symbol("available")=>"Bool", )
 OpenAPI.property_type(::Type{ DnsNameAvailabilityResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_DnsNameAvailabilityResult[name]))}
 
-function check_required(o::DnsNameAvailabilityResult)
+function OpenAPI.check_required(o::DnsNameAvailabilityResult)
     true
 end
 
+function OpenAPI.validate_properties(o::DnsNameAvailabilityResult)
+    OpenAPI.validate_property(DnsNameAvailabilityResult, Symbol("available"), o.available)
+end
+
 function OpenAPI.validate_property(::Type{ DnsNameAvailabilityResult }, name::Symbol, val)
+
 end

@@ -7,29 +7,41 @@ Resource group export result.
 
     ResourceGroupExportResult(;
         template=nothing,
+        output=nothing,
         error=nothing,
     )
 
-    - template::Any : The template content.
+    - template::Any : The template content. Used if outputFormat is empty or set to &#39;Json&#39;.
+    - output::String : The formatted export content. Used if outputFormat is set to &#39;Bicep&#39;.
     - error::ErrorResponse
 """
 Base.@kwdef mutable struct ResourceGroupExportResult <: OpenAPI.APIModel
     template::Union{Nothing, Any} = nothing
+    output::Union{Nothing, String} = nothing
     error = nothing # spec type: Union{ Nothing, ErrorResponse }
 
-    function ResourceGroupExportResult(template, error, )
-        OpenAPI.validate_property(ResourceGroupExportResult, Symbol("template"), template)
-        OpenAPI.validate_property(ResourceGroupExportResult, Symbol("error"), error)
-        return new(template, error, )
+    function ResourceGroupExportResult(template, output, error, )
+        o = new(template, output, error, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ResourceGroupExportResult
 
-const _property_types_ResourceGroupExportResult = Dict{Symbol,String}(Symbol("template")=>"Any", Symbol("error")=>"ErrorResponse", )
+const _property_types_ResourceGroupExportResult = Dict{Symbol,String}(Symbol("template")=>"Any", Symbol("output")=>"String", Symbol("error")=>"ErrorResponse", )
 OpenAPI.property_type(::Type{ ResourceGroupExportResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ResourceGroupExportResult[name]))}
 
-function check_required(o::ResourceGroupExportResult)
+function OpenAPI.check_required(o::ResourceGroupExportResult)
     true
 end
 
+function OpenAPI.validate_properties(o::ResourceGroupExportResult)
+    OpenAPI.validate_property(ResourceGroupExportResult, Symbol("template"), o.template)
+    OpenAPI.validate_property(ResourceGroupExportResult, Symbol("output"), o.output)
+    OpenAPI.validate_property(ResourceGroupExportResult, Symbol("error"), o.error)
+end
+
 function OpenAPI.validate_property(::Type{ ResourceGroupExportResult }, name::Symbol, val)
+
+
+
 end

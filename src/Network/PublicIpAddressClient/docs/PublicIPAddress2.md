@@ -4,6 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**extendedLocation** | [***ExtendedLocation**](ExtendedLocation.md) |  | [optional] [default to nothing]
 **sku** | [***PublicIPAddressSku2**](PublicIPAddressSku2.md) |  | [optional] [default to nothing]
 **properties** | [***PublicIPAddressPropertiesFormat2**](PublicIPAddressPropertiesFormat2.md) |  | [optional] [default to nothing]
 **etag** | **String** | A unique read-only string that changes whenever the resource is updated. | [optional] [readonly] [default to nothing]

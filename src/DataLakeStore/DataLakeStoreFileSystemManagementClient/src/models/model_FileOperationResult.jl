@@ -15,17 +15,23 @@ Base.@kwdef mutable struct FileOperationResult <: OpenAPI.APIModel
     boolean::Union{Nothing, Bool} = nothing
 
     function FileOperationResult(boolean, )
-        OpenAPI.validate_property(FileOperationResult, Symbol("boolean"), boolean)
-        return new(boolean, )
+        o = new(boolean, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type FileOperationResult
 
 const _property_types_FileOperationResult = Dict{Symbol,String}(Symbol("boolean")=>"Bool", )
 OpenAPI.property_type(::Type{ FileOperationResult }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_FileOperationResult[name]))}
 
-function check_required(o::FileOperationResult)
+function OpenAPI.check_required(o::FileOperationResult)
     true
 end
 
+function OpenAPI.validate_properties(o::FileOperationResult)
+    OpenAPI.validate_property(FileOperationResult, Symbol("boolean"), o.boolean)
+end
+
 function OpenAPI.validate_property(::Type{ FileOperationResult }, name::Symbol, val)
+
 end

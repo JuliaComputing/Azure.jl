@@ -23,11 +23,11 @@ Deletes the specified private endpoint connection associated with the storage ac
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **PrivateEndpointConnectionsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group within the user&#39;s subscription. The name is case insensitive. | [default to nothing]
-**account_name** | **String**| The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. | [default to nothing]
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
-**private_endpoint_connection_name** | **String**| The name of the private endpoint connection associated with the Azure resource | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group within the user&#39;s subscription. The name is case insensitive. |
+**account_name** | **String** | The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. |
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The ID of the target subscription. |
+**private_endpoint_connection_name** | **String** | The name of the private endpoint connection associated with the Azure resource |
 
 ### Return type
 
@@ -57,11 +57,11 @@ Gets the specified private endpoint connection associated with the storage accou
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **PrivateEndpointConnectionsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group within the user&#39;s subscription. The name is case insensitive. | [default to nothing]
-**account_name** | **String**| The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. | [default to nothing]
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
-**private_endpoint_connection_name** | **String**| The name of the private endpoint connection associated with the Azure resource | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group within the user&#39;s subscription. The name is case insensitive. |
+**account_name** | **String** | The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. |
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The ID of the target subscription. |
+**private_endpoint_connection_name** | **String** | The name of the private endpoint connection associated with the Azure resource |
 
 ### Return type
 
@@ -91,10 +91,10 @@ List all the private endpoint connections associated with the storage account.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **PrivateEndpointConnectionsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group within the user&#39;s subscription. The name is case insensitive. | [default to nothing]
-**account_name** | **String**| The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. | [default to nothing]
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group within the user&#39;s subscription. The name is case insensitive. |
+**account_name** | **String** | The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. |
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The ID of the target subscription. |
 
 ### Return type
 
@@ -124,12 +124,12 @@ Update the state of specified private endpoint connection associated with the st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **PrivateEndpointConnectionsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group within the user&#39;s subscription. The name is case insensitive. | [default to nothing]
-**account_name** | **String**| The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. | [default to nothing]
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
-**subscription_id** | **String**| The ID of the target subscription. | [default to nothing]
-**private_endpoint_connection_name** | **String**| The name of the private endpoint connection associated with the Azure resource | [default to nothing]
-**properties** | [**PrivateEndpointConnection**](PrivateEndpointConnection.md)| The private endpoint connection properties. | 
+**resource_group_name** | **String** | The name of the resource group within the user&#39;s subscription. The name is case insensitive. |
+**account_name** | **String** | The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only. |
+**api_version** | **String** | The API version to use for this operation. |
+**subscription_id** | **String** | The ID of the target subscription. |
+**private_endpoint_connection_name** | **String** | The name of the private endpoint connection associated with the Azure resource |
+**properties** | [**PrivateEndpointConnection**](PrivateEndpointConnection.md) | The private endpoint connection properties. |
 
 ### Return type
 

@@ -15,17 +15,23 @@ Base.@kwdef mutable struct UpdateVirtualNetworkRuleParameters <: OpenAPI.APIMode
     properties = nothing # spec type: Union{ Nothing, UpdateVirtualNetworkRuleProperties }
 
     function UpdateVirtualNetworkRuleParameters(properties, )
-        OpenAPI.validate_property(UpdateVirtualNetworkRuleParameters, Symbol("properties"), properties)
-        return new(properties, )
+        o = new(properties, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type UpdateVirtualNetworkRuleParameters
 
 const _property_types_UpdateVirtualNetworkRuleParameters = Dict{Symbol,String}(Symbol("properties")=>"UpdateVirtualNetworkRuleProperties", )
 OpenAPI.property_type(::Type{ UpdateVirtualNetworkRuleParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_UpdateVirtualNetworkRuleParameters[name]))}
 
-function check_required(o::UpdateVirtualNetworkRuleParameters)
+function OpenAPI.check_required(o::UpdateVirtualNetworkRuleParameters)
     true
 end
 
+function OpenAPI.validate_properties(o::UpdateVirtualNetworkRuleParameters)
+    OpenAPI.validate_property(UpdateVirtualNetworkRuleParameters, Symbol("properties"), o.properties)
+end
+
 function OpenAPI.validate_property(::Type{ UpdateVirtualNetworkRuleParameters }, name::Symbol, val)
+
 end

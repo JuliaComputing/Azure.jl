@@ -18,18 +18,25 @@ Base.@kwdef mutable struct ObjectReplicationPolicyFilter <: OpenAPI.APIModel
     minCreationTime::Union{Nothing, String} = nothing
 
     function ObjectReplicationPolicyFilter(prefixMatch, minCreationTime, )
-        OpenAPI.validate_property(ObjectReplicationPolicyFilter, Symbol("prefixMatch"), prefixMatch)
-        OpenAPI.validate_property(ObjectReplicationPolicyFilter, Symbol("minCreationTime"), minCreationTime)
-        return new(prefixMatch, minCreationTime, )
+        o = new(prefixMatch, minCreationTime, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ObjectReplicationPolicyFilter
 
 const _property_types_ObjectReplicationPolicyFilter = Dict{Symbol,String}(Symbol("prefixMatch")=>"Vector{String}", Symbol("minCreationTime")=>"String", )
 OpenAPI.property_type(::Type{ ObjectReplicationPolicyFilter }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ObjectReplicationPolicyFilter[name]))}
 
-function check_required(o::ObjectReplicationPolicyFilter)
+function OpenAPI.check_required(o::ObjectReplicationPolicyFilter)
     true
 end
 
+function OpenAPI.validate_properties(o::ObjectReplicationPolicyFilter)
+    OpenAPI.validate_property(ObjectReplicationPolicyFilter, Symbol("prefixMatch"), o.prefixMatch)
+    OpenAPI.validate_property(ObjectReplicationPolicyFilter, Symbol("minCreationTime"), o.minCreationTime)
+end
+
 function OpenAPI.validate_property(::Type{ ObjectReplicationPolicyFilter }, name::Symbol, val)
+
+
 end

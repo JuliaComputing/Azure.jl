@@ -30,22 +30,33 @@ Base.@kwdef mutable struct NetworkIntentPolicy <: OpenAPI.APIModel
     tags::Union{Nothing, Dict{String, String}} = nothing
 
     function NetworkIntentPolicy(etag, id, name, type, location, tags, )
-        OpenAPI.validate_property(NetworkIntentPolicy, Symbol("etag"), etag)
-        OpenAPI.validate_property(NetworkIntentPolicy, Symbol("id"), id)
-        OpenAPI.validate_property(NetworkIntentPolicy, Symbol("name"), name)
-        OpenAPI.validate_property(NetworkIntentPolicy, Symbol("type"), type)
-        OpenAPI.validate_property(NetworkIntentPolicy, Symbol("location"), location)
-        OpenAPI.validate_property(NetworkIntentPolicy, Symbol("tags"), tags)
-        return new(etag, id, name, type, location, tags, )
+        o = new(etag, id, name, type, location, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type NetworkIntentPolicy
 
 const _property_types_NetworkIntentPolicy = Dict{Symbol,String}(Symbol("etag")=>"String", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ NetworkIntentPolicy }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkIntentPolicy[name]))}
 
-function check_required(o::NetworkIntentPolicy)
+function OpenAPI.check_required(o::NetworkIntentPolicy)
     true
 end
 
+function OpenAPI.validate_properties(o::NetworkIntentPolicy)
+    OpenAPI.validate_property(NetworkIntentPolicy, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(NetworkIntentPolicy, Symbol("id"), o.id)
+    OpenAPI.validate_property(NetworkIntentPolicy, Symbol("name"), o.name)
+    OpenAPI.validate_property(NetworkIntentPolicy, Symbol("type"), o.type)
+    OpenAPI.validate_property(NetworkIntentPolicy, Symbol("location"), o.location)
+    OpenAPI.validate_property(NetworkIntentPolicy, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ NetworkIntentPolicy }, name::Symbol, val)
+
+
+
+
+
+
 end

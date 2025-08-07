@@ -21,19 +21,27 @@ Base.@kwdef mutable struct ApplicationGatewayRewriteRuleActionSet <: OpenAPI.API
     urlConfiguration = nothing # spec type: Union{ Nothing, ApplicationGatewayUrlConfiguration }
 
     function ApplicationGatewayRewriteRuleActionSet(requestHeaderConfigurations, responseHeaderConfigurations, urlConfiguration, )
-        OpenAPI.validate_property(ApplicationGatewayRewriteRuleActionSet, Symbol("requestHeaderConfigurations"), requestHeaderConfigurations)
-        OpenAPI.validate_property(ApplicationGatewayRewriteRuleActionSet, Symbol("responseHeaderConfigurations"), responseHeaderConfigurations)
-        OpenAPI.validate_property(ApplicationGatewayRewriteRuleActionSet, Symbol("urlConfiguration"), urlConfiguration)
-        return new(requestHeaderConfigurations, responseHeaderConfigurations, urlConfiguration, )
+        o = new(requestHeaderConfigurations, responseHeaderConfigurations, urlConfiguration, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayRewriteRuleActionSet
 
 const _property_types_ApplicationGatewayRewriteRuleActionSet = Dict{Symbol,String}(Symbol("requestHeaderConfigurations")=>"Vector{ApplicationGatewayHeaderConfiguration}", Symbol("responseHeaderConfigurations")=>"Vector{ApplicationGatewayHeaderConfiguration}", Symbol("urlConfiguration")=>"ApplicationGatewayUrlConfiguration", )
 OpenAPI.property_type(::Type{ ApplicationGatewayRewriteRuleActionSet }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayRewriteRuleActionSet[name]))}
 
-function check_required(o::ApplicationGatewayRewriteRuleActionSet)
+function OpenAPI.check_required(o::ApplicationGatewayRewriteRuleActionSet)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayRewriteRuleActionSet)
+    OpenAPI.validate_property(ApplicationGatewayRewriteRuleActionSet, Symbol("requestHeaderConfigurations"), o.requestHeaderConfigurations)
+    OpenAPI.validate_property(ApplicationGatewayRewriteRuleActionSet, Symbol("responseHeaderConfigurations"), o.responseHeaderConfigurations)
+    OpenAPI.validate_property(ApplicationGatewayRewriteRuleActionSet, Symbol("urlConfiguration"), o.urlConfiguration)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayRewriteRuleActionSet }, name::Symbol, val)
+
+
+
 end

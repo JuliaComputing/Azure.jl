@@ -13,6 +13,7 @@ Properties of probe of an application gateway.
         timeout=nothing,
         unhealthyThreshold=nothing,
         pickHostNameFromBackendHttpSettings=nothing,
+        pickHostNameFromBackendSettings=nothing,
         minServers=nothing,
         match=nothing,
         provisioningState=nothing,
@@ -26,10 +27,11 @@ Properties of probe of an application gateway.
     - timeout::Int64 : The probe timeout in seconds. Probe marked as failed if valid response is not received with this timeout period. Acceptable values are from 1 second to 86400 seconds.
     - unhealthyThreshold::Int64 : The probe retry count. Backend server is marked down after consecutive probe failure count reaches UnhealthyThreshold. Acceptable values are from 1 second to 20.
     - pickHostNameFromBackendHttpSettings::Bool : Whether the host header should be picked from the backend http settings. Default value is false.
+    - pickHostNameFromBackendSettings::Bool : Whether the server name indication should be picked from the backend settings for Tls protocol. Default value is false.
     - minServers::Int64 : Minimum number of servers that are always marked healthy. Default value is 0.
     - match::ApplicationGatewayProbeHealthResponseMatch
     - provisioningState::ProvisioningState
-    - port::Int64 : Custom port which will be used for probing the backend servers. The valid value ranges from 1 to 65535. In case not set, port from http settings will be used. This property is valid for Standard_v2 and WAF_v2 only.
+    - port::Int64 : Custom port which will be used for probing the backend servers. The valid value ranges from 1 to 65535. In case not set, port from http settings will be used. This property is valid for Basic, Standard_v2 and WAF_v2 only.
 """
 Base.@kwdef mutable struct ApplicationGatewayProbePropertiesFormat <: OpenAPI.APIModel
     protocol = nothing # spec type: Union{ Nothing, ApplicationGatewayProtocol }
@@ -39,47 +41,66 @@ Base.@kwdef mutable struct ApplicationGatewayProbePropertiesFormat <: OpenAPI.AP
     timeout::Union{Nothing, Int64} = nothing
     unhealthyThreshold::Union{Nothing, Int64} = nothing
     pickHostNameFromBackendHttpSettings::Union{Nothing, Bool} = nothing
+    pickHostNameFromBackendSettings::Union{Nothing, Bool} = nothing
     minServers::Union{Nothing, Int64} = nothing
     match = nothing # spec type: Union{ Nothing, ApplicationGatewayProbeHealthResponseMatch }
     provisioningState = nothing # spec type: Union{ Nothing, ProvisioningState }
     port::Union{Nothing, Int64} = nothing
 
-    function ApplicationGatewayProbePropertiesFormat(protocol, host, path, interval, timeout, unhealthyThreshold, pickHostNameFromBackendHttpSettings, minServers, match, provisioningState, port, )
-        OpenAPI.validate_property(ApplicationGatewayProbePropertiesFormat, Symbol("protocol"), protocol)
-        OpenAPI.validate_property(ApplicationGatewayProbePropertiesFormat, Symbol("host"), host)
-        OpenAPI.validate_property(ApplicationGatewayProbePropertiesFormat, Symbol("path"), path)
-        OpenAPI.validate_property(ApplicationGatewayProbePropertiesFormat, Symbol("interval"), interval)
-        OpenAPI.validate_property(ApplicationGatewayProbePropertiesFormat, Symbol("timeout"), timeout)
-        OpenAPI.validate_property(ApplicationGatewayProbePropertiesFormat, Symbol("unhealthyThreshold"), unhealthyThreshold)
-        OpenAPI.validate_property(ApplicationGatewayProbePropertiesFormat, Symbol("pickHostNameFromBackendHttpSettings"), pickHostNameFromBackendHttpSettings)
-        OpenAPI.validate_property(ApplicationGatewayProbePropertiesFormat, Symbol("minServers"), minServers)
-        OpenAPI.validate_property(ApplicationGatewayProbePropertiesFormat, Symbol("match"), match)
-        OpenAPI.validate_property(ApplicationGatewayProbePropertiesFormat, Symbol("provisioningState"), provisioningState)
-        OpenAPI.validate_property(ApplicationGatewayProbePropertiesFormat, Symbol("port"), port)
-        return new(protocol, host, path, interval, timeout, unhealthyThreshold, pickHostNameFromBackendHttpSettings, minServers, match, provisioningState, port, )
+    function ApplicationGatewayProbePropertiesFormat(protocol, host, path, interval, timeout, unhealthyThreshold, pickHostNameFromBackendHttpSettings, pickHostNameFromBackendSettings, minServers, match, provisioningState, port, )
+        o = new(protocol, host, path, interval, timeout, unhealthyThreshold, pickHostNameFromBackendHttpSettings, pickHostNameFromBackendSettings, minServers, match, provisioningState, port, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type ApplicationGatewayProbePropertiesFormat
 
-const _property_types_ApplicationGatewayProbePropertiesFormat = Dict{Symbol,String}(Symbol("protocol")=>"ApplicationGatewayProtocol", Symbol("host")=>"String", Symbol("path")=>"String", Symbol("interval")=>"Int64", Symbol("timeout")=>"Int64", Symbol("unhealthyThreshold")=>"Int64", Symbol("pickHostNameFromBackendHttpSettings")=>"Bool", Symbol("minServers")=>"Int64", Symbol("match")=>"ApplicationGatewayProbeHealthResponseMatch", Symbol("provisioningState")=>"ProvisioningState", Symbol("port")=>"Int64", )
+const _property_types_ApplicationGatewayProbePropertiesFormat = Dict{Symbol,String}(Symbol("protocol")=>"ApplicationGatewayProtocol", Symbol("host")=>"String", Symbol("path")=>"String", Symbol("interval")=>"Int64", Symbol("timeout")=>"Int64", Symbol("unhealthyThreshold")=>"Int64", Symbol("pickHostNameFromBackendHttpSettings")=>"Bool", Symbol("pickHostNameFromBackendSettings")=>"Bool", Symbol("minServers")=>"Int64", Symbol("match")=>"ApplicationGatewayProbeHealthResponseMatch", Symbol("provisioningState")=>"ProvisioningState", Symbol("port")=>"Int64", )
 OpenAPI.property_type(::Type{ ApplicationGatewayProbePropertiesFormat }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_ApplicationGatewayProbePropertiesFormat[name]))}
 
-function check_required(o::ApplicationGatewayProbePropertiesFormat)
+function OpenAPI.check_required(o::ApplicationGatewayProbePropertiesFormat)
     true
 end
 
+function OpenAPI.validate_properties(o::ApplicationGatewayProbePropertiesFormat)
+    OpenAPI.validate_property(ApplicationGatewayProbePropertiesFormat, Symbol("protocol"), o.protocol)
+    OpenAPI.validate_property(ApplicationGatewayProbePropertiesFormat, Symbol("host"), o.host)
+    OpenAPI.validate_property(ApplicationGatewayProbePropertiesFormat, Symbol("path"), o.path)
+    OpenAPI.validate_property(ApplicationGatewayProbePropertiesFormat, Symbol("interval"), o.interval)
+    OpenAPI.validate_property(ApplicationGatewayProbePropertiesFormat, Symbol("timeout"), o.timeout)
+    OpenAPI.validate_property(ApplicationGatewayProbePropertiesFormat, Symbol("unhealthyThreshold"), o.unhealthyThreshold)
+    OpenAPI.validate_property(ApplicationGatewayProbePropertiesFormat, Symbol("pickHostNameFromBackendHttpSettings"), o.pickHostNameFromBackendHttpSettings)
+    OpenAPI.validate_property(ApplicationGatewayProbePropertiesFormat, Symbol("pickHostNameFromBackendSettings"), o.pickHostNameFromBackendSettings)
+    OpenAPI.validate_property(ApplicationGatewayProbePropertiesFormat, Symbol("minServers"), o.minServers)
+    OpenAPI.validate_property(ApplicationGatewayProbePropertiesFormat, Symbol("match"), o.match)
+    OpenAPI.validate_property(ApplicationGatewayProbePropertiesFormat, Symbol("provisioningState"), o.provisioningState)
+    OpenAPI.validate_property(ApplicationGatewayProbePropertiesFormat, Symbol("port"), o.port)
+end
+
 function OpenAPI.validate_property(::Type{ ApplicationGatewayProbePropertiesFormat }, name::Symbol, val)
+
+
+
+
     if name === Symbol("interval")
         OpenAPI.validate_param(name, "ApplicationGatewayProbePropertiesFormat", :format, val, "int32")
     end
+
     if name === Symbol("timeout")
         OpenAPI.validate_param(name, "ApplicationGatewayProbePropertiesFormat", :format, val, "int32")
     end
+
     if name === Symbol("unhealthyThreshold")
         OpenAPI.validate_param(name, "ApplicationGatewayProbePropertiesFormat", :format, val, "int32")
     end
+
+
+
     if name === Symbol("minServers")
         OpenAPI.validate_param(name, "ApplicationGatewayProbePropertiesFormat", :format, val, "int32")
     end
+
+
+
     if name === Symbol("port")
         OpenAPI.validate_param(name, "ApplicationGatewayProbePropertiesFormat", :format, val, "int32")
     end

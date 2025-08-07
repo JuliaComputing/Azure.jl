@@ -6,26 +6,46 @@
 Specifies the Security profile settings for the virtual machine or virtual machine scale set.
 
     SecurityProfile(;
+        uefiSettings=nothing,
         encryptionAtHost=nothing,
+        securityType=nothing,
     )
 
+    - uefiSettings::UefiSettings
     - encryptionAtHost::Bool : This property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. This will enable the encryption for all the disks including Resource/Temp disk at host itself. &lt;br&gt;&lt;br&gt; Default: The Encryption at host will be disabled unless this property is set to true for the resource.
+    - securityType::String : Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. &lt;br&gt;&lt;br&gt; Default: UefiSettings will not be enabled unless this property is set.
 """
 Base.@kwdef mutable struct SecurityProfile <: OpenAPI.APIModel
+    uefiSettings = nothing # spec type: Union{ Nothing, UefiSettings }
     encryptionAtHost::Union{Nothing, Bool} = nothing
+    securityType::Union{Nothing, String} = nothing
 
-    function SecurityProfile(encryptionAtHost, )
-        OpenAPI.validate_property(SecurityProfile, Symbol("encryptionAtHost"), encryptionAtHost)
-        return new(encryptionAtHost, )
+    function SecurityProfile(uefiSettings, encryptionAtHost, securityType, )
+        o = new(uefiSettings, encryptionAtHost, securityType, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type SecurityProfile
 
-const _property_types_SecurityProfile = Dict{Symbol,String}(Symbol("encryptionAtHost")=>"Bool", )
+const _property_types_SecurityProfile = Dict{Symbol,String}(Symbol("uefiSettings")=>"UefiSettings", Symbol("encryptionAtHost")=>"Bool", Symbol("securityType")=>"String", )
 OpenAPI.property_type(::Type{ SecurityProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SecurityProfile[name]))}
 
-function check_required(o::SecurityProfile)
+function OpenAPI.check_required(o::SecurityProfile)
     true
 end
 
+function OpenAPI.validate_properties(o::SecurityProfile)
+    OpenAPI.validate_property(SecurityProfile, Symbol("uefiSettings"), o.uefiSettings)
+    OpenAPI.validate_property(SecurityProfile, Symbol("encryptionAtHost"), o.encryptionAtHost)
+    OpenAPI.validate_property(SecurityProfile, Symbol("securityType"), o.securityType)
+end
+
 function OpenAPI.validate_property(::Type{ SecurityProfile }, name::Symbol, val)
+
+
+
+    if name === Symbol("securityType")
+        OpenAPI.validate_param(name, "SecurityProfile", :enum, val, ["TrustedLaunch", "ConfidentialVM"])
+    end
+
 end

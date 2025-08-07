@@ -24,26 +24,36 @@ Base.@kwdef mutable struct MonetaryCommitment <: OpenAPI.APIModel
     EffectiveDate::Union{Nothing, ZonedDateTime} = nothing
 
     function MonetaryCommitment(TieredDiscount, ExcludedMeterIds, Name, EffectiveDate, )
-        OpenAPI.validate_property(MonetaryCommitment, Symbol("TieredDiscount"), TieredDiscount)
-        OpenAPI.validate_property(MonetaryCommitment, Symbol("ExcludedMeterIds"), ExcludedMeterIds)
-        OpenAPI.validate_property(MonetaryCommitment, Symbol("Name"), Name)
-        OpenAPI.validate_property(MonetaryCommitment, Symbol("EffectiveDate"), EffectiveDate)
-        return new(TieredDiscount, ExcludedMeterIds, Name, EffectiveDate, )
+        o = new(TieredDiscount, ExcludedMeterIds, Name, EffectiveDate, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type MonetaryCommitment
 
 const _property_types_MonetaryCommitment = Dict{Symbol,String}(Symbol("TieredDiscount")=>"Dict{String, Float64}", Symbol("ExcludedMeterIds")=>"Vector{String}", Symbol("Name")=>"String", Symbol("EffectiveDate")=>"ZonedDateTime", )
 OpenAPI.property_type(::Type{ MonetaryCommitment }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_MonetaryCommitment[name]))}
 
-function check_required(o::MonetaryCommitment)
+function OpenAPI.check_required(o::MonetaryCommitment)
     o.Name === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::MonetaryCommitment)
+    OpenAPI.validate_property(MonetaryCommitment, Symbol("TieredDiscount"), o.TieredDiscount)
+    OpenAPI.validate_property(MonetaryCommitment, Symbol("ExcludedMeterIds"), o.ExcludedMeterIds)
+    OpenAPI.validate_property(MonetaryCommitment, Symbol("Name"), o.Name)
+    OpenAPI.validate_property(MonetaryCommitment, Symbol("EffectiveDate"), o.EffectiveDate)
+end
+
 function OpenAPI.validate_property(::Type{ MonetaryCommitment }, name::Symbol, val)
+
+
+
     if name === Symbol("Name")
         OpenAPI.validate_param(name, "MonetaryCommitment", :enum, val, ["Recurring Charge", "Monetary Commitment", "Monetary Credit"])
     end
+
+
     if name === Symbol("EffectiveDate")
         OpenAPI.validate_param(name, "MonetaryCommitment", :format, val, "date-time")
     end

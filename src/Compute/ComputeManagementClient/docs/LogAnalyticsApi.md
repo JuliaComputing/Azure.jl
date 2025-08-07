@@ -21,10 +21,10 @@ Export logs that show Api requests made by this subscription in the given time w
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LogAnalyticsApi** | API context | 
-**location** | **String**| The location upon which virtual-machine-sizes is queried. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**RequestRateByIntervalInput**](RequestRateByIntervalInput.md)| Parameters supplied to the LogAnalytics getRequestRateByInterval Api. | 
+**location** | **String** | The location upon which virtual-machine-sizes is queried. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**RequestRateByIntervalInput**](RequestRateByIntervalInput.md) | Parameters supplied to the LogAnalytics getRequestRateByInterval Api. |
 
 ### Return type
 
@@ -54,10 +54,10 @@ Export logs that show total throttled Api requests for this subscription in the 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LogAnalyticsApi** | API context | 
-**location** | **String**| The location upon which virtual-machine-sizes is queried. | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**ThrottledRequestsInput**](ThrottledRequestsInput.md)| Parameters supplied to the LogAnalytics getThrottledRequests Api. | 
+**location** | **String** | The location upon which virtual-machine-sizes is queried. |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**ThrottledRequestsInput**](ThrottledRequestsInput.md) | Parameters supplied to the LogAnalytics getThrottledRequests Api. |
 
 ### Return type
 

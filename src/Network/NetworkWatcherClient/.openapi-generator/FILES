@@ -18,6 +18,9 @@ docs/ConnectionMonitorDestination.md
 docs/ConnectionMonitorEndpoint.md
 docs/ConnectionMonitorEndpointFilter.md
 docs/ConnectionMonitorEndpointFilterItem.md
+docs/ConnectionMonitorEndpointLocationDetails.md
+docs/ConnectionMonitorEndpointScope.md
+docs/ConnectionMonitorEndpointScopeItem.md
 docs/ConnectionMonitorHttpConfiguration.md
 docs/ConnectionMonitorIcmpConfiguration.md
 docs/ConnectionMonitorListResult.md
@@ -63,6 +66,8 @@ docs/HopLink2.md
 docs/HopLinkProperties.md
 docs/HopLinkProperties2.md
 docs/IPVersion.md
+docs/ManagedServiceIdentity.md
+docs/ManagedServiceIdentityUserAssignedIdentitiesValue.md
 docs/MatchedRule.md
 docs/NetworkConfigurationDiagnosticParameters.md
 docs/NetworkConfigurationDiagnosticProfile.md
@@ -80,10 +85,12 @@ docs/NextHopResult.md
 docs/PacketCapture.md
 docs/PacketCaptureFilter.md
 docs/PacketCaptureListResult.md
+docs/PacketCaptureMachineScope.md
 docs/PacketCaptureParameters.md
 docs/PacketCaptureQueryStatusResult.md
 docs/PacketCaptureResult.md
 docs/PacketCaptureResultProperties.md
+docs/PacketCaptureSettings.md
 docs/PacketCaptureStorageLocation.md
 docs/PacketCapturesApi.md
 docs/ProtocolConfiguration.md
@@ -141,6 +148,9 @@ src/models/model_ConnectionMonitorDestination.jl
 src/models/model_ConnectionMonitorEndpoint.jl
 src/models/model_ConnectionMonitorEndpointFilter.jl
 src/models/model_ConnectionMonitorEndpointFilterItem.jl
+src/models/model_ConnectionMonitorEndpointLocationDetails.jl
+src/models/model_ConnectionMonitorEndpointScope.jl
+src/models/model_ConnectionMonitorEndpointScopeItem.jl
 src/models/model_ConnectionMonitorHttpConfiguration.jl
 src/models/model_ConnectionMonitorIcmpConfiguration.jl
 src/models/model_ConnectionMonitorListResult.jl
@@ -184,6 +194,8 @@ src/models/model_HopLink2.jl
 src/models/model_HopLinkProperties.jl
 src/models/model_HopLinkProperties2.jl
 src/models/model_IPVersion.jl
+src/models/model_ManagedServiceIdentity.jl
+src/models/model_ManagedServiceIdentityUserAssignedIdentitiesValue.jl
 src/models/model_MatchedRule.jl
 src/models/model_NetworkConfigurationDiagnosticParameters.jl
 src/models/model_NetworkConfigurationDiagnosticProfile.jl
@@ -200,10 +212,12 @@ src/models/model_NextHopResult.jl
 src/models/model_PacketCapture.jl
 src/models/model_PacketCaptureFilter.jl
 src/models/model_PacketCaptureListResult.jl
+src/models/model_PacketCaptureMachineScope.jl
 src/models/model_PacketCaptureParameters.jl
 src/models/model_PacketCaptureQueryStatusResult.jl
 src/models/model_PacketCaptureResult.jl
 src/models/model_PacketCaptureResultProperties.jl
+src/models/model_PacketCaptureSettings.jl
 src/models/model_PacketCaptureStorageLocation.jl
 src/models/model_ProtocolConfiguration.jl
 src/models/model_ProvisioningState.jl

@@ -21,22 +21,31 @@ Base.@kwdef mutable struct RoutingPreference <: OpenAPI.APIModel
     publishInternetEndpoints::Union{Nothing, Bool} = nothing
 
     function RoutingPreference(routingChoice, publishMicrosoftEndpoints, publishInternetEndpoints, )
-        OpenAPI.validate_property(RoutingPreference, Symbol("routingChoice"), routingChoice)
-        OpenAPI.validate_property(RoutingPreference, Symbol("publishMicrosoftEndpoints"), publishMicrosoftEndpoints)
-        OpenAPI.validate_property(RoutingPreference, Symbol("publishInternetEndpoints"), publishInternetEndpoints)
-        return new(routingChoice, publishMicrosoftEndpoints, publishInternetEndpoints, )
+        o = new(routingChoice, publishMicrosoftEndpoints, publishInternetEndpoints, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type RoutingPreference
 
 const _property_types_RoutingPreference = Dict{Symbol,String}(Symbol("routingChoice")=>"String", Symbol("publishMicrosoftEndpoints")=>"Bool", Symbol("publishInternetEndpoints")=>"Bool", )
 OpenAPI.property_type(::Type{ RoutingPreference }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RoutingPreference[name]))}
 
-function check_required(o::RoutingPreference)
+function OpenAPI.check_required(o::RoutingPreference)
     true
 end
 
+function OpenAPI.validate_properties(o::RoutingPreference)
+    OpenAPI.validate_property(RoutingPreference, Symbol("routingChoice"), o.routingChoice)
+    OpenAPI.validate_property(RoutingPreference, Symbol("publishMicrosoftEndpoints"), o.publishMicrosoftEndpoints)
+    OpenAPI.validate_property(RoutingPreference, Symbol("publishInternetEndpoints"), o.publishInternetEndpoints)
+end
+
 function OpenAPI.validate_property(::Type{ RoutingPreference }, name::Symbol, val)
+
     if name === Symbol("routingChoice")
         OpenAPI.validate_param(name, "RoutingPreference", :enum, val, ["MicrosoftRouting", "InternetRouting"])
     end
+
+
+
 end

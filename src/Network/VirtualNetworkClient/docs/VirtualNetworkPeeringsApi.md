@@ -11,8 +11,8 @@ Method | HTTP request | Description
 
 
 # **virtual_network_peerings_create_or_update**
-> virtual_network_peerings_create_or_update(_api::VirtualNetworkPeeringsApi, resource_group_name::String, virtual_network_name::String, virtual_network_peering_name::String, api_version::String, subscription_id::String, virtual_network_peering_parameters::VirtualNetworkPeering; _mediaType=nothing) -> VirtualNetworkPeering, OpenAPI.Clients.ApiResponse <br/>
-> virtual_network_peerings_create_or_update(_api::VirtualNetworkPeeringsApi, response_stream::Channel, resource_group_name::String, virtual_network_name::String, virtual_network_peering_name::String, api_version::String, subscription_id::String, virtual_network_peering_parameters::VirtualNetworkPeering; _mediaType=nothing) -> Channel{ VirtualNetworkPeering }, OpenAPI.Clients.ApiResponse
+> virtual_network_peerings_create_or_update(_api::VirtualNetworkPeeringsApi, resource_group_name::String, virtual_network_name::String, virtual_network_peering_name::String, api_version::String, subscription_id::String, virtual_network_peering_parameters::VirtualNetworkPeering; sync_remote_address_space=nothing, _mediaType=nothing) -> VirtualNetworkPeering, OpenAPI.Clients.ApiResponse <br/>
+> virtual_network_peerings_create_or_update(_api::VirtualNetworkPeeringsApi, response_stream::Channel, resource_group_name::String, virtual_network_name::String, virtual_network_peering_name::String, api_version::String, subscription_id::String, virtual_network_peering_parameters::VirtualNetworkPeering; sync_remote_address_space=nothing, _mediaType=nothing) -> Channel{ VirtualNetworkPeering }, OpenAPI.Clients.ApiResponse
 
 
 
@@ -23,12 +23,18 @@ Creates or updates a peering in the specified virtual network.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualNetworkPeeringsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**virtual_network_name** | **String**| The name of the virtual network. | [default to nothing]
-**virtual_network_peering_name** | **String**| The name of the peering. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**virtual_network_peering_parameters** | [**VirtualNetworkPeering**](VirtualNetworkPeering.md)| Parameters supplied to the create or update virtual network peering operation. | 
+**resource_group_name** | **String** | The name of the resource group. |
+**virtual_network_name** | **String** | The name of the virtual network. |
+**virtual_network_peering_name** | **String** | The name of the peering. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**virtual_network_peering_parameters** | [**VirtualNetworkPeering**](VirtualNetworkPeering.md) | Parameters supplied to the create or update virtual network peering operation. |
+
+### Optional Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sync_remote_address_space** | **String** | Parameter indicates the intention to sync the peering with the current address space on the remote vNet after it&#39;s updated. | [default to nothing]
 
 ### Return type
 
@@ -58,11 +64,11 @@ Deletes the specified virtual network peering.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualNetworkPeeringsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**virtual_network_name** | **String**| The name of the virtual network. | [default to nothing]
-**virtual_network_peering_name** | **String**| The name of the virtual network peering. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**virtual_network_name** | **String** | The name of the virtual network. |
+**virtual_network_peering_name** | **String** | The name of the virtual network peering. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -92,11 +98,11 @@ Gets the specified virtual network peering.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualNetworkPeeringsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**virtual_network_name** | **String**| The name of the virtual network. | [default to nothing]
-**virtual_network_peering_name** | **String**| The name of the virtual network peering. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**virtual_network_name** | **String** | The name of the virtual network. |
+**virtual_network_peering_name** | **String** | The name of the virtual network peering. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -126,10 +132,10 @@ Gets all virtual network peerings in a virtual network.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualNetworkPeeringsApi** | API context | 
-**resource_group_name** | **String**| The name of the resource group. | [default to nothing]
-**virtual_network_name** | **String**| The name of the virtual network. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**resource_group_name** | **String** | The name of the resource group. |
+**virtual_network_name** | **String** | The name of the virtual network. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 

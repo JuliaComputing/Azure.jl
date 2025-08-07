@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **sourcePortRanges** | **Vector{String}** | The source port ranges. | [optional] [default to nothing]
 **destinationPortRanges** | **Vector{String}** | The destination port ranges. | [optional] [default to nothing]
 **access** | [***SecurityRuleAccess2**](SecurityRuleAccess2.md) |  | [default to nothing]
-**priority** | **Int64** | The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule. | [optional] [default to nothing]
+**priority** | **Int64** | The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule. | [default to nothing]
 **direction** | [***SecurityRuleDirection2**](SecurityRuleDirection2.md) |  | [default to nothing]
 **provisioningState** | [***ProvisioningState**](ProvisioningState.md) |  | [optional] [default to nothing]
 

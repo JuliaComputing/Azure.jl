@@ -21,22 +21,31 @@ Base.@kwdef mutable struct SubscriptionPolicies <: OpenAPI.APIModel
     spendingLimit::Union{Nothing, String} = nothing
 
     function SubscriptionPolicies(locationPlacementId, quotaId, spendingLimit, )
-        OpenAPI.validate_property(SubscriptionPolicies, Symbol("locationPlacementId"), locationPlacementId)
-        OpenAPI.validate_property(SubscriptionPolicies, Symbol("quotaId"), quotaId)
-        OpenAPI.validate_property(SubscriptionPolicies, Symbol("spendingLimit"), spendingLimit)
-        return new(locationPlacementId, quotaId, spendingLimit, )
+        o = new(locationPlacementId, quotaId, spendingLimit, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type SubscriptionPolicies
 
 const _property_types_SubscriptionPolicies = Dict{Symbol,String}(Symbol("locationPlacementId")=>"String", Symbol("quotaId")=>"String", Symbol("spendingLimit")=>"String", )
 OpenAPI.property_type(::Type{ SubscriptionPolicies }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_SubscriptionPolicies[name]))}
 
-function check_required(o::SubscriptionPolicies)
+function OpenAPI.check_required(o::SubscriptionPolicies)
     true
 end
 
+function OpenAPI.validate_properties(o::SubscriptionPolicies)
+    OpenAPI.validate_property(SubscriptionPolicies, Symbol("locationPlacementId"), o.locationPlacementId)
+    OpenAPI.validate_property(SubscriptionPolicies, Symbol("quotaId"), o.quotaId)
+    OpenAPI.validate_property(SubscriptionPolicies, Symbol("spendingLimit"), o.spendingLimit)
+end
+
 function OpenAPI.validate_property(::Type{ SubscriptionPolicies }, name::Symbol, val)
+
+
+
     if name === Symbol("spendingLimit")
         OpenAPI.validate_param(name, "SubscriptionPolicies", :enum, val, ["On", "Off", "CurrentPeriodOff"])
     end
+
 end

@@ -6,40 +6,54 @@
 Virtual machine image resource information.
 
     VirtualMachineImageResource(;
-        id=nothing,
         name=nothing,
         location=nothing,
         tags=nothing,
+        extendedLocation=nothing,
+        id=nothing,
     )
 
-    - id::String : Resource Id
     - name::String : The name of the resource.
     - location::String : The supported Azure location of the resource.
     - tags::Dict{String, String} : Specifies the tags that are assigned to the virtual machine. For more information about using tags, see [Using tags to organize your Azure resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags.md).
+    - extendedLocation::ExtendedLocation
+    - id::String : Resource Id
 """
 Base.@kwdef mutable struct VirtualMachineImageResource <: OpenAPI.APIModel
-    id::Union{Nothing, String} = nothing
     name::Union{Nothing, String} = nothing
     location::Union{Nothing, String} = nothing
     tags::Union{Nothing, Dict{String, String}} = nothing
+    extendedLocation = nothing # spec type: Union{ Nothing, ExtendedLocation }
+    id::Union{Nothing, String} = nothing
 
-    function VirtualMachineImageResource(id, name, location, tags, )
-        OpenAPI.validate_property(VirtualMachineImageResource, Symbol("id"), id)
-        OpenAPI.validate_property(VirtualMachineImageResource, Symbol("name"), name)
-        OpenAPI.validate_property(VirtualMachineImageResource, Symbol("location"), location)
-        OpenAPI.validate_property(VirtualMachineImageResource, Symbol("tags"), tags)
-        return new(id, name, location, tags, )
+    function VirtualMachineImageResource(name, location, tags, extendedLocation, id, )
+        o = new(name, location, tags, extendedLocation, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineImageResource
 
-const _property_types_VirtualMachineImageResource = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
+const _property_types_VirtualMachineImageResource = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", Symbol("extendedLocation")=>"ExtendedLocation", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ VirtualMachineImageResource }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineImageResource[name]))}
 
-function check_required(o::VirtualMachineImageResource)
+function OpenAPI.check_required(o::VirtualMachineImageResource)
     o.name === nothing && (return false)
     o.location === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineImageResource)
+    OpenAPI.validate_property(VirtualMachineImageResource, Symbol("name"), o.name)
+    OpenAPI.validate_property(VirtualMachineImageResource, Symbol("location"), o.location)
+    OpenAPI.validate_property(VirtualMachineImageResource, Symbol("tags"), o.tags)
+    OpenAPI.validate_property(VirtualMachineImageResource, Symbol("extendedLocation"), o.extendedLocation)
+    OpenAPI.validate_property(VirtualMachineImageResource, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineImageResource }, name::Symbol, val)
+
+
+
+
+
 end

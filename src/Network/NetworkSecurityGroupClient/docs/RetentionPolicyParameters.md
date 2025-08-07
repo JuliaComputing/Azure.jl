@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**days** | **Int64** | Number of days to retain flow log records. | [optional] [default to nothing]
+**days** | **Int64** | Number of days to retain flow log records. | [optional] [default to 0]
 **enabled** | **Bool** | Flag to enable/disable retention. | [optional] [default to false]
 
 

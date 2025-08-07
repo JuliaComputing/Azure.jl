@@ -15,17 +15,23 @@ Base.@kwdef mutable struct NetworkConfigurationDiagnosticResponse <: OpenAPI.API
     results::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{NetworkConfigurationDiagnosticResult} }
 
     function NetworkConfigurationDiagnosticResponse(results, )
-        OpenAPI.validate_property(NetworkConfigurationDiagnosticResponse, Symbol("results"), results)
-        return new(results, )
+        o = new(results, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type NetworkConfigurationDiagnosticResponse
 
 const _property_types_NetworkConfigurationDiagnosticResponse = Dict{Symbol,String}(Symbol("results")=>"Vector{NetworkConfigurationDiagnosticResult}", )
 OpenAPI.property_type(::Type{ NetworkConfigurationDiagnosticResponse }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_NetworkConfigurationDiagnosticResponse[name]))}
 
-function check_required(o::NetworkConfigurationDiagnosticResponse)
+function OpenAPI.check_required(o::NetworkConfigurationDiagnosticResponse)
     true
 end
 
+function OpenAPI.validate_properties(o::NetworkConfigurationDiagnosticResponse)
+    OpenAPI.validate_property(NetworkConfigurationDiagnosticResponse, Symbol("results"), o.results)
+end
+
 function OpenAPI.validate_property(::Type{ NetworkConfigurationDiagnosticResponse }, name::Symbol, val)
+
 end

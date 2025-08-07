@@ -14,6 +14,7 @@ The URIs that are used to perform a retrieval of a public blob, queue, table, we
         dfs=nothing,
         microsoftEndpoints=nothing,
         internetEndpoints=nothing,
+        ipv6Endpoints=nothing,
     )
 
     - blob::String : Gets the blob endpoint.
@@ -24,6 +25,7 @@ The URIs that are used to perform a retrieval of a public blob, queue, table, we
     - dfs::String : Gets the dfs endpoint.
     - microsoftEndpoints::StorageAccountMicrosoftEndpoints
     - internetEndpoints::StorageAccountInternetEndpoints
+    - ipv6Endpoints::StorageAccountIpv6Endpoints
 """
 Base.@kwdef mutable struct Endpoints <: OpenAPI.APIModel
     blob::Union{Nothing, String} = nothing
@@ -34,26 +36,42 @@ Base.@kwdef mutable struct Endpoints <: OpenAPI.APIModel
     dfs::Union{Nothing, String} = nothing
     microsoftEndpoints = nothing # spec type: Union{ Nothing, StorageAccountMicrosoftEndpoints }
     internetEndpoints = nothing # spec type: Union{ Nothing, StorageAccountInternetEndpoints }
+    ipv6Endpoints = nothing # spec type: Union{ Nothing, StorageAccountIpv6Endpoints }
 
-    function Endpoints(blob, queue, table, file, web, dfs, microsoftEndpoints, internetEndpoints, )
-        OpenAPI.validate_property(Endpoints, Symbol("blob"), blob)
-        OpenAPI.validate_property(Endpoints, Symbol("queue"), queue)
-        OpenAPI.validate_property(Endpoints, Symbol("table"), table)
-        OpenAPI.validate_property(Endpoints, Symbol("file"), file)
-        OpenAPI.validate_property(Endpoints, Symbol("web"), web)
-        OpenAPI.validate_property(Endpoints, Symbol("dfs"), dfs)
-        OpenAPI.validate_property(Endpoints, Symbol("microsoftEndpoints"), microsoftEndpoints)
-        OpenAPI.validate_property(Endpoints, Symbol("internetEndpoints"), internetEndpoints)
-        return new(blob, queue, table, file, web, dfs, microsoftEndpoints, internetEndpoints, )
+    function Endpoints(blob, queue, table, file, web, dfs, microsoftEndpoints, internetEndpoints, ipv6Endpoints, )
+        o = new(blob, queue, table, file, web, dfs, microsoftEndpoints, internetEndpoints, ipv6Endpoints, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type Endpoints
 
-const _property_types_Endpoints = Dict{Symbol,String}(Symbol("blob")=>"String", Symbol("queue")=>"String", Symbol("table")=>"String", Symbol("file")=>"String", Symbol("web")=>"String", Symbol("dfs")=>"String", Symbol("microsoftEndpoints")=>"StorageAccountMicrosoftEndpoints", Symbol("internetEndpoints")=>"StorageAccountInternetEndpoints", )
+const _property_types_Endpoints = Dict{Symbol,String}(Symbol("blob")=>"String", Symbol("queue")=>"String", Symbol("table")=>"String", Symbol("file")=>"String", Symbol("web")=>"String", Symbol("dfs")=>"String", Symbol("microsoftEndpoints")=>"StorageAccountMicrosoftEndpoints", Symbol("internetEndpoints")=>"StorageAccountInternetEndpoints", Symbol("ipv6Endpoints")=>"StorageAccountIpv6Endpoints", )
 OpenAPI.property_type(::Type{ Endpoints }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_Endpoints[name]))}
 
-function check_required(o::Endpoints)
+function OpenAPI.check_required(o::Endpoints)
     true
 end
 
+function OpenAPI.validate_properties(o::Endpoints)
+    OpenAPI.validate_property(Endpoints, Symbol("blob"), o.blob)
+    OpenAPI.validate_property(Endpoints, Symbol("queue"), o.queue)
+    OpenAPI.validate_property(Endpoints, Symbol("table"), o.table)
+    OpenAPI.validate_property(Endpoints, Symbol("file"), o.file)
+    OpenAPI.validate_property(Endpoints, Symbol("web"), o.web)
+    OpenAPI.validate_property(Endpoints, Symbol("dfs"), o.dfs)
+    OpenAPI.validate_property(Endpoints, Symbol("microsoftEndpoints"), o.microsoftEndpoints)
+    OpenAPI.validate_property(Endpoints, Symbol("internetEndpoints"), o.internetEndpoints)
+    OpenAPI.validate_property(Endpoints, Symbol("ipv6Endpoints"), o.ipv6Endpoints)
+end
+
 function OpenAPI.validate_property(::Type{ Endpoints }, name::Symbol, val)
+
+
+
+
+
+
+
+
+
 end

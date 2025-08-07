@@ -6,7 +6,7 @@
 Parameters that define the retention policy for flow log.
 
     RetentionPolicyParameters(;
-        days=nothing,
+        days=0,
         enabled=false,
     )
 
@@ -14,22 +14,32 @@ Parameters that define the retention policy for flow log.
     - enabled::Bool : Flag to enable/disable retention.
 """
 Base.@kwdef mutable struct RetentionPolicyParameters <: OpenAPI.APIModel
-    days::Union{Nothing, Int64} = nothing
+    days::Union{Nothing, Int64} = 0
     enabled::Union{Nothing, Bool} = false
 
     function RetentionPolicyParameters(days, enabled, )
-        OpenAPI.validate_property(RetentionPolicyParameters, Symbol("days"), days)
-        OpenAPI.validate_property(RetentionPolicyParameters, Symbol("enabled"), enabled)
-        return new(days, enabled, )
+        o = new(days, enabled, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type RetentionPolicyParameters
 
 const _property_types_RetentionPolicyParameters = Dict{Symbol,String}(Symbol("days")=>"Int64", Symbol("enabled")=>"Bool", )
 OpenAPI.property_type(::Type{ RetentionPolicyParameters }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_RetentionPolicyParameters[name]))}
 
-function check_required(o::RetentionPolicyParameters)
+function OpenAPI.check_required(o::RetentionPolicyParameters)
     true
 end
 
+function OpenAPI.validate_properties(o::RetentionPolicyParameters)
+    OpenAPI.validate_property(RetentionPolicyParameters, Symbol("days"), o.days)
+    OpenAPI.validate_property(RetentionPolicyParameters, Symbol("enabled"), o.enabled)
+end
+
 function OpenAPI.validate_property(::Type{ RetentionPolicyParameters }, name::Symbol, val)
+
+    if name === Symbol("days")
+        OpenAPI.validate_param(name, "RetentionPolicyParameters", :format, val, "int32")
+    end
+
 end

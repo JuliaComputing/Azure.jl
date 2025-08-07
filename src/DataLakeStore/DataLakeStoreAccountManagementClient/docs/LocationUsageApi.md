@@ -20,9 +20,9 @@ Gets the current usage count and the limit for the resources of the location und
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **LocationUsageApi** | API context | 
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**location** | **String**| The resource location without whitespace. | [default to nothing]
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**location** | **String** | The resource location without whitespace. |
 
 ### Return type
 

@@ -33,24 +33,36 @@ Base.@kwdef mutable struct LocalNetworkGateway <: OpenAPI.APIModel
     tags::Union{Nothing, Dict{String, String}} = nothing
 
     function LocalNetworkGateway(properties, etag, id, name, type, location, tags, )
-        OpenAPI.validate_property(LocalNetworkGateway, Symbol("properties"), properties)
-        OpenAPI.validate_property(LocalNetworkGateway, Symbol("etag"), etag)
-        OpenAPI.validate_property(LocalNetworkGateway, Symbol("id"), id)
-        OpenAPI.validate_property(LocalNetworkGateway, Symbol("name"), name)
-        OpenAPI.validate_property(LocalNetworkGateway, Symbol("type"), type)
-        OpenAPI.validate_property(LocalNetworkGateway, Symbol("location"), location)
-        OpenAPI.validate_property(LocalNetworkGateway, Symbol("tags"), tags)
-        return new(properties, etag, id, name, type, location, tags, )
+        o = new(properties, etag, id, name, type, location, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type LocalNetworkGateway
 
 const _property_types_LocalNetworkGateway = Dict{Symbol,String}(Symbol("properties")=>"LocalNetworkGatewayPropertiesFormat", Symbol("etag")=>"String", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ LocalNetworkGateway }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_LocalNetworkGateway[name]))}
 
-function check_required(o::LocalNetworkGateway)
+function OpenAPI.check_required(o::LocalNetworkGateway)
     o.properties === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::LocalNetworkGateway)
+    OpenAPI.validate_property(LocalNetworkGateway, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(LocalNetworkGateway, Symbol("etag"), o.etag)
+    OpenAPI.validate_property(LocalNetworkGateway, Symbol("id"), o.id)
+    OpenAPI.validate_property(LocalNetworkGateway, Symbol("name"), o.name)
+    OpenAPI.validate_property(LocalNetworkGateway, Symbol("type"), o.type)
+    OpenAPI.validate_property(LocalNetworkGateway, Symbol("location"), o.location)
+    OpenAPI.validate_property(LocalNetworkGateway, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ LocalNetworkGateway }, name::Symbol, val)
+
+
+
+
+
+
+
 end

@@ -33,25 +33,37 @@ Base.@kwdef mutable struct GatewayRoute <: OpenAPI.APIModel
     weight::Union{Nothing, Int64} = nothing
 
     function GatewayRoute(localAddress, network, nextHop, sourcePeer, origin, asPath, weight, )
-        OpenAPI.validate_property(GatewayRoute, Symbol("localAddress"), localAddress)
-        OpenAPI.validate_property(GatewayRoute, Symbol("network"), network)
-        OpenAPI.validate_property(GatewayRoute, Symbol("nextHop"), nextHop)
-        OpenAPI.validate_property(GatewayRoute, Symbol("sourcePeer"), sourcePeer)
-        OpenAPI.validate_property(GatewayRoute, Symbol("origin"), origin)
-        OpenAPI.validate_property(GatewayRoute, Symbol("asPath"), asPath)
-        OpenAPI.validate_property(GatewayRoute, Symbol("weight"), weight)
-        return new(localAddress, network, nextHop, sourcePeer, origin, asPath, weight, )
+        o = new(localAddress, network, nextHop, sourcePeer, origin, asPath, weight, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type GatewayRoute
 
 const _property_types_GatewayRoute = Dict{Symbol,String}(Symbol("localAddress")=>"String", Symbol("network")=>"String", Symbol("nextHop")=>"String", Symbol("sourcePeer")=>"String", Symbol("origin")=>"String", Symbol("asPath")=>"String", Symbol("weight")=>"Int64", )
 OpenAPI.property_type(::Type{ GatewayRoute }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_GatewayRoute[name]))}
 
-function check_required(o::GatewayRoute)
+function OpenAPI.check_required(o::GatewayRoute)
     true
 end
 
+function OpenAPI.validate_properties(o::GatewayRoute)
+    OpenAPI.validate_property(GatewayRoute, Symbol("localAddress"), o.localAddress)
+    OpenAPI.validate_property(GatewayRoute, Symbol("network"), o.network)
+    OpenAPI.validate_property(GatewayRoute, Symbol("nextHop"), o.nextHop)
+    OpenAPI.validate_property(GatewayRoute, Symbol("sourcePeer"), o.sourcePeer)
+    OpenAPI.validate_property(GatewayRoute, Symbol("origin"), o.origin)
+    OpenAPI.validate_property(GatewayRoute, Symbol("asPath"), o.asPath)
+    OpenAPI.validate_property(GatewayRoute, Symbol("weight"), o.weight)
+end
+
 function OpenAPI.validate_property(::Type{ GatewayRoute }, name::Symbol, val)
+
+
+
+
+
+
+
     if name === Symbol("weight")
         OpenAPI.validate_param(name, "GatewayRoute", :format, val, "int32")
     end

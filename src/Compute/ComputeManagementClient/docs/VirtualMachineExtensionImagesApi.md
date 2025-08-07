@@ -22,12 +22,12 @@ Gets a virtual machine extension image.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachineExtensionImagesApi** | API context | 
-**location** | **String**| The name of a supported Azure region. | [default to nothing]
-**publisher_name** | **String**|  | [default to nothing]
-**type** | **String**|  | [default to nothing]
-**version** | **String**|  | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**location** | **String** | The name of a supported Azure region. |
+**publisher_name** | **String** |  |
+**type** | **String** |  |
+**version** | **String** |  |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -57,10 +57,10 @@ Gets a list of virtual machine extension image types.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachineExtensionImagesApi** | API context | 
-**location** | **String**| The name of a supported Azure region. | [default to nothing]
-**publisher_name** | **String**|  | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**location** | **String** | The name of a supported Azure region. |
+**publisher_name** | **String** |  |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Return type
 
@@ -90,19 +90,19 @@ Gets a list of virtual machine extension image versions.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **VirtualMachineExtensionImagesApi** | API context | 
-**location** | **String**| The name of a supported Azure region. | [default to nothing]
-**publisher_name** | **String**|  | [default to nothing]
-**type** | **String**|  | [default to nothing]
-**api_version** | **String**| Client Api Version. | [default to nothing]
-**subscription_id** | **String**| Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
+**location** | **String** | The name of a supported Azure region. |
+**publisher_name** | **String** |  |
+**type** | **String** |  |
+**api_version** | **String** | Client Api Version. |
+**subscription_id** | **String** | Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
 
 ### Optional Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **filter** | **String**| The filter to apply on the operation. | [default to nothing]
- **top** | **Int64**|  | [default to nothing]
- **orderby** | **String**|  | [default to nothing]
+ **filter** | **String** | The filter to apply on the operation. | [default to nothing]
+ **top** | **Int64** |  | [default to nothing]
+ **orderby** | **String** |  | [default to nothing]
 
 ### Return type
 

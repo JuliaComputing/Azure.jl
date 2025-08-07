@@ -15,17 +15,23 @@ Base.@kwdef mutable struct VirtualMachineScaleSetNetworkConfigurationDnsSettings
     dnsServers::Union{Nothing, Vector{String}} = nothing
 
     function VirtualMachineScaleSetNetworkConfigurationDnsSettings(dnsServers, )
-        OpenAPI.validate_property(VirtualMachineScaleSetNetworkConfigurationDnsSettings, Symbol("dnsServers"), dnsServers)
-        return new(dnsServers, )
+        o = new(dnsServers, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetNetworkConfigurationDnsSettings
 
 const _property_types_VirtualMachineScaleSetNetworkConfigurationDnsSettings = Dict{Symbol,String}(Symbol("dnsServers")=>"Vector{String}", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetNetworkConfigurationDnsSettings }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetNetworkConfigurationDnsSettings[name]))}
 
-function check_required(o::VirtualMachineScaleSetNetworkConfigurationDnsSettings)
+function OpenAPI.check_required(o::VirtualMachineScaleSetNetworkConfigurationDnsSettings)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetNetworkConfigurationDnsSettings)
+    OpenAPI.validate_property(VirtualMachineScaleSetNetworkConfigurationDnsSettings, Symbol("dnsServers"), o.dnsServers)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetNetworkConfigurationDnsSettings }, name::Symbol, val)
+
 end

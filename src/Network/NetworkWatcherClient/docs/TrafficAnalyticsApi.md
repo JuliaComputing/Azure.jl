@@ -21,11 +21,11 @@ Queries status of flow log and traffic analytics (optional) on a specified resou
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **TrafficAnalyticsApi** | API context | 
-**resource_group_name** | **String**| The name of the network watcher resource group. | [default to nothing]
-**network_watcher_name** | **String**| The name of the network watcher resource. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**FlowLogStatusParameters**](FlowLogStatusParameters.md)| Parameters that define a resource to query flow log and traffic analytics (optional) status. | 
+**resource_group_name** | **String** | The name of the network watcher resource group. |
+**network_watcher_name** | **String** | The name of the network watcher resource. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**FlowLogStatusParameters**](FlowLogStatusParameters.md) | Parameters that define a resource to query flow log and traffic analytics (optional) status. |
 
 ### Return type
 
@@ -55,11 +55,11 @@ Configures flow log and traffic analytics (optional) on a specified resource.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **TrafficAnalyticsApi** | API context | 
-**resource_group_name** | **String**| The name of the network watcher resource group. | [default to nothing]
-**network_watcher_name** | **String**| The name of the network watcher resource. | [default to nothing]
-**api_version** | **String**| Client API version. | [default to nothing]
-**subscription_id** | **String**| The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. | [default to nothing]
-**parameters** | [**FlowLogInformation**](FlowLogInformation.md)| Parameters that define the configuration of flow log. | 
+**resource_group_name** | **String** | The name of the network watcher resource group. |
+**network_watcher_name** | **String** | The name of the network watcher resource. |
+**api_version** | **String** | Client API version. |
+**subscription_id** | **String** | The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. |
+**parameters** | [**FlowLogInformation**](FlowLogInformation.md) | Parameters that define the configuration of flow log. |
 
 ### Return type
 

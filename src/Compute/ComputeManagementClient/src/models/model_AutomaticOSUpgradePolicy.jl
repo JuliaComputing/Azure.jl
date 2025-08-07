@@ -18,18 +18,25 @@ Base.@kwdef mutable struct AutomaticOSUpgradePolicy <: OpenAPI.APIModel
     disableAutomaticRollback::Union{Nothing, Bool} = nothing
 
     function AutomaticOSUpgradePolicy(enableAutomaticOSUpgrade, disableAutomaticRollback, )
-        OpenAPI.validate_property(AutomaticOSUpgradePolicy, Symbol("enableAutomaticOSUpgrade"), enableAutomaticOSUpgrade)
-        OpenAPI.validate_property(AutomaticOSUpgradePolicy, Symbol("disableAutomaticRollback"), disableAutomaticRollback)
-        return new(enableAutomaticOSUpgrade, disableAutomaticRollback, )
+        o = new(enableAutomaticOSUpgrade, disableAutomaticRollback, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type AutomaticOSUpgradePolicy
 
 const _property_types_AutomaticOSUpgradePolicy = Dict{Symbol,String}(Symbol("enableAutomaticOSUpgrade")=>"Bool", Symbol("disableAutomaticRollback")=>"Bool", )
 OpenAPI.property_type(::Type{ AutomaticOSUpgradePolicy }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_AutomaticOSUpgradePolicy[name]))}
 
-function check_required(o::AutomaticOSUpgradePolicy)
+function OpenAPI.check_required(o::AutomaticOSUpgradePolicy)
     true
 end
 
+function OpenAPI.validate_properties(o::AutomaticOSUpgradePolicy)
+    OpenAPI.validate_property(AutomaticOSUpgradePolicy, Symbol("enableAutomaticOSUpgrade"), o.enableAutomaticOSUpgrade)
+    OpenAPI.validate_property(AutomaticOSUpgradePolicy, Symbol("disableAutomaticRollback"), o.disableAutomaticRollback)
+end
+
 function OpenAPI.validate_property(::Type{ AutomaticOSUpgradePolicy }, name::Symbol, val)
+
+
 end

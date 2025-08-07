@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **headerName** | **String** | Header name of the header configuration. | [optional] [default to nothing]
+**headerValueMatcher** | [***HeaderValueMatcher**](HeaderValueMatcher.md) |  | [optional] [default to nothing]
 **headerValue** | **String** | Header value of the header configuration. | [optional] [default to nothing]
 
 

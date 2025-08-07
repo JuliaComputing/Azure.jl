@@ -3,7 +3,7 @@
 
 
 @doc raw"""OSDisk
-Specifies information about the operating system disk used by the virtual machine. &lt;br&gt;&lt;br&gt; For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about-disks-vhds?toc&#x3D;%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Specifies information about the operating system disk used by the virtual machine. &lt;br&gt;&lt;br&gt; For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
 
     OSDisk(;
         osType=nothing,
@@ -17,6 +17,7 @@ Specifies information about the operating system disk used by the virtual machin
         createOption=nothing,
         diskSizeGB=nothing,
         managedDisk=nothing,
+        deleteOption=nothing,
     )
 
     - osType::String : This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. &lt;br&gt;&lt;br&gt; Possible values are: &lt;br&gt;&lt;br&gt; **Windows** &lt;br&gt;&lt;br&gt; **Linux**
@@ -30,6 +31,7 @@ Specifies information about the operating system disk used by the virtual machin
     - createOption::CreateOption
     - diskSizeGB::Int64 : Specifies the size of an empty data disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image. &lt;br&gt;&lt;br&gt; This value cannot be larger than 1023 GB
     - managedDisk::ManagedDiskParameters
+    - deleteOption::DeleteOption
 """
 Base.@kwdef mutable struct OSDisk <: OpenAPI.APIModel
     osType::Union{Nothing, String} = nothing
@@ -43,36 +45,56 @@ Base.@kwdef mutable struct OSDisk <: OpenAPI.APIModel
     createOption = nothing # spec type: Union{ Nothing, CreateOption }
     diskSizeGB::Union{Nothing, Int64} = nothing
     managedDisk = nothing # spec type: Union{ Nothing, ManagedDiskParameters }
+    deleteOption = nothing # spec type: Union{ Nothing, DeleteOption }
 
-    function OSDisk(osType, encryptionSettings, name, vhd, image, caching, writeAcceleratorEnabled, diffDiskSettings, createOption, diskSizeGB, managedDisk, )
-        OpenAPI.validate_property(OSDisk, Symbol("osType"), osType)
-        OpenAPI.validate_property(OSDisk, Symbol("encryptionSettings"), encryptionSettings)
-        OpenAPI.validate_property(OSDisk, Symbol("name"), name)
-        OpenAPI.validate_property(OSDisk, Symbol("vhd"), vhd)
-        OpenAPI.validate_property(OSDisk, Symbol("image"), image)
-        OpenAPI.validate_property(OSDisk, Symbol("caching"), caching)
-        OpenAPI.validate_property(OSDisk, Symbol("writeAcceleratorEnabled"), writeAcceleratorEnabled)
-        OpenAPI.validate_property(OSDisk, Symbol("diffDiskSettings"), diffDiskSettings)
-        OpenAPI.validate_property(OSDisk, Symbol("createOption"), createOption)
-        OpenAPI.validate_property(OSDisk, Symbol("diskSizeGB"), diskSizeGB)
-        OpenAPI.validate_property(OSDisk, Symbol("managedDisk"), managedDisk)
-        return new(osType, encryptionSettings, name, vhd, image, caching, writeAcceleratorEnabled, diffDiskSettings, createOption, diskSizeGB, managedDisk, )
+    function OSDisk(osType, encryptionSettings, name, vhd, image, caching, writeAcceleratorEnabled, diffDiskSettings, createOption, diskSizeGB, managedDisk, deleteOption, )
+        o = new(osType, encryptionSettings, name, vhd, image, caching, writeAcceleratorEnabled, diffDiskSettings, createOption, diskSizeGB, managedDisk, deleteOption, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type OSDisk
 
-const _property_types_OSDisk = Dict{Symbol,String}(Symbol("osType")=>"String", Symbol("encryptionSettings")=>"DiskEncryptionSettings", Symbol("name")=>"String", Symbol("vhd")=>"VirtualHardDisk", Symbol("image")=>"VirtualHardDisk", Symbol("caching")=>"Caching", Symbol("writeAcceleratorEnabled")=>"Bool", Symbol("diffDiskSettings")=>"DiffDiskSettings", Symbol("createOption")=>"CreateOption", Symbol("diskSizeGB")=>"Int64", Symbol("managedDisk")=>"ManagedDiskParameters", )
+const _property_types_OSDisk = Dict{Symbol,String}(Symbol("osType")=>"String", Symbol("encryptionSettings")=>"DiskEncryptionSettings", Symbol("name")=>"String", Symbol("vhd")=>"VirtualHardDisk", Symbol("image")=>"VirtualHardDisk", Symbol("caching")=>"Caching", Symbol("writeAcceleratorEnabled")=>"Bool", Symbol("diffDiskSettings")=>"DiffDiskSettings", Symbol("createOption")=>"CreateOption", Symbol("diskSizeGB")=>"Int64", Symbol("managedDisk")=>"ManagedDiskParameters", Symbol("deleteOption")=>"DeleteOption", )
 OpenAPI.property_type(::Type{ OSDisk }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_OSDisk[name]))}
 
-function check_required(o::OSDisk)
+function OpenAPI.check_required(o::OSDisk)
     o.createOption === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::OSDisk)
+    OpenAPI.validate_property(OSDisk, Symbol("osType"), o.osType)
+    OpenAPI.validate_property(OSDisk, Symbol("encryptionSettings"), o.encryptionSettings)
+    OpenAPI.validate_property(OSDisk, Symbol("name"), o.name)
+    OpenAPI.validate_property(OSDisk, Symbol("vhd"), o.vhd)
+    OpenAPI.validate_property(OSDisk, Symbol("image"), o.image)
+    OpenAPI.validate_property(OSDisk, Symbol("caching"), o.caching)
+    OpenAPI.validate_property(OSDisk, Symbol("writeAcceleratorEnabled"), o.writeAcceleratorEnabled)
+    OpenAPI.validate_property(OSDisk, Symbol("diffDiskSettings"), o.diffDiskSettings)
+    OpenAPI.validate_property(OSDisk, Symbol("createOption"), o.createOption)
+    OpenAPI.validate_property(OSDisk, Symbol("diskSizeGB"), o.diskSizeGB)
+    OpenAPI.validate_property(OSDisk, Symbol("managedDisk"), o.managedDisk)
+    OpenAPI.validate_property(OSDisk, Symbol("deleteOption"), o.deleteOption)
+end
+
 function OpenAPI.validate_property(::Type{ OSDisk }, name::Symbol, val)
+
     if name === Symbol("osType")
         OpenAPI.validate_param(name, "OSDisk", :enum, val, ["Windows", "Linux"])
     end
+
+
+
+
+
+
+
+
+
+
     if name === Symbol("diskSizeGB")
         OpenAPI.validate_param(name, "OSDisk", :format, val, "int32")
     end
+
+
 end

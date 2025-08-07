@@ -20,7 +20,7 @@ Lists all of the available Microsoft.Resources REST API operations.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **_api** | **OperationsApi** | API context | 
-**api_version** | **String**| The API version to use for this operation. | [default to nothing]
+**api_version** | **String** | The API version to use for this operation. |
 
 ### Return type
 

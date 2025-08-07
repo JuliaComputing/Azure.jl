@@ -24,20 +24,29 @@ Base.@kwdef mutable struct VirtualMachineScaleSetUpdateOSProfile <: OpenAPI.APIM
     secrets::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{VaultSecretGroup} }
 
     function VirtualMachineScaleSetUpdateOSProfile(customData, windowsConfiguration, linuxConfiguration, secrets, )
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdateOSProfile, Symbol("customData"), customData)
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdateOSProfile, Symbol("windowsConfiguration"), windowsConfiguration)
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdateOSProfile, Symbol("linuxConfiguration"), linuxConfiguration)
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdateOSProfile, Symbol("secrets"), secrets)
-        return new(customData, windowsConfiguration, linuxConfiguration, secrets, )
+        o = new(customData, windowsConfiguration, linuxConfiguration, secrets, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetUpdateOSProfile
 
 const _property_types_VirtualMachineScaleSetUpdateOSProfile = Dict{Symbol,String}(Symbol("customData")=>"String", Symbol("windowsConfiguration")=>"WindowsConfiguration", Symbol("linuxConfiguration")=>"LinuxConfiguration", Symbol("secrets")=>"Vector{VaultSecretGroup}", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetUpdateOSProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetUpdateOSProfile[name]))}
 
-function check_required(o::VirtualMachineScaleSetUpdateOSProfile)
+function OpenAPI.check_required(o::VirtualMachineScaleSetUpdateOSProfile)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetUpdateOSProfile)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdateOSProfile, Symbol("customData"), o.customData)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdateOSProfile, Symbol("windowsConfiguration"), o.windowsConfiguration)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdateOSProfile, Symbol("linuxConfiguration"), o.linuxConfiguration)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdateOSProfile, Symbol("secrets"), o.secrets)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetUpdateOSProfile }, name::Symbol, val)
+
+
+
+
 end

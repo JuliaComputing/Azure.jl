@@ -21,19 +21,27 @@ Base.@kwdef mutable struct VirtualMachineScaleSetUpdateNetworkConfiguration <: O
     id::Union{Nothing, String} = nothing
 
     function VirtualMachineScaleSetUpdateNetworkConfiguration(name, properties, id, )
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdateNetworkConfiguration, Symbol("name"), name)
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdateNetworkConfiguration, Symbol("properties"), properties)
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdateNetworkConfiguration, Symbol("id"), id)
-        return new(name, properties, id, )
+        o = new(name, properties, id, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetUpdateNetworkConfiguration
 
 const _property_types_VirtualMachineScaleSetUpdateNetworkConfiguration = Dict{Symbol,String}(Symbol("name")=>"String", Symbol("properties")=>"VirtualMachineScaleSetUpdateNetworkConfigurationProperties", Symbol("id")=>"String", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetUpdateNetworkConfiguration }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetUpdateNetworkConfiguration[name]))}
 
-function check_required(o::VirtualMachineScaleSetUpdateNetworkConfiguration)
+function OpenAPI.check_required(o::VirtualMachineScaleSetUpdateNetworkConfiguration)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetUpdateNetworkConfiguration)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdateNetworkConfiguration, Symbol("name"), o.name)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdateNetworkConfiguration, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdateNetworkConfiguration, Symbol("id"), o.id)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetUpdateNetworkConfiguration }, name::Symbol, val)
+
+
+
 end

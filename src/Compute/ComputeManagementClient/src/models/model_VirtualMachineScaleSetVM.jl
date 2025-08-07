@@ -6,67 +6,83 @@
 Describes a virtual machine scale set virtual machine.
 
     VirtualMachineScaleSetVM(;
-        id=nothing,
-        name=nothing,
-        type=nothing,
-        location=nothing,
-        tags=nothing,
         instanceId=nothing,
         sku=nothing,
         properties=nothing,
         plan=nothing,
         resources=nothing,
         zones=nothing,
+        id=nothing,
+        name=nothing,
+        type=nothing,
+        location=nothing,
+        tags=nothing,
     )
 
-    - id::String : Resource Id
-    - name::String : Resource name
-    - type::String : Resource type
-    - location::String : Resource location
-    - tags::Dict{String, String} : Resource tags
     - instanceId::String : The virtual machine instance ID.
     - sku::Sku
     - properties::VirtualMachineScaleSetVMProperties
     - plan::Plan
     - resources::Vector{VirtualMachineExtension} : The virtual machine child extension resources.
     - zones::Vector{String} : The virtual machine zones.
+    - id::String : Resource Id
+    - name::String : Resource name
+    - type::String : Resource type
+    - location::String : Resource location
+    - tags::Dict{String, String} : Resource tags
 """
 Base.@kwdef mutable struct VirtualMachineScaleSetVM <: OpenAPI.APIModel
-    id::Union{Nothing, String} = nothing
-    name::Union{Nothing, String} = nothing
-    type::Union{Nothing, String} = nothing
-    location::Union{Nothing, String} = nothing
-    tags::Union{Nothing, Dict{String, String}} = nothing
     instanceId::Union{Nothing, String} = nothing
     sku = nothing # spec type: Union{ Nothing, Sku }
     properties = nothing # spec type: Union{ Nothing, VirtualMachineScaleSetVMProperties }
     plan = nothing # spec type: Union{ Nothing, Plan }
     resources::Union{Nothing, Vector} = nothing # spec type: Union{ Nothing, Vector{VirtualMachineExtension} }
     zones::Union{Nothing, Vector{String}} = nothing
+    id::Union{Nothing, String} = nothing
+    name::Union{Nothing, String} = nothing
+    type::Union{Nothing, String} = nothing
+    location::Union{Nothing, String} = nothing
+    tags::Union{Nothing, Dict{String, String}} = nothing
 
-    function VirtualMachineScaleSetVM(id, name, type, location, tags, instanceId, sku, properties, plan, resources, zones, )
-        OpenAPI.validate_property(VirtualMachineScaleSetVM, Symbol("id"), id)
-        OpenAPI.validate_property(VirtualMachineScaleSetVM, Symbol("name"), name)
-        OpenAPI.validate_property(VirtualMachineScaleSetVM, Symbol("type"), type)
-        OpenAPI.validate_property(VirtualMachineScaleSetVM, Symbol("location"), location)
-        OpenAPI.validate_property(VirtualMachineScaleSetVM, Symbol("tags"), tags)
-        OpenAPI.validate_property(VirtualMachineScaleSetVM, Symbol("instanceId"), instanceId)
-        OpenAPI.validate_property(VirtualMachineScaleSetVM, Symbol("sku"), sku)
-        OpenAPI.validate_property(VirtualMachineScaleSetVM, Symbol("properties"), properties)
-        OpenAPI.validate_property(VirtualMachineScaleSetVM, Symbol("plan"), plan)
-        OpenAPI.validate_property(VirtualMachineScaleSetVM, Symbol("resources"), resources)
-        OpenAPI.validate_property(VirtualMachineScaleSetVM, Symbol("zones"), zones)
-        return new(id, name, type, location, tags, instanceId, sku, properties, plan, resources, zones, )
+    function VirtualMachineScaleSetVM(instanceId, sku, properties, plan, resources, zones, id, name, type, location, tags, )
+        o = new(instanceId, sku, properties, plan, resources, zones, id, name, type, location, tags, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetVM
 
-const _property_types_VirtualMachineScaleSetVM = Dict{Symbol,String}(Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", Symbol("instanceId")=>"String", Symbol("sku")=>"Sku", Symbol("properties")=>"VirtualMachineScaleSetVMProperties", Symbol("plan")=>"Plan", Symbol("resources")=>"Vector{VirtualMachineExtension}", Symbol("zones")=>"Vector{String}", )
+const _property_types_VirtualMachineScaleSetVM = Dict{Symbol,String}(Symbol("instanceId")=>"String", Symbol("sku")=>"Sku", Symbol("properties")=>"VirtualMachineScaleSetVMProperties", Symbol("plan")=>"Plan", Symbol("resources")=>"Vector{VirtualMachineExtension}", Symbol("zones")=>"Vector{String}", Symbol("id")=>"String", Symbol("name")=>"String", Symbol("type")=>"String", Symbol("location")=>"String", Symbol("tags")=>"Dict{String, String}", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetVM }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetVM[name]))}
 
-function check_required(o::VirtualMachineScaleSetVM)
+function OpenAPI.check_required(o::VirtualMachineScaleSetVM)
     o.location === nothing && (return false)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetVM)
+    OpenAPI.validate_property(VirtualMachineScaleSetVM, Symbol("instanceId"), o.instanceId)
+    OpenAPI.validate_property(VirtualMachineScaleSetVM, Symbol("sku"), o.sku)
+    OpenAPI.validate_property(VirtualMachineScaleSetVM, Symbol("properties"), o.properties)
+    OpenAPI.validate_property(VirtualMachineScaleSetVM, Symbol("plan"), o.plan)
+    OpenAPI.validate_property(VirtualMachineScaleSetVM, Symbol("resources"), o.resources)
+    OpenAPI.validate_property(VirtualMachineScaleSetVM, Symbol("zones"), o.zones)
+    OpenAPI.validate_property(VirtualMachineScaleSetVM, Symbol("id"), o.id)
+    OpenAPI.validate_property(VirtualMachineScaleSetVM, Symbol("name"), o.name)
+    OpenAPI.validate_property(VirtualMachineScaleSetVM, Symbol("type"), o.type)
+    OpenAPI.validate_property(VirtualMachineScaleSetVM, Symbol("location"), o.location)
+    OpenAPI.validate_property(VirtualMachineScaleSetVM, Symbol("tags"), o.tags)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetVM }, name::Symbol, val)
+
+
+
+
+
+
+
+
+
+
+
 end

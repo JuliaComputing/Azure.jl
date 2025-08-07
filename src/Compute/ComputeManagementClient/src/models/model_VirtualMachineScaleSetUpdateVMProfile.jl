@@ -15,6 +15,7 @@ Describes a virtual machine scale set virtual machine profile.
         licenseType=nothing,
         billingProfile=nothing,
         scheduledEventsProfile=nothing,
+        userData=nothing,
     )
 
     - osProfile::VirtualMachineScaleSetUpdateOSProfile
@@ -26,6 +27,7 @@ Describes a virtual machine scale set virtual machine profile.
     - licenseType::String : The license type, which is for bring your own license scenario.
     - billingProfile::BillingProfile
     - scheduledEventsProfile::ScheduledEventsProfile
+    - userData::String : UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here. &lt;br&gt;&lt;br&gt;Minimum api-version: 2021-03-01
 """
 Base.@kwdef mutable struct VirtualMachineScaleSetUpdateVMProfile <: OpenAPI.APIModel
     osProfile = nothing # spec type: Union{ Nothing, VirtualMachineScaleSetUpdateOSProfile }
@@ -37,27 +39,44 @@ Base.@kwdef mutable struct VirtualMachineScaleSetUpdateVMProfile <: OpenAPI.APIM
     licenseType::Union{Nothing, String} = nothing
     billingProfile = nothing # spec type: Union{ Nothing, BillingProfile }
     scheduledEventsProfile = nothing # spec type: Union{ Nothing, ScheduledEventsProfile }
+    userData::Union{Nothing, String} = nothing
 
-    function VirtualMachineScaleSetUpdateVMProfile(osProfile, storageProfile, networkProfile, securityProfile, diagnosticsProfile, extensionProfile, licenseType, billingProfile, scheduledEventsProfile, )
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdateVMProfile, Symbol("osProfile"), osProfile)
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdateVMProfile, Symbol("storageProfile"), storageProfile)
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdateVMProfile, Symbol("networkProfile"), networkProfile)
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdateVMProfile, Symbol("securityProfile"), securityProfile)
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdateVMProfile, Symbol("diagnosticsProfile"), diagnosticsProfile)
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdateVMProfile, Symbol("extensionProfile"), extensionProfile)
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdateVMProfile, Symbol("licenseType"), licenseType)
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdateVMProfile, Symbol("billingProfile"), billingProfile)
-        OpenAPI.validate_property(VirtualMachineScaleSetUpdateVMProfile, Symbol("scheduledEventsProfile"), scheduledEventsProfile)
-        return new(osProfile, storageProfile, networkProfile, securityProfile, diagnosticsProfile, extensionProfile, licenseType, billingProfile, scheduledEventsProfile, )
+    function VirtualMachineScaleSetUpdateVMProfile(osProfile, storageProfile, networkProfile, securityProfile, diagnosticsProfile, extensionProfile, licenseType, billingProfile, scheduledEventsProfile, userData, )
+        o = new(osProfile, storageProfile, networkProfile, securityProfile, diagnosticsProfile, extensionProfile, licenseType, billingProfile, scheduledEventsProfile, userData, )
+        OpenAPI.validate_properties(o)
+        return o
     end
 end # type VirtualMachineScaleSetUpdateVMProfile
 
-const _property_types_VirtualMachineScaleSetUpdateVMProfile = Dict{Symbol,String}(Symbol("osProfile")=>"VirtualMachineScaleSetUpdateOSProfile", Symbol("storageProfile")=>"VirtualMachineScaleSetUpdateStorageProfile", Symbol("networkProfile")=>"VirtualMachineScaleSetUpdateNetworkProfile", Symbol("securityProfile")=>"SecurityProfile", Symbol("diagnosticsProfile")=>"DiagnosticsProfile", Symbol("extensionProfile")=>"VirtualMachineScaleSetExtensionProfile", Symbol("licenseType")=>"String", Symbol("billingProfile")=>"BillingProfile", Symbol("scheduledEventsProfile")=>"ScheduledEventsProfile", )
+const _property_types_VirtualMachineScaleSetUpdateVMProfile = Dict{Symbol,String}(Symbol("osProfile")=>"VirtualMachineScaleSetUpdateOSProfile", Symbol("storageProfile")=>"VirtualMachineScaleSetUpdateStorageProfile", Symbol("networkProfile")=>"VirtualMachineScaleSetUpdateNetworkProfile", Symbol("securityProfile")=>"SecurityProfile", Symbol("diagnosticsProfile")=>"DiagnosticsProfile", Symbol("extensionProfile")=>"VirtualMachineScaleSetExtensionProfile", Symbol("licenseType")=>"String", Symbol("billingProfile")=>"BillingProfile", Symbol("scheduledEventsProfile")=>"ScheduledEventsProfile", Symbol("userData")=>"String", )
 OpenAPI.property_type(::Type{ VirtualMachineScaleSetUpdateVMProfile }, name::Symbol) = Union{Nothing,eval(Base.Meta.parse(_property_types_VirtualMachineScaleSetUpdateVMProfile[name]))}
 
-function check_required(o::VirtualMachineScaleSetUpdateVMProfile)
+function OpenAPI.check_required(o::VirtualMachineScaleSetUpdateVMProfile)
     true
 end
 
+function OpenAPI.validate_properties(o::VirtualMachineScaleSetUpdateVMProfile)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdateVMProfile, Symbol("osProfile"), o.osProfile)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdateVMProfile, Symbol("storageProfile"), o.storageProfile)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdateVMProfile, Symbol("networkProfile"), o.networkProfile)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdateVMProfile, Symbol("securityProfile"), o.securityProfile)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdateVMProfile, Symbol("diagnosticsProfile"), o.diagnosticsProfile)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdateVMProfile, Symbol("extensionProfile"), o.extensionProfile)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdateVMProfile, Symbol("licenseType"), o.licenseType)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdateVMProfile, Symbol("billingProfile"), o.billingProfile)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdateVMProfile, Symbol("scheduledEventsProfile"), o.scheduledEventsProfile)
+    OpenAPI.validate_property(VirtualMachineScaleSetUpdateVMProfile, Symbol("userData"), o.userData)
+end
+
 function OpenAPI.validate_property(::Type{ VirtualMachineScaleSetUpdateVMProfile }, name::Symbol, val)
+
+
+
+
+
+
+
+
+
+
 end

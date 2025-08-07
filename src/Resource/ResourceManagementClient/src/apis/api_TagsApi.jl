@@ -21,7 +21,7 @@ function _oacinternal_tags_create_or_update(_api::TagsApi, tag_name::String, api
     _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_tags_create_or_update_TagsApi, "/subscriptions/{subscriptionId}/tagNames/{tagName}", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "tagName", tag_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -50,13 +50,14 @@ end
 
 const _returntypes_tags_create_or_update_at_scope_TagsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => TagsResource,
+    Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_tags_create_or_update_at_scope(_api::TagsApi, scope::String, api_version::String, parameters::TagsResource; _mediaType=nothing)
     _ctx = OpenAPI.Clients.Ctx(_api.client, "PUT", _returntypes_tags_create_or_update_at_scope_TagsApi, "/{scope}/providers/Microsoft.Resources/tags/default", ["azure_auth", ], parameters)
     OpenAPI.Clients.set_param(_ctx.path, "scope", scope)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
@@ -94,7 +95,7 @@ function _oacinternal_tags_create_or_update_value(_api::TagsApi, tag_name::Strin
     OpenAPI.Clients.set_param(_ctx.path, "tagName", tag_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "tagValue", tag_value)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -132,7 +133,7 @@ function _oacinternal_tags_delete(_api::TagsApi, tag_name::String, api_version::
     _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_tags_delete_TagsApi, "/subscriptions/{subscriptionId}/tagNames/{tagName}", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "tagName", tag_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -161,13 +162,14 @@ end
 
 const _returntypes_tags_delete_at_scope_TagsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => Nothing,
+    Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_tags_delete_at_scope(_api::TagsApi, scope::String, api_version::String; _mediaType=nothing)
     _ctx = OpenAPI.Clients.Ctx(_api.client, "DELETE", _returntypes_tags_delete_at_scope_TagsApi, "/{scope}/providers/Microsoft.Resources/tags/default", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "scope", scope)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -202,7 +204,7 @@ function _oacinternal_tags_delete_value(_api::TagsApi, tag_name::String, tag_val
     OpenAPI.Clients.set_param(_ctx.path, "tagName", tag_name)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "tagValue", tag_value)  # type String
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -238,7 +240,7 @@ const _returntypes_tags_get_at_scope_TagsApi = Dict{Regex,Type}(
 function _oacinternal_tags_get_at_scope(_api::TagsApi, scope::String, api_version::String; _mediaType=nothing)
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_tags_get_at_scope_TagsApi, "/{scope}/providers/Microsoft.Resources/tags/default", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "scope", scope)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -270,7 +272,7 @@ const _returntypes_tags_list_TagsApi = Dict{Regex,Type}(
 function _oacinternal_tags_list(_api::TagsApi, api_version::String, subscription_id::String; _mediaType=nothing)
     _ctx = OpenAPI.Clients.Ctx(_api.client, "GET", _returntypes_tags_list_TagsApi, "/subscriptions/{subscriptionId}/tagNames", ["azure_auth", ])
     OpenAPI.Clients.set_param(_ctx.path, "subscriptionId", subscription_id)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? [] : [_mediaType])
     return _ctx
@@ -298,13 +300,14 @@ end
 
 const _returntypes_tags_update_at_scope_TagsApi = Dict{Regex,Type}(
     Regex("^" * replace("200", "x"=>".") * "\$") => TagsResource,
+    Regex("^" * replace("202", "x"=>".") * "\$") => Nothing,
     Regex("^" * replace("0", "x"=>".") * "\$") => CloudError,
 )
 
 function _oacinternal_tags_update_at_scope(_api::TagsApi, scope::String, api_version::String, parameters::TagsPatchResource; _mediaType=nothing)
     _ctx = OpenAPI.Clients.Ctx(_api.client, "PATCH", _returntypes_tags_update_at_scope_TagsApi, "/{scope}/providers/Microsoft.Resources/tags/default", ["azure_auth", ], parameters)
     OpenAPI.Clients.set_param(_ctx.path, "scope", scope)  # type String
-    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version)  # type String
+    OpenAPI.Clients.set_param(_ctx.query, "api-version", api_version; style="", is_explode=false)  # type String
     OpenAPI.Clients.set_header_accept(_ctx, ["application/json", ])
     OpenAPI.Clients.set_header_content_type(_ctx, (_mediaType === nothing) ? ["application/json", ] : [_mediaType])
     return _ctx
