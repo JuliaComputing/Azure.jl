@@ -79,7 +79,7 @@ function appendSAS(raw_url::String, key::String; permissions::String=SASPermissi
                         content_language,
                         content_type
                     ], "\n")
-    sig = base64encode(digest(MD_SHA256, str_to_sign, base64decode(key)))
+    sig = base64encode(hmac_sha256(base64decode(key), str_to_sign))
 
     query_params =  [
                         "sv"=>SAS_VERSION,

@@ -2,7 +2,7 @@ module REST
 
 using URIs
 using Downloads
-using MbedTLS
+using SHA: hmac_sha256
 using Dates
 using Base64
 using XMLDict
@@ -112,7 +112,7 @@ function sign_sharedkey(req::ServiceRequest, key::String)
     print(iob, canonicalize_resource(req.account, req.resource))
 
     signingstr = String(take!(iob))
-    hmacsign = base64encode(digest(MD_SHA256, signingstr, base64decode(key)))
+    hmacsign = base64encode(hmac_sha256(base64decode(key), signingstr))
     req.headers["Authorization"] = "SharedKey $(req.account):$(hmacsign)"
     nothing
 end
